@@ -1,0 +1,51 @@
+{
+  "name": "alg-trainer",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development parcel index.html ",
+    "build": "cross-env NODE_ENV=production parcel build index.html --no-minify --public-url ./"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.9.1",
+    "@types/node": "^8.5.1",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "@types/webpack-env": "^1.13.3",
+    "autoprefixer": "^7.2.1",
+    "babel-preset-react-app": "^3.1.0",
+    "cubing": "0.27.0",
+    "parcel": "^2.0.0",
+    "parcel-plugin-typescript": "^0.2.3",
+    "react": "^17.0.2",
+    "react-beforeunload": "^2.5.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.3.0",
+    "tslint": "^5.8.0",
+    "tslint-react": "^3.2.0",
+    "typescript": "^2.6.2"
+  },
+  "postcss": {
+    "modules": false,
+    "plugins": {
+      "autoprefixer": {
+        "browsers": [
+          ">1%",
+          "last 4 versions",
+          "Firefox ESR",
+          "not ie < 9"
+        ],
+        "flexbox": "no-2009"
+      }
+    }
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.3.1",
+    "cross-env": "^5.1.1",
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.0.0",
+    "postcss-modules": "^4.3.0",
+    "process": "^0.11.10"
+  }
+}
