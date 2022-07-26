@@ -6,8 +6,6 @@
     "build": "cross-env NODE_ENV=production parcel build index.html --no-minify --public-url ./"
   },
   "dependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.9.1",
     "@types/node": "^8.5.1",
     "@types/react": "^17.0.39",
