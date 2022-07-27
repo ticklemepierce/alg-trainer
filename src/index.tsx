@@ -15,7 +15,7 @@ const App = () => (
       <Route path="/" element={<HomePage /> }/>
       <Route path="/puzzle/:puzzleId">
         <Route path="" element={<PuzzlePage />} />
-        <Route path=":step" element={<h1>I'm a step page</h1>} />
+        <Route path=":step" element={<h1>I'm a step page test</h1>} />
       </Route>
     </Routes>
   </BrowserRouter>
