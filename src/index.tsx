@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom';
 import { HomePage } from './pages/home';
 // import { PuzzlePage } from './pages/puzzle';
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route,
 } from "react-router-dom";
 
 const App = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<HomePage /> }/>
       {/* <Route path="/puzzle/3">
@@ -22,7 +22,7 @@ const App = () => (
         <Route path=":step" element={<h1>I'm a step page test</h1>} />
       </Route> */}
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 )
 
 ReactDOM.render(<StrictMode><App /></StrictMode>, document.getElementById('root'));

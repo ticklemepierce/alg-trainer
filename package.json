@@ -37,5 +37,6 @@
   },
   "@parcel/transformer-css": {
     "cssModules": true
-  }
+  },
+  "homepage": "https://ticklemepierce.github.io/alg-trainer"
 }
