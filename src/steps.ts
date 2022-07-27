@@ -1,8 +1,13 @@
-// export type Puzzles = 'two'|'three'|'four'|'five';
+export enum PuzzlesEnum { 
+  two = 2, 
+  three = 3, 
+  four = 4, 
+  five = 5
+};
 
-
-export enum PuzzlesEnum { two, three, four, five }
 export type Step = 'f2l'|'oll'|'pll'|'f3l'|'cross edges';
+
+export const PUZZLES = [PuzzlesEnum.two, PuzzlesEnum.three, PuzzlesEnum.four, PuzzlesEnum.five];
 
 export type StepsMap  = {
   [key in PuzzlesEnum]: Step[];
