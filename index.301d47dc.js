@@ -11716,7 +11716,6 @@ var $f2d8fe790f2a3612$export$2e2bcd8739ae039 = $f2d8fe790f2a3612$var$Box;
 
 
 
-parcelRequire("d4J5n");
 
 
 
@@ -14705,42 +14704,49 @@ const $849600319aa1d35f$export$36d69433c4f81145 = ()=>/*#__PURE__*/ (0, $17b288f
 
 
 
-parcelRequire("d4J5n");
-
-const $42288ab337133246$export$6836fb99d2ec00dc = {
-    3: [
+let $213c55fb128c1838$export$b435a8016f7b5467;
+(function(PuzzlesEnum1) {
+    PuzzlesEnum1[PuzzlesEnum1["two"] = 0] = "two";
+    PuzzlesEnum1[PuzzlesEnum1["three"] = 1] = "three";
+    PuzzlesEnum1[PuzzlesEnum1["four"] = 2] = "four";
+    PuzzlesEnum1[PuzzlesEnum1["five"] = 3] = "five";
+})($213c55fb128c1838$export$b435a8016f7b5467 || ($213c55fb128c1838$export$b435a8016f7b5467 = {}));
+const $213c55fb128c1838$export$7ec827132239d8d = {
+    [$213c55fb128c1838$export$b435a8016f7b5467.two]: [],
+    [$213c55fb128c1838$export$b435a8016f7b5467.three]: [
         "f2l",
         "oll",
         "pll"
     ],
-    4: [
+    [$213c55fb128c1838$export$b435a8016f7b5467.four]: [
         "f3l",
         "cross edges"
-    ]
+    ],
+    [$213c55fb128c1838$export$b435a8016f7b5467.five]: []
 };
-const $42288ab337133246$export$e14dab7236868a5 = {
+const $213c55fb128c1838$export$fa1e5f8a851a39ea = {
     "f2l": "?mask=f2l",
     "f3l": "",
+    "oll": "",
+    "pll": "",
     "cross edges": "&pzl=4&fd=nnnnnnnnnnnnndnnnnnnnrrnnrrnnnnnnfnnnnnnnnnnnfnntddtdttddttdtddt"
 };
 
 
 
 
-const $dabeae809e841304$export$4ae42ca3eba65759 = ()=>{
-    // console.log(STEPS);
-    const { puzzleId: puzzleId  } = (0, $bd647cfe352699a5$export$99eaa27ddbbb95ef)();
+const $dabeae809e841304$export$4ae42ca3eba65759 = ({ puzzle: puzzle  })=>{
     return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
         sx: {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center"
         },
-        children: (0, $42288ab337133246$export$6836fb99d2ec00dc)[puzzleId].map((step)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $e3c63ac0ec19eb34$export$dbd9d07acd0a8c12), {
-                puzzle: puzzleId,
-                mask: (0, $42288ab337133246$export$e14dab7236868a5)[step],
+        children: (0, $213c55fb128c1838$export$7ec827132239d8d)[puzzle].map((step)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $e3c63ac0ec19eb34$export$dbd9d07acd0a8c12), {
+                puzzle: puzzle,
+                mask: (0, $213c55fb128c1838$export$fa1e5f8a851a39ea)[step],
                 title: step,
-                link: `/puzzle/${puzzleId}/${step}`
+                link: `/puzzle/${puzzle}/${step}`
             }))
     });
 };
@@ -14755,11 +14761,30 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$export
                     element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $849600319aa1d35f$export$36d69433c4f81145), {})
                 }),
                 /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
-                    path: "/puzzle/:puzzleId",
+                    path: "/puzzle/3",
                     children: [
                         /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
                             path: "",
-                            element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $dabeae809e841304$export$4ae42ca3eba65759), {})
+                            element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $dabeae809e841304$export$4ae42ca3eba65759), {
+                                puzzle: 4
+                            })
+                        }),
+                        /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
+                            path: ":step",
+                            element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h1", {
+                                children: "I'm a step page test"
+                            })
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
+                    path: "/puzzle/4",
+                    children: [
+                        /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
+                            path: "",
+                            element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $dabeae809e841304$export$4ae42ca3eba65759), {
+                                puzzle: 4
+                            })
                         }),
                         /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
                             path: ":step",
@@ -14772,9 +14797,9 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$export
             ]
         })
     });
-$4723f549251dd88b$exports.render(/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, (/*@__PURE__*/$parcel$interopDefault($d4J5n))).StrictMode, {
+(0, (/*@__PURE__*/$parcel$interopDefault($4723f549251dd88b$exports))).render(/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $d4J5n.StrictMode), {
     children: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)($ab1cd5f3b8d0b6aa$var$App, {})
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.082d4509.js.map
+//# sourceMappingURL=index.301d47dc.js.map
