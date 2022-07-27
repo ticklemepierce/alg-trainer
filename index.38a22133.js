@@ -7400,41 +7400,6 @@ $4723f549251dd88b$exports = (parcelRequire("bgpZC"));
 
 
 
-const $849600319aa1d35f$export$36d69433c4f81145 = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h1", {
-        children: "TEST"
-    });
-
-
-
-let $213c55fb128c1838$export$b435a8016f7b5467;
-(function(PuzzlesEnum1) {
-    PuzzlesEnum1[PuzzlesEnum1["two"] = 0] = "two";
-    PuzzlesEnum1[PuzzlesEnum1["three"] = 1] = "three";
-    PuzzlesEnum1[PuzzlesEnum1["four"] = 2] = "four";
-    PuzzlesEnum1[PuzzlesEnum1["five"] = 3] = "five";
-})($213c55fb128c1838$export$b435a8016f7b5467 || ($213c55fb128c1838$export$b435a8016f7b5467 = {}));
-const $213c55fb128c1838$export$7ec827132239d8d = {
-    [$213c55fb128c1838$export$b435a8016f7b5467.two]: [],
-    [$213c55fb128c1838$export$b435a8016f7b5467.three]: [
-        "f2l",
-        "oll",
-        "pll"
-    ],
-    [$213c55fb128c1838$export$b435a8016f7b5467.four]: [
-        "f3l",
-        "cross edges"
-    ],
-    [$213c55fb128c1838$export$b435a8016f7b5467.five]: []
-};
-const $213c55fb128c1838$export$fa1e5f8a851a39ea = {
-    "f2l": "?mask=f2l",
-    "f3l": "",
-    "oll": "",
-    "pll": "",
-    "cross edges": "&pzl=4&fd=nnnnnnnnnnnnndnnnnnnnrrnnrrnnnnnnfnnnnnnnnnnnfnntddtdttddttdtddt"
-};
-
-
 var $a41f6c2ef6e36772$exports = {};
 function $a41f6c2ef6e36772$var$_extends() {
     $a41f6c2ef6e36772$exports = $a41f6c2ef6e36772$var$_extends = Object.assign ? Object.assign.bind() : function(target) {
@@ -14717,6 +14682,58 @@ const $e3c63ac0ec19eb34$export$dbd9d07acd0a8c12 = ({ puzzle: puzzle , title: tit
 };
 
 
+const $849600319aa1d35f$var$PUZZLES = [
+    2,
+    3,
+    4,
+    5
+];
+const $849600319aa1d35f$export$36d69433c4f81145 = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
+        sx: {
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center"
+        },
+        children: $849600319aa1d35f$var$PUZZLES.map((puzzle)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $e3c63ac0ec19eb34$export$dbd9d07acd0a8c12), {
+                puzzle: puzzle,
+                title: `${puzzle}x${puzzle}`,
+                link: `/puzzle/${puzzle}`
+            }))
+    });
+
+
+
+let $213c55fb128c1838$export$b435a8016f7b5467;
+(function(PuzzlesEnum1) {
+    PuzzlesEnum1[PuzzlesEnum1["two"] = 0] = "two";
+    PuzzlesEnum1[PuzzlesEnum1["three"] = 1] = "three";
+    PuzzlesEnum1[PuzzlesEnum1["four"] = 2] = "four";
+    PuzzlesEnum1[PuzzlesEnum1["five"] = 3] = "five";
+})($213c55fb128c1838$export$b435a8016f7b5467 || ($213c55fb128c1838$export$b435a8016f7b5467 = {}));
+const $213c55fb128c1838$export$7ec827132239d8d = {
+    [$213c55fb128c1838$export$b435a8016f7b5467.two]: [],
+    [$213c55fb128c1838$export$b435a8016f7b5467.three]: [
+        "f2l",
+        "oll",
+        "pll"
+    ],
+    [$213c55fb128c1838$export$b435a8016f7b5467.four]: [
+        "f3l",
+        "cross edges"
+    ],
+    [$213c55fb128c1838$export$b435a8016f7b5467.five]: []
+};
+const $213c55fb128c1838$export$fa1e5f8a851a39ea = {
+    "f2l": "?mask=f2l",
+    "f3l": "",
+    "oll": "",
+    "pll": "",
+    "cross edges": "&pzl=4&fd=nnnnnnnnnnnnndnnnnnnnrrnnrrnnnnnnfnnnnnnnnnnnfnntddtdttddttdtddt"
+};
+
+
+
+
 const $dabeae809e841304$export$4ae42ca3eba65759 = ({ puzzle: puzzle  })=>{
     return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
         sx: {
@@ -14784,4 +14801,4 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$export
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.01d8b0b5.js.map
+//# sourceMappingURL=index.38a22133.js.map
