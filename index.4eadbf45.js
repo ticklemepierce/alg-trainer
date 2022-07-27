@@ -8787,7 +8787,7 @@ function $414bf34aa2778b6d$var$isModifiedEvent(event) {
 }
 
 
-const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $414bf34aa2778b6d$export$9ba4e89fdfa1fc54), {
+const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $414bf34aa2778b6d$export$7221d69dcfc8e36b), {
         children: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$3565eb3d00ca5a74), {
             children: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
                 path: "/",
@@ -8800,4 +8800,4 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$export
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.2bd9584b.js.map
+//# sourceMappingURL=index.4eadbf45.js.map
