@@ -14764,7 +14764,7 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$export
                         /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
                             path: ":step",
                             element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h1", {
-                                children: "I'm a step page"
+                                children: "I'm a step page test"
                             })
                         })
                     ]
@@ -14777,4 +14777,4 @@ $4723f549251dd88b$exports.render(/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.f80e445b.js.map
+//# sourceMappingURL=index.082d4509.js.map
