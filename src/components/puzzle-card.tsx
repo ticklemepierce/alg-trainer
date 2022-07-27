@@ -1,11 +1,11 @@
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { PuzzlesEnum } from '../steps';
 
-export const PuzzleCard = ({ puzzle, title, link, mask = undefined }) => {
+export const PuzzleCard = ({ puzzle, title, link, mask}: {puzzle: PuzzlesEnum, title: string, link: string, mask?: string}) => {
   let imgUrl = `http://cube.rider.biz/visualcube.php?fmt=svg&size=200&pzl=${puzzle}`;
   if (!!mask && mask !== '') {
     imgUrl += mask;
