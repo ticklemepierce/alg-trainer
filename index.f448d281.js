@@ -14686,7 +14686,7 @@ const $32a17876c16008e4$export$25f0557f767cf1c9 = ({ step: step  })=>{
 const $b11ef0a77969f35b$export$f68871ba002ca835 = [
     {
         displayName: "3x3x3",
-        slug: "/puzzle/333",
+        slug: "/333",
         visualCubeParams: "&puzzle=3",
         steps: [
             {
@@ -14720,7 +14720,7 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
     },
     {
         displayName: "4x4x4",
-        slug: "/puzzle/444",
+        slug: "/444",
         visualCubeParams: "&puzzle=4",
         steps: [
             {
@@ -14812,4 +14812,4 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$export
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.12aad47f.js.map
+//# sourceMappingURL=index.f448d281.js.map
