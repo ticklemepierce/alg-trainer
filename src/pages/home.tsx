@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
-import { PuzzleCard } from '../components/puzzle-card';
-import { PUZZLES } from '../steps';
+import { StepCard } from '../components/step-card';
+import { Puzzles } from '../puzzles';
 
 export const HomePage = () => (
   <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-    {PUZZLES.map(puzzle => <PuzzleCard puzzle={puzzle} title={`${puzzle}x${puzzle}`} link={`/puzzle/${puzzle}`} key={puzzle} />)}
+    {Puzzles.map(puzzle => <StepCard step={puzzle} key={puzzle.slug} />)}
   </Box>
 );

@@ -2,7 +2,7 @@
   "name": "alg-trainer",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "start": "cross-env NODE_ENV=development parcel index.html ",
+    "start": "cross-env NODE_ENV=development parcel index.html --no-cache ",
     "build": "cross-env NODE_ENV=production parcel build index.html --no-optimize --public-url ./"
   },
   "dependencies": {
