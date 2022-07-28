@@ -12,7 +12,7 @@ export interface IPuzzle extends IStep {
 export const Puzzles: IPuzzle[] = [
   {
     displayName: '3x3x3',
-    slug: '/puzzle/333', // TODO hoist /puzzle to the router
+    slug: '/333',
     visualCubeParams: '&puzzle=3',
     steps: [{
       displayName: 'F2L',
@@ -38,7 +38,7 @@ export const Puzzles: IPuzzle[] = [
     }],
   }, {
     displayName: '4x4x4',
-    slug: '/puzzle/444', // TODO hoist /puzzle to the router
+    slug: '/444',
     visualCubeParams: '&puzzle=4',
     steps: [{
       displayName: 'F3L',
