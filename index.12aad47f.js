@@ -14641,9 +14641,8 @@ function $414bf34aa2778b6d$var$isModifiedEvent(event) {
 }
 
 
-const $e3c63ac0ec19eb34$export$dbd9d07acd0a8c12 = ({ puzzle: puzzle , title: title , link: link , mask: mask  })=>{
-    let imgUrl = `http://cube.rider.biz/visualcube.php?fmt=svg&size=200&pzl=${puzzle}`;
-    if (!!mask && mask !== "") imgUrl += mask;
+const $32a17876c16008e4$export$25f0557f767cf1c9 = ({ step: step  })=>{
+    const imgUrl = `https://cubiclealgdbimagegen.azurewebsites.net/generator?${step.visualCubeParams}`;
     return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $4e6a86e4405d949c$export$2e2bcd8739ae039), {
         sx: {
             maxWidth: 200,
@@ -14652,7 +14651,7 @@ const $e3c63ac0ec19eb34$export$dbd9d07acd0a8c12 = ({ puzzle: puzzle , title: tit
         },
         children: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $ba9ec2195a7f89db$export$2e2bcd8739ae039), {
             children: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $414bf34aa2778b6d$export$a6c7ac8248d6e38a), {
-                to: link,
+                to: step.slug,
                 style: {
                     textDecoration: "none",
                     color: "inherit"
@@ -14666,13 +14665,15 @@ const $e3c63ac0ec19eb34$export$dbd9d07acd0a8c12 = ({ puzzle: puzzle , title: tit
                     },
                     children: [
                         /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("img", {
-                            src: imgUrl
+                            src: imgUrl,
+                            height: 200,
+                            width: 200
                         }),
                         /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
                             variant: "h5",
                             component: "div",
                             p: "10",
-                            children: title
+                            children: step.displayName
                         })
                     ]
                 })
@@ -14682,76 +14683,119 @@ const $e3c63ac0ec19eb34$export$dbd9d07acd0a8c12 = ({ puzzle: puzzle , title: tit
 };
 
 
-const $849600319aa1d35f$var$PUZZLES = [
-    2,
-    3,
-    4,
-    5
+const $b11ef0a77969f35b$export$f68871ba002ca835 = [
+    {
+        displayName: "3x3x3",
+        slug: "/puzzle/333",
+        visualCubeParams: "&puzzle=3",
+        steps: [
+            {
+                displayName: "F2L",
+                visualCubeParams: "&puzzle=3&stage=f2l",
+                slug: "f2l"
+            },
+            {
+                displayName: "OLL",
+                visualCubeParams: "&puzzle=3&stage=oll",
+                slug: "oll",
+                steps: [
+                    {
+                        displayName: "All",
+                        visualCubeParams: "&puzzle=3&stage=oll",
+                        slug: "all"
+                    },
+                    {
+                        displayName: "Dots",
+                        visualCubeParams: "&puzzle=3&stage=oll",
+                        slug: "dots"
+                    }
+                ]
+            },
+            {
+                displayName: "PLL",
+                visualCubeParams: "&puzzle=3&stage=pll",
+                slug: "pll"
+            }
+        ]
+    },
+    {
+        displayName: "4x4x4",
+        slug: "/puzzle/444",
+        visualCubeParams: "&puzzle=4",
+        steps: [
+            {
+                displayName: "F3L",
+                visualCubeParams: "&puzzle=4",
+                slug: "f3l"
+            },
+            {
+                displayName: "cross edges",
+                visualCubeParams: "&puzzle=4&fd=nnnnnnnnnnnnndnnnnnnnrrnnrrnnnnnnfnnnnnnnnnnnfnntddtdttddttdtddt",
+                slug: "cross_edges"
+            }
+        ]
+    }
 ];
+
+
 const $849600319aa1d35f$export$36d69433c4f81145 = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
         sx: {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center"
         },
-        children: $849600319aa1d35f$var$PUZZLES.map((puzzle)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $e3c63ac0ec19eb34$export$dbd9d07acd0a8c12), {
-                puzzle: puzzle,
-                title: `${puzzle}x${puzzle}`,
-                link: `/puzzle/${puzzle}`
-            }))
+        children: (0, $b11ef0a77969f35b$export$f68871ba002ca835).map((puzzle)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $32a17876c16008e4$export$25f0557f767cf1c9), {
+                step: puzzle
+            }, puzzle.slug))
     });
 
 
 
-let $213c55fb128c1838$export$b435a8016f7b5467;
-(function(PuzzlesEnum1) {
-    PuzzlesEnum1[PuzzlesEnum1["two"] = 0] = "two";
-    PuzzlesEnum1[PuzzlesEnum1["three"] = 1] = "three";
-    PuzzlesEnum1[PuzzlesEnum1["four"] = 2] = "four";
-    PuzzlesEnum1[PuzzlesEnum1["five"] = 3] = "five";
-})($213c55fb128c1838$export$b435a8016f7b5467 || ($213c55fb128c1838$export$b435a8016f7b5467 = {}));
-const $213c55fb128c1838$export$7ec827132239d8d = {
-    [$213c55fb128c1838$export$b435a8016f7b5467.two]: [],
-    [$213c55fb128c1838$export$b435a8016f7b5467.three]: [
-        "f2l",
-        "oll",
-        "pll"
-    ],
-    [$213c55fb128c1838$export$b435a8016f7b5467.four]: [
-        "f3l",
-        "cross edges"
-    ],
-    [$213c55fb128c1838$export$b435a8016f7b5467.five]: []
-};
-const $213c55fb128c1838$export$fa1e5f8a851a39ea = {
-    "f2l": "?mask=f2l",
-    "f3l": "",
-    "oll": "",
-    "pll": "",
-    "cross edges": "&pzl=4&fd=nnnnnnnnnnnnndnnnnnnnrrnnrrnnnnnnfnnnnnnnnnnnfnntddtdttddttdtddt"
-};
 
 
-
-
-const $dabeae809e841304$export$4ae42ca3eba65759 = ({ puzzle: puzzle  })=>{
-    return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
+const $b9fbd5c6ed0aa777$export$1de449572095a221 = ({ step: step  })=>{
+    if (step.steps) return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
         sx: {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center"
         },
-        children: (0, $213c55fb128c1838$export$7ec827132239d8d)[puzzle].map((step)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $e3c63ac0ec19eb34$export$dbd9d07acd0a8c12), {
-                puzzle: puzzle,
-                mask: (0, $213c55fb128c1838$export$fa1e5f8a851a39ea)[step],
-                title: step,
-                link: `/puzzle/${puzzle}/${step}`
-            }))
+        children: step.steps.map((substep)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $32a17876c16008e4$export$25f0557f767cf1c9), {
+                step: substep
+            }, substep.slug))
+    });
+    else return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h1", {
+        children: "Base case"
     });
 };
 
 
 
+
+const $ab1cd5f3b8d0b6aa$var$createStepRoutes = (step)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
+        path: `${step.slug}`,
+        children: [
+            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
+                path: "",
+                element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $b9fbd5c6ed0aa777$export$1de449572095a221), {
+                    step: step
+                })
+            }),
+            step.steps && step.steps.map((substep)=>$ab1cd5f3b8d0b6aa$var$createStepRoutes(substep))
+        ]
+    }, step.slug);
+const $ab1cd5f3b8d0b6aa$var$createPuzzleRoutes = (puzzle)=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
+        path: `${puzzle.slug}`,
+        children: [
+            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
+                path: "",
+                element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $b9fbd5c6ed0aa777$export$1de449572095a221), {
+                    step: puzzle
+                })
+            }),
+            puzzle.steps.map((step)=>$ab1cd5f3b8d0b6aa$var$createStepRoutes(step))
+        ]
+    }, puzzle.slug);
 const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $414bf34aa2778b6d$export$7221d69dcfc8e36b), {
         children: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)((0, $bd647cfe352699a5$export$3565eb3d00ca5a74), {
             children: [
@@ -14759,40 +14803,7 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$export
                     path: "/",
                     element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $849600319aa1d35f$export$36d69433c4f81145), {})
                 }),
-                /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
-                    path: "/puzzle/3",
-                    children: [
-                        /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
-                            path: "",
-                            element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $dabeae809e841304$export$4ae42ca3eba65759), {
-                                puzzle: 4
-                            })
-                        }),
-                        /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
-                            path: ":step",
-                            element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h1", {
-                                children: "I'm a step page test"
-                            })
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
-                    path: "/puzzle/4",
-                    children: [
-                        /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
-                            path: "",
-                            element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $dabeae809e841304$export$4ae42ca3eba65759), {
-                                puzzle: 4
-                            })
-                        }),
-                        /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bd647cfe352699a5$export$e7b0ac011bb776c6), {
-                            path: ":step",
-                            element: /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h1", {
-                                children: "I'm a step page test"
-                            })
-                        })
-                    ]
-                })
+                (0, $b11ef0a77969f35b$export$f68871ba002ca835).map((puzzle)=>$ab1cd5f3b8d0b6aa$var$createPuzzleRoutes(puzzle))
             ]
         })
     });
@@ -14801,4 +14812,4 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$export
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.38a22133.js.map
+//# sourceMappingURL=index.12aad47f.js.map
