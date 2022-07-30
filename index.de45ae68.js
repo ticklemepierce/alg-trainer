@@ -7371,6 +7371,11 @@ $abe4e692e41e1aec$export$f5bbd400c2f4426f = $abe4e692e41e1aec$var$z;
 
 });
 
+parcelRequire.register("cEEgr", function(module, exports) {
+module.exports = JSON.parse("{\"U2 R U R' U R U' R'\":[\"R U R' U R U' R' U' F' U2 L' U' L F\",\"R B' R B U R' B R U' R' B' U' R' U2\",\"U' B U R B' U B R' U' B' R U' R' U2\",\"R2 B' D' R2 F2 R' F' R F2 R2 D B R2 U2\",\"U2 D R' U F2 U' F2 U' R2 F2 U2 F2 R' D'\",\"U2 D R' D R2 U' R2 D' R2 F2 U2 F2 R' D'\",\"R U R' U R F' U' F U' F' U2 F U' R'\",\"L' U B2 R U' R' U B2 U' L U2 R U R'\",\"U' R' U2 R' U2 R U' R' U2 R' U R U R\",\"U' L' B2 R' B2 L U' R' U2 R' U R U R\",\"U F2 U F' L2 D R' B' R B D2 B' D L2 F'\",\"B' U R U' R' U R D R' U R U D' R' B\",\"U' B U B' U B U' R B' U' B R' U' B' U'\",\"L U2 L' B' D B' D' R D B2 U' B' D' B U'\",\"B' U R U' R' U B U R B' U B U R' U'\",\"R U2 F' U2 F U F' U F R' U R U R' U'\",\"R B' U2 B U B' U B U2 R' U R U R' U'\",\"U' L' B2 U D' L' U' R' U L U' D B2 L U'\",\"B2 D R D2 R D2 L2 U' R U R2 L2 D' B2 U2\",\"R B2 D L' U D L' U' L F2 L F2 D2 B2 U2\",\"L U2 L' B2 D' R D2 B U' B' D' B U B U2\",\"R U R' U R U B L U' L' U2 B' U' R' U2\",\"R U R B' D' R D R2 B R' U' R U' R' U2\",\"R U B U2 L U L' B' U R' U' R U' R' U2\",\"R U R' U F' U2 L' U' L F U R U' R' U2\",\"R L' B' U R B R2 B' U' B R L U' R' U2\",\"U' F2 D B2 D' F2 U D L U2 L' B2 D' R U2\",\"D L U2 L' B2 L U' R' U2 R U L' D' R U2\",\"L U2 B' U R U' R' U' B R U R' U L' U2\",\"R U L' B R B' R' B' R B' R' B R' L U\",\"U2 D R' U F2 U D2 B2 U' L2 B2 D2 F2 R' D'\",\"U2 F2 L D' L B2 L' D L' F2 D R' U' R D'\",\"U2 B2 R U' R B2 R' U R' B2 D R' U' R D'\",\"U2 D R' U F2 U' F2 U' L2 B2 D2 B2 R L2 D'\",\"U2 D R' D R2 U' R2 D' L2 B2 D2 B2 R L2 D'\",\"D' R U R2 F R' U2 F' R' F U2 R2 F' U D\",\"U R B' U' B2 U' B2 U R' U R B2 U2 B' R'\",\"U R B' D' R2 U' R2 D R' U R B2 U2 B' R'\",\"U F2 D' B L B' D F2 U R U2 B U2 B' R'\",\"L' U' L' B L B' U2 R U' L U B U2 B' R'\",\"R U R' U R U2 B' U' B U' B' U2 B U R'\",\"U' F2 R2 D' L' U' L U D R2 F2 U' R U R'\",\"U B2 R U' D' R' U R D R' B2 U R U R'\",\"D' L2 F2 U' L' U' L U2 F2 L2 U2 D R U R'\",\"R U R' U R U L' U' L U' L' U2 L U2 R'\",\"L U' L2 D' R B2 R' D L2 F2 U' F2 U F2 L'\",\"R U R' U R U L' U' L U' R' F2 L F2 L'\",\"R U R' U R U L' B2 L B2 R' U' L U' L'\",\"R U R' U R U R' U2 L U2 L' U' L U' L'\",\"R U' L' B2 L B2 U L U' R' L' U' L U' L'\",\"U2 L U L' U R L U' L' U' L U R' U2 L'\",\"U F2 U' L F R' F B' D' B R D' F D L' F'\",\"D2 L' D L' D' L2 U D2 F2 L2 U' L U L2 U' F2\",\"U2 L F' D' L' F' D2 R' B2 D B' L' B' R D2 F2\",\"U2 R U' D F2 D' L U' L' D F2 D' R' F2 L F2\",\"R' U' F' U R L2 U R U' R' L' F' L' F U' F\",\"R' U2 F2 U' L' U B' L' B' D2 B' R' B' R L2 F2\",\"R2 L D' R D F2 D2 L D2 L' D' L D2 R L2 F2\",\"U F2 R B2 L F' L' D' L D F B2 R' F U F\",\"U F2 R B2 U' L' F' L F U L B2 R' F U F\",\"U F2 L U2 F' L' D' L D F L U2 L' F U F\",\"U F2 L U2 L D' L' B' L B U2 D L' F U F\",\"U' L' U2 R U' R2 L2 F2 R F' D F2 D' L' U' F\",\"F' L' U B L B U F U' F' B' L' B' L U2 F\",\"L' B L B U R U R' U' F' B' L' B' L U2 F\",\"U B D B R D' F' U' R' U B' L' B' L U2 F\",\"L' U B2 R U' R' U B2 U' L F' L' U L U2 F\",\"R' F D R' B2 L B2 L2 D2 R D' L2 D2 F2 R F\",\"R' F D R' B2 R' B2 R2 D2 L' D' L2 D2 F2 R F\",\"U2 R2 U2 R2 D' F U' F' U F' D F2 L F L' F\",\"R U R' U R U' R' F' L' U2 B' U' B U' L F\",\"U' B U R B' U B R' U' F' B' U2 L' U' L F\",\"L F D2 R2 F R' B D B D L2 F B U L F\",\"B' R2 D' L D2 R2 D L' F2 R' D' B2 U2 L' F2 B'\",\"R U R' U F' B U L' U' L' U L' U' L2 F B'\"],\"U R U2 R' U R U' R'\":[\"R U R' D B U' B' U' B U2 B' D'\",\"R U R' B U R U2 B' U' B U' R' U' B'\",\"R B' R B U R' B R U' R' B' U2 R' U'\",\"U' B U R B' U B R' U' B' R U2 R' U'\",\"R U B R U' L U R' L2 B L B2 R' U2\",\"R2 L' B R2 L U' L' D2 L2 F L2 D2 L U2\",\"R U R' U' D2 L U' L' U' L U2 L' U D2\",\"R U R' U2 D' F U' F' U' F U2 F' U2 D\",\"R U F2 L2 D R' U R' U' R2 D' L2 F2 R'\",\"R U B2 R2 U L' D L' D' L2 U' R2 B2 R'\",\"R U B U2 B' U2 R' F U R' F R F' U' F'\",\"U2 R U2 R' U2 R U' R' F U F' U F U2 F'\",\"R U B U2 B' U2 R' F R B U' B' U R' F'\",\"R U' R' D' R U2 R' D B U' B' U' B U2 B'\",\"R U B U2 B' U2 R2 F' U F R U B U2 B'\",\"U2 D B' D2 R U' R' U D F D B D' F' U'\",\"R B' R B D R' U R D' R2 U2 F' U' F U'\",\"R U R' U R U B L U' L' U2 B' U2 R' U'\",\"R U R B' D' R D R2 B R' U' R U2 R' U'\",\"R U B U2 L U L' B' U R' U' R U2 R' U'\",\"R U R' U F' U2 L' U' L F U R U2 R' U'\",\"R L' B' U R B R2 B' U' B R L U2 R' U'\",\"U2 R' L F D R F R2 F' D' F R2 F2 L' U'\",\"R U R' U R U' R' U R' L F2 R F2 L' U'\",\"R U' R' U2 B2 R2 U' R' U R2 B2 L U2 L' U'\",\"U' B U L U2 L' F' L U2 L2 U' L F B' U2\",\"R U B U2 L U' L' U2 L U' L' U B' R' U\",\"R F U R U' F2 U2 F U' R B U B' R U\",\"R U R' U' L U2 R U L' U' R' L U2 L' U\",\"R U R' D B U' B' U F B' R2 B R2 F' D'\",\"R U R' U R U' R' U' L F2 R' F2 R L' U\",\"U L' U D2 R U' L U' L' U R' U' D2 L U\",\"R U R' D R' U2 F' U' F R U B U2 B' D'\",\"R U R' D B U L F U' F' U2 L' U2 B' D'\",\"U D2 L' U D R U' R' D2 R D L D' R' D'\",\"R U D R2 U' R D B2 D' B2 U2 R' U' R D'\",\"R U R' D' B U2 F U B' U' F' B U2 B' D\",\"R2 F2 R' B' R B' L' B' L F2 B2 R' B U R'\",\"R2 F2 R' B' U2 R F2 B2 L' D2 L B' R' U R'\",\"R' F2 U' D2 L' U L' U' L2 U D2 F2 R2 U R'\",\"R' F2 U' D2 L' U L' D' B2 U D2 L2 F2 D R'\",\"R U R2 U' R' U R2 U R' U' R' U' R U R\",\"R U R2 U' L' B R2 B R' B' R' B' L U R\",\"R U' R' L F2 U2 F U' F U' F' U2 F' U2 L'\",\"R U F2 D2 R' L B' U' B U' B' U2 B' D2 L'\",\"R U' R' L F2 D2 B U' B U' B' U2 B' D2 L'\",\"U2 L F2 R' F2 R2 L' U' R' F U F' U F U2 F'\",\"U2 R2 L' B2 R' B2 L U' R' F U F' U F U2 F'\",\"U2 F' U' L' U2 L F' D B' D' F' D R2 B D' F'\",\"R U B U2 B' U2 R' F U2 F' U' F R U' R' F'\",\"R U B U2 B' U2 R' F U R U' B' R B R2 F'\",\"R U R' F R D2 R B' R' B2 U' B' U D2 R' F'\",\"R U R' F R U' D2 B2 L' B' L B' U D2 R' F'\",\"R U R' F R D2 R B' D B' D' B2 R' D2 R' F'\",\"R U F L2 F' R' B U' B' U' B U2 F B' L2 F'\",\"U F L2 U2 F' U' R U' R' B' U F U' B L2 F'\",\"U2 F2 D L2 U' L B2 U2 R D2 F2 R' D B2 U' F2\",\"R2 U2 F R' D R D2 F' D R' U' R D' F2 D F2\",\"R2 U2 F2 D2 L D L' F2 D R' U' R D' F2 D F2\",\"U2 F2 B2 D L' B2 U2 R D2 F2 R U' R2 U' D F2\",\"R2 U' R' L' U' L2 D F2 D' L' F2 D R D' R' F2\",\"U2 F2 D2 L U' L U L2 U' L' U L' D L' D F2\",\"R U R' U' B' U2 B L2 D F' D' L2 U2 F' U2 F\",\"F' U2 F' L' B L' B' R2 B2 R D' R' B2 R2 L2 F2\",\"R U R' U R F' L F U' R' U2 F' U' L' U' F\",\"U R' F R U R U' D2 L' U2 B2 L D2 R' U2 F\",\"U R' F R U R U' D2 R' F2 U2 L B2 L' U2 F\",\"U2 B' D' F' R' F R F D F' B U' R' F' R F\",\"R U R U R2 U R F' L F2 R2 F' R F' L' F\",\"U2 R U2 R' U2 F2 U2 F U F' U F L' U' L F\",\"U2 F2 B D' L2 D' L U B L B' L' U' D2 F2 B'\",\"U2 F2 B D' F U L' U' L' F' L' D' L2 D2 F2 B'\",\"U2 F2 B D' L2 D' B D L D' L' B' L D2 F2 B'\",\"U R F' U2 F R2 U' D L' B L U2 D' B U' B'\",\"R U R' U R U' R' F' B L' U L2 U' L' F B'\",\"R U R' B U' L F2 L' B' L F2 L' U' B U2 B'\"],\"R U R' U2 R U R' U' R U R'\":[\"R U R2 L D R F' L2 U R2 B2 R2 L U' F'\",\"U F2 U R L' U R' L U2 F2 U' R U2 R' F2\",\"R U L U2 R' L' F' L B L B' L F' L2 F2\",\"L U' B2 D2 R F2 D' R' U' R U D2 R' D B2\",\"U' R' U2 R U' R2 U' R U R' U R2 U' R U\",\"R F2 D R U R' U' R2 D' F2 R' L' U L U\",\"F U2 L F' L' U2 R F' U2 R2 B' R2 B U' R'\",\"R U R' U R U R' U R U' R' U2 R U' R'\",\"F R U R' F2 R' F' R F2 U' R' F' R2 U R'\",\"R D B' U B U B' U B U' B' U2 B D' R'\",\"F U' F' U2 F U' L F L' F U' F2 U F' U' F'\",\"F B' R' F2 B2 L2 U' F L' B L F D' B2 R' F'\",\"U' B U' F' L' U F' U2 R' F R L U B' U F2\",\"U2 F2 R D2 L' U B2 U' R' U' L U R D2 R' F2\",\"F2 B U D2 B U' D2 B' L2 D2 L' D' L D2 L2 F2\",\"U2 F' U B2 R2 D L D' R2 B R B R2 U2 R F\",\"F2 L' B L2 F L' U L2 B' L U B U2 B' L F\",\"B' R2 U2 B U F B2 D' F' B2 U' F' L U' L F\",\"L2 D F' D' L' U2 L' U' B' U2 R F R2 F' R' B\",\"U2 R B U2 F D2 R2 D B D' R2 D2 F' B' R' U'\",\"F' L F2 L' U F U' L F L' F2 U2 R U2 R' U'\",\"R' U' R U2 R' U R' U2 R' U' R' U2 R U R2 U'\",\"R F2 U R' D R' D' R2 D R' U' D' F2 U' R' U2\",\"R B2 D L' U L' U' L2 U L' U' D' B2 U' R' U2\",\"R U R2 U R' U R' U' R2 U R' U2 R2 U2 R' U2\",\"R U L2 D R' D R' D' R2 D R' D2 L2 U2 R' U2\",\"F U2 L F' L' U2 R B' R2 D R' D' B R2 F' U\",\"U' R' B2 U2 R2 B' R B R U F' U F B2 R U\",\"R U R' L' B R' B D' B' R B' L2 U' F2 L' U\",\"D' L U' B2 D2 R F2 R' U' R U D R' D B2 D\",\"U R2 U2 D' R F2 R2 F2 U' R' F2 U L' U L D\",\"R U F D R D' F2 U R' U2 R L' U' L F R'\",\"R B' R B D L' B L D' R' U' B U B' U' R'\",\"R2 B R' B R B' L' B L' B R' B' L2 B' U' R'\",\"R B' R B D2 F L F' D2 L' B R' L B' U' R'\",\"U R U2 R U' R U' R2 U' R2 U' R U' R2 U' R'\",\"F2 R F R' U B2 D2 F' L' D2 F' B' U B' U R'\",\"R U R' B U R B' U B R' U' B' U' R U' R'\",\"U' R U' R' U' R U' R' U' R U2 R' U2 R U' R'\",\"R2 B' R' U2 L' B' L B' D' B U2 B' D B2 U R'\",\"L F R' F R F R' F R F' R' F2 R2 L' U' R'\",\"R2 B' R' U' B' R' B' R2 B' R2 B2 U R B U R'\",\"R' F' L' B U2 B' U L F R2 U R' U2 R' U2 R'\",\"R2 L' B R' B R B R' B R B' R' B2 L U' R'\",\"R D B' L U B L' U L B' U' L' U' B D' R'\",\"U2 R U R F2 R2 F' U F R2 B U B' U' F2 R2\",\"B' D' F2 D B R' D2 L' U' F2 U' L U F2 D2 R2\",\"D' R' U' R F2 U F2 D L U R U' R' L' U2 R2\",\"R U L' U R L2 D R2 F2 R2 D' L2 U' L U R2\",\"R U' R' U L' B2 D L2 U' L2 B2 D' R2 L U R2\",\"U' L U F2 U' R B2 L U' L2 U' R2 D R' D2 R2\",\"F2 U L F2 R D2 F2 D' F2 D' R2 D' F2 L' F2 R\",\"U' R2 U' B R2 L' B' R' B L2 U' L' U2 R' B' R\",\"R U R2 L F R F R' F R F' R' F2 R F' L'\",\"U2 R L U' R' F2 U2 F2 U F2 R' D R' D' R2 L'\",\"R U L' U R B' L2 D R2 F2 R2 L D' B' R2 L2\",\"U' R U' R' U L F' L' U L' U2 L2 F L2 U2 L\",\"R U R' F R U' L2 B R2 D2 R2 L B' U' R' L\",\"R U L' B R B R' B R B' R' B2 R B' R2 L\",\"F D2 R B R' B' D2 F' U' F2 R F2 L' U2 R2 L\",\"D R' F R F U' D2 L D L U2 L2 F' U F' U' F'\",\"L F' R L' U' R2 F R U' L' U' L2 F L' F' U2 F'\",\"R U' R' L' U' L F U L F2 L' U F2 U' F2 U' F'\",\"R U R2 L D R F R2 L2 F2 R2 U L2 B2 L' U' F'\",\"R U' R' L' U' L F U L F2 L' D R2 U' R2 D' F'\",\"R2 F B' R2 F' L D2 R' L' B U D R2 D' F2 R' F'\",\"F B' R L2 F2 B2 R2 U' F L' B L F D' B2 R' F'\",\"D F R' F2 R' U' F2 R F' U2 F' U D R2 U D2 F'\",\"F2 U' L D F2 D' F2 L2 U L2 F' R' F L' F' R F'\",\"U' D' F' R2 U2 R2 F D R U2 B2 U' B2 R2 F R F'\",\"F' U2 R2 F2 L' B2 U' R' B2 R U R' L' D' B2 L2 F'\",\"F' U2 L' U' B2 R B2 L F R2 F L B' D2 B L' F'\",\"F L2 B' D R' U R U' R' D' B L2 F' U2 F2 U' F2\",\"F2 B L2 D' L' D2 L' U' L D' L2 U L U B' U' F2\"],\"R U2 R' U' R U R'\":[\"R U R' U R U R' U R U2 R'\",\"R U R' U2 F U F' U F U2 F' U'\",\"R U R' U' L U L' U L U2 L' U2\",\"U' R U' R' U' R U' R' U' R U R'\",\"F B' D R D' B R B' R B R2 F' U\",\"R U R' B U L U2 F U F' L' B' U\",\"R U R' D B U B' U B U2 B' U D'\",\"R U R' U D R U R' U R U2 R' D'\",\"R U R' D2 B U B' U B U2 B' U D2\",\"R U R' U D2 R U R' U R U2 R' D2\",\"R U R' D' B U B' U B U2 B' U D\",\"R U R' U D' R U R' U R U2 R' D\",\"R U R' U R U B U2 L U L' B' R'\",\"R U R' L' B' U B U2 L U F U2 F' U'\",\"F B' D R D' R2 F R F' R B U2 F' U'\",\"R U R' U2 F U R U2 B U B' R' F' U'\",\"R U R' B L2 B' L2 F U B' U F' B U'\",\"R U R' F U2 B' U2 B U B' U F' B U'\",\"R U R' B U B' U F R2 B' R2 F' B U'\",\"F U F' R U F U R' U' R U F' R' U'\",\"F B' D R D' B U2 F' L2 B L B' L U'\",\"R U R' U' L U F U2 R U R' F' L' U2\",\"L U B' U' R U R' B L' U L U2 L' U2\",\"R U R' B U B' U' F B' R2 B R2 F' U\",\"F2 B2 L D L' B D B' D B D2 F2 B U\",\"F' B U L U' B L B' L B L2 F B2 U\",\"R U R' U2 D F U F' U F U2 F' U' D'\",\"R U R' U' D L U L' U L U2 L' U2 D'\",\"R U R' U2 D2 F U F' U F U2 F' U' D2\",\"R U R' U' D2 L U L' U L U2 L' U2 D2\",\"R U R' U2 D' F U F' U F U2 F' U' D\",\"R U R' U' D' L U L' U L U2 L' U2 D\",\"R U R' U' F' L' U L U2 F U R U2 R'\",\"R U B U2 L U L' B' U' R' U R U2 R'\",\"L F R' F R F R' F R F R L' U R'\",\"R L' B' R B' R' B' R B' R' B' L U R'\",\"R U R' U R U R' U' R' L F2 R F2 L'\",\"R U R' U' L U L' U R B2 L' B2 R' L\",\"R U R' U' L F2 L' F2 R U L' U R' L\",\"R U R' U' R U2 L' U2 L U L' U R' L\",\"R L' U R' U' F' L U' L' F L U' F' U2 F\",\"U' F' R' U' R F B U' F' L U L' B' U2 F\",\"U' R U' R' U' R U' R' U F' L' U L U2 F\",\"U' F' R' U' R F B U' F' U2 B' R' U R F\",\"R U R' B D L' U L U2 L' U L U D' B'\",\"U R F2 B2 R F2 R U' L2 B2 L2 B2 U R2 B2\",\"R U R' F U' R' U2 R U R' U R U' F' U'\",\"U' L' B' U B L F' U L F L' F U2 F' U'\",\"F' B U L U' L2 F L F' L F2 B' U2 F' U'\",\"F2 B2 L D L' D2 F D F' D F' B2 U2 F' U'\",\"R U R' F U L' U2 L U L' U L U F' U'\",\"R U R' B U B' U F' B2 L2 B' L2 F B' U'\",\"F' B U L' U2 L2 U' L U' L U L2 F B' U'\",\"R U R' B U B' U F2 B' D2 B' D2 F2 B2 U'\",\"R U R' U2 F U F' U' F' B L2 F L2 B' U'\",\"R B2 U2 R D B2 D' R2 U R U B2 U R' U'\",\"R' B2 L D F2 D' L2 U L U' B2 R2 U R' U'\",\"F U2 F' L2 F' U L U' B L B' L' F L2 U'\",\"F U2 F' L2 B' R U R' B U B' U' B L2 U'\",\"R L' U B2 L' U B2 U' B2 U' L U R' L U'\",\"R L' U B2 L' D L2 U' L2 D' L U R' L U'\",\"R U R' U' L U L' U' R L' B2 L B2 R' U2\",\"U' L' B' U B L2 F D F2 U D' F U' L' U2\",\"R U R' U B' R' U R U2 B U L U2 L' U2\",\"R D L U D' R D L' D' R2 U L U2 L' U2\",\"R U R' B L2 D L D' B' L U L U2 L' U2\",\"F B' D R D' B R U R2 F R F' U' F' U\",\"U L2 D R' U' F2 U2 F2 U R D R' D2 L2 U2\",\"U L2 D R' D' L2 U2 L2 D R D R' D2 L2 U2\",\"R U R' U R U R' U L F2 R' F2 R L' U2\",\"R U R' U L U2 R' U2 R U R' U R L' U2\",\"R U R' U R B2 R' B2 L U R' U R L' U2\",\"F R2 L2 F' U R U' F R F' R F L2 F' U\",\"R U R' U2 B U2 F' U2 F U F' U F B' U\",\"R U R' B U B' U' F' B L2 B L2 F B2 U\"],\"d' U U2 L' U' L U' L' U L d U'\":[\"U2 F' L' U L F B' R' U' R U B\",\"D R2 U' F2 U2 B' D2 B' L2 D2 B2 D' F2\",\"U F2 B L U L' D' L U' L D F2 B'\",\"R U R' U2 F B' R2 F' R U' R U B\",\"U F2 D' B' L2 B D2 F' D' F2 U2 F U2\",\"U' F2 B2 D F' D2 B R2 B' D F' B2 U2\",\"U D' B2 D F2 D' B' L2 D F2 D' B' D\",\"F U2 L' U L F2 R U L' U2 R' L U F'\",\"U F2 D' B' L2 B D2 F U2 F U2 F2 D' F2\",\"D R2 U' F2 U2 F2 B U2 B' R2 U2 F2 D' F2\",\"D R2 U R2 D2 B L2 B' D2 F' U2 F D' F2\",\"U F2 D' F' D2 F D2 B L2 B D2 B2 D' F2\",\"D R2 U' B2 D2 B' U2 F2 B L2 D2 B2 D' F2\",\"D R2 B2 D2 B' U2 F2 U' B L2 D2 B2 D' F2\",\"D R2 F2 U2 B' D2 B2 U' B L2 D2 B2 D' F2\",\"D R2 U R2 D2 F U2 F' D2 B' R2 B D' F2\",\"U F2 U2 D' F U2 F' L2 F' L2 F L2 D F2\",\"D' B2 D2 R2 B U2 F2 U' B' D2 B2 L2 D F2\",\"D' F2 U2 L2 B D2 B2 U' B' D2 B2 L2 D F2\",\"U F2 U2 D' F U2 B' U2 F' U2 B L2 D F2\",\"U F2 U2 D' B L2 B' L2 B' U2 B L2 D F2\",\"B L2 D' L' D L' F2 B' R U' R' F U2 F\",\"R U R' F2 B L D' L D L2 F B' U2 F\",\"R U R' F2 B L F L2 U L U' B' U2 F\",\"R U R' F' U R L2 B L B' R' L U F\",\"U F2 B L2 F U' F' D F' D' F2 U F B'\",\"U F2 B2 D' L D L' B' L D' L D F2 B'\",\"U2 F' U' R2 D' F D R2 U2 F U2 B U' B'\",\"U F2 B2 D' B' L' B D B' L2 F L F B'\",\"U F2 B L2 F L2 D' L2 D F2 U' F' U B'\",\"U F2 B L2 F D' L' B' L2 B D F L' B'\",\"U F2 B2 D' B' L2 B D2 F' D F D2 F2 B2\",\"R2 U R2 F' U2 F R2 B' U' B R2 B' U B\",\"R U R D2 F B' L2 D2 F' R U' R U B\",\"R U R' F U2 F B' R2 F2 R U' R U B\",\"R U R' F2 U2 F B' R2 F R U' R U B\",\"B' R' U R F' U2 F U R' F' U' F R B\",\"B' L' B R U' B2 U B R' U' B' U L B\",\"B' R2 B U F2 B2 D F' D F D' F2 B2 U'\",\"R U R' F' U2 F U R' F' U' F U R U'\",\"U2 F' L' U L F U R' F' U' F U R U'\",\"U F' U2 F2 B' D' R2 D B2 U' B' U F' U2\",\"B' R' U R F2 B L2 F L' U' L' U F U2\",\"R U R' F' U2 F U2 F' L' U' L U F U2\",\"U2 F' L' U L F U2 F' L' U' L U F U2\",\"R U R' F2 B L D' L D F L2 F B' U2\",\"B' R2 B U2 F' U F' L2 B2 D' B2 L2 F2 U\",\"L2 U F2 D' B' L2 D F2 D' B U' D L2 U\",\"R U R' F' U2 F U' L' B' U' B U L U\",\"U2 F' L' U L F U' L' B' U' B U L U\",\"R U R' F' U2 F D B' R' U' R U B D'\",\"U2 F' L' U L F D B' R' U' R U B D'\",\"R U R' F' U2 F D2 B' R' U' R U B D2\",\"U2 F' L' U L F D2 B' R' U' R U B D2\",\"R2 U R2 D' F' U2 F B' U F2 U' F2 B D\",\"U' D F2 D B2 U2 D B' L2 D F2 D' B' D\",\"R U R' F' U2 F D' B' R' U' R U B D\",\"U2 F' L' U L F D' B' R' U' R U B D\",\"L2 D R2 U' F' R2 U R2 D' L2 U D' B D\",\"R2 U R2 F' U2 F D R2 D' F2 U F2 U' R2\",\"R2 U R2 F' U2 F D R2 U' R2 U R2 D' R2\",\"R2 U R2 F' U2 F U F2 U' F2 D R2 D' R2\",\"U F' U2 F2 D B' D' F D R2 B D' F' U2 F'\",\"D R D' R U F U2 F' R' D R' D' F' U2 F'\",\"F U2 L' U L F2 R U' R' L F2 L' F2 U F'\",\"R U R' F2 B L D' L D F2 L2 F B' U2 F'\",\"F U' D' B' U B L2 F U B' U2 F' B D F'\",\"F D2 R' U R B2 L U R' U2 R L' U' D2 F'\",\"U F2 D' B2 U2 F' D2 F' U2 B2 U' D' F2 U F2\",\"D R2 U F R2 F' R2 F' U2 F U D' F2 U F2\",\"D R2 U B U2 F' U2 B' U2 F U D' F2 U F2\",\"D R2 U B U2 B' R2 B' R2 B U D' F2 U F2\",\"U F2 D' F' D2 F' B2 U2 B R2 B U2 F2 D' F2\",\"D R2 U' F' B' R2 F2 B R2 F' R2 U2 F2 D' F2\",\"R U R' F2 B L D' L D F' L2 F B' U2 F2\",\"D R2 D' L2 U D B' D2 B' L2 U D R2 U' F2\"],\"F U R U' R' F' R U' R'\":[\"R U R' U R U' R' F R U R' U' F'\",\"R U R' D B D' R' F R D B' D' F'\",\"R U F D F' R2 F R2 F D' F' R' F'\",\"R U F D B' D2 F D2 B D' F' R' F'\",\"R U B R F' U2 F U2 F R' B' R' F'\",\"R U B R B' R2 F R2 B R' B' R' F'\",\"R U F D B R B2 D2 F D' B D2 F2\",\"U2 F2 U' L D L' U L D' F L' F U'\",\"R B' R B D R' U R D' R' U' R' U\",\"R B' R' F L' F' R2 F L F' B R2 U\",\"R B' U L2 U' R2 U L2 U' R' B R2 U\",\"D2 R U' D' B L' B L B2 U2 D R' D2\",\"D' R U' D2 B L' B L B2 U2 D2 R' D\",\"R U R2 F R F D F' U F D' F' U' F'\",\"U2 F2 L F L' F U2 F D F' U F D' F'\",\"R U R2 U' R' U F D R B R B' D' F'\",\"R U F D R' D' R2 D R B R B' D' F'\",\"R U R F' U F R F R' F' U' F R2 F'\",\"R U R2 F D B D' F D B' D' F' R F'\",\"U F R2 D R B D' F D B' D' F' R F'\",\"U R2 B' R F R' B D B' D B D2 R2 F'\",\"R U R2 F' L' B2 L F L' B2 L F R F'\",\"U F L2 U' R U R' L U F2 U' F2 L F'\",\"R U R2 B R B R' F R B' R' B' R F'\",\"R U R2 B' U' B2 U F U' B2 U B R F'\",\"U F' R D2 L D' L' D2 R2 F2 R' D R2 F\",\"U F' R D2 L D' R D2 L2 F2 L D R2 F\",\"R U R2 F R F' R' F' L' F R F' L F\",\"R B' R B R2 U R' F' L' F R F' L F\",\"R U R' U F2 U' L' U L F L' U' L F\",\"R U R2 F R B R F' L F R' F' L' B'\",\"B U2 F' U F U2 L U2 R U R' U L' B'\",\"R U R2 U' B U F B2 R D B' D' F' B2\",\"R U R2 F R U' B' D B U B' D' F' B\",\"R U R F' U2 F U2 R F R2 B' R' F' B\",\"R U R2 F R B' D' F' U' F D F' U B\",\"U2 R B R' F2 L F L' F2 R B' R' F' U'\",\"B U2 F' R B L' B' R' L U2 F U2 B' U'\",\"U2 D B2 D' F D B2 D' F L F L' F U'\",\"R B' R B2 D2 B' R2 U2 R' F L2 F' R U'\",\"U' L U' R U F2 R' F' R F' L' U R' U'\",\"L U' R U L' B' R' U' R U B U' R' U2\",\"U2 F2 L F L' F L' D2 L U L' D2 L U2\",\"L U' R U L' U' L' B' U' B U R' L U2\",\"R U R2 U' F B' D' F' R F D F' B U\",\"L F2 L' F' B U2 F L F' U2 F' L' B' U\",\"R B' R B R2 L F' L' B L F L' B' U\",\"R F' R U B R U' R' U2 B' U' F R U\",\"R B' R B R2 B' R' F' R B R' F R U\",\"R B' R' B R F' B L U2 L' F B' R U\",\"R F' U2 B' D' B U2 B' D F R B R2 U\",\"R B' R2 B' L' B R2 B' L B R B R2 U\",\"R2 U F' L' B U L F L' B' L U' R U\",\"R B' R F' B U2 F D' F' U2 F D R2 U\",\"D B2 L' D2 B' L2 F L F2 L2 B' R' U' D'\",\"R B' R' B R2 U' D B' U B2 U' B U2 D'\",\"D2 R U' B R' L' B L B' R B' U2 R' D2\",\"D2 R D' R B2 D B D' B R' U D R' D2\",\"D2 R U' D' B U B2 R B R' U D R' D2\",\"R U R2 D2 L' B' D2 R' F R D2 B L D2\",\"U2 D2 L F' L' F U' D F U F2 U' F D\",\"U D' F L' U' R U R' L U F2 U' F D\",\"D' R D2 R B2 D B D' B R' U D2 R' D\",\"D' R U' D2 B U B2 R B R' U D2 R' D\",\"R U R2 F R F' B L' B' R B L B' R'\",\"R B' R B R2 U B L' B' R B L B' R'\",\"U F' R' D' F2 D2 B D' F D B' R' D' R2\",\"U R' F D' R' F L F' R F L' D F2 R\",\"U R' L' B2 L F D' F D L' B2 L F2 R\",\"U R' B2 L F D' F D L' B2 L F2 R L'\",\"L U' R L' U R2 L2 F L' F L F' R L2\",\"R B' R B R2 U F2 D F' U F D' F' U' F'\",\"U R' F2 R F U L' U L U2 F U F U' F'\",\"U R' F R F2 U F U2 F D F' U F D' F'\",\"U R' F2 R F U F U2 R U R' U F U' F'\",\"R U R2 F R U2 L' D2 L U L' D2 L U F'\"],\"d' U L' U2 L U L' U' L d U'\":[\"R U R' U' F' U L' B' U B L F\",\"B' R U F R F' R' U' B R U R'\",\"F B' D R D' R' F' R B R U R'\",\"R U R' U R B U B' R' U F' U2 F\",\"F' U F U' R2 B U B' U' R2 F' U2 F\",\"F' U L F U F' U' L2 B' U B L F\",\"R U R' U' F' U' F U F' L' U2 L F\",\"B' R2 B U R U' R' B' R' B R U R'\",\"B' R' D B R B' R' D' R2 B R U R'\",\"U' D2 B L2 B' U2 D F U F2 D F' U' F\",\"R U R' U R U2 R' F' U F U' F' U2 F\",\"R D2 L' B' L' B L U2 L U2 D2 R' U F\",\"F' U R2 L2 B D B' L2 D' F' D F R2 F\",\"F' U R' L2 D F D' F' L2 U' F U R F\",\"F' U' L' B' U B U2 L' U' B' U B L2 F\",\"R U R' L' B L U' F' U L' B' U L F\",\"R U R' U' F' L F' L' F U L' U L F\",\"R U R' U' F' L' U B L' B' L U L F\",\"F' U R U B U' B' L2 D' B D R' L2 F\",\"R U R' B U' F' U L' B' U B L F B'\",\"R U R' B2 U' F' U L' B' U B L F B2\",\"L2 F2 D' L2 B U R2 L2 D' F D2 L2 U' B2\",\"R U R' B' U' F' U L' B' U B L F B\",\"F R2 B D' B D' B' D2 B D' B2 R2 F' U\",\"R U D2 F' D R2 F R2 D' F U' D2 R U\",\"F' U F D R' F2 U' L' U L F2 R U D'\",\"R2 U F2 L D' R D' R' D L' F' R F' R'\",\"R B' R B D L B L' D' B R' B' U R'\",\"R D B' U' B U D' B R B R' B' U R'\",\"R B' R B' R' B U' L' B L U B U R'\",\"R B' U' B U D' B R B R' B' U D R'\",\"B' R L U F R F' R' U' L' B R U R'\",\"B' L F D R D' R' F' R L' B R U R'\",\"B' R L2 U F R F' R' U' L2 B R U R'\",\"B' L2 F D R D' R' F' R L2 B R U R'\",\"B' R L' U F R F' R' U' L B R U R'\",\"B' L' F D R D' R' F' R L B R U R'\",\"R B' U' B U2 R F2 L' B' D B L F2 R2\",\"U L F L2 U2 R U2 B' U2 B R2 L F2 R\",\"F2 D R2 U F' U' F U F' R2 F2 R2 F D' F'\",\"F2 D R2 U F' U' F U B' D2 F2 D2 B D' F'\",\"U2 F R F2 R' F' R B U' F' U B' R' U' F2\",\"B' R2 B U F2 U2 B L2 B D B' L2 B' U2 F2\",\"F2 L2 D' B2 L' D' R' D' F' R' F2 D' F' L' F2\",\"L F L U F' U' L' F' L' U F2 D' L2 D F2\",\"L F R' L F' R L' U F' L' F2 D' L2 D F2\",\"F' U F U F2 L' F U F U F' U2 F' L F2\",\"R U R' U R U R B' R' B U R' F' U2 F\",\"F R' D' F D F2 R' B U B' U' R2 F' U2 F\",\"B' R' F2 B2 L' F2 B2 R' F2 B' D2 F B2 U' F\",\"F2 B L' F2 B2 R' F2 B2 L' B D2 F B2 U' F\",\"R U R' U R U R' U F R' F' R F' U2 F\",\"R U R' U2 F D R F' U F R' D' F2 U2 F\",\"R U R' U2 R U F' U' F U F R' F2 U2 F\",\"R2 L' B R' B' L U2 L' B L U2 R' F' U F\",\"B' R2 B U F' U2 F' L2 B2 D B2 L2 F U2 F\",\"R U R' U' F2 D' L' F U F' L D F U F\",\"F2 U2 F2 R' F2 R U2 F2 U2 F' R' F R U' F\",\"R D2 L' U2 L U2 D2 R' U2 F' R' F R U' F\",\"L B2 L' F2 L F2 B2 L' U2 F' R' F R U' F\",\"F2 R U2 D2 L' B2 L D2 R' F' R' F R U' F\",\"R U R' U' F2 L' F U F U' F' U L U F\",\"U' R' F' U2 B2 L' F' D2 B' L' B' L F L' F\",\"F' U R' F2 U' R2 F' D' F D R2 F' U R F\",\"R U F' L' F R' F' U L' U' B' U B L2 F\",\"B' R2 B U R U' R' U R' F' U' R' U R F\",\"R U2 B U B' R' U' F' L2 U' B' U B L2 F\",\"R U R' L' B2 L U' F' U L' B' U B' L F\",\"R U R' L' B' L U' F' U L' B' U B2 L F\",\"R U R' U' F' L' U B' U R B' R' B2 L F\",\"F' U L' U2 B' R2 U' F' U F R2 U' B L F\",\"R U R' U' F' L' U2 B' R' U R U' B L F\",\"F' U2 B L U L' U' B' U' L' B' U B L F\",\"F' U' R B U B' U' R' U2 L' B' U B L F\",\"F' U R L' U B U' L2 B' D' B D R' L' F\"],\"d' U U' L' U2 L U' L' U L d U'\":[\"U' F' L U2 L2 U' L2 U' L2 U2 L F U2\",\"F' U2 F' D F2 U2 B' R2 F B D' F' U\",\"F' U2 F' D' F B L2 B' U2 F2 D F' U\",\"U F2 D' B' L2 B D2 F' D' F2 U' F U\",\"F' R U2 L2 D' B2 U D R' U' L U' L F\",\"F' R' U D F2 D' L2 U2 R U' L U' L F\",\"F' R' D R' D R' U R2 D2 L' F2 R L F\",\"R U' B U2 L U' L' B' U2 B U2 B' R' U'\",\"F' U2 L2 U' B' U B L2 F U2 F' U F U2\",\"U' F' L U D F2 U' F2 D' L2 U2 L F U2\",\"U' F' L D2 R2 U' R2 U D2 L2 U2 L F U2\",\"U' F' L U2 L2 U D2 R2 U' R2 D2 L F U2\",\"U' F' L U2 L2 D' B2 U' B2 U D L F U2\",\"B' R2 B U2 F' U F2 L2 B2 D' B2 L2 F' U\",\"B' R' U R F2 B L2 F L' U' L' U2 F U\",\"R U R' F' U2 F U2 F' L' U' L U2 F U\",\"U2 F' L' U L F U2 F' L' U' L U2 F U\",\"F2 B' D B2 L2 F2 U F' L2 F B2 R2 B U\",\"F2 B' U R2 B2 L2 D F' L2 F B2 R2 B U\",\"F' U' F U F' U2 F R2 B U B' U' R2 U\",\"F2 U F D2 F D2 L2 F L2 D2 F' D L2 D\",\"F2 U F D2 B R2 D2 F D2 R2 B' D L2 D\",\"F2 D F' U F' D' F2 D' L D2 F' D' F L'\",\"U L2 D F' D2 F2 D2 F D2 F D2 F' D' L2\",\"U L2 D B' L2 F2 L2 B D2 F D2 F' D' L2\",\"U L2 D F' D2 F2 D2 B R2 F R2 B' D' L2\",\"F2 D F' U F' D' F2 D' L2 B D' B' D2 L2\",\"F D F' U F' U' F2 D' F2 U F' D F' D' F'\",\"F D F' U F' D' L2 D' L2 D F' D F' D' F'\",\"F U2 F L' U' L U' L' U2 L F U2 F2 U' F'\",\"F' U2 L2 D F D' F' L2 F U' F2 U F U' F'\",\"B2 D2 B D' F' R2 U F2 U' D2 B' D B2 U F'\",\"F' U2 L' U2 L U L' U2 L F2 R U R' U' F'\",\"F D2 B' D' F D' F D' B D2 F2 R2 U D' F'\",\"F U L' U L' U' L2 D' L2 U L' D L' U' F'\",\"F U L' U L' D' B2 D' B2 D L' D L' U' F'\",\"F2 D F' U F' D' F' L2 U2 B' U' B L2 U' F'\",\"U F' U2 D2 B U' B' D2 F U' F D R2 D' F'\",\"F2 D F' U F' D' F' L' F U' F' U2 L U' F'\",\"F U2 F' D' B D' B D' F D2 B2 L2 U' D F'\",\"F' U2 L2 U' L U L2 U' L F2 L' D' L D F'\",\"F R L2 U R2 U' R2 U R U' B2 D' B2 L2 F'\",\"F L2 B' R2 B U F' U F U2 B2 D' B2 L2 F'\",\"U' R2 U D B' D' F D2 B D F2 U F' D F2\",\"U F L2 F D' F' D L2 F D' L2 D' L2 D2 F2\",\"F2 L F2 R' F' L' F2 R F2 L' U L2 F' L' F2\",\"F' B2 D2 F' R2 F B U' B' D B' D B' U2 F\",\"F' R' D R' D R' U' R L B2 L' D2 R2 U2 F\",\"F R' D2 L2 U L' D L' D L' U' R L U F\",\"F' U2 F' D' B D' B D' F D2 B2 U' L2 D F\",\"F' U' R2 D R' U R' U R' D' R L F2 L' F\",\"F' U2 D F2 U' R2 D2 L D' R D' R D' L' F\",\"F' U2 L' U L' D L2 U2 R' F2 R L D' L' F\",\"F' U2 L' U L' D' R L B2 R' U2 L2 D L' F\",\"U F' U2 B' R2 B U F' U B2 D' F' D F' B2\",\"U2 B' U' R2 F' B2 D L2 D' B2 U' F U R2 B\",\"B D L2 D B D2 B R2 B' R2 B U F B U'\",\"B U B L2 B' L2 B D2 B D R2 D F B U'\",\"R U' B U2 L U' L' F B2 R2 B R2 F' R' U'\",\"R U' B U2 L U' L' F' L2 B L2 F B2 R' U'\",\"R U' B U F' L2 B D L D' L F B2 R' U'\",\"R U' B U2 B' U B U' B' R' U2 R U R' U'\",\"U' F' U B U2 B2 U' B2 U' B2 U2 B U' F U2\",\"U' F' U2 R U2 R2 U' R2 U' R2 U2 R U2 F U2\",\"U' F' U' F U2 F2 U' F2 U' F2 U2 F U F U2\",\"U' F' D L U2 L2 U' L2 U' L2 U2 L D' F U2\",\"U' F' D2 L U2 L2 U' L2 U' L2 U2 L D2 F U2\",\"U' F' D' L U2 L2 U' L2 U' L2 U2 L D F U2\",\"U' F' L U' D' B2 U' B2 U2 D L2 U2 L F U2\",\"U' F' L U2 L2 U2 D F2 U' F2 U' D' L F U2\",\"U' F' L D2 R2 U D2 L2 U D2 R2 D2 L F U2\",\"U' F' R2 L D2 R2 U L2 U R2 D2 R2 L F U2\",\"R B L U2 L2 U' L2 U' L2 U2 L B' U' R' U2\",\"B' R2 B U2 F' U2 L2 B2 D' R2 B2 L2 U' F' U\"],\"R U R'\":[\"R U B U2 L U L' B' U' R'\",\"R U B U R' F' R B' R' U F\",\"U2 R U F' U2 F U F' U F R'\",\"R U R B' D' R D R2 B U2 R'\",\"U2 F' L' U L U2 F U R U R'\",\"F' R' F D R U2 D' F' R U F R'\",\"R U B U' B L' B' L U B' U2 R'\",\"R B L U2 F U F' U L' B' U' R'\",\"U2 R U' B' U2 B U B' U B U2 R'\",\"R U B U' B' U R B' R' B U2 R'\",\"R U B' R D B' D' B R' B U2 R'\",\"R B2 L' D2 R D R' D B2 L U' R'\",\"U2 L U L' U R B2 L' B2 L U' R'\",\"U2 L F2 L' F2 R U L' U L U' R'\",\"U2 R U2 L' U2 L U L' U L U' R'\",\"R U2 R2 F D R' D' R2 F' R U R'\",\"R B' R2 D' R' D B R2 U2 R U R'\",\"U F R2 D R D' F' R U R U R'\",\"U2 F' B L2 U L U' L U L U' F B'\",\"D2 F2 B2 U2 L D L' D L D L' F2 B2\",\"U2 F2 B2 D2 L D L' D L D L' F2 B2\",\"U2 B' U' R U R2 F R D R D' F' B\",\"U2 F B' R2 D R D' R D R D' F' B\",\"U' R U' R' U' R U' R' U' R U' R' U'\",\"U' L F' R' F' R F' R' F' R F' L' U'\",\"F2 B2 L D L' D L D L' D2 F2 B2 U2\",\"F' B U L U' L U L U' L2 F B' U2\",\"F B' D R D' R D R D' R2 F' B U2\",\"R D B' U B U B' U2 B U D' R' U2\",\"R U' L' U2 R' U' L U F2 L F2 L' U2\",\"R U' L' B2 L B2 U L U' R' U2 L' U2\",\"U F D R F' R' U F' R U F R' D'\",\"F2 B2 L D L' D L D L' U2 F2 B2 D2\",\"R U B U F U L U L' B' U' F' R'\",\"R U B U F2 U L U L' B' U' F2 R'\",\"R U B U F' U L U L' B' U' F R'\",\"R U B U F U' B' R' U R U F' R'\",\"R U B U F2 U' B' R' U R U F2 R'\",\"U2 L F D' F2 D F R L' F' U F R'\",\"U2 L F2 R L' F U F2 U' F2 U F R'\",\"R F U R' L' U R U' L U' F' U' R'\",\"U R U F' U' R' F U F' R U F R'\",\"R2 D B R' B' R' U2 D' F' R U F R'\",\"R U B U F' U' B' R' U R U F R'\",\"U2 R U F' L' B' U B U2 L U F R'\",\"U2 R U D F' U2 F U F' U F D' R'\",\"U2 R D R' U2 R U R' U R U D' R'\",\"R L' B2 L B U B2 U' B2 U B U2 R'\",\"U2 R U D2 F' U2 F U F' U F D2 R'\",\"U2 R D2 R' U2 R U R' U R U D2 R'\",\"U2 R U D' F' U2 F U F' U F D R'\"],\"U2 R U' R' U' R U R'\":[\"U' R U R' U F U2 F' U' F U' F'\",\"U' R U' R' U' R' F D R' D' R2 F'\",\"U' R U' R' U' F' U2 L' U' L F U'\",\"U' R F' U' F U' F' U2 F U' R' U'\",\"L F R' F R F R' F R F L' U2\",\"R U R' U R U R' U R U R' U2\",\"U' R U B L U' L' U2 B' U' R' U\",\"U' F' U2 L' U' L F U R U' R' U\",\"U' D R F' U' R' F U' R F R' D' F'\",\"U' R U' R' U' F R' D' F D F' R F'\",\"U' R U' R' U' F' U F U' R' F R F'\",\"U' R U' R' U' F' U F' L F L' U' F\",\"U2 F2 B2 L' D' L' D L2 D' L' D F2 B2\",\"U' R U L' U' L U' R' F2 L F2 L' U'\",\"U' R U L' U' L U' L' U2 L U2 R' U'\",\"U' R U L' B2 L B2 R' U' L U' L' U'\",\"U' R U2 B' U' B U' B' U2 B U R' U'\",\"U' R U R' U2 L U2 L' U' L U' L' U'\",\"U' R U R' U' B U2 B' U' B U' B' U2\",\"U' F' U' R B R' F R U' B' U' R' U\",\"U' R U2 B' R2 D' R' D B R' U' R' U\",\"U' R F' U' R' F U' F' R U F U' R'\",\"U' R' F D R' D' R2 F' U2 R U' R' U\",\"U' R U' R' L F2 L' F' U' F2 U F2 U' F'\",\"U' R U L' U2 R' L F U' F2 U F2 U' F'\",\"U' R L' B' U2 B U R' L2 F' L' F2 U' F'\",\"U' R F' U' F' R' L D' F D L' F2 U' F'\",\"U' R L2 B' U2 B U R' U L2 U' F U' F'\",\"U' R B' U2 B L2 F' L2 F U R' F U' F'\",\"U' R B' U2 F U2 F' U2 B U R' F U' F'\",\"U' R F' L2 F L2 B' U2 B U R' F U' F'\",\"U' R U L' U' B' U2 B U R' L F U' F'\",\"U' R U R' U F R B U' B' U2 R' U' F'\",\"U' R U2 R B U' B' R' U F U R' U' F'\",\"U' R F' U' F R U2 R' U F U R' U' F'\",\"U' R U2 B' U' R' U F R B U R' U' F'\",\"B' R' B' R F R' F D2 L' F' D2 B2 R' F'\",\"U' F' R' U' R F B U2 B' R' U F R F'\",\"U2 F2 L2 U2 L D' L' U2 D L2 D' L' D F2\",\"U' D R F' U' R' F U' F2 D' L' F L F\",\"U2 B L' U R U' R' L U' R U' R' U B'\",\"U2 F2 B2 L' D' L' D F U L' U' L2 F B2\",\"U' F' B U L' U' L' U L' U' L2 F B' U'\",\"U' F2 B2 L D' L' D' L D' L' D2 F2 B2 U'\",\"U' R U' R' F' L' U2 B' U' B U' L F U'\",\"U' F B' D R' D' R' D R' D' R2 F' B U'\",\"U' F B' D R' D' R' F' R2 U' R' U B U'\",\"U' R F' U' F R' L F' D' F2 D F' L' U'\",\"U' R F' U' L' U2 B' U' B L F U' R' U'\",\"U' R U' R' F2 L D2 R' D' R D' F2 L' U'\",\"U' R F' U' F2 U F2 U' F' R' L F2 L' U'\",\"U' R D F' U' F U' F' U2 F U' D' R' U'\",\"U' R U' D R' U' R U' R' U2 R D' R' U'\",\"U' R D2 F' U' F U' F' U2 F U' D2 R' U'\",\"U' R U' D2 R' U' R U' R' U2 R D2 R' U'\",\"U' R D' F' U' F U' F' U2 F U' D R' U'\",\"U' R U' D' R' U' R U' R' U2 R D R' U'\",\"R' L F' R F' R' F' R F' R' F' R L' U2\",\"R L' B' R B' R' B' R B' R' B' R' L U2\",\"R2 L2 D' R D' R' D' R D' R' D' R2 L2 U2\",\"R2 L' B R' B R B R' B R B R2 L U2\",\"R' L2 D R' D R D R' D R D R L2 U2\",\"F R' F' R' U B U' B' R2 U F' U' F U\",\"U F' B L2 U L' U' L' U L' U' F B' U\",\"U F2 B2 D2 L D' L' D' L D' L' F2 B2 U\",\"U' R F' U' R' F U2 D R' D' F' R F U\",\"U F B' R2 D R' D' R' D R' D' F' B U\",\"U' R U B L U' F U' F' U2 L' B' R' U\",\"U' R U L' B2 D' R D' R' D2 L B2 R' U\",\"U' R U' R' U2 R2 B' D' R D R2 B R' U\",\"U' R U2 B U' L' B L B' U B' U' R' U\",\"U' R U2 B' R B R' U' B U B' U' R' U\",\"U' R U R' U D F U2 F' U' F U' F' D'\",\"U' R U2 B' R B' D B D' R' B U' R' U\"],\"R' U2 R2 U R2' U R\":[\"R U R' U R U2 R2 U' R2 U' R2 U2 R\",\"R U R' U2 F U2 F2 U' F2 U' F2 U2 F U'\",\"R U R' U' L U2 L2 U' L2 U' L2 U2 L U2\",\"R U R' B U D L2 U' L2 D' B2 U2 B U\",\"R U R' B D2 F2 U' F2 U D2 B2 U2 B U\",\"R U R' B U2 B2 U D2 F2 U' F2 D2 B U\",\"R U R' B U2 B2 D' R2 U' R2 U D B U\",\"R U R' U R U D B2 U' B2 D' R2 U2 R\",\"R U R' U R D2 L2 U' L2 U D2 R2 U2 R\",\"R U R' U R U2 R2 U D2 L2 U' L2 D2 R\",\"R U R' U R U2 R2 D' F2 U' F2 U D R\",\"U L2 D R' L2 U F2 D2 R' U R2 D' R' D2 F2\",\"R U R' U2 F U D R2 U' R2 D' F2 U2 F U'\",\"R U R' U2 F D2 B2 U' B2 U D2 F2 U2 F U'\",\"R U R' U2 F U2 F2 U D2 B2 U' B2 D2 F U'\",\"R U R' U2 F U2 F2 D' L2 U' L2 U D F U'\",\"R U F B2 D2 F D' L2 D' F' B2 R2 F' R U'\",\"R U B' R2 F2 B' D' L2 D' B D2 F2 B R U'\",\"R U R' U' L U D F2 U' F2 D' L2 U2 L U2\",\"R U R' U' L D2 R2 U' R2 U D2 L2 U2 L U2\",\"R U R' U' L U2 L2 U D2 R2 U' R2 D2 L U2\",\"R U R' U' L U2 L2 D' B2 U' B2 U D L U2\",\"R U R' F2 B D2 F2 U B2 U F2 D2 F2 B U\",\"R U R' B U' D' R2 U' R2 U2 D B2 U2 B U\",\"R U R' B U2 B2 U2 D L2 U' L2 U' D' B U\",\"R U R' B D2 F2 U D2 B2 U D2 F2 D2 B U\",\"U L F2 U2 L2 U' L' D F2 D2 L' U' D L' U\",\"L2 D2 R B2 U2 R' D2 L D' L' D F2 U2 L U\",\"R U R' D B U2 B2 U' B2 U' B2 U2 B U D'\",\"R U R' U D R U2 R2 U' R2 U' R2 U2 R D'\",\"R U R' D2 B U2 B2 U' B2 U' B2 U2 B U D2\",\"R U R' U D2 R U2 R2 U' R2 U' R2 U2 R D2\",\"R U R' D' B U2 B2 U' B2 U' B2 U2 B U D\",\"R U R' U D' R U2 R2 U' R2 U' R2 U2 R D\",\"R U B U2 L U L' B' R2 U' R2 U' R2 U2 R\",\"R U R' U R U' D' F2 U' F2 U2 D R2 U2 R\",\"R U R' U R U2 R2 U2 D B2 U' B2 U' D' R\",\"R U R' U R D2 L2 U D2 R2 U D2 L2 D2 R\",\"R2 B2 R' L' D B2 R2 U R U' L U L2 F2 L2\",\"R U R' U R L2 D2 L2 U R2 U L2 D2 R L2\",\"U F R' F' R F U' F U' F U F2 U2 F U' F'\",\"U2 F2 L2 D' L U' L' D L' F2 D F2 D' L' U F2\",\"R U2 R2 U R U2 R2 L' U' L U' R U2 F2 R2 F2\",\"U2 F2 L' U' L2 F2 L' D' L D F2 D' L' U D F2\",\"U2 R U2 R' F2 U' L2 D2 L U L' D L' D L' F2\",\"U F2 L2 D' B U' D' R' B' R U D B' D L2 F2\",\"U F R' F R U' F2 U' R U2 R' F2 U' F' U2 F\",\"U R' F U' R F' R U' R2 U2 F R U' F2 U2 F\",\"U R L' U2 L2 F' D F' D R' D2 F2 R' F' L' F\",\"R U R' F U' L U2 L' U' F2 L F2 U' F2 L' F\",\"R' U2 R' U2 R2 U' R' B L B2 D' F2 D B2 L' B'\",\"B2 R2 U2 B2 U R B2 R U2 R2 U B2 U R2 U' B2\",\"U F L2 F' R' U F L2 F B2 D L' D2 L F2 B2\",\"D2 B2 U R U2 R' D' R2 U D2 R' U' R' U' D B2\",\"U B2 R2 U' F R' L' D' R' D R L F' U R2 B2\",\"U B2 R2 U' L' F R' D' R' D R F' L U R2 B2\",\"R U2 R' B2 R2 L2 U' R U R' F2 D F2 R' L2 B2\",\"L F2 L' B2 D' R D L' D2 R L' D F2 R' L2 B2\",\"R U R' F' B L2 B U' L2 U L2 U B2 U' F U'\",\"R U R' F' B L2 B D' B2 U B2 D B2 U' F U'\",\"R U R' F2 B2 D2 F D2 B2 U' F2 U' F2 U2 F U'\",\"R U R' U2 F U' D' L2 U' L2 U2 D F2 U2 F U'\",\"R U R' U2 F U2 F2 U2 D R2 U' R2 U' D' F U'\",\"R U R' F' B L2 B D' B2 D L2 D L2 D' F U'\",\"R U R' U2 F D2 B2 U D2 F2 U D2 B2 D2 F U'\",\"R U R' B U' F2 U L2 U L2 U' F L2 F B' U'\",\"R U R' B U' F2 D F2 U F2 D' F L2 F B' U'\",\"R U R' B D' L2 D L2 D F2 D' F L2 F B' U'\",\"U2 R2 L D2 R D R' D' R D2 F2 D' R L' F2 U'\",\"R U R' B U2 B2 U' B2 U' F2 D2 B D2 F2 B2 U'\",\"R U R' U2 F B2 D2 B2 U F2 U B2 D2 F B2 U'\",\"R' D R2 D' F2 L' D L' D L' U L' F2 R' B2 U'\",\"F U R' F' R U2 F U2 F U2 F2 U2 F' U' F' U2\",\"F U R' F' R U2 F U2 B L2 F2 L2 B' U' F' U2\",\"R L' B2 R' U2 R U R' U' R U2 B2 U R' L U'\"],\"U' R U' R' U R U R'\":[\"R U2 R B' R2 U' D2 L2 F' L2 D2 B' U B\",\"L2 D2 R D2 L F' B2 U' B2 U F B2 L U\",\"U' L F' D R F' R' D' F R' F2 L' F' R F'\",\"U' L F' R' F' D' F L D L' F2 L' F' R F'\",\"U' L2 D F' D' L2 U' B' U2 B U' R' F R F'\",\"U2 F2 U' R2 U' L' U R2 L U L' U' L U F2\",\"L D2 B2 U L U R U2 R' U' R U' L' D2 F2\",\"R U R2 U' R U R2 U R' U' F B' R2 F' B\",\"F U2 F R' U' F2 U R D F' U2 F D' F2 U2\",\"R U R' U' F' L' U B' U B U' L U2 F U\",\"R U R' U R U R' U F' L' U L U2 F U\",\"R2 L' D L' D2 R F2 D2 L D2 R' D R2 L U2\",\"U' R U' R' U' R F' U' F U' F' U2 F R' U\",\"R U R' U R U R' F R2 D R D' F' R U\",\"R U B R U R' B' R U' B' R' B U2 R' U\",\"R U R' U R U' B L U' L' U2 B' U R' U\",\"R U R' U R B' R2 D' R' D B R' U R' U\",\"R U R' U' F' L' U L U2 F U' R U R' U\",\"R U B U2 L U L' B' U' R' U' R U R' U\",\"R' L' B2 R B2 R F' B2 U' B2 U F B2 L U\",\"R2 U2 R U2 R2 L' F' B2 U' B2 U F B2 L U\",\"U' D B2 D L U2 D2 R U' D2 L U D F2 D\",\"U' R U' R' D' F L' U' L U' L' U2 L F' D\",\"R2 U R2 U R U2 R F2 U' L' U L F2 U R\",\"U L F2 U F2 U' L' U' R L U' R' U F2 L'\",\"D F R2 U R2 U' F' D' R L U' R' U F2 L'\",\"R U2 F U F' R2 F2 R L F L2 U L2 F L'\",\"B L' B' U' B2 D2 R D2 F' B U' F U B L\",\"R U R2 U' R U R2 U R' U B U2 F B' R2 F'\",\"U2 R' U R' U' R F' D R2 D' R2 F2 R2 U R2 F'\",\"U' L F' L' F2 R F U' F' U' R' U2 R' F' R F'\",\"U' L D' F' D F D F' R' F' D' F' L' F' R F'\",\"U' F2 U' R' F' R U F' L F' R' F2 L' F' R F'\",\"U' L F L' F' L D F2 D' F R' F2 L' F' R F'\",\"U' L2 D L' F' L' F L F' D' R' F2 L' F' R F'\",\"U' L F' R' D2 L B D' B' D' L' F2 L' F' R F'\",\"U' L2 B D L' F' L D' B' R' L' F2 L' F' R F'\",\"R2 U R' F D R' D' R' U R U' F' R2 F R F'\",\"R2 U R U' R' U F R U R U' F' R2 F R F'\",\"U' L2 D F' D' R' L' F' U' F2 U F' L' F R F'\",\"U' L2 F2 R2 B' D2 B R F2 D' F' D L2 F R F'\",\"U' L2 D F' D' R2 D' F' D2 F D' R L2 F R F'\",\"U' R U' R' F L' U2 R' U L U' R L' U2 L F'\",\"U' R U' R' F L' U' F' L U' L' U F U L F'\",\"U' R U' R' F R L2 B2 L' D L D' B2 R' L2 F'\",\"U' L D' F' D L' F L D F2 R' F2 D' R L' F'\",\"R F' U2 F2 R D R B' R' D B D2 R2 F2 U2 F\",\"U' L2 D F' D' L2 U' B' U2 F2 B L F L' U' F\",\"R U R' U' R' U2 R U' F' L' U' B U2 B' L F\",\"R U2 R B' R2 U' F B' L2 U2 F' U2 L2 F' U B\",\"R F' U2 F2 R D R B' R' D F L2 D2 F2 R2 B\",\"R U R2 U' R U R2 U R' U F' U2 F B' R2 B\",\"B' D B2 U F R2 B2 R2 F' R B2 R' B2 D' R B\",\"B' D B2 U B U2 B2 U2 B' R B2 R' B2 D' R B\",\"B' D B2 U F' L2 F R' F2 L2 F2 R B2 D' R B\",\"B' D B2 U F' L2 F L' U2 L2 U2 L B2 D' R B\",\"U' F2 R U2 R' U F2 U R' F2 R U R U R' U'\",\"D' L2 F U2 F' U L2 U F' L2 F D R U R' U'\",\"F' U B' U F U' F' R' U R F B L U' L' U'\",\"R U R' B L' B' U R U' B2 L B' U B' R' U2\",\"R2 D B2 L U2 L2 B R B2 L B2 R' B D' R2 U2\",\"R2 D B2 L U2 L2 B L U2 L U2 L' B D' R2 U2\",\"R L U L U2 R' U' L' U' L2 F2 L2 F2 U' L' U2\",\"U F2 R2 U' L2 D2 L U' L2 D' R2 D' L' U2 F2 U\",\"R U R' U R U R' F R' F D' F' D R F' U\",\"L2 F2 U' L' U' B L' B' L U2 F2 L' F L' F' U\",\"R U R' U R U R' F R' F' R U F' U' F U\",\"R U R' U' F' L' U L U' L F' L' F U' F U\",\"R U R' U R U R' F' U L F' L' F U' F U\",\"B' R2 B U B' R U' R U R B U' F' U2 F U\",\"R2 L' D L' U2 L D2 R' F2 R D2 B2 D' R2 L U2\",\"U' L F' L' U' L2 D' R D' B D R' D L2 F U\",\"R U2 F2 B2 L D L D' L2 D' L D F2 B2 R' U\",\"R U R' U2 F R2 D R' B R B' R D' F' R U\",\"B2 D2 F2 L' F2 L' U L U' D' L D' B2 U2 R' U\",\"B' R2 B U R U' R U2 F R B' R2 F' B R2 U\"],\"d' U L' U' L d U'\":[\"R U R' U R B U B' R' U2\",\"F' U F U' R2 B U B' U' R2 U\",\"U F U F' U F U2 F' U' F' U F\",\"U2 L U L' U L U2 L' U2 F' U F\",\"U' B U B' U B U2 B' U F' U F\",\"D R U R' U R U2 R' D' F' U F\",\"D2 R U R' U R U2 R' D2 F' U F\",\"D' R U R' U R U2 R' D F' U F\",\"R U B U2 L U L' B' R' F' U F\",\"L F R' F R U F U' R' F2 R L'\",\"L F R' F R F2 R' D' F D R L'\",\"F' U F2 R' D R2 U R' U' R' D' R F'\",\"R U R' U' R' L F2 R F2 L' F' U F\",\"R U R' U' F' U L' B' U2 B U2 L F\",\"U2 F' U F2 U' B U B2 D' R2 D F' B\",\"B2 R2 D' F2 D B U D' F U2 F D B\",\"R U R' F' B L' U L U' B' U2 F U2\",\"R U R' U2 F B' R' F' U' R U B U2\",\"R U2 B U R' U' F' U F R B' R' U2\",\"R U2 R' L F' R' F R U F U' L' U2\",\"R U R' U R U R B' R' B U R' U\",\"F R' D' F D F2 R' B U B' U' R2 U\",\"R U R' U R U R' U F R' F' R U\",\"R2 B R' B R B2 U B U' B2 R' B2 R'\",\"R U R' U' L F2 L' F' U F L F2 L'\",\"R' L2 D R' D R D2 R' B' D B R2 L2\",\"R' L2 D R' D R F D F' R' D2 R2 L2\",\"R2 L' B R' B R D B D' R' B2 R' L\",\"R2 L' B R' B R B2 R' U' B U R' L\",\"U F U F2 U F' U F U F2 U' F' U' F2\",\"R U' L' F U F' R' F2 U' F' L F2 U F2\",\"R U R' U R U R' U F' U L F' L' F2\",\"F2 D B' D B' D F' D2 B2 R2 D' F2 U' F\",\"B' R2 D' R2 B2 L2 U' F2 L2 B' U F' U2 F\",\"B' R2 U' B2 L2 F2 D' F2 L2 B' U F' U2 F\",\"L2 F2 D F2 L2 B2 U B R2 B U F' U2 F\",\"L2 F2 U L2 B2 R2 D B R2 B U F' U2 F\",\"B L2 F2 D F2 L2 B2 U R2 B U F' U2 F\",\"B L2 F2 U L2 B2 R2 D R2 B U F' U2 F\",\"B' R2 B' D' R2 B2 L2 U' F2 L2 U F' U2 F\",\"B' R2 B' U' B2 L2 F2 D' F2 L2 U F' U2 F\",\"U' L' B' U B R' L F2 R F' U' F2 U2 F\",\"U F U R U2 B U B' R' F' U' F' U F\",\"U F' U F U F U2 F' U' F U' F2 U2 F\",\"U F U F' R L' U2 R' L F U' F2 U2 F\",\"U F U B' U' D R2 U D' B U' F2 U2 F\",\"U2 L U F U2 R U R' F' L' U2 F' U F\",\"U2 F' U' F2 D F D2 B' L2 B D F U2 F\",\"B' R' U R U2 B U L U2 L' U2 F' U F\",\"R U R' U R U R' U2 F' L' U L U' F\",\"B' R2 B R2 U F2 B2 D' L2 D F B2 U2 F\",\"R U R' U L F2 R' F2 R L' U2 F' U F\",\"L U2 R' U2 R U R' U R L' U2 F' U F\",\"R B2 R' B2 L U R' U R L' U2 F' U F\",\"U' B U L U2 F U F' L' B' U F' U F\",\"U D F U F' U F U2 F' U' D' F' U F\",\"U2 D L U L' U L U2 L' U2 D' F' U F\",\"U' D B U B' U B U2 B' U D' F' U F\",\"D R U B U2 L U L' B' R' D' F' U F\",\"U D2 F U F' U F U2 F' U' D2 F' U F\",\"U2 D2 L U L' U L U2 L' U2 D2 F' U F\",\"U' D2 B U B' U B U2 B' U D2 F' U F\",\"D2 R U B U2 L U L' B' R' D2 F' U F\",\"F' U D' L F U F' U F U2 F' L' D F\",\"U D' F U F' U F U2 F' U' D F' U F\",\"U2 D' L U L' U L U2 L' U2 D F' U F\",\"U' D' B U B' U B U2 B' U D F' U F\",\"D' R U B U2 L U L' B' R' D F' U F\",\"R B L U2 F U F' U L' B' R' F' U F\",\"R U R B' D' R D R2 B U' R' F' U F\",\"R U R' F' L' U B' R' U2 R U B L F\",\"F' U L F U F' U' L2 B' U2 B U2 L F\",\"B D' F2 D F2 U' F' D' F D F' U F2 B'\",\"B U' R2 D R2 D' F' D' F D F' U F2 B'\",\"U2 F' L' U L U2 F U R U2 R' F' U F\"],\"d U' R' U' R U' R' U' R d' U\":[\"B U' R U L U L' U R' U2 B' U\",\"B2 D2 L' F2 D' L D' B2 U R' F' U' F\",\"R U R' U R B U B' R' U' F' U F\",\"B2 U B' U F' U' B' U2 F U' B2 U' B2\",\"B U D2 L U R U R' U L' D2 B' U\",\"F' U F U' R2 B U B' U' R2 U2 F' U F\",\"R U R' U R U2 R' F' U F U F' U F\",\"B2 U F' U' B' L U2 R B R' U2 B' L' F\",\"F R' D R' D' R2 B' R F' R F R' F' B\",\"R2 B' R2 U2 F R2 B R2 U' B' U F' B U'\",\"B' R' U' B' R' B R2 U R' B R U R' U'\",\"U' L F' U F U' L2 F' L U' L' F L U'\",\"U' F' R' U' R F U F' U2 R' U2 R F U2\",\"B U' F' U F B' L U' F' U' F U L' U2\",\"R' U R' F R B' R' B D R' D' F' R2 U\",\"R' U R' B U B' U' B R U' R' B' R2 U\",\"U' R2 B' R' B L' B2 U' B U B2 R' L U\",\"F R' F' R2 U' L' B2 U' B U B2 R' L U\",\"U F' L U L' F U L2 D R' F2 R D' L2\",\"L F L' F L F2 L' U2 F2 U F' U2 F U F'\",\"F U F U2 B' R2 B U' F2 U B' R2 B U F'\",\"U' D R2 B2 D L' U B2 D' R D2 F' D R F'\",\"F U F U2 F' U2 F U' F2 U2 F U F2 U' F2\",\"L F L' F R U2 R' U2 F2 U2 F U F2 U' F2\",\"F2 R2 D B' U R2 D' F D' L2 F D F' U' F\",\"U' D' L' F' L D2 R' D' R2 U2 F' U2 R' U' F\",\"U' L' F2 R F' R' F2 R L U2 F' U2 R' U' F\",\"U' R U2 R2 D2 L' B' L D2 R2 F' U2 R' U' F\",\"R U R' U R U' F' L' F R' F' U L U F\",\"B2 U F' U' F' D L2 U B U' L2 B' D' F2 B'\",\"B U B' U2 F' U' B U F U' F' U F U2 B'\",\"F2 U' F' U' R2 B2 L2 B D' R2 B2 L2 F U2 B'\",\"B2 U B2 D' R2 U D F D R2 D' F' B U' B'\",\"U D' R2 U2 D F U' B2 U F2 U F B' U B'\",\"U2 F' U F2 B2 D' R2 D F' B U F' U F B\",\"B2 U F' U' F B2 U R2 D B D' R2 B' U' B\",\"U' L2 U B' U' F' U F B U' L2 F' U' F U'\",\"F2 U' F2 U F U' R2 D' F' D F R2 U' F U'\",\"D' F' D F D R2 B2 D L2 B2 D2 R2 U' F U'\",\"F D F D' B L2 F B' U L2 U2 L2 U' F U'\",\"B2 D B' D F2 D2 B2 R2 F' U' R2 B U2 F2 U'\",\"F D F D' B L2 F B' D F2 U2 F2 D' F U'\",\"F D F D' B' L2 F B U2 B2 D' B2 D F U'\",\"U' F' D' F L2 F' U F U' L2 F' U' D F U'\",\"D' F' D F U' R2 U2 B2 L2 U B2 R2 D F U'\",\"D' F' D F D' F2 U2 R2 B2 D B2 R2 D F U'\",\"F2 U2 F' U2 F' U' F R2 B U B' U' R2 F2 U'\",\"U' F2 R' F U D2 F U' F' U' D2 F' R F2 U'\",\"F2 R2 F U2 L2 F2 U' B' U F2 D2 B L2 F U'\",\"B2 L2 F D2 R2 B2 U' B' U F2 D2 B L2 F U'\",\"U' R U' F R U2 L U' R' U L' U2 F' R' U'\",\"U' L2 D F' D' L2 B' U D B U' B' D' B U'\",\"U' R L2 D R' F' R D' L2 B' U B U' R' U'\",\"U' R L F U2 B U' F' U B' U2 L' U' R' U'\",\"U B' U F D2 F D2 F2 R2 U R2 U' B R2 U'\",\"B2 D2 F2 D' R F D' F B2 U2 L' U' F' L2 U'\",\"F U R' F' D' F2 D2 F2 U' F U F2 D' R U'\",\"F U R' F' U' R2 D2 R2 D' F U F2 D' R U'\",\"B U' F' U F B' U' L' F' L U' L' F L U'\",\"U' R2 B' R' B R' U2 R' L D' F D R L' U'\",\"F R' F' R2 U' R' U2 R' L D' F D R L' U'\",\"U' R U' F2 D B' R' B D' F2 L' U R' L U'\",\"U' R D' L F R' F' L' D B U R B' R2 U2\",\"R' D L' B' L D' B' R' B L' U R2 U' L U2\",\"U' R L U2 L' B' U B U2 L U2 R' U L' U2\",\"U R' L F2 L2 B D B' R L' F2 L' U L' U2\",\"F' B L' U2 L B L' B2 U' B U' L F B' U\",\"B U' F' U F B' U B U2 F' U' F U2 B' U\",\"B U' R U' B' R' U R U2 B U R' U2 B' U\",\"U' R2 B' R' B L' B2 R B2 D B D' R2 L U\",\"F R' F' R2 U' L' B2 R B2 D B D' R2 L U\",\"B2 U B' U F' U' B' U2 F D' R2 U' R2 U' D\",\"F R2 B' D F D F' R2 D' B D R2 D' F' R2\",\"D' F B L2 F2 L2 U2 B' R2 F D B2 U' B2 R2\"],\"U' R U2 R' d U' R' U' R d' U\":[\"U2 F2 R' F U' F2 U R U L F' L' F'\",\"R U F B' D' R D R2 B R2 F' R' U2\",\"R U D F R2 U R U' R2 F' D' R' U2\",\"R U D2 F R2 U R U' R2 F' D2 R' U2\",\"R U D' F R2 U R U' R2 F' D R' U2\",\"R U R' U' L F2 L' F U F U F U2 F'\",\"U2 F2 R' F U' F2 U R F2 R' F' R U F\",\"R' U2 R2 U R' U' R' U2 R2 B U B' R' U'\",\"R U F D R D' F' B' R2 B R' U' R2 U'\",\"L F D R2 F R F' R2 D' R' F' R L' U'\",\"R2 U R2 F D R' U D' R U' R2 F' R' U2\",\"R U R2 U2 B' L2 U' R U L2 B U2 R U2\",\"R U' F' B L2 U' L U L2 F U2 B' R' U2\",\"R U R' U R U2 R' F' U F R U2 R' U\",\"R U R' U R B U B' R' U2 R U2 R' U\",\"R2 B R' B' U2 L' F2 U' B U F2 R' L U\",\"R2 L' B R' B' L U2 L' U' B U R' L U\",\"R U' B L U L' F U R U' R' F' B' R'\",\"F' U2 F U R B U' R' F' R B' R' U' F U'\",\"R U' L B U F U' F' B' R' L' F' U2 F U'\",\"R U' B L U2 L' F' B' L' U' L U F R' U'\",\"R U R' U R U R' U R B U2 B' U' R' U'\",\"L F R' F R F R' F R U F2 U' F' L' U'\",\"R2 L F2 R2 F R' F' R' F2 R2 U F U' L' U'\",\"F B' D R D' R' F' U R B U L U2 L' U'\",\"R' L2 D B U R U' F' B' R2 F R' D' L2 U'\",\"L F' U L F2 L' U' D' L' F' L F D L' U'\",\"L F D B R B' U' D' R2 U R' F' R' L' U'\",\"R U F R2 U R U' D B R' B' R2 D' F' U2\",\"R' L2 D B R2 D R D' R2 B' R' D' R2 L2 U'\",\"U' F' L' F' L2 U' L U L2 F U L U F U2\",\"R2 L' B U R2 B R B' R2 U' R' B' R' L U'\",\"L' B2 R2 B R' B' R' B2 R2 D B D' R2 L U'\",\"R' B' R' B U R2 F R' U R U' R2 F' R' U2\",\"R U F R' B U2 L U L' B' U R2 F' R' U2\",\"R U R' D R' U R U' D' R F R F' R' U2\",\"U' B' U' R U F' U2 F2 R2 F' R B' R B2 U2\",\"U' B' U' R U B U2 B2 R2 B R B' R B2 U2\",\"R U B U2 F' B D L D' F B' U2 B' R' U2\",\"R2 L' B R' B R B' R' L U' B U2 B' R' U2\",\"R U F B' D' R D F' B U2 B U2 B' R' U2\",\"R2 B R' B R L' B R' L B' U' B' U2 R' U2\",\"U F' U2 F2 U F' U F U2 F' U2 R U R' U2\",\"R U D F B' D' R D R2 B R2 F' D' R' U2\",\"R2 U B' R2 D' F R' F' U' D R U B R U2\",\"R U D2 F B' D' R D R2 B R2 F' D2 R' U2\",\"R U D' F B' D' R D R2 B R2 F' D R' U2\",\"R' U2 R2 U R' U' R' U2 R2 U2 R' F' U F U\",\"R U' B U2 B' R' U F' L' B' U B L F U\",\"R2 B R' B R B2 U B U' B2 R' B2 U2 R' U\",\"F' U F U' R2 B U B' U' R2 U R U2 R' U\",\"L F R' F R U F U' R' F2 R2 L' U2 R' U\",\"L F R' F R F2 R' D' F D R2 L' U2 R' U\",\"R2 L' B R' B R D B D' R' B2 L U2 R' U\",\"R2 L' B R' B R B2 R' U' B U L U2 R' U\",\"R U R' U R B U B' R2 L F2 R F2 L' U\",\"R D B' U B L U L' B' U2 B U' D' R' U\",\"R D B' U B U2 B' R' U R B U' D' R' U\",\"R2 B2 U B U' B2 R' D B' U B U D' R' U\",\"R U' D2 L' U L U2 L' B' U B L D2 R' U\",\"R U' D2 L' U L F U F' L' U2 L D2 R' U\",\"R U R' U R B U B' L' B2 R B2 R2 L U\",\"R U R' D R' U2 B' U' R U B U2 R U2 D'\",\"B' U F B U R' F' R L D F2 U F D' L'\",\"L F R' F R L' U' F U R' F2 R U F U2 F'\",\"L F R' F' L D2 L' D F D R L' U F U2 F'\",\"R U R' U R L' B' U B R' U2 L U F U2 F'\",\"R U R' U' F U F U R' U' F2 U R F U2 F'\",\"U' R U' R' U' F' R' U' R F2 U' R' U2 R U F'\",\"F R' F' R2 U' F2 D' L D' B' D L' D F' R' F'\",\"U' R2 B' R' F2 B D' L D' B' D L' D F' R' F'\",\"U' R2 B' R' F B2 R' D R' B' R D' R B' R' F'\",\"U' R2 B' R' B' U' R U' B' U R' U F B2 R' F'\",\"U' R2 B' R' B' U' R B' R' U R' F R B2 R' F'\"],\"d U' R' U R U' R' U' R d' U\":[\"B2 D2 L' F2 D' L D' B2 U R' F' U F\",\"R2 B L2 F2 U B L2 F2 D2 F D' B2 U2\",\"R2 B L2 F2 U F' L2 B2 D2 B' D' B2 U2\",\"U D B2 U' B' U2 B' D' R2 B U2 B' U\",\"L F R' U L F L' U' F' L' U' R U\",\"U' F U2 L' F' L U2 F' U F' L' F' L F2\",\"F' U F U' R2 B U B' U' R2 U2 F' U' F\",\"R U R' U R U2 R' F' U F U F' U' F\",\"U' R L F U F' U2 R' U L' U2 F' U2 F\",\"U2 F R' F2 U F2 D R2 D' R B' R2 F' B\",\"L U2 L' F2 L F2 U F' U L' F B' U B\",\"B2 D2 L' F2 D' L D' B2 U' B U B' R' U2\",\"L B U' F' U F U B' L' U B U2 B' U\",\"U2 R2 D' F' U2 F' U' F2 U' D B U2 B' U\",\"U' F R U R' U L F L' U2 R' F' R U\",\"L F R' U F2 U' R' F R F L' U' R U\",\"U B U2 B' R' U L D' F D L' U' R U\",\"U R2 B' U' B2 D L2 D' R2 D2 F L2 U' D2\",\"U2 B' R U' R2 U F' R B R' F R2 U' R'\",\"B' D B' L2 D L D F' D2 L D' B2 U R'\",\"U R2 B U B' D B2 U2 L2 U L2 D' B2 R2\",\"U R2 B U B' U' B2 D2 L2 D' L2 D' B2 R2\",\"U R2 U B U' L2 B D B D' B' L2 B2 R2\",\"L U' R U F U F' U' R2 D' F D R L'\",\"L U' R U L2 B U B2 U B2 U' B' R' L\",\"L U' R U L2 B D L2 U L2 D' B' R' L\",\"F R' F2 L' F2 D' F L F' D F2 L F2 R F'\",\"U2 R U2 R' F2 D' L F U L U' L' F' D F2\",\"U2 R U2 R' F2 U D' B L B' L' U' L D F2\",\"B U' R U L U L' U R' U2 B' U F' U2 F\",\"F2 R2 D B' U R2 D' F D' L2 F D F' U F\",\"R U R' U R U' F' L' F R' F' U L U' F\",\"U' D' L' F' L D2 R' D' R2 U2 F' U2 R' U F\",\"U' L' F2 R F' R' F2 R L U2 F' U2 R' U F\",\"U' R U2 R2 D2 L' B' L D2 R2 F' U2 R' U F\",\"B2 U F' U' B' L U2 R B R' U2 B' L' U2 F\",\"U F' R U2 L' U' L U2 B2 D L' D' B2 R' F\",\"R U D R D' F' R' U' B2 D2 L' D2 B2 R' F\",\"R U R' D B L U R L' B' D' F' U' R' F\",\"R U F' R' D' F2 U F' D F R F' U2 R' F\",\"U2 F' U2 L2 D F' R2 D B' D' R2 F D' L2 F\",\"B L' U2 F' U2 F B2 U' R' U R B2 L U' B'\",\"B2 U B2 D' R2 D B' R2 B U B U' B2 R2 B\",\"U' L' U' R' F2 R F U L' U L2 F2 U2 F' U'\",\"L' U' L2 F' L' U L D' L D L2 F2 U2 F' U'\",\"L U' R U L2 B U B' R' L U' F U2 F' U'\",\"B2 D B2 U B' D' R2 B2 U B' R2 F R2 F' U'\",\"B2 D B2 U B' D' R2 B2 U F' U2 F U2 B' U'\",\"U2 B' R2 U' R' U R F2 R D R' D' F2 B U'\",\"B2 U2 F' U F U2 B2 U R2 U2 B U2 B' R2 U'\",\"U' R2 U D B2 D' B U' B U B' U' B2 R2 U'\",\"U R U2 L F' U' F2 U F2 U F' R' F2 L' U'\",\"U R U2 L F' D' L2 U L2 D F' R' F2 L' U'\",\"D' F' D F L2 B2 D' R2 B2 L2 F R2 U2 R2 U'\",\"U R2 B' U' B2 U B2 U B R' L U2 R' L' U'\",\"U R2 B' D' R2 U R2 D B R' L U2 R' L' U'\",\"F B U' L2 B U2 R2 F D2 R2 F U' F' B' U2\",\"U2 F R' F2 U F2 D R2 D' R' F' B U2 B' U2\",\"F2 B2 L2 B R2 B2 U B L2 F2 D2 F D' B2 U2\",\"F2 B2 L2 B R2 B2 U F' L2 B2 D2 B' D' B2 U2\",\"L U2 L' B' U F R F' R F R' F' U' B U2\",\"L F R' F' L D F D' R L2 U' B' U' B U2\",\"L U' R F' U' F U F R' F2 U F U' L' U2\",\"L U B' D B2 U' B' U2 B' D' R2 B U L' U2\",\"U' F' L U L' F U2 R U' L U R' U L' U2\",\"U B U2 R F' U' F U F R' F2 U F B' U\",\"R U R' B L F' D R F' R' D' L' F B' U\",\"U D' R2 U D F' U' B2 U' F U2 B' U2 B' U\",\"U' L' F' U B U B' U' F L U2 B U2 B' U\",\"U2 R2 D' F' U2 F U' D R2 U' R2 B U2 B' U\",\"D2 L2 U' L2 U D' B U2 B' D' R2 B U2 B' U\",\"U2 R2 U' R2 U' D B U2 B' D' R2 B U2 B' U\",\"B2 D2 L' F2 D' L D' B2 R B' R' B U R' U\",\"B2 D2 L' F2 D' L D' B2 R' U F R' F' R U\",\"U R2 B' D2 L2 D' L2 D' B2 R2 U' R2 B' R2 U\"],\"F R' F' R\":[\"R U R' U R U B' R B R2 U\",\"R U R' U L' U2 L2 F2 R' L' F' R F'\",\"R U R' U' R2 L2 D2 R D2 L2 F R F'\",\"U F U F' U F U2 F L F L' U' F\",\"R U R' U L F2 R2 F2 R L' U2 F R F'\",\"R U R' U' R' L F2 L' F' R L F2 L' F'\",\"R U R' U L' U2 R' L F R L F2 L' F'\",\"U2 L U L' U R' L2 F2 L' F2 L' F R F'\",\"R U R' U' R' L F2 R F2 R' L' F R F'\",\"R U R' U R D2 R2 L2 U2 D2 L2 F R F'\",\"R U R' U D2 R2 L2 U2 R D2 L2 F R F'\",\"R B2 L' D2 R D R' D B2 R2 L F R F'\",\"U2 L U L' U R B2 L' B2 R2 L F R F'\",\"U2 L F2 L' F2 R U L' U R2 L F R F'\",\"U2 R U2 L' U2 L U L' U R2 L F R F'\",\"R U R' U' R L' B2 R B2 R L F R F'\",\"R U R' U R' F2 B2 L2 D2 L2 F' B2 R F'\",\"R U R' U R U2 R' U F2 L F L' U' F\",\"R U R' U R L2 F B' U2 R2 D2 B R F'\",\"U' F' B' U F U' R B' R2 B R B' R B2\",\"U' F' B' U F U2 R2 U R U' R U R B\",\"U F U F' U F U2 F2 U L' U' L F U'\",\"U' F' U L2 U2 L U L' U L U L F U'\",\"U F U F' U F U2 F2 U' F R U' R' U\",\"R U R' U R B L U' L' U B' U R' U\",\"R U B U2 L U L' B' U' B' R B R2 U\",\"R U D R' U R U2 R2 F R F' R D' R'\",\"R U D2 R' U R U2 R2 F R F' R D2 R'\",\"R U D' R' U R U2 R2 F R F' R D R'\",\"R2 L' B D B2 U D' B U' R2 U L F U' F'\",\"R U B U2 L U L' F' U2 F U2 F B' R' F'\",\"R U R' U R U2 F' B U2 F U2 F B' R' F'\",\"R U R' U R U2 F2 B2 L2 F L2 F2 B2 R' F'\",\"R U R' U R U2 F B' D2 F D2 F' B R' F'\",\"D' R U D R' U R U2 R2 F R2 D' R' D F'\",\"R U R' U L F2 R2 D2 B2 R L' D2 F' R F'\",\"R U R' U R D2 L2 B2 L2 U2 D2 R2 F' R F'\",\"R U R' U R D2 L2 B2 R2 U2 D2 L2 F' R F'\",\"B U B' R2 U2 R U R' U R F' U' F2 R F'\",\"R U R' U R' L2 D2 R2 D2 R2 L2 U2 F R F'\",\"R U R' U R2 L' B2 R2 B2 R' L U2 F R F'\",\"R U R' U R' U' D B2 U2 B2 U D' F R F'\",\"R U R' U' R2 D R2 U2 R U2 R2 D' F R F'\",\"R U R' U' R2 D L2 D2 R D2 L2 D' F R F'\",\"R U R' U R' U2 D2 L2 U2 L2 U2 D2 F R F'\",\"R U R' U' R2 D2 R2 U2 R U2 R2 D2 F R F'\",\"R U R' U' R2 D2 L2 D2 R D2 L2 D2 F R F'\",\"R U R' U R' L2 D2 R2 U2 R2 L2 D2 F R F'\",\"R U R' U R' U D' F2 U2 F2 U' D F R F'\",\"R U R' U' R2 D' R2 U2 R U2 R2 D F R F'\",\"R U R' U' R2 D' L2 D2 R D2 L2 D F R F'\"],\"U R U' R'\":[\"U' B U R B' U B R' U' B'\",\"R U R B' D' R D R2 B R' U'\",\"R U B U2 L U L' B' U R' U'\",\"R U R' U F' U2 L' U' L F U\",\"R L' B' U R B R2 B' U' B L\",\"U' F R U' D2 L' B L U D2 R' F'\",\"R B' R B R' B' R' B U B U' B'\",\"R U B U' L' B' U R' U' B L B'\",\"R U B R B' D' R' D B R' U' B'\",\"R U B U' B L' B' L U B' R' U'\",\"L F U' D B' R B U D' F' L' U'\",\"U2 R U' B' U2 B U B' U B R' U'\",\"R U B U' B' U R B' R' B R' U'\",\"R U R' U R' F D R' D' R2 F' U2\",\"R U B' R D B' D' B R' B R' U'\",\"R B' R B U R' B R U' R' B' R'\",\"U' L' B' U B R U R' B' U' B L\",\"U2 F' L' U L U2 F U R U' R' U'\",\"R F2 R2 F2 U R' L F2 L' D R' D' F2\",\"R B' R B R U F R' F' R2 B U' B'\",\"R B2 L' D' B D B U R' U' B L B'\",\"R B' U R B U' L' U R2 U' B L B'\",\"U' B' L' B' L U B2 R U B R' U' B'\",\"B' R' U R F U R U' R2 F' U' R B\",\"B' L' B R U B R B' R2 U' B' L B\",\"R U R2 D' F' R F R D B R' U' B'\",\"U' B U R B' U R' B2 U' L' B L B\",\"R U B R B' R2 B U R' U' R U' B'\",\"U F U R U' F' U' R B U B' R2 U'\",\"R L' B2 L U' L U L' U R B2 R2 U'\",\"R B2 U R D' R D R' D B2 D' R2 U'\",\"U2 L U F U' F L' F U F2 U' F' U2\",\"R L' B' U R B R2 U2 L F U' F' U2\",\"R U R' U F' U F' L F L' U' F U2\",\"R U R' U F R' D' F D F' R F' U2\",\"R U R' U F' U F U' R' F R F' U2\",\"U' B U L U2 L' F' L U L' F B' U\",\"B2 D2 L' F2 D2 R2 D L D' R2 B2 R' U\",\"U' B U L U2 F' U L' B' L F L' U\",\"U2 L U2 R U' L' U L U R' U2 L' U\",\"R L' B2 L B U B2 U' B2 U B R' U'\",\"R U R' U R U B L U' L' U2 B' R'\",\"R U R' U R U2 B' R2 D' R' D B R2\",\"B' U2 L2 F' D2 L' F L' U' B U' B' R\",\"U B U2 F B' D R D' F' U' R' U R\",\"R U2 R2 F D R' D' R2 F' R U' R' U'\",\"R U R2 F R U F' L' U' B' U' B L\",\"R B' R2 D' R' D B R2 U2 R U' R' U'\",\"U F U F' L' U2 R U R' B' U' B L\",\"U F R2 D R D' F' R U R U' R' U'\",\"U2 R U F' U2 F U F' U F U2 R' U'\",\"R B L U2 F U F' U L' B' U R' U'\",\"R B2 L' D2 R D R' D B2 L U R' U'\",\"U2 L U L' U R B2 L' B2 L U R' U'\",\"U2 L F2 L' F2 R U L' U L U R' U'\",\"U2 R U2 L' U2 L U L' U L U R' U'\",\"U' F R D2 B2 R B R' U' B2 U D2 R' F'\",\"R F2 R2 F2 U' L' U2 R' L F2 D R' D' F2\",\"U2 R2 U2 R2 U2 R' U R2 F2 R D R' D' F2\",\"D2 L2 U2 L2 D2 R' U R2 F2 R D R' D' F2\",\"R F' B L2 F' B D' L2 B2 R D R' D' F2\",\"R U B R B' R' B R' U' B U B' U' B'\",\"R U R' B U B R B' U' B R' B' U' B'\",\"R U R' U R U' B2 D B D' R' B2 U' B'\",\"R U R' U F' U' B U' L' U' L F U B'\",\"R U B R' U R' F D R' D' F' R2 U2 B'\",\"R B' R D' R' B U B' D B R' B U' B'\",\"U' B U L B' R B L' B' U R' B U' B'\",\"U' B U L U2 L F2 L' F U F L' U B'\"],\"d U' R' U2 R U2 R' U R d' U\":[\"L2 F2 U F' U' D F' U D' F2 U' F L2\",\"R U' R2 L F2 R2 L' F U F' R' F' U' F'\",\"R B' R B D R D' R U' F' U F' U F2\",\"B' R2 D' R2 B2 L2 U' F2 L2 B' U' F' U2 F\",\"B' R2 U' B2 L2 F2 D' F2 L2 B' U' F' U2 F\",\"L2 F2 D F2 L2 B2 U B R2 B U' F' U2 F\",\"L2 F2 U L2 B2 R2 D B R2 B U' F' U2 F\",\"B L2 F2 D F2 L2 B2 U R2 B U' F' U2 F\",\"B L2 F2 U L2 B2 R2 D R2 B U' F' U2 F\",\"B' R2 B' D' R2 B2 L2 U' F2 L2 U' F' U2 F\",\"B' R2 B' U' B2 L2 F2 D' F2 L2 U' F' U2 F\",\"R U R' U R U2 R' F' U' F U2 F' U2 F\",\"B' R2 B U' L2 B2 D' B2 L2 F2 U' F U2 F\",\"B' R2 B U' L2 B2 U' L2 F2 R2 D' F U2 F\",\"R U R' F2 B L F U L2 U' L B' U2 F\",\"B' R2 B U' F' B2 L2 F2 D' F2 L2 B2 U F\",\"B' R2 B U' F L2 B2 U' L2 F2 R2 U2 D' F\",\"B' R2 B U' F L2 B2 U D2 R2 B2 L2 D F\",\"B' R2 B R2 U F2 B2 D' L2 D' F' D2 F' B2\",\"U' L' B' U B U' B' U' R2 B' R2 B2 L U\",\"U F U F' L' U B' U' R2 B' R2 B2 L U\",\"U' L F2 R' F' R' F' D' F D R' L' U' R'\",\"L2 F2 U F' U' D F' R2 U' R2 U D' F' L2\",\"F D F' U' B U' B' U2 B U F B' R2 D' F'\",\"F2 U F' U' F2 U F U F2 U F' U2 F' U2 F2\",\"U2 L U R' U' F2 U R F2 U' F2 L' F' U' F\",\"F U2 F U2 F' U' L2 D F D' F' L2 F' U' F\",\"B L2 F L2 B' U' L2 D F D' F' L2 F' U' F\",\"F' U2 F' U' R' L F2 R L' U' F2 U' F' U2 F\",\"B' R2 B L2 B2 D' R2 B2 L2 U' F2 U' F' U2 F\",\"B' R2 B L2 B2 U' B2 L2 F2 D' F2 U' F' U2 F\",\"B' R2 B D' L2 B2 R2 U' B2 L2 F2 U' F' U2 F\",\"B' R2 B U' F2 L2 B2 D' B2 L2 F2 U' F' U2 F\",\"F2 U R' L F2 R L' U F U2 F U' F' U2 F\",\"R2 B2 D' L2 B2 R2 U' B L2 F2 B' U' F' U2 F\",\"R2 B2 U' F2 L2 B2 D' B L2 F2 B' U' F' U2 F\",\"B R2 B2 D' L2 B2 R2 U' L2 F2 B' U' F' U2 F\",\"B R2 B2 U' F2 L2 B2 D' L2 F2 B' U' F' U2 F\",\"F2 B L2 D B2 L2 F2 U B2 R2 B' U' F' U2 F\",\"F2 B L2 U R2 B2 L2 D B2 R2 B' U' F' U2 F\",\"B' R2 B D' R2 B2 L2 U' F2 L2 B2 U' F' U2 F\",\"B' R2 B U' B2 L2 F2 D' F2 L2 B2 U' F' U2 F\",\"B' R2 L2 B2 D' R2 B2 L2 U' F2 B U' F' U2 F\",\"B' R2 L2 B2 U' B2 L2 F2 D' F2 B U' F' U2 F\",\"B' R2 D' L2 B2 R2 U' B2 L2 F2 B U' F' U2 F\",\"B' R2 U' F2 L2 B2 D' B2 L2 F2 B U' F' U2 F\",\"B' U F2 B2 D' L2 D F2 B2 U' B U' F' U2 F\",\"B' D R2 L2 U' R2 U R2 L2 D' B U' F' U2 F\",\"F2 L2 B2 D B2 L2 F2 U B' R2 B U' F' U2 F\",\"B2 L2 F2 D F2 L2 B2 U B' R2 B U' F' U2 F\",\"B2 L2 F2 U L2 B2 R2 D B' R2 B U' F' U2 F\",\"F2 L2 B2 U R2 B2 L2 D B' R2 B U' F' U2 F\",\"F2 D F2 L2 B2 U B2 L2 B' R2 B U' F' U2 F\",\"F2 U L2 B2 R2 D B2 L2 B' R2 B U' F' U2 F\",\"B' L2 F2 D F2 L2 B2 U B2 R2 B U' F' U2 F\",\"B' L2 F2 U L2 B2 R2 D B2 R2 B U' F' U2 F\",\"F2 B' L2 B2 D B2 L2 F2 U R2 B U' F' U2 F\",\"R2 B' D' F' D' F2 D F D R2 B U' F' U2 F\",\"F2 B' L2 B2 U R2 B2 L2 D R2 B U' F' U2 F\",\"B' R2 B2 D' R2 B2 L2 U' F2 L2 B U' F' U2 F\",\"B' R2 B2 U' B2 L2 F2 D' F2 L2 B U' F' U2 F\",\"F2 B' D F2 L2 B2 U B2 R2 L2 B U' F' U2 F\",\"F2 B' U L2 B2 R2 D B2 R2 L2 B U' F' U2 F\",\"U F' U F R U2 R' U' R U' R' U' F' U2 F\",\"F2 B L2 B' D B2 L2 F2 U B2 R2 U' F' U2 F\",\"F2 B L2 B' U R2 B2 L2 D B2 R2 U' F' U2 F\",\"B' R2 D' F' D' F2 D F D B R2 U' F' U2 F\",\"B' R2 B U' F2 L2 B2 U' L2 F2 R2 D' F' U2 F\",\"B' R2 B U' B2 L2 F2 U' R2 F2 L2 D' F' U2 F\",\"B' R2 U' B2 L' D' B' L2 F2 U' F2 L' F' U2 F\",\"B' R2 B U' B2 D' B2 L2 F2 U' F2 L2 F' U2 F\",\"B' R2 B U' B2 U' L2 F2 R2 D' F2 L2 F' U2 F\",\"U' R2 L2 D F L2 B2 L2 F' D' R2 L2 F' U2 F\",\"U' R2 L2 D B D2 B2 D2 B' D' R2 L2 F' U2 F\",\"F' U2 F U' F2 U' F' U' F U F U F U F\"],\"U' R U R' U2 R U' R'\":[\"R U R' D B U' B' U2 B U' B' U2 D'\",\"R U R' U2 D' F U' F' U2 F U' F' D\",\"U' L' B R' B D' B' R B' L2 U' F2 L' U2\",\"B2 D2 L' F2 D2 R2 D L D' R2 B2 U' R' U\",\"R U R' U F' U2 L' U' L F R U' R' U\",\"R U R' U' D2 L U' L' U2 L U' L' U' D2\",\"R U R' U R U' R' U2 R' F D R' D' R2 F'\",\"R U R' U R U' R' U2 F' U2 L' U' L F U'\",\"R U R' U F' U2 L' U' L U2 L' U' L F U'\",\"U' R' U R' U R' U' R2 U R' U2 R2 U2 R' U'\",\"R U B U2 B' U2 R2 F' U F R B U' B' U2\",\"U' B U B' U B U' R B' U2 B R' U' B' U2\",\"B' U' B2 L' B' R' B D' B' R L2 U' F2 L' U2\",\"U' R' L D R F' L2 U R2 B2 R2 L U' F' U\",\"R2 F2 U' R' F' U F' R' U2 R2 F R U F U\",\"B2 L2 B2 U' F2 L F2 U L U' L' B2 L2 B2 U\",\"R U R' U2 R U' B' U' B U' B' U2 B R' U\",\"U' B U R B' U B R' U' B' U' R U' R' U\",\"R U R B' D' R D R2 B R' U2 R U' R' U\",\"R U B U2 L U L' B' U R' U2 R U' R' U\",\"R U R' U R U R L' B2 R' B2 L U' R' U\",\"R U L' B U' B2 U B2 U' B' U L U R' U\",\"R U R' U R U' L' B2 R B2 R' L U R' U\",\"U' F R U' L2 B R2 D2 R2 L B' U' R' L U\",\"R U R' D R' U2 F' U' F R B U' B' U2 D'\",\"R U R' D R' U2 F' U' F U2 F' U' F R D'\",\"R U R' D B U' B' U2 R' U2 F' U' F R D'\",\"U2 D2 L U L' U L2 D F2 D' L' U2 L' U' D2\",\"R U R' U2 D' L' U2 B' U' B L F U' F' D\",\"R U B U2 B' U2 R2 F' U F U2 F' U' F R\",\"U' R' L' B D2 B' L2 F R F2 U F' L F L2\",\"R U' R' D R U2 R' U2 D' F U' F' U2 F U' F'\",\"R U B U2 B' U2 R' U2 L' B' U B L F U' F'\",\"R L' B' U R B R2 U2 F' U' F U2 L F U' F'\",\"R U B U2 B' U2 R' F U F' L' U2 L F U' F'\",\"R' F R' D2 F2 U R' U' R F2 D2 F' R' F R2 F'\",\"F D B' R B D' R B2 L B R B' L' B2 R2 F'\",\"U F' U' L2 U2 L2 F2 U2 L' F L' D' L2 U2 D F'\",\"R U R' U R U' R' U2 F R' D' F D F' R F'\",\"R U R' U F' U2 F U' R' F' U' F U F R F'\",\"R U R' U R U' R' U2 F' U F U' R' F R F'\",\"R U R' U F' U2 L' U' L U F U' R' F R F'\",\"F D B' R B D' R2 D2 R' B' R B R D2 R F'\",\"R2 U2 D' F2 R F2 R' L2 U' L2 F2 R' U' F2 D F2\",\"U' D B U2 B U2 R B' D2 F L2 F L' U' D F2\",\"R U R' U R U' R' U2 F' U F' L F L' U' F\",\"R U R' U F' U2 L' U' L U F' L F L' U' F\",\"L2 F2 B L B' L' F2 L' F L' B D' L D F' B'\",\"B R B' U B R' U B2 D B U B' D' B2 U2 B'\",\"F' B U L U' L U L' U' L2 U L' U' L F B'\",\"B R B' U B R' U2 R2 U' B' U B U R2 U B'\",\"F2 U2 R' F2 U2 L2 U R U' L2 B2 D' L' D F2 B2\",\"F2 B2 L D L' D L D' L' D2 L D' L' D F2 B2\",\"U' B2 D' B U2 F R' U' F' R2 B' D' R F D2 B2\",\"U L F2 U2 L D L2 U2 L F2 L' U2 B2 U R2 B2\",\"F B' D R D' R D R' D' R2 D R' D' R F' B\",\"F2 U2 R' F2 R U' B' U2 L' U L F2 R U' R' B\",\"R U R' B L F2 U2 F2 U F2 U F2 U L' B' U'\",\"U' R' L' B D2 B' L2 F R F2 U2 L2 B L B' U'\",\"U' R' B2 U R' U2 R U2 R' U' B2 R2 U2 B2 R' U'\",\"U' R' U2 R' F' R' F R' F' R2 F U2 R2 U2 R' U'\",\"U' R L2 D R' D R' D' R2 D R' D2 L2 U2 R' U'\",\"U' L' B R' B R' B' R2 B R' B2 R L U2 R' U'\",\"U' R' U R' U R' U' R2 U R2 L F2 R2 F2 L' U'\",\"R U R' U2 L' U' R U' R' L U' F2 L F2 L' U'\",\"R U R' U' L U2 R U L' U' R' U' L U' L' U'\",\"U2 L U L' U R L U' L' U2 L U R' U2 L' U'\",\"U F2 R2 F U2 F' R2 F2 L' B' R2 B' R B2 L U'\",\"U B2 L2 F D2 F' L2 B2 L' B' R2 B' R B2 L U'\",\"U' R' U' F U R F U F' U' F' R U' R' F' U2\",\"U' R' U R' U R' U' R2 U L' B2 R2 B2 R2 L U'\",\"R U' R' D' R U2 R' D B U' B' U2 B U' B' U2\",\"U2 R U2 R' B2 U' R B2 L U L' B2 R' U B2 U2\",\"B2 D2 F2 L' D' L2 B2 U' B2 D L2 F2 D2 B2 R' U2\"],\"d' U F' L' U' L U F U' L' U L d U'\":[\"U R B U2 B' U' R2 F' U' F U R U2\",\"R U F R U R' U' F' R' F' U2 F U\",\"R U' B L U L' B' R' U2 F' U F U\",\"R U2 R' L F' U F U' L' F' U F U\",\"R2 B U B' U' R2 U2 F' L' U L F U\",\"U F2 U' F2 R U' L' B' U2 B R' U L F2\",\"R' D' F2 R' D2 B2 L' B2 D' R2 F' U2 F U'\",\"B R L U L' U' R' F2 D' L D F2 B' U'\",\"B' R2 B U B' U' R' U R F R2 F' B U'\",\"R U F R B' R' F' B U' B U B' R' U'\",\"R2 L' B D B D' B2 R' L B U B' R' U'\",\"R B U' L U L' U L' B' R' B L B' U'\",\"R U2 L F U F' U' L' U' R' F' U2 F U\",\"R U' B L U L' U' B' U2 R' F' U2 F U\",\"B R2 B U B' U' R' U R' F' B' U2 F U\",\"B2 R2 B U B' U' R' U R' F' B2 U2 F U\",\"B' R2 B U B' U' R' U R' F' B U2 F U\",\"F' L' F' L F' L' D' L D F2 L U2 F U\",\"R2 L' B' R' U' B U R' L U2 F' U F U\",\"R B U R' F R B' R' F' U F' U F U\",\"R U F R B' R' F' B U R' F' U F U\",\"U2 R' L F2 R F U F U' L' F' U F U\",\"R U2 L U2 B U B' R' U L' F' U F U\",\"U2 F' R' U' R' F2 R F U F R U F U\",\"U2 F' L' U B' U' R' U' R U2 B L F U\",\"B' R2 B D L' U' B' U B R B2 R' L D'\",\"U2 B L B' R B U L' B' R' U' R U2 R'\",\"U2 R B U2 B' R2 L D' F2 D R2 L' U2 R'\",\"R B U2 F U F' U' B' R' F' U2 L F L'\",\"R2 L' B D B2 D' R' B R' B' U' B U L\",\"U R B U2 B' U' R' U2 L' B' U' B U L\",\"R B U2 F' L F U2 L' B' R' U' L' U L\",\"F' R' F2 R U2 F' U' R U' R' L F L' U F2\",\"U R U' F R' F D' F U B L F' B' D F2\",\"U R' L2 D R2 L2 U R L2 B2 R2 L2 F U F\",\"R B U' L U L' U2 B' R' F' U' L' U' L F\",\"U R U2 F' L' U' L U F R' F' L' U L F\",\"U R B' R' U' R U B U2 R' F' L' U L F\",\"L U F2 U' L' F' U F U F U F U' F' U'\",\"B' R2 B U F B' R2 B' D' R' D R F' B2 U'\",\"F' B2 D2 F2 L F L' F' U' F' U D2 F B2 U'\",\"R2 B U B' U' R' U R' B' R2 F R2 F' B U'\",\"B' R U F R U R' U' F' R F R2 F' B U'\",\"R B2 L' F2 B D' B' D F2 L B' U B' R' U'\",\"R2 U R B' R' U' R' U B U' B U B' R' U'\",\"R2 B L' B' R' B L U' L U L' U B' R' U'\",\"U R U' B' U' B2 L U L' B' R' B' U B U'\",\"U R B U2 B' U' R' U' B' R' U' R U B U'\",\"L F' L' F' U' F U B L2 F L' F L' B' U'\",\"B L F' L' F' U' F U L2 F L' F L' B' U'\",\"R2 B U B' U' R' B U2 L U2 L' B' U R' U'\",\"B' R2 B U' F' U' L' U L U2 F B' R2 B U'\",\"B' R2 B U' F' U' F U2 R U R' B' R2 B U'\",\"B' R2 B U' F' U' L' U L B U2 F B' R2 U'\",\"L D R2 U2 R' U R' U2 D' F U F U L' U'\",\"L' F' U L B L B' U F U2 F' L' F L U'\",\"L' B' R U B U B' R F R2 F' U' B L U'\",\"U' B2 D' R D B U' F R' F' U2 R U B U2\",\"R U F R B' R' F' B R B' R' B U R' U2\",\"R U R B' R' B R L' B' R' B L U R' U2\",\"R U F R B' R' F' B R' U F R' F' R U2\",\"R U R' U F R' L2 D R' D' R L2 F' R U2\",\"U L U' L F L' F' U2 R' F' R F2 U' L' U2\",\"U2 F' R' U' F R F R2 D' F' D R U R U2\",\"R U D F R U R' U' F' D' R' F' U2 F U\",\"R D R B U B' U' R' U D' R' F' U2 F U\",\"R U D2 F R U R' U' F' D2 R' F' U2 F U\",\"R D2 R B U B' U' R' U D2 R' F' U2 F U\",\"R U D' F R U R' U' F' D R' F' U2 F U\",\"R D' R B U B' U' R' U D R' F' U2 F U\",\"R2 B L' U' B' U B L U B' R2 F' U2 F U\",\"B R U F R U R' U' F' R' F' B' U2 F U\",\"B2 R U F R U R' U' F' R' F' B2 U2 F U\",\"B' R U F R U R' U' F' R' F' B U2 F U\"],\"U' R U2 R' U2 R U' R'\":[\"R U R' U R2 B' R' B R' F' U2 F U2\",\"R U R' U R U' R2 L F2 R F2 L' U\",\"R U R' U R U' L' B2 R B2 R2 L U\",\"F2 L F' R L2 B U' L U L2 B' R' L2 F'\",\"F2 L F' R L2 B2 L2 D L D' B2 R' L2 F'\",\"R U R' U B' R2 F R2 F' R' F R F' B\",\"R U R' U F' U2 F U2 B' R' F R F' B\",\"R U R' U2 F R' F' R2 U' R' F' U2 F U2\",\"R U R' U R B U2 B' R' F R' F' R U2\",\"B2 D2 L' F2 D2 R2 D L D' R2 B2 U2 R' U\",\"R U R' U F' U2 L' U' L F R U2 R' U\",\"R U R U R2 U R2 U' R' U R U2 R2 U\",\"R U R D B2 U B2 D' R' U R U2 R2 U\",\"R U L' B U' B2 U B2 U' B' U R' L U\",\"R U R' U R U' R L2 D2 R D2 R L2 U\",\"R U R' U2 F2 R F2 L' U' R U' R2 L U\",\"F2 L F' L' U2 R' L' U L U' R L' U2 L F'\",\"R U R' U R2 B' R' B R' B' R2 F R2 F' B\",\"R U R' U F' R' F R' B' D2 F D2 R2 F' B\",\"R U R' U R U' R' U2 L F2 R' F2 R L' U'\",\"R' U' F U R2 U' R B2 L' D' L B2 R2 F' U2\",\"R U R' U F' R' F R' F' R2 B U2 F B' U2\",\"R U R' U F' U2 B L2 F' L' F L' F B' U2\",\"R U R' U R2 L' D B2 D' R' U R' U' L U2\",\"R U R' U L U F2 U' R' D R' D' R2 L' U2\",\"R U R' U L2 F' R' F R' B' D2 B R2 L2 U2\",\"R U R' U L F' R' F2 R F2 R' F' R L' U2\",\"R U R' U2 F2 D' L D' R' B2 R D2 L' F2 U\",\"R U R' U2 B2 U' R U' L' B2 L U2 R' B2 U\",\"U' B U R B' U B R' U' B' U' R U2 R' U\",\"R U R B' D' R D R2 B R' U2 R U2 R' U\",\"R U B U2 L U L' B' U R' U2 R U2 R' U\",\"R U R' U R U R L' B2 R' B2 L U2 R' U\",\"R U2 R' F' R2 D R2 D' F2 U F' R2 U2 R2 U\",\"R U R D R' U R' D' F2 U F2 R2 U2 R2 U\",\"R U L' B2 R B2 R' U' L U' L' U2 R' L U\",\"R U R' U2 R U2 L' U' L U' L' U2 R' L U\",\"R U L' B U2 D L2 U L2 D' B' U R' L U\",\"R U L' B D' R2 U R2 U2 D B' U R' L U\",\"R U L' B U' B2 U R D B' D' B2 R2 L U\",\"F2 L F' L' U B' U F U2 R' U R F' B U' F'\",\"R U R2 U' R' B R U2 R' F B' R U R U' F'\",\"R U R' U R F' U2 F U2 F R' F' R' F R F'\",\"R U R' U R B' R2 F R2 B R' F' R' F R F'\",\"F2 L F' R' L2 U' R L U2 R' U' R L' U2 L F'\",\"F2 L F' L' U2 L' U F' L U' L' U F U L F'\",\"F2 B' U F' U' B2 L' F L2 F' L B' U F U' F2\",\"F2 L F' L B2 R2 D2 R' L' D' L D' B2 R' L2 F'\",\"F2 U' L' U R2 L U2 F R2 F' U' B U' B' R2 F2\",\"U F2 B D' L' D B' R2 U' F L F' L' U R2 F2\",\"F2 D2 L U R' U2 R L' U B2 D L U' L2 D F2\",\"R U R' U R2 B' R' B R' F2 B L2 F L2 F B'\",\"U2 B U2 B' R U2 R2 U' L' U R U' L B U B'\",\"U B R2 U R' U' B' U2 R U2 R' U2 B U' R' B'\",\"R U R' U R2 B' R' B R' F B2 D2 F D2 F2 B2\",\"U L U2 L' B' R U' B2 U R' B2 R U' B R' B2\",\"R U R' U2 F R' F' R2 U' R' B' R2 F R2 F' B\",\"R U2 R' B' R2 F R2 F' R2 F2 D' F' D R2 F' B\",\"R U2 R' F' U2 F U2 B' R2 F2 D' F' D R2 F' B\",\"R U2 R' B' R2 F R2 F' R' U F' U' F2 R F' B\",\"R U2 R' F' U2 F U2 B' R' U F' U' F2 R F' B\",\"R U R' U F2 B L2 F L2 F B2 R' F R F' B\",\"R U R' U F B2 D2 F D2 F2 B R' F R F' B\",\"R U R' U B' R2 F D B R' B' R2 D' R F' B\",\"R B' U' F U' B U F' R' U R U2 R' B' U2 B\",\"B' R F U R2 U' D' F D F U2 F2 R2 F' R B\",\"R' U' B' R2 B U2 B' R2 B U R2 B U B' R' U'\",\"R U R' U2 L F2 R' D' L D' L' D2 F2 R L' U'\",\"U' B U L U2 F' U L' B' L F' R' F2 R L' U'\",\"R U R' U2 F2 L D2 R' D' R D' R' F2 R L' U'\",\"R U R' U R U' R' U2 R' L2 D2 R' D2 R2 L2 U'\",\"R U R' U F' U' R B2 L' B' L B' R' U' F U2\",\"R U R' U2 F R' D R' D' R2 F' U' F' U2 F U2\",\"R U R' U R U' R' U2 R2 L' B2 R' B2 R' L U'\",\"R U2 R' F' U F' L F' R' F' R F' L' U F U2\"],\"d U' R' U' R U2 R' U R d' U\":[\"F' U2 F U' F2 U' F' U' F U F U F2\",\"B' R2 B U' F' B2 L2 F2 D' F2 L2 F B2\",\"B' R2 B U' F' U L2 B2 U' B2 L2 F2 D' F'\",\"B' R2 B U' F' U L2 B2 D' R2 B2 L2 U' F'\",\"B' R2 B U' F' U D' L2 B2 R2 U' B2 L2 F'\",\"B' R2 D' R2 B2 L2 U' F2 L2 B' U' F' U F\",\"B' R2 U' B2 L2 F2 D' F2 L2 B' U' F' U F\",\"L2 F2 D F2 L2 B2 U B R2 B U' F' U F\",\"L2 F2 U L2 B2 R2 D B R2 B U' F' U F\",\"B L2 F2 D F2 L2 B2 U R2 B U' F' U F\",\"B L2 F2 U L2 B2 R2 D R2 B U' F' U F\",\"B' R2 B' D' R2 B2 L2 U' F2 L2 U' F' U F\",\"B' R2 B' U' B2 L2 F2 D' F2 L2 U' F' U F\",\"R U R' U R U2 R' F' U' F U2 F' U F\",\"B' R2 B U' L2 B2 D' B2 L2 F2 U' F U F\",\"B' R2 B U' L2 B2 U' L2 F2 R2 D' F U F\",\"R U R' F2 B L F U L2 U' L B' U F\",\"B' R2 B U' F L2 B2 U' L2 F2 R2 U D' F\",\"R U B U F' L U' L2 U B L F B2 R'\",\"R U B U B' U2 B U' B' R' U2 R U R'\",\"F U2 F L2 F D F L2 B2 U R2 F B2 U2 F'\",\"B' R2 B U' F U' D F2 L2 D' L2 F2 U D' F'\",\"F' U2 F' B' R2 B' D' F R2 B2 U' F2 L2 U2 F'\",\"B' R2 B U' F U D' B2 R2 D' R2 B2 U' D F'\",\"B' R2 B U' F L2 B2 D' F2 R2 L2 F2 B2 R2 F'\",\"B' R2 B U' F U2 D2 R2 F2 D' F2 R2 U2 D2 F'\",\"B' R2 B U' F L' U B' U' B2 L' D' B' L2 F'\",\"B' R2 B U' L2 F2 B2 R2 F R2 F2 D' B2 L2 F'\",\"B' R2 B U' R2 F2 B2 L2 F R2 F2 D' B2 L2 F'\",\"B' R2 B U' F R2 F2 B2 R2 L2 F2 D' B2 L2 F'\",\"R2 F' B U2 B' U2 F U' F L2 B2 D' B2 L2 F'\",\"F' U2 B U2 F B' R2 U' F L2 B2 D' B2 L2 F'\",\"B' R2 B U' B' L2 F2 U2 F' B' U2 D' B2 L2 F'\",\"B' R2 B U' F2 U L' B2 U' B2 L2 F' D' L' F'\",\"B' R2 B U' B D2 B2 D2 F B' L2 D' B2 L2 F'\",\"B' R2 B U' F' U' D R2 F2 L2 U D2 B2 L2 F'\",\"B' R2 B U' F2 B L2 F2 D2 F B D B2 L2 F'\",\"B' R2 B U' F' U2 D2 B2 R2 F2 U2 D B2 L2 F'\",\"B' R2 B U' F L2 U' D L2 D' L2 U D' L2 F'\",\"F B' D2 F2 U F U' F2 B2 U B2 D2 B U' F2\",\"B' R2 B U' F L2 U2 D2 F2 D' F2 U2 D2 L2 F'\",\"B' R2 B U' F L2 U D' R2 D' R2 U' D L2 F'\",\"B' R2 B U' F2 L' B L2 F' D F L B' L2 F2\",\"U2 L U R' U' F2 U R F2 U' F2 L' F' U2 F\",\"F U2 F U2 F' U' L2 D F D' F' L2 F' U2 F\",\"B L2 F L2 B' U' L2 D F D' F' L2 F' U2 F\",\"F' U2 F' U' R' L F2 R L' U' F2 U' F' U F\",\"B' R2 B L2 B2 D' R2 B2 L2 U' F2 U' F' U F\",\"B' R2 B L2 B2 U' B2 L2 F2 D' F2 U' F' U F\",\"B' R2 B D' L2 B2 R2 U' B2 L2 F2 U' F' U F\",\"B' R2 B U' F2 L2 B2 D' B2 L2 F2 U' F' U F\",\"F2 U R' L F2 R L' U F U2 F U' F' U F\",\"R2 B2 D' L2 B2 R2 U' B L2 F2 B' U' F' U F\",\"R2 B2 U' F2 L2 B2 D' B L2 F2 B' U' F' U F\",\"B R2 B2 D' L2 B2 R2 U' L2 F2 B' U' F' U F\",\"B R2 B2 U' F2 L2 B2 D' L2 F2 B' U' F' U F\",\"F2 B L2 D B2 L2 F2 U B2 R2 B' U' F' U F\",\"F2 B L2 U R2 B2 L2 D B2 R2 B' U' F' U F\",\"B' R2 B D' R2 B2 L2 U' F2 L2 B2 U' F' U F\",\"B' R2 B U' B2 L2 F2 D' F2 L2 B2 U' F' U F\",\"B' R2 L2 B2 D' R2 B2 L2 U' F2 B U' F' U F\",\"B' R2 L2 B2 U' B2 L2 F2 D' F2 B U' F' U F\",\"B' R2 D' L2 B2 R2 U' B2 L2 F2 B U' F' U F\",\"B' R2 U' F2 L2 B2 D' B2 L2 F2 B U' F' U F\",\"B' U F2 B2 D' L2 D F2 B2 U' B U' F' U F\",\"B' D R2 L2 U' R2 U R2 L2 D' B U' F' U F\",\"F2 L2 B2 D B2 L2 F2 U B' R2 B U' F' U F\",\"B2 L2 F2 D F2 L2 B2 U B' R2 B U' F' U F\",\"B2 L2 F2 U L2 B2 R2 D B' R2 B U' F' U F\",\"F2 L2 B2 U R2 B2 L2 D B' R2 B U' F' U F\",\"F2 D F2 L2 B2 U B2 L2 B' R2 B U' F' U F\",\"F2 U L2 B2 R2 D B2 L2 B' R2 B U' F' U F\",\"B' L2 F2 D F2 L2 B2 U B2 R2 B U' F' U F\",\"B' L2 F2 U L2 B2 R2 D B2 R2 B U' F' U F\"],\"U F R U R' U' F' U R U' R'\":[\"R U R' U R U' R' U2 R U B U' B' R'\",\"U' B L2 D F' D' L2 U' F' L' U' L F U B'\",\"R U R' U R U' R' U' F U R U' R' F' U'\",\"U' F U2 F U' F' U F' U2 F' U R U' R' U'\",\"R U R' U R F' B L' B L F B2 U' R' U2\",\"U F' U' F2 U2 F2 U' R' F2 R U F2 U2 F' U\",\"R U R' U R U' R' U B U L U' L' B' U\",\"U' F' R B2 L2 B R' F R2 D B' L2 B2 R2 U F2\",\"F2 U2 F U2 F L' U' R U B U2 B' R' L U F2\",\"R B' R2 D2 F D2 R' D' F' D F B R2 F2 U F\",\"F' U2 F U F2 U' L2 U' F2 U F2 U L' F L' F\",\"F' U2 F U F2 U' L2 D' L2 U L2 D L' F L' F\",\"F' U2 F U F2 D' B2 D' B2 D L2 D L' F L' F\",\"F' U2 F R2 D' L2 D' L2 D2 R2 F2 U L F L' F\",\"U' B L2 D F' D' L2 U' F' U2 F R U' R' U' B'\",\"R' U B U2 R' B' R2 B L F R2 F' R L' U' B'\",\"B2 D2 B' L2 F L2 U' F2 U B' L' B2 D2 F2 R' B2\",\"B2 D2 B' L2 F L2 U' F2 U B' R' U2 B2 D2 L' B2\",\"U' F U' F L' B L F' L2 B' L2 U2 F' U' F' U'\",\"R U R' U R2 B' R B R' U' R' U' F R' F' U'\",\"R U2 R2 U R2 U' R F' U F R U F R' F' U'\",\"R U R2 U' F U R L' U R U' L U' R' F' U'\",\"R L' D B' U B D' L U R2 F R2 U2 R' F' U'\",\"R U R' B R' U' F U R B' U R U2 R' F' U'\",\"R U R' B L U R U' R' F' L F L2 U' B' U'\",\"U2 F R2 B2 R F' R' B R' B U' B U' B' R' U'\",\"R U L' F R' B2 R B2 U R U' F' L U2 R' U'\",\"R U L' B U' B2 U B2 L U L' B' L U2 R' U'\",\"R2 B R U2 R' B R' U B2 U' D' R D B2 R2 U'\",\"U' F' U L' U2 R L B' R D2 F D2 R2 F B U2\",\"B D R2 F U' R' U F' R2 L' U L U' D' B' U2\",\"L F U' D B' R B U D' F' U F U' F' L' U2\",\"R U R' L U B' R U' R' U F B U' F' L' U2\",\"L F R' F R F' R' D' L' F L D R F' L' U2\",\"U F' U2 D R2 U2 R2 D' R' F2 R U F2 U2 F' U\",\"U F' D' L2 U2 L2 U2 D R' F2 R U F2 U2 F' U\",\"U2 L F2 U F U' D F D2 L2 U' L' D L2 F U\",\"R U2 R' B' R U' R2 U' R U2 R U2 R' U2 B U\",\"R U2 R' B' R U' R2 U' L F2 R F2 L' U2 B U\",\"U' B L2 D F' D' L B' R B L U' B' U' R' U\",\"U2 F2 U2 F U2 F U R' F' R F U2 R U' R' U\",\"U2 R' U B U' B' R' U R' U2 R' U2 B' R B U\",\"L U L F2 U' F' R2 L' B2 L' D2 B D B R2 U\",\"L2 F L' U2 L F2 L' U2 L F' U F' U' F L2 U\",\"R F U R U' F' U2 R' L' F D2 B' D2 F' L U\",\"R F U R U' F' U2 R' L' B R2 B' R2 B' L U\",\"U2 D B U2 B2 U' D' R' U R' B U B' D B D'\",\"R U R' U R U' R' U2 D R U B U' B' R' D'\",\"R U R' U R U' R' D L U F U' F' L' U2 D'\",\"R U R' U R U' R' D2 L U F U' F' L' U2 D2\",\"R U R' U R U' R' U2 D2 R U B U' B' R' D2\",\"R U R' U R U' R' D' L U F U' F' L' U2 D\",\"R U R' U R U' R' U2 D' R U B U' B' R' D\",\"R U R' U R F' B U L U2 L' U' F U' B' R'\",\"R U R' U R2 U R2 U' R F' B U2 F U' B' R'\",\"R U R' D B2 U B2 D' R F' B U2 F U' B' R'\",\"B2 D2 L' F2 D2 R2 D L D' R2 B2 U B U' B' R'\",\"R U R' U F' U2 L' U' L F R U B U' B' R'\",\"L U' R F' L2 D' B D L2 F L' U B U2 B' R'\",\"R U R' U F' U' R B R' U' F U R U2 B' R'\",\"R U R' B L' B' R B U' B' U B L U2 B' R'\",\"R U L' B U' B' L B L' B' U B L U2 B' R'\",\"R U B R U R' F' U L' U2 L U F U B' R'\",\"R U R' U R2 U R2 U' R' F R2 F' B U B' R'\",\"R U R' D B2 U B2 D' R' F R2 F' B U B' R'\",\"R U R' B U B' R' U F' U' F R2 B U B' R'\",\"R U B R U R' B' R U' R2 U R B U B' R'\",\"R U R' B R' U2 R U B U B' U R U B' R'\",\"R U B U F U F' R' F U' F2 U F R B' R'\",\"R U2 B U' L' U' B' U B' L B2 R' U2 R B' R'\",\"R U R' U R B U' L' B2 L B2 R' U2 R B' R'\",\"R U R' U R B U' R' U2 L U2 L' U2 R B' R'\",\"R U R' U R B U' R' U2 R B2 L' B2 L B' R'\",\"R U B U' L' B' U B U' B' U2 B U L B' R'\",\"R' U R B' R2 B' L' B' L2 U2 L' U B2 R2 B R'\"],\"U R U R' U2 R U R'\":[\"R U R' U R U R' U2 R U' R' U'\",\"R D B' U B U B' U2 B D' R' U'\",\"U2 F' L2 U' D' B' U B D L2 F U\",\"B' U F D R2 D' F' U2 F' U' F U' B\",\"B' R2 D' B U' F' U F B' D R2 B U'\",\"D2 B' R2 U' D' F' U F D R2 B U' D2\",\"U' D' L' B2 U' D' R' U R D B2 L D\",\"U' L' B2 D' L' U' R' U R L D B2 L\",\"R U R' F R U' D2 L' B2 L U D2 R' F'\",\"R B2 R2 L' D L' D' F2 R' D' B2 R2 L2 F2\",\"R B2 R2 L' D L' D' F2 R' D' F2 R2 L2 B2\",\"B' R2 B U B' U' R2 U F D R2 D' F' B\",\"R U2 R' F' R' U L' U' R L2 F' L' F2 U'\",\"R2 B R U D B' U B U2 D' R' B' R2 U'\",\"R2 B R' U D B' U B U2 D' R B' R2 U'\",\"R2 U F' R' U R U R' U2 R F U' R2 U'\",\"R2 D R' B' U B U B' U2 B R D' R2 U'\",\"R U' D2 L' U L U L' U2 L U D2 R' U'\",\"R U2 D' F' U F U F' U2 F U2 D R' U'\",\"U R' U' R2 B2 L U L' U' B2 R2 U R U2\",\"U2 F' L2 U' D' B' U L B L2 D F L' U\",\"U' D B U B' U B U B' U2 B U' B' D'\",\"U' D B D L' U L U L' U2 L D' B' D'\",\"U D R' F2 U' D' L' U L D F2 R U2 D'\",\"R F' L' F B2 U' B2 U F' B2 L F U R'\",\"R B' R B D L' B2 L D' B' R' B U R'\",\"R B' U B U B' U2 B D' R' U' R D R'\",\"R U2 R F2 R2 F2 U' F2 R' D R' D' F2 R2\",\"U' R' F2 B2 D2 L D L D' L2 D2 F2 B2 R\",\"R U R' L' B' U B R U2 R' B' U' B L\",\"U2 F' L2 U' D' B' U B L' D F L2 U L\",\"U' F2 R2 F2 U' R2 F' U' B U' B' U' F' R2 F2\",\"U2 R' U' R' U' R U2 R F2 R2 F2 U' F2 R2 F2\",\"U F2 R2 B U B' U F R2 F U F2 U R2 F2\",\"U' F2 L F2 B2 L2 U' R U R' L2 F2 B2 L' F2\",\"R U B U B' U2 B U' B' U' R' U' F' U2 F\",\"R2 B U' D2 F' L2 F U D2 B' R2 U' F' U2 F\",\"R L U B L' U2 L B' U' R' L' U' F' U2 F\",\"U' F2 L F2 B2 L2 U' R U R F2 B2 R2 L F2\",\"U' F' R B2 D F L U L' U' F' D' B2 R' F\",\"F' U' F U' F U R' U' R F2 U' R' U2 R F\",\"U' F' L U2 B D L F L' F' D' B' U2 L' F\",\"R2 U R2 F D' B R2 U' D B' U F D' F2 B'\",\"R U B R2 U F R' F' R' B' U2 B R' U' B'\",\"R U R' B' L' B' L U B2 R U2 B R' U' B'\",\"U2 B L' B D F D' F' B' L2 U' F U L' B'\",\"U' L' B2 D' L' U' R' U L B R B2 D L B'\",\"L' B2 R2 B2 L' D F2 R2 L' U L F2 L2 U B2\",\"U2 R' U' R' U' R U2 R B2 R2 B2 U' B2 R2 B2\",\"B' R B U F B' R F' U F R F' R' U' B\",\"B' U F D R2 D' F' R B U' B' U2 R' U' B\",\"B' U' F L' B2 U' R2 B' R2 U B2 L F' U B\",\"R U' R' U B' R' F B' R2 F' R' B R U2 B\",\"R U' R' B' U2 R' F' U' F B' R B R U2 B\",\"U' B' L U D2 B' L' U L U' B U' D2 L' B\",\"R U R' B U R B' U2 R' B2 U' L' B L B\",\"B U2 F2 D' F U' B' U F' B D F2 U2 B' U'\",\"B U2 F' B' L' B U' B' U L F B U2 B' U'\",\"F' B2 L2 F2 R' B D' B' D R F2 L2 F B2 U'\",\"B U2 L2 U2 R U' F U F' R' U2 L2 U2 B' U'\",\"F' R2 B2 R' L2 B D' B' D R L2 B2 R2 F U'\",\"B' U2 L2 F2 L' U' B U B' L F2 L2 U2 B U'\",\"B R2 B2 U2 L U' B U B' L' U2 B2 R2 B' U'\",\"R2 D B2 R' L U' R B2 L' D' R' U' B2 R' U'\",\"B' R B' U R' B U B' U' R U' B R' B U'\",\"B' R B' D B' L U L' U' B D' B R' B U'\",\"B' R B' R B U' F' U F B' R' B R' B U'\",\"R2 B' L' B R' B' L U B U B' U2 B R' U'\",\"B' R2 F' B R' F U' F' U R F B' R2 B U'\",\"R B' U2 D' F' U' B U F B' U2 D B R' U'\",\"B' R2 D' B U' F' U B' R F R2 D B R' U'\",\"R B' R B R U' F' U F R' B' R' B R' U'\",\"B' R2 U' L D' F' U F U' D L' U R2 B U'\",\"R B' L U B L' U' L U B' U' L' B R' U'\",\"B' R2 D2 B U' D F' U F D' B' D2 R2 B U'\",\"R2 B U F2 D' B' U B U' D F2 U' B' R2 U'\"],\"U' R U' R' U2 R U' R'\":[\"L' F2 L2 B L2 F2 D2 L2 F' L2 D2 B' L U2\",\"L' B2 R2 B R2 B2 D2 L2 F' L2 D2 B' L U2\",\"F2 L2 B L2 F2 L' D2 L2 F' L2 D2 B' L U2\",\"B2 R2 B R2 B2 L' D2 L2 F' L2 D2 B' L U2\",\"L' B2 R2 B' U2 R2 B' R2 U2 B2 R2 B L U2\",\"R U R' U R U' R' F' L' U L U2 F U\",\"B2 D2 L' F2 D2 R2 D L D' R2 B2 U R' U\",\"R U R' U F' U2 L' U' L F R U R' U\",\"U D' F U F' U F U' F' U2 F U F' D\",\"R U R' U R F' U2 F U F' U F U' R'\",\"L F R' F R D' F2 D F D' F D F' L'\",\"L2 U' F2 U' F2 U R' F2 R L2 U' L U' L'\",\"L2 D' L2 U' L2 D R' F2 R L2 U' L U' L'\",\"L F R' F R F' R' F2 R F R' F R L'\",\"L F L' U F' U2 F U2 L D F D' L' U' F'\",\"D' L2 F2 U L' U' F2 L2 D R F2 U2 R' U2 F2\",\"R U R' U R F' U2 F U F R' D' F D F2\",\"R L F R2 F R F2 L' F2 D2 B' L B D2 F2\",\"L F R' F R F R L' F R' F R F2 R' F2\",\"R U R' U R U R L' U R' U L F2 R' F2\",\"F' U2 L2 U2 D F' U2 D R2 U' B U' R2 D2 F2\",\"F' U2 R2 U' F' U D2 L2 D' B U2 D L2 D2 F2\",\"U2 F' L2 U B' D2 F U F' D2 B U' F' L2 F2\",\"B D L D F' D2 B2 U' R' U' D' F D R B\",\"R U' L' U R B' L' D2 R' B' L2 U R' F' U'\",\"F' B2 L2 B2 U' B' R2 F2 D' B R2 F U2 F2 U'\",\"U R U2 B2 U' R L' B2 R' L2 U' L' B2 R' U2\",\"R' U' R2 F2 B2 D' L2 D F2 B2 U R2 U' R' U2\",\"R' D' R2 B2 D L2 U' L2 B2 R2 U R2 U' R' U2\",\"R' U' B2 L2 D F2 D' L2 B2 R2 U R2 U' R' U2\",\"R' D' R2 B2 D L2 D' B2 R2 F2 D R2 U' R' U2\",\"R' D' F2 R2 L2 D' B2 D R2 L2 D R2 U' R' U2\",\"B' U D' R2 F B2 L2 F' L2 U' F' D L2 B' U2\",\"R B2 L U' R L2 B2 R' L2 U L' B2 U R' U2\",\"R B2 L2 U' R L B2 R' L' U L2 B2 U R' U2\",\"R B2 L2 D' F B R2 F' B' D L2 B2 U R' U2\",\"L' B' R2 B2 R2 U2 L2 F' D2 F2 R2 D2 F' L' U2\",\"R2 L F R' U2 R L F' R' L' U2 R' F' L' U2\",\"R2 L F R' D2 R L B' R' L' D2 R' F' L' U2\",\"L F' R2 L2 F D2 B' D2 F' L2 F2 R2 F' L' U2\",\"L F' R2 L2 B R2 B' R2 B' L2 F2 R2 F' L' U2\",\"R' U' F2 R2 U F B L2 F B D L2 B2 R U2\",\"R' U R2 U2 F2 R2 U R2 F2 U' R' L F2 L' U2\",\"R' U' B2 L2 D L2 B2 U2 R2 U R' L F2 L' U2\",\"R' U' B2 L2 U B2 R2 U2 F2 D R' L F2 L' U2\",\"R2 L B L' D2 B2 D2 B R' L2 U2 R' F' L2 U2\",\"R U' F2 B2 D' L2 D L2 D' L2 F2 B2 U' R U2\",\"L' F' B' U2 B U2 F2 L2 U2 F' U2 L2 F' L U2\",\"L' F2 L2 B L2 F' B' L2 U2 F' U2 L2 F' L U2\",\"L' F B D2 B D2 B2 L2 U2 F' U2 L2 F' L U2\",\"L' B2 R2 B R2 F B L2 U2 F' U2 L2 F' L U2\",\"L F2 L2 F U2 F2 U2 L2 U2 F' U2 L2 F' L U2\",\"L' F2 L2 B' U2 B2 L2 F2 L2 B' U2 L2 F' L U2\",\"L' B2 R2 B' D2 B2 R2 B2 L2 B' U2 L2 F' L U2\",\"L' B2 R2 F2 B D2 L2 F' D2 R2 F2 U2 F L U2\",\"L' F' B' U2 B' L2 U2 B' U2 L2 B2 U2 F L U2\",\"L' F2 L2 B' D2 L2 B' L2 D2 B2 L2 F2 B' L U2\",\"L' F2 L2 F' R2 D2 F' R2 F2 L2 F2 U2 B' L U2\",\"L F2 L2 B L2 F2 L2 D2 L2 F' L2 D2 B' L U2\",\"L B2 R2 B R2 B2 L2 D2 L2 F' L2 D2 B' L U2\",\"L2 F2 L2 B L2 F2 L D2 L2 F' L2 D2 B' L U2\",\"L2 B2 R2 B R2 B2 L D2 L2 F' L2 D2 B' L U2\",\"L' B2 R2 F' B2 U2 B2 R2 D2 B' L2 D2 B' L U2\",\"L' B2 R2 F D2 B2 L2 U2 F2 B L2 D2 B' L U2\",\"L' B2 R2 B R2 F2 U2 R2 F' R2 U2 F2 B L U2\",\"L' F2 L2 B L2 B2 U2 R2 F' R2 U2 F2 B L U2\",\"L' B2 R2 F2 B D2 L2 B' L2 D2 F2 R2 B L U2\",\"L' F2 L2 B' D2 L2 F2 B R2 U2 B2 R2 B L U2\",\"L' B2 R2 F' L2 U2 B' U2 L2 F B R2 B L U2\",\"R U R' U2 R U F' U' F U' F' U2 F R' U\",\"R U L' B U' B2 U B2 U' B' U L U' R' U\",\"R U R' U R U' L' B2 R B2 R' L U' R' U\",\"U' B U R B' U B R' U' B' U' R U R' U\",\"R U R B' D' R D R2 B R' U2 R U R' U\"],\"U F' U' F U' R U R'\":[\"U' R U' R' F R' F' R' U B U' B' R2\",\"R U R' B U B2 R B U R B' R2 B U\",\"U' R F' U' R' F U' F' R U' F U2 F R' F'\",\"L F' L F B2 D F' D' B2 L2 U' R' F R F'\",\"D B2 D2 R U' R U2 D R2 U F' U' F U B2\",\"R U R' U R B' R B R' U R' F' U2 F U'\",\"R U R' U' F' L' U L U2 F U F' U F U'\",\"R U B U2 L U L' B' U' R' U F' U F U'\",\"R U R' U' F' L' U B' U B U2 L U F U'\",\"R U R' U R U2 R' F' U F' L F L' F U'\",\"F' U2 F U' F U F' U F' U2 F' L F2 L' U'\",\"F' U2 R' L' F' U F R L B U2 F U B' U2\",\"R U R' U' L F2 L' F U L F L2 U L U2\",\"R' U' R' F' R U R2 U' R' F U' F' U' F U\",\"R' U' R' B' R' D' R2 D R B U' F' U' F U\",\"R' U' F U F' R2 F U' F' R' U' F' U' F U\",\"R' F' L' F R2 F' L F U' R' U' F' U' F U\",\"B L' B' R2 B L B' R' U' R' U' F' U' F U\",\"R U R' U R U R' U R U2 B U B' R' U\",\"R U R' U R U B U2 L U L' U B' R' U\",\"U' R U' R' D F R' F' R' U B U' B' R2 D'\",\"U' R U' R' D2 F R' F' R' U B U' B' R2 D2\",\"U' R U' R' D' F R' F' R' U B U' B' R2 D\",\"R U R' U R U R' U F R' D' F D F2 R\",\"U' R2 D B D' B' R B U' R' U D B' D' R\",\"R U R' B U B' R U R B' R' B R2 U R\",\"U' R2 L D R L2 B U' R' U B' L2 D' R L'\",\"R' U2 B2 U F D F D' F' U' D' B2 U2 R U' F'\",\"F2 B' U2 B2 L D' B' L2 B D F L F2 B' L2 F'\",\"U' F R2 D B2 D B' D' B' D B' D' R D' R F'\",\"L F' L F B2 D F' D' B2 L2 F2 L F L' U' F\",\"D2 R U' R' U' D2 F' U' F2 D2 F' U2 F D2 F' U'\",\"D' R U' R' U' D F' U' F2 D' F' U2 F D F' U'\",\"R U R' U R U R2 F2 D' F' D R F2 U2 F U'\",\"R U B U R' F' R B' R' U F U F' U F U'\",\"U2 R U F' U2 F U F' U F R' U F' U F U'\",\"R U R B' D' R D R2 B U2 R' U F' U F U'\",\"U2 F' L' U L U2 F U R U R' U F' U F U'\",\"R U R' U2 F R2 D R D' F' R U F' U F U'\",\"U' R U' R' U' R U' R' U' R U' R' F' U F U'\",\"U' L F' R' F' R F' R' F' R F' L' F' U F U'\",\"R U R' U R U2 R2 F D R' D' R2 F2 U F U'\",\"F' U F U' R2 B U B' U' R F R F2 U F U'\",\"R U R' U' L F2 D R' D R D2 L' F U F U'\",\"R U R' U R B U B' R' U2 F2 L F L' F U'\",\"R U R' U' L F2 L' F U L D' L D L2 F U'\",\"R U R' U R B' R B R2 U2 F' L' U L F U'\",\"R D B' U B U B' U R' U R B U D' R' U'\",\"F2 B L2 B D' F D F' D B' L2 B' L F2 L' U'\",\"L F R' F R F R' F R U L F L' U' L' U'\",\"F R' F D' F D F R U2 F' U' F L' U2 L U'\",\"U F' B U L U' L F' L F L F' L F2 B' U2\",\"F' U2 F L U L' F' U' L' B L U' F U B' U2\",\"U' R U' R' U2 L' U B R2 U B' U' R2 B' L U2\",\"U' B' R' F' R B U R U' R' F U' F' U' F U\",\"R D L2 D' R2 D L2 D' R2 U' R' U' F' U' F U\",\"R' U' R2 D' R2 D B2 U' B2 U R U' F' U' F U\",\"R' U' R2 D' R2 U R2 U' R2 D R U' F' U' F U\",\"R' D' F2 D' F2 D R2 U' R2 D R U' F' U' F U\",\"R' U' R2 U' B2 U B2 D' R2 D R U' F' U' F U\",\"F U' B' U F' D' R U' R' U' D F' B U' F U\",\"R F' U' R' F U' L2 D R' D' L2 F' R U' F U\",\"U' F' U' F' R' F' D2 L2 F' D2 R2 B' U2 R' F2 U\",\"U' R L F U' F' R' U' F' U' F L' B' U B U\",\"U' R U' R' U' R L F U' F' R' L' B' U B U\",\"U' R U' R' U' R U' R' U' R U B U B' R' U\",\"U' R U' R' U' F' R' U' R F U R B' R' B U\",\"U' R U' L' B' D' F' R' F D B L B' R' B U\",\"R U R' B U B2 R B' L' B' L U B2 R' B U\",\"R U R' U R B2 D B D' B U R B' R2 B U\",\"R U R' B L' B L B2 U R U R B' R2 B U\",\"R U R' U R U R B' D2 F D F' D R2 B U\",\"B2 D2 R U' R U L2 U2 F2 D2 R2 F' U' F L2 U\",\"B2 D2 R U' R U R2 D2 B2 U2 L2 F' U' F L2 U\"],\"U2 R U R' F R' F' R\":[\"F B2 R2 D' F B2 L F' B2 D R F' R B2\",\"F R' U F2 U' R2 D B U2 B' R2 D' F2 R\",\"F' R' B2 L' U L U' F B2 R F2 R' F R F2\",\"F' L2 U' F U2 F2 L' F2 U2 F' U L F' L F2\",\"F2 U' L D' R2 L F2 L2 U' R2 B2 U F U F\",\"F' D' L2 F' L' F R' L U L' U' R L2 D F\",\"F' U F' L2 B2 L' F L B2 U' B' U B L2 F\",\"R U R' U R U2 R2 F R F2 U2 L' U' L F\",\"F2 B U' F U2 D' B L' B' L' U' L D F' B'\",\"B R' L F' D' F D F' D' F D R F' L' B'\",\"B L F' U' F' R' F R F' R' F R U L' B'\",\"B' U' D' F2 D F U L D' F D F2 L' F' B\",\"B' U' D' F' U L F L' F L F L' F' D B\",\"B' D' F' L2 D F D' F' L U L U' F2 D B\",\"B' D' F R' D L2 F D F' L2 D' F' R D B\",\"F' L' U R' L F D2 L' D2 F' D2 L D2 R U'\",\"R L U R' U R L' U B U' B2 U B R' U2\",\"R U R' U R U B' R D' R D R2 B R' U2\",\"R U R' U R U B' R B R2 U R U' R' U2\",\"R U R' U R U2 R2 F D' F D F' R F' U\",\"D R U' R' U F2 D2 F B2 U F' B2 D2 F2 D'\",\"U R U B2 L2 F' D L D' L2 F L' B2 U R'\",\"B2 L' F D' L' D L' F B2 R2 F B2 L' B2 R2\",\"U' R' L2 D L D2 R' B D2 B D' B' L B R2\",\"U' R' D L2 D L D2 R' B D B' L B2 D' R2\",\"R L U R' U R L2 B L B' L U R' U2 L'\",\"F' L' F2 D' L' D R2 F2 R2 F2 L F' R2 F R2 F'\",\"U' R B U2 F' B' U' F U F R' U R U' R' F'\",\"U' R F' U F B U2 B' U F R' U R U' R' F'\",\"F2 B U' F U B' U D' B L' B' L' U' L D F'\",\"F' R' L' U L U' F R F2 R' L F R F' L' F'\",\"F' L' F2 R' D' L' D R' F2 R2 F R2 F R2 L F'\",\"F2 U2 L' U' R U B U B' R2 L F' R F' U2 F2\",\"D R U R B U' B' R2 D' L F' L' U2 F2 U2 F2\",\"F' L2 U' F U2 F2 L' F2 U' F' L F' D' L D F2\",\"F' D R' B' L' F B2 U' R U F' B2 D' B R F2\",\"R F' U' F2 R' F2 U' B U2 F B' U' R2 F' U2 F\",\"U R2 U' R2 U' R' U R' U' R' U2 R2 U2 F' U F\",\"D B2 U' B2 D' R' U R' U' R' U2 R2 U2 F' U F\",\"U L2 D' R2 D' R' D R' D' R' D2 L2 U2 F' U F\",\"B2 U' B2 D' R' U R' U' R' U2 R2 U2 D F' U F\",\"U' R2 U2 F' R' F R' F' R2 F R' U2 R2 F' U F\",\"U' R2 U2 R' D' R' D R' D' R2 U2 D R2 F' U F\",\"U' L2 D2 R' U' R' U R' U' R2 U D2 L2 F' U F\",\"U' L2 D2 B' R' B R' B' R2 B R' D2 L2 F' U F\",\"R U R' U' F2 L' U' L2 D' L D L2 U F U F\",\"F2 U' L D' L' F2 R2 U' L2 B2 R2 L2 U F U F\",\"U' F2 U R L' U R' U R U' L U' R' F U F\",\"F' B' R2 U' F D' R' F R D F2 U R2 B U F\",\"U F' U L B2 R L2 U B U' R' L2 B2 L' U2 F\",\"U F' U R' L2 U2 L' D F D' L U2 R L2 U2 F\",\"B' U B U2 F' R' U' D F2 U F D' R L2 U F\",\"L' B' R2 U' F R U F' R U' R F' B L U F\",\"F' R' F2 R' D L2 F D F' L2 D' F' R F' R F\",\"F' R' F' D' L D L' F' U' L' F L U F2 R F\",\"F' R' L' F' L D F' U' D' L' F L U F2 R F\",\"F' R' F' L D F' D' F' L' F L F L' F2 R F\",\"F' R' F U' F' U L F L' F L F L' F2 R F\",\"F' R' F' D' F' D R L U F U' R' L' F2 R F\",\"F' R' L2 D F D' F' L' F' D' L D L2 F2 R F\",\"F' R' L F' D R F R' F' D2 L D L2 F2 R F\",\"F' R' B L2 D F D' F' L U L U' F B' R F\",\"F' R' B2 L2 D F D' F' L U L U' F B2 R F\",\"F' R' B' L2 D F D' F' L U L U' F B R F\",\"U' F' U L2 F' B L F B' L' B' U2 B U2 L' F\",\"R U R' U' F' U' F' L2 F L2 U2 B L' B' L F\",\"U F U F' U F U2 F L F L' U L' U' L F\",\"R L' U R U' L U R2 U' F2 L F L2 U L F\",\"R2 F B2 R' F' U2 B' U2 R2 U' B R' U B' U' B'\",\"B U2 B' R' U F U' R D R' D' B U F' U B'\",\"F B D F' U' F2 R D R' D' F' R' D' F' U B'\",\"F B D F' U' F R' D R B R' B' D2 F' U B'\",\"B U' F B' D R' D B' D2 B R B R' F' U B'\",\"B U' B' R F R' F' D B U' B' D' R' B U2 B'\"],\"U R U' R' U R U' R' U R U' R'\":[\"F R U L' U2 R' F2 L' U' L U F2 L U' F'\",\"R L F2 L2 U R' U R' B2 R2 B2 L U2 R' F2\",\"L2 D2 R L U R' U L' D2 L2 U2 L F2 L' F2\",\"F' B L F' L' F2 B' R U' R' F' L' U' L F\",\"F' U' B U B L2 B' L2 U' B2 U F U' B U'\",\"U2 F U2 F2 B U' D F' U F D2 L2 D B' U'\",\"F' U R B R' U L' U' L F R B' U' R' U2\",\"U L F2 L' U' R2 F2 R2 U R2 F2 R' U' R' U2\",\"R B' U' R D' R D R2 U B2 U2 B' U2 R' U2\",\"U R2 U2 R D F' L' B2 L F D' R2 U R' U2\",\"U R U2 R' U2 R2 U R U R' U' R' U' R2 U2\",\"L' U2 L F2 L D R' U' R2 U D R D2 L' U2\",\"F' U2 F U' F' B U2 B' U F U' B U2 B' U\",\"R U2 B' R D' R2 F R' F' D R' B R' U2 R'\",\"R' U' F' B2 D L' U L U2 D' F U B2 U R\",\"B' U R2 U2 R2 U' R' D' F R' F' D B U R\",\"B' D B2 U2 B2 D' R' D' F R' F' D B U R\",\"R U2 R U' R' U' R U2 R U R U2 R' U R\",\"U L' U2 L2 F2 U F2 L' U D' L' D L U2 L'\",\"R U2 R2 U2 B2 D' R' D R' B2 U2 R L U2 L'\",\"F2 U2 R U2 R' F2 L2 F2 L2 U' L' U L' F2 L2\",\"L' B' D L B' R B R2 L' U R U' D' B L\",\"R U2 R2 U2 B2 D' R' D L' D2 R2 D2 R2 B2 L\",\"U' L U F' U2 F R2 L2 B2 D' B D B R2 L\",\"F R U' R' L F2 L2 U R U R' U2 L F2 U' F'\",\"U' R2 L2 F L2 F B2 R2 B2 U F R2 F R2 U' F'\",\"F2 L2 B' D B2 D' F' R2 F D2 L2 F U F2 R2 F'\",\"F2 L2 B' D B2 D' B' D2 F L2 U2 B U F2 R2 F'\",\"R U' B' R' F R2 L B' L' D' L B L' B R2 F'\",\"R L F2 L2 U R' U R2 L U2 R2 U2 R U2 R' F2\",\"U F2 D2 L B2 L' D2 R U2 D R2 D' R U2 R' F2\",\"R L F2 L2 U R' U L' D2 R2 D2 R' L2 U2 R' F2\",\"F2 R2 U2 R' L' U' R' U R' B2 R2 B2 L U2 R' F2\",\"R L' U' L' U R D B2 D R D2 R L F2 L F2\",\"F' R2 D2 L' D2 R F2 D' L' D' L' D2 R F2 U' F\",\"U2 F R' B2 R F L2 D2 B2 D B2 D L D2 L F2\",\"L' D2 L U2 L' F' L U' L' F D2 L U' F' U2 F\",\"B' U' F' B2 L2 F2 B D R2 F D' B2 L2 F U F\",\"F' U B L' U L U' B' R B2 D L D' B2 R' F\",\"F' L2 U2 F U' F' U2 L2 U' L2 F U' F' U' L2 F\",\"R' F' B2 L F' D L' F2 B2 R U2 F' L' U' L F\",\"F' R L' U B R B2 R' B2 U' B2 L' B' R' L2 F\",\"U2 F' U F2 U R2 F' R2 U B L2 F' L2 U F B'\",\"F B D' B' U' B' U B2 D' B' R2 B D2 F' U2 B'\",\"B2 D F B' D2 B' R2 B D2 F' U' B D' B' U' B'\",\"B2 D R2 F2 B D2 F2 B' R2 B' U' B D' B' U' B'\",\"B2 D B' U' R D' L' B2 L D R' B D' B' U' B'\",\"F' B' U F U B2 U D B D' B U R2 B2 U2 B'\",\"R U' B' R' B U2 D F' R' U' R F D' B U2 B'\",\"F L2 B' R2 D2 B' U2 D' F L2 B' R2 F2 U D2 B'\",\"F U2 L2 F2 B U' R' D2 R U D F L D' L B'\",\"B' D' F D' F2 D R2 U F' U' D2 B2 U2 B D' B2\",\"F2 U2 R U2 R' F2 B2 R2 B2 U' L' U L B2 R2 B2\",\"U F' U2 L' U2 L F' B' D R D' R' F' R F' B\",\"F' U' F U L2 B2 R2 D2 B R2 B L2 F2 U2 F' U'\",\"F' U R B U B' U' L2 D' B' D R' L2 U' F U'\",\"B' U' R' B U B' U F2 B' D2 B' L' D2 F2 B' U'\",\"R2 F R2 F' U2 R2 U B U' B' R2 U2 B U' B' U'\",\"R2 F R2 F' B L B' U F' U' F B L' U' B' U'\",\"F' B U2 F U2 L B' U F' U' F B L' U' B' U'\",\"B U2 L2 F D F D' F2 L2 U2 F' U2 F U B' U'\",\"F' B L2 F L2 F' U' D F' U F D2 L2 D B' U'\",\"F2 B2 D2 F D2 B' U' D F' U F D2 L2 D B' U'\",\"F' U2 F U' F' U2 B' U2 B U' F U B' U2 B U'\",\"F' U' F U L2 F2 L2 U2 B L2 F' L2 B2 U2 B U'\",\"U B2 U F2 L2 D2 L2 F2 U' B R2 U' R2 U B U'\",\"U B2 U B2 R2 U2 R2 B2 U' B R2 U' R2 U B U'\",\"U B2 D R2 F2 D2 F2 R2 D' B R2 U' R2 U B U'\",\"U B2 D L2 B2 U2 B2 L2 D' B R2 U' R2 U B U'\",\"F' U' F U R2 B2 D2 F' D2 B R2 D2 F2 D2 B U'\",\"R2 D B L2 D F D F D' L2 D' B' D' R2 B U'\",\"R U R' U R U' R' U' R U R' U' R U R' U'\",\"R B U2 B' R' L F2 U F U' F' R' F' R L' U'\",\"U' R2 D2 F' B2 D' B2 D' B R2 U F U F B' U2\"],\"U' R' F R F' R U' R'\":[\"R U R' U R U' R' F R' F' R U\",\"R U R' U F2 R' F2 R F' U' F2 U F'\",\"R U R' U F' R' F R F' U' F' U F2\",\"R U R' U R U' R' F' U L F' L' F2\",\"U2 F' L' U L U' L U F U' F2 L' F2\",\"R U R' U R2 U B' U' R' U B U' R'\",\"U F U R U' R B' R F' R2 B U R'\",\"R2 D' R2 U2 F R' D' F U' F2 U D2 R\",\"R U R' U F2 L' U2 L U F U2 F' U' F2\",\"R U R' U F' R U' B' R B R2 F' U F2\",\"U F R' F' R U F' L U F U' F2 L' F2\",\"U F' U L F' L' F L U F U' F2 L' F2\",\"R U R' U R U' R' U' R U R' F' U F\",\"R U R' U R U' R' U F' L' U L U' F\",\"R U R' U R F' L F U' R' U F' L' F\",\"R B L U L2 B L B2 R' U' F' U F U'\",\"B L U L' U2 F' U F' D' L D F2 B' U\",\"R U R' D F' U L U F U' F2 L' F2 D'\",\"R U R' U D R U' R' F R' F' R U D'\",\"R U R' D2 F' U L U F U' F2 L' F2 D2\",\"R U R' U D2 R U' R' F R' F' R U D2\",\"R U R' D' F' U L U F U' F2 L' F2 D\",\"R U R' U D' R U' R' F R' F' R U D\",\"R U2 R' F R' F2 U' F2 R F' U' R' U2 R\",\"R U R' U R L F U' F' R' F U F' L'\",\"R U R' U L F' R' D R' D' R F R L'\",\"R U R' U L2 D F' D' R' D F D' R L2\",\"R U R' U R L' U2 R' U2 L F' U' F2 U F'\",\"R U R' U F' U F' U' F R U' R' F' U F2\",\"R U R' U F' U' R B U' B' U R' F' U F2\",\"R U R' U F2 U2 L' U' L' B L B' L U' F2\",\"R U R' U F2 U' F' U' L U F U' L' U2 F2\",\"R U R' U L D R F' U' R' U D' F' L' F2\",\"R U R' U F' R' U' F' U L F R F' L' F2\",\"R U' B U B' R' U2 F' L U F U' F2 L' F2\",\"R2 B' R' B U R' U F' L U F U' F2 L' F2\",\"U2 L F' L F L2 F' L' U L2 F U' F2 L' F2\",\"U2 L U R L' U F' L F U' R' U' F2 L' F2\",\"R U R' U R' F L D F' R' D' R2 F2 L' F2\",\"R U R' U2 F U' R' U' F' U R L F2 L' F2\",\"U2 L U F U2 F D F' R U R' D' F L' F2\",\"R U R' U F' R2 U' R F' R' U R F R F\",\"F' L' U' B' U' B L F R' F R F2 U' F U'\",\"U' F U R' D R' D' R2 U' F' U' F' U F U'\",\"U' B L U' R U' R' U2 L' B' U' F' U F U'\",\"R B L F' L F L2 U B' R' U' F' U F U'\",\"R B U2 B' R2 F R F2 U F U F' U F U'\",\"U2 F' L D F R U' R' U F' D' L' U F U'\",\"U2 F' L U D F' L F L' U' D' L' U F U'\",\"F R2 F2 U' R' U R F2 R2 F' U2 B' R B U'\",\"U' F U R' U F' D' F U' D R F U' F' U2\",\"R U R' U R U' R' U' R U' B U B' R' U2\",\"L F L' U' R L F R' F' R' D R D' L' U2\",\"R U R B' R2 U' R B U R' U' B' U B U\",\"B' R2 B R U B' R U' R B R B' U B U\",\"U F U R U' F' U' B U2 F' U' F B' R' U\",\"B L2 F D F' L2 B2 R' U R U' R U B U\",\"U' F U R2 U' R F' R' U R' B U B' R' U\",\"R U R' U R U' R' U' R2 B' R' B U R' U\",\"U' F U R2 F U F U' F' U' F' R' U R' U\",\"U F U F' U F U2 R' F D' F' D F' R U\",\"R U R2 F R' D' R2 U R U' R2 D F' R U\",\"R U R B' D' R D R2 B R' F R' F' R U\",\"R D B' U B U' B' R B' R' B2 U D' R' U\",\"R U B U2 L U L' B' U R' F R' F' R U\",\"R U R' U R F2 L F L' U' F2 R2 F' R U\",\"U F U R U' R B' R F' D' R' D B R2 U\",\"R U R D R U R2 U' R' F R2 F' D' R2 U\",\"R U R U' D R' U2 R U B U2 B' D' R2 U\",\"R U R U D R' U' R' F R F' R D' R2 U\",\"R' U B' R' B R' U' R U R' U R2 U' R U\",\"R' D L' B' L B' U' B U B' U B2 D' R U\",\"F R' F' R L2 D R' D' L' F D R D' L' U\",\"R U R' U D F2 R' F2 R F' U' F2 U F' D'\"],\"R U R' U' R U R'\":[\"U' R U' R' U' R U' R' U' R U2 R'\",\"R U R' B U R B' U B R' U' B' U\",\"L2 F B2 L' F L B U2 R2 B' D2 F' R2 B2\",\"U' R U' R' D' F U' F' U' F U2 F' U' D\",\"R U R' U' R U' B' U2 B U B' U B R'\",\"R U R' U R U R B' D' R D R2 B R'\",\"R U R' U R U B U2 L U L' B' U R'\",\"R U R' U' F' L' U L U2 F U R U' R'\",\"R U B U2 L U L' B' U' R' U R U' R'\",\"R U R' B U B' U B U2 B' U R U R'\",\"L F R' F R F R' F R F R L' U2 R'\",\"R L' B' R B' R' B' R B' R' B' L U2 R'\",\"R U2 R' L F' R' F R F R' F R F' L'\",\"L' U2 R2 U B U' D B2 D' B R2 L F U' F'\",\"R B' R B D L' B L D' R' U R' F' U F\",\"F2 U2 F R' F R' F2 R2 U2 F R2 F R2 U2 F\",\"R U B U R' F' R B' U B U' B' R' U F\",\"L2 F B2 L' F R' F2 R' L B R2 F' B2 L2 B'\",\"U2 R' U' R2 B2 R2 B2 U R2 F2 R' B2 R F2 B2\",\"U2 R F2 R2 U F2 L2 F2 L2 U' R B2 R F2 B2\",\"U2 R' U F B' R2 F B' L2 D' L D2 L F2 B2\",\"U2 R' U' R2 F' B L2 F' B D L D2 L F2 B2\",\"L2 F B2 L' F L F' B2 L2 U2 B' R2 B' R2 B2\",\"L2 F B2 L' F L F R2 D2 B' L2 F2 B R2 B2\",\"R U R' B U L U2 L' F' L U L' F B' U2\",\"R U R' U R U R' U F' U2 L' U' L F U2\",\"F U2 L F' L' U2 R F' U2 R2 B' R2 B R' U2\",\"R U R' B U L U2 F' U L' B' L F L' U2\",\"U R U2 R U' R U' R2 U' R2 U' R U' R U2\",\"L F R' F R F R' F R F' R' F2 R L' U2\",\"R U R' F R U' D2 L' B L U D2 R' F' U\",\"F R' F' D' L F' L' D R2 U' R' F' U2 F U\",\"B' U2 B U' F' B L U L' U' B2 U' F B U\",\"R B' R B D L' B L D' B' R' B U R' U\",\"B' R2 B U F' U F R U' R2 U' R' U R U\",\"R U R' L' B' U B R U R' B' U' B L U\",\"U' R U2 R L F2 L' U R U' L F2 R2 L' U\",\"U' R U' R' U2 D B U' B' U' B U2 B' U D'\",\"U' R U' R' U D2 L U' L' U' L U2 L' U2 D2\",\"R U2 F2 B2 L D L D' L2 D L D' F2 B2 R'\",\"R U R' U R U B U' B L' B' L U B' R'\",\"R U D' R' B U R B' U R' B' R D B R'\",\"R U R' U R U B U' B' U R B' R' B R'\",\"R U R' U R U B' R D B' D' B R' B R'\",\"R U R' U' R U F' U2 F U F' U F U2 R'\",\"U' R U' R' U' R U B L U' L' U2 B' U2 R'\",\"R U B U R' F' R B' R' U F U R U' R'\",\"U2 R U F' U2 F U F' U F R' U R U' R'\",\"R U R B' D' R D R2 B U2 R' U R U' R'\",\"U2 F' L' U L U2 F U R U R' U R U' R'\",\"U' R U R' U' B U2 B' U' B U' B' R U2 R'\",\"U' R U B L U' L' U2 B' U' R' U' R U2 R'\",\"R U R' U2 F R2 D R D' F' R U R U' R'\",\"U' F' U2 L' U' L F U R U' R' U' R U2 R'\",\"U' R U' R' U' F' U2 L' U' L F U R U2 R'\",\"U' R F' U' F U' F' U2 F U' R' U R U2 R'\",\"U' L F' R' F' R F' R' F' R F' R L' U' R'\",\"R' L F' R F' R' F' R F' R' F' R2 L' U2 R'\",\"R U R' U2 F U F' U F U2 F' U' R U R'\",\"U' R L' B R B R' B R B R' B L U' R'\",\"R U R' U' L U L' U L U2 L' U2 R U R'\",\"R2 L2 D' R D' R' D' R D' R' D' R' L2 U2 R'\",\"R' L2 D R' D R D R' D R D R2 L2 U2 R'\",\"R2 L' B R' B R B R' B R B R' L U2 R'\",\"R U R' U' L U L' U R B2 L' B2 L U R'\",\"R U R' U' L F2 L' F2 R U L' U L U R'\",\"R U R' U' R U2 L' U2 L U L' U L U R'\",\"R U R' U2 F U R U' F' U' R B U B' R2\",\"R U2 R2 U2 R2 U R' U' R2 U R' U' R U2 R\",\"U2 R' U' R2 U' B2 D' R' D R B2 U R U R\",\"L F2 R2 F2 L2 B R' B' R2 B R' B' L U2 R\",\"R U R' U L F U' D B' R B U D' F' L'\",\"U2 R' L F2 R F R' F R F R' F R F' L'\",\"U2 L F D' F2 D F D' F D R' F R F' L'\",\"U2 R' L F R F' R' F' R F' R' F' R F2 L'\"],\"R' F R F' R' F R F'\":[\"R F2 D2 B' R L U B U' R' B D2 F2 U'\",\"R U' R F2 R2 F' U2 F R2 F2 R' U' R' U2\",\"R U' R B2 L2 F' D2 F L2 B2 R' U' R' U2\",\"R' F' L F R2 F' L' F U' R' F' L' U' L F\",\"B L B' R2 B L' B' R' U' R' F' L' U' L F\",\"U' B' R' F R B U R U' R' F2 L' U' L F\",\"R U' R' F' U2 L D L' U2 L D' L2 U' L F\",\"F R' D' F D' L' D L D' L D2 F' R F' U'\",\"R' F D' L2 F L F' L F L D F' R F' U'\",\"U' F' D' L2 U2 L U' L2 U' L' U L' D F U'\",\"U2 B' U R' U2 F R' B' R2 D R' D' F' B2 U2\",\"R U2 R' B' D R' U R U2 R' U' R D' B U2\",\"F D R2 U F R2 F' U' R2 D' F' R U2 R' U2\",\"F D2 B2 D' B' R2 B D B2 D2 F' R U2 R' U2\",\"R U2 R U F R' F' R' U2 R' U' B' R B U2\",\"R U2 R' B' R' B U R U2 R' U' B' R B U2\",\"F' U' F2 D2 L' F2 B R B' R' F2 L D' R D' F'\",\"F R2 F R' U2 R U' F2 R2 F2 U F' R2 F U2 F2\",\"R U' L' B' R B' L' D' B2 R' L U L U' R' F2\",\"F' U' L U F' U' F' U F U' F R' L' F2 R F2\",\"U2 L U L' U2 F2 L F U' L U L2 U' F' L2 F2\",\"F2 L F B L2 D L2 U L' U' D' B' U' F' L F2\",\"U F2 L' B L' B' L2 F' U F' U F U2 F2 U' F\",\"U2 F' B' U' B U' F' L B2 R D2 R' F B2 U' F\",\"L2 D F D' F' L' F L' U F' L F' L' F U2 F\",\"R' F2 L2 D' L' F' D R F2 L' U2 F U' F' U F\",\"R' F' R U F' L' U' L2 F L' U2 F U' F' U F\",\"F' B U L U2 L' F U' B2 D' R D F' B U F\",\"R2 F2 L F' L' F2 R' L' U R' U R L U2 R' F\",\"R2 F2 L F' L B2 R' L' D' R' F2 L2 B2 U' L F\",\"F2 L2 B2 L' F' R' D2 R2 D R' F2 L2 B2 U' L F\",\"R2 D' L2 D R2 D' L2 D R U' R' F' L' U' L F\",\"F U F' L' U' R' L F R2 U' R' F2 L' U' L F\",\"R' F2 L F L' U' F2 U R2 U' R' F2 L' U' L F\",\"R' U' R' F2 B' R' D' R2 D R F B L' U' L F\",\"R U' R' F' B' D2 B U2 B' D2 B U2 L' U' L F\",\"R2 F2 L F' L' F2 R' L' U L U2 R' L' U' L F\",\"R U' R' F2 L2 F U2 L2 B L2 B' U2 L U' L F\",\"R' F' L F R2 U' R' F' L' U B L' B' U2 L F\",\"R' U F2 U2 F R B L' D F2 U D' F2 L F' B'\",\"R U R' F2 U' L2 D' L2 F' L F D L' U F2 U'\",\"R' F D' F L D' L2 D L D' L D2 F' R F' U'\",\"F D2 L' D L D2 R' D' F D2 L D2 F' R F' U'\",\"R' F D2 B' L B L2 D L F L D F' R F' U'\",\"U2 L F2 D2 B R D2 L D' B2 L B L D F2 U'\",\"U' F' L2 U2 L U2 D' L' D L' D' L2 U D F U'\",\"R U2 R' U' B' U B' R' B2 U2 B2 R B U' B U'\",\"F' L U F2 B2 R2 D R' B' D2 B R2 F' R B2 U'\",\"U2 F' U F2 B' R' F2 U2 B U B' U F R' B U'\",\"R2 U R' F' U F' B' D' B2 L' B2 D F2 B R' U'\",\"F' R' F R2 D2 L U2 L' B U' L U' L' D2 R' U'\",\"F2 U' F' R U R2 F U' F U F2 D R' D' R2 U'\",\"R U' R' U L' U2 F' U' F U2 L2 D F2 D' L' U'\",\"R U2 R' U' L' D2 B' U B U2 B' U' B D2 L U'\",\"U' F' L' U' L' U2 F' L2 F U2 L U' L U F U2\",\"F' U F2 R' F' R2 F R2 U' R2 U R2 U F' R' U2\",\"F' U F2 R' F' R2 F R2 D' F2 U F2 D F' R' U2\",\"F' U' F U' B' R B U' B2 R2 B R B' R B2 U2\",\"R' U' R' F R U R2 U' R' F2 U2 F R U' R' U2\",\"R U' R' B2 L2 F2 B' L2 F' U2 F' B' R U' R' U2\",\"R U' R' F B U2 F L2 F2 B L2 B2 R U' R' U2\",\"R U' R' F' B' D2 B U2 B' D2 F B R U' R' U2\",\"R U' L U2 R' L' B' U2 B R L U2 L' U' R' U2\",\"R U' L D2 R' L' F' U2 F R L D2 L' U' R' U2\",\"R U2 R F' U F R2 U' R' U' B U' B2 R B U2\",\"R2 F' U F' L F' R2 F L' F U' F R' U2 R' U2\",\"R U' D R F2 R2 F' U2 F R2 F2 R' U' D' R' U2\",\"R U' D R B2 L2 F' D2 F L2 B2 R' U' D' R' U2\",\"R U' D2 R F2 R2 F' U2 F R2 F2 R' U' D2 R' U2\",\"R U' D2 R B2 L2 F' D2 F L2 B2 R' U' D2 R' U2\",\"R U' D' R F2 R2 F' U2 F R2 F2 R' U' D R' U2\",\"R U' D' R B2 L2 F' D2 F L2 B2 R' U' D R' U2\",\"R U2 R B' D' R2 B L F2 L' B' R2 D B R2 U2\",\"R U2 L F' L' F R' U L2 D' R B' R' D L2 U2\",\"R2 B2 R F R' B2 R2 F' U2 L U' R U R' L' U2\"],\"R U' R' U R U' R'\":[\"R B' R B U R' B R U' R' B' U R'\",\"U' B U R B' U B R' U' B' R U R'\",\"R U R' F' U L U F U' F2 L' F U' F\",\"R U R' U R U' R' U F' L' U L U2 F\",\"R U R2 U' R' U R F2 B2 L D L' F2 B2\",\"R U B U' B L' B2 U' B U L U B' R'\",\"R U R' U R U B L U' L' U2 B' U R'\",\"R U R B' D' R D R2 B R' U' R U R'\",\"R U B U2 L U L' B' U R' U' R U R'\",\"R U R' U F' U2 L' U' L F U R U R'\",\"R L' B' U R B R2 B' U' B R L U R'\",\"R U F2 B2 L' D L F2 B2 R U R' U' R2\",\"R U R' U R U' R' F R2 D R D' F' R\",\"R U R' U R U' R' F R' F D' F' D R F'\",\"R U R' U R U' R' F R' F' R U F' U' F\",\"R U R' U F2 R' F2 R F' U' F2 U F2 U' F\",\"R U R' U F' R' F R F' U' F' U F U' F\",\"R U R' U R U' R' F' U L F' L' F U' F\",\"U2 F' L' U L U' L U F U' F2 L' F U' F\",\"R U R' U R F' L F U' R' U F' L' U' F\",\"R U R' U R F' U' R' F D R' D' F' R F\",\"R U R' U D R F' U' F R' D' R' F' R F\",\"R U R' U F' R' U' R B U' B' R' U R F\",\"R U R' U F' U' B' R B R' U' R' U R F\",\"R U R2 U' B R U R' F B L' D L F' B2\",\"R U R' U F' R' U' R F R' U F R F' U'\",\"U' R U R U R' U R U' R2 U R2 U2 R2 U'\",\"D' F U F' U' D F2 U2 F' U2 L F L' F U2\",\"U2 R U R' U' R U R2 U2 R U R' U R U2\",\"L U F' U2 F2 U2 F' L' F' U2 F L U' L' U\",\"U' R U R U R' U R U' R2 D B2 U2 B2 D'\",\"R U R' U D R F' U' R' U' R U F R' D'\",\"R U2 F2 B2 D' L' D L2 D L' D' L' F2 B2 R'\",\"R U B R U R' U' R' F R F' U' B' U R'\",\"R B' R B D R' U R D' R' B U' B' U R'\",\"R U R' U F' U' R B R' F R U' B' U R'\",\"R2 B' D' R2 F2 R' F' R F2 R2 D B R' U2 R'\",\"R U B U' B U B' U' B' R B R' B' U R'\",\"R U B R U R' F' U' F R U' R' B' U R'\",\"R U B U' B2 U B2 U' B' R B2 R' B2 U R'\",\"R U R' U R U2 B' R2 D' R' D B R' U R'\",\"B' U2 L2 F' D2 L' F L' U' B U' B' R2 U R'\",\"U B U2 F B' D R D' F' U' R' U R2 U R'\",\"U' F R U' D2 L' B L U D2 R' F' R U R'\",\"R B' R B R' B' R' B U B U' B' R U R'\",\"R U B R B' D' R' D B R' U' B' R U R'\",\"R U B U' L' B' U R' U' B L B' R U R'\",\"R U B U' B L' B' L U B' R' U' R U R'\",\"U2 R U' B' U2 B U B' U B R' U' R U R'\",\"R U B U' B' U R B' R' B R' U' R U R'\",\"R U B' R D B' D' B R' B R' U' R U R'\",\"U2 F' L' U L U2 F U R U' R' U' R U R'\",\"L F U' D B' R B U D' F' L' U' R U R'\",\"R U R' U R' F D R' D' R2 F' U2 R U R'\",\"R U B R B' R' D' R' B U' B' R U D R'\",\"R B' D' R' B R U B R' U' B' R U D R'\",\"R U D' R' B U R U' R' U' B' R U D R'\",\"U' L' B' U B R U R' B' U' B R L U R'\",\"R U F2 B' L D L' F B R' U R F U' R2\",\"D B2 L2 D2 F2 L' U L D' L D' L B2 D' R2\",\"U F U R F2 U' R' U R U F2 U2 R2 F' R\",\"L F U' D2 L B L' D2 B' R B U F' R' L'\",\"R U R' U R2 U B' U' R' U B U' R' F' U' F\",\"U F U R U' R B' R F' R2 B U R' F' U' F\",\"R2 D' R2 U2 F R' D' F U' F2 U D2 R F' U' F\",\"R U R' U F2 L' U2 L U F U2 F' U' F U' F\",\"R U R' U F' R U' B' R B R2 F' U F U' F\",\"U F R' F' R U F' L U F U' F2 L' F U' F\",\"U F' U L F' L' F L U F U' F2 L' F U' F\",\"U' F2 U2 F' R' F' R U L F2 L' F2 U F U2 F\",\"R U R' U F' R' U' R B U L U L' B' U2 F\",\"R U R' U F' R2 U' R F' R' U R F R U' F\",\"R U R' U F' U2 L' B L B' U' B' U B U F\",\"R U R' U R' F D R' D' R2 F2 L' U L U2 F\",\"R U R' U F2 R' F2 R F' U2 D R2 U R2 D' F\"],\"d' U L' U L U' L' U L d U'\":[\"U F2 B D' B' L2 B D2 F' D' F' B'\",\"U F2 B2 D' B' L2 B D2 F' D' F' B2\",\"U F2 B' D' B' L2 B D2 F' D' F' B\",\"F U2 F2 U2 F' U' F U F' U' F' U'\",\"B L2 F2 L2 B' U' F U F' U' F' U'\",\"F2 U' F' U' F U F' U' F2 U2 F2 U2\",\"F' U' B' U' B2 D L2 D' B' U2 F U\",\"U F2 D' B' L2 F L2 F' L2 F' B D F'\",\"U F2 D' F' D2 F D2 B' L2 F' B D F'\",\"U F2 D' L2 F' D' B D' B' D2 F D F2\",\"U F2 D' B' U' F U' F' U2 B L2 D F2\",\"U F2 D' B' L2 B L B D' B' D2 L' F2\",\"U F2 D' L2 B' L' U' L2 U B D L' F2\",\"B' R' U R F2 B L2 F L' U' L' U' F\",\"R U R' F' U2 F U2 F' L' U' L U' F\",\"U2 F' L' U L F U2 F' L' U' L U' F\",\"B' R2 F D F' B2 U' F B2 R2 D' F' B\",\"U F' U2 B' U2 B2 U' F U B2 U2 B U2\",\"R2 B' R' D' R D' L' F2 L D2 B R2 U\",\"R2 D B2 L U2 L' B' R B' R' D' R2 U\",\"F2 U' F' U' F U F' U D2 B2 U2 B2 D2\",\"F2 U' F' U' F U F' D' L2 U2 L2 U D\",\"U F2 D' L' D' L2 D L D F' R F' R'\",\"R2 U R2 D' F2 U2 F U F D R2 U' R2\",\"R2 D B2 U' B2 U2 B U B U B2 D' R2\",\"D R2 U' F' R2 F R2 U2 F U' D' F2 U F'\",\"U F2 D' L2 F' B D2 B' D2 F D2 F' D' F'\",\"U F2 L' D' L2 B' U' L U B D2 F' D' F'\",\"U F2 D' B' L2 F' B2 R2 F' R2 F B' D F'\",\"U F2 D' B' L2 F2 B' U2 F' U2 F2 B2 D F'\",\"D R2 D' R2 U D' F2 B' L2 B D2 F' D' F'\",\"F2 U D' L2 U L2 U' B' L2 B D2 F' D' F'\",\"U' D2 B2 D' F2 U2 D2 B L2 B D2 F' D' F'\",\"F' U F U2 B U2 F2 D' L2 U D B' U' F2\",\"U F2 D' F' D2 B D2 F B' L2 D2 F' D' F'\",\"F' U F U2 B' U D R2 D' F2 U2 B U' F2\",\"L D R2 D' L' D F R2 F' R2 D' F2 U F2\",\"U F2 D' F' D2 B R2 U2 F B' R2 F' D' F'\",\"D R2 U' F' R2 F U D R2 U D' F D' F'\",\"U F2 D' F' D2 F' R2 B2 U2 B2 R2 F D' F'\",\"U F2 D' F' D2 F' L2 F2 D2 F2 L2 F D' F'\",\"U F2 D' F' D2 F D2 L2 F' B D2 B' D' F'\",\"U F2 D' F' D2 R2 F' B U2 F R2 B' D' F'\",\"U F2 D' L2 F' B D2 F' R2 F R2 B' D' F'\",\"U F2 D' F' L2 F' B D2 R2 F R2 B' D' F'\",\"U F2 D' F L2 F2 D2 B2 R2 B' R2 B' D' F'\",\"U F2 D' F R2 B2 U2 F2 L2 B' R2 B' D' F'\",\"U F2 U2 D' F' B L2 B' D2 B R2 B' D' F'\",\"U F2 D' B' U2 F' B L2 D2 B R2 B' D' F'\",\"U F2 D' B' L2 D2 F' B R2 B R2 B' D' F'\",\"U F2 D' F' D2 F R2 F' B U2 R2 B' D' F'\",\"U F2 D F2 B2 U2 B' R2 B U2 F B2 D' F'\",\"D R2 U' F2 U2 B' D2 B' L2 F' D2 B2 D' F'\",\"U F2 D' F' D2 B' U2 B2 R2 B2 U2 B D' F'\",\"U F2 D' F' D2 B' D2 F2 L2 F2 D2 B D' F'\",\"U F2 D2 B2 U B' U' B2 D L2 D' B D2 F2\",\"U F D2 B' D2 F2 U' F U F2 D2 B D2 F2\",\"U F2 D' F' D2 B R2 F' U2 F B' R2 D' F'\",\"U F D B R2 F' U' B U' F B2 R2 D' F'\",\"U F2 D' L' D' B' U B' U' B2 D L' D F2\",\"U F2 D' L U' F' D F' D' F2 U L D F2\",\"U F2 D' L U' L D F L2 F' L' U L' F2\",\"B' R2 D' R2 B2 L2 U' F2 L2 B' U2 F' U' F\",\"B' R2 U' B2 L2 F2 D' F2 L2 B' U2 F' U' F\",\"L2 F2 D F2 L2 B2 U B R2 B U2 F' U' F\",\"L2 F2 U L2 B2 R2 D B R2 B U2 F' U' F\",\"B L2 F2 D F2 L2 B2 U R2 B U2 F' U' F\",\"B L2 F2 U L2 B2 R2 D R2 B U2 F' U' F\",\"B' R2 B' D' R2 B2 L2 U' F2 L2 U2 F' U' F\",\"B' R2 B' U' B2 L2 F2 D' F2 L2 U2 F' U' F\",\"R U R' U R U2 R' F' U' F U F' U' F\",\"U F' L' F' L2 D' B' U' L2 U B D L' F2\",\"F' U2 F' D F2 U2 B' R2 F B D' F2 U F\",\"F' U2 F' D' F B L2 B' U2 F2 D F2 U F\",\"R U R' F2 B L D' L D F L2 B' U2 F\",\"R U R' F2 B L2 F L2 B' L' U' L U' F\"],\"U' R' F R F' R U R'\":[\"R U R' U' F' L' U L U' L F' L' F2\",\"R U R' U R U R' F' U L F' L' F2\",\"R U R' U2 F R' F D' F' D F' R U\",\"R U R' U2 F R' F' R U F' L F' L' F2\",\"R U R' U2 F' U L F' L' F L F' L' F2\",\"R U B U R' F' R B' R' U2 L F' L' F2\",\"R U2 F' L F U' R' F' U2 F U F2 L' F2\",\"U2 L F2 L' F U L F L' U L F2 L' F2\",\"R U R' U R U R' U' R U R' F' U F\",\"R U R' U' F' L' U B' U B U' L U' F\",\"R U R' U R U R' U F' L' U L U' F\",\"R U R' U' F' L' U L U2 F2 R' F' R U\",\"D R U R' U R U R' F R' F' R U D'\",\"D2 R U R' U R U R' F R' F' R U D2\",\"D' R U R' U R U R' F R' F' R U D\",\"R U' R U2 R' U2 R' F U R U' F' U' R'\",\"R U' L F2 R' F2 L' F U R U' F' U' R'\",\"R U B L' B2 R B' L B2 R2 U' R U2 R'\",\"R U R' L' F' L U2 L' F L U' R U2 R'\",\"R B' R B2 L U' L' U B' R2 U2 R U2 R'\",\"R U' R' F' U L2 B L' F' L' F2 L' B' L\",\"U2 R U R' F R' F L2 B D' B' L2 F' R F'\",\"R U R' F' U2 F U R' F2 R U2 R U2 R' F2\",\"U2 F' L' U L F U R' F2 R U2 R U2 R' F2\",\"R U2 R' F' U' B' U' B L U' F U F2 L' F2\",\"R U2 R' F' U L F U' F' U F U F2 L' F2\",\"R U R' U2 R U F' L F U' R' U F2 L' F2\",\"R U R' F' U2 F U R' F2 L F2 R F2 L' F2\",\"U2 F' L' U L F U R' F2 L F2 R F2 L' F2\",\"U2 L U F U' R' F L' F2 R U2 L F2 L' F2\",\"U2 R U2 L' U R' F' U F L U2 L F2 L' F2\",\"R U R' F' U2 F U L' U2 L U2 L F2 L' F2\",\"U2 F' L' U L F U L' U2 L U2 L F2 L' F2\",\"U F U F2 L F' L' F U F U L F2 L' F2\",\"B' R2 B U B' R U' R U R B U' F' U' F\",\"R U2 R' F' U' B' U' B L2 F2 D F D' L2 F2\",\"R U R' U R U2 F' L F U' R' U F' L' F\",\"U2 R' U' R' U R U' B U' F' U F B2 R2 B\",\"U2 R' U' B U' B L' B' L F' U F B2 R2 B\",\"U' F U' L F2 L2 U R U' L U' R' U2 F' U'\",\"B2 D' R U F U F2 U F2 U2 F' R' D B2 U'\",\"B' U2 L D' F2 U' R U R' D R2 L' U' B U'\",\"R U R' U R U R' U' R U' B U B' R' U2\",\"B D2 F' L' F D2 B' R U R' U B' R B U2\",\"U R2 U' R B' R2 B U B' R2 B R' U R2 U2\",\"U R2 U' R2 D' R B U B' R' D R2 U R2 U2\",\"U R2 U2 B' D L B' U B L' B U2 D' R2 U2\",\"R U R' U L F R' F' R F' U F U' L' U2\",\"B' R B2 L' B R' B2 U' L2 D F2 U' D' L' U2\",\"R U R' U L F R' D R' D' R F' R L' U2\",\"U2 F' U L' B2 D' B U B' D B2 L U' F U\",\"U2 F2 U' F2 U' R B U B' R' U F2 U F2 U\",\"U2 F2 U' F' D R F' U F R' D' F U F2 U\",\"U2 F2 U' D' F' D R F' U F R' F U F2 U\",\"U2 F' U B2 U B' L B U' F' B' L' F2 B' U\",\"R U R' U2 B U' F R' F' R F' U F B' U\",\"U2 F2 D' L F' L2 F U F' L2 F L' D F2 U\",\"U2 F2 D' L2 D' L F U F' L' D L2 D F2 U\",\"B' R B2 L' B2 R' D' R2 B' D B' L U' B' U\",\"B' L U2 L' U2 L' D' R2 B' D B' L U' B' U\",\"R U R' U2 F R2 D2 B' D' B R D' F' R U\",\"R U R' U R U R' U' R2 B' R' B U R' U\",\"R U R' U R B' R2 D' R' D R' B U R' U\",\"R U B U R' F' R B' R' U F2 R' F' R U\",\"R U B U2 L U L' B' U' R' F R' F' R U\",\"D R U R' U' F' L' U L U' L F' L' F2 D'\",\"D R U R' U R U R' F' U L F' L' F2 D'\",\"D R U R' U2 F R' F D' F' D F' R U D'\",\"D2 R U R' U' F' L' U L U' L F' L' F2 D2\",\"D2 R U R' U R U R' F' U L F' L' F2 D2\",\"D2 R U R' U2 F R' F D' F' D F' R U D2\",\"D' R U R' U' F' L' U L U' L F' L' F2 D\",\"D' R U R' U R U R' F' U L F' L' F2 D\",\"D' R U R' U2 F R' F D' F' D F' R U D\"],\"U R U' R' F R' F' R\":[\"R' U2 R U B' D' F R F2 U F U' D B\",\"R' U2 R U B' D' F D' F D F2 R D B\",\"F' R F' U' F' R2 U D' F2 D F R' F2 U' F'\",\"U2 F' U2 F U' B U' F2 U B' U2 L' U L F2\",\"U R U' R' F' R L2 B2 L B2 U' L U R' F\",\"B L U' L' B2 D' F R' F' R2 B U2 B' D B\",\"U' B' R F R F2 U2 B U B' U2 F U' R' B\",\"U F U F' U F U F2 U F R' F2 R F2 U'\",\"R U R' U R U B' R B R2 U R U R' U'\",\"R2 U B U B' R U R U' R2 U R U R2 U'\",\"L2 D F D F' R2 L' F R2 F L D2 R' L2 U'\",\"B L U' L' B2 D' R D R' F R' F' R2 B U2\",\"B D L B2 U' B2 L' D' F B2 R' F' R2 B U2\",\"B D L B' U' L' B2 D' F B R' F' R2 B U2\",\"B' U B U2 F' R L' D' B D R' L U' F U\",\"U2 L' D2 F' U B' U' F B D2 F' U' F L U\",\"U2 L' F' U B' U' F B D2 F' U' F D2 L U\",\"B L U' L' B2 D' R U2 D B L2 F' L' F L'\",\"U' F U2 R U L' U' L2 F' L' F R' U' F' U' F'\",\"U' F U2 R F' L2 D' L' D L' F R' U' F' U' F'\",\"U' F U2 R U L' B L' B' L2 U' R' U' F' U' F'\",\"F R B U' L' U L F B' U' F' R' U F' U' F'\",\"F2 R' U' R F' U2 B2 D2 L D2 B2 U' R F' U' F'\",\"F' R F' U' F' D2 R2 U D' F2 D' F R' F2 U' F'\",\"F' R F' U' F' D' R2 U D' F2 D2 F R' F2 U' F'\",\"F' R F' U' F L2 U D' B2 L2 D F R' F2 U' F'\",\"D F' B' R' F2 R F' B U' F U F2 D' F U' F'\",\"D L B2 D F' D' B2 L' U2 R U2 R' D' F U' F'\",\"L B2 D F' D' B2 L' U2 D R U2 R' D' F U' F'\",\"D L B2 D F' D' B2 R' F2 R F2 L' D' F U' F'\",\"D L D F' D' B2 R' F2 R F2 B2 L' D' F U' F'\",\"F B' R U' R' U F' B L D F' D' L' F U' F'\",\"B' U F' L F L' U' B L D F' D' L' F U' F'\",\"U R' F' L F R L' U' L D F' D' L' F U' F'\",\"F B' R B U' R' U B L2 F' L' U L' B' U2 F'\",\"B' L D F' D' L' U2 D R U2 R' D' F B U' F'\",\"L2 F' L2 F U2 F L F' U' L' U' L U L' U2 F'\",\"D' R D2 F2 U' F' D R2 U D2 F D' R' U' D F'\",\"U R' L F R D2 B R' B U2 R U' B2 U D2 F'\",\"D' B' U2 L' B D2 F' D' L F L U' L' U L F'\",\"U' L' U2 L F R U2 R' F U' F' U' R U2 R' F2\",\"U2 R2 U R' F R D R2 D2 F2 L' U' F' L D F2\",\"U2 F' L F' L2 B L2 D' F' D2 F D L B' L2 F2\",\"U F U F' U F U2 F L F2 U F' U' L' U' F\",\"U2 F' L' B L' B' L2 B' R2 D' F' D R2 B U F\",\"D2 F' B R' F2 R F' B2 D' L2 D F2 B U' D2 F\",\"U R U' R' F' L' U2 L U2 R L' U' L U R' F\",\"U R U' R' F' R' F2 L F2 R2 L2 U' L U R' F\",\"R' U R U2 F2 L F2 U F' U' L' U' R' U2 R F\",\"U' B R' U' R' U' B' U B' R' B2 U F R2 F' B'\",\"U' F' B2 R' U L' U' R2 U2 B' U' L U' R' F B2\",\"U' B2 D' F' U' F L' B' R2 B' R' B2 L U' D B2\",\"U2 B2 D F' L F D' R2 U2 B' R B2 R' U2 R2 B2\",\"U' B' R F D' F L' F U F U' F2 L D F2 B\",\"U' F' B' L2 D' L' D2 R D' L2 U2 L U' F' U' B\",\"B2 D' R' F R F' B' D B' U L2 U2 L2 B' U' B\",\"U' B' R2 F R' F2 U L F2 R F L' F2 R' U' B\",\"U' B' L' U D R' U' R D' L U' F' U' F U B\",\"U' B' D L' U R' U' R L U' D' F' U' F U B\",\"R' U2 R U B' D' R U F2 L F L' F U' D B\",\"U' B' R2 U2 B U2 R U' B' U R B R2 B' R' B\",\"U' B' L' U R' U' R L U' D' F' U' F U D B\",\"U' B2 D' R2 F R2 F' U' R D R' U R2 B R' B\",\"U' B2 D' R D F R2 D' R D R F' R B R' B\",\"U' B2 D' R D F R2 B R F' R U R U' R' B\",\"U' B' R2 U2 L' U R U' L U2 R2 F R' F' R B\",\"U' B' R2 F R2 D2 L D' R D L' D2 R' F' R B\",\"U' B2 D' R U' R U R2 D B R2 U' R U R2 B\",\"U' B' R L F D' F D R F' R2 F R F2 L' B\",\"U' B' R' U' B' R' D B2 U' B' U2 B' D' B R B\",\"D L' U' L2 D F' L' U' F' U D' B2 D' B R B\",\"B2 U' D2 F' D' L2 U' L' D L' F' U D2 B R B\",\"U' B' R' B U' B' R' D B2 U' B' U2 B' D' R B\"],\"R U' R' U R U2 R' U R U' R'\":[\"R U2 R' F' L' B2 R' F R' F' R2 B2 L F\",\"F' U2 F2 R2 U D2 B2 U' B' U B' U' D2 R2 F'\",\"F2 U F2 U' F' U2 F2 U F' U' F2 U2 F' U' F2\",\"R2 B2 D2 B L2 B2 R' B L' B L' B R' U2 F2\",\"F2 D R2 U' R' U2 R2 U R' U' R2 U2 R' D' F2\",\"F' U2 L F' R2 L2 B L' B' L' F L' F' R2 F2\",\"F' U2 F' L' B D2 B' R2 L2 F U2 L' F' R2 F2\",\"R2 B2 U2 F R2 F2 L' F R' F R' F L' D2 F2\",\"R2 D2 B' R F' R F' R B' R2 F2 R U2 L2 F2\",\"R2 U2 F' L B' L B' L F' L2 B2 L D2 L2 F2\",\"F' U F U' F' U2 F U' F' U' F U F' U F\",\"F' D R U' R' U2 R U' R' D' F U F' U F\",\"F' U F D' L' U2 L U' L' U' L D F' U F\",\"F2 R2 F U2 L F R' F R F R2 L' F U2 F\",\"F' U R2 B2 D' F2 U' F' U F' D B2 R2 U F\",\"F' U L2 F2 U' B2 D' B' D B' U F2 L2 U F\",\"F' R U' R' U2 R U' R' D' F U F' U D F\",\"F R2 D2 R' B' R B' L' D2 R2 L F2 U2 L2 F\",\"F2 R2 B L2 D B' R2 L2 F U' B' U' F U' B\",\"F2 R2 B L2 F' D' B R2 F' R2 L2 B R2 U' B\",\"B2 R' D2 B' U B' U F2 L' U B' D2 F2 B U'\",\"R U D R' U R D' F' U' F U2 F' U' F R'\",\"R U F2 L2 D R' U R' U' R2 D' L2 F2 U R'\",\"R2 F2 R' B' R B' L' B' L F2 B2 R' B U2 R'\",\"R2 F2 R' B' U2 R F2 B2 L' D2 L B' R' U2 R'\",\"R U B2 R2 U L' D L' D' L2 U' R2 B2 U R'\",\"R' F2 U' D2 L' U L' U' L2 U D2 F2 R2 U2 R'\",\"R U R' U R U' R' U' R U2 R' U' R U R'\",\"R U R' D B U' B' U' B U2 B' D' R U R'\",\"R U R' U R D' F' U' F U2 F' U' F D R'\",\"R U2 R F2 B' R F R F' R B U2 R F2 R2\",\"L U' R U' L' U' R F2 B2 L' D B2 L F2 R2\",\"L U' F2 L F2 B2 R' F2 L D' R' B2 L F2 R2\",\"R2 U' R' U2 R2 U' R' U R2 U2 R' U' R2 U R2\",\"R2 D' F' U2 F2 U' F' U F2 U2 F' U' F2 D R2\",\"R B2 U2 R2 F2 B D2 B' L' F L' F' D2 F2 R\",\"U' R2 L D2 L' U B' R2 U L' U L' D2 F' L2\",\"F2 R2 L2 B' D' L U2 L' B' R B' R L2 F2 U F'\",\"B L2 D2 F2 D2 F' B' L F' L F' L' F2 L U2 F'\",\"B U2 F' B2 R2 F2 L B' L B' L' B2 L' B R2 F'\",\"B U2 R2 F U' F' L2 B L2 F' U2 F2 B2 U' R2 F'\",\"F' U2 R' L D2 B' L F' L D2 F L B' R D2 F'\",\"B U2 R2 U' F2 B D2 F2 B' U2 B' U' F D2 R2 F'\",\"B U2 R2 U' B' U2 F2 B' D2 F2 B U' F D2 R2 F'\",\"F R2 D2 R' B' R B' R F2 L2 F2 R' B2 D2 R2 F'\",\"F R2 D2 R' B' R B' L D2 L2 D2 L' B2 D2 R2 F'\",\"F R2 D2 R' F2 B L2 F2 B' R2 B' R' B D2 R2 F'\",\"F R2 D2 R' B' R2 F2 B' L2 F2 B R' B D2 R2 F'\",\"B U2 R2 F U' F2 B D2 F2 B' U2 B' U' D2 R2 F'\",\"F' U D R2 B2 U D2 L2 D' B' U B' U' D2 R2 F'\",\"F' D2 B2 L2 U D2 F2 U D2 B' U B' U' D2 R2 F'\",\"B U2 R2 F U' B' U2 F2 B' D2 F2 B U' D2 R2 F'\",\"F R2 D2 R' B' R B' L D2 R2 U2 L' F2 U2 L2 F'\",\"F' R2 D2 B2 L B' L B' R L2 D2 L F2 R L F'\",\"L2 F2 U2 F L2 F2 R' F L' F L' F R L2 U2 F2\",\"F' U2 L F' R2 F2 R' F R F L' F U2 F' R2 F2\",\"R' L' D2 B2 U R2 U2 L' U R' U R' U R' D2 F2\",\"L2 F2 D2 B R2 B2 L' B R' B R' B R2 L D2 F2\",\"R L F2 D' L U' L U' L D' R2 D2 R U2 R2 F2\",\"R B' R B L D2 L' B D2 R2 U2 F L' F2 L' F2\",\"R B' R B L D2 L' F L2 D2 R2 B L' F2 L' F2\",\"L2 U2 F' R B' R B' R F' R2 B2 R' L2 U2 L2 F2\",\"R L F2 D' L U' L U' L D' L2 U2 R D2 L2 F2\",\"L2 D2 B' L F' L F' L B' L2 F2 R2 L' D2 L2 F2\",\"R B L2 U L F' L' F2 U' F' L2 B' R' F' U2 F\",\"F U' L D2 L' F' R F' R L2 B2 D B R2 L2 F2\",\"U F U F U' F2 U F U2 F U2 F U2 F2 U2 F\",\"F' B U B D2 F2 U' F' U F' D2 B' U' B' U2 F\",\"B2 L2 F D2 R F L' F L F R' L2 F' B2 U2 F\",\"F' B' D2 F R2 U F D' F D F U' D2 B U2 F\",\"F' D2 R U' R' U2 R U' R' D' F U F' U D' F\",\"F R2 U2 D F2 U2 D B' D B' U2 D' L2 B2 D2 F\",\"F' D' R U' R' U2 R U' R' D' F U F' U D2 F\",\"F2 U2 L' U' L F R U' R' D' F U F' U D F\",\"F' R B L2 B' D L2 D2 R D' R' D' L2 D' R' F\",\"F R2 D2 R' B' R B' R2 L U2 R2 L B2 D2 R2 F\"],\"R U' R' U' R U R' U2 R U' R'\":[\"F2 U' L' U' R' U L F2 U' F2 U' R U' F2\",\"F2 L' U' L U' R2 D' L D' L' D2 R2 U2 F2\",\"F2 D' L U' L' F2 L' D' L D F2 U D F2\",\"F2 U D2 B U' B' L2 B' D' B D L2 D2 F2\",\"L F2 D2 R D2 L D2 B2 D L' D L' F2 U'\",\"B2 U' B D B' D' R2 B' R2 U B R2 B U\",\"L2 F2 U' F2 U L' U2 F2 U2 F2 L U' L2 U\",\"L2 F2 U' F2 D F' U2 R2 U2 R2 F D' L2 U\",\"F2 U2 D F' U' B' U F R2 U' R2 U' B D' F2\",\"F2 U2 D R U' R' B2 R' D' R D B2 U' D' F2\",\"F2 D' B' U' F' U B L2 U' L2 U' F U2 D F2\",\"L U L' U R' F R F2 B' U2 B L F' L' F2\",\"U' F' R' F' L F2 D F2 D' F R L2 U L F\",\"B2 U2 B R2 U' B' U D B' D' R2 B R2 U2 B2\",\"B2 D2 F L2 U' F' U D F' D' L2 F L2 D2 B2\",\"U2 F2 R2 U' L' U L F2 R U R' F2 R2 F2 U'\",\"F2 D' L U' L' F2 L' D' L D' R2 U' D' R2 U2\",\"R U R' U R U' R' U2 R U' R' U R U R'\",\"F D' B L2 B' U2 L2 B' U' B L2 U D F' U F'\",\"F R2 L2 B D2 B' R2 L2 U' F2 U' F U2 F U' F2\",\"D' F2 D F2 L B2 L' U2 F2 R D2 R U' R2 U' F2\",\"D' F2 D F2 R D2 L' B2 U2 L D2 R U' R2 U' F2\",\"F2 U' L' U' R' U L U' D R2 U' R2 D' R U' F2\",\"F2 L' U' L U' R2 D' F' D2 R' D' R F R2 U2 F2\",\"R2 F2 U' R U F2 B2 L' D' L2 D' L' B2 R2 U F2\",\"U' R2 U' R U2 R D' F2 D R' F2 U2 F2 R U2 F2\",\"F2 U2 R' D R' D2 R F2 R F2 R' D F2 R U2 F2\",\"F2 U2 R' D R' D2 L D2 R D2 L' D F2 R U2 F2\",\"F2 U2 R' D L' F2 L F2 L D2 L' D F2 R U2 F2\",\"F2 U2 R' F2 U R' F2 R F2 R U2 R' U R U2 F2\",\"F2 U2 R' F2 U L' U2 R U2 L U2 R' U R U2 F2\",\"F2 U2 R' F2 U L' U2 L F2 L F2 L' U R U2 F2\",\"F2 U D2 R' U' L' U R B2 U' B2 U' L U D2 F2\",\"U' D R2 D' F U' F' R2 F' D' F U F2 U D F2\",\"D' F2 D' L U2 L U' L2 U L B2 U2 B2 L' D2 F2\",\"F2 U2 D2 R' U' R U' L2 D' R D' R' D2 L2 D2 F2\",\"F2 D2 L' D R' B2 R B2 R D2 R' D B2 L D2 F2\",\"F2 D2 L' D L' D2 R D2 L D2 R' D B2 L D2 F2\",\"F2 D2 L' D L' D2 L B2 L B2 L' D B2 L D2 F2\",\"F2 D2 L' B2 U R' U2 R B2 R B2 R' U L D2 F2\",\"F2 D2 L' B2 U R' U2 L U2 R U2 L' U L D2 F2\",\"F2 D2 L' B2 U L' B2 L B2 L U2 L' U L D2 F2\",\"L U L' U2 F2 L F L' U' B' U2 B L F' L' F2\",\"L U L' U2 F2 L F U2 L' U2 L U L F' L2 F2\",\"U R2 D' L2 D' L' D L B2 D' R D2 R U' L2 F2\",\"U R2 U' F2 D' F' D F L2 D' B D2 B D' L2 F2\",\"F2 U2 R' F2 U L' U' R U2 F R' F' L F R F\",\"B' D' F D2 B2 U B2 D' R2 B U' B2 D' F' D B2\",\"F2 U' F U' F' R2 F' D' F D' F2 B2 U2 L2 D2 B2\",\"F2 L' U' L U' R2 D' L D' L' F2 B2 U2 L2 D2 B2\",\"D B2 D' F2 R U2 D R U2 D' R' D B2 D' F2 U'\",\"L2 U2 F2 U2 L F2 L F2 U2 L' D' L' D L' F2 U'\",\"L F2 R' L B2 R B2 R D2 B2 D L' D L' F2 U'\",\"L F2 D2 L B2 L B2 R L' B2 D L' D L' F2 U'\",\"R U2 F2 R F2 L F2 D2 R' L D L' D L' F2 U'\",\"F U2 F' U2 F2 U' F U' F U2 F U' F2 U' F' U2\",\"U R' L' D B2 R' B2 R' B2 U R U' D' R2 L U'\",\"U' F2 R2 F2 U R' F2 R U' F2 U' R U2 R F2 U2\",\"U' B L F2 U' F' U F2 L' F' B' L F' L' F2 U2\",\"U2 R U2 B2 U R2 U2 L U2 L' U2 R2 U' B2 R' U2\",\"U2 R U2 B2 U' L2 D2 L' U2 L D2 L2 U B2 R' U2\",\"F2 R B2 R D' L2 D R' B2 R' F2 U2 R U2 R' U2\",\"F2 B' R B2 D' L2 D B2 R' F2 B U2 R U2 R' U2\",\"R U R' U R2 U F R2 F' B L U L' B' R2 U2\",\"F' R2 F' D' F D R2 U2 F' U' F U F U2 F U\",\"U' F2 L F' R' F2 L' F U' R F' R' U R F U\",\"B' U' F2 B2 D' L2 D L2 F B2 U' B U L2 F U\",\"F B' R F' D' R F D R2 D2 F' D2 R2 B R' U\",\"B' R B U' F R2 F2 U F2 R2 F' U B' R B U\",\"L2 U D' L2 U' L2 D L' U2 F2 U2 F2 L U' L2 U\",\"L2 F2 U' F2 U L' F2 B2 D2 F2 D2 B2 L U' L2 U\",\"L2 F2 U' F2 U L' D2 B2 U2 B2 U2 D2 L U' L2 U\",\"L2 F2 U' F2 D F' D2 L2 U2 L2 U2 D2 F D' L2 U\",\"L2 U' D R2 U' R2 U F' U2 R2 U2 R2 F D' L2 U\"],\"R U' R' F' L' U2 L F\":[\"B2 D2 B' L F' L' B D2 F' B2 U' L' U' L F\",\"D2 B' U' F' U' B L' F D2 B2 R' F R' F' B2\",\"U2 R2 B' R' U' B L2 U' R' U D F D' L2 U'\",\"R' D' L F' D F2 R D' B2 D F2 D' B2 L' D\",\"R2 F' U2 D2 F B U' F' U' L' B' U' D2 F R'\",\"R L' D' B' R2 D2 L' D F D R2 D L2 U' R'\",\"R B' U2 R U B' U' R' B U B U B U2 R'\",\"F' B U L U' L' B' L' U L F U R U R'\",\"U2 F' U F' R2 B' R' B R2 F2 R U R U R'\",\"F' U' L' U L F' R' F2 R F U F U' F2 U F2\",\"L F D F L B D2 B' U2 F L D' F' U2 L2 F2\",\"L2 D2 B R2 D2 F2 R' F' R F2 D' B' L' D L' F2\",\"B' R B U2 B' R U' R2 U R2 U F' U' B U' F\",\"B' R B U2 B' R D' F2 U F2 D F' U' B U' F\",\"B2 R B2 U2 B' R U' R2 U R2 U2 F' U2 B U' F\",\"F' U' L' F U F' R' F' L F D F2 D' R U F\",\"R U' R' F' L F U' F' U' B L2 B' U' L' U F\",\"R U R' U F' U2 F R U2 R' F' L' U' L U2 F\",\"R' U2 R2 U R2 F R F2 R2 D' F' D R U R F\",\"U' F2 U2 F' U R U2 R2 D2 L D L' F D R F\",\"R2 U' R' F U R2 U' F2 U R L' B2 R' B2 L F\",\"B2 R F' R' B2 L' B' U R U R' B' R B2 L F\",\"U B' R' B U2 R' F R' F2 R' L' U2 R U L F\",\"B2 U' F' U' F R2 B D2 F' L U2 F' L2 F2 D2 B\",\"U' R' F2 R' U R2 U R U F' U2 R U' R2 F2 U'\",\"F' U' L' U L U F L F2 U' F2 U F2 U L' U'\",\"F' U' L' U L U F L F2 D' L2 U L2 D L' U'\",\"F' U2 L F U' F2 U' L U F L' U' F' L2 F2 U2\",\"B2 D2 B' L F' L' B D2 F' B2 U F R U' R' U2\",\"D R2 L F R F R2 F2 L' U B U2 B' U R2 D'\",\"F2 L' D L2 D' B2 U' F U' F2 R F2 B2 L F D2\",\"R2 B U' B' U R' L F2 L' F' D R2 U D' F' R'\",\"R2 B U' B' U' L' U2 R' L F D R2 U D' F' R'\",\"R2 B U' B' U' R D2 L2 B' U2 L2 D2 F2 U F R'\",\"R2 F B2 U2 D2 F' B' U' F' U' L' B' U' D2 F R'\",\"R B2 U' B L U' R L' B U B U' R' U' B R'\",\"R B' L' U' B U L B' U' B' U' B U2 B2 U2 R'\",\"U2 F' U F' R2 B' D B' D' B R2 F2 R B U2 R'\",\"U2 R F' U' F U' B L F2 L F2 L2 U2 B' U R'\",\"R L F2 R2 U F2 L2 B D2 L' D' L2 U2 B' U R'\",\"R L' B' R2 D2 L' D F D R2 D L D' L U' R'\",\"B' R2 B R' U' R' F D R2 D' F' R' U R2 U R'\",\"R B' R B R' U' R' F' L' U2 L F U R U R'\",\"U2 R2 U D B2 R B' R' U' B2 D' R2 U R U R'\",\"U' D' F2 U2 F2 L F' L' U' F2 U' F2 D R U R'\",\"F' U2 R' F' R B L2 U L' U R2 F L B' D2 R2\",\"R2 D B D' R2 U2 R U R D B L' B2 L D' R2\",\"U L U' F' U' F U R' F R F U F' U' F2 L'\",\"U2 L U F L B2 R' F2 R F' B2 L' F2 U' F L'\",\"B' R B' L' D2 B' L U B' R' L U F U' F L'\",\"R' D' R' L2 D' L' D R F2 D F2 D' F' L' D R\",\"L F D F R F R' F2 R2 F2 R F2 R2 D' F L'\",\"L F D F R F L' U2 R2 U2 L F2 R2 D' F L'\",\"L F D F R F R' F2 L2 B2 R B2 L2 D' F L'\",\"F' U' F B L U2 F2 U F2 U2 L' B' U L F2 L'\",\"F' U' F B L D2 B2 U B2 D2 L' B' U L F2 L'\",\"F' U' F B' U2 F2 R' U R F2 U2 B U L F2 L'\",\"R' U' F B U F U' B' R F' R' U R L F2 L'\",\"F' U F U2 F' U F2 U F2 U' R' F' R L F L'\",\"F' U F U2 F' D R2 U R2 D' R' F' R L F L'\",\"R B' U' B L U' L2 D2 R2 B' D2 L2 U' F' R' L'\",\"U2 F' L F2 U F2 U' F D2 L B' R' B L' D2 L'\",\"U' L F' R' F' R L U2 L' F R L U' R' U2 L2\",\"L F' L' U L U F2 U2 F2 U2 F L D F D' L2\",\"R' L2 D2 R D F2 B R2 F2 R F R F2 B' D L2\",\"L' B' U2 F2 U' F U' B' R2 F U' R' U R2 B2 L\",\"L' F2 D' L2 D F2 B' R U B' R' B U2 B U2 L\",\"L' B' U2 L F' U L' U R' L2 F R F L2 B L\",\"R U' L' U2 R' F' B L' B' U L F R U R' L\",\"F2 L D F' D B R' D B' D2 F D2 L' D2 F' D' F'\",\"L' F' B' U F R B U2 B' R' B U L U2 F U F'\",\"L F' L' F U' F' U F R B U' B' U' R' F U F'\",\"L' F' L U' L' U2 F R B U2 B' R' U' L F U F'\",\"R U2 B' R B2 U B' U' R F R U2 L F L' U2 F'\"],\"F' L' U2 L F R U R'\":[\"R U R' U' F' L' U L U2 L' U2 L F\",\"R U R' L' B2 R B R' B L U F' U' F\",\"R U R' U B' R2 F R F' R F' B U' F\",\"R U R' U F' U2 B L F' L' F B' U F\",\"R U R' U' F' L' U R' L2 F2 L' F2 R F\",\"R U R' U' F' L' U R B2 L' B2 R' L2 F\",\"R U B U R' F' R B' R' U L' U2 L F\",\"R B' R B R2 F' L' U L U' F R U R'\",\"R B' R B R2 U' F R' F' R U R U R'\",\"R U R' U2 R' F2 L F L' F R U' F' U' F\",\"R U R' B L' B L B2 R' U2 R U' F' U' F\",\"R U R' U' F' L2 B L B' L F U2 F' U' F\",\"R U R' U' L F' L F L2 B' U2 F' B U' F\",\"R U R' U F' U' R U' L F' L' F U R' F\",\"R U R' L' B' L U F' U' L' U B U' L F\",\"R U B U2 L U L' B' U' R' F' L' U2 L F\",\"R U R' U2 F R' F' R U F' U' L' U2 L F\",\"R U R' U2 F' U L F' L' F U' L' U2 L F\",\"R U R' U' F' L' U R2 L' D2 L' D2 R2 L' F\",\"R U R' U F' U' R L' B' U B U' R' L F\",\"R U R' U2 R' D' F2 D F R2 L' U2 R' L F\",\"R U R' L' B' U F' B U' F L F U' F' U\",\"R U R' B L' B' L U F' L U' L' U' F U\",\"R L F' L' F U R' F U' F' U2 F' U2 F U\",\"R U2 B' R' F' B U B L' U' L B' U2 F U\",\"U R B U2 B' U' B U2 L U' L' B' U R' U\",\"R L F' L' F U R' F U' B' R2 F' R2 B U\",\"U' B U R B' D' F' L' U R' L2 F2 L' F' D\",\"D' F' U' R B U B' L' U R' L2 F2 L' F' D\",\"R B' R B R' U F' U' L F' L' F U F R'\",\"R2 B U' B' U R' F' L' U B2 L' B2 L2 F R'\",\"R B' R B R' U F' L' B' U B U' L F R'\",\"R B' R B R2 U' F' U L F' L' F2 R U R'\",\"R B' R B R2 U2 R U R' F' U F R U R'\",\"R U R2 F R F' U2 F R' F' R U R U R'\",\"R U B U B' R' F' U' L F R' F2 L' F2 R\",\"R U B U B' R' F' U' L F L' U2 L' U2 L\",\"R F2 L' B' R U R L2 D R' L2 U B R2 L\",\"R U R' U2 R' D' F2 D F L' U2 R' L F2 R2 F'\",\"R U R' U' F' L' B' U2 B L F U' R' F R F'\",\"R U R' U2 R' F' R L' U2 F U F2 U' F' L F'\",\"R U R' U2 R' D' F2 D F R2 U2 R' L F2 L' F'\",\"R U R' U' F' U' F2 D R' D L B2 L' D2 R F'\",\"R U R' U2 R' D' F2 D F U2 R' L F2 R2 L' F'\",\"U2 F' L' U' F' L F U' F' L' F U' L2 F' L' F2\",\"U' F' U2 L' U L' B2 L' F R F2 L D2 B2 L2 F2\",\"R B2 L F' L F L2 B' U2 B' U R' U' F' U' F\",\"R B2 U2 B' R2 F R F' R B' U R' U' F' U' F\",\"R U R2 U2 L F R' F R F2 R L' U' F' U' F\",\"R U R' U R B' R B R2 F' U2 F U2 F' U' F\",\"R U R2 U2 L F R' F' R L' U2 R U F' U' F\",\"R U R' B U B' R' F' U2 F U R U F' U' F\",\"R U R' L' U' L' B L B2 U B L U F' U' F\",\"R U R2 U2 R U2 R L' B' R' B L U F' U' F\",\"R U L2 D2 R D2 R' L B' R' B L U F' U' F\",\"R U R' U2 F R' F R F2 L' U2 L U F' U' F\",\"R U R' U D B' R2 F R F' R B D' F' U' F\",\"R U R' D L' B2 R B R' B L U D' F' U' F\",\"R U R' U D2 B' R2 F R F' R B D2 F' U' F\",\"R U R' D2 L' B2 R B R' B L U D2 F' U' F\",\"R U R' U D' B' R2 F R F' R B D F' U' F\",\"R U R' D' L' B2 R B R' B L U D F' U' F\",\"R U R2 U2 L F' L' U L F L' U2 R F' U' F\",\"R U R' U B' U' B' R B R2 U R F' B U' F\",\"R U R' U' B' U2 F R B' R B R2 F2 B U' F\",\"R U' R' F' L' U' B L F' L' B' L2 F L' U' F\",\"R U R' U' F' L' B' U2 B L F' L F L' U' F\",\"R U R' U' L F' L' F B' U2 B L2 F' L2 U' F\",\"R U R' U' L F' L B D2 F' D2 L2 F B' U F\",\"U2 L' U2 R B2 U B2 U' B2 U' R' L2 F' L' U2 F\",\"U2 L' U2 R B2 D L2 U' L2 D' R' L2 F' L' U2 F\",\"R U R' U R U R' F' R' F2 L F2 R L' U2 F\",\"U2 F' L' U' R U2 L B L' U L2 U L' B' R' F\",\"R U R' U R U R' F' U2 R' L F2 L' F2 R F\"],\"R2' U2 F R2 F' U2 R' U R'\":[\"R U' R' F U F U2 D' B L2 B' U D F' U'\",\"L F' R2 F2 R F R F R U' R2 U R L' U2\",\"D R U R' U R U R U2 F R2 F' U2 R2 D'\",\"D2 R U R' U R U R U2 F R2 F' U2 R2 D2\",\"D' R U R' U R U R U2 F R2 F' U2 R2 D\",\"R U' R2 U2 R' U R U R' U2 B U2 B' U2 R2\",\"R F U R2 F R2 F2 R' F U' D B' R B D' F'\",\"R U' R' U' F B' U F2 U' B U2 F2 U2 F2 U' F\",\"R L' U' B2 U2 R' U R U L' B2 R' L2 F' U2 F\",\"R' U2 B2 R2 L' B2 L B2 R D' R D F' B2 U2 F\",\"R' U2 B2 R U2 L U2 R2 L' D' R D F' B2 U2 F\",\"R' U2 B2 L F2 L F2 R' L2 D' R D F' B2 U2 F\",\"R' U2 B2 R' L2 D2 L D2 L D' R D F' B2 U2 F\",\"R U' R' U' F B' U F2 U F2 U2 F2 U2 B U F\",\"F' L' U B' R' F' U L' U2 L F R B L U F\",\"R U R' U R U R U2 F' B2 L2 F' D2 L2 F2 B2\",\"U B L2 U' D F' U L F D F D2 L B2 U B\",\"U B L2 U' D F' U L F2 L D2 B D B U B\",\"U B L2 D F2 L D F' D' L D2 B D B U B\",\"R U R' U R U D' R U2 R' D R' U2 B' R2 B\",\"D2 R U R' U R U R' D2 B' R2 U2 R2 U2 R2 B\",\"B' U' R B' D' F' R U' R2 U F D B U R B\",\"R2 U2 F R2 F' U2 R' U R' U2 B' U' R' U R B\",\"U2 R D' R U2 R' U D R' U2 B' U' R U R B\",\"D2 R U R' U R U R' D2 B' L2 D2 R2 D2 L2 B\",\"U' F U' L F L' F' U2 F U L F2 L' U2 F' U'\",\"L2 D2 B R2 U' D B' U B' D L U L U2 F U2\",\"R2 U' D B' U B' D L U L U2 B D2 R2 F U2\",\"U2 R U R D B' U B' U' D L2 B D2 R2 F U2\",\"R U R' U' F' L' U L' U2 F' L2 F U2 L2 F U2\",\"L2 D2 B U2 R U R D B' U B' U' D L2 F U2\",\"R2 U2 F R2 F' U2 R' U R' F' U' L' U L F U2\",\"L2 D2 F R2 D R D L B' R B' R' L U2 B U2\",\"L2 D2 F D2 R' L B' R B' L U R U R2 B U2\",\"L U L D L F2 L' U' D' F L F L' F' L2 U2\",\"U' F U L D F' R' F2 U' D R U R D2 L' U2\",\"L F' R2 F2 R D F R2 F' D' F R F R2 L' U2\",\"B' D' F' U2 F R U R' D B U L' B L B' U\",\"R B U2 B' U B' R B' D2 F L F' D2 B2 R2 U\",\"L F U F2 U' L2 F U R U F U2 F' R' L U\",\"R U R' U R U R' D2 B' R2 U2 R2 U2 R2 B D2\",\"R U R' U R U R' D2 B' L2 D2 R2 D2 L2 B D2\",\"R B' R2 B R F R F2 B2 D L2 D' B2 U' F R'\",\"B' U' D' F2 L2 D2 B' D2 L2 F R U F D B R'\",\"R2 F2 U2 R2 U' R2 U' L2 B' D2 B L2 F2 R' U' R'\",\"R D B' U B U D' B U2 R B2 R' U2 B' U R'\",\"R F' R F2 U2 R2 U2 F2 R' F U R' U R U R'\",\"R F' R B2 D2 L2 D2 B2 R' F U R' U R U R'\",\"R F' L U2 B2 L2 B2 U2 L' F U R' U R U R'\",\"R F' L D2 F2 R2 F2 D2 L' F U R' U R U R'\",\"R D B' U B U B U2 R B2 R' U2 B' U D' R'\",\"R U R' U R U D R U2 F R2 F' U2 R' D' R'\",\"R U R' U R U D2 R U2 F R2 F' U2 R' D2 R'\",\"R U R' U R U D' R U2 F R2 F' U2 R' D R'\",\"R2 U B U' F' B' R2 D' F2 D R U2 R U F R2\",\"R U B U2 L U L' B' U' R U2 F R2 F' U2 R2\",\"R U R' U R2 B U2 L U L' F B' R2 F' U2 R2\",\"F2 B2 L D L' D L D L D2 F' B2 R2 F' U2 R2\",\"U2 R2 U2 B U2 B' U R U R U R2 U2 R' U' R2\",\"L2 F2 L' F B' R D R D' R F2 R B U' F L'\",\"R B U2 B' R' U L U F' U2 F2 U2 F2 U F L'\",\"F2 U2 B' R' F' R F2 B U' F L' U2 L U' F' U' F'\",\"U L D F D' L' U D F2 D' L2 U L2 U2 F U' F'\",\"R F U D R2 U' R U R2 D' F' U' R' U F U' F'\",\"R F U F R F D' F2 D R F' U' R2 U F U' F'\",\"U L D F D' L' U2 L2 U' L2 D F2 U' D' F U' F'\",\"R F U F D R D' F2 U L' U' R' U L F U2 F'\",\"R F U R2 U' R' U' D B2 U B' U R' U' B' D' F'\",\"R F U R2 U' R U R2 U' D B U R' U' B' D' F'\",\"R U2 B U2 B' R' F U D R2 U' R2 B' R B D' F'\",\"R F B' R B R2 D R B R2 B' R B' R B D' F'\",\"R F U F B' D' R D F2 R' F R B U R' U2 F'\",\"U R F U F' R U2 R F' D' F2 D R' U2 R2 U' F'\",\"F' U F U B L2 D2 F D2 B' L2 U' R' F R U' F'\",\"R2 F B' D' R2 B2 U2 L2 U F L2 B' L F' L' U F'\",\"F R' B2 L2 F D' F' D L2 B2 R U2 L F L' U2 F'\"]}");
+
+});
+
 var $17b288f07ec57b56$exports = {};
 "use strict";
 
@@ -12157,6 +12162,47 @@ var $bebdf3a72854fb13$export$2e2bcd8739ae039 = $bebdf3a72854fb13$var$Typography;
 
 
 
+var $c02ff5a208fd40b7$exports = {};
+
+$parcel$export($c02ff5a208fd40b7$exports, "Box", () => $f2d8fe790f2a3612$export$2e2bcd8739ae039);
+$parcel$export($c02ff5a208fd40b7$exports, "Button", () => $65c4d565b4687bd9$export$2e2bcd8739ae039);
+$parcel$export($c02ff5a208fd40b7$exports, "CardActionArea", () => $ba9ec2195a7f89db$export$2e2bcd8739ae039);
+$parcel$export($c02ff5a208fd40b7$exports, "Typography", () => $bebdf3a72854fb13$export$2e2bcd8739ae039);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -12166,16 +12212,6 @@ var $d4J5n = parcelRequire("d4J5n");
 
 
 
-
-function $1e827651ec5b426c$export$ee5828fb8c43a48e(slot) {
-    return (0, $81a4eb5b0cda9a59$export$2e2bcd8739ae039)("MuiCardActionArea", slot);
-}
-const $1e827651ec5b426c$var$cardActionAreaClasses = (0, $8100014debd01602$export$2e2bcd8739ae039)("MuiCardActionArea", [
-    "root",
-    "focusVisible",
-    "focusHighlight"
-]);
-var $1e827651ec5b426c$export$2e2bcd8739ae039 = $1e827651ec5b426c$var$cardActionAreaClasses;
 
 
 
@@ -13028,6 +13064,385 @@ var $a7b8b8d335d2c817$export$2e2bcd8739ae039 = $a7b8b8d335d2c817$var$ButtonBase;
 
 
 
+function $6924d9497cfac4e8$export$5a6f9035944c8119(slot) {
+    return (0, $81a4eb5b0cda9a59$export$2e2bcd8739ae039)("MuiButton", slot);
+}
+const $6924d9497cfac4e8$var$buttonClasses = (0, $8100014debd01602$export$2e2bcd8739ae039)("MuiButton", [
+    "root",
+    "text",
+    "textInherit",
+    "textPrimary",
+    "textSecondary",
+    "textSuccess",
+    "textError",
+    "textInfo",
+    "textWarning",
+    "outlined",
+    "outlinedInherit",
+    "outlinedPrimary",
+    "outlinedSecondary",
+    "outlinedSuccess",
+    "outlinedError",
+    "outlinedInfo",
+    "outlinedWarning",
+    "contained",
+    "containedInherit",
+    "containedPrimary",
+    "containedSecondary",
+    "containedSuccess",
+    "containedError",
+    "containedInfo",
+    "containedWarning",
+    "disableElevation",
+    "focusVisible",
+    "disabled",
+    "colorInherit",
+    "textSizeSmall",
+    "textSizeMedium",
+    "textSizeLarge",
+    "outlinedSizeSmall",
+    "outlinedSizeMedium",
+    "outlinedSizeLarge",
+    "containedSizeSmall",
+    "containedSizeMedium",
+    "containedSizeLarge",
+    "sizeMedium",
+    "sizeSmall",
+    "sizeLarge",
+    "fullWidth",
+    "startIcon",
+    "endIcon",
+    "iconSizeSmall",
+    "iconSizeMedium",
+    "iconSizeLarge"
+]);
+var $6924d9497cfac4e8$export$2e2bcd8739ae039 = $6924d9497cfac4e8$var$buttonClasses;
+
+
+
+var $d4J5n = parcelRequire("d4J5n");
+/**
+ * @ignore - internal component.
+ */ const $b4d6ff7cef342734$var$ButtonGroupContext = /*#__PURE__*/ $d4J5n.createContext({});
+var $b4d6ff7cef342734$export$2e2bcd8739ae039 = $b4d6ff7cef342734$var$ButtonGroupContext;
+
+
+
+
+const $65c4d565b4687bd9$var$_excluded = [
+    "children",
+    "color",
+    "component",
+    "className",
+    "disabled",
+    "disableElevation",
+    "disableFocusRipple",
+    "endIcon",
+    "focusVisibleClassName",
+    "fullWidth",
+    "size",
+    "startIcon",
+    "type",
+    "variant"
+];
+const $65c4d565b4687bd9$var$useUtilityClasses = (ownerState)=>{
+    const { color: color , disableElevation: disableElevation , fullWidth: fullWidth , size: size , variant: variant , classes: classes  } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            variant,
+            `${variant}${(0, $f16fad10631c9df1$export$2e2bcd8739ae039)(color)}`,
+            `size${(0, $f16fad10631c9df1$export$2e2bcd8739ae039)(size)}`,
+            `${variant}Size${(0, $f16fad10631c9df1$export$2e2bcd8739ae039)(size)}`,
+            color === "inherit" && "colorInherit",
+            disableElevation && "disableElevation",
+            fullWidth && "fullWidth"
+        ],
+        label: [
+            "label"
+        ],
+        startIcon: [
+            "startIcon",
+            `iconSize${(0, $f16fad10631c9df1$export$2e2bcd8739ae039)(size)}`
+        ],
+        endIcon: [
+            "endIcon",
+            `iconSize${(0, $f16fad10631c9df1$export$2e2bcd8739ae039)(size)}`
+        ]
+    };
+    const composedClasses = (0, $bd40ddda315b2d8b$export$2e2bcd8739ae039)(slots, (0, $6924d9497cfac4e8$export$5a6f9035944c8119), classes);
+    return (0, $19121be03c962dba$export$2e2bcd8739ae039)({}, classes, composedClasses);
+};
+const $65c4d565b4687bd9$var$commonIconStyles = (ownerState)=>(0, $19121be03c962dba$export$2e2bcd8739ae039)({}, ownerState.size === "small" && {
+        "& > *:nth-of-type(1)": {
+            fontSize: 18
+        }
+    }, ownerState.size === "medium" && {
+        "& > *:nth-of-type(1)": {
+            fontSize: 20
+        }
+    }, ownerState.size === "large" && {
+        "& > *:nth-of-type(1)": {
+            fontSize: 22
+        }
+    });
+const $65c4d565b4687bd9$var$ButtonRoot = (0, $2d01b986b0401ba5$export$2e2bcd8739ae039)((0, $a7b8b8d335d2c817$export$2e2bcd8739ae039), {
+    shouldForwardProp: (prop)=>(0, $2d01b986b0401ba5$export$effb20ecdbf4d6aa)(prop) || prop === "classes",
+    name: "MuiButton",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.root,
+            styles[ownerState.variant],
+            styles[`${ownerState.variant}${(0, $f16fad10631c9df1$export$2e2bcd8739ae039)(ownerState.color)}`],
+            styles[`size${(0, $f16fad10631c9df1$export$2e2bcd8739ae039)(ownerState.size)}`],
+            styles[`${ownerState.variant}Size${(0, $f16fad10631c9df1$export$2e2bcd8739ae039)(ownerState.size)}`],
+            ownerState.color === "inherit" && styles.colorInherit,
+            ownerState.disableElevation && styles.disableElevation,
+            ownerState.fullWidth && styles.fullWidth
+        ];
+    }
+})(({ theme: theme , ownerState: ownerState  })=>{
+    var _theme$palette$getCon, _theme$palette;
+    return (0, $19121be03c962dba$export$2e2bcd8739ae039)({}, theme.typography.button, {
+        minWidth: 64,
+        padding: "6px 16px",
+        borderRadius: (theme.vars || theme).shape.borderRadius,
+        transition: theme.transitions.create([
+            "background-color",
+            "box-shadow",
+            "border-color",
+            "color"
+        ], {
+            duration: theme.transitions.duration.short
+        }),
+        "&:hover": (0, $19121be03c962dba$export$2e2bcd8739ae039)({
+            textDecoration: "none",
+            backgroundColor: theme.vars ? `rgba(${theme.vars.palette.text.primaryChannel} / ${theme.vars.palette.action.hoverOpacity})` : (0, $99db6eb7fed042c6$export$58f0f39f63f3cf42)(theme.palette.text.primary, theme.palette.action.hoverOpacity),
+            // Reset on touch devices, it doesn't add specificity
+            "@media (hover: none)": {
+                backgroundColor: "transparent"
+            }
+        }, ownerState.variant === "text" && ownerState.color !== "inherit" && {
+            backgroundColor: theme.vars ? `rgba(${theme.vars.palette[ownerState.color].mainChannel} / ${theme.vars.palette.action.hoverOpacity})` : (0, $99db6eb7fed042c6$export$58f0f39f63f3cf42)(theme.palette[ownerState.color].main, theme.palette.action.hoverOpacity),
+            // Reset on touch devices, it doesn't add specificity
+            "@media (hover: none)": {
+                backgroundColor: "transparent"
+            }
+        }, ownerState.variant === "outlined" && ownerState.color !== "inherit" && {
+            border: `1px solid ${(theme.vars || theme).palette[ownerState.color].main}`,
+            backgroundColor: theme.vars ? `rgba(${theme.vars.palette[ownerState.color].mainChannel} / ${theme.vars.palette.action.hoverOpacity})` : (0, $99db6eb7fed042c6$export$58f0f39f63f3cf42)(theme.palette[ownerState.color].main, theme.palette.action.hoverOpacity),
+            // Reset on touch devices, it doesn't add specificity
+            "@media (hover: none)": {
+                backgroundColor: "transparent"
+            }
+        }, ownerState.variant === "contained" && {
+            backgroundColor: (theme.vars || theme).palette.grey.A100,
+            boxShadow: (theme.vars || theme).shadows[4],
+            // Reset on touch devices, it doesn't add specificity
+            "@media (hover: none)": {
+                boxShadow: (theme.vars || theme).shadows[2],
+                backgroundColor: (theme.vars || theme).palette.grey[300]
+            }
+        }, ownerState.variant === "contained" && ownerState.color !== "inherit" && {
+            backgroundColor: (theme.vars || theme).palette[ownerState.color].dark,
+            // Reset on touch devices, it doesn't add specificity
+            "@media (hover: none)": {
+                backgroundColor: (theme.vars || theme).palette[ownerState.color].main
+            }
+        }),
+        "&:active": (0, $19121be03c962dba$export$2e2bcd8739ae039)({}, ownerState.variant === "contained" && {
+            boxShadow: (theme.vars || theme).shadows[8]
+        }),
+        [`&.${(0, $6924d9497cfac4e8$export$2e2bcd8739ae039).focusVisible}`]: (0, $19121be03c962dba$export$2e2bcd8739ae039)({}, ownerState.variant === "contained" && {
+            boxShadow: (theme.vars || theme).shadows[6]
+        }),
+        [`&.${(0, $6924d9497cfac4e8$export$2e2bcd8739ae039).disabled}`]: (0, $19121be03c962dba$export$2e2bcd8739ae039)({
+            color: (theme.vars || theme).palette.action.disabled
+        }, ownerState.variant === "outlined" && {
+            border: `1px solid ${(theme.vars || theme).palette.action.disabledBackground}`
+        }, ownerState.variant === "outlined" && ownerState.color === "secondary" && {
+            border: `1px solid ${(theme.vars || theme).palette.action.disabled}`
+        }, ownerState.variant === "contained" && {
+            color: (theme.vars || theme).palette.action.disabled,
+            boxShadow: (theme.vars || theme).shadows[0],
+            backgroundColor: (theme.vars || theme).palette.action.disabledBackground
+        })
+    }, ownerState.variant === "text" && {
+        padding: "6px 8px"
+    }, ownerState.variant === "text" && ownerState.color !== "inherit" && {
+        color: (theme.vars || theme).palette[ownerState.color].main
+    }, ownerState.variant === "outlined" && {
+        padding: "5px 15px",
+        border: "1px solid currentColor"
+    }, ownerState.variant === "outlined" && ownerState.color !== "inherit" && {
+        color: (theme.vars || theme).palette[ownerState.color].main,
+        border: theme.vars ? `1px solid rgba(${theme.vars.palette[ownerState.color].mainChannel} / 0.5)` : `1px solid ${(0, $99db6eb7fed042c6$export$58f0f39f63f3cf42)(theme.palette[ownerState.color].main, 0.5)}`
+    }, ownerState.variant === "contained" && {
+        color: theme.vars ? theme.vars.palette.text.primary : (_theme$palette$getCon = (_theme$palette = theme.palette).getContrastText) == null ? void 0 : _theme$palette$getCon.call(_theme$palette, theme.palette.grey[300]),
+        backgroundColor: (theme.vars || theme).palette.grey[300],
+        boxShadow: (theme.vars || theme).shadows[2]
+    }, ownerState.variant === "contained" && ownerState.color !== "inherit" && {
+        color: (theme.vars || theme).palette[ownerState.color].contrastText,
+        backgroundColor: (theme.vars || theme).palette[ownerState.color].main
+    }, ownerState.color === "inherit" && {
+        color: "inherit",
+        borderColor: "currentColor"
+    }, ownerState.size === "small" && ownerState.variant === "text" && {
+        padding: "4px 5px",
+        fontSize: theme.typography.pxToRem(13)
+    }, ownerState.size === "large" && ownerState.variant === "text" && {
+        padding: "8px 11px",
+        fontSize: theme.typography.pxToRem(15)
+    }, ownerState.size === "small" && ownerState.variant === "outlined" && {
+        padding: "3px 9px",
+        fontSize: theme.typography.pxToRem(13)
+    }, ownerState.size === "large" && ownerState.variant === "outlined" && {
+        padding: "7px 21px",
+        fontSize: theme.typography.pxToRem(15)
+    }, ownerState.size === "small" && ownerState.variant === "contained" && {
+        padding: "4px 10px",
+        fontSize: theme.typography.pxToRem(13)
+    }, ownerState.size === "large" && ownerState.variant === "contained" && {
+        padding: "8px 22px",
+        fontSize: theme.typography.pxToRem(15)
+    }, ownerState.fullWidth && {
+        width: "100%"
+    });
+}, ({ ownerState: ownerState  })=>ownerState.disableElevation && {
+        boxShadow: "none",
+        "&:hover": {
+            boxShadow: "none"
+        },
+        [`&.${(0, $6924d9497cfac4e8$export$2e2bcd8739ae039).focusVisible}`]: {
+            boxShadow: "none"
+        },
+        "&:active": {
+            boxShadow: "none"
+        },
+        [`&.${(0, $6924d9497cfac4e8$export$2e2bcd8739ae039).disabled}`]: {
+            boxShadow: "none"
+        }
+    });
+const $65c4d565b4687bd9$var$ButtonStartIcon = (0, $2d01b986b0401ba5$export$2e2bcd8739ae039)("span", {
+    name: "MuiButton",
+    slot: "StartIcon",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.startIcon,
+            styles[`iconSize${(0, $f16fad10631c9df1$export$2e2bcd8739ae039)(ownerState.size)}`]
+        ];
+    }
+})(({ ownerState: ownerState  })=>(0, $19121be03c962dba$export$2e2bcd8739ae039)({
+        display: "inherit",
+        marginRight: 8,
+        marginLeft: -4
+    }, ownerState.size === "small" && {
+        marginLeft: -2
+    }, $65c4d565b4687bd9$var$commonIconStyles(ownerState)));
+const $65c4d565b4687bd9$var$ButtonEndIcon = (0, $2d01b986b0401ba5$export$2e2bcd8739ae039)("span", {
+    name: "MuiButton",
+    slot: "EndIcon",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.endIcon,
+            styles[`iconSize${(0, $f16fad10631c9df1$export$2e2bcd8739ae039)(ownerState.size)}`]
+        ];
+    }
+})(({ ownerState: ownerState  })=>(0, $19121be03c962dba$export$2e2bcd8739ae039)({
+        display: "inherit",
+        marginRight: -4,
+        marginLeft: 8
+    }, ownerState.size === "small" && {
+        marginRight: -2
+    }, $65c4d565b4687bd9$var$commonIconStyles(ownerState)));
+const $65c4d565b4687bd9$var$Button = /*#__PURE__*/ $d4J5n.forwardRef(function Button(inProps, ref) {
+    // props priority: `inProps` > `contextProps` > `themeDefaultProps`
+    const contextProps = $d4J5n.useContext((0, $b4d6ff7cef342734$export$2e2bcd8739ae039));
+    const resolvedProps = (0, $40aaaeba889daefc$export$2e2bcd8739ae039)(contextProps, inProps);
+    const props = (0, $d1e2644d70384796$export$2e2bcd8739ae039)({
+        props: resolvedProps,
+        name: "MuiButton"
+    });
+    const { children: children , color: color = "primary" , component: component = "button" , className: className , disabled: disabled = false , disableElevation: disableElevation = false , disableFocusRipple: disableFocusRipple = false , endIcon: endIconProp , focusVisibleClassName: focusVisibleClassName , fullWidth: fullWidth = false , size: size = "medium" , startIcon: startIconProp , type: type , variant: variant = "text"  } = props, other = (0, $746383c9ca16b298$export$2e2bcd8739ae039)(props, $65c4d565b4687bd9$var$_excluded);
+    const ownerState = (0, $19121be03c962dba$export$2e2bcd8739ae039)({}, props, {
+        color: color,
+        component: component,
+        disabled: disabled,
+        disableElevation: disableElevation,
+        disableFocusRipple: disableFocusRipple,
+        fullWidth: fullWidth,
+        size: size,
+        type: type,
+        variant: variant
+    });
+    const classes = $65c4d565b4687bd9$var$useUtilityClasses(ownerState);
+    const startIcon = startIconProp && /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)($65c4d565b4687bd9$var$ButtonStartIcon, {
+        className: classes.startIcon,
+        ownerState: ownerState,
+        children: startIconProp
+    });
+    const endIcon = endIconProp && /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)($65c4d565b4687bd9$var$ButtonEndIcon, {
+        className: classes.endIcon,
+        ownerState: ownerState,
+        children: endIconProp
+    });
+    return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)($65c4d565b4687bd9$var$ButtonRoot, (0, $19121be03c962dba$export$2e2bcd8739ae039)({
+        ownerState: ownerState,
+        className: (0, $c62da169c755bd5c$export$2e2bcd8739ae039)(className, contextProps.className),
+        component: component,
+        disabled: disabled,
+        focusRipple: !disableFocusRipple,
+        focusVisibleClassName: (0, $c62da169c755bd5c$export$2e2bcd8739ae039)(classes.focusVisible, focusVisibleClassName),
+        ref: ref,
+        type: type
+    }, other, {
+        classes: classes,
+        children: [
+            startIcon,
+            children,
+            endIcon
+        ]
+    }));
+});
+var $65c4d565b4687bd9$export$2e2bcd8739ae039 = $65c4d565b4687bd9$var$Button;
+
+
+
+
+
+
+
+
+
+
+
+
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+
+
+
+
+function $1e827651ec5b426c$export$ee5828fb8c43a48e(slot) {
+    return (0, $81a4eb5b0cda9a59$export$2e2bcd8739ae039)("MuiCardActionArea", slot);
+}
+const $1e827651ec5b426c$var$cardActionAreaClasses = (0, $8100014debd01602$export$2e2bcd8739ae039)("MuiCardActionArea", [
+    "root",
+    "focusVisible",
+    "focusHighlight"
+]);
+var $1e827651ec5b426c$export$2e2bcd8739ae039 = $1e827651ec5b426c$var$cardActionAreaClasses;
+
+
+
+
+
 const $ba9ec2195a7f89db$var$_excluded = [
     "children",
     "className",
@@ -13106,6 +13521,238 @@ const $ba9ec2195a7f89db$var$CardActionArea = /*#__PURE__*/ $d4J5n.forwardRef(fun
     }));
 });
 var $ba9ec2195a7f89db$export$2e2bcd8739ae039 = $ba9ec2195a7f89db$var$CardActionArea;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14683,6 +15330,7 @@ const $32a17876c16008e4$export$25f0557f767cf1c9 = ({ step: step  })=>{
 };
 
 
+
 const $b11ef0a77969f35b$export$f68871ba002ca835 = [
     {
         displayName: "3x3x3",
@@ -14692,7 +15340,8 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
             {
                 displayName: "F2L",
                 visualCubeParams: "&puzzle=3&stage=f2l",
-                slug: "f2l"
+                slug: "f2l",
+                algs: (parcelRequire("cEEgr"))
             },
             {
                 displayName: "OLL",
@@ -14753,6 +15402,970 @@ const $849600319aa1d35f$export$36d69433c4f81145 = ()=>/*#__PURE__*/ (0, $17b288f
 
 
 
+
+
+var $d4J5n = parcelRequire("d4J5n");
+
+function $3fcb4d79a9375aeb$export$2e2bcd8739ae039(array) {
+    if (!Array.isArray(array)) throw new TypeError("Expected an array");
+    return array[Math.floor(Math.random() * array.length)];
+}
+$3fcb4d79a9375aeb$export$2e2bcd8739ae039.multiple = (array, count)=>{
+    if (!(Number.isInteger(count) && count >= 0)) throw new TypeError("Expected a non-negative integer");
+    return [
+        ...Array.from({
+            length: count
+        })
+    ].map(()=>$3fcb4d79a9375aeb$export$2e2bcd8739ae039(array));
+};
+
+
+var $d3ff3298a4c42353$exports = {};
+/**
+ * lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */ /** Used as references for various `Number` constants. */ var $d3ff3298a4c42353$var$INFINITY = 1 / 0, $d3ff3298a4c42353$var$MAX_SAFE_INTEGER = 9007199254740991, $d3ff3298a4c42353$var$MAX_INTEGER = 1.7976931348623157e+308, $d3ff3298a4c42353$var$NAN = 0 / 0;
+/** Used as references for the maximum length and index of an array. */ var $d3ff3298a4c42353$var$MAX_ARRAY_LENGTH = 4294967295;
+/** `Object#toString` result references. */ var $d3ff3298a4c42353$var$argsTag = "[object Arguments]", $d3ff3298a4c42353$var$funcTag = "[object Function]", $d3ff3298a4c42353$var$genTag = "[object GeneratorFunction]", $d3ff3298a4c42353$var$mapTag = "[object Map]", $d3ff3298a4c42353$var$objectTag = "[object Object]", $d3ff3298a4c42353$var$promiseTag = "[object Promise]", $d3ff3298a4c42353$var$setTag = "[object Set]", $d3ff3298a4c42353$var$stringTag = "[object String]", $d3ff3298a4c42353$var$symbolTag = "[object Symbol]", $d3ff3298a4c42353$var$weakMapTag = "[object WeakMap]";
+var $d3ff3298a4c42353$var$dataViewTag = "[object DataView]";
+/**
+ * Used to match `RegExp`
+ * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+ */ var $d3ff3298a4c42353$var$reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+/** Used to match leading and trailing whitespace. */ var $d3ff3298a4c42353$var$reTrim = /^\s+|\s+$/g;
+/** Used to detect bad signed hexadecimal string values. */ var $d3ff3298a4c42353$var$reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+/** Used to detect binary string values. */ var $d3ff3298a4c42353$var$reIsBinary = /^0b[01]+$/i;
+/** Used to detect host constructors (Safari). */ var $d3ff3298a4c42353$var$reIsHostCtor = /^\[object .+?Constructor\]$/;
+/** Used to detect octal string values. */ var $d3ff3298a4c42353$var$reIsOctal = /^0o[0-7]+$/i;
+/** Used to detect unsigned integer values. */ var $d3ff3298a4c42353$var$reIsUint = /^(?:0|[1-9]\d*)$/;
+/** Used to compose unicode character classes. */ var $d3ff3298a4c42353$var$rsAstralRange = "\ud800-\udfff", $d3ff3298a4c42353$var$rsComboMarksRange = "\\u0300-\\u036f\\ufe20-\\ufe23", $d3ff3298a4c42353$var$rsComboSymbolsRange = "\\u20d0-\\u20f0", $d3ff3298a4c42353$var$rsVarRange = "\\ufe0e\\ufe0f";
+/** Used to compose unicode capture groups. */ var $d3ff3298a4c42353$var$rsAstral = "[" + $d3ff3298a4c42353$var$rsAstralRange + "]", $d3ff3298a4c42353$var$rsCombo = "[" + $d3ff3298a4c42353$var$rsComboMarksRange + $d3ff3298a4c42353$var$rsComboSymbolsRange + "]", $d3ff3298a4c42353$var$rsFitz = "\ud83c[\udffb-\udfff]", $d3ff3298a4c42353$var$rsModifier = "(?:" + $d3ff3298a4c42353$var$rsCombo + "|" + $d3ff3298a4c42353$var$rsFitz + ")", $d3ff3298a4c42353$var$rsNonAstral = "[^" + $d3ff3298a4c42353$var$rsAstralRange + "]", $d3ff3298a4c42353$var$rsRegional = "(?:\ud83c[\udde6-\uddff]){2}", $d3ff3298a4c42353$var$rsSurrPair = "[\ud800-\udbff][\udc00-\udfff]", $d3ff3298a4c42353$var$rsZWJ = "\\u200d";
+/** Used to compose unicode regexes. */ var $d3ff3298a4c42353$var$reOptMod = $d3ff3298a4c42353$var$rsModifier + "?", $d3ff3298a4c42353$var$rsOptVar = "[" + $d3ff3298a4c42353$var$rsVarRange + "]?", $d3ff3298a4c42353$var$rsOptJoin = "(?:" + $d3ff3298a4c42353$var$rsZWJ + "(?:" + [
+    $d3ff3298a4c42353$var$rsNonAstral,
+    $d3ff3298a4c42353$var$rsRegional,
+    $d3ff3298a4c42353$var$rsSurrPair
+].join("|") + ")" + $d3ff3298a4c42353$var$rsOptVar + $d3ff3298a4c42353$var$reOptMod + ")*", $d3ff3298a4c42353$var$rsSeq = $d3ff3298a4c42353$var$rsOptVar + $d3ff3298a4c42353$var$reOptMod + $d3ff3298a4c42353$var$rsOptJoin, $d3ff3298a4c42353$var$rsSymbol = "(?:" + [
+    $d3ff3298a4c42353$var$rsNonAstral + $d3ff3298a4c42353$var$rsCombo + "?",
+    $d3ff3298a4c42353$var$rsCombo,
+    $d3ff3298a4c42353$var$rsRegional,
+    $d3ff3298a4c42353$var$rsSurrPair,
+    $d3ff3298a4c42353$var$rsAstral
+].join("|") + ")";
+/** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */ var $d3ff3298a4c42353$var$reUnicode = RegExp($d3ff3298a4c42353$var$rsFitz + "(?=" + $d3ff3298a4c42353$var$rsFitz + ")|" + $d3ff3298a4c42353$var$rsSymbol + $d3ff3298a4c42353$var$rsSeq, "g");
+/** Used to detect strings with [zero-width joiners or code points from the astral planes](http://eev.ee/blog/2015/09/12/dark-corners-of-unicode/). */ var $d3ff3298a4c42353$var$reHasUnicode = RegExp("[" + $d3ff3298a4c42353$var$rsZWJ + $d3ff3298a4c42353$var$rsAstralRange + $d3ff3298a4c42353$var$rsComboMarksRange + $d3ff3298a4c42353$var$rsComboSymbolsRange + $d3ff3298a4c42353$var$rsVarRange + "]");
+/** Built-in method references without a dependency on `root`. */ var $d3ff3298a4c42353$var$freeParseInt = parseInt;
+/** Detect free variable `global` from Node.js. */ var $d3ff3298a4c42353$var$freeGlobal = typeof $parcel$global == "object" && $parcel$global && $parcel$global.Object === Object && $parcel$global;
+/** Detect free variable `self`. */ var $d3ff3298a4c42353$var$freeSelf = typeof self == "object" && self && self.Object === Object && self;
+/** Used as a reference to the global object. */ var $d3ff3298a4c42353$var$root = $d3ff3298a4c42353$var$freeGlobal || $d3ff3298a4c42353$var$freeSelf || Function("return this")();
+/**
+ * A specialized version of `_.map` for arrays without support for iteratee
+ * shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the new mapped array.
+ */ function $d3ff3298a4c42353$var$arrayMap(array, iteratee) {
+    var index = -1, length = array ? array.length : 0, result = Array(length);
+    while(++index < length)result[index] = iteratee(array[index], index, array);
+    return result;
+}
+/**
+ * Converts an ASCII `string` to an array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the converted array.
+ */ function $d3ff3298a4c42353$var$asciiToArray(string) {
+    return string.split("");
+}
+/**
+ * The base implementation of `_.times` without support for iteratee shorthands
+ * or max array length checks.
+ *
+ * @private
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ */ function $d3ff3298a4c42353$var$baseTimes(n, iteratee) {
+    var index = -1, result = Array(n);
+    while(++index < n)result[index] = iteratee(index);
+    return result;
+}
+/**
+ * The base implementation of `_.values` and `_.valuesIn` which creates an
+ * array of `object` property values corresponding to the property names
+ * of `props`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array} props The property names to get values for.
+ * @returns {Object} Returns the array of property values.
+ */ function $d3ff3298a4c42353$var$baseValues(object, props) {
+    return $d3ff3298a4c42353$var$arrayMap(props, function(key) {
+        return object[key];
+    });
+}
+/**
+ * Gets the value at `key` of `object`.
+ *
+ * @private
+ * @param {Object} [object] The object to query.
+ * @param {string} key The key of the property to get.
+ * @returns {*} Returns the property value.
+ */ function $d3ff3298a4c42353$var$getValue(object, key) {
+    return object == null ? undefined : object[key];
+}
+/**
+ * Checks if `string` contains Unicode symbols.
+ *
+ * @private
+ * @param {string} string The string to inspect.
+ * @returns {boolean} Returns `true` if a symbol is found, else `false`.
+ */ function $d3ff3298a4c42353$var$hasUnicode(string) {
+    return $d3ff3298a4c42353$var$reHasUnicode.test(string);
+}
+/**
+ * Checks if `value` is a host object in IE < 9.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+ */ function $d3ff3298a4c42353$var$isHostObject(value) {
+    // Many host objects are `Object` objects that can coerce to strings
+    // despite having improperly defined `toString` methods.
+    var result = false;
+    if (value != null && typeof value.toString != "function") try {
+        result = !!(value + "");
+    } catch (e) {}
+    return result;
+}
+/**
+ * Converts `iterator` to an array.
+ *
+ * @private
+ * @param {Object} iterator The iterator to convert.
+ * @returns {Array} Returns the converted array.
+ */ function $d3ff3298a4c42353$var$iteratorToArray(iterator) {
+    var data, result = [];
+    while(!(data = iterator.next()).done)result.push(data.value);
+    return result;
+}
+/**
+ * Converts `map` to its key-value pairs.
+ *
+ * @private
+ * @param {Object} map The map to convert.
+ * @returns {Array} Returns the key-value pairs.
+ */ function $d3ff3298a4c42353$var$mapToArray(map) {
+    var index = -1, result = Array(map.size);
+    map.forEach(function(value, key) {
+        result[++index] = [
+            key,
+            value
+        ];
+    });
+    return result;
+}
+/**
+ * Creates a unary function that invokes `func` with its argument transformed.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {Function} transform The argument transform.
+ * @returns {Function} Returns the new function.
+ */ function $d3ff3298a4c42353$var$overArg(func, transform) {
+    return function(arg) {
+        return func(transform(arg));
+    };
+}
+/**
+ * Converts `set` to an array of its values.
+ *
+ * @private
+ * @param {Object} set The set to convert.
+ * @returns {Array} Returns the values.
+ */ function $d3ff3298a4c42353$var$setToArray(set) {
+    var index = -1, result = Array(set.size);
+    set.forEach(function(value) {
+        result[++index] = value;
+    });
+    return result;
+}
+/**
+ * Converts `string` to an array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the converted array.
+ */ function $d3ff3298a4c42353$var$stringToArray(string) {
+    return $d3ff3298a4c42353$var$hasUnicode(string) ? $d3ff3298a4c42353$var$unicodeToArray(string) : $d3ff3298a4c42353$var$asciiToArray(string);
+}
+/**
+ * Converts a Unicode `string` to an array.
+ *
+ * @private
+ * @param {string} string The string to convert.
+ * @returns {Array} Returns the converted array.
+ */ function $d3ff3298a4c42353$var$unicodeToArray(string) {
+    return string.match($d3ff3298a4c42353$var$reUnicode) || [];
+}
+/** Used for built-in method references. */ var $d3ff3298a4c42353$var$funcProto = Function.prototype, $d3ff3298a4c42353$var$objectProto = Object.prototype;
+/** Used to detect overreaching core-js shims. */ var $d3ff3298a4c42353$var$coreJsData = $d3ff3298a4c42353$var$root["__core-js_shared__"];
+/** Used to detect methods masquerading as native. */ var $d3ff3298a4c42353$var$maskSrcKey = function() {
+    var uid = /[^.]+$/.exec($d3ff3298a4c42353$var$coreJsData && $d3ff3298a4c42353$var$coreJsData.keys && $d3ff3298a4c42353$var$coreJsData.keys.IE_PROTO || "");
+    return uid ? "Symbol(src)_1." + uid : "";
+}();
+/** Used to resolve the decompiled source of functions. */ var $d3ff3298a4c42353$var$funcToString = $d3ff3298a4c42353$var$funcProto.toString;
+/** Used to check objects for own properties. */ var $d3ff3298a4c42353$var$hasOwnProperty = $d3ff3298a4c42353$var$objectProto.hasOwnProperty;
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */ var $d3ff3298a4c42353$var$objectToString = $d3ff3298a4c42353$var$objectProto.toString;
+/** Used to detect if a method is native. */ var $d3ff3298a4c42353$var$reIsNative = RegExp("^" + $d3ff3298a4c42353$var$funcToString.call($d3ff3298a4c42353$var$hasOwnProperty).replace($d3ff3298a4c42353$var$reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$");
+/** Built-in value references. */ var $d3ff3298a4c42353$var$Symbol = $d3ff3298a4c42353$var$root.Symbol, $d3ff3298a4c42353$var$iteratorSymbol = $d3ff3298a4c42353$var$Symbol ? $d3ff3298a4c42353$var$Symbol.iterator : undefined, $d3ff3298a4c42353$var$propertyIsEnumerable = $d3ff3298a4c42353$var$objectProto.propertyIsEnumerable;
+/* Built-in method references for those with the same name as other `lodash` methods. */ var $d3ff3298a4c42353$var$nativeFloor = Math.floor, $d3ff3298a4c42353$var$nativeKeys = $d3ff3298a4c42353$var$overArg(Object.keys, Object), $d3ff3298a4c42353$var$nativeRandom = Math.random;
+/* Built-in method references that are verified to be native. */ var $d3ff3298a4c42353$var$DataView = $d3ff3298a4c42353$var$getNative($d3ff3298a4c42353$var$root, "DataView"), $d3ff3298a4c42353$var$Map = $d3ff3298a4c42353$var$getNative($d3ff3298a4c42353$var$root, "Map"), $d3ff3298a4c42353$var$Promise = $d3ff3298a4c42353$var$getNative($d3ff3298a4c42353$var$root, "Promise"), $d3ff3298a4c42353$var$Set = $d3ff3298a4c42353$var$getNative($d3ff3298a4c42353$var$root, "Set"), $d3ff3298a4c42353$var$WeakMap = $d3ff3298a4c42353$var$getNative($d3ff3298a4c42353$var$root, "WeakMap");
+/** Used to detect maps, sets, and weakmaps. */ var $d3ff3298a4c42353$var$dataViewCtorString = $d3ff3298a4c42353$var$toSource($d3ff3298a4c42353$var$DataView), $d3ff3298a4c42353$var$mapCtorString = $d3ff3298a4c42353$var$toSource($d3ff3298a4c42353$var$Map), $d3ff3298a4c42353$var$promiseCtorString = $d3ff3298a4c42353$var$toSource($d3ff3298a4c42353$var$Promise), $d3ff3298a4c42353$var$setCtorString = $d3ff3298a4c42353$var$toSource($d3ff3298a4c42353$var$Set), $d3ff3298a4c42353$var$weakMapCtorString = $d3ff3298a4c42353$var$toSource($d3ff3298a4c42353$var$WeakMap);
+/**
+ * Creates an array of the enumerable property names of the array-like `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @param {boolean} inherited Specify returning inherited property names.
+ * @returns {Array} Returns the array of property names.
+ */ function $d3ff3298a4c42353$var$arrayLikeKeys(value, inherited) {
+    // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+    // Safari 9 makes `arguments.length` enumerable in strict mode.
+    var result = $d3ff3298a4c42353$var$isArray(value) || $d3ff3298a4c42353$var$isArguments(value) ? $d3ff3298a4c42353$var$baseTimes(value.length, String) : [];
+    var length = result.length, skipIndexes = !!length;
+    for(var key in value)if ((inherited || $d3ff3298a4c42353$var$hasOwnProperty.call(value, key)) && !(skipIndexes && (key == "length" || $d3ff3298a4c42353$var$isIndex(key, length)))) result.push(key);
+    return result;
+}
+/**
+ * The base implementation of `_.clamp` which doesn't coerce arguments.
+ *
+ * @private
+ * @param {number} number The number to clamp.
+ * @param {number} [lower] The lower bound.
+ * @param {number} upper The upper bound.
+ * @returns {number} Returns the clamped number.
+ */ function $d3ff3298a4c42353$var$baseClamp(number, lower, upper) {
+    if (number === number) {
+        if (upper !== undefined) number = number <= upper ? number : upper;
+        if (lower !== undefined) number = number >= lower ? number : lower;
+    }
+    return number;
+}
+/**
+ * The base implementation of `getTag`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */ function $d3ff3298a4c42353$var$baseGetTag(value) {
+    return $d3ff3298a4c42353$var$objectToString.call(value);
+}
+/**
+ * The base implementation of `_.isNative` without bad shim checks.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a native function,
+ *  else `false`.
+ */ function $d3ff3298a4c42353$var$baseIsNative(value) {
+    if (!$d3ff3298a4c42353$var$isObject(value) || $d3ff3298a4c42353$var$isMasked(value)) return false;
+    var pattern = $d3ff3298a4c42353$var$isFunction(value) || $d3ff3298a4c42353$var$isHostObject(value) ? $d3ff3298a4c42353$var$reIsNative : $d3ff3298a4c42353$var$reIsHostCtor;
+    return pattern.test($d3ff3298a4c42353$var$toSource(value));
+}
+/**
+ * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */ function $d3ff3298a4c42353$var$baseKeys(object) {
+    if (!$d3ff3298a4c42353$var$isPrototype(object)) return $d3ff3298a4c42353$var$nativeKeys(object);
+    var result = [];
+    for(var key in Object(object))if ($d3ff3298a4c42353$var$hasOwnProperty.call(object, key) && key != "constructor") result.push(key);
+    return result;
+}
+/**
+ * The base implementation of `_.random` without support for returning
+ * floating-point numbers.
+ *
+ * @private
+ * @param {number} lower The lower bound.
+ * @param {number} upper The upper bound.
+ * @returns {number} Returns the random number.
+ */ function $d3ff3298a4c42353$var$baseRandom(lower, upper) {
+    return lower + $d3ff3298a4c42353$var$nativeFloor($d3ff3298a4c42353$var$nativeRandom() * (upper - lower + 1));
+}
+/**
+ * Copies the values of `source` to `array`.
+ *
+ * @private
+ * @param {Array} source The array to copy values from.
+ * @param {Array} [array=[]] The array to copy values to.
+ * @returns {Array} Returns `array`.
+ */ function $d3ff3298a4c42353$var$copyArray(source, array) {
+    var index = -1, length = source.length;
+    array || (array = Array(length));
+    while(++index < length)array[index] = source[index];
+    return array;
+}
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */ function $d3ff3298a4c42353$var$getNative(object, key) {
+    var value = $d3ff3298a4c42353$var$getValue(object, key);
+    return $d3ff3298a4c42353$var$baseIsNative(value) ? value : undefined;
+}
+/**
+ * Gets the `toStringTag` of `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */ var $d3ff3298a4c42353$var$getTag = $d3ff3298a4c42353$var$baseGetTag;
+// Fallback for data views, maps, sets, and weak maps in IE 11,
+// for data views in Edge < 14, and promises in Node.js.
+if ($d3ff3298a4c42353$var$DataView && $d3ff3298a4c42353$var$getTag(new $d3ff3298a4c42353$var$DataView(new ArrayBuffer(1))) != $d3ff3298a4c42353$var$dataViewTag || $d3ff3298a4c42353$var$Map && $d3ff3298a4c42353$var$getTag(new $d3ff3298a4c42353$var$Map) != $d3ff3298a4c42353$var$mapTag || $d3ff3298a4c42353$var$Promise && $d3ff3298a4c42353$var$getTag($d3ff3298a4c42353$var$Promise.resolve()) != $d3ff3298a4c42353$var$promiseTag || $d3ff3298a4c42353$var$Set && $d3ff3298a4c42353$var$getTag(new $d3ff3298a4c42353$var$Set) != $d3ff3298a4c42353$var$setTag || $d3ff3298a4c42353$var$WeakMap && $d3ff3298a4c42353$var$getTag(new $d3ff3298a4c42353$var$WeakMap) != $d3ff3298a4c42353$var$weakMapTag) $d3ff3298a4c42353$var$getTag = function(value) {
+    var result = $d3ff3298a4c42353$var$objectToString.call(value), Ctor = result == $d3ff3298a4c42353$var$objectTag ? value.constructor : undefined, ctorString = Ctor ? $d3ff3298a4c42353$var$toSource(Ctor) : undefined;
+    if (ctorString) switch(ctorString){
+        case $d3ff3298a4c42353$var$dataViewCtorString:
+            return $d3ff3298a4c42353$var$dataViewTag;
+        case $d3ff3298a4c42353$var$mapCtorString:
+            return $d3ff3298a4c42353$var$mapTag;
+        case $d3ff3298a4c42353$var$promiseCtorString:
+            return $d3ff3298a4c42353$var$promiseTag;
+        case $d3ff3298a4c42353$var$setCtorString:
+            return $d3ff3298a4c42353$var$setTag;
+        case $d3ff3298a4c42353$var$weakMapCtorString:
+            return $d3ff3298a4c42353$var$weakMapTag;
+    }
+    return result;
+};
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */ function $d3ff3298a4c42353$var$isIndex(value, length) {
+    length = length == null ? $d3ff3298a4c42353$var$MAX_SAFE_INTEGER : length;
+    return !!length && (typeof value == "number" || $d3ff3298a4c42353$var$reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length;
+}
+/**
+ * Checks if the given arguments are from an iteratee call.
+ *
+ * @private
+ * @param {*} value The potential iteratee value argument.
+ * @param {*} index The potential iteratee index or key argument.
+ * @param {*} object The potential iteratee object argument.
+ * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
+ *  else `false`.
+ */ function $d3ff3298a4c42353$var$isIterateeCall(value, index, object) {
+    if (!$d3ff3298a4c42353$var$isObject(object)) return false;
+    var type = typeof index;
+    if (type == "number" ? $d3ff3298a4c42353$var$isArrayLike(object) && $d3ff3298a4c42353$var$isIndex(index, object.length) : type == "string" && index in object) return $d3ff3298a4c42353$var$eq(object[index], value);
+    return false;
+}
+/**
+ * Checks if `func` has its source masked.
+ *
+ * @private
+ * @param {Function} func The function to check.
+ * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+ */ function $d3ff3298a4c42353$var$isMasked(func) {
+    return !!$d3ff3298a4c42353$var$maskSrcKey && $d3ff3298a4c42353$var$maskSrcKey in func;
+}
+/**
+ * Checks if `value` is likely a prototype object.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+ */ function $d3ff3298a4c42353$var$isPrototype(value) {
+    var Ctor = value && value.constructor, proto = typeof Ctor == "function" && Ctor.prototype || $d3ff3298a4c42353$var$objectProto;
+    return value === proto;
+}
+/**
+ * Converts `func` to its source code.
+ *
+ * @private
+ * @param {Function} func The function to process.
+ * @returns {string} Returns the source code.
+ */ function $d3ff3298a4c42353$var$toSource(func) {
+    if (func != null) {
+        try {
+            return $d3ff3298a4c42353$var$funcToString.call(func);
+        } catch (e) {}
+        try {
+            return func + "";
+        } catch (e1) {}
+    }
+    return "";
+}
+/**
+ * Gets `n` random elements at unique keys from `collection` up to the
+ * size of `collection`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to sample.
+ * @param {number} [n=1] The number of elements to sample.
+ * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
+ * @returns {Array} Returns the random elements.
+ * @example
+ *
+ * _.sampleSize([1, 2, 3], 2);
+ * // => [3, 1]
+ *
+ * _.sampleSize([1, 2, 3], 4);
+ * // => [2, 3, 1]
+ */ function $d3ff3298a4c42353$var$sampleSize(collection, n, guard) {
+    var index = -1, result = $d3ff3298a4c42353$var$toArray(collection), length = result.length, lastIndex = length - 1;
+    if (guard ? $d3ff3298a4c42353$var$isIterateeCall(collection, n, guard) : n === undefined) n = 1;
+    else n = $d3ff3298a4c42353$var$baseClamp($d3ff3298a4c42353$var$toInteger(n), 0, length);
+    while(++index < n){
+        var rand = $d3ff3298a4c42353$var$baseRandom(index, lastIndex), value = result[rand];
+        result[rand] = result[index];
+        result[index] = value;
+    }
+    result.length = n;
+    return result;
+}
+/**
+ * Creates an array of shuffled values, using a version of the
+ * [Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher-Yates_shuffle).
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Collection
+ * @param {Array|Object} collection The collection to shuffle.
+ * @returns {Array} Returns the new shuffled array.
+ * @example
+ *
+ * _.shuffle([1, 2, 3, 4]);
+ * // => [4, 1, 3, 2]
+ */ function $d3ff3298a4c42353$var$shuffle(collection) {
+    return $d3ff3298a4c42353$var$sampleSize(collection, $d3ff3298a4c42353$var$MAX_ARRAY_LENGTH);
+}
+/**
+ * Performs a
+ * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */ function $d3ff3298a4c42353$var$eq(value, other) {
+    return value === other || value !== value && other !== other;
+}
+/**
+ * Checks if `value` is likely an `arguments` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArguments(function() { return arguments; }());
+ * // => true
+ *
+ * _.isArguments([1, 2, 3]);
+ * // => false
+ */ function $d3ff3298a4c42353$var$isArguments(value) {
+    // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+    return $d3ff3298a4c42353$var$isArrayLikeObject(value) && $d3ff3298a4c42353$var$hasOwnProperty.call(value, "callee") && (!$d3ff3298a4c42353$var$propertyIsEnumerable.call(value, "callee") || $d3ff3298a4c42353$var$objectToString.call(value) == $d3ff3298a4c42353$var$argsTag);
+}
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */ var $d3ff3298a4c42353$var$isArray = Array.isArray;
+/**
+ * Checks if `value` is array-like. A value is considered array-like if it's
+ * not a function and has a `value.length` that's an integer greater than or
+ * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @example
+ *
+ * _.isArrayLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLike(document.body.children);
+ * // => true
+ *
+ * _.isArrayLike('abc');
+ * // => true
+ *
+ * _.isArrayLike(_.noop);
+ * // => false
+ */ function $d3ff3298a4c42353$var$isArrayLike(value) {
+    return value != null && $d3ff3298a4c42353$var$isLength(value.length) && !$d3ff3298a4c42353$var$isFunction(value);
+}
+/**
+ * This method is like `_.isArrayLike` except that it also checks if `value`
+ * is an object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array-like object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArrayLikeObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLikeObject(document.body.children);
+ * // => true
+ *
+ * _.isArrayLikeObject('abc');
+ * // => false
+ *
+ * _.isArrayLikeObject(_.noop);
+ * // => false
+ */ function $d3ff3298a4c42353$var$isArrayLikeObject(value) {
+    return $d3ff3298a4c42353$var$isObjectLike(value) && $d3ff3298a4c42353$var$isArrayLike(value);
+}
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */ function $d3ff3298a4c42353$var$isFunction(value) {
+    // The use of `Object#toString` avoids issues with the `typeof` operator
+    // in Safari 8-9 which returns 'object' for typed array and other constructors.
+    var tag = $d3ff3298a4c42353$var$isObject(value) ? $d3ff3298a4c42353$var$objectToString.call(value) : "";
+    return tag == $d3ff3298a4c42353$var$funcTag || tag == $d3ff3298a4c42353$var$genTag;
+}
+/**
+ * Checks if `value` is a valid array-like length.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
+ */ function $d3ff3298a4c42353$var$isLength(value) {
+    return typeof value == "number" && value > -1 && value % 1 == 0 && value <= $d3ff3298a4c42353$var$MAX_SAFE_INTEGER;
+}
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */ function $d3ff3298a4c42353$var$isObject(value) {
+    var type = typeof value;
+    return !!value && (type == "object" || type == "function");
+}
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */ function $d3ff3298a4c42353$var$isObjectLike(value) {
+    return !!value && typeof value == "object";
+}
+/**
+ * Checks if `value` is classified as a `String` primitive or object.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a string, else `false`.
+ * @example
+ *
+ * _.isString('abc');
+ * // => true
+ *
+ * _.isString(1);
+ * // => false
+ */ function $d3ff3298a4c42353$var$isString(value) {
+    return typeof value == "string" || !$d3ff3298a4c42353$var$isArray(value) && $d3ff3298a4c42353$var$isObjectLike(value) && $d3ff3298a4c42353$var$objectToString.call(value) == $d3ff3298a4c42353$var$stringTag;
+}
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */ function $d3ff3298a4c42353$var$isSymbol(value) {
+    return typeof value == "symbol" || $d3ff3298a4c42353$var$isObjectLike(value) && $d3ff3298a4c42353$var$objectToString.call(value) == $d3ff3298a4c42353$var$symbolTag;
+}
+/**
+ * Converts `value` to an array.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {Array} Returns the converted array.
+ * @example
+ *
+ * _.toArray({ 'a': 1, 'b': 2 });
+ * // => [1, 2]
+ *
+ * _.toArray('abc');
+ * // => ['a', 'b', 'c']
+ *
+ * _.toArray(1);
+ * // => []
+ *
+ * _.toArray(null);
+ * // => []
+ */ function $d3ff3298a4c42353$var$toArray(value) {
+    if (!value) return [];
+    if ($d3ff3298a4c42353$var$isArrayLike(value)) return $d3ff3298a4c42353$var$isString(value) ? $d3ff3298a4c42353$var$stringToArray(value) : $d3ff3298a4c42353$var$copyArray(value);
+    if ($d3ff3298a4c42353$var$iteratorSymbol && value[$d3ff3298a4c42353$var$iteratorSymbol]) return $d3ff3298a4c42353$var$iteratorToArray(value[$d3ff3298a4c42353$var$iteratorSymbol]());
+    var tag = $d3ff3298a4c42353$var$getTag(value), func = tag == $d3ff3298a4c42353$var$mapTag ? $d3ff3298a4c42353$var$mapToArray : tag == $d3ff3298a4c42353$var$setTag ? $d3ff3298a4c42353$var$setToArray : $d3ff3298a4c42353$var$values;
+    return func(value);
+}
+/**
+ * Converts `value` to a finite number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.12.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted number.
+ * @example
+ *
+ * _.toFinite(3.2);
+ * // => 3.2
+ *
+ * _.toFinite(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toFinite(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toFinite('3.2');
+ * // => 3.2
+ */ function $d3ff3298a4c42353$var$toFinite(value) {
+    if (!value) return value === 0 ? value : 0;
+    value = $d3ff3298a4c42353$var$toNumber(value);
+    if (value === $d3ff3298a4c42353$var$INFINITY || value === -$d3ff3298a4c42353$var$INFINITY) {
+        var sign = value < 0 ? -1 : 1;
+        return sign * $d3ff3298a4c42353$var$MAX_INTEGER;
+    }
+    return value === value ? value : 0;
+}
+/**
+ * Converts `value` to an integer.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted integer.
+ * @example
+ *
+ * _.toInteger(3.2);
+ * // => 3
+ *
+ * _.toInteger(Number.MIN_VALUE);
+ * // => 0
+ *
+ * _.toInteger(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toInteger('3.2');
+ * // => 3
+ */ function $d3ff3298a4c42353$var$toInteger(value) {
+    var result = $d3ff3298a4c42353$var$toFinite(value), remainder = result % 1;
+    return result === result ? remainder ? result - remainder : result : 0;
+}
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */ function $d3ff3298a4c42353$var$toNumber(value) {
+    if (typeof value == "number") return value;
+    if ($d3ff3298a4c42353$var$isSymbol(value)) return $d3ff3298a4c42353$var$NAN;
+    if ($d3ff3298a4c42353$var$isObject(value)) {
+        var other = typeof value.valueOf == "function" ? value.valueOf() : value;
+        value = $d3ff3298a4c42353$var$isObject(other) ? other + "" : other;
+    }
+    if (typeof value != "string") return value === 0 ? value : +value;
+    value = value.replace($d3ff3298a4c42353$var$reTrim, "");
+    var isBinary = $d3ff3298a4c42353$var$reIsBinary.test(value);
+    return isBinary || $d3ff3298a4c42353$var$reIsOctal.test(value) ? $d3ff3298a4c42353$var$freeParseInt(value.slice(2), isBinary ? 2 : 8) : $d3ff3298a4c42353$var$reIsBadHex.test(value) ? $d3ff3298a4c42353$var$NAN : +value;
+}
+/**
+ * Creates an array of the own enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects. See the
+ * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * for more details.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keys(new Foo);
+ * // => ['a', 'b'] (iteration order is not guaranteed)
+ *
+ * _.keys('hi');
+ * // => ['0', '1']
+ */ function $d3ff3298a4c42353$var$keys(object) {
+    return $d3ff3298a4c42353$var$isArrayLike(object) ? $d3ff3298a4c42353$var$arrayLikeKeys(object) : $d3ff3298a4c42353$var$baseKeys(object);
+}
+/**
+ * Creates an array of the own enumerable string keyed property values of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property values.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.values(new Foo);
+ * // => [1, 2] (iteration order is not guaranteed)
+ *
+ * _.values('hi');
+ * // => ['h', 'i']
+ */ function $d3ff3298a4c42353$var$values(object) {
+    return object ? $d3ff3298a4c42353$var$baseValues(object, $d3ff3298a4c42353$var$keys(object)) : [];
+}
+$d3ff3298a4c42353$exports = $d3ff3298a4c42353$var$shuffle;
+
+
+const $e0134a5109cce5f9$export$d17e05c732d1a969 = ({ algs: algs  })=>{
+    const [order, setOrder] = (0, $d4J5n.useState)((0, (/*@__PURE__*/$parcel$interopDefault($d3ff3298a4c42353$exports)))(Object.keys(algs)));
+    const [index1, setIndex] = (0, $d4J5n.useState)(0);
+    const [currentCase, setCurrentCase] = (0, $d4J5n.useState)();
+    const isLast = ()=>index1 >= order.length - 1;
+    (0, $d4J5n.useEffect)(()=>{
+        console.log(index1 + 1);
+        setCurrentCase((0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(algs[order[index1]]));
+    }, [
+        index1
+    ]);
+    const clickHandler = ()=>{
+        if (isLast()) {
+            setOrder((0, (/*@__PURE__*/$parcel$interopDefault($d3ff3298a4c42353$exports)))(Object.keys(algs)));
+            setIndex(0);
+        } else setIndex((index)=>index + 1);
+    };
+    return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        minHeight: "100vh",
+        children: [
+            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+                component: "h1",
+                variant: "h3",
+                children: currentCase
+            }),
+            /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
+                variant: "contained",
+                sx: {
+                    mt: 3
+                },
+                size: "large",
+                onClick: clickHandler,
+                children: isLast() ? "Start over" : "Next case"
+            })
+        ]
+    });
+};
+
+
 const $b9fbd5c6ed0aa777$export$1de449572095a221 = ({ step: step  })=>{
     if (step.steps) return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
         sx: {
@@ -14764,8 +16377,8 @@ const $b9fbd5c6ed0aa777$export$1de449572095a221 = ({ step: step  })=>{
                 step: substep
             }, substep.slug))
     });
-    else return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)("h1", {
-        children: "Base case"
+    else return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $e0134a5109cce5f9$export$d17e05c732d1a969), {
+        algs: step.algs
     });
 };
 
@@ -14812,4 +16425,4 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$export
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.f448d281.js.map
+//# sourceMappingURL=index.de45ae68.js.map
