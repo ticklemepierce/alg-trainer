@@ -16323,29 +16323,43 @@ if ($d3ff3298a4c42353$var$DataView && $d3ff3298a4c42353$var$getTag(new $d3ff3298
 $d3ff3298a4c42353$exports = $d3ff3298a4c42353$var$shuffle;
 
 
+
+var $d4J5n = parcelRequire("d4J5n");
+function $d325342d90344c14$export$2e2bcd8739ae039(key, action) {
+    (0, $d4J5n.useEffect)(()=>{
+        // TODO get proper event type in here
+        function onKeyup(e) {
+            if (e.key === key) action();
+        }
+        window.addEventListener("keyup", onKeyup);
+        return ()=>window.removeEventListener("keyup", onKeyup);
+    }, []);
+}
+
+
 const $e0134a5109cce5f9$export$d17e05c732d1a969 = ({ algs: algs  })=>{
     const [order, setOrder] = (0, $d4J5n.useState)((0, (/*@__PURE__*/$parcel$interopDefault($d3ff3298a4c42353$exports)))(Object.keys(algs)));
     const [index1, setIndex] = (0, $d4J5n.useState)(0);
     const [currentCase, setCurrentCase] = (0, $d4J5n.useState)();
     const isLast = ()=>index1 >= order.length - 1;
-    (0, $d4J5n.useEffect)(()=>{
-        console.log(index1 + 1);
-        setCurrentCase((0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(algs[order[index1]]));
-    }, [
-        index1
-    ]);
     const clickHandler = ()=>{
         if (isLast()) {
             setOrder((0, (/*@__PURE__*/$parcel$interopDefault($d3ff3298a4c42353$exports)))(Object.keys(algs)));
             setIndex(0);
         } else setIndex((index)=>index + 1);
     };
+    (0, $d325342d90344c14$export$2e2bcd8739ae039)(" ", clickHandler);
+    (0, $d4J5n.useEffect)(()=>{
+        setCurrentCase((0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(algs[order[index1]]));
+    }, [
+        index1
+    ]);
     return /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        minHeight: "100vh",
+        minHeight: "95vh",
         children: [
             /*#__PURE__*/ (0, $17b288f07ec57b56$exports.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
                 component: "h1",
@@ -16425,4 +16439,4 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $17b288f07ec57b56$export
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.de45ae68.js.map
+//# sourceMappingURL=index.9771c3b8.js.map
