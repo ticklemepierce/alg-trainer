@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { IPuzzle, IStep, IAlgs } from '../puzzles';
+import { IAlgs } from '../puzzles';
 import { Box, Button, Typography } from '@mui/material';
-import { StepCard } from '../components/step-card';
 import randomItem from 'random-item';
 import shuffle from 'lodash.shuffle';
+import useKeypress from '../hooks/useKeypress';
 
 export const Trainer = ({ algs }: { algs: IAlgs }) => {
   const [order, setOrder] = useState<string[]>(shuffle(Object.keys(algs)));
@@ -11,12 +11,7 @@ export const Trainer = ({ algs }: { algs: IAlgs }) => {
   const [currentCase, setCurrentCase] = useState<string>();
 
   const isLast = () => (index >= order.length - 1);
-
-  useEffect(() => {
-    console.log(index + 1);
-    setCurrentCase(randomItem(algs[order[index]]));
-  }, [index])
-
+  
   const clickHandler = () => {
     if (isLast()) {
       setOrder(shuffle(Object.keys(algs)));
@@ -25,6 +20,11 @@ export const Trainer = ({ algs }: { algs: IAlgs }) => {
       setIndex((index) => (index + 1));
     }
   }
+  useKeypress(' ', clickHandler);
+
+  useEffect(() => {
+    setCurrentCase(randomItem(algs[order[index]]));
+  }, [index]);
 
   return (
     <Box
@@ -32,7 +32,7 @@ export const Trainer = ({ algs }: { algs: IAlgs }) => {
     justifyContent="center"
     alignItems="center"
     flexDirection="column"
-    minHeight="100vh"
+    minHeight="95vh"
   >
     <Typography component="h1" variant="h3">{currentCase}</Typography>
     <Button variant="contained" sx={{mt: 3}} size="large" onClick={clickHandler}>
