@@ -3,10 +3,17 @@ export interface IStep {
   steps?: IStep[],
   visualCubeParams: string,
   slug: string
+  algs?: object
 }
 
 export interface IPuzzle extends IStep {
   steps: IStep[],
+}
+
+type Alg = string;
+
+export interface IAlgs {
+  [key: string]: Alg[]
 }
 
 export const Puzzles: IPuzzle[] = [
@@ -18,6 +25,7 @@ export const Puzzles: IPuzzle[] = [
       displayName: 'F2L',
       visualCubeParams: '&puzzle=3&stage=f2l',
       slug: 'f2l',
+      algs: require('../setups/f2l.json') as IAlgs
     }, {
       displayName: 'OLL',
       visualCubeParams: '&puzzle=3&stage=oll',

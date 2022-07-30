@@ -1,6 +1,7 @@
 import { IPuzzle, IStep } from '../puzzles';
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import { StepCard } from '../components/step-card';
+import { Trainer } from '../components/trainer';
 
 export const StepPage = ({ step }: { step: IStep | IPuzzle }) => {
   if (step.steps) {
@@ -11,8 +12,9 @@ export const StepPage = ({ step }: { step: IStep | IPuzzle }) => {
     );
   } else {
     return (
-      <h1>Base case</h1>
+      <Trainer algs={step.algs!}/>
     )
   }
 
 };
+ 
