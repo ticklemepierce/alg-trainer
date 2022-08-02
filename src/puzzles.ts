@@ -1,22 +1,25 @@
-export interface IStep {
+export interface ISubStep {
   displayName: string,
-  steps?: IStep[],
+  steps: Step[],
   visualCubeParams: string,
   slug: string
-  algs?: object
 }
 
-export interface IPuzzle extends IStep {
-  steps: IStep[],
+export interface IBaseStep {
+  displayName: string,
+  visualCubeParams: string,
+  slug: string
 }
 
-type Alg = string;
+export type Step = ISubStep | IBaseStep;
+
+export type Alg = string;
 
 export interface IAlgs {
   [key: string]: Alg[]
 }
 
-export const Puzzles: IPuzzle[] = [
+export const Puzzles: ISubStep[] = [
   {
     displayName: '3x3x3',
     slug: '/333',
@@ -25,7 +28,6 @@ export const Puzzles: IPuzzle[] = [
       displayName: 'F2L',
       visualCubeParams: '&puzzle=3&stage=f2l',
       slug: 'f2l',
-      algs: require('../setups/f2l.json') as IAlgs
     }, {
       displayName: 'OLL',
       visualCubeParams: '&puzzle=3&stage=oll',
@@ -58,4 +60,13 @@ export const Puzzles: IPuzzle[] = [
       slug: 'cross_edges'
     }],
   }
-]
+];
+
+export function isBaseStep(step: Step): step is IBaseStep {
+  return (step as ISubStep).steps === undefined;
+}
+
+
+export function isSubStep(step: Step): step is ISubStep {
+  return (step as ISubStep).steps !== undefined;
+}

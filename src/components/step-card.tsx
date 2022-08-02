@@ -3,9 +3,9 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { IPuzzle, IStep } from '../puzzles';
+import { Step } from '../puzzles';
 
-export const StepCard = ({ step }: {step: IStep | IPuzzle }) => {
+export const StepCard = ({ step }: {step: Step }) => {
   const imgUrl = `https://cubiclealgdbimagegen.azurewebsites.net/generator?${step.visualCubeParams}`
   return (
     <Card sx={{ maxWidth: 200, textAlign: 'center', m: 2 }}>

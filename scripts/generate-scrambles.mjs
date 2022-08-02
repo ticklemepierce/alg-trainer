@@ -13,6 +13,7 @@ const cases = JSON.parse(data);
 
 
 cases.forEach((alg) => {
+  console.log(alg);
   algs[alg] = [];
 
   const inverse = new Alg(alg).invert();
