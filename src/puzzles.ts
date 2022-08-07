@@ -21,6 +21,7 @@ export interface IAlg {
   filters: {
     [key: string]: boolean;
   };
+  solutions: string[];
 }
 
 export interface IAlgs {
@@ -99,4 +100,13 @@ export function isBaseStep(step: Step): step is IBaseStep {
 
 export function isSubStep(step: Step): step is ISubStep {
   return (step as ISubStep).steps !== undefined;
+}
+
+export interface IAlgsListContext {
+  algs: IAlgs;
+  step: IBaseStep;
+}
+
+export interface IFilter {
+  [key: string]: boolean;
 }

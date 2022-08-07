@@ -14,23 +14,14 @@ import {
   Switch,
 } from "@mui/material";
 import { useOutletContext, useNavigate } from "react-router-dom";
-import { IAlgs, IBaseStep } from "../puzzles";
+import { IAlgsListContext, IFilter } from "../puzzles";
 import { useLocalStorage } from "usehooks-ts";
-
-// TODO move to puzzles (which should be renamed to types)
-interface IAlgsListContext {
-  algs: IAlgs;
-  step: IBaseStep;
-}
-
-interface IFilter {
-  [key: string]: boolean;
-}
+import { AlgRow } from "./alg-row";
 
 export const AlgsList = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
   const [filters, setFilters] = useLocalStorage<IFilter>(
-    `${step}-filters`,
+    `${step.slug}-filters`,
     Object.keys(step.filters).reduce(
       (acc, cur) => ({
         ...acc,
@@ -53,6 +44,13 @@ export const AlgsList = () => {
     });
   };
 
+  const algRowClick = (alg: string) => {
+    window.open(
+      `https://alpha.twizzle.net/edit/?puzzle=3x3x3&alg=${alg}&setup-anchor=end`,
+      "_blank"
+    );
+  };
+
   return (
     <Box
       sx={{
@@ -69,6 +67,7 @@ export const AlgsList = () => {
       >
         Start Trainer
       </Button>
+      {/* TODO make the filters prettier */}
       <FormControl component="fieldset" variant="standard">
         <FormGroup>
           {Object.entries(step.filters).map(([filter, displayName]) => (
@@ -90,7 +89,7 @@ export const AlgsList = () => {
         <Table aria-label="simple table">
           <TableBody>
             {Object.entries(algs!)
-              .filter(([algKey, algValue]) => {
+              .filter(([, algValue]) => {
                 if (!Object.values(filters).some((filter) => filter === true)) {
                   return true;
                 }
@@ -102,7 +101,7 @@ export const AlgsList = () => {
                 });
                 return shouldShow;
               })
-              .map(([alg]) => (
+              .map(([alg, value]) => (
                 <TableRow
                   key={alg}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -111,7 +110,10 @@ export const AlgsList = () => {
                     <img src={getImage(alg)} height={75} />
                   </TableCell>
                   <TableCell component="th" scope="row">
-                    {alg}
+                    <AlgRow
+                      onclick={() => algRowClick(alg)}
+                      alg={value.solutions[0]}
+                    />
                   </TableCell>
                 </TableRow>
               ))}

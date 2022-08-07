@@ -1,12 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-export default function useKeypress(key: string, action: Function, dependencyArray: any[]) {
+export default function useKeypress(
+  key: string,
+  action: Function,
+  dependencyArray: any[]
+) {
   useEffect(() => {
-    // TODO get proper event type in here
-    function onKeyup(e: any) {
-      if (e.key === key) action()
+    function onKeyup(e: KeyboardEvent) {
+      if (e.key === key) {
+        return action();
+      }
     }
-    window.addEventListener('keyup', onKeyup);
-    return () => window.removeEventListener('keyup', onKeyup);
+    window.addEventListener("keyup", onKeyup);
+    return () => window.removeEventListener("keyup", onKeyup);
   }, dependencyArray);
 }

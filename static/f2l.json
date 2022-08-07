@@ -52,7 +52,8 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": ["R' F R F'", "U R U' R'"]
   },
   "F R' F' R": {
     "setups": [
@@ -113,7 +114,8 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": ["y' U' R' U R", "d L' U L", "F R' F' R"]
   },
   "F' U' F": {
     "setups": [
@@ -174,7 +176,14 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "y' R' U' R",
+      "y L' U' L",
+      "F' U' F",
+      "y' R' U' R",
+      "U M R U' R' U M'"
+    ]
   },
   "R U R'": {
     "setups": [
@@ -236,7 +245,8 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": ["R U R'"]
   },
   "U' R U R' U2 R U' R'": {
     "setups": [
@@ -320,7 +330,14 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U' R U R' U2 R U' R'",
+      "U' R U R' U' R U2 R'",
+      "F2 L' U' L U F2",
+      "U' R U R' U R' F R F'",
+      "y U l' U L U' L' U' l"
+    ]
   },
   "U' r U' R' U R U r'": {
     "setups": [
@@ -405,7 +422,14 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "d R' U' R U2 R' U R",
+      "y U L' U' L U2 L' U L",
+      "U' r U' R' U R U r'",
+      "U F' U' F U2 F' U F",
+      "y' U R' U' R U2' R' U R"
+    ]
   },
   "U' R U2 R' U2 R U' R'": {
     "setups": [
@@ -491,7 +515,14 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U' R U2 R' U2 R U' R'",
+      "U' R U2 R' U' R U2 R'",
+      "U' R U2 R' U R' F R F'",
+      "M' U' M U2 r U' r'",
+      "y l U2 L2' U' L2 U' l'"
+    ]
   },
   "r' U2 R2 U R2' U r": {
     "setups": [
@@ -575,7 +606,15 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "d R' U2 R U2 R' U R",
+      "r' U2 R2 U R2' U r",
+      "y U L' U2 L U2 L' U L",
+      "U F' U2 F U2 F' U F",
+      "y' U R' U2 R U2' R' U R",
+      "y U L' U2 L U2 L' U L"
+    ]
   },
   "U' R U' R' U F' U' F": {
     "setups": [
@@ -659,7 +698,15 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U' R U' R' U F' U' F",
+      "U' R U' R' d R' U' R",
+      "F R U R' U' F' R U' R'",
+      "y' U R' U' R U' R' U' R",
+      "y U (L' U' L) U' (L' U' L)",
+      "y U2 (L' U L) U (L' U' L)"
+    ]
   },
   "U2 R U' R' U' R U R'": {
     "setups": [
@@ -743,7 +790,13 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U' R U R' U R U R'",
+      "U y' R' U R U' y R U R'",
+      "U2 R U' R' U' R U R'",
+      "R' U R2 U R'"
+    ]
   },
   "U' R U2 R' U F' U' F": {
     "setups": [
@@ -829,7 +882,17 @@
       "edgeInSlot": false,
       "incorrectlyConnected": true,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U' R U2 R' U F' U' F",
+      "U' R U2 R' d R' U' R",
+      "y' R U2 R2 U' R2 U' R'",
+      "y L' U L U' L' U L U2 L' U L",
+      "U' R U2' R' U y' R' U' R",
+      "y L U2 L2' U' L2 U' L'",
+      "y L' U L U' L' U L U2 L' U L",
+      "U' R U2 R' U y L' U' L"
+    ]
   },
   "R' U2 R2 U R2 U R": {
     "setups": [
@@ -912,7 +975,15 @@
       "edgeInSlot": false,
       "incorrectlyConnected": true,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "R U' R' U R U' R' U2 R U' R'",
+      "R' U2 R2 U R2 U R",
+      "U F' U2 F U' R U R'",
+      "U R U' R' U' R U R' U' R U R'",
+      "y U L' U2 L U' y' R U R'",
+      "y' U (R' U2 R) U' y (R U R')"
+    ]
   },
   "d R' U R U' R' U' R U d'": {
     "setups": [
@@ -996,7 +1067,13 @@
       "edgeInSlot": false,
       "incorrectlyConnected": true,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "y' U R' U R U' R' U' R",
+      "d R' U R U' R' U' R",
+      "y U L' U L U' L' U' L",
+      "M' U' R U R' U' R U2 r'"
+    ]
   },
   "U' R U' R' U R U R'": {
     "setups": [
@@ -1082,7 +1159,12 @@
       "edgeInSlot": false,
       "incorrectlyConnected": true,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U' R U' R' U R U R'",
+      "y L' U2 L U2 F U2 F' U F U' F'",
+      "R U' R' U R U2 R' U2 R U' R'"
+    ]
   },
   "R U R' U2 R U' R' U R U' R'": {
     "setups": [
@@ -1166,7 +1248,18 @@
       "edgeInSlot": false,
       "incorrectlyConnected": true,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "R U R' U2 R U' R' U R U' R'",
+      "M U r U' r' U' M'",
+      "y L' U L U2 y' R U R'",
+      "F' U F U2 R U R'",
+      "y' (R' U R) U2' y (R U R')",
+      "M U (L F' L') U' M'",
+      "y (L' U L) y' U2 (R U R')",
+      "y' (R2' F R F' R) U2 (R' U R)",
+      "y2 (f' L f) U2 (L U L')"
+    ]
   },
   "R U' R' U2 F' U' F": {
     "setups": [
@@ -1250,7 +1343,18 @@
       "edgeInSlot": false,
       "incorrectlyConnected": true,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "R U' R' U2 F' U' F",
+      "R U' R' U2 y L' U' L",
+      "R U' R' U d R' U' R",
+      "U F U R U' R' F' R U R'",
+      "R U' R' U2 y' R' U' R",
+      "U F R U R' U' F' U R U' R'",
+      "y M U' R' F R U M'",
+      "y2 L2 F' L' F L' U2 L U' L'",
+      "y' f R' f' U2 R' U' R"
+    ]
   },
   "R U2 R' U' R U R'": {
     "setups": [
@@ -1334,7 +1438,12 @@
       "edgeInSlot": false,
       "incorrectlyConnected": true,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "R U2 R' U' R U R'",
+      "y L F' L' F L' U L U' L' U L",
+      "U' R U' R' U2 R U2 R2 F R F'"
+    ]
   },
   "R' F R F' R U' R' U R U' R'": {
     "setups": [
@@ -1418,7 +1527,13 @@
       "edgeInSlot": false,
       "incorrectlyConnected": true,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "y' R' U2 R U R' U' R",
+      "y L' U2 L U L' U' L",
+      "R' F R F' R U' R' U R U' R'",
+      "R U R' U' R U R' U' F R' F' R"
+    ]
   },
   "U R U2 R' U R U' R'": {
     "setups": [
@@ -1504,7 +1619,12 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U R U2 R' U R U' R'",
+      "U R U2 R2 F R F'",
+      "R U' R' U R U' R' U R U R'"
+    ]
   },
   "U' R U' R2 F R F' R U' R'": {
     "setups": [
@@ -1589,7 +1709,13 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "y' U' R' U2 R U' R' U R",
+      "y U' L' U2 L U' L' U L",
+      "U' R U' R2 F R F' R U' R'",
+      "U' R U R' U r U' r' U2 r U r'"
+    ]
   },
   "U2 R U R' U R U' R'": {
     "setups": [
@@ -1674,7 +1800,13 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U2 R U R' U R U' R'",
+      "R U' R' U2 R U R'",
+      "y F R U2 R' F'",
+      "y' r' U r U2 r' U' r"
+    ]
   },
   "F' L' U2 L F": {
     "setups": [
@@ -1751,7 +1883,14 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "y U2 (L' U' L) U' (L' U L)",
+      "F' L' U2 L F",
+      "y' U2 (R' U' R) U' (R' U R)",
+      "F' L' U2 L F",
+      "r U' r' U2 r U r'"
+    ]
   },
   "R U R' U2 R U R' U' R U R'": {
     "setups": [
@@ -1835,7 +1974,15 @@
       "edgeInSlot": false,
       "incorrectlyConnected": true,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "R U R' U2 R U R' U' R U R'",
+      "U R U' R' U' R U' R' U R U' R'",
+      "U2 R2 U2 R' U' R U' R2",
+      "y F' U' L' U L F L' U L",
+      "U (F R' F' R) U (R U R')",
+      "y U L' U' (L2 F' L' F) (L' U L)"
+    ]
   },
   "F U R U' R' F' R U' R'": {
     "setups": [
@@ -1921,7 +2068,16 @@
       "edgeInSlot": false,
       "incorrectlyConnected": true,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "F U R U' R' F' R U' R'",
+      "y U' L' U L U L' U L U' L' U L",
+      "U' R U R2 F R F' R U' R'",
+      "y' R' U' R U2 R' U' R U R' U' R",
+      "y' U' (R' U R U) (R' U R U') (R' U R)",
+      "y U' (F' L F L') U' (L' U' L)",
+      "U' R U (R2' F R F') (R U' R')"
+    ]
   },
   "R' F' R U R U' R' F": {
     "setups": [
@@ -2006,7 +2162,17 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "R' F' R U R U' R' F",
+      "U' R' F R F' R U R'",
+      "y U' L' U L y' U R U' R'",
+      "R' U' R' U' R' U R U R",
+      "U' F' (R U R' U') (R' F R)",
+      "y U' (L' U L) (F' L F L')",
+      "y2 U' M U L U' M' U L'",
+      "y' U' R' U M U' R U M'"
+    ]
   },
   "U R U' R' U' F' U F": {
     "setups": [
@@ -2091,7 +2257,18 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U R U' R' U' F' U F",
+      "U R U' R' F R' F' R",
+      "y r U r' U' r' F r F'",
+      "U R U' R' d' L' U L",
+      "y U (L F' L' F) (L' U' L)",
+      "y (L F L') (U' L' U L) F'",
+      "y U F (L' U' L U) (L F' L')",
+      "y' U M U' R' U M' U' R",
+      "y2 U L U' M U L' U' M'"
+    ]
   },
   "R U' R' U R U' R'": {
     "setups": [
@@ -2176,7 +2353,13 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "R U' R' U R U' R'",
+      "R U' R2 F R F'",
+      "y L' U' L U2 F U' F'",
+      "y' R' U' R U y U R U' R'"
+    ]
   },
   "R U R' U' F R' F' R": {
     "setups": [
@@ -2260,7 +2443,13 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "y L' U L U' L' U L",
+      "R U R' U' F R' F' R",
+      "y' R' U R U' R' U R",
+      "R U R' U2 F' U F"
+    ]
   },
   "R' F R F' U R U' R'": {
     "setups": [
@@ -2344,7 +2533,14 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "R' F R F' R' F R F'",
+      "y L' U' L U L' U' L",
+      "y' R' U' R U R' U' R",
+      "R' F R F' U R U' R'",
+      "M' U R U' R' U R U' r'"
+    ]
   },
   "R U R' U' R U R'": {
     "setups": [
@@ -2429,7 +2625,14 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "R U R' U' R U R'",
+      "F R' F' R F R' F' R",
+      "y U' L' U' L U2 F U2 F' U F U' F'",
+      "y M' (U' L' U L) (U' L' U l)",
+      "y L F' L' F L F' L' F"
+    ]
   },
   "U' R' F R F' R U' R'": {
     "setups": [
@@ -2514,7 +2717,17 @@
       "edgeInSlot": true,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U' R' F R F' R U' R'",
+      "R U' R' y L' U2 L",
+      "R U' R' U2 F R' F' R",
+      "l F' R U' R' U l'",
+      "(R U' R') (F' U2 F)",
+      "y' R' U R' F R F' R",
+      "y' U' (R' U2 R) (f R f')",
+      "(R U' R' U) y' (R' U R)"
+    ]
   },
   "R U R' U' R U R' U' R U R'": {
     "setups": [
@@ -2598,7 +2811,13 @@
       "edgeInSlot": true,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U R U' R' U R U' R' U R U' R'",
+      "R U R' U' R U R' U' R U R'",
+      "R2 U R2 U R2 U2 R2",
+      "U R U R' U' R U2 R' U R U' R'"
+    ]
   },
   "U' R U' R' U2 R U' R'": {
     "setups": [
@@ -2683,7 +2902,15 @@
       "edgeInSlot": true,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U' R U' R' U2 R U' R'",
+      "U' R U' R' U R' F R F'",
+      "y R' D R U' R' D' R",
+      "R U R' U' R U' R' U R U' R'",
+      "y U' (L' U' L) U2 (L' U' L)",
+      "y U (L' U2 L) U' (L' U' L)"
+    ]
   },
   "U R U R' U2 R U R'": {
     "setups": [
@@ -2769,7 +2996,13 @@
       "edgeInSlot": true,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U R U R' U2 R U R'",
+      "U' R U2 R' U R U R'",
+      "y U L' U L U2 L' U L",
+      "y' U R' U R U2 R' U R"
+    ]
   },
   "U' R U R' U F' U' F": {
     "setups": [
@@ -2853,7 +3086,17 @@
       "edgeInSlot": true,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U' R U R' U F' U' F",
+      "U2 R U R' F R' F' R",
+      "U' R U R' d R' U' R",
+      "U M' U R U' r' R U' R'",
+      "y U' (F U F') U (L' U' L)",
+      "y2 U2 (L U L') y' U' (L' U L)",
+      "y2 U2 L U M U L' U' M'",
+      "y' U' (f R f') U (R' U' R)"
+    ]
   },
   "U2 R' F R F' U2 R U R'": {
     "setups": [
@@ -2937,7 +3180,18 @@
       "edgeInSlot": true,
       "incorrectlyConnected": false,
       "bothInSlot": false
-    }
+    },
+    "solutions": [
+      "U2 R' F R F' U2 R U R'",
+      "U F' U' F U' R U R'",
+      "y U L' U' L y' U' R U R'",
+      "U2 F' U' F U R U' R'",
+      "y U2 (L' U' L) (F' L F L')",
+      "y U' M' (U' L' U l) (L' U L)",
+      "y' U2 (R' U' R) y U (R U' R')",
+      "y' U2 R' U' M U' R U M'",
+      "y2 U (f' L' f) U' (L U L')"
+    ]
   },
   "R2 U2 F R2 F' U2 R' U R'": {
     "setups": [
@@ -3023,7 +3277,16 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": true
-    }
+    },
+    "solutions": [
+      "R2' U2' F R2 F' U2' R' U R'",
+      "R U' R' d R' U2 R U2 R' U R",
+      "R U2 R' U R U2 R' U F' U' F",
+      "R' F R F' R U' R' U R U' R' U2 R U' R'",
+      "y L2 U2 F' L2' F U2 L U' L",
+      "y' (f R' f') U (R' U2' R) U (R' U2' R)",
+      "y2 (f' L f) U' (L U2 L') U' (L U2 L')"
+    ]
   },
   "R U R' U' R U2 R' U' R U R'": {
     "setups": [
@@ -3107,7 +3370,14 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": true
-    }
+    },
+    "solutions": [
+      "R U R' U' R U2 R' U' R U R'",
+      "R U' R' U' R U R' U2 R U' R'",
+      "R2 U2 R' U' R U' R' U2 R'",
+      "F R' F' R2 U2 R' U' R U R'",
+      "y' (L' U L) U' (L' U2' L U' L' U L)"
+    ]
   },
   "R U R' U2 R U' R' U R U R'": {
     "setups": [
@@ -3191,7 +3461,14 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": true
-    }
+    },
+    "solutions": [
+      "R U R' U2 R U' R' U R U R'",
+      "R U' R' U R U2 R' U R U' R'",
+      "R U2 R U R' U R U2 R2",
+      "R U2 R' U R U' R' U R U R'",
+      "y' (L' U L) U (L' U' L U2' L' U L)"
+    ]
   },
   "R U' R' F R U R' U' F' R U' R'": {
     "setups": [
@@ -3277,7 +3554,18 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": true
-    }
+    },
+    "solutions": [
+      "R U' R' F R U R' U' F' R U' R'",
+      "r U' r' U2 r U r' R U R'",
+      "R U' R' U' R U' R' U F' U' F",
+      "R F U R U' R' F' U' R'",
+      "(F' U F) U2 (R U R' U) (R U' R')",
+      "y (L' U L) (F R U2' R' F')",
+      "(F' L' U2 L F) (R U R')",
+      "y' R2' F' U' F U R U' R",
+      "y2 L U' L U F U' F' L2'"
+    ]
   },
   "R U F R U R' U' F' R'": {
     "setups": [
@@ -3361,6 +3649,15 @@
       "edgeInSlot": false,
       "incorrectlyConnected": false,
       "bothInSlot": true
-    }
+    },
+    "solutions": [
+      "R U R' U' R U' R' U2 y' R' U' R",
+      "R U F R U R' U' F' R'",
+      "R U' R' F' L' U2 L F",
+      "R U' M' U' r' U2 r U r'",
+      "y (F R U2' R' F') (L' U' L)",
+      "y2 L2 F U F' U' L' U L'",
+      "y' R' U R' U' F' U F R2"
+    ]
   }
 }

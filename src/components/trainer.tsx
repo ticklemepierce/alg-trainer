@@ -1,21 +1,42 @@
 import { useEffect, useState, useMemo } from "react";
-import { IAlgs, Step } from "../puzzles";
+import { IAlgsListContext, IFilter } from "../puzzles";
 import { Box, Button, Typography } from "@mui/material";
 import randomItem from "random-item";
 import shuffle from "lodash.shuffle";
 import useKeypress from "../hooks/useKeypress";
 import { useOutletContext } from "react-router-dom";
-
-// TODO move to puzzles (which should be renamed to types)
-interface IAlgsListContext {
-  algs: IAlgs;
-  step: Step;
-}
+import { useLocalStorage } from "usehooks-ts";
 
 export const Trainer = () => {
-  const { algs } = useOutletContext<IAlgsListContext>();
+  const { algs, step } = useOutletContext<IAlgsListContext>();
 
-  const [order, setOrder] = useState<string[]>(shuffle(Object.keys(algs)));
+  const [filters] = useLocalStorage<IFilter>(
+    `${step.slug}-filters`,
+    Object.keys(step.filters).reduce(
+      (acc, cur) => ({
+        ...acc,
+        [cur]: false,
+      }),
+      {}
+    )
+  );
+  const filterAlgs = () =>
+    Object.entries(algs!)
+      .filter(([, algValue]) => {
+        if (!Object.values(filters).some((filter) => filter === true)) {
+          return true;
+        }
+        let shouldShow = false;
+        Object.entries(filters).forEach(([key, value]) => {
+          if (value && !shouldShow) {
+            shouldShow = algValue.filters[key];
+          }
+        });
+        return shouldShow;
+      })
+      .map(([algKey]) => algKey);
+
+  const [order, setOrder] = useState<string[]>(shuffle(filterAlgs()));
   const [index, setIndex] = useState<number>(0);
   const [currentCase, setCurrentCase] = useState<string>();
 
