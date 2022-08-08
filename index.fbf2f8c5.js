@@ -45,6 +45,28 @@ if (parcelRequire == null) {
 
   $parcel$global["parcelRequire31c8"] = parcelRequire;
 }
+parcelRequire.register("aKzDW", function(module, exports) {
+
+$parcel$export(module.exports, "register", () => $7d39d93f9098a310$export$6503ec6e8aabbaf, (v) => $7d39d93f9098a310$export$6503ec6e8aabbaf = v);
+$parcel$export(module.exports, "resolve", () => $7d39d93f9098a310$export$f7ad0328861e2f03, (v) => $7d39d93f9098a310$export$f7ad0328861e2f03 = v);
+var $7d39d93f9098a310$export$6503ec6e8aabbaf;
+var $7d39d93f9098a310$export$f7ad0328861e2f03;
+"use strict";
+var $7d39d93f9098a310$var$mapping = {};
+function $7d39d93f9098a310$var$register(pairs) {
+    var keys = Object.keys(pairs);
+    for(var i = 0; i < keys.length; i++)$7d39d93f9098a310$var$mapping[keys[i]] = pairs[keys[i]];
+}
+function $7d39d93f9098a310$var$resolve(id) {
+    var resolved = $7d39d93f9098a310$var$mapping[id];
+    if (resolved == null) throw new Error("Could not resolve bundle with id " + id);
+    return resolved;
+}
+$7d39d93f9098a310$export$6503ec6e8aabbaf = $7d39d93f9098a310$var$register;
+$7d39d93f9098a310$export$f7ad0328861e2f03 = $7d39d93f9098a310$var$resolve;
+
+});
+
 parcelRequire.register("4WnG3", function(module, exports) {
 
 $parcel$export(module.exports, "Fragment", () => $398ef20bfcd6b165$export$ffb0004e005737fa, (v) => $398ef20bfcd6b165$export$ffb0004e005737fa = v);
@@ -7371,6 +7393,12 @@ $abe4e692e41e1aec$export$f5bbd400c2f4426f = $abe4e692e41e1aec$var$z;
 
 });
 
+parcelRequire.register("ak7Jm", function(module, exports) {
+
+module.exports = import("./" + (parcelRequire("aKzDW")).resolve("eXwSi")).then(()=>parcelRequire("bYa3M"));
+
+});
+
 parcelRequire.register("33Ex0", function(module, exports) {
 "use strict";
 Object.defineProperty(module.exports, "__esModule", {
@@ -7455,6 +7483,21 @@ function $2ded6215ee1adfb2$export$2e2bcd8739ae039(string) {
 
 });
 
+parcelRequire.register("631O8", function(module, exports) {
+
+$parcel$export(module.exports, "default", () => $46746cde09f14e6f$export$2e2bcd8739ae039);
+function $46746cde09f14e6f$export$2e2bcd8739ae039(...funcs) {
+    return funcs.reduce((acc, func)=>{
+        if (func == null) return acc;
+        return function chainedFunction(...args) {
+            acc.apply(this, args);
+            func.apply(this, args);
+        };
+    }, ()=>{});
+}
+
+});
+
 parcelRequire.register("6tbWE", function(module, exports) {
 
 $parcel$export(module.exports, "default", () => $4b5eb78a7b8ee9d8$export$2e2bcd8739ae039);
@@ -7462,6 +7505,81 @@ $parcel$export(module.exports, "default", () => $4b5eb78a7b8ee9d8$export$2e2bcd8
 var $d4J5n = parcelRequire("d4J5n");
 function $4b5eb78a7b8ee9d8$export$2e2bcd8739ae039(element, muiNames) {
     return /*#__PURE__*/ $d4J5n.isValidElement(element) && muiNames.indexOf(element.type.muiName) !== -1;
+}
+
+});
+
+parcelRequire.register("k3rwj", function(module, exports) {
+
+$parcel$export(module.exports, "default", () => $e9996f60262c6d12$export$2e2bcd8739ae039);
+function $e9996f60262c6d12$export$2e2bcd8739ae039(node) {
+    return node && node.ownerDocument || document;
+}
+
+});
+
+parcelRequire.register("38i2Y", function(module, exports) {
+
+$parcel$export(module.exports, "default", () => $24801e316fcb9bd3$export$2e2bcd8739ae039);
+
+var $k3rwj = parcelRequire("k3rwj");
+function $24801e316fcb9bd3$export$2e2bcd8739ae039(node) {
+    const doc = (0, $k3rwj.default)(node);
+    return doc.defaultView || window;
+}
+
+});
+
+parcelRequire.register("gdSyI", function(module, exports) {
+
+$parcel$export(module.exports, "default", () => $bcf82e7d2d464c77$export$2e2bcd8739ae039);
+function $bcf82e7d2d464c77$export$2e2bcd8739ae039(ref, value) {
+    if (typeof ref === "function") ref(value);
+    else if (ref) ref.current = value;
+}
+
+});
+
+parcelRequire.register("FtJh7", function(module, exports) {
+
+$parcel$export(module.exports, "default", () => $07cae40ee990b789$export$2e2bcd8739ae039);
+
+var $d4J5n = parcelRequire("d4J5n");
+const $07cae40ee990b789$var$useEnhancedEffect = typeof window !== "undefined" ? $d4J5n.useLayoutEffect : $d4J5n.useEffect;
+var $07cae40ee990b789$export$2e2bcd8739ae039 = $07cae40ee990b789$var$useEnhancedEffect;
+
+});
+
+parcelRequire.register("1ZpZm", function(module, exports) {
+
+$parcel$export(module.exports, "default", () => $172fa5be2acceae0$export$2e2bcd8739ae039);
+
+var $d4J5n = parcelRequire("d4J5n");
+let $172fa5be2acceae0$var$globalId = 0;
+function $172fa5be2acceae0$var$useGlobalId(idOverride) {
+    const [defaultId, setDefaultId] = $d4J5n.useState(idOverride);
+    const id = idOverride || defaultId;
+    $d4J5n.useEffect(()=>{
+        if (defaultId == null) {
+            // Fallback to this default id when possible.
+            // Use the incrementing value for client-side rendering only.
+            // We can't use it server-side.
+            // If you want to use random values please consider the Birthday Problem: https://en.wikipedia.org/wiki/Birthday_problem
+            $172fa5be2acceae0$var$globalId += 1;
+            setDefaultId(`mui-${$172fa5be2acceae0$var$globalId}`);
+        }
+    }, [
+        defaultId
+    ]);
+    return id;
+} // eslint-disable-next-line no-useless-concat -- Workaround for https://github.com/webpack/webpack/issues/14814
+const $172fa5be2acceae0$var$maybeReactUseId = $d4J5n.useId;
+function $172fa5be2acceae0$export$2e2bcd8739ae039(idOverride) {
+    if ($172fa5be2acceae0$var$maybeReactUseId !== undefined) {
+        const reactId = $172fa5be2acceae0$var$maybeReactUseId();
+        return idOverride != null ? idOverride : reactId;
+    } // eslint-disable-next-line react-hooks/rules-of-hooks -- `React.useId` is invariant at runtime.
+    return $172fa5be2acceae0$var$useGlobalId(idOverride);
 }
 
 });
@@ -7504,16 +7622,6 @@ function $9c7e02e17683d0bd$export$2e2bcd8739ae039(fn) {
 }
 
 });
-parcelRequire.register("FtJh7", function(module, exports) {
-
-$parcel$export(module.exports, "default", () => $07cae40ee990b789$export$2e2bcd8739ae039);
-
-var $d4J5n = parcelRequire("d4J5n");
-const $07cae40ee990b789$var$useEnhancedEffect = typeof window !== "undefined" ? $d4J5n.useLayoutEffect : $d4J5n.useEffect;
-var $07cae40ee990b789$export$2e2bcd8739ae039 = $07cae40ee990b789$var$useEnhancedEffect;
-
-});
-
 
 parcelRequire.register("2uAQY", function(module, exports) {
 
@@ -7540,16 +7648,6 @@ function $1d0af86f2ce709f8$export$2e2bcd8739ae039(refA, refB) {
 }
 
 });
-parcelRequire.register("gdSyI", function(module, exports) {
-
-$parcel$export(module.exports, "default", () => $bcf82e7d2d464c77$export$2e2bcd8739ae039);
-function $bcf82e7d2d464c77$export$2e2bcd8739ae039(ref, value) {
-    if (typeof ref === "function") ref(value);
-    else if (ref) ref.current = value;
-}
-
-});
-
 
 parcelRequire.register("gsuPp", function(module, exports) {
 
@@ -7684,6 +7782,17 @@ function $bfb72cb3f2758f7a$export$2e2bcd8739ae039() {
         onBlur: handleBlurVisible,
         ref: ref
     };
+}
+
+});
+
+parcelRequire.register("8e4jh", function(module, exports) {
+
+$parcel$export(module.exports, "default", () => $5fd2f9659fb8c9c4$export$2e2bcd8739ae039);
+function $5fd2f9659fb8c9c4$export$2e2bcd8739ae039(doc) {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
+    const documentWidth = doc.documentElement.clientWidth;
+    return Math.abs(window.innerWidth - documentWidth);
 }
 
 });
@@ -12551,6 +12660,10 @@ var $2edae841494e9a49$export$2e2bcd8739ae039 = $2edae841494e9a49$var$svgIconClas
 
 
 
+var $92fbd03b625c98d2$exports = {};
+
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.fbf2f8c5.js","eXwSi":"puzzle-geometry.db2a4a3f.js","bJecT":"index.04ff6efc.js"}'));
+
 
 var $228IU = parcelRequire("228IU");
 
@@ -13054,9 +13167,13 @@ $parcel$export($c02ff5a208fd40b7$exports, "Box", () => $f2d8fe790f2a3612$export$
 $parcel$export($c02ff5a208fd40b7$exports, "Button", () => $65c4d565b4687bd9$export$2e2bcd8739ae039);
 $parcel$export($c02ff5a208fd40b7$exports, "CardActionArea", () => $ba9ec2195a7f89db$export$2e2bcd8739ae039);
 $parcel$export($c02ff5a208fd40b7$exports, "CircularProgress", () => $c0c7c6801e66d553$export$2e2bcd8739ae039);
+$parcel$export($c02ff5a208fd40b7$exports, "Dialog", () => $d6f0347ecedd0ecf$export$2e2bcd8739ae039);
+$parcel$export($c02ff5a208fd40b7$exports, "DialogContent", () => $63631a44a86d4e62$export$2e2bcd8739ae039);
+$parcel$export($c02ff5a208fd40b7$exports, "DialogTitle", () => $fcf2823dd0ffe4e8$export$2e2bcd8739ae039);
 $parcel$export($c02ff5a208fd40b7$exports, "FormControl", () => $0f8f482c0984ea7e$export$2e2bcd8739ae039);
 $parcel$export($c02ff5a208fd40b7$exports, "FormControlLabel", () => $d0429b7da69f20b5$export$2e2bcd8739ae039);
 $parcel$export($c02ff5a208fd40b7$exports, "FormGroup", () => $0b7e32f378c52ea7$export$2e2bcd8739ae039);
+$parcel$export($c02ff5a208fd40b7$exports, "IconButton", () => $e6fb12cd5811ce97$export$2e2bcd8739ae039);
 $parcel$export($c02ff5a208fd40b7$exports, "Paper", () => $af776c8e01c32094$export$2e2bcd8739ae039);
 $parcel$export($c02ff5a208fd40b7$exports, "Switch", () => $07fd80317d0540d4$export$2e2bcd8739ae039);
 $parcel$export($c02ff5a208fd40b7$exports, "Table", () => $d5ab6fa1fabc0378$export$2e2bcd8739ae039);
@@ -13378,6 +13495,349 @@ var $869f68c8099d9ed1$var$defaultProps = {
 $869f68c8099d9ed1$var$TransitionGroup.propTypes = {};
 $869f68c8099d9ed1$var$TransitionGroup.defaultProps = $869f68c8099d9ed1$var$defaultProps;
 var $869f68c8099d9ed1$export$2e2bcd8739ae039 = $869f68c8099d9ed1$var$TransitionGroup;
+
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+
+
+var $d4J5n = parcelRequire("d4J5n");
+
+var $d6f4fa15f047b29a$export$2e2bcd8739ae039 = {
+    disabled: false
+};
+
+
+
+
+var $3f4090778342b254$export$bb38bb9a1161268 = "unmounted";
+var $3f4090778342b254$export$84cbff306f539230 = "exited";
+var $3f4090778342b254$export$df38205c966be359 = "entering";
+var $3f4090778342b254$export$78e9e6e3e014d60a = "entered";
+var $3f4090778342b254$export$4aacc83d4d59139f = "exiting";
+/**
+ * The Transition component lets you describe a transition from one component
+ * state to another _over time_ with a simple declarative API. Most commonly
+ * it's used to animate the mounting and unmounting of a component, but can also
+ * be used to describe in-place transition states as well.
+ *
+ * ---
+ *
+ * **Note**: `Transition` is a platform-agnostic base component. If you're using
+ * transitions in CSS, you'll probably want to use
+ * [`CSSTransition`](https://reactcommunity.org/react-transition-group/css-transition)
+ * instead. It inherits all the features of `Transition`, but contains
+ * additional features necessary to play nice with CSS transitions (hence the
+ * name of the component).
+ *
+ * ---
+ *
+ * By default the `Transition` component does not alter the behavior of the
+ * component it renders, it only tracks "enter" and "exit" states for the
+ * components. It's up to you to give meaning and effect to those states. For
+ * example we can add styles to a component when it enters or exits:
+ *
+ * ```jsx
+ * import { Transition } from 'react-transition-group';
+ *
+ * const duration = 300;
+ *
+ * const defaultStyle = {
+ *   transition: `opacity ${duration}ms ease-in-out`,
+ *   opacity: 0,
+ * }
+ *
+ * const transitionStyles = {
+ *   entering: { opacity: 1 },
+ *   entered:  { opacity: 1 },
+ *   exiting:  { opacity: 0 },
+ *   exited:  { opacity: 0 },
+ * };
+ *
+ * const Fade = ({ in: inProp }) => (
+ *   <Transition in={inProp} timeout={duration}>
+ *     {state => (
+ *       <div style={{
+ *         ...defaultStyle,
+ *         ...transitionStyles[state]
+ *       }}>
+ *         I'm a fade Transition!
+ *       </div>
+ *     )}
+ *   </Transition>
+ * );
+ * ```
+ *
+ * There are 4 main states a Transition can be in:
+ *  - `'entering'`
+ *  - `'entered'`
+ *  - `'exiting'`
+ *  - `'exited'`
+ *
+ * Transition state is toggled via the `in` prop. When `true` the component
+ * begins the "Enter" stage. During this stage, the component will shift from
+ * its current transition state, to `'entering'` for the duration of the
+ * transition and then to the `'entered'` stage once it's complete. Let's take
+ * the following example (we'll use the
+ * [useState](https://reactjs.org/docs/hooks-reference.html#usestate) hook):
+ *
+ * ```jsx
+ * function App() {
+ *   const [inProp, setInProp] = useState(false);
+ *   return (
+ *     <div>
+ *       <Transition in={inProp} timeout={500}>
+ *         {state => (
+ *           // ...
+ *         )}
+ *       </Transition>
+ *       <button onClick={() => setInProp(true)}>
+ *         Click to Enter
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ *
+ * When the button is clicked the component will shift to the `'entering'` state
+ * and stay there for 500ms (the value of `timeout`) before it finally switches
+ * to `'entered'`.
+ *
+ * When `in` is `false` the same thing happens except the state moves from
+ * `'exiting'` to `'exited'`.
+ */ var $3f4090778342b254$var$Transition = /*#__PURE__*/ function(_React$Component) {
+    (0, $b23bf179b32f510c$export$2e2bcd8739ae039)(Transition1, _React$Component);
+    function Transition1(props, context) {
+        var _this;
+        _this = _React$Component.call(this, props, context) || this;
+        var parentGroup = context; // In the context of a TransitionGroup all enters are really appears
+        var appear = parentGroup && !parentGroup.isMounting ? props.enter : props.appear;
+        var initialStatus;
+        _this.appearStatus = null;
+        if (props.in) {
+            if (appear) {
+                initialStatus = $3f4090778342b254$export$84cbff306f539230;
+                _this.appearStatus = $3f4090778342b254$export$df38205c966be359;
+            } else initialStatus = $3f4090778342b254$export$78e9e6e3e014d60a;
+        } else if (props.unmountOnExit || props.mountOnEnter) initialStatus = $3f4090778342b254$export$bb38bb9a1161268;
+        else initialStatus = $3f4090778342b254$export$84cbff306f539230;
+        _this.state = {
+            status: initialStatus
+        };
+        _this.nextCallback = null;
+        return _this;
+    }
+    Transition1.getDerivedStateFromProps = function getDerivedStateFromProps(_ref, prevState) {
+        var nextIn = _ref.in;
+        if (nextIn && prevState.status === $3f4090778342b254$export$bb38bb9a1161268) return {
+            status: $3f4090778342b254$export$84cbff306f539230
+        };
+        return null;
+    } // getSnapshotBeforeUpdate(prevProps) {
+    ;
+    var _proto = Transition1.prototype;
+    _proto.componentDidMount = function componentDidMount() {
+        this.updateStatus(true, this.appearStatus);
+    };
+    _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+        var nextStatus = null;
+        if (prevProps !== this.props) {
+            var status = this.state.status;
+            if (this.props.in) {
+                if (status !== $3f4090778342b254$export$df38205c966be359 && status !== $3f4090778342b254$export$78e9e6e3e014d60a) nextStatus = $3f4090778342b254$export$df38205c966be359;
+            } else if (status === $3f4090778342b254$export$df38205c966be359 || status === $3f4090778342b254$export$78e9e6e3e014d60a) nextStatus = $3f4090778342b254$export$4aacc83d4d59139f;
+        }
+        this.updateStatus(false, nextStatus);
+    };
+    _proto.componentWillUnmount = function componentWillUnmount() {
+        this.cancelNextCallback();
+    };
+    _proto.getTimeouts = function getTimeouts() {
+        var timeout = this.props.timeout;
+        var exit, enter, appear;
+        exit = enter = appear = timeout;
+        if (timeout != null && typeof timeout !== "number") {
+            exit = timeout.exit;
+            enter = timeout.enter; // TODO: remove fallback for next major
+            appear = timeout.appear !== undefined ? timeout.appear : enter;
+        }
+        return {
+            exit: exit,
+            enter: enter,
+            appear: appear
+        };
+    };
+    _proto.updateStatus = function updateStatus(mounting, nextStatus) {
+        if (mounting === void 0) mounting = false;
+        if (nextStatus !== null) {
+            // nextStatus will always be ENTERING or EXITING.
+            this.cancelNextCallback();
+            if (nextStatus === $3f4090778342b254$export$df38205c966be359) this.performEnter(mounting);
+            else this.performExit();
+        } else if (this.props.unmountOnExit && this.state.status === $3f4090778342b254$export$84cbff306f539230) this.setState({
+            status: $3f4090778342b254$export$bb38bb9a1161268
+        });
+    };
+    _proto.performEnter = function performEnter(mounting) {
+        var _this2 = this;
+        var enter = this.props.enter;
+        var appearing = this.context ? this.context.isMounting : mounting;
+        var _ref2 = this.props.nodeRef ? [
+            appearing
+        ] : [
+            (0, (/*@__PURE__*/$parcel$interopDefault($4723f549251dd88b$exports))).findDOMNode(this),
+            appearing
+        ], maybeNode = _ref2[0], maybeAppearing = _ref2[1];
+        var timeouts = this.getTimeouts();
+        var enterTimeout = appearing ? timeouts.appear : timeouts.enter; // no enter animation skip right to ENTERED
+        // if we are mounting and running this it means appear _must_ be set
+        if (!mounting && !enter || (0, $d6f4fa15f047b29a$export$2e2bcd8739ae039).disabled) {
+            this.safeSetState({
+                status: $3f4090778342b254$export$78e9e6e3e014d60a
+            }, function() {
+                _this2.props.onEntered(maybeNode);
+            });
+            return;
+        }
+        this.props.onEnter(maybeNode, maybeAppearing);
+        this.safeSetState({
+            status: $3f4090778342b254$export$df38205c966be359
+        }, function() {
+            _this2.props.onEntering(maybeNode, maybeAppearing);
+            _this2.onTransitionEnd(enterTimeout, function() {
+                _this2.safeSetState({
+                    status: $3f4090778342b254$export$78e9e6e3e014d60a
+                }, function() {
+                    _this2.props.onEntered(maybeNode, maybeAppearing);
+                });
+            });
+        });
+    };
+    _proto.performExit = function performExit() {
+        var _this3 = this;
+        var exit = this.props.exit;
+        var timeouts = this.getTimeouts();
+        var maybeNode = this.props.nodeRef ? undefined : (0, (/*@__PURE__*/$parcel$interopDefault($4723f549251dd88b$exports))).findDOMNode(this); // no exit animation skip right to EXITED
+        if (!exit || (0, $d6f4fa15f047b29a$export$2e2bcd8739ae039).disabled) {
+            this.safeSetState({
+                status: $3f4090778342b254$export$84cbff306f539230
+            }, function() {
+                _this3.props.onExited(maybeNode);
+            });
+            return;
+        }
+        this.props.onExit(maybeNode);
+        this.safeSetState({
+            status: $3f4090778342b254$export$4aacc83d4d59139f
+        }, function() {
+            _this3.props.onExiting(maybeNode);
+            _this3.onTransitionEnd(timeouts.exit, function() {
+                _this3.safeSetState({
+                    status: $3f4090778342b254$export$84cbff306f539230
+                }, function() {
+                    _this3.props.onExited(maybeNode);
+                });
+            });
+        });
+    };
+    _proto.cancelNextCallback = function cancelNextCallback() {
+        if (this.nextCallback !== null) {
+            this.nextCallback.cancel();
+            this.nextCallback = null;
+        }
+    };
+    _proto.safeSetState = function safeSetState(nextState, callback) {
+        // This shouldn't be necessary, but there are weird race conditions with
+        // setState callbacks and unmounting in testing, so always make sure that
+        // we can cancel any pending setState callbacks after we unmount.
+        callback = this.setNextCallback(callback);
+        this.setState(nextState, callback);
+    };
+    _proto.setNextCallback = function setNextCallback(callback) {
+        var _this4 = this;
+        var active = true;
+        this.nextCallback = function(event) {
+            if (active) {
+                active = false;
+                _this4.nextCallback = null;
+                callback(event);
+            }
+        };
+        this.nextCallback.cancel = function() {
+            active = false;
+        };
+        return this.nextCallback;
+    };
+    _proto.onTransitionEnd = function onTransitionEnd(timeout, handler) {
+        this.setNextCallback(handler);
+        var node = this.props.nodeRef ? this.props.nodeRef.current : (0, (/*@__PURE__*/$parcel$interopDefault($4723f549251dd88b$exports))).findDOMNode(this);
+        var doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
+        if (!node || doesNotHaveTimeoutOrListener) {
+            setTimeout(this.nextCallback, 0);
+            return;
+        }
+        if (this.props.addEndListener) {
+            var _ref3 = this.props.nodeRef ? [
+                this.nextCallback
+            ] : [
+                node,
+                this.nextCallback
+            ], maybeNode = _ref3[0], maybeNextCallback = _ref3[1];
+            this.props.addEndListener(maybeNode, maybeNextCallback);
+        }
+        if (timeout != null) setTimeout(this.nextCallback, timeout);
+    };
+    _proto.render = function render() {
+        var status = this.state.status;
+        if (status === $3f4090778342b254$export$bb38bb9a1161268) return null;
+        var _this$props = this.props, children = _this$props.children, _in = _this$props.in, _mountOnEnter = _this$props.mountOnEnter, _unmountOnExit = _this$props.unmountOnExit, _appear = _this$props.appear, _enter = _this$props.enter, _exit = _this$props.exit, _timeout = _this$props.timeout, _addEndListener = _this$props.addEndListener, _onEnter = _this$props.onEnter, _onEntering = _this$props.onEntering, _onEntered = _this$props.onEntered, _onExit = _this$props.onExit, _onExiting = _this$props.onExiting, _onExited = _this$props.onExited, _nodeRef = _this$props.nodeRef, childProps = (0, $9Zx8w.default)(_this$props, [
+            "children",
+            "in",
+            "mountOnEnter",
+            "unmountOnExit",
+            "appear",
+            "enter",
+            "exit",
+            "timeout",
+            "addEndListener",
+            "onEnter",
+            "onEntering",
+            "onEntered",
+            "onExit",
+            "onExiting",
+            "onExited",
+            "nodeRef"
+        ]);
+        return(/*#__PURE__*/ // allows for nested Transitions
+        (0, (/*@__PURE__*/$parcel$interopDefault($d4J5n))).createElement((0, $f7573ca97d71f4ae$export$2e2bcd8739ae039).Provider, {
+            value: null
+        }, typeof children === "function" ? children(status, childProps) : (0, (/*@__PURE__*/$parcel$interopDefault($d4J5n))).cloneElement((0, (/*@__PURE__*/$parcel$interopDefault($d4J5n))).Children.only(children), childProps)));
+    };
+    return Transition1;
+}((0, (/*@__PURE__*/$parcel$interopDefault($d4J5n))).Component);
+$3f4090778342b254$var$Transition.contextType = (0, $f7573ca97d71f4ae$export$2e2bcd8739ae039);
+$3f4090778342b254$var$Transition.propTypes = {}; // Name the function so it is clearer in the documentation
+function $3f4090778342b254$var$noop() {}
+$3f4090778342b254$var$Transition.defaultProps = {
+    in: false,
+    mountOnEnter: false,
+    unmountOnExit: false,
+    appear: false,
+    enter: true,
+    exit: true,
+    onEnter: $3f4090778342b254$var$noop,
+    onEntering: $3f4090778342b254$var$noop,
+    onEntered: $3f4090778342b254$var$noop,
+    onExit: $3f4090778342b254$var$noop,
+    onExiting: $3f4090778342b254$var$noop,
+    onExited: $3f4090778342b254$var$noop
+};
+$3f4090778342b254$var$Transition.UNMOUNTED = $3f4090778342b254$export$bb38bb9a1161268;
+$3f4090778342b254$var$Transition.EXITED = $3f4090778342b254$export$84cbff306f539230;
+$3f4090778342b254$var$Transition.ENTERING = $3f4090778342b254$export$df38205c966be359;
+$3f4090778342b254$var$Transition.ENTERED = $3f4090778342b254$export$78e9e6e3e014d60a;
+$3f4090778342b254$var$Transition.EXITING = $3f4090778342b254$export$4aacc83d4d59139f;
+var $3f4090778342b254$export$2e2bcd8739ae039 = $3f4090778342b254$var$Transition;
 
 
 
@@ -14705,11 +15165,1668 @@ var $c0c7c6801e66d553$export$2e2bcd8739ae039 = $c0c7c6801e66d553$var$CircularPro
 
 
 
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $29rXr = parcelRequire("29rXr");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+var $h0TGs = parcelRequire("h0TGs");
+
+var $gfogg = parcelRequire("gfogg");
+
+var $1ZpZm = parcelRequire("1ZpZm");
+
+var $kJ9SM = parcelRequire("kJ9SM");
+var $a7e56bbf26410d09$exports = {};
+
+$parcel$defineInteropFlag($a7e56bbf26410d09$exports);
+
+$parcel$export($a7e56bbf26410d09$exports, "default", () => $def44c1a1d00884c$export$2e2bcd8739ae039);
+
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $29rXr = parcelRequire("29rXr");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+var $29rXr = parcelRequire("29rXr");
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+var $2uAQY = parcelRequire("2uAQY");
+var $k3rwj = parcelRequire("k3rwj");
+var $dr0hc = parcelRequire("dr0hc");
+var $631O8 = parcelRequire("631O8");
+
+var $gfogg = parcelRequire("gfogg");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+
+var $2uAQY = parcelRequire("2uAQY");
+var $FtJh7 = parcelRequire("FtJh7");
+var $gdSyI = parcelRequire("gdSyI");
+function $6ad13a1eb061a6b7$var$getContainer(container) {
+    return typeof container === "function" ? container() : container;
+}
+/**
+ * Portals provide a first-class way to render children into a DOM node
+ * that exists outside the DOM hierarchy of the parent component.
+ */ const $6ad13a1eb061a6b7$var$Portal = /*#__PURE__*/ $d4J5n.forwardRef(function Portal(props, ref) {
+    const { children: children , container: container , disablePortal: disablePortal = false  } = props;
+    const [mountNode, setMountNode] = $d4J5n.useState(null);
+    const handleRef = (0, $2uAQY.default)(/*#__PURE__*/ $d4J5n.isValidElement(children) ? children.ref : null, ref);
+    (0, $FtJh7.default)(()=>{
+        if (!disablePortal) setMountNode($6ad13a1eb061a6b7$var$getContainer(container) || document.body);
+    }, [
+        container,
+        disablePortal
+    ]);
+    (0, $FtJh7.default)(()=>{
+        if (mountNode && !disablePortal) {
+            (0, $gdSyI.default)(ref, mountNode);
+            return ()=>{
+                (0, $gdSyI.default)(ref, null);
+            };
+        }
+        return undefined;
+    }, [
+        ref,
+        mountNode,
+        disablePortal
+    ]);
+    if (disablePortal) {
+        if (/*#__PURE__*/ $d4J5n.isValidElement(children)) return /*#__PURE__*/ $d4J5n.cloneElement(children, {
+            ref: handleRef
+        });
+        return children;
+    }
+    return mountNode ? /*#__PURE__*/ $4723f549251dd88b$exports.createPortal(children, mountNode) : mountNode;
+});
+var $6ad13a1eb061a6b7$export$2e2bcd8739ae039 = $6ad13a1eb061a6b7$var$Portal;
+
+
+
+
+var $k3rwj = parcelRequire("k3rwj");
+var $38i2Y = parcelRequire("38i2Y");
+var $8e4jh = parcelRequire("8e4jh");
+// Is a vertical scrollbar displayed?
+function $94bb22ccf3bf4030$var$isOverflowing(container) {
+    const doc = (0, $k3rwj.default)(container);
+    if (doc.body === container) return (0, $38i2Y.default)(container).innerWidth > doc.documentElement.clientWidth;
+    return container.scrollHeight > container.clientHeight;
+}
+function $94bb22ccf3bf4030$export$e1bd0c6150f13d96(element, show) {
+    if (show) element.setAttribute("aria-hidden", "true");
+    else element.removeAttribute("aria-hidden");
+}
+function $94bb22ccf3bf4030$var$getPaddingRight(element) {
+    return parseInt((0, $38i2Y.default)(element).getComputedStyle(element).paddingRight, 10) || 0;
+}
+function $94bb22ccf3bf4030$var$isAriaHiddenForbiddenOnElement(element) {
+    // The forbidden HTML tags are the ones from ARIA specification that
+    // can be children of body and can't have aria-hidden attribute.
+    // cf. https://www.w3.org/TR/html-aria/#docconformance
+    const forbiddenTagNames = [
+        "TEMPLATE",
+        "SCRIPT",
+        "STYLE",
+        "LINK",
+        "MAP",
+        "META",
+        "NOSCRIPT",
+        "PICTURE",
+        "COL",
+        "COLGROUP",
+        "PARAM",
+        "SLOT",
+        "SOURCE",
+        "TRACK"
+    ];
+    const isForbiddenTagName = forbiddenTagNames.indexOf(element.tagName) !== -1;
+    const isInputHidden = element.tagName === "INPUT" && element.getAttribute("type") === "hidden";
+    return isForbiddenTagName || isInputHidden;
+}
+function $94bb22ccf3bf4030$var$ariaHiddenSiblings(container, mountElement, currentElement, elementsToExclude = [], show) {
+    const blacklist = [
+        mountElement,
+        currentElement,
+        ...elementsToExclude
+    ];
+    [].forEach.call(container.children, (element)=>{
+        const isNotExcludedElement = blacklist.indexOf(element) === -1;
+        const isNotForbiddenElement = !$94bb22ccf3bf4030$var$isAriaHiddenForbiddenOnElement(element);
+        if (isNotExcludedElement && isNotForbiddenElement) $94bb22ccf3bf4030$export$e1bd0c6150f13d96(element, show);
+    });
+}
+function $94bb22ccf3bf4030$var$findIndexOf(items, callback) {
+    let idx = -1;
+    items.some((item, index)=>{
+        if (callback(item)) {
+            idx = index;
+            return true;
+        }
+        return false;
+    });
+    return idx;
+}
+function $94bb22ccf3bf4030$var$handleContainer(containerInfo, props) {
+    const restoreStyle = [];
+    const container = containerInfo.container;
+    if (!props.disableScrollLock) {
+        if ($94bb22ccf3bf4030$var$isOverflowing(container)) {
+            // Compute the size before applying overflow hidden to avoid any scroll jumps.
+            const scrollbarSize = (0, $8e4jh.default)((0, $k3rwj.default)(container));
+            restoreStyle.push({
+                value: container.style.paddingRight,
+                property: "padding-right",
+                el: container
+            }); // Use computed style, here to get the real padding to add our scrollbar width.
+            container.style.paddingRight = `${$94bb22ccf3bf4030$var$getPaddingRight(container) + scrollbarSize}px`; // .mui-fixed is a global helper.
+            const fixedElements = (0, $k3rwj.default)(container).querySelectorAll(".mui-fixed");
+            [].forEach.call(fixedElements, (element)=>{
+                restoreStyle.push({
+                    value: element.style.paddingRight,
+                    property: "padding-right",
+                    el: element
+                });
+                element.style.paddingRight = `${$94bb22ccf3bf4030$var$getPaddingRight(element) + scrollbarSize}px`;
+            });
+        }
+        let scrollContainer;
+        if (container.parentNode instanceof DocumentFragment) scrollContainer = (0, $k3rwj.default)(container).body;
+        else {
+            // Improve Gatsby support
+            // https://css-tricks.com/snippets/css/force-vertical-scrollbar/
+            const parent = container.parentElement;
+            const containerWindow = (0, $38i2Y.default)(container);
+            scrollContainer = (parent == null ? void 0 : parent.nodeName) === "HTML" && containerWindow.getComputedStyle(parent).overflowY === "scroll" ? parent : container;
+        } // Block the scroll even if no scrollbar is visible to account for mobile keyboard
+        // screensize shrink.
+        restoreStyle.push({
+            value: scrollContainer.style.overflow,
+            property: "overflow",
+            el: scrollContainer
+        }, {
+            value: scrollContainer.style.overflowX,
+            property: "overflow-x",
+            el: scrollContainer
+        }, {
+            value: scrollContainer.style.overflowY,
+            property: "overflow-y",
+            el: scrollContainer
+        });
+        scrollContainer.style.overflow = "hidden";
+    }
+    const restore = ()=>{
+        restoreStyle.forEach(({ value: value , el: el , property: property  })=>{
+            if (value) el.style.setProperty(property, value);
+            else el.style.removeProperty(property);
+        });
+    };
+    return restore;
+}
+function $94bb22ccf3bf4030$var$getHiddenSiblings(container) {
+    const hiddenSiblings = [];
+    [].forEach.call(container.children, (element)=>{
+        if (element.getAttribute("aria-hidden") === "true") hiddenSiblings.push(element);
+    });
+    return hiddenSiblings;
+}
+class $94bb22ccf3bf4030$export$2e2bcd8739ae039 {
+    constructor(){
+        this.containers = void 0;
+        this.modals = void 0;
+        this.modals = [];
+        this.containers = [];
+    }
+    add(modal, container) {
+        let modalIndex = this.modals.indexOf(modal);
+        if (modalIndex !== -1) return modalIndex;
+        modalIndex = this.modals.length;
+        this.modals.push(modal); // If the modal we are adding is already in the DOM.
+        if (modal.modalRef) $94bb22ccf3bf4030$export$e1bd0c6150f13d96(modal.modalRef, false);
+        const hiddenSiblings = $94bb22ccf3bf4030$var$getHiddenSiblings(container);
+        $94bb22ccf3bf4030$var$ariaHiddenSiblings(container, modal.mount, modal.modalRef, hiddenSiblings, true);
+        const containerIndex = $94bb22ccf3bf4030$var$findIndexOf(this.containers, (item)=>item.container === container);
+        if (containerIndex !== -1) {
+            this.containers[containerIndex].modals.push(modal);
+            return modalIndex;
+        }
+        this.containers.push({
+            modals: [
+                modal
+            ],
+            container: container,
+            restore: null,
+            hiddenSiblings: hiddenSiblings
+        });
+        return modalIndex;
+    }
+    mount(modal, props) {
+        const containerIndex = $94bb22ccf3bf4030$var$findIndexOf(this.containers, (item)=>item.modals.indexOf(modal) !== -1);
+        const containerInfo = this.containers[containerIndex];
+        if (!containerInfo.restore) containerInfo.restore = $94bb22ccf3bf4030$var$handleContainer(containerInfo, props);
+    }
+    remove(modal, ariaHiddenState = true) {
+        const modalIndex = this.modals.indexOf(modal);
+        if (modalIndex === -1) return modalIndex;
+        const containerIndex = $94bb22ccf3bf4030$var$findIndexOf(this.containers, (item)=>item.modals.indexOf(modal) !== -1);
+        const containerInfo = this.containers[containerIndex];
+        containerInfo.modals.splice(containerInfo.modals.indexOf(modal), 1);
+        this.modals.splice(modalIndex, 1); // If that was the last modal in a container, clean up the container.
+        if (containerInfo.modals.length === 0) {
+            // The modal might be closed before it had the chance to be mounted in the DOM.
+            if (containerInfo.restore) containerInfo.restore();
+            if (modal.modalRef) // In case the modal wasn't in the DOM yet.
+            $94bb22ccf3bf4030$export$e1bd0c6150f13d96(modal.modalRef, ariaHiddenState);
+            $94bb22ccf3bf4030$var$ariaHiddenSiblings(containerInfo.container, modal.mount, modal.modalRef, containerInfo.hiddenSiblings, false);
+            this.containers.splice(containerIndex, 1);
+        } else {
+            // Otherwise make sure the next top modal is visible to a screen reader.
+            const nextTop = containerInfo.modals[containerInfo.modals.length - 1]; // as soon as a modal is adding its modalRef is undefined. it can't set
+            // aria-hidden because the dom element doesn't exist either
+            // when modal was unmounted before modalRef gets null
+            if (nextTop.modalRef) $94bb22ccf3bf4030$export$e1bd0c6150f13d96(nextTop.modalRef, false);
+        }
+        return modalIndex;
+    }
+    isTopModal(modal) {
+        return this.modals.length > 0 && this.modals[this.modals.length - 1] === modal;
+    }
+}
+
+
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+var $2uAQY = parcelRequire("2uAQY");
+var $k3rwj = parcelRequire("k3rwj");
+
+var $228IU = parcelRequire("228IU");
+
+var $228IU = parcelRequire("228IU");
+const $560dc5b1d5f08d64$var$candidatesSelector = [
+    "input",
+    "select",
+    "textarea",
+    "a[href]",
+    "button",
+    "[tabindex]",
+    "audio[controls]",
+    "video[controls]",
+    '[contenteditable]:not([contenteditable="false"])'
+].join(",");
+function $560dc5b1d5f08d64$var$getTabIndex(node) {
+    const tabindexAttr = parseInt(node.getAttribute("tabindex"), 10);
+    if (!Number.isNaN(tabindexAttr)) return tabindexAttr;
+     // Browsers do not return `tabIndex` correctly for contentEditable nodes;
+    // https://bugs.chromium.org/p/chromium/issues/detail?id=661108&q=contenteditable%20tabindex&can=2
+    // so if they don't have a tabindex attribute specifically set, assume it's 0.
+    // in Chrome, <details/>, <audio controls/> and <video controls/> elements get a default
+    //  `tabIndex` of -1 when the 'tabindex' attribute isn't specified in the DOM,
+    //  yet they are still part of the regular tab order; in FF, they get a default
+    //  `tabIndex` of 0; since Chrome still puts those elements in the regular tab
+    //  order, consider their tab index to be 0.
+    if (node.contentEditable === "true" || (node.nodeName === "AUDIO" || node.nodeName === "VIDEO" || node.nodeName === "DETAILS") && node.getAttribute("tabindex") === null) return 0;
+    return node.tabIndex;
+}
+function $560dc5b1d5f08d64$var$isNonTabbableRadio(node) {
+    if (node.tagName !== "INPUT" || node.type !== "radio") return false;
+    if (!node.name) return false;
+    const getRadio = (selector)=>node.ownerDocument.querySelector(`input[type="radio"]${selector}`);
+    let roving = getRadio(`[name="${node.name}"]:checked`);
+    if (!roving) roving = getRadio(`[name="${node.name}"]`);
+    return roving !== node;
+}
+function $560dc5b1d5f08d64$var$isNodeMatchingSelectorFocusable(node) {
+    if (node.disabled || node.tagName === "INPUT" && node.type === "hidden" || $560dc5b1d5f08d64$var$isNonTabbableRadio(node)) return false;
+    return true;
+}
+function $560dc5b1d5f08d64$var$defaultGetTabbable(root) {
+    const regularTabNodes = [];
+    const orderedTabNodes = [];
+    Array.from(root.querySelectorAll($560dc5b1d5f08d64$var$candidatesSelector)).forEach((node, i)=>{
+        const nodeTabIndex = $560dc5b1d5f08d64$var$getTabIndex(node);
+        if (nodeTabIndex === -1 || !$560dc5b1d5f08d64$var$isNodeMatchingSelectorFocusable(node)) return;
+        if (nodeTabIndex === 0) regularTabNodes.push(node);
+        else orderedTabNodes.push({
+            documentOrder: i,
+            tabIndex: nodeTabIndex,
+            node: node
+        });
+    });
+    return orderedTabNodes.sort((a, b)=>a.tabIndex === b.tabIndex ? a.documentOrder - b.documentOrder : a.tabIndex - b.tabIndex).map((a)=>a.node).concat(regularTabNodes);
+}
+function $560dc5b1d5f08d64$var$defaultIsEnabled() {
+    return true;
+}
+/**
+ * Utility component that locks focus inside the component.
+ */ function $560dc5b1d5f08d64$var$TrapFocus(props) {
+    const { children: children , disableAutoFocus: disableAutoFocus = false , disableEnforceFocus: disableEnforceFocus = false , disableRestoreFocus: disableRestoreFocus = false , getTabbable: getTabbable = $560dc5b1d5f08d64$var$defaultGetTabbable , isEnabled: isEnabled = $560dc5b1d5f08d64$var$defaultIsEnabled , open: open  } = props;
+    const ignoreNextEnforceFocus = $d4J5n.useRef();
+    const sentinelStart = $d4J5n.useRef(null);
+    const sentinelEnd = $d4J5n.useRef(null);
+    const nodeToRestore = $d4J5n.useRef(null);
+    const reactFocusEventTarget = $d4J5n.useRef(null); // This variable is useful when disableAutoFocus is true.
+    // It waits for the active element to move into the component to activate.
+    const activated = $d4J5n.useRef(false);
+    const rootRef = $d4J5n.useRef(null);
+    const handleRef = (0, $2uAQY.default)(children.ref, rootRef);
+    const lastKeydown = $d4J5n.useRef(null);
+    $d4J5n.useEffect(()=>{
+        // We might render an empty child.
+        if (!open || !rootRef.current) return;
+        activated.current = !disableAutoFocus;
+    }, [
+        disableAutoFocus,
+        open
+    ]);
+    $d4J5n.useEffect(()=>{
+        // We might render an empty child.
+        if (!open || !rootRef.current) return;
+        const doc = (0, $k3rwj.default)(rootRef.current);
+        if (!rootRef.current.contains(doc.activeElement)) {
+            if (!rootRef.current.hasAttribute("tabIndex")) rootRef.current.setAttribute("tabIndex", -1);
+            if (activated.current) rootRef.current.focus();
+        }
+        return ()=>{
+            // restoreLastFocus()
+            if (!disableRestoreFocus) {
+                // In IE11 it is possible for document.activeElement to be null resulting
+                // in nodeToRestore.current being null.
+                // Not all elements in IE11 have a focus method.
+                // Once IE11 support is dropped the focus() call can be unconditional.
+                if (nodeToRestore.current && nodeToRestore.current.focus) {
+                    ignoreNextEnforceFocus.current = true;
+                    nodeToRestore.current.focus();
+                }
+                nodeToRestore.current = null;
+            }
+        }; // Missing `disableRestoreFocus` which is fine.
+    // We don't support changing that prop on an open TrapFocus
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [
+        open
+    ]);
+    $d4J5n.useEffect(()=>{
+        // We might render an empty child.
+        if (!open || !rootRef.current) return;
+        const doc = (0, $k3rwj.default)(rootRef.current);
+        const contain = (nativeEvent)=>{
+            const { current: rootElement  } = rootRef; // Cleanup functions are executed lazily in React 17.
+            // Contain can be called between the component being unmounted and its cleanup function being run.
+            if (rootElement === null) return;
+            if (!doc.hasFocus() || disableEnforceFocus || !isEnabled() || ignoreNextEnforceFocus.current) {
+                ignoreNextEnforceFocus.current = false;
+                return;
+            }
+            if (!rootElement.contains(doc.activeElement)) {
+                // if the focus event is not coming from inside the children's react tree, reset the refs
+                if (nativeEvent && reactFocusEventTarget.current !== nativeEvent.target || doc.activeElement !== reactFocusEventTarget.current) reactFocusEventTarget.current = null;
+                else if (reactFocusEventTarget.current !== null) return;
+                if (!activated.current) return;
+                let tabbable = [];
+                if (doc.activeElement === sentinelStart.current || doc.activeElement === sentinelEnd.current) tabbable = getTabbable(rootRef.current);
+                if (tabbable.length > 0) {
+                    var _lastKeydown$current, _lastKeydown$current2;
+                    const isShiftTab = Boolean(((_lastKeydown$current = lastKeydown.current) == null ? void 0 : _lastKeydown$current.shiftKey) && ((_lastKeydown$current2 = lastKeydown.current) == null ? void 0 : _lastKeydown$current2.key) === "Tab");
+                    const focusNext = tabbable[0];
+                    const focusPrevious = tabbable[tabbable.length - 1];
+                    if (isShiftTab) focusPrevious.focus();
+                    else focusNext.focus();
+                } else rootElement.focus();
+            }
+        };
+        const loopFocus = (nativeEvent)=>{
+            lastKeydown.current = nativeEvent;
+            if (disableEnforceFocus || !isEnabled() || nativeEvent.key !== "Tab") return;
+             // Make sure the next tab starts from the right place.
+            // doc.activeElement referes to the origin.
+            if (doc.activeElement === rootRef.current && nativeEvent.shiftKey) {
+                // We need to ignore the next contain as
+                // it will try to move the focus back to the rootRef element.
+                ignoreNextEnforceFocus.current = true;
+                sentinelEnd.current.focus();
+            }
+        };
+        doc.addEventListener("focusin", contain);
+        doc.addEventListener("keydown", loopFocus, true); // With Edge, Safari and Firefox, no focus related events are fired when the focused area stops being a focused area.
+        // e.g. https://bugzilla.mozilla.org/show_bug.cgi?id=559561.
+        // Instead, we can look if the active element was restored on the BODY element.
+        //
+        // The whatwg spec defines how the browser should behave but does not explicitly mention any events:
+        // https://html.spec.whatwg.org/multipage/interaction.html#focus-fixup-rule.
+        const interval = setInterval(()=>{
+            if (doc.activeElement.tagName === "BODY") contain();
+        }, 50);
+        return ()=>{
+            clearInterval(interval);
+            doc.removeEventListener("focusin", contain);
+            doc.removeEventListener("keydown", loopFocus, true);
+        };
+    }, [
+        disableAutoFocus,
+        disableEnforceFocus,
+        disableRestoreFocus,
+        isEnabled,
+        open,
+        getTabbable
+    ]);
+    const onFocus = (event)=>{
+        if (nodeToRestore.current === null) nodeToRestore.current = event.relatedTarget;
+        activated.current = true;
+        reactFocusEventTarget.current = event.target;
+        const childrenPropsHandler = children.props.onFocus;
+        if (childrenPropsHandler) childrenPropsHandler(event);
+    };
+    const handleFocusSentinel = (event)=>{
+        if (nodeToRestore.current === null) nodeToRestore.current = event.relatedTarget;
+        activated.current = true;
+    };
+    return /*#__PURE__*/ (0, $228IU.jsxs)($d4J5n.Fragment, {
+        children: [
+            /*#__PURE__*/ (0, $228IU.jsx)("div", {
+                tabIndex: 0,
+                onFocus: handleFocusSentinel,
+                ref: sentinelStart,
+                "data-test": "sentinelStart"
+            }),
+            /*#__PURE__*/ $d4J5n.cloneElement(children, {
+                ref: handleRef,
+                onFocus: onFocus
+            }),
+            /*#__PURE__*/ (0, $228IU.jsx)("div", {
+                tabIndex: 0,
+                onFocus: handleFocusSentinel,
+                ref: sentinelEnd,
+                "data-test": "sentinelEnd"
+            })
+        ]
+    });
+}
+var $560dc5b1d5f08d64$export$2e2bcd8739ae039 = $560dc5b1d5f08d64$var$TrapFocus;
+
+
+
+
+var $b4FaI = parcelRequire("b4FaI");
+
+var $b85LX = parcelRequire("b85LX");
+function $9a82f1fd83123204$export$67960e22b12a638d(slot) {
+    return (0, $b85LX.default)("MuiModal", slot);
+}
+const $9a82f1fd83123204$var$modalUnstyledClasses = (0, $b4FaI.default)("MuiModal", [
+    "root",
+    "hidden"
+]);
+var $9a82f1fd83123204$export$2e2bcd8739ae039 = $9a82f1fd83123204$var$modalUnstyledClasses;
+
+
+/**
+ * Determines if a given element is a DOM element name (i.e. not a React component).
+ */ function $ab588489a35ee716$var$isHostComponent(element) {
+    return typeof element === "string";
+}
+var $ab588489a35ee716$export$2e2bcd8739ae039 = $ab588489a35ee716$var$isHostComponent;
+
+function $b55d84b77c911abd$export$2e2bcd8739ae039(componentProps, ownerState) {
+    if (typeof componentProps === "function") return componentProps(ownerState);
+    return componentProps;
+}
+
+
+var $29rXr = parcelRequire("29rXr");
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $2uAQY = parcelRequire("2uAQY");
+
+var $29rXr = parcelRequire("29rXr");
+
+function $9968bb3ba6f72391$export$2e2bcd8739ae039(elementType, otherProps = {}, ownerState) {
+    if ((0, $ab588489a35ee716$export$2e2bcd8739ae039)(elementType)) return otherProps;
+    return (0, $29rXr.default)({}, otherProps, {
+        ownerState: (0, $29rXr.default)({}, otherProps.ownerState, ownerState)
+    });
+}
+
+
+
+var $29rXr = parcelRequire("29rXr");
+
+var $h0TGs = parcelRequire("h0TGs");
+function $99afc97fac2115d7$export$2e2bcd8739ae039(object, excludeKeys = []) {
+    if (object === undefined) return {};
+    const result = {};
+    Object.keys(object).filter((prop)=>prop.match(/^on[A-Z]/) && typeof object[prop] === "function" && !excludeKeys.includes(prop)).forEach((prop)=>{
+        result[prop] = object[prop];
+    });
+    return result;
+}
+
+
+function $92cd8add009cd24b$export$2e2bcd8739ae039(object) {
+    if (object === undefined) return {};
+    const result = {};
+    Object.keys(object).filter((prop)=>!(prop.match(/^on[A-Z]/) && typeof object[prop] === "function")).forEach((prop)=>{
+        result[prop] = object[prop];
+    });
+    return result;
+}
+
+
+function $1e4f80d1a1c43d3a$export$2e2bcd8739ae039(parameters) {
+    const { getSlotProps: getSlotProps , additionalProps: additionalProps , externalSlotProps: externalSlotProps , externalForwardedProps: externalForwardedProps , className: className  } = parameters;
+    if (!getSlotProps) {
+        // The simpler case - getSlotProps is not defined, so no internal event handlers are defined,
+        // so we can simply merge all the props without having to worry about extracting event handlers.
+        const joinedClasses = (0, $h0TGs.default)(externalForwardedProps == null ? void 0 : externalForwardedProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className, className, additionalProps == null ? void 0 : additionalProps.className);
+        const mergedStyle = (0, $29rXr.default)({}, additionalProps == null ? void 0 : additionalProps.style, externalForwardedProps == null ? void 0 : externalForwardedProps.style, externalSlotProps == null ? void 0 : externalSlotProps.style);
+        const props = (0, $29rXr.default)({}, additionalProps, externalForwardedProps, externalSlotProps);
+        if (joinedClasses.length > 0) props.className = joinedClasses;
+        if (Object.keys(mergedStyle).length > 0) props.style = mergedStyle;
+        return {
+            props: props,
+            internalRef: undefined
+        };
+    } // In this case, getSlotProps is responsible for calling the external event handlers.
+    // We don't need to include them in the merged props because of this.
+    const eventHandlers = (0, $99afc97fac2115d7$export$2e2bcd8739ae039)((0, $29rXr.default)({}, externalForwardedProps, externalSlotProps));
+    const componentsPropsWithoutEventHandlers = (0, $92cd8add009cd24b$export$2e2bcd8739ae039)(externalSlotProps);
+    const otherPropsWithoutEventHandlers = (0, $92cd8add009cd24b$export$2e2bcd8739ae039)(externalForwardedProps);
+    const internalSlotProps = getSlotProps(eventHandlers); // The order of classes is important here.
+    // Emotion (that we use in libraries consuming MUI Base) depends on this order
+    // to properly override style. It requires the most important classes to be last
+    // (see https://github.com/mui/material-ui/pull/33205) for the related discussion.
+    const joinedClasses = (0, $h0TGs.default)(internalSlotProps == null ? void 0 : internalSlotProps.className, additionalProps == null ? void 0 : additionalProps.className, className, externalForwardedProps == null ? void 0 : externalForwardedProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className);
+    const mergedStyle = (0, $29rXr.default)({}, internalSlotProps == null ? void 0 : internalSlotProps.style, additionalProps == null ? void 0 : additionalProps.style, externalForwardedProps == null ? void 0 : externalForwardedProps.style, externalSlotProps == null ? void 0 : externalSlotProps.style);
+    const props = (0, $29rXr.default)({}, internalSlotProps, additionalProps, otherPropsWithoutEventHandlers, componentsPropsWithoutEventHandlers);
+    if (joinedClasses.length > 0) props.className = joinedClasses;
+    if (Object.keys(mergedStyle).length > 0) props.style = mergedStyle;
+    return {
+        props: props,
+        internalRef: internalSlotProps.ref
+    };
+}
+
+
+
+const $3b7e5c2a3e9be835$var$_excluded = [
+    "elementType",
+    "externalSlotProps",
+    "ownerState"
+];
+function $3b7e5c2a3e9be835$export$2e2bcd8739ae039(parameters) {
+    var _parameters$additiona;
+    const { elementType: elementType , externalSlotProps: externalSlotProps , ownerState: ownerState  } = parameters, rest = (0, $9Zx8w.default)(parameters, $3b7e5c2a3e9be835$var$_excluded);
+    const resolvedComponentsProps = (0, $b55d84b77c911abd$export$2e2bcd8739ae039)(externalSlotProps, ownerState);
+    const { props: mergedProps , internalRef: internalRef  } = (0, $1e4f80d1a1c43d3a$export$2e2bcd8739ae039)((0, $29rXr.default)({}, rest, {
+        externalSlotProps: resolvedComponentsProps
+    }));
+    const ref = (0, $2uAQY.default)(internalRef, (0, $2uAQY.default)(resolvedComponentsProps == null ? void 0 : resolvedComponentsProps.ref, (_parameters$additiona = parameters.additionalProps) == null ? void 0 : _parameters$additiona.ref));
+    const props = (0, $9968bb3ba6f72391$export$2e2bcd8739ae039)(elementType, (0, $29rXr.default)({}, mergedProps, {
+        ref: ref
+    }), ownerState);
+    return props;
+}
+
+
+
+
+var $228IU = parcelRequire("228IU");
+
+var $228IU = parcelRequire("228IU");
+const $d1fd2023b755a510$var$_excluded = [
+    "children",
+    "classes",
+    "closeAfterTransition",
+    "component",
+    "components",
+    "componentsProps",
+    "container",
+    "disableAutoFocus",
+    "disableEnforceFocus",
+    "disableEscapeKeyDown",
+    "disablePortal",
+    "disableRestoreFocus",
+    "disableScrollLock",
+    "hideBackdrop",
+    "keepMounted",
+    "manager",
+    "onBackdropClick",
+    "onClose",
+    "onKeyDown",
+    "open",
+    "onTransitionEnter",
+    "onTransitionExited"
+];
+const $d1fd2023b755a510$var$useUtilityClasses = (ownerState)=>{
+    const { open: open , exited: exited , classes: classes  } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            !open && exited && "hidden"
+        ]
+    };
+    return (0, $gfogg.default)(slots, (0, $9a82f1fd83123204$export$67960e22b12a638d), classes);
+};
+function $d1fd2023b755a510$var$getContainer(container) {
+    return typeof container === "function" ? container() : container;
+}
+function $d1fd2023b755a510$var$getHasTransition(props) {
+    return props.children ? props.children.props.hasOwnProperty("in") : false;
+} // A modal manager used to track and manage the state of open Modals.
+// Modals don't open on the server so this won't conflict with concurrent requests.
+const $d1fd2023b755a510$var$defaultManager = new (0, $94bb22ccf3bf4030$export$2e2bcd8739ae039)();
+/**
+ * Modal is a lower-level construct that is leveraged by the following components:
+ *
+ * - [Dialog](/material-ui/api/dialog/)
+ * - [Drawer](/material-ui/api/drawer/)
+ * - [Menu](/material-ui/api/menu/)
+ * - [Popover](/material-ui/api/popover/)
+ *
+ * If you are creating a modal dialog, you probably want to use the [Dialog](/material-ui/api/dialog/) component
+ * rather than directly using Modal.
+ *
+ * This component shares many concepts with [react-overlays](https://react-bootstrap.github.io/react-overlays/#modals).
+ */ const $d1fd2023b755a510$var$ModalUnstyled = /*#__PURE__*/ $d4J5n.forwardRef(function ModalUnstyled(props, ref) {
+    var _props$ariaHidden;
+    const { children: children , classes: classesProp , closeAfterTransition: closeAfterTransition = false , component: component = "div" , components: components = {} , componentsProps: componentsProps = {} , container: container , disableAutoFocus: disableAutoFocus = false , disableEnforceFocus: disableEnforceFocus = false , disableEscapeKeyDown: disableEscapeKeyDown = false , disablePortal: disablePortal = false , disableRestoreFocus: disableRestoreFocus = false , disableScrollLock: disableScrollLock = false , hideBackdrop: hideBackdrop = false , keepMounted: keepMounted = false , manager: // private
+    // eslint-disable-next-line react/prop-types
+    manager = $d1fd2023b755a510$var$defaultManager , onBackdropClick: onBackdropClick , onClose: onClose , onKeyDown: onKeyDown , open: open , onTransitionEnter: /* eslint-disable react/prop-types */ onTransitionEnter , onTransitionExited: onTransitionExited  } = props, other = (0, $9Zx8w.default)(props, $d1fd2023b755a510$var$_excluded);
+    const [exited, setExited] = $d4J5n.useState(true);
+    const modal = $d4J5n.useRef({});
+    const mountNodeRef = $d4J5n.useRef(null);
+    const modalRef = $d4J5n.useRef(null);
+    const handleRef = (0, $2uAQY.default)(modalRef, ref);
+    const hasTransition = $d1fd2023b755a510$var$getHasTransition(props);
+    const ariaHiddenProp = (_props$ariaHidden = props["aria-hidden"]) != null ? _props$ariaHidden : true;
+    const getDoc = ()=>(0, $k3rwj.default)(mountNodeRef.current);
+    const getModal = ()=>{
+        modal.current.modalRef = modalRef.current;
+        modal.current.mountNode = mountNodeRef.current;
+        return modal.current;
+    };
+    const handleMounted = ()=>{
+        manager.mount(getModal(), {
+            disableScrollLock: disableScrollLock
+        }); // Fix a bug on Chrome where the scroll isn't initially 0.
+        modalRef.current.scrollTop = 0;
+    };
+    const handleOpen = (0, $dr0hc.default)(()=>{
+        const resolvedContainer = $d1fd2023b755a510$var$getContainer(container) || getDoc().body;
+        manager.add(getModal(), resolvedContainer); // The element was already mounted.
+        if (modalRef.current) handleMounted();
+    });
+    const isTopModal = $d4J5n.useCallback(()=>manager.isTopModal(getModal()), [
+        manager
+    ]);
+    const handlePortalRef = (0, $dr0hc.default)((node)=>{
+        mountNodeRef.current = node;
+        if (!node) return;
+        if (open && isTopModal()) handleMounted();
+        else (0, $94bb22ccf3bf4030$export$e1bd0c6150f13d96)(modalRef.current, ariaHiddenProp);
+    });
+    const handleClose = $d4J5n.useCallback(()=>{
+        manager.remove(getModal(), ariaHiddenProp);
+    }, [
+        manager,
+        ariaHiddenProp
+    ]);
+    $d4J5n.useEffect(()=>{
+        return ()=>{
+            handleClose();
+        };
+    }, [
+        handleClose
+    ]);
+    $d4J5n.useEffect(()=>{
+        if (open) handleOpen();
+        else if (!hasTransition || !closeAfterTransition) handleClose();
+    }, [
+        open,
+        handleClose,
+        hasTransition,
+        closeAfterTransition,
+        handleOpen
+    ]);
+    const ownerState = (0, $29rXr.default)({}, props, {
+        classes: classesProp,
+        closeAfterTransition: closeAfterTransition,
+        disableAutoFocus: disableAutoFocus,
+        disableEnforceFocus: disableEnforceFocus,
+        disableEscapeKeyDown: disableEscapeKeyDown,
+        disablePortal: disablePortal,
+        disableRestoreFocus: disableRestoreFocus,
+        disableScrollLock: disableScrollLock,
+        exited: exited,
+        hideBackdrop: hideBackdrop,
+        keepMounted: keepMounted
+    });
+    const classes = $d1fd2023b755a510$var$useUtilityClasses(ownerState);
+    const handleEnter = ()=>{
+        setExited(false);
+        if (onTransitionEnter) onTransitionEnter();
+    };
+    const handleExited = ()=>{
+        setExited(true);
+        if (onTransitionExited) onTransitionExited();
+        if (closeAfterTransition) handleClose();
+    };
+    const handleBackdropClick = (event)=>{
+        if (event.target !== event.currentTarget) return;
+        if (onBackdropClick) onBackdropClick(event);
+        if (onClose) onClose(event, "backdropClick");
+    };
+    const handleKeyDown = (event)=>{
+        if (onKeyDown) onKeyDown(event);
+         // The handler doesn't take event.defaultPrevented into account:
+        //
+        // event.preventDefault() is meant to stop default behaviors like
+        // clicking a checkbox to check it, hitting a button to submit a form,
+        // and hitting left arrow to move the cursor in a text input etc.
+        // Only special HTML elements have these default behaviors.
+        if (event.key !== "Escape" || !isTopModal()) return;
+        if (!disableEscapeKeyDown) {
+            // Swallow the event, in case someone is listening for the escape key on the body.
+            event.stopPropagation();
+            if (onClose) onClose(event, "escapeKeyDown");
+        }
+    };
+    const childProps = {};
+    if (children.props.tabIndex === undefined) childProps.tabIndex = "-1";
+     // It's a Transition like component
+    if (hasTransition) {
+        childProps.onEnter = (0, $631O8.default)(handleEnter, children.props.onEnter);
+        childProps.onExited = (0, $631O8.default)(handleExited, children.props.onExited);
+    }
+    const Root = components.Root || component;
+    const rootProps = (0, $3b7e5c2a3e9be835$export$2e2bcd8739ae039)({
+        elementType: Root,
+        externalSlotProps: componentsProps.root,
+        externalForwardedProps: other,
+        additionalProps: {
+            ref: handleRef,
+            role: "presentation",
+            onKeyDown: handleKeyDown
+        },
+        className: classes.root,
+        ownerState: ownerState
+    });
+    const BackdropComponent = components.Backdrop;
+    const backdropProps = (0, $3b7e5c2a3e9be835$export$2e2bcd8739ae039)({
+        elementType: BackdropComponent,
+        externalSlotProps: componentsProps.backdrop,
+        additionalProps: {
+            "aria-hidden": true,
+            onClick: handleBackdropClick,
+            open: open
+        },
+        ownerState: ownerState
+    });
+    if (!keepMounted && !open && (!hasTransition || exited)) return null;
+    return /*#__PURE__*/ (0, $228IU.jsx)((0, $6ad13a1eb061a6b7$export$2e2bcd8739ae039), {
+        ref: handlePortalRef,
+        container: container,
+        disablePortal: disablePortal,
+        children: /*#__PURE__*/ (0, $228IU.jsxs)(Root, (0, $29rXr.default)({}, rootProps, {
+            children: [
+                !hideBackdrop && BackdropComponent ? /*#__PURE__*/ (0, $228IU.jsx)(BackdropComponent, (0, $29rXr.default)({}, backdropProps)) : null,
+                /*#__PURE__*/ (0, $228IU.jsx)((0, $560dc5b1d5f08d64$export$2e2bcd8739ae039), {
+                    disableEnforceFocus: disableEnforceFocus,
+                    disableAutoFocus: disableAutoFocus,
+                    disableRestoreFocus: disableRestoreFocus,
+                    isEnabled: isTopModal,
+                    open: open,
+                    children: /*#__PURE__*/ $d4J5n.cloneElement(children, childProps)
+                })
+            ]
+        }))
+    });
+});
+var $d1fd2023b755a510$export$2e2bcd8739ae039 = $d1fd2023b755a510$var$ModalUnstyled;
 
 
 
 
 
+
+var $3Rzkk = parcelRequire("3Rzkk");
+
+var $i1cZ3 = parcelRequire("i1cZ3");
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $29rXr = parcelRequire("29rXr");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+var $h0TGs = parcelRequire("h0TGs");
+
+var $gfogg = parcelRequire("gfogg");
+
+var $3Rzkk = parcelRequire("3Rzkk");
+
+var $i1cZ3 = parcelRequire("i1cZ3");
+
+var $29rXr = parcelRequire("29rXr");
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+
+parcelRequire("d4J5n");
+
+var $4JDg8 = parcelRequire("4JDg8");
+
+var $g8cbf = parcelRequire("g8cbf");
+function $cb404980a6d8b614$export$2e2bcd8739ae039() {
+    const theme = (0, $4JDg8.default)((0, $g8cbf.default));
+    return theme;
+}
+
+
+const $6c3a9351414de729$export$b7a864e1eaef9de5 = (node)=>node.scrollTop;
+function $6c3a9351414de729$export$8cb1e9b404609ae9(props, options) {
+    var _style$transitionDura, _style$transitionTimi;
+    const { timeout: timeout , easing: easing , style: style = {}  } = props;
+    return {
+        duration: (_style$transitionDura = style.transitionDuration) != null ? _style$transitionDura : typeof timeout === "number" ? timeout : timeout[options.mode] || 0,
+        easing: (_style$transitionTimi = style.transitionTimingFunction) != null ? _style$transitionTimi : typeof easing === "object" ? easing[options.mode] : easing,
+        delay: style.transitionDelay
+    };
+}
+
+
+
+
+var $228IU = parcelRequire("228IU");
+const $7b57d009fa0d5508$var$_excluded = [
+    "addEndListener",
+    "appear",
+    "children",
+    "easing",
+    "in",
+    "onEnter",
+    "onEntered",
+    "onEntering",
+    "onExit",
+    "onExited",
+    "onExiting",
+    "style",
+    "timeout",
+    "TransitionComponent"
+];
+const $7b57d009fa0d5508$var$styles = {
+    entering: {
+        opacity: 1
+    },
+    entered: {
+        opacity: 1
+    }
+};
+/**
+ * The Fade transition is used by the [Modal](/material-ui/react-modal/) component.
+ * It uses [react-transition-group](https://github.com/reactjs/react-transition-group) internally.
+ */ const $7b57d009fa0d5508$var$Fade = /*#__PURE__*/ $d4J5n.forwardRef(function Fade(props, ref) {
+    const theme = (0, $cb404980a6d8b614$export$2e2bcd8739ae039)();
+    const defaultTimeout = {
+        enter: theme.transitions.duration.enteringScreen,
+        exit: theme.transitions.duration.leavingScreen
+    };
+    const { addEndListener: addEndListener , appear: appear = true , children: children , easing: easing , in: inProp , onEnter: onEnter , onEntered: onEntered , onEntering: onEntering , onExit: onExit , onExited: onExited , onExiting: onExiting , style: style , timeout: timeout = defaultTimeout , TransitionComponent: // eslint-disable-next-line react/prop-types
+    TransitionComponent = (0, $3f4090778342b254$export$2e2bcd8739ae039)  } = props, other = (0, $9Zx8w.default)(props, $7b57d009fa0d5508$var$_excluded);
+    const enableStrictModeCompat = true;
+    const nodeRef = $d4J5n.useRef(null);
+    const foreignRef = (0, $07ea1ddd799bf178$export$2e2bcd8739ae039)(children.ref, ref);
+    const handleRef = (0, $07ea1ddd799bf178$export$2e2bcd8739ae039)(nodeRef, foreignRef);
+    const normalizedTransitionCallback = (callback)=>(maybeIsAppearing)=>{
+            if (callback) {
+                const node = nodeRef.current; // onEnterXxx and onExitXxx callbacks have a different arguments.length value.
+                if (maybeIsAppearing === undefined) callback(node);
+                else callback(node, maybeIsAppearing);
+            }
+        };
+    const handleEntering = normalizedTransitionCallback(onEntering);
+    const handleEnter = normalizedTransitionCallback((node, isAppearing)=>{
+        (0, $6c3a9351414de729$export$b7a864e1eaef9de5)(node); // So the animation always start from the start.
+        const transitionProps = (0, $6c3a9351414de729$export$8cb1e9b404609ae9)({
+            style: style,
+            timeout: timeout,
+            easing: easing
+        }, {
+            mode: "enter"
+        });
+        node.style.webkitTransition = theme.transitions.create("opacity", transitionProps);
+        node.style.transition = theme.transitions.create("opacity", transitionProps);
+        if (onEnter) onEnter(node, isAppearing);
+    });
+    const handleEntered = normalizedTransitionCallback(onEntered);
+    const handleExiting = normalizedTransitionCallback(onExiting);
+    const handleExit = normalizedTransitionCallback((node)=>{
+        const transitionProps = (0, $6c3a9351414de729$export$8cb1e9b404609ae9)({
+            style: style,
+            timeout: timeout,
+            easing: easing
+        }, {
+            mode: "exit"
+        });
+        node.style.webkitTransition = theme.transitions.create("opacity", transitionProps);
+        node.style.transition = theme.transitions.create("opacity", transitionProps);
+        if (onExit) onExit(node);
+    });
+    const handleExited = normalizedTransitionCallback(onExited);
+    const handleAddEndListener = (next)=>{
+        if (addEndListener) // Old call signature before `react-transition-group` implemented `nodeRef`
+        addEndListener(nodeRef.current, next);
+    };
+    return /*#__PURE__*/ (0, $228IU.jsx)(TransitionComponent, (0, $29rXr.default)({
+        appear: appear,
+        in: inProp,
+        nodeRef: enableStrictModeCompat ? nodeRef : undefined,
+        onEnter: handleEnter,
+        onEntered: handleEntered,
+        onEntering: handleEntering,
+        onExit: handleExit,
+        onExited: handleExited,
+        onExiting: handleExiting,
+        addEndListener: handleAddEndListener,
+        timeout: timeout
+    }, other, {
+        children: (state, childProps)=>{
+            return /*#__PURE__*/ $d4J5n.cloneElement(children, (0, $29rXr.default)({
+                style: (0, $29rXr.default)({
+                    opacity: 0,
+                    visibility: state === "exited" && !inProp ? "hidden" : undefined
+                }, $7b57d009fa0d5508$var$styles[state], style, children.props.style),
+                ref: handleRef
+            }, childProps));
+        }
+    }));
+});
+var $7b57d009fa0d5508$export$2e2bcd8739ae039 = $7b57d009fa0d5508$var$Fade;
+
+
+
+
+var $b85LX = parcelRequire("b85LX");
+var $b4FaI = parcelRequire("b4FaI");
+function $ee608adaa2aa7532$export$9927a91fd93152bd(slot) {
+    return (0, $b85LX.default)("MuiBackdrop", slot);
+}
+const $ee608adaa2aa7532$var$backdropClasses = (0, $b4FaI.default)("MuiBackdrop", [
+    "root",
+    "invisible"
+]);
+var $ee608adaa2aa7532$export$2e2bcd8739ae039 = $ee608adaa2aa7532$var$backdropClasses;
+
+
+
+var $228IU = parcelRequire("228IU");
+const $b0863acbd8e41b46$var$_excluded = [
+    "children",
+    "component",
+    "components",
+    "componentsProps",
+    "className",
+    "invisible",
+    "open",
+    "transitionDuration",
+    "TransitionComponent"
+];
+const $b0863acbd8e41b46$var$useUtilityClasses = (ownerState)=>{
+    const { classes: classes , invisible: invisible  } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            invisible && "invisible"
+        ]
+    };
+    return (0, $gfogg.default)(slots, (0, $ee608adaa2aa7532$export$9927a91fd93152bd), classes);
+};
+const $b0863acbd8e41b46$var$BackdropRoot = (0, $3Rzkk.default)("div", {
+    name: "MuiBackdrop",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.root,
+            ownerState.invisible && styles.invisible
+        ];
+    }
+})(({ ownerState: ownerState  })=>(0, $29rXr.default)({
+        position: "fixed",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        right: 0,
+        bottom: 0,
+        top: 0,
+        left: 0,
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        WebkitTapHighlightColor: "transparent"
+    }, ownerState.invisible && {
+        backgroundColor: "transparent"
+    }));
+const $b0863acbd8e41b46$var$Backdrop = /*#__PURE__*/ $d4J5n.forwardRef(function Backdrop(inProps, ref) {
+    var _components$Root, _componentsProps$root;
+    const props = (0, $i1cZ3.default)({
+        props: inProps,
+        name: "MuiBackdrop"
+    });
+    const { children: children , component: component = "div" , components: components = {} , componentsProps: componentsProps = {} , className: className , invisible: invisible = false , open: open , transitionDuration: transitionDuration , TransitionComponent: // eslint-disable-next-line react/prop-types
+    TransitionComponent = (0, $7b57d009fa0d5508$export$2e2bcd8739ae039)  } = props, other = (0, $9Zx8w.default)(props, $b0863acbd8e41b46$var$_excluded);
+    const ownerState = (0, $29rXr.default)({}, props, {
+        component: component,
+        invisible: invisible
+    });
+    const classes = $b0863acbd8e41b46$var$useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, $228IU.jsx)(TransitionComponent, (0, $29rXr.default)({
+        in: open,
+        timeout: transitionDuration
+    }, other, {
+        children: /*#__PURE__*/ (0, $228IU.jsx)($b0863acbd8e41b46$var$BackdropRoot, {
+            "aria-hidden": true,
+            as: (_components$Root = components.Root) != null ? _components$Root : component,
+            className: (0, $h0TGs.default)(classes.root, className),
+            ownerState: (0, $29rXr.default)({}, ownerState, (_componentsProps$root = componentsProps.root) == null ? void 0 : _componentsProps$root.ownerState),
+            classes: classes,
+            ref: ref,
+            children: children
+        })
+    }));
+});
+var $b0863acbd8e41b46$export$2e2bcd8739ae039 = $b0863acbd8e41b46$var$Backdrop;
+
+
+
+
+var $228IU = parcelRequire("228IU");
+const $def44c1a1d00884c$var$_excluded = [
+    "BackdropComponent",
+    "BackdropProps",
+    "closeAfterTransition",
+    "children",
+    "component",
+    "components",
+    "componentsProps",
+    "disableAutoFocus",
+    "disableEnforceFocus",
+    "disableEscapeKeyDown",
+    "disablePortal",
+    "disableRestoreFocus",
+    "disableScrollLock",
+    "hideBackdrop",
+    "keepMounted",
+    "theme"
+];
+const $def44c1a1d00884c$export$eb211a494147b724 = (0, $9a82f1fd83123204$export$2e2bcd8739ae039);
+const $def44c1a1d00884c$var$extendUtilityClasses = (ownerState)=>{
+    return ownerState.classes;
+};
+const $def44c1a1d00884c$var$ModalRoot = (0, $3Rzkk.default)("div", {
+    name: "MuiModal",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.root,
+            !ownerState.open && ownerState.exited && styles.hidden
+        ];
+    }
+})(({ theme: theme , ownerState: ownerState  })=>(0, $29rXr.default)({
+        position: "fixed",
+        zIndex: (theme.vars || theme).zIndex.modal,
+        right: 0,
+        bottom: 0,
+        top: 0,
+        left: 0
+    }, !ownerState.open && ownerState.exited && {
+        visibility: "hidden"
+    }));
+const $def44c1a1d00884c$var$ModalBackdrop = (0, $3Rzkk.default)((0, $b0863acbd8e41b46$export$2e2bcd8739ae039), {
+    name: "MuiModal",
+    slot: "Backdrop",
+    overridesResolver: (props, styles)=>{
+        return styles.backdrop;
+    }
+})({
+    zIndex: -1
+});
+/**
+ * Modal is a lower-level construct that is leveraged by the following components:
+ *
+ * - [Dialog](/material-ui/api/dialog/)
+ * - [Drawer](/material-ui/api/drawer/)
+ * - [Menu](/material-ui/api/menu/)
+ * - [Popover](/material-ui/api/popover/)
+ *
+ * If you are creating a modal dialog, you probably want to use the [Dialog](/material-ui/api/dialog/) component
+ * rather than directly using Modal.
+ *
+ * This component shares many concepts with [react-overlays](https://react-bootstrap.github.io/react-overlays/#modals).
+ */ const $def44c1a1d00884c$var$Modal = /*#__PURE__*/ $d4J5n.forwardRef(function Modal(inProps, ref) {
+    var _ref, _components$Root;
+    const props = (0, $i1cZ3.default)({
+        name: "MuiModal",
+        props: inProps
+    });
+    const { BackdropComponent: BackdropComponent = $def44c1a1d00884c$var$ModalBackdrop , BackdropProps: BackdropProps , closeAfterTransition: closeAfterTransition = false , children: children , component: component , components: components = {} , componentsProps: componentsProps = {} , disableAutoFocus: disableAutoFocus = false , disableEnforceFocus: disableEnforceFocus = false , disableEscapeKeyDown: disableEscapeKeyDown = false , disablePortal: disablePortal = false , disableRestoreFocus: disableRestoreFocus = false , disableScrollLock: disableScrollLock = false , hideBackdrop: hideBackdrop = false , keepMounted: keepMounted = false , theme: // eslint-disable-next-line react/prop-types
+    theme  } = props, other = (0, $9Zx8w.default)(props, $def44c1a1d00884c$var$_excluded);
+    const [exited, setExited] = $d4J5n.useState(true);
+    const commonProps = {
+        closeAfterTransition: closeAfterTransition,
+        disableAutoFocus: disableAutoFocus,
+        disableEnforceFocus: disableEnforceFocus,
+        disableEscapeKeyDown: disableEscapeKeyDown,
+        disablePortal: disablePortal,
+        disableRestoreFocus: disableRestoreFocus,
+        disableScrollLock: disableScrollLock,
+        hideBackdrop: hideBackdrop,
+        keepMounted: keepMounted
+    };
+    const ownerState = (0, $29rXr.default)({}, props, commonProps, {
+        exited: exited
+    });
+    const classes = $def44c1a1d00884c$var$extendUtilityClasses(ownerState);
+    const Root = (_ref = (_components$Root = components.Root) != null ? _components$Root : component) != null ? _ref : $def44c1a1d00884c$var$ModalRoot;
+    return /*#__PURE__*/ (0, $228IU.jsx)((0, $d1fd2023b755a510$export$2e2bcd8739ae039), (0, $29rXr.default)({
+        components: (0, $29rXr.default)({
+            Root: Root,
+            Backdrop: BackdropComponent
+        }, components),
+        componentsProps: {
+            root: ()=>(0, $29rXr.default)({}, (0, $b55d84b77c911abd$export$2e2bcd8739ae039)(componentsProps.root, ownerState), !(0, $ab588489a35ee716$export$2e2bcd8739ae039)(Root) && {
+                    as: component,
+                    theme: theme
+                }),
+            backdrop: ()=>(0, $29rXr.default)({}, BackdropProps, (0, $b55d84b77c911abd$export$2e2bcd8739ae039)(componentsProps.backdrop, ownerState))
+        },
+        onTransitionEnter: ()=>setExited(false),
+        onTransitionExited: ()=>setExited(true),
+        ref: ref
+    }, other, {
+        classes: classes
+    }, commonProps, {
+        children: children
+    }));
+});
+var $def44c1a1d00884c$export$2e2bcd8739ae039 = $def44c1a1d00884c$var$Modal;
+
+
+
+
+
+
+
+
+var $i1cZ3 = parcelRequire("i1cZ3");
+
+var $3Rzkk = parcelRequire("3Rzkk");
+
+var $b85LX = parcelRequire("b85LX");
+var $b4FaI = parcelRequire("b4FaI");
+function $fea055a80d1ad01d$export$2177af0aa15c34c2(slot) {
+    return (0, $b85LX.default)("MuiDialog", slot);
+}
+const $fea055a80d1ad01d$var$dialogClasses = (0, $b4FaI.default)("MuiDialog", [
+    "root",
+    "scrollPaper",
+    "scrollBody",
+    "container",
+    "paper",
+    "paperScrollPaper",
+    "paperScrollBody",
+    "paperWidthFalse",
+    "paperWidthXs",
+    "paperWidthSm",
+    "paperWidthMd",
+    "paperWidthLg",
+    "paperWidthXl",
+    "paperFullWidth",
+    "paperFullScreen"
+]);
+var $fea055a80d1ad01d$export$2e2bcd8739ae039 = $fea055a80d1ad01d$var$dialogClasses;
+
+
+
+var $d4J5n = parcelRequire("d4J5n");
+const $31556679024289e2$var$DialogContext = /*#__PURE__*/ (0, $d4J5n.createContext)({});
+var $31556679024289e2$export$2e2bcd8739ae039 = $31556679024289e2$var$DialogContext;
+
+
+
+
+
+var $228IU = parcelRequire("228IU");
+const $d6f0347ecedd0ecf$var$_excluded = [
+    "aria-describedby",
+    "aria-labelledby",
+    "BackdropComponent",
+    "BackdropProps",
+    "children",
+    "className",
+    "disableEscapeKeyDown",
+    "fullScreen",
+    "fullWidth",
+    "maxWidth",
+    "onBackdropClick",
+    "onClose",
+    "open",
+    "PaperComponent",
+    "PaperProps",
+    "scroll",
+    "TransitionComponent",
+    "transitionDuration",
+    "TransitionProps"
+];
+const $d6f0347ecedd0ecf$var$DialogBackdrop = (0, $3Rzkk.default)((0, $b0863acbd8e41b46$export$2e2bcd8739ae039), {
+    name: "MuiDialog",
+    slot: "Backdrop",
+    overrides: (props, styles)=>styles.backdrop
+})({
+    // Improve scrollable dialog support.
+    zIndex: -1
+});
+const $d6f0347ecedd0ecf$var$useUtilityClasses = (ownerState)=>{
+    const { classes: classes , scroll: scroll , maxWidth: maxWidth , fullWidth: fullWidth , fullScreen: fullScreen  } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ],
+        container: [
+            "container",
+            `scroll${(0, $kJ9SM.default)(scroll)}`
+        ],
+        paper: [
+            "paper",
+            `paperScroll${(0, $kJ9SM.default)(scroll)}`,
+            `paperWidth${(0, $kJ9SM.default)(String(maxWidth))}`,
+            fullWidth && "paperFullWidth",
+            fullScreen && "paperFullScreen"
+        ]
+    };
+    return (0, $gfogg.default)(slots, (0, $fea055a80d1ad01d$export$2177af0aa15c34c2), classes);
+};
+const $d6f0347ecedd0ecf$var$DialogRoot = (0, $3Rzkk.default)((0, $def44c1a1d00884c$export$2e2bcd8739ae039), {
+    name: "MuiDialog",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})({
+    "@media print": {
+        // Use !important to override the Modal inline-style.
+        position: "absolute !important"
+    }
+});
+const $d6f0347ecedd0ecf$var$DialogContainer = (0, $3Rzkk.default)("div", {
+    name: "MuiDialog",
+    slot: "Container",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.container,
+            styles[`scroll${(0, $kJ9SM.default)(ownerState.scroll)}`]
+        ];
+    }
+})(({ ownerState: ownerState  })=>(0, $29rXr.default)({
+        height: "100%",
+        "@media print": {
+            height: "auto"
+        },
+        // We disable the focus ring for mouse, touch and keyboard users.
+        outline: 0
+    }, ownerState.scroll === "paper" && {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    }, ownerState.scroll === "body" && {
+        overflowY: "auto",
+        overflowX: "hidden",
+        textAlign: "center",
+        "&:after": {
+            content: '""',
+            display: "inline-block",
+            verticalAlign: "middle",
+            height: "100%",
+            width: "0"
+        }
+    }));
+const $d6f0347ecedd0ecf$var$DialogPaper = (0, $3Rzkk.default)((0, $af776c8e01c32094$export$2e2bcd8739ae039), {
+    name: "MuiDialog",
+    slot: "Paper",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.paper,
+            styles[`scrollPaper${(0, $kJ9SM.default)(ownerState.scroll)}`],
+            styles[`paperWidth${(0, $kJ9SM.default)(String(ownerState.maxWidth))}`],
+            ownerState.fullWidth && styles.paperFullWidth,
+            ownerState.fullScreen && styles.paperFullScreen
+        ];
+    }
+})(({ theme: theme , ownerState: ownerState  })=>(0, $29rXr.default)({
+        margin: 32,
+        position: "relative",
+        overflowY: "auto",
+        // Fix IE11 issue, to remove at some point.
+        "@media print": {
+            overflowY: "visible",
+            boxShadow: "none"
+        }
+    }, ownerState.scroll === "paper" && {
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: "calc(100% - 64px)"
+    }, ownerState.scroll === "body" && {
+        display: "inline-block",
+        verticalAlign: "middle",
+        textAlign: "left" // 'initial' doesn't work on IE11
+    }, !ownerState.maxWidth && {
+        maxWidth: "calc(100% - 64px)"
+    }, ownerState.maxWidth === "xs" && {
+        maxWidth: theme.breakpoints.unit === "px" ? Math.max(theme.breakpoints.values.xs, 444) : `${theme.breakpoints.values.xs}${theme.breakpoints.unit}`,
+        [`&.${(0, $fea055a80d1ad01d$export$2e2bcd8739ae039).paperScrollBody}`]: {
+            [theme.breakpoints.down(Math.max(theme.breakpoints.values.xs, 444) + 64)]: {
+                maxWidth: "calc(100% - 64px)"
+            }
+        }
+    }, ownerState.maxWidth && ownerState.maxWidth !== "xs" && {
+        maxWidth: `${theme.breakpoints.values[ownerState.maxWidth]}${theme.breakpoints.unit}`,
+        [`&.${(0, $fea055a80d1ad01d$export$2e2bcd8739ae039).paperScrollBody}`]: {
+            [theme.breakpoints.down(theme.breakpoints.values[ownerState.maxWidth] + 64)]: {
+                maxWidth: "calc(100% - 64px)"
+            }
+        }
+    }, ownerState.fullWidth && {
+        width: "calc(100% - 64px)"
+    }, ownerState.fullScreen && {
+        margin: 0,
+        width: "100%",
+        maxWidth: "100%",
+        height: "100%",
+        maxHeight: "none",
+        borderRadius: 0,
+        [`&.${(0, $fea055a80d1ad01d$export$2e2bcd8739ae039).paperScrollBody}`]: {
+            margin: 0,
+            maxWidth: "100%"
+        }
+    }));
+/**
+ * Dialogs are overlaid modal paper based components with a backdrop.
+ */ const $d6f0347ecedd0ecf$var$Dialog = /*#__PURE__*/ $d4J5n.forwardRef(function Dialog(inProps, ref) {
+    const props = (0, $i1cZ3.default)({
+        props: inProps,
+        name: "MuiDialog"
+    });
+    const theme = (0, $cb404980a6d8b614$export$2e2bcd8739ae039)();
+    const defaultTransitionDuration = {
+        enter: theme.transitions.duration.enteringScreen,
+        exit: theme.transitions.duration.leavingScreen
+    };
+    const { "aria-describedby": ariaDescribedby , "aria-labelledby": ariaLabelledbyProp , BackdropComponent: BackdropComponent , BackdropProps: BackdropProps , children: children , className: className , disableEscapeKeyDown: disableEscapeKeyDown = false , fullScreen: fullScreen = false , fullWidth: fullWidth = false , maxWidth: maxWidth = "sm" , onBackdropClick: onBackdropClick , onClose: onClose , open: open , PaperComponent: PaperComponent = (0, $af776c8e01c32094$export$2e2bcd8739ae039) , PaperProps: PaperProps = {} , scroll: scroll = "paper" , TransitionComponent: TransitionComponent = (0, $7b57d009fa0d5508$export$2e2bcd8739ae039) , transitionDuration: transitionDuration = defaultTransitionDuration , TransitionProps: TransitionProps  } = props, other = (0, $9Zx8w.default)(props, $d6f0347ecedd0ecf$var$_excluded);
+    const ownerState = (0, $29rXr.default)({}, props, {
+        disableEscapeKeyDown: disableEscapeKeyDown,
+        fullScreen: fullScreen,
+        fullWidth: fullWidth,
+        maxWidth: maxWidth,
+        scroll: scroll
+    });
+    const classes = $d6f0347ecedd0ecf$var$useUtilityClasses(ownerState);
+    const backdropClick = $d4J5n.useRef();
+    const handleMouseDown = (event)=>{
+        // We don't want to close the dialog when clicking the dialog content.
+        // Make sure the event starts and ends on the same DOM element.
+        backdropClick.current = event.target === event.currentTarget;
+    };
+    const handleBackdropClick = (event)=>{
+        // Ignore the events not coming from the "backdrop".
+        if (!backdropClick.current) return;
+        backdropClick.current = null;
+        if (onBackdropClick) onBackdropClick(event);
+        if (onClose) onClose(event, "backdropClick");
+    };
+    const ariaLabelledby = (0, $1ZpZm.default)(ariaLabelledbyProp);
+    const dialogContextValue = $d4J5n.useMemo(()=>{
+        return {
+            titleId: ariaLabelledby
+        };
+    }, [
+        ariaLabelledby
+    ]);
+    return /*#__PURE__*/ (0, $228IU.jsx)($d6f0347ecedd0ecf$var$DialogRoot, (0, $29rXr.default)({
+        className: (0, $h0TGs.default)(classes.root, className),
+        closeAfterTransition: true,
+        components: {
+            Backdrop: $d6f0347ecedd0ecf$var$DialogBackdrop
+        },
+        componentsProps: {
+            backdrop: (0, $29rXr.default)({
+                transitionDuration: transitionDuration,
+                as: BackdropComponent
+            }, BackdropProps)
+        },
+        disableEscapeKeyDown: disableEscapeKeyDown,
+        onClose: onClose,
+        open: open,
+        ref: ref,
+        onClick: handleBackdropClick,
+        ownerState: ownerState
+    }, other, {
+        children: /*#__PURE__*/ (0, $228IU.jsx)(TransitionComponent, (0, $29rXr.default)({
+            appear: true,
+            in: open,
+            timeout: transitionDuration,
+            role: "presentation"
+        }, TransitionProps, {
+            children: /*#__PURE__*/ (0, $228IU.jsx)($d6f0347ecedd0ecf$var$DialogContainer, {
+                className: (0, $h0TGs.default)(classes.container),
+                onMouseDown: handleMouseDown,
+                ownerState: ownerState,
+                children: /*#__PURE__*/ (0, $228IU.jsx)($d6f0347ecedd0ecf$var$DialogPaper, (0, $29rXr.default)({
+                    as: PaperComponent,
+                    elevation: 24,
+                    role: "dialog",
+                    "aria-describedby": ariaDescribedby,
+                    "aria-labelledby": ariaLabelledby
+                }, PaperProps, {
+                    className: (0, $h0TGs.default)(classes.paper, PaperProps.className),
+                    ownerState: ownerState,
+                    children: /*#__PURE__*/ (0, $228IU.jsx)((0, $31556679024289e2$export$2e2bcd8739ae039).Provider, {
+                        value: dialogContextValue,
+                        children: children
+                    })
+                }))
+            })
+        }))
+    }));
+});
+var $d6f0347ecedd0ecf$export$2e2bcd8739ae039 = $d6f0347ecedd0ecf$var$Dialog;
+
+
+
+
+
+
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $29rXr = parcelRequire("29rXr");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+var $h0TGs = parcelRequire("h0TGs");
+
+var $gfogg = parcelRequire("gfogg");
+
+var $3Rzkk = parcelRequire("3Rzkk");
+
+var $i1cZ3 = parcelRequire("i1cZ3");
+
+var $b85LX = parcelRequire("b85LX");
+var $b4FaI = parcelRequire("b4FaI");
+function $a959d1ba73beffe0$export$61b0ee1f05fb344e(slot) {
+    return (0, $b85LX.default)("MuiDialogContent", slot);
+}
+const $a959d1ba73beffe0$var$dialogContentClasses = (0, $b4FaI.default)("MuiDialogContent", [
+    "root",
+    "dividers"
+]);
+var $a959d1ba73beffe0$export$2e2bcd8739ae039 = $a959d1ba73beffe0$var$dialogContentClasses;
+
+
+
+var $b85LX = parcelRequire("b85LX");
+var $b4FaI = parcelRequire("b4FaI");
+function $261d00ebadbad4a1$export$f5d2ec7e4c47e088(slot) {
+    return (0, $b85LX.default)("MuiDialogTitle", slot);
+}
+const $261d00ebadbad4a1$var$dialogTitleClasses = (0, $b4FaI.default)("MuiDialogTitle", [
+    "root"
+]);
+var $261d00ebadbad4a1$export$2e2bcd8739ae039 = $261d00ebadbad4a1$var$dialogTitleClasses;
+
+
+
+var $228IU = parcelRequire("228IU");
+const $63631a44a86d4e62$var$_excluded = [
+    "className",
+    "dividers"
+];
+const $63631a44a86d4e62$var$useUtilityClasses = (ownerState)=>{
+    const { classes: classes , dividers: dividers  } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            dividers && "dividers"
+        ]
+    };
+    return (0, $gfogg.default)(slots, (0, $a959d1ba73beffe0$export$61b0ee1f05fb344e), classes);
+};
+const $63631a44a86d4e62$var$DialogContentRoot = (0, $3Rzkk.default)("div", {
+    name: "MuiDialogContent",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.root,
+            ownerState.dividers && styles.dividers
+        ];
+    }
+})(({ theme: theme , ownerState: ownerState  })=>(0, $29rXr.default)({
+        flex: "1 1 auto",
+        // Add iOS momentum scrolling for iOS < 13.0
+        WebkitOverflowScrolling: "touch",
+        overflowY: "auto",
+        padding: "20px 24px"
+    }, ownerState.dividers ? {
+        padding: "16px 24px",
+        borderTop: `1px solid ${(theme.vars || theme).palette.divider}`,
+        borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`
+    } : {
+        [`.${(0, $261d00ebadbad4a1$export$2e2bcd8739ae039).root} + &`]: {
+            paddingTop: 0
+        }
+    }));
+const $63631a44a86d4e62$var$DialogContent = /*#__PURE__*/ $d4J5n.forwardRef(function DialogContent(inProps, ref) {
+    const props = (0, $i1cZ3.default)({
+        props: inProps,
+        name: "MuiDialogContent"
+    });
+    const { className: className , dividers: dividers = false  } = props, other = (0, $9Zx8w.default)(props, $63631a44a86d4e62$var$_excluded);
+    const ownerState = (0, $29rXr.default)({}, props, {
+        dividers: dividers
+    });
+    const classes = $63631a44a86d4e62$var$useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, $228IU.jsx)($63631a44a86d4e62$var$DialogContentRoot, (0, $29rXr.default)({
+        className: (0, $h0TGs.default)(classes.root, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other));
+});
+var $63631a44a86d4e62$export$2e2bcd8739ae039 = $63631a44a86d4e62$var$DialogContent;
+
+
+
+
+
+
+
+var $29rXr = parcelRequire("29rXr");
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+var $h0TGs = parcelRequire("h0TGs");
+
+var $gfogg = parcelRequire("gfogg");
+
+
+var $3Rzkk = parcelRequire("3Rzkk");
+
+var $i1cZ3 = parcelRequire("i1cZ3");
+
+
+
+var $228IU = parcelRequire("228IU");
+const $fcf2823dd0ffe4e8$var$_excluded = [
+    "className",
+    "id"
+];
+const $fcf2823dd0ffe4e8$var$useUtilityClasses = (ownerState)=>{
+    const { classes: classes  } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ]
+    };
+    return (0, $gfogg.default)(slots, (0, $261d00ebadbad4a1$export$f5d2ec7e4c47e088), classes);
+};
+const $fcf2823dd0ffe4e8$var$DialogTitleRoot = (0, $3Rzkk.default)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+    name: "MuiDialogTitle",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})({
+    padding: "16px 24px",
+    flex: "0 0 auto"
+});
+const $fcf2823dd0ffe4e8$var$DialogTitle = /*#__PURE__*/ $d4J5n.forwardRef(function DialogTitle(inProps, ref) {
+    const props = (0, $i1cZ3.default)({
+        props: inProps,
+        name: "MuiDialogTitle"
+    });
+    const { className: className , id: idProp  } = props, other = (0, $9Zx8w.default)(props, $fcf2823dd0ffe4e8$var$_excluded);
+    const ownerState = props;
+    const classes = $fcf2823dd0ffe4e8$var$useUtilityClasses(ownerState);
+    const { titleId: id = idProp  } = $d4J5n.useContext((0, $31556679024289e2$export$2e2bcd8739ae039));
+    return /*#__PURE__*/ (0, $228IU.jsx)($fcf2823dd0ffe4e8$var$DialogTitleRoot, (0, $29rXr.default)({
+        component: "h2",
+        className: (0, $h0TGs.default)(classes.root, className),
+        ownerState: ownerState,
+        ref: ref,
+        variant: "h6",
+        id: id
+    }, other));
+});
+var $fcf2823dd0ffe4e8$export$2e2bcd8739ae039 = $fcf2823dd0ffe4e8$var$DialogTitle;
 
 
 
@@ -15262,6 +17379,163 @@ var $0b7e32f378c52ea7$export$2e2bcd8739ae039 = $0b7e32f378c52ea7$var$FormGroup;
 
 
 
+
+
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $29rXr = parcelRequire("29rXr");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+var $h0TGs = parcelRequire("h0TGs");
+
+
+var $gfogg = parcelRequire("gfogg");
+
+var $dcYDA = parcelRequire("dcYDA");
+
+var $3Rzkk = parcelRequire("3Rzkk");
+
+var $i1cZ3 = parcelRequire("i1cZ3");
+
+
+var $kJ9SM = parcelRequire("kJ9SM");
+
+var $b85LX = parcelRequire("b85LX");
+var $b4FaI = parcelRequire("b4FaI");
+function $d945dddf86f8893e$export$5e8702d71474f093(slot) {
+    return (0, $b85LX.default)("MuiIconButton", slot);
+}
+const $d945dddf86f8893e$var$iconButtonClasses = (0, $b4FaI.default)("MuiIconButton", [
+    "root",
+    "disabled",
+    "colorInherit",
+    "colorPrimary",
+    "colorSecondary",
+    "edgeStart",
+    "edgeEnd",
+    "sizeSmall",
+    "sizeMedium",
+    "sizeLarge"
+]);
+var $d945dddf86f8893e$export$2e2bcd8739ae039 = $d945dddf86f8893e$var$iconButtonClasses;
+
+
+
+var $228IU = parcelRequire("228IU");
+const $e6fb12cd5811ce97$var$_excluded = [
+    "edge",
+    "children",
+    "className",
+    "color",
+    "disabled",
+    "disableFocusRipple",
+    "size"
+];
+const $e6fb12cd5811ce97$var$useUtilityClasses = (ownerState)=>{
+    const { classes: classes , disabled: disabled , color: color , edge: edge , size: size  } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            disabled && "disabled",
+            color !== "default" && `color${(0, $kJ9SM.default)(color)}`,
+            edge && `edge${(0, $kJ9SM.default)(edge)}`,
+            `size${(0, $kJ9SM.default)(size)}`
+        ]
+    };
+    return (0, $gfogg.default)(slots, (0, $d945dddf86f8893e$export$5e8702d71474f093), classes);
+};
+const $e6fb12cd5811ce97$var$IconButtonRoot = (0, $3Rzkk.default)((0, $a7b8b8d335d2c817$export$2e2bcd8739ae039), {
+    name: "MuiIconButton",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.root,
+            ownerState.color !== "default" && styles[`color${(0, $kJ9SM.default)(ownerState.color)}`],
+            ownerState.edge && styles[`edge${(0, $kJ9SM.default)(ownerState.edge)}`],
+            styles[`size${(0, $kJ9SM.default)(ownerState.size)}`]
+        ];
+    }
+})(({ theme: theme , ownerState: ownerState  })=>(0, $29rXr.default)({
+        textAlign: "center",
+        flex: "0 0 auto",
+        fontSize: theme.typography.pxToRem(24),
+        padding: 8,
+        borderRadius: "50%",
+        overflow: "visible",
+        // Explicitly set the default value to solve a bug on IE11.
+        color: (theme.vars || theme).palette.action.active,
+        transition: theme.transitions.create("background-color", {
+            duration: theme.transitions.duration.shortest
+        })
+    }, !ownerState.disableRipple && {
+        "&:hover": {
+            backgroundColor: theme.vars ? `rgba(${theme.vars.palette.action.active} / ${theme.vars.palette.action.hoverOpacity})` : (0, $dcYDA.alpha)(theme.palette.action.active, theme.palette.action.hoverOpacity),
+            // Reset on touch devices, it doesn't add specificity
+            "@media (hover: none)": {
+                backgroundColor: "transparent"
+            }
+        }
+    }, ownerState.edge === "start" && {
+        marginLeft: ownerState.size === "small" ? -3 : -12
+    }, ownerState.edge === "end" && {
+        marginRight: ownerState.size === "small" ? -3 : -12
+    }), ({ theme: theme , ownerState: ownerState  })=>(0, $29rXr.default)({}, ownerState.color === "inherit" && {
+        color: "inherit"
+    }, ownerState.color !== "inherit" && ownerState.color !== "default" && (0, $29rXr.default)({
+        color: (theme.vars || theme).palette[ownerState.color].main
+    }, !ownerState.disableRipple && {
+        "&:hover": {
+            backgroundColor: theme.vars ? `rgba(${theme.vars.palette[ownerState.color].mainChannel} / ${theme.vars.palette.action.hoverOpacity})` : (0, $dcYDA.alpha)(theme.palette[ownerState.color].main, theme.palette.action.hoverOpacity),
+            // Reset on touch devices, it doesn't add specificity
+            "@media (hover: none)": {
+                backgroundColor: "transparent"
+            }
+        }
+    }), ownerState.size === "small" && {
+        padding: 5,
+        fontSize: theme.typography.pxToRem(18)
+    }, ownerState.size === "large" && {
+        padding: 12,
+        fontSize: theme.typography.pxToRem(28)
+    }, {
+        [`&.${(0, $d945dddf86f8893e$export$2e2bcd8739ae039).disabled}`]: {
+            backgroundColor: "transparent",
+            color: (theme.vars || theme).palette.action.disabled
+        }
+    }));
+/**
+ * Refer to the [Icons](/material-ui/icons/) section of the documentation
+ * regarding the available icon options.
+ */ const $e6fb12cd5811ce97$var$IconButton = /*#__PURE__*/ $d4J5n.forwardRef(function IconButton(inProps, ref) {
+    const props = (0, $i1cZ3.default)({
+        props: inProps,
+        name: "MuiIconButton"
+    });
+    const { edge: edge = false , children: children , className: className , color: color = "default" , disabled: disabled = false , disableFocusRipple: disableFocusRipple = false , size: size = "medium"  } = props, other = (0, $9Zx8w.default)(props, $e6fb12cd5811ce97$var$_excluded);
+    const ownerState = (0, $29rXr.default)({}, props, {
+        edge: edge,
+        color: color,
+        disabled: disabled,
+        disableFocusRipple: disableFocusRipple,
+        size: size
+    });
+    const classes = $e6fb12cd5811ce97$var$useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, $228IU.jsx)($e6fb12cd5811ce97$var$IconButtonRoot, (0, $29rXr.default)({
+        className: (0, $h0TGs.default)(classes.root, className),
+        centerRipple: true,
+        focusRipple: !disableFocusRipple,
+        disabled: disabled,
+        ref: ref,
+        ownerState: ownerState
+    }, other, {
+        children: children
+    }));
+});
+var $e6fb12cd5811ce97$export$2e2bcd8739ae039 = $e6fb12cd5811ce97$var$IconButton;
 
 
 
@@ -20299,11 +22573,5286 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
 
 var $228IU = parcelRequire("228IU");
 
+var $d4J5n = parcelRequire("d4J5n");
+
 
 
 
 var $228IU = parcelRequire("228IU");
-var $9c747f1db1bfcaa5$exports = {};
+
+const $85d868e1e5abbef8$export$581f644880f842c0 = ({ onClick: onClick , alg: alg  })=>{
+    return /*#__PURE__*/ (0, $228IU.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
+        onClick: onClick,
+        sx: {
+            fontSize: "16px",
+            display: "flex",
+            alignItems: "center",
+            "&:hover": {
+                cursor: "pointer"
+            }
+        },
+        children: /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+            component: "p",
+            variant: "h6",
+            children: alg
+        })
+    });
+};
+
+
+
+var $228IU = parcelRequire("228IU");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+var $8JBxj = parcelRequire("8JBxj");
+parcelRequire("2Ju49");
+
+var $kQo6d = parcelRequire("kQo6d");
+// src/cubing/notation/CountMoves.ts
+var $0305d85fc2c30b4d$var$CountMoves = class extends (0, $kQo6d.TraversalUp) {
+    constructor(metric){
+        super();
+        this.metric = metric;
+    }
+    traverseAlg(alg) {
+        let r = 0;
+        for (const unit of alg.units())r += this.traverseUnit(unit);
+        return r;
+    }
+    traverseGrouping(grouping) {
+        const alg = grouping.alg;
+        return this.traverseAlg(alg) * Math.abs(grouping.amount);
+    }
+    traverseMove(move) {
+        return this.metric(move);
+    }
+    traverseCommutator(commutator) {
+        return 2 * (this.traverseAlg(commutator.A) + this.traverseAlg(commutator.B));
+    }
+    traverseConjugate(conjugate) {
+        return 2 * this.traverseAlg(conjugate.A) + this.traverseAlg(conjugate.B);
+    }
+    traversePause(_pause) {
+        return 0;
+    }
+    traverseNewline(_newLine) {
+        return 0;
+    }
+    traverseLineComment(_comment) {
+        return 0;
+    }
+};
+function $0305d85fc2c30b4d$var$isCharUppercase(c) {
+    return "A" <= c && c <= "Z";
+}
+function $0305d85fc2c30b4d$var$baseMetric(move) {
+    const fam = move.family;
+    if ($0305d85fc2c30b4d$var$isCharUppercase(fam[0]) && fam[fam.length - 1] === "v" || fam === "x" || fam === "y" || fam === "z" || fam === "T") return 0;
+    else return 1;
+}
+function $0305d85fc2c30b4d$var$etmMetric(_move) {
+    return 1;
+}
+function $0305d85fc2c30b4d$var$quantumMetric(move) {
+    const fam = move.family;
+    if ($0305d85fc2c30b4d$var$isCharUppercase(fam[0]) && fam[fam.length - 1] === "v" || fam === "x" || fam === "y" || fam === "z" || fam === "T") return 0;
+    else return Math.abs(move.amount);
+}
+var $0305d85fc2c30b4d$var$countMovesInstance = new $0305d85fc2c30b4d$var$CountMoves($0305d85fc2c30b4d$var$baseMetric);
+var $0305d85fc2c30b4d$export$3bb9ec80d65f79cf = $0305d85fc2c30b4d$var$countMovesInstance.traverseAlg.bind($0305d85fc2c30b4d$var$countMovesInstance);
+var $0305d85fc2c30b4d$var$countMovesETMInstance = new $0305d85fc2c30b4d$var$CountMoves($0305d85fc2c30b4d$var$etmMetric);
+var $0305d85fc2c30b4d$export$6990ae67f1cd4a6c = $0305d85fc2c30b4d$var$countMovesInstance.traverseAlg.bind($0305d85fc2c30b4d$var$countMovesETMInstance);
+var $0305d85fc2c30b4d$var$countQuantumMovesInstance = new $0305d85fc2c30b4d$var$CountMoves($0305d85fc2c30b4d$var$quantumMetric);
+var $0305d85fc2c30b4d$export$5ea07e609cc3aa95 = $0305d85fc2c30b4d$var$countQuantumMovesInstance.traverseAlg.bind($0305d85fc2c30b4d$var$countQuantumMovesInstance);
+// src/cubing/notation/CountAnimatedLeaves.ts
+var $0305d85fc2c30b4d$var$CountAnimatedLeaves = class extends (0, $kQo6d.TraversalUp) {
+    traverseAlg(alg) {
+        let total = 0;
+        for (const part of alg.units())total += this.traverseUnit(part);
+        return total;
+    }
+    traverseGrouping(grouping) {
+        return this.traverseAlg(grouping.alg) * Math.abs(grouping.amount);
+    }
+    traverseMove(_move) {
+        return 1;
+    }
+    traverseCommutator(commutator) {
+        return 2 * (this.traverseAlg(commutator.A) + this.traverseAlg(commutator.B));
+    }
+    traverseConjugate(conjugate) {
+        return 2 * this.traverseAlg(conjugate.A) + this.traverseAlg(conjugate.B);
+    }
+    traversePause(_pause) {
+        return 1;
+    }
+    traverseNewline(_newline) {
+        return 0;
+    }
+    traverseLineComment(_comment) {
+        return 0;
+    }
+};
+var $0305d85fc2c30b4d$var$countAnimatedLeavesInstance = new $0305d85fc2c30b4d$var$CountAnimatedLeaves();
+var $0305d85fc2c30b4d$export$d5ea806fd922b359 = $0305d85fc2c30b4d$var$countAnimatedLeavesInstance.traverseAlg.bind($0305d85fc2c30b4d$var$countAnimatedLeavesInstance);
+
+
+
+var $d2uOu = parcelRequire("d2uOu");
+
+var $8IKgU = parcelRequire("8IKgU");
+parcelRequire("kl6cX");
+
+var $kQo6d = parcelRequire("kQo6d");
+
+var $hJBlP = parcelRequire("hJBlP");
+// src/cubing/twisty/controllers/RenderScheduler.ts
+var $8e08190ac5cfc1c3$var$RenderScheduler = class {
+    constructor(callback){
+        this.callback = callback;
+        this.animFrameID = null;
+        this.animFrame = this.animFrameWrapper.bind(this);
+    }
+    requestIsPending() {
+        return !!this.animFrameID;
+    }
+    requestAnimFrame() {
+        if (!this.animFrameID) this.animFrameID = requestAnimationFrame(this.animFrame);
+    }
+    cancelAnimFrame() {
+        if (this.animFrameID) {
+            cancelAnimationFrame(this.animFrameID);
+            this.animFrameID = 0;
+        }
+    }
+    animFrameWrapper(timestamp) {
+        this.animFrameID = 0;
+        this.callback(timestamp);
+    }
+};
+// src/cubing/twisty/controllers/AnimationTypes.ts
+function $8e08190ac5cfc1c3$var$directionScalar(direction) {
+    return direction;
+}
+// src/cubing/twisty/model/helpers.ts
+function $8e08190ac5cfc1c3$var$arrayEquals(a, b) {
+    if (a === b) return true;
+    if (a.length !== b.length) return false;
+    for(let i = 0; i < a.length; i++){
+        if (a[i] !== b[i]) return false;
+    }
+    return true;
+}
+function $8e08190ac5cfc1c3$var$arrayEqualsCompare(a, b, compare) {
+    if (a === b) return true;
+    if (a.length !== b.length) return false;
+    for(let i = 0; i < a.length; i++){
+        if (!compare(a[i], b[i])) return false;
+    }
+    return true;
+}
+function $8e08190ac5cfc1c3$var$mod(v, m, offset = 0) {
+    return (v % m + m + offset) % m - offset;
+}
+function $8e08190ac5cfc1c3$var$modIntoRange(v, rangeMin, rangeMax) {
+    return $8e08190ac5cfc1c3$var$mod(v - rangeMin, rangeMax - rangeMin) + rangeMin;
+}
+// src/cubing/twisty/controllers/TwistyAnimationController.ts
+var $8e08190ac5cfc1c3$var$CatchUpHelper = class {
+    constructor(model){
+        this.model = model;
+        this.catchingUp = false;
+        this.pendingFrame = false;
+        this.scheduler = new $8e08190ac5cfc1c3$var$RenderScheduler(this.animFrame.bind(this));
+        this.catchUpMs = 500;
+        this.lastTimestamp = 0;
+    }
+    start() {
+        if (!this.catchingUp) this.lastTimestamp = performance.now();
+        this.catchingUp = true;
+        this.pendingFrame = true;
+        this.scheduler.requestAnimFrame();
+    }
+    stop() {
+        this.catchingUp = false;
+        this.scheduler.cancelAnimFrame();
+    }
+    animFrame(timestamp) {
+        this.scheduler.requestAnimFrame();
+        const delta = (timestamp - this.lastTimestamp) / this.catchUpMs;
+        this.lastTimestamp = timestamp;
+        this.model.catchUpMove.set((async ()=>{
+            const previousCatchUpMove = await this.model.catchUpMove.get();
+            if (previousCatchUpMove.move === null) return previousCatchUpMove;
+            const amount = previousCatchUpMove.amount + delta;
+            if (amount >= 1) {
+                this.pendingFrame = true;
+                this.stop();
+                this.model.timestampRequest.set("end");
+                return {
+                    move: null,
+                    amount: 0
+                };
+            }
+            this.pendingFrame = false;
+            return {
+                move: previousCatchUpMove.move,
+                amount: amount
+            };
+        })());
+    }
+};
+var $8e08190ac5cfc1c3$var$_effectiveTimestampMilliseconds, $8e08190ac5cfc1c3$var$effectiveTimestampMilliseconds_fn, $8e08190ac5cfc1c3$var$_animFrameEffectiveTimestampStaleDropper;
+var $8e08190ac5cfc1c3$var$TwistyAnimationController = class {
+    constructor(model, delegate){
+        this.delegate = delegate;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_effectiveTimestampMilliseconds);
+        this.playing = false;
+        this.direction = 1 /* Forwards */ ;
+        this.lastDatestamp = 0;
+        this.scheduler = new $8e08190ac5cfc1c3$var$RenderScheduler(this.animFrame.bind(this));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_animFrameEffectiveTimestampStaleDropper, new (0, $8JBxj.StaleDropper)());
+        this.model = model;
+        this.lastTimestampPromise = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_effectiveTimestampMilliseconds, $8e08190ac5cfc1c3$var$effectiveTimestampMilliseconds_fn).call(this);
+        this.model.playingInfo.addFreshListener(this.onPlayingProp.bind(this));
+        this.catchUpHelper = new $8e08190ac5cfc1c3$var$CatchUpHelper(this.model);
+        this.model.catchUpMove.addFreshListener(this.onCatchUpMoveProp.bind(this));
+    }
+    async onPlayingProp(playingInfo) {
+        if (playingInfo.playing !== this.playing) playingInfo.playing ? this.play(playingInfo) : this.pause();
+    }
+    async onCatchUpMoveProp(catchUpMove) {
+        const catchingUp = catchUpMove.move !== null;
+        if (catchingUp !== this.catchUpHelper.catchingUp) catchingUp ? this.catchUpHelper.start() : this.catchUpHelper.stop();
+        this.scheduler.requestAnimFrame();
+    }
+    jumpToStart(options) {
+        this.model.timestampRequest.set("start");
+        this.pause();
+        if (options?.flash) this.delegate.flash();
+    }
+    jumpToEnd(options) {
+        this.model.timestampRequest.set("end");
+        this.pause();
+        if (options?.flash) this.delegate.flash();
+    }
+    playPause() {
+        if (this.playing) this.pause();
+        else this.play();
+    }
+    async play(options) {
+        const direction = options?.direction ?? 1 /* Forwards */ ;
+        const coarseTimelineInfo = await this.model.coarseTimelineInfo.get();
+        if (options?.autoSkipToOtherEndIfStartingAtBoundary ?? true) {
+            if (direction === 1 /* Forwards */  && coarseTimelineInfo.atEnd) {
+                this.model.timestampRequest.set("start");
+                this.delegate.flash();
+            }
+            if (direction === -1 /* Backwards */  && coarseTimelineInfo.atStart) {
+                this.model.timestampRequest.set("end");
+                this.delegate.flash();
+            }
+        }
+        this.model.playingInfo.set({
+            playing: true,
+            direction: direction,
+            untilBoundary: options?.untilBoundary ?? "entire-timeline" /* EntireTimeline */ ,
+            loop: options?.loop ?? false
+        });
+        this.playing = true;
+        this.lastDatestamp = performance.now();
+        this.lastTimestampPromise = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_effectiveTimestampMilliseconds, $8e08190ac5cfc1c3$var$effectiveTimestampMilliseconds_fn).call(this);
+        this.scheduler.requestAnimFrame();
+    }
+    pause() {
+        this.playing = false;
+        this.scheduler.cancelAnimFrame();
+        this.model.playingInfo.set({
+            playing: false,
+            untilBoundary: "entire-timeline" /* EntireTimeline */ 
+        });
+    }
+    async animFrame(frameDatestamp) {
+        if (this.playing) this.scheduler.requestAnimFrame();
+        const lastDatestamp = this.lastDatestamp;
+        const freshenerResult = await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_animFrameEffectiveTimestampStaleDropper).queue(Promise.all([
+            this.model.playingInfo.get(),
+            this.lastTimestampPromise,
+            this.model.timeRange.get(),
+            this.model.tempoScale.get(),
+            this.model.currentMoveInfo.get()
+        ]));
+        const [playingInfo, lastTimestamp, timeRange, tempoScale, currentMoveInfo] = freshenerResult;
+        if (!playingInfo.playing) {
+            this.playing = false;
+            return;
+        }
+        let end = currentMoveInfo.earliestEnd;
+        if (currentMoveInfo.currentMoves.length === 0 || playingInfo.untilBoundary === "entire-timeline" /* EntireTimeline */ ) end = timeRange.end;
+        let start = currentMoveInfo.latestStart;
+        if (currentMoveInfo.currentMoves.length === 0 || playingInfo.untilBoundary === "entire-timeline" /* EntireTimeline */ ) start = timeRange.start;
+        let delta = (frameDatestamp - lastDatestamp) * $8e08190ac5cfc1c3$var$directionScalar(this.direction) * tempoScale;
+        delta = Math.max(delta, 1);
+        delta *= playingInfo.direction;
+        let newTimestamp = lastTimestamp + delta;
+        let newSmartTimestampRequest = null;
+        if (newTimestamp >= end) {
+            if (playingInfo.loop) newTimestamp = $8e08190ac5cfc1c3$var$modIntoRange(newTimestamp, timeRange.start, timeRange.end);
+            else {
+                if (newTimestamp === timeRange.end) newSmartTimestampRequest = "end";
+                else newTimestamp = end;
+                this.playing = false;
+                this.model.playingInfo.set({
+                    playing: false
+                });
+            }
+        } else if (newTimestamp <= start) {
+            if (playingInfo.loop) newTimestamp = $8e08190ac5cfc1c3$var$modIntoRange(newTimestamp, timeRange.start, timeRange.end);
+            else {
+                if (newTimestamp === timeRange.start) newSmartTimestampRequest = "start";
+                else newTimestamp = start;
+                this.playing = false;
+                this.model.playingInfo.set({
+                    playing: false
+                });
+            }
+        }
+        this.lastDatestamp = frameDatestamp;
+        this.lastTimestampPromise = Promise.resolve(newTimestamp);
+        this.model.timestampRequest.set(newSmartTimestampRequest ?? newTimestamp);
+    }
+};
+$8e08190ac5cfc1c3$var$_effectiveTimestampMilliseconds = new WeakSet();
+$8e08190ac5cfc1c3$var$effectiveTimestampMilliseconds_fn = async function() {
+    return (await this.model.detailedTimelineInfo.get()).timestamp;
+};
+$8e08190ac5cfc1c3$var$_animFrameEffectiveTimestampStaleDropper = new WeakMap();
+// src/cubing/twisty/controllers/TwistyPlayerController.ts
+var $8e08190ac5cfc1c3$var$TwistyPlayerController = class {
+    constructor(model, delegate){
+        this.model = model;
+        this.animationController = new $8e08190ac5cfc1c3$var$TwistyAnimationController(model, delegate);
+    }
+    jumpToStart(options) {
+        this.animationController.jumpToStart(options);
+    }
+    jumpToEnd(options) {
+        this.animationController.jumpToEnd(options);
+    }
+    togglePlay(play) {
+        if (typeof play === "undefined") this.animationController.playPause();
+        play ? this.animationController.play() : this.animationController.pause();
+    }
+    async visitTwizzleLink() {
+        const a = document.createElement("a");
+        a.href = await this.model.twizzleLink();
+        a.target = "_blank";
+        a.click();
+    }
+};
+// src/cubing/twisty/model/props/viewer/ControlPanelProp.ts
+var $8e08190ac5cfc1c3$var$controlsLocations = {
+    "bottom-row": true,
+    "none": true
+};
+var $8e08190ac5cfc1c3$var$ControlPanelProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/views/node-custom-element-shims.ts
+var $8e08190ac5cfc1c3$var$HTMLElementStub = class {
+};
+var $8e08190ac5cfc1c3$var$HTMLElementShim;
+if (globalThis.HTMLElement) $8e08190ac5cfc1c3$var$HTMLElementShim = HTMLElement;
+else $8e08190ac5cfc1c3$var$HTMLElementShim = $8e08190ac5cfc1c3$var$HTMLElementStub;
+var $8e08190ac5cfc1c3$var$CustomElementsStub = class {
+    define() {}
+};
+var $8e08190ac5cfc1c3$var$customElementsShim;
+if (globalThis.customElements) $8e08190ac5cfc1c3$var$customElementsShim = customElements;
+else $8e08190ac5cfc1c3$var$customElementsShim = new $8e08190ac5cfc1c3$var$CustomElementsStub();
+// src/cubing/twisty/views/ManagedCustomElement.ts
+var $8e08190ac5cfc1c3$var$CSSSource = class {
+    constructor(sourceText){
+        this.sourceText = sourceText;
+    }
+    getAsString() {
+        return this.sourceText;
+    }
+};
+var $8e08190ac5cfc1c3$var$_cssSourceMap;
+var $8e08190ac5cfc1c3$var$ManagedCustomElement = class extends $8e08190ac5cfc1c3$var$HTMLElementShim {
+    constructor(options){
+        super();
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cssSourceMap, /* @__PURE__ */ new Map());
+        this.shadow = this.attachShadow({
+            mode: options?.mode ?? "closed"
+        });
+        this.contentWrapper = document.createElement("div");
+        this.contentWrapper.classList.add("wrapper");
+        this.shadow.appendChild(this.contentWrapper);
+    }
+    addCSS(cssSource) {
+        const existing = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssSourceMap).get(cssSource);
+        if (existing) return existing;
+        const cssElem = document.createElement("style");
+        cssElem.textContent = cssSource.getAsString();
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssSourceMap).set(cssSource, cssElem);
+        this.shadow.appendChild(cssElem);
+        return cssElem;
+    }
+    removeCSS(cssSource) {
+        const cssElem = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssSourceMap).get(cssSource);
+        if (!cssElem) return;
+        this.shadow.removeChild(cssElem);
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssSourceMap).delete(cssSource);
+    }
+    addElement(element) {
+        return this.contentWrapper.appendChild(element);
+    }
+    prependElement(element) {
+        this.contentWrapper.prepend(element);
+    }
+    removeElement(element) {
+        return this.contentWrapper.removeChild(element);
+    }
+};
+$8e08190ac5cfc1c3$var$_cssSourceMap = new WeakMap();
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-managed-custom-element", $8e08190ac5cfc1c3$var$ManagedCustomElement);
+// src/cubing/twisty/views/TwistyViewerWrapper.css.ts
+var $8e08190ac5cfc1c3$var$twistyViewerWrapperCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+:host {
+  width: 384px;
+  height: 256px;
+  display: grid;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+}
+
+.wrapper > * {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.wrapper.back-view-side-by-side {
+  grid-template-columns: 1fr 1fr;
+}
+
+.wrapper.back-view-top-right {
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 3fr;
+}
+
+.wrapper.back-view-top-right > :nth-child(1) {
+  grid-row: 1 / 3;
+  grid-column: 1 / 3;
+}
+
+.wrapper.back-view-top-right > :nth-child(2) {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+}
+`);
+// src/cubing/twisty/views/2D/Twisty2DPuzzle.css.ts
+var $8e08190ac5cfc1c3$var$twisty2DSVGCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+:host {
+  width: 384px;
+  height: 256px;
+  display: grid;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+}
+
+.svg-wrapper,
+twisty-2d-svg,
+svg {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  min-height: 0;
+}
+
+svg {
+  animation: fade-in 0.25s ease-in;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+`);
+// src/cubing/twisty/views/2D/KPuzzleSVGWrapper.ts
+var $8e08190ac5cfc1c3$var$xmlns = "http://www.w3.org/2000/svg";
+var $8e08190ac5cfc1c3$var$svgCounter = 0;
+function $8e08190ac5cfc1c3$var$nextSVGID() {
+    $8e08190ac5cfc1c3$var$svgCounter += 1;
+    return "svg" + $8e08190ac5cfc1c3$var$svgCounter.toString();
+}
+var $8e08190ac5cfc1c3$var$colorMaps = {
+    dim: {
+        "white": "#dddddd",
+        "orange": "#884400",
+        "limegreen": "#008800",
+        "red": "#660000",
+        "rgb(34, 102, 255)": "#000088",
+        "yellow": "#888800"
+    },
+    oriented: {
+        "white": "#44ddcc",
+        "orange": "#44ddcc",
+        "limegreen": "#44ddcc",
+        "red": "#44ddcc",
+        "rgb(34, 102, 255)": "#44ddcc",
+        "yellow": "#44ddcc"
+    },
+    ignored: {
+        "white": "#444444",
+        "orange": "#444444",
+        "limegreen": "#444444",
+        "red": "#444444",
+        "rgb(34, 102, 255)": "#444444",
+        "yellow": "#444444"
+    },
+    invisible: {
+        "white": "#00000000",
+        "orange": "#00000000",
+        "limegreen": "#00000000",
+        "red": "#00000000",
+        "rgb(34, 102, 255)": "#00000000",
+        "yellow": "#00000000"
+    }
+};
+var $8e08190ac5cfc1c3$export$1c51709df4cf438 = class {
+    constructor(kpuzzle, svgSource, experimentalAppearance){
+        this.kpuzzle = kpuzzle;
+        this.originalColors = {};
+        this.gradients = {};
+        if (!svgSource) throw new Error(`No SVG definition for puzzle type: ${kpuzzle.name()}`);
+        this.svgID = $8e08190ac5cfc1c3$var$nextSVGID();
+        this.wrapperElement = document.createElement("div");
+        this.wrapperElement.classList.add("svg-wrapper");
+        this.wrapperElement.innerHTML = svgSource;
+        const svgElem = this.wrapperElement.querySelector("svg");
+        if (!svgElem) throw new Error("Could not get SVG element");
+        this.svgElement = svgElem;
+        if ($8e08190ac5cfc1c3$var$xmlns !== svgElem.namespaceURI) throw new Error("Unexpected XML namespace");
+        svgElem.style.maxWidth = "100%";
+        svgElem.style.maxHeight = "100%";
+        this.gradientDefs = document.createElementNS($8e08190ac5cfc1c3$var$xmlns, "defs");
+        svgElem.insertBefore(this.gradientDefs, svgElem.firstChild);
+        for(const orbitName in kpuzzle.definition.orbits){
+            const orbitDefinition = kpuzzle.definition.orbits[orbitName];
+            for(let idx = 0; idx < orbitDefinition.numPieces; idx++)for(let orientation = 0; orientation < orbitDefinition.numOrientations; orientation++){
+                const id = this.elementID(orbitName, idx, orientation);
+                const elem = this.elementByID(id);
+                let originalColor = elem.style.fill;
+                if (experimentalAppearance) (()=>{
+                    const a = experimentalAppearance.orbits;
+                    if (!a) return;
+                    const orbitAppearance = a[orbitName];
+                    if (!orbitAppearance) return;
+                    const pieceAppearance = orbitAppearance.pieces[idx];
+                    if (!pieceAppearance) return;
+                    const faceletAppearance = pieceAppearance.facelets[orientation];
+                    if (!faceletAppearance) return;
+                    const appearance = typeof faceletAppearance === "string" ? faceletAppearance : faceletAppearance?.appearance;
+                    const colorMap = $8e08190ac5cfc1c3$var$colorMaps[appearance];
+                    if (colorMap) originalColor = colorMap[originalColor];
+                })();
+                else originalColor = elem.style.fill;
+                this.originalColors[id] = originalColor;
+                this.gradients[id] = this.newGradient(id, originalColor);
+                this.gradientDefs.appendChild(this.gradients[id]);
+                elem.setAttribute("style", `fill: url(#grad-${this.svgID}-${id})`);
+            }
+        }
+    }
+    drawState(state, nextState, fraction) {
+        this.draw(state, nextState, fraction);
+    }
+    draw(state, nextState, fraction) {
+        const transformation = state.experimentalToTransformation();
+        const nextTransformation = nextState?.experimentalToTransformation();
+        if (!transformation) throw new Error("Distinguishable pieces are not handled for SVG yet!");
+        for(const orbitName in transformation.kpuzzle.definition.orbits){
+            const orbitDefinition = transformation.kpuzzle.definition.orbits[orbitName];
+            const curTransformationOrbit = transformation.transformationData[orbitName];
+            const nextTransformationOrbit = nextTransformation ? nextTransformation.transformationData[orbitName] : null;
+            for(let idx = 0; idx < orbitDefinition.numPieces; idx++)for(let orientation = 0; orientation < orbitDefinition.numOrientations; orientation++){
+                const id = this.elementID(orbitName, idx, orientation);
+                const fromCur = this.elementID(orbitName, curTransformationOrbit.permutation[idx], (orbitDefinition.numOrientations - curTransformationOrbit.orientation[idx] + orientation) % orbitDefinition.numOrientations);
+                let singleColor = false;
+                if (nextTransformationOrbit) {
+                    const fromNext = this.elementID(orbitName, nextTransformationOrbit.permutation[idx], (orbitDefinition.numOrientations - nextTransformationOrbit.orientation[idx] + orientation) % orbitDefinition.numOrientations);
+                    if (fromCur === fromNext) singleColor = true;
+                    fraction = fraction || 0;
+                    const easedBackwardsPercent = 100 * (1 - fraction * fraction * (2 - fraction * fraction));
+                    this.gradients[id].children[0].setAttribute("stop-color", this.originalColors[fromCur]);
+                    this.gradients[id].children[1].setAttribute("stop-color", this.originalColors[fromCur]);
+                    this.gradients[id].children[1].setAttribute("offset", `${Math.max(easedBackwardsPercent - 5, 0)}%`);
+                    this.gradients[id].children[2].setAttribute("offset", `${Math.max(easedBackwardsPercent - 5, 0)}%`);
+                    this.gradients[id].children[3].setAttribute("offset", `${easedBackwardsPercent}%`);
+                    this.gradients[id].children[4].setAttribute("offset", `${easedBackwardsPercent}%`);
+                    this.gradients[id].children[4].setAttribute("stop-color", this.originalColors[fromNext]);
+                    this.gradients[id].children[5].setAttribute("stop-color", this.originalColors[fromNext]);
+                } else singleColor = true;
+                if (singleColor) {
+                    this.gradients[id].children[0].setAttribute("stop-color", this.originalColors[fromCur]);
+                    this.gradients[id].children[1].setAttribute("stop-color", this.originalColors[fromCur]);
+                    this.gradients[id].children[1].setAttribute("offset", `100%`);
+                    this.gradients[id].children[2].setAttribute("offset", `100%`);
+                    this.gradients[id].children[3].setAttribute("offset", `100%`);
+                    this.gradients[id].children[4].setAttribute("offset", `100%`);
+                }
+            }
+        }
+    }
+    newGradient(id, originalColor) {
+        const grad = document.createElementNS($8e08190ac5cfc1c3$var$xmlns, "radialGradient");
+        grad.setAttribute("id", `grad-${this.svgID}-${id}`);
+        grad.setAttribute("r", `70.7107%`);
+        const stopDefs = [
+            {
+                offset: 0,
+                color: originalColor
+            },
+            {
+                offset: 0,
+                color: originalColor
+            },
+            {
+                offset: 0,
+                color: "black"
+            },
+            {
+                offset: 0,
+                color: "black"
+            },
+            {
+                offset: 0,
+                color: originalColor
+            },
+            {
+                offset: 100,
+                color: originalColor
+            }
+        ];
+        for (const stopDef of stopDefs){
+            const stop = document.createElementNS($8e08190ac5cfc1c3$var$xmlns, "stop");
+            stop.setAttribute("offset", `${stopDef.offset}%`);
+            stop.setAttribute("stop-color", stopDef.color);
+            stop.setAttribute("stop-opacity", "1");
+            grad.appendChild(stop);
+        }
+        return grad;
+    }
+    elementID(orbitName, idx, orientation) {
+        return orbitName + "-l" + idx + "-o" + orientation;
+    }
+    elementByID(id) {
+        return this.wrapperElement.querySelector("#" + id);
+    }
+};
+// src/cubing/twisty/views/2D/Twisty2DPuzzle.ts
+var $8e08190ac5cfc1c3$var$_cachedPosition, $8e08190ac5cfc1c3$var$_freshListenerManager;
+var $8e08190ac5cfc1c3$var$Twisty2DPuzzle = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(model, kpuzzle, svgSource, options, puzzleLoader){
+        super();
+        this.model = model;
+        this.kpuzzle = kpuzzle;
+        this.svgSource = svgSource;
+        this.options = options;
+        this.puzzleLoader = puzzleLoader;
+        this.scheduler = new $8e08190ac5cfc1c3$var$RenderScheduler(this.render.bind(this));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedPosition, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_freshListenerManager, new (0, $8JBxj.FreshListenerManager)());
+        this.addCSS($8e08190ac5cfc1c3$var$twisty2DSVGCSS);
+        this.resetSVG();
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager).addListener(this.model.puzzleID, (puzzleID)=>{
+            if (puzzleLoader?.id !== puzzleID) this.disconnect();
+        });
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager).addListener(this.model.legacyPosition, this.onPositionChange.bind(this));
+        if (this.options?.experimentalStickering) this.experimentalSetStickering(this.options.experimentalStickering);
+    }
+    disconnect() {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager).disconnect();
+    }
+    onPositionChange(position) {
+        try {
+            if (position.movesInProgress.length > 0) {
+                const move = position.movesInProgress[0].move;
+                let partialMove = move;
+                if (position.movesInProgress[0].direction === -1 /* Backwards */ ) partialMove = move.invert();
+                const newState = position.state.applyMove(partialMove);
+                this.svgWrapper.draw(position.state, newState, position.movesInProgress[0].fraction);
+            } else {
+                this.svgWrapper.draw(position.state);
+                (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedPosition, position);
+            }
+        } catch (e) {
+            console.warn("Bad position (this doesn't necessarily mean something is wrong). Pre-emptively disconnecting:", this.puzzleLoader?.id, e);
+            this.disconnect();
+        }
+    }
+    scheduleRender() {
+        this.scheduler.requestAnimFrame();
+    }
+    experimentalSetStickering(stickering) {
+        (async ()=>{
+            if (!this.puzzleLoader?.appearance) return;
+            const appearance = await this.puzzleLoader.appearance(stickering);
+            this.resetSVG(appearance);
+        })();
+    }
+    resetSVG(appearance) {
+        if (this.svgWrapper) this.removeElement(this.svgWrapper.wrapperElement);
+        if (!this.kpuzzle) return;
+        this.svgWrapper = new $8e08190ac5cfc1c3$export$1c51709df4cf438(this.kpuzzle, this.svgSource, appearance);
+        this.addElement(this.svgWrapper.wrapperElement);
+        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedPosition)) this.onPositionChange((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedPosition));
+    }
+    render() {}
+};
+$8e08190ac5cfc1c3$var$_cachedPosition = new WeakMap();
+$8e08190ac5cfc1c3$var$_freshListenerManager = new WeakMap();
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-2d-puzzle", $8e08190ac5cfc1c3$var$Twisty2DPuzzle);
+// src/cubing/twisty/views/2D/Twisty2DPuzzleWrapper.ts
+var $8e08190ac5cfc1c3$var$_freshListenerManager2, $8e08190ac5cfc1c3$var$_cachedTwisty2DPuzzle;
+var $8e08190ac5cfc1c3$var$Twisty2DPuzzleWrapper = class {
+    constructor(model, schedulable, puzzleLoader, effectiveVisualization){
+        this.model = model;
+        this.schedulable = schedulable;
+        this.puzzleLoader = puzzleLoader;
+        this.effectiveVisualization = effectiveVisualization;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_freshListenerManager2, new (0, $8JBxj.FreshListenerManager)());
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedTwisty2DPuzzle, null);
+        this.twisty2DPuzzle();
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager2).addListener(this.model.twistySceneModel.stickering, async (stickering)=>{
+            (await this.twisty2DPuzzle()).experimentalSetStickering(stickering);
+        });
+    }
+    disconnect() {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager2).disconnect();
+    }
+    scheduleRender() {}
+    async twisty2DPuzzle() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedTwisty2DPuzzle) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedTwisty2DPuzzle, (async ()=>{
+            const svgPromise = this.effectiveVisualization === "experimental-2D-LL" ? this.puzzleLoader.llSVG() : this.puzzleLoader.svg();
+            return new $8e08190ac5cfc1c3$var$Twisty2DPuzzle(this.model, await this.puzzleLoader.kpuzzle(), await svgPromise, {}, this.puzzleLoader);
+        })());
+    }
+};
+$8e08190ac5cfc1c3$var$_freshListenerManager2 = new WeakMap();
+$8e08190ac5cfc1c3$var$_cachedTwisty2DPuzzle = new WeakMap();
+// src/cubing/twisty/views/2D/Twisty2DSceneWrapper.ts
+var $8e08190ac5cfc1c3$var$_freshListenerManager3, $8e08190ac5cfc1c3$var$_cachedScene, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper;
+var $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(model, effectiveVisualization){
+        super();
+        this.model = model;
+        this.effectiveVisualization = effectiveVisualization;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_freshListenerManager3, new (0, $8JBxj.FreshListenerManager)());
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedScene, void 0);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper, null);
+    }
+    disconnect() {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager3).disconnect();
+    }
+    async connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$twistyViewerWrapperCSS);
+        if (this.model) (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager3).addListener(this.model.twistyPlayerModel.puzzleLoader, this.onPuzzleLoader.bind(this));
+    }
+    async scene() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedScene) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedScene, (async ()=>new (await (0, $8JBxj.THREEJS)).Scene())());
+    }
+    scheduleRender() {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper)?.scheduleRender();
+    }
+    currentTwisty2DPuzzleWrapper() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper);
+    }
+    async setCurrentTwisty2DPuzzleWrapper(twisty2DPuzzleWrapper) {
+        const old = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper);
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper, twisty2DPuzzleWrapper);
+        old?.disconnect();
+        const twisty2DPuzzlePromise = twisty2DPuzzleWrapper.twisty2DPuzzle();
+        this.contentWrapper.textContent = "";
+        this.addElement(await twisty2DPuzzlePromise);
+    }
+    async onPuzzleLoader(puzzleLoader) {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper)?.disconnect();
+        const twisty2DPuzzleWrapper = new $8e08190ac5cfc1c3$var$Twisty2DPuzzleWrapper(this.model.twistyPlayerModel, this, puzzleLoader, this.effectiveVisualization);
+        this.setCurrentTwisty2DPuzzleWrapper(twisty2DPuzzleWrapper);
+    }
+};
+$8e08190ac5cfc1c3$var$_freshListenerManager3 = new WeakMap();
+$8e08190ac5cfc1c3$var$_cachedScene = new WeakMap();
+$8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper = new WeakMap();
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-2d-scene-wrapper", $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper);
+// src/cubing/twisty/views/ClassListManager.ts
+var $8e08190ac5cfc1c3$var$_currentClassName;
+var $8e08190ac5cfc1c3$var$ClassListManager = class {
+    constructor(elem, prefix, validSuffixes){
+        this.elem = elem;
+        this.prefix = prefix;
+        this.validSuffixes = validSuffixes;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_currentClassName, null);
+    }
+    clearValue() {
+        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentClassName)) this.elem.contentWrapper.classList.remove((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentClassName));
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_currentClassName, null);
+    }
+    setValue(suffix) {
+        if (!this.validSuffixes.includes(suffix)) throw new Error(`Invalid suffix: ${suffix}`);
+        const newClassName = `${this.prefix}${suffix}`;
+        const changed = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentClassName) !== newClassName;
+        if (changed) {
+            this.clearValue();
+            this.elem.contentWrapper.classList.add(newClassName);
+            (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_currentClassName, newClassName);
+        }
+        return changed;
+    }
+};
+$8e08190ac5cfc1c3$var$_currentClassName = new WeakMap();
+// src/cubing/twisty/views/InitialValueTracker.ts
+var $8e08190ac5cfc1c3$var$_resolve;
+var $8e08190ac5cfc1c3$var$InitialValueTracker = class {
+    constructor(){
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_resolve, void 0);
+        this.promise = new Promise((resolve, reject)=>{
+            (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_resolve, resolve);
+            this.reject = reject;
+        });
+    }
+    handleNewValue(t) {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_resolve).call(this, t);
+    }
+};
+$8e08190ac5cfc1c3$var$_resolve = new WeakMap();
+// src/cubing/twisty/views/3D/Twisty3DPuzzleWrapper.ts
+var $8e08190ac5cfc1c3$var$_freshListenerManager4, $8e08190ac5cfc1c3$var$_cachedTwisty3DPuzzle;
+var $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper = class extends EventTarget {
+    constructor(model, schedulable, puzzleLoader, visualizationStrategy){
+        super();
+        this.model = model;
+        this.schedulable = schedulable;
+        this.puzzleLoader = puzzleLoader;
+        this.visualizationStrategy = visualizationStrategy;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4, new (0, $8JBxj.FreshListenerManager)());
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedTwisty3DPuzzle, null);
+        this.twisty3DPuzzle();
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addListener(this.model.puzzleLoader, (puzzleLoader2)=>{
+            if (this.puzzleLoader.id !== puzzleLoader2.id) this.disconnect();
+        });
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addListener(this.model.legacyPosition, async (position)=>{
+            try {
+                (await this.twisty3DPuzzle()).onPositionChange(position);
+                this.scheduleRender();
+            } catch (e) {
+                this.disconnect();
+            }
+        });
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addListener(this.model.twistySceneModel.hintFacelet, async (hintFaceletStyle)=>{
+            (await this.twisty3DPuzzle()).experimentalUpdateOptions({
+                hintFacelets: hintFaceletStyle === "auto" ? "floating" : hintFaceletStyle
+            });
+            this.scheduleRender();
+        });
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addListener(this.model.twistySceneModel.foundationDisplay, async (foundationDisplay)=>{
+            (await this.twisty3DPuzzle()).experimentalUpdateOptions({
+                showFoundation: foundationDisplay !== "none"
+            });
+            this.scheduleRender();
+        });
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addListener(this.model.twistySceneModel.stickering, async (stickering)=>{
+            if ("setStickering" in await this.twisty3DPuzzle()) {
+                (await this.twisty3DPuzzle()).setStickering(stickering);
+                this.scheduleRender();
+            } else if ("appearance" in this.puzzleLoader) {
+                const [twisty3D, appearancePromise] = await Promise.all([
+                    this.twisty3DPuzzle(),
+                    this.puzzleLoader.appearance(stickering ?? "full")
+                ]);
+                twisty3D.experimentalSetAppearance(appearancePromise);
+                this.scheduleRender();
+            }
+        });
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addMultiListener3([
+            this.model.twistySceneModel.stickering,
+            this.model.twistySceneModel.foundationStickerSprite,
+            this.model.twistySceneModel.hintStickerSprite
+        ], async (inputs)=>{
+            if ("experimentalUpdateTexture" in await this.twisty3DPuzzle()) {
+                (await this.twisty3DPuzzle()).experimentalUpdateTexture(inputs[0] === "picture", inputs[1], inputs[2]);
+                this.scheduleRender();
+            }
+        });
+    }
+    disconnect() {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).disconnect();
+    }
+    scheduleRender() {
+        this.schedulable.scheduleRender();
+        this.dispatchEvent(new CustomEvent("render-scheduled"));
+    }
+    async twisty3DPuzzle() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedTwisty3DPuzzle) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedTwisty3DPuzzle, (async ()=>{
+            const proxyPromise = (0, $8JBxj.proxy3D)();
+            if (this.puzzleLoader.id === "3x3x3" && this.visualizationStrategy === "Cube3D") {
+                const [foundationSprite, hintSprite, experimentalStickering] = await Promise.all([
+                    this.model.twistySceneModel.foundationStickerSprite.get(),
+                    this.model.twistySceneModel.hintStickerSprite.get(),
+                    this.model.twistySceneModel.stickering.get()
+                ]);
+                return (await proxyPromise).cube3DShim({
+                    foundationSprite: foundationSprite,
+                    hintSprite: hintSprite,
+                    experimentalStickering: experimentalStickering
+                });
+            } else {
+                const [hintFacelets, foundationSprite, hintSprite] = await Promise.all([
+                    this.model.twistySceneModel.hintFacelet.get(),
+                    this.model.twistySceneModel.foundationStickerSprite.get(),
+                    this.model.twistySceneModel.hintStickerSprite.get()
+                ]);
+                const pg3d = (await proxyPromise).pg3dShim(this.puzzleLoader, hintFacelets === "auto" ? "floating" : hintFacelets);
+                pg3d.then((p)=>p.experimentalUpdateTexture(true, foundationSprite ?? void 0, hintSprite ?? void 0));
+                return pg3d;
+            }
+        })());
+    }
+    async raycastMove(raycasterPromise, transformations) {
+        const puzzle = await this.twisty3DPuzzle();
+        if (!("experimentalGetControlTargets" in puzzle)) {
+            console.info("not PG3D! skipping raycast");
+            return;
+        }
+        const targets = puzzle.experimentalGetControlTargets();
+        const [raycaster] = await Promise.all([
+            raycasterPromise
+        ]);
+        const intersects = raycaster.intersectObjects(targets);
+        if (intersects.length > 0) {
+            const closestMove = puzzle.getClosestMoveToAxis(intersects[0].point, transformations);
+            if (closestMove) this.model.experimentalAddMove(closestMove.move, {
+                coalesce: true,
+                mod: closestMove.order
+            });
+            else console.info("Skipping move!");
+        }
+    }
+};
+$8e08190ac5cfc1c3$var$_freshListenerManager4 = new WeakMap();
+$8e08190ac5cfc1c3$var$_cachedTwisty3DPuzzle = new WeakMap();
+// src/cubing/vendor/three/examples/jsm/libs/stats.modified.module.ts
+var $8e08190ac5cfc1c3$var$performance2 = globalThis.performance;
+var $8e08190ac5cfc1c3$var$Stats = class {
+    constructor(){
+        this.mode = 0;
+        this.dom = document.createElement("div");
+        this.beginTime = ($8e08190ac5cfc1c3$var$performance2 || Date).now();
+        this.prevTime = this.beginTime;
+        this.frames = 0;
+        this.fpsPanel = this.addPanel(new $8e08190ac5cfc1c3$var$StatsPanel("FPS", "#0ff", "#002"));
+        this.msPanel = this.addPanel(new $8e08190ac5cfc1c3$var$StatsPanel("MS", "#0f0", "#020"));
+        this.memPanel = $8e08190ac5cfc1c3$var$performance2?.memory ? this.addPanel(new $8e08190ac5cfc1c3$var$StatsPanel("MB", "#f08", "#201")) : null;
+        this.REVISION = 16;
+        this.dom.style.cssText = "position:fixed;top:0;left:0;cursor:pointer;opacity:0.9;z-index:10000";
+        this.dom.addEventListener("click", (event)=>{
+            event.preventDefault();
+            this.showPanel(++this.mode % this.dom.children.length);
+        }, false);
+        this.showPanel(0);
+    }
+    addPanel(panel) {
+        this.dom.appendChild(panel.dom);
+        return panel;
+    }
+    showPanel(id) {
+        for(let i = 0; i < this.dom.children.length; i++)this.dom.children[i].style.display = i === id ? "block" : "none";
+        this.mode = id;
+    }
+    begin() {
+        this.beginTime = ($8e08190ac5cfc1c3$var$performance2 || Date).now();
+    }
+    end() {
+        this.frames++;
+        const time = ($8e08190ac5cfc1c3$var$performance2 || Date).now();
+        this.msPanel.update(time - this.beginTime, 200);
+        if (time >= this.prevTime + 1e3) {
+            this.fpsPanel.update(this.frames * 1e3 / (time - this.prevTime), 100);
+            this.prevTime = time;
+            this.frames = 0;
+            if (this.memPanel) {
+                const memory = $8e08190ac5cfc1c3$var$performance2.memory;
+                this.memPanel.update(memory.usedJSHeapSize / 1048576, memory.jsHeapSizeLimit / 1048576);
+            }
+        }
+        return time;
+    }
+    update() {
+        this.beginTime = this.end();
+    }
+};
+var $8e08190ac5cfc1c3$var$PR = Math.round(globalThis?.window?.devicePixelRatio ?? 1);
+var $8e08190ac5cfc1c3$var$WIDTH = 80 * $8e08190ac5cfc1c3$var$PR;
+var $8e08190ac5cfc1c3$var$HEIGHT = 48 * $8e08190ac5cfc1c3$var$PR;
+var $8e08190ac5cfc1c3$var$TEXT_X = 3 * $8e08190ac5cfc1c3$var$PR;
+var $8e08190ac5cfc1c3$var$TEXT_Y = 2 * $8e08190ac5cfc1c3$var$PR;
+var $8e08190ac5cfc1c3$var$GRAPH_X = 3 * $8e08190ac5cfc1c3$var$PR;
+var $8e08190ac5cfc1c3$var$GRAPH_Y = 15 * $8e08190ac5cfc1c3$var$PR;
+var $8e08190ac5cfc1c3$var$GRAPH_WIDTH = 74 * $8e08190ac5cfc1c3$var$PR;
+var $8e08190ac5cfc1c3$var$GRAPH_HEIGHT = 30 * $8e08190ac5cfc1c3$var$PR;
+var $8e08190ac5cfc1c3$var$StatsPanel = class {
+    constructor(name, fg, bg){
+        this.name = name;
+        this.fg = fg;
+        this.bg = bg;
+        this.min = Infinity;
+        this.max = 0;
+        this.dom = document.createElement("canvas");
+        this.context = this.dom.getContext("2d");
+        this.dom.width = $8e08190ac5cfc1c3$var$WIDTH;
+        this.dom.height = $8e08190ac5cfc1c3$var$HEIGHT;
+        this.dom.style.cssText = "width:80px;height:48px";
+        this.context.font = `bold ${9 * $8e08190ac5cfc1c3$var$PR}px Helvetica,Arial,sans-serif`;
+        this.context.textBaseline = "top";
+        this.context.fillStyle = bg;
+        this.context.fillRect(0, 0, $8e08190ac5cfc1c3$var$WIDTH, $8e08190ac5cfc1c3$var$HEIGHT);
+        this.context.fillStyle = fg;
+        this.context.fillText(name, $8e08190ac5cfc1c3$var$TEXT_X, $8e08190ac5cfc1c3$var$TEXT_Y);
+        this.context.fillRect($8e08190ac5cfc1c3$var$GRAPH_X, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$GRAPH_WIDTH, $8e08190ac5cfc1c3$var$GRAPH_HEIGHT);
+        this.context.fillStyle = bg;
+        this.context.globalAlpha = 0.9;
+        this.context.fillRect($8e08190ac5cfc1c3$var$GRAPH_X, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$GRAPH_WIDTH, $8e08190ac5cfc1c3$var$GRAPH_HEIGHT);
+    }
+    update(value, maxValue) {
+        this.min = Math.min(this.min, value);
+        this.max = Math.max(this.max, value);
+        this.context.fillStyle = this.bg;
+        this.context.globalAlpha = 1;
+        this.context.fillRect(0, 0, $8e08190ac5cfc1c3$var$WIDTH, $8e08190ac5cfc1c3$var$GRAPH_Y);
+        this.context.fillStyle = this.fg;
+        this.context.fillText(Math.round(value) + " " + this.name + " (" + Math.round(this.min) + "-" + Math.round(this.max) + ")", $8e08190ac5cfc1c3$var$TEXT_X, $8e08190ac5cfc1c3$var$TEXT_Y);
+        this.context.drawImage(this.dom, $8e08190ac5cfc1c3$var$GRAPH_X + $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$GRAPH_WIDTH - $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_HEIGHT, $8e08190ac5cfc1c3$var$GRAPH_X, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$GRAPH_WIDTH - $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_HEIGHT);
+        this.context.fillRect($8e08190ac5cfc1c3$var$GRAPH_X + $8e08190ac5cfc1c3$var$GRAPH_WIDTH - $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_HEIGHT);
+        this.context.fillStyle = this.bg;
+        this.context.globalAlpha = 0.9;
+        this.context.fillRect($8e08190ac5cfc1c3$var$GRAPH_X + $8e08190ac5cfc1c3$var$GRAPH_WIDTH - $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$PR, Math.round((1 - value / maxValue) * $8e08190ac5cfc1c3$var$GRAPH_HEIGHT));
+    }
+};
+// src/cubing/twisty/views/canvas.ts
+var $8e08190ac5cfc1c3$var$globalPixelRatioOverride = null;
+function $8e08190ac5cfc1c3$var$pixelRatio() {
+    return $8e08190ac5cfc1c3$var$globalPixelRatioOverride ?? (devicePixelRatio || 1);
+}
+// src/cubing/twisty/views/3D/Twisty3DVantage.css.ts
+var $8e08190ac5cfc1c3$var$twisty3DVantageCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+:host {
+  width: 384px;
+  height: 256px;
+  display: grid;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+  place-content: center;
+  contain: strict;
+}
+
+.loading {
+  width: 4em;
+  height: 4em;
+  border-radius: 2.5em;
+  border: 0.5em solid rgba(0, 0, 0, 0);
+  border-top: 0.5em solid rgba(0, 0, 0, 0.7);
+  border-right: 0.5em solid rgba(0, 0, 0, 0.7);
+  animation: fade-in-delayed 4s, rotate 1s linear infinite;
+}
+
+@keyframes fade-in-delayed {
+  0% { opacity: 0; }
+  25% {opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* TODO: This is due to stats hack. Replace with \`canvas\`. */
+.wrapper > canvas {
+  max-width: 100%;
+  max-height: 100%;
+  animation: fade-in 0.25s ease-in;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.wrapper.invisible {
+  opacity: 0;
+}
+
+.wrapper.drag-input-enabled > canvas {
+  cursor: grab;
+}
+
+.wrapper.drag-input-enabled > canvas:active {
+  cursor: grabbing;
+}
+`);
+// src/cubing/twisty/views/3D/DragTracker.ts
+var $8e08190ac5cfc1c3$var$MOVEMENT_EPSILON = 0.1;
+var $8e08190ac5cfc1c3$var$_dragInfoMap, $8e08190ac5cfc1c3$var$_targetListeners, $8e08190ac5cfc1c3$var$_lazyListenersRegistered, $8e08190ac5cfc1c3$var$_registerLazyListeners, $8e08190ac5cfc1c3$var$registerLazyListeners_fn, $8e08190ac5cfc1c3$var$_clear, $8e08190ac5cfc1c3$var$clear_fn, $8e08190ac5cfc1c3$var$_trackDrag, $8e08190ac5cfc1c3$var$trackDrag_fn;
+var $8e08190ac5cfc1c3$var$DragTracker = class extends EventTarget {
+    constructor(target){
+        super();
+        this.target = target;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_registerLazyListeners);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_clear);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_trackDrag);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_dragInfoMap, /* @__PURE__ */ new Map());
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_targetListeners, /* @__PURE__ */ new Map());
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_lazyListenersRegistered, false);
+    }
+    start() {
+        this.addTargetListener("pointerdown", this.onPointerDown.bind(this));
+        this.addTargetListener("contextmenu", (e)=>{
+            e.preventDefault();
+        });
+        this.addTargetListener("touchmove", (e)=>e.preventDefault());
+        this.addTargetListener("dblclick", (e)=>e.preventDefault());
+    }
+    stop() {
+        for (const [eventType, listener] of (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_targetListeners).entries())this.target.removeEventListener(eventType, listener);
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_targetListeners).clear();
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_lazyListenersRegistered, false);
+    }
+    addTargetListener(eventType, listener) {
+        if (!(0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_targetListeners).has(eventType)) {
+            this.target.addEventListener(eventType, listener);
+            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_targetListeners).set(eventType, listener);
+        }
+    }
+    onPointerDown(e) {
+        (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_registerLazyListeners, $8e08190ac5cfc1c3$var$registerLazyListeners_fn).call(this);
+        const newDragInfo = {
+            attachedInfo: {},
+            hasMoved: false,
+            lastClientX: e.clientX,
+            lastClientY: e.clientY,
+            lastTimeStamp: e.timeStamp
+        };
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_dragInfoMap).set(e.pointerId, newDragInfo);
+        this.target.setPointerCapture(e.pointerId);
+    }
+    onPointerMove(e) {
+        const movementInfo = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_trackDrag, $8e08190ac5cfc1c3$var$trackDrag_fn).call(this, e).movementInfo;
+        if (movementInfo) {
+            e.preventDefault();
+            this.dispatchEvent(new CustomEvent("move", {
+                detail: movementInfo
+            }));
+        }
+    }
+    onPointerUp(e) {
+        const trackDragResult = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_trackDrag, $8e08190ac5cfc1c3$var$trackDrag_fn).call(this, e);
+        const existing = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_dragInfoMap).get(e.pointerId);
+        (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_clear, $8e08190ac5cfc1c3$var$clear_fn).call(this, e);
+        this.target.releasePointerCapture(e.pointerId);
+        let event;
+        if (trackDragResult.hasMoved) event = new CustomEvent("up", {
+            detail: {
+                attachedInfo: existing.attachedInfo
+            }
+        });
+        else {
+            const { altKey: altKey , ctrlKey: ctrlKey , metaKey: metaKey , shiftKey: shiftKey  } = e;
+            event = new CustomEvent("press", {
+                detail: {
+                    normalizedX: e.offsetX / this.target.offsetWidth * 2 - 1,
+                    normalizedY: 1 - e.offsetY / this.target.offsetHeight * 2,
+                    rightClick: !!(e.button & 2),
+                    keys: {
+                        altKey: altKey,
+                        ctrlOrMetaKey: ctrlKey || metaKey,
+                        shiftKey: shiftKey
+                    }
+                }
+            });
+        }
+        this.dispatchEvent(event);
+    }
+};
+$8e08190ac5cfc1c3$var$_dragInfoMap = new WeakMap();
+$8e08190ac5cfc1c3$var$_targetListeners = new WeakMap();
+$8e08190ac5cfc1c3$var$_lazyListenersRegistered = new WeakMap();
+$8e08190ac5cfc1c3$var$_registerLazyListeners = new WeakSet();
+$8e08190ac5cfc1c3$var$registerLazyListeners_fn = function() {
+    if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_lazyListenersRegistered)) return;
+    this.addTargetListener("pointermove", this.onPointerMove.bind(this));
+    this.addTargetListener("pointerup", this.onPointerUp.bind(this));
+    (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_lazyListenersRegistered, true);
+};
+$8e08190ac5cfc1c3$var$_clear = new WeakSet();
+$8e08190ac5cfc1c3$var$clear_fn = function(e) {
+    (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_dragInfoMap).delete(e.pointerId);
+};
+$8e08190ac5cfc1c3$var$_trackDrag = new WeakSet();
+$8e08190ac5cfc1c3$var$trackDrag_fn = function(e) {
+    const existing = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_dragInfoMap).get(e.pointerId);
+    if (!existing) return {
+        movementInfo: null,
+        hasMoved: false
+    };
+    let movementInfo;
+    if ((e.movementX ?? 0) !== 0 || (e.movementY ?? 0) !== 0) movementInfo = {
+        attachedInfo: existing.attachedInfo,
+        movementX: e.movementX,
+        movementY: e.movementY,
+        elapsedMs: e.timeStamp - existing.lastTimeStamp
+    };
+    else movementInfo = {
+        attachedInfo: existing.attachedInfo,
+        movementX: e.clientX - existing.lastClientX,
+        movementY: e.clientY - existing.lastClientY,
+        elapsedMs: e.timeStamp - existing.lastTimeStamp
+    };
+    existing.lastClientX = e.clientX;
+    existing.lastClientY = e.clientY;
+    existing.lastTimeStamp = e.timeStamp;
+    if (Math.abs(movementInfo.movementX) < $8e08190ac5cfc1c3$var$MOVEMENT_EPSILON && Math.abs(movementInfo.movementY) < $8e08190ac5cfc1c3$var$MOVEMENT_EPSILON) return {
+        movementInfo: null,
+        hasMoved: existing.hasMoved
+    };
+    else {
+        existing.hasMoved = true;
+        return {
+            movementInfo: movementInfo,
+            hasMoved: existing.hasMoved
+        };
+    }
+};
+// src/cubing/twisty/views/3D/RendererPool.ts
+var $8e08190ac5cfc1c3$var$renderers = [];
+async function $8e08190ac5cfc1c3$var$renderPooled(width, height, canvas, scene, camera) {
+    if (width === 0 || height === 0) return;
+    if ($8e08190ac5cfc1c3$var$renderers.length === 0) $8e08190ac5cfc1c3$var$renderers.push($8e08190ac5cfc1c3$var$newRenderer());
+    const renderer = await $8e08190ac5cfc1c3$var$renderers[0];
+    renderer.setSize(width, height);
+    renderer.render(scene, camera);
+    const context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(renderer.domElement, 0, 0);
+}
+async function $8e08190ac5cfc1c3$var$newRenderer() {
+    const rendererConstructor = (await (0, $8JBxj.THREEJS)).WebGLRenderer;
+    const renderer = new rendererConstructor({
+        antialias: true,
+        alpha: true
+    });
+    renderer.setPixelRatio($8e08190ac5cfc1c3$var$pixelRatio());
+    return renderer;
+}
+// src/cubing/twisty/views/3D/TwistyOrbitControls.ts
+var $8e08190ac5cfc1c3$var$INERTIA_DEFAULT = true;
+var $8e08190ac5cfc1c3$var$INERTIA_DURATION_MS = 500;
+var $8e08190ac5cfc1c3$var$INERTIA_TIMEOUT_MS = 50;
+var $8e08190ac5cfc1c3$var$VERTICAL_MOVEMENT_BASE_SCALE = 0.75;
+function $8e08190ac5cfc1c3$var$momentumScale(progress) {
+    return (Math.exp(1 - progress) - (1 - progress)) / (1 - Math.E) + 1;
+}
+var $8e08190ac5cfc1c3$var$Inertia = class {
+    constructor(startTimestamp, momentumX, momentumY, callback){
+        this.startTimestamp = startTimestamp;
+        this.momentumX = momentumX;
+        this.momentumY = momentumY;
+        this.callback = callback;
+        this.scheduler = new $8e08190ac5cfc1c3$var$RenderScheduler(this.render.bind(this));
+        this.scheduler.requestAnimFrame();
+        this.lastTimestamp = startTimestamp;
+    }
+    render(now) {
+        const progressBefore = (this.lastTimestamp - this.startTimestamp) / $8e08190ac5cfc1c3$var$INERTIA_DURATION_MS;
+        const progressAfter = Math.min(1, (now - this.startTimestamp) / $8e08190ac5cfc1c3$var$INERTIA_DURATION_MS);
+        if (progressBefore === 0 && progressAfter > $8e08190ac5cfc1c3$var$INERTIA_TIMEOUT_MS / $8e08190ac5cfc1c3$var$INERTIA_DURATION_MS) return;
+        const delta = $8e08190ac5cfc1c3$var$momentumScale(progressAfter) - $8e08190ac5cfc1c3$var$momentumScale(progressBefore);
+        this.callback(this.momentumX * delta * 1e3, this.momentumY * delta * 1e3);
+        if (progressAfter < 1) this.scheduler.requestAnimFrame();
+        this.lastTimestamp = now;
+    }
+};
+var $8e08190ac5cfc1c3$var$TwistyOrbitControls = class {
+    constructor(model, mirror, canvas, dragTracker){
+        this.model = model;
+        this.mirror = mirror;
+        this.canvas = canvas;
+        this.dragTracker = dragTracker;
+        this.experimentalInertia = $8e08190ac5cfc1c3$var$INERTIA_DEFAULT;
+        this.onMovementBound = this.onMovement.bind(this);
+        this.experimentalHasBeenMoved = false;
+        this.dragTracker.addEventListener("move", this.onMove.bind(this));
+        this.dragTracker.addEventListener("up", this.onUp.bind(this));
+    }
+    temperMovement(f) {
+        return Math.sign(f) * Math.log(Math.abs(f * 10) + 1) / 6;
+    }
+    onMove(e) {
+        var _a;
+        (_a = e.detail).attachedInfo ?? (_a.attachedInfo = {});
+        const { temperedX: temperedX , temperedY: temperedY  } = this.onMovement(e.detail.movementX, e.detail.movementY);
+        const attachedInfo = e.detail.attachedInfo;
+        attachedInfo.lastTemperedX = temperedX * 10;
+        attachedInfo.lastTemperedY = temperedY * 10;
+        attachedInfo.timestamp = e.timeStamp;
+    }
+    onMovement(movementX, movementY) {
+        const scale = this.mirror ? -1 : 1;
+        const minDim = Math.min(this.canvas.offsetWidth, this.canvas.offsetHeight);
+        const temperedX = this.temperMovement(movementX / minDim);
+        const temperedY = this.temperMovement(movementY / minDim * $8e08190ac5cfc1c3$var$VERTICAL_MOVEMENT_BASE_SCALE);
+        this.model.twistySceneModel.orbitCoordinatesRequest.set((async ()=>{
+            const prevCoords = await this.model.twistySceneModel.orbitCoordinates.get();
+            const newCoords = {
+                latitude: prevCoords.latitude + 2 * temperedY * (0, $8JBxj.DEGREES_PER_RADIAN) * scale,
+                longitude: prevCoords.longitude - 2 * temperedX * (0, $8JBxj.DEGREES_PER_RADIAN)
+            };
+            return newCoords;
+        })());
+        return {
+            temperedX: temperedX,
+            temperedY: temperedY
+        };
+    }
+    onUp(e) {
+        e.preventDefault();
+        if ("lastTemperedX" in e.detail.attachedInfo && "lastTemperedY" in e.detail.attachedInfo && "timestamp" in e.detail.attachedInfo && e.timeStamp - e.detail.attachedInfo.timestamp < 60) new $8e08190ac5cfc1c3$var$Inertia(e.timeStamp, e.detail.attachedInfo.lastTemperedX, e.detail.attachedInfo.lastTemperedY, this.onMovementBound);
+    }
+};
+// src/cubing/twisty/views/3D/Twisty3DVantage.ts
+var $8e08190ac5cfc1c3$var$SHOW_STATS = false;
+function $8e08190ac5cfc1c3$export$59dccf90a0533576(enable) {
+    $8e08190ac5cfc1c3$var$SHOW_STATS = enable;
+}
+async function $8e08190ac5cfc1c3$var$setCameraFromOrbitCoordinates(camera, orbitCoordinates, backView = false) {
+    const spherical = new (await (0, $8JBxj.THREEJS)).Spherical(orbitCoordinates.distance, (90 - (backView ? -1 : 1) * orbitCoordinates.latitude) / (0, $8JBxj.DEGREES_PER_RADIAN), ((backView ? 180 : 0) + orbitCoordinates.longitude) / (0, $8JBxj.DEGREES_PER_RADIAN));
+    spherical.makeSafe();
+    camera.position.setFromSpherical(spherical);
+    camera.lookAt(0, 0, 0);
+}
+var $8e08190ac5cfc1c3$var$shareAllNewRenderers = null;
+function $8e08190ac5cfc1c3$export$955446f1e1efd77e(share) {
+    $8e08190ac5cfc1c3$var$shareAllNewRenderers = share;
+}
+var $8e08190ac5cfc1c3$var$dedicatedRenderersSoFar = 0;
+var $8e08190ac5cfc1c3$var$DEFAULT_MAX_DEDICATED_RENDERERS = 2;
+function $8e08190ac5cfc1c3$var$shareRenderer() {
+    if ($8e08190ac5cfc1c3$var$shareAllNewRenderers !== null) {
+        if (!$8e08190ac5cfc1c3$var$shareAllNewRenderers) $8e08190ac5cfc1c3$var$dedicatedRenderersSoFar++;
+        return $8e08190ac5cfc1c3$var$shareAllNewRenderers;
+    }
+    if ($8e08190ac5cfc1c3$var$dedicatedRenderersSoFar < $8e08190ac5cfc1c3$var$DEFAULT_MAX_DEDICATED_RENDERERS) {
+        $8e08190ac5cfc1c3$var$dedicatedRenderersSoFar++;
+        return false;
+    } else return true;
+}
+var $8e08190ac5cfc1c3$var$_setupBasicPresses, $8e08190ac5cfc1c3$var$setupBasicPresses_fn, $8e08190ac5cfc1c3$var$_onResizeStaleDropper, $8e08190ac5cfc1c3$var$_width, $8e08190ac5cfc1c3$var$_height, $8e08190ac5cfc1c3$var$_onResize, $8e08190ac5cfc1c3$var$onResize_fn, $8e08190ac5cfc1c3$var$_cachedRenderer, $8e08190ac5cfc1c3$var$_cachedCanvas, $8e08190ac5cfc1c3$var$_cachedDragTracker, $8e08190ac5cfc1c3$var$_dragTracker, $8e08190ac5cfc1c3$var$dragTracker_fn, $8e08190ac5cfc1c3$var$_cachedCamera, $8e08190ac5cfc1c3$var$_cachedOrbitControls, $8e08190ac5cfc1c3$var$_disconnectionFunctions, $8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback, $8e08190ac5cfc1c3$var$_scheduler;
+var $8e08190ac5cfc1c3$var$Twisty3DVantage = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(model, scene, options){
+        super();
+        this.model = model;
+        this.options = options;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_setupBasicPresses);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_onResize);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_dragTracker);
+        this.scene = null;
+        this.stats = null;
+        this.rendererIsShared = $8e08190ac5cfc1c3$var$shareRenderer();
+        this.loadingElement = null;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_onResizeStaleDropper, new (0, $8JBxj.StaleDropper)());
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_width, 0);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_height, 0);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedRenderer, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedCanvas, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedDragTracker, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedCamera, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedOrbitControls, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_disconnectionFunctions, []);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_scheduler, new $8e08190ac5cfc1c3$var$RenderScheduler(this.render.bind(this)));
+        this.scene = scene ?? null;
+        this.loadingElement = this.addElement(document.createElement("div"));
+        this.loadingElement.classList.add("loading");
+        if ($8e08190ac5cfc1c3$var$SHOW_STATS) {
+            this.stats = new $8e08190ac5cfc1c3$var$Stats();
+            this.stats.dom.style.position = "absolute";
+            this.contentWrapper.appendChild(this.stats.dom);
+        }
+    }
+    async connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$twisty3DVantageCSS);
+        this.addElement((await this.canvasInfo()).canvas);
+        (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_onResize, $8e08190ac5cfc1c3$var$onResize_fn).call(this);
+        const observer = new ResizeObserver((0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_onResize, $8e08190ac5cfc1c3$var$onResize_fn).bind(this));
+        observer.observe(this.contentWrapper);
+        this.orbitControls();
+        (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_setupBasicPresses, $8e08190ac5cfc1c3$var$setupBasicPresses_fn).call(this);
+        this.scheduleRender();
+    }
+    async clearCanvas() {
+        if (this.rendererIsShared) {
+            const canvasInfo = await this.canvasInfo();
+            canvasInfo.context.clearRect(0, 0, canvasInfo.canvas.width, canvasInfo.canvas.height);
+        } else {
+            const renderer = await this.renderer();
+            const context = renderer.getContext();
+            context.clear(context.COLOR_BUFFER_BIT);
+        }
+    }
+    async renderer() {
+        if (this.rendererIsShared) throw new Error("renderer expected to be shared.");
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedRenderer) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedRenderer, $8e08190ac5cfc1c3$var$newRenderer());
+    }
+    async canvasInfo() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedCanvas) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedCanvas, (async ()=>{
+            let canvas;
+            if (this.rendererIsShared) canvas = this.addElement(document.createElement("canvas"));
+            else {
+                const renderer = await this.renderer();
+                canvas = this.addElement(renderer.domElement);
+            }
+            this.loadingElement?.remove();
+            const context = canvas.getContext("2d");
+            return {
+                canvas: canvas,
+                context: context
+            };
+        })());
+    }
+    async camera() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedCamera) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedCamera, (async ()=>{
+            const camera = new (await (0, $8JBxj.THREEJS)).PerspectiveCamera(20, 1, 0.1, 20);
+            camera.position.copy(new (await (0, $8JBxj.THREEJS)).Vector3(2, 4, 4).multiplyScalar(this.options?.backView ? -1 : 1));
+            camera.lookAt(0, 0, 0);
+            return camera;
+        })());
+    }
+    async orbitControls() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedOrbitControls) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedOrbitControls, (async ()=>{
+            const orbitControls = new $8e08190ac5cfc1c3$var$TwistyOrbitControls(this.model, !!this.options?.backView, (await this.canvasInfo()).canvas, await (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_dragTracker, $8e08190ac5cfc1c3$var$dragTracker_fn).call(this));
+            if (this.model) this.addListener(this.model.twistySceneModel.orbitCoordinates, async (orbitCoordinates)=>{
+                const camera = await this.camera();
+                $8e08190ac5cfc1c3$var$setCameraFromOrbitCoordinates(camera, orbitCoordinates, this.options?.backView);
+                this.scheduleRender();
+            });
+            return orbitControls;
+        })());
+    }
+    addListener(prop, listener) {
+        prop.addFreshListener(listener);
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_disconnectionFunctions).push(()=>{
+            prop.removeFreshListener(listener);
+        });
+    }
+    disconnect() {
+        for (const fn of (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_disconnectionFunctions))fn();
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_disconnectionFunctions, []);
+    }
+    experimentalNextRenderFinishedCallback(callback) {
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback, callback);
+    }
+    async render() {
+        var _a;
+        if (!this.scene) throw new Error("Attempted to render without a scene");
+        this.stats?.begin();
+        const [scene, camera, canvas] = await Promise.all([
+            this.scene.scene(),
+            this.camera(),
+            this.canvasInfo()
+        ]);
+        if (this.rendererIsShared) $8e08190ac5cfc1c3$var$renderPooled((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_width), (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_height), canvas.canvas, scene, camera);
+        else (await this.renderer()).render(scene, camera);
+        this.stats?.end();
+        (_a = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback)) == null || _a.call(this);
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback, null);
+    }
+    scheduleRender() {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_scheduler).requestAnimFrame();
+    }
+};
+$8e08190ac5cfc1c3$var$_setupBasicPresses = new WeakSet();
+$8e08190ac5cfc1c3$var$setupBasicPresses_fn = async function() {
+    const dragTracker = await (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_dragTracker, $8e08190ac5cfc1c3$var$dragTracker_fn).call(this);
+    dragTracker.addEventListener("press", async (e)=>{
+        const movePressInput = await this.model.twistySceneModel.movePressInput.get();
+        if (movePressInput !== "basic") return;
+        this.dispatchEvent(new CustomEvent("press", {
+            detail: {
+                pressInfo: e.detail,
+                cameraPromise: this.camera()
+            }
+        }));
+    });
+};
+$8e08190ac5cfc1c3$var$_onResizeStaleDropper = new WeakMap();
+$8e08190ac5cfc1c3$var$_width = new WeakMap();
+$8e08190ac5cfc1c3$var$_height = new WeakMap();
+$8e08190ac5cfc1c3$var$_onResize = new WeakSet();
+$8e08190ac5cfc1c3$var$onResize_fn = async function() {
+    const camera = await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_onResizeStaleDropper).queue(this.camera());
+    const w = this.contentWrapper.clientWidth;
+    const h = this.contentWrapper.clientHeight;
+    (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_width, w);
+    (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_height, h);
+    const off = 0;
+    let yoff = 0;
+    let excess = 0;
+    if (h > w) {
+        excess = h - w;
+        yoff = -Math.floor(0.5 * excess);
+    }
+    camera.aspect = w / h;
+    camera.setViewOffset(w, h - excess, off, yoff, w, h);
+    camera.updateProjectionMatrix();
+    this.clearCanvas();
+    if (this.rendererIsShared) {
+        const canvasInfo = await this.canvasInfo();
+        canvasInfo.canvas.width = w * $8e08190ac5cfc1c3$var$pixelRatio();
+        canvasInfo.canvas.height = h * $8e08190ac5cfc1c3$var$pixelRatio();
+        canvasInfo.canvas.style.width = w.toString();
+        canvasInfo.canvas.style.height = h.toString();
+    } else {
+        const renderer = await this.renderer();
+        renderer.setSize(w, h, true);
+    }
+    this.scheduleRender();
+};
+$8e08190ac5cfc1c3$var$_cachedRenderer = new WeakMap();
+$8e08190ac5cfc1c3$var$_cachedCanvas = new WeakMap();
+$8e08190ac5cfc1c3$var$_cachedDragTracker = new WeakMap();
+$8e08190ac5cfc1c3$var$_dragTracker = new WeakSet();
+$8e08190ac5cfc1c3$var$dragTracker_fn = async function() {
+    return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedDragTracker) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedDragTracker, (async ()=>{
+        const dragTracker = new $8e08190ac5cfc1c3$var$DragTracker((await this.canvasInfo()).canvas);
+        this.model?.twistySceneModel.dragInput.addFreshListener((dragInputMode)=>{
+            let dragInputEnabled = false;
+            switch(dragInputMode){
+                case "auto":
+                    dragTracker.start();
+                    dragInputEnabled = true;
+                    break;
+                case "none":
+                    dragTracker.stop();
+                    break;
+            }
+            this.contentWrapper.classList.toggle("drag-input-enabled", dragInputEnabled);
+        });
+        return dragTracker;
+    })());
+};
+$8e08190ac5cfc1c3$var$_cachedCamera = new WeakMap();
+$8e08190ac5cfc1c3$var$_cachedOrbitControls = new WeakMap();
+$8e08190ac5cfc1c3$var$_disconnectionFunctions = new WeakMap();
+$8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback = new WeakMap();
+$8e08190ac5cfc1c3$var$_scheduler = new WeakMap();
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-3d-vantage", $8e08190ac5cfc1c3$var$Twisty3DVantage);
+// src/cubing/twisty/views/3D/Twisty3DSceneWrapper.ts
+var $8e08190ac5cfc1c3$var$_backViewClassListManager, $8e08190ac5cfc1c3$var$_freshListenerManager5, $8e08190ac5cfc1c3$var$_backViewVantage, $8e08190ac5cfc1c3$var$_cachedScene2, $8e08190ac5cfc1c3$var$_vantages, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper, $8e08190ac5cfc1c3$var$_initialWrapperTracker, $8e08190ac5cfc1c3$var$_twisty3DStaleDropper;
+var $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(model){
+        super();
+        this.model = model;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_backViewClassListManager, new $8e08190ac5cfc1c3$var$ClassListManager(this, "back-view-", [
+            "auto",
+            "none",
+            "side-by-side",
+            "top-right"
+        ]));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_freshListenerManager5, new (0, $8JBxj.FreshListenerManager)());
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_backViewVantage, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedScene2, void 0);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_vantages, /* @__PURE__ */ new Set());
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_initialWrapperTracker, new $8e08190ac5cfc1c3$var$InitialValueTracker());
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_twisty3DStaleDropper, new (0, $8JBxj.StaleDropper)());
+    }
+    disconnect() {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager5).disconnect();
+    }
+    async connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$twistyViewerWrapperCSS);
+        const vantage = new $8e08190ac5cfc1c3$var$Twisty3DVantage(this.model, this);
+        this.addVantage(vantage);
+        if (this.model) {
+            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager5).addMultiListener([
+                this.model.puzzleLoader,
+                this.model.visualizationStrategy
+            ], this.onPuzzle.bind(this));
+            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager5).addListener(this.model.backView, this.onBackView.bind(this));
+        }
+        this.scheduleRender();
+    }
+    setBackView(backView) {
+        const shouldHaveBackView = [
+            "side-by-side",
+            "top-right"
+        ].includes(backView);
+        const hasBackView = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_backViewVantage) !== null;
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_backViewClassListManager).setValue(backView);
+        if (shouldHaveBackView) {
+            if (!hasBackView) {
+                (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_backViewVantage, new $8e08190ac5cfc1c3$var$Twisty3DVantage(this.model, this, {
+                    backView: true
+                }));
+                this.addVantage((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_backViewVantage));
+                this.scheduleRender();
+            }
+        } else if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_backViewVantage)) {
+            this.removeVantage((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_backViewVantage));
+            (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_backViewVantage, null);
+        }
+    }
+    onBackView(backView) {
+        this.setBackView(backView);
+    }
+    async onPress(e) {
+        const twisty3DPuzzleWrapper = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper);
+        if (!twisty3DPuzzleWrapper) {
+            console.info("no wrapper; skipping scene wrapper press!");
+            return;
+        }
+        const raycasterPromise = (async ()=>{
+            const [camera, three] = await Promise.all([
+                e.detail.cameraPromise,
+                (0, $8JBxj.THREEJS)
+            ]);
+            const raycaster = new three.Raycaster();
+            const mouse = new (await (0, $8JBxj.THREEJS)).Vector2(e.detail.pressInfo.normalizedX, e.detail.pressInfo.normalizedY);
+            raycaster.setFromCamera(mouse, camera);
+            return raycaster;
+        })();
+        twisty3DPuzzleWrapper.raycastMove(raycasterPromise, {
+            invert: !e.detail.pressInfo.rightClick,
+            depth: e.detail.pressInfo.keys.ctrlOrMetaKey ? "rotation" : e.detail.pressInfo.keys.shiftKey ? "secondSlice" : "none"
+        });
+    }
+    async scene() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedScene2) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedScene2, (async ()=>new (await (0, $8JBxj.THREEJS)).Scene())());
+    }
+    addVantage(vantage) {
+        vantage.addEventListener("press", this.onPress.bind(this));
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_vantages).add(vantage);
+        this.contentWrapper.appendChild(vantage);
+    }
+    removeVantage(vantage) {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_vantages).delete(vantage);
+        vantage.remove();
+        vantage.disconnect();
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper)?.disconnect();
+    }
+    experimentalVantages() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_vantages).values();
+    }
+    scheduleRender() {
+        for (const vantage of (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_vantages))vantage.scheduleRender();
+    }
+    async setCurrentTwisty3DPuzzleWrapper(scene, twisty3DPuzzleWrapper) {
+        const old = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper);
+        try {
+            (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper, twisty3DPuzzleWrapper);
+            old?.disconnect();
+            scene.add(await twisty3DPuzzleWrapper.twisty3DPuzzle());
+        } finally{
+            if (old) scene.remove(await old.twisty3DPuzzle());
+        }
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_initialWrapperTracker).handleNewValue(twisty3DPuzzleWrapper);
+    }
+    async experimentalTwisty3DPuzzleWrapper() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper) || (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_initialWrapperTracker).promise;
+    }
+    async onPuzzle(inputs) {
+        if (inputs[1] === "2D") return;
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper)?.disconnect();
+        const [scene, twisty3DPuzzleWrapper] = await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twisty3DStaleDropper).queue(Promise.all([
+            this.scene(),
+            new $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper(this.model, this, inputs[0], inputs[1])
+        ]));
+        this.setCurrentTwisty3DPuzzleWrapper(scene, twisty3DPuzzleWrapper);
+    }
+};
+$8e08190ac5cfc1c3$var$_backViewClassListManager = new WeakMap();
+$8e08190ac5cfc1c3$var$_freshListenerManager5 = new WeakMap();
+$8e08190ac5cfc1c3$var$_backViewVantage = new WeakMap();
+$8e08190ac5cfc1c3$var$_cachedScene2 = new WeakMap();
+$8e08190ac5cfc1c3$var$_vantages = new WeakMap();
+$8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper = new WeakMap();
+$8e08190ac5cfc1c3$var$_initialWrapperTracker = new WeakMap();
+$8e08190ac5cfc1c3$var$_twisty3DStaleDropper = new WeakMap();
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-3d-scene-wrapper", $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper);
+// src/cubing/twisty/views/control-panel/TwistyButtons.css.ts
+var $8e08190ac5cfc1c3$var$buttonGridCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+:host {
+  width: 384px;
+  height: 24px;
+  display: grid;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.wrapper {
+  grid-auto-flow: column;
+}
+
+.viewer-link-none .twizzle-link-button {
+  display: none;
+}
+
+.wrapper twisty-button,
+.wrapper twisty-control-button {
+  width: inherit;
+  height: inherit;
+}
+`);
+var $8e08190ac5cfc1c3$var$buttonCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+:host:not([hidden]) {
+  display: grid;
+}
+
+:host {
+  width: 48px;
+  height: 24px;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  background-color: rgba(196, 196, 196, 0.75);
+}
+
+button:enabled {
+  background-color: rgba(196, 196, 196, 0.75)
+}
+
+button:disabled {
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+button:enabled:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+/* TODO: fullscreen icons have too much padding?? */
+.svg-skip-to-start button,
+button.svg-skip-to-start {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNjQzIDEwMzdxMTktMTkgMzItMTN0MTMgMzJ2MTQ3MnEwIDI2LTEzIDMydC0zMi0xM2wtNzEwLTcxMHEtOS05LTEzLTE5djcxMHEwIDI2LTEzIDMydC0zMi0xM2wtNzEwLTcxMHEtOS05LTEzLTE5djY3OHEwIDI2LTE5IDQ1dC00NSAxOUg5NjBxLTI2IDAtNDUtMTl0LTE5LTQ1VjEwODhxMC0yNiAxOS00NXQ0NS0xOWgxMjhxMjYgMCA0NSAxOXQxOSA0NXY2NzhxNC0xMSAxMy0xOWw3MTAtNzEwcTE5LTE5IDMyLTEzdDEzIDMydjcxMHE0LTExIDEzLTE5eiIvPjwvc3ZnPg==");
+}
+
+.svg-skip-to-end button,
+button.svg-skip-to-end {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik05NDEgMjU0N3EtMTkgMTktMzIgMTN0LTEzLTMyVjEwNTZxMC0yNiAxMy0zMnQzMiAxM2w3MTAgNzEwcTggOCAxMyAxOXYtNzEwcTAtMjYgMTMtMzJ0MzIgMTNsNzEwIDcxMHE4IDggMTMgMTl2LTY3OHEwLTI2IDE5LTQ1dDQ1LTE5aDEyOHEyNiAwIDQ1IDE5dDE5IDQ1djE0MDhxMCAyNi0xOSA0NXQtNDUgMTloLTEyOHEtMjYgMC00NS0xOXQtMTktNDV2LTY3OHEtNSAxMC0xMyAxOWwtNzEwIDcxMHEtMTkgMTktMzIgMTN0LTEzLTMydi03MTBxLTUgMTAtMTMgMTl6Ii8+PC9zdmc+");
+}
+
+.svg-step-forward button,
+button.svg-step-forward {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNjg4IDE1NjhxMCAyNi0xOSA0NWwtNTEyIDUxMnEtMTkgMTktNDUgMTl0LTQ1LTE5cS0xOS0xOS0xOS00NXYtMjU2aC0yMjRxLTk4IDAtMTc1LjUgNnQtMTU0IDIxLjVxLTc2LjUgMTUuNS0xMzMgNDIuNXQtMTA1LjUgNjkuNXEtNDkgNDIuNS04MCAxMDF0LTQ4LjUgMTM4LjVxLTE3LjUgODAtMTcuNSAxODEgMCA1NSA1IDEyMyAwIDYgMi41IDIzLjV0Mi41IDI2LjVxMCAxNS04LjUgMjV0LTIzLjUgMTBxLTE2IDAtMjgtMTctNy05LTEzLTIydC0xMy41LTMwcS03LjUtMTctMTAuNS0yNC0xMjctMjg1LTEyNy00NTEgMC0xOTkgNTMtMzMzIDE2Mi00MDMgODc1LTQwM2gyMjR2LTI1NnEwLTI2IDE5LTQ1dDQ1LTE5cTI2IDAgNDUgMTlsNTEyIDUxMnExOSAxOSAxOSA0NXoiLz48L3N2Zz4=");
+}
+
+.svg-step-backward button,
+button.svg-step-backward {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNjg4IDIwNDhxMCAxNjYtMTI3IDQ1MS0zIDctMTAuNSAyNHQtMTMuNSAzMHEtNiAxMy0xMyAyMi0xMiAxNy0yOCAxNy0xNSAwLTIzLjUtMTB0LTguNS0yNXEwLTkgMi41LTI2LjV0Mi41LTIzLjVxNS02OCA1LTEyMyAwLTEwMS0xNy41LTE4MXQtNDguNS0xMzguNXEtMzEtNTguNS04MC0xMDF0LTEwNS41LTY5LjVxLTU2LjUtMjctMTMzLTQyLjV0LTE1NC0yMS41cS03Ny41LTYtMTc1LjUtNmgtMjI0djI1NnEwIDI2LTE5IDQ1dC00NSAxOXEtMjYgMC00NS0xOWwtNTEyLTUxMnEtMTktMTktMTktNDV0MTktNDVsNTEyLTUxMnExOS0xOSA0NS0xOXQ0NSAxOXExOSAxOSAxOSA0NXYyNTZoMjI0cTcxMyAwIDg3NSA0MDMgNTMgMTM0IDUzIDMzM3oiLz48L3N2Zz4=");
+}
+
+.svg-pause button,
+button.svg-pause {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNTYwIDEwODh2MTQwOHEwIDI2LTE5IDQ1dC00NSAxOWgtNTEycS0yNiAwLTQ1LTE5dC0xOS00NVYxMDg4cTAtMjYgMTktNDV0NDUtMTloNTEycTI2IDAgNDUgMTl0MTkgNDV6bS04OTYgMHYxNDA4cTAgMjYtMTkgNDV0LTQ1IDE5aC01MTJxLTI2IDAtNDUtMTl0LTE5LTQ1VjEwODhxMC0yNiAxOS00NXQ0NS0xOWg1MTJxMjYgMCA0NSAxOXQxOSA0NXoiLz48L3N2Zz4=");
+}
+
+.svg-play button,
+button.svg-play {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNDcyLjUgMTgyM2wtMTMyOCA3MzhxLTIzIDEzLTM5LjUgM3QtMTYuNS0zNlYxMDU2cTAtMjYgMTYuNS0zNnQzOS41IDNsMTMyOCA3MzhxMjMgMTMgMjMgMzF0LTIzIDMxeiIvPjwvc3ZnPg==");
+}
+
+.svg-enter-fullscreen button,
+button.svg-enter-fullscreen {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCAyOCAyOCIgd2lkdGg9IjI4Ij48cGF0aCBkPSJNMiAyaDI0djI0SDJ6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTkgMTZIN3Y1aDV2LTJIOXYtM3ptLTItNGgyVjloM1Y3SDd2NXptMTIgN2gtM3YyaDV2LTVoLTJ2M3pNMTYgN3YyaDN2M2gyVjdoLTV6Ii8+PC9zdmc+");
+}
+
+.svg-exit-fullscreen button,
+button.svg-exit-fullscreen {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCAyOCAyOCIgd2lkdGg9IjI4Ij48cGF0aCBkPSJNMiAyaDI0djI0SDJ6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTcgMThoM3YzaDJ2LTVIN3Yyem0zLThIN3YyaDVWN2gtMnYzem02IDExaDJ2LTNoM3YtMmgtNXY1em0yLTExVjdoLTJ2NWg1di0yaC0zeiIvPjwvc3ZnPg==");
+}
+
+.svg-twizzle-tw button,
+button.svg-twizzle-tw {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODY0IiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMzk3LjU4MSAxNTEuMTh2NTcuMDg0aC04OS43MDN2MjQwLjM1MmgtNjYuOTU1VjIwOC4yNjRIMTUxLjIydi01Ny4wODNoMjQ2LjM2MXptNTQuMzEgNzEuNjc3bDcuNTEyIDMzLjY5MmMyLjcxOCAxMi4xNiA1LjU4IDI0LjY4IDguNTg0IDM3LjU1NWEyMTgwLjc3NSAyMTgwLjc3NSAwIDAwOS40NDIgMzguODQzIDEyNjYuMyAxMjY2LjMgMCAwMDEwLjA4NiAzNy41NTVjMy43Mi0xMi41OSA3LjM2OC0yNS40NjYgMTAuOTQ1LTM4LjYyOCAzLjU3Ni0xMy4xNjIgNy4wMS0yNi4xMSAxMC4zLTM4Ljg0M2w1Ljc2OS0yMi40NTZjMS4yNDgtNC44ODcgMi40NzItOS43MDUgMy42NzQtMTQuNDU1IDMuMDA0LTExLjg3NSA1LjY1MS0yMi45NjIgNy45NC0zMy4yNjNoNDYuMzU0bDIuMzg0IDEwLjU2M2EyMDAwLjc3IDIwMDAuNzcgMCAwMDMuOTM1IDE2LjgyOGw2LjcxMSAyNy43MWMxLjIxMyA0Ljk1NiAyLjQ1IDkuOTggMy43MDkgMTUuMDczYTMxMTkuNzc3IDMxMTkuNzc3IDAgMDA5Ljg3MSAzOC44NDMgMTI0OS4yMjcgMTI0OS4yMjcgMCAwMDEwLjczIDM4LjYyOCAxOTA3LjYwNSAxOTA3LjYwNSAwIDAwMTAuMzAxLTM3LjU1NSAxMzk3Ljk0IDEzOTcuOTQgMCAwMDkuNjU3LTM4Ljg0M2w0LjQtMTkuMDQ2Yy43MTUtMy4xMyAxLjQyMS02LjIzNiAyLjExOC05LjMyMWw5LjU3Ny00Mi44OGg2Ni41MjZhMjk4OC43MTggMjk4OC43MTggMCAwMS0xOS41MjkgNjYuMzExbC01LjcyOCAxOC40ODJhMzIzNy40NiAzMjM3LjQ2IDAgMDEtMTQuMDE1IDQzLjc1MmMtNi40MzggMTkuNi0xMi43MzMgMzcuNjk4LTE4Ljg4NSA1NC4yOTRsLTMuMzA2IDguODI1Yy00Ljg4NCAxMi44OTgtOS40MzMgMjQuMjYzLTEzLjY0NyAzNC4wOTVoLTQ5Ljc4N2E4NDE3LjI4OSA4NDE3LjI4OSAwIDAxLTIxLjAzMS02NC44MDkgMTI4OC42ODYgMTI4OC42ODYgMCAwMS0xOC44ODUtNjQuODEgMTk3Mi40NDQgMTk3Mi40NDQgMCAwMS0xOC4yNCA2NC44MSAyNTc5LjQxMiAyNTc5LjQxMiAwIDAxLTIwLjM4OCA2NC44MWgtNDkuNzg3Yy00LjY4Mi0xMC45MjYtOS43Mi0yMy43NDMtMTUuMTEtMzguNDUxbC0xLjYyOS00LjQ3Yy01LjI1OC0xNC41MjEtMTAuNjgtMzAuMTkyLTE2LjI2Ni00Ny4wMTRsLTIuNDA0LTcuMjhjLTYuNDM4LTE5LjYtMTMuMDItNDAuMzQ0LTE5Ljc0My02Mi4yMzRhMjk4OC43MDcgMjk4OC43MDcgMCAwMS0xOS41MjktNjYuMzExaDY3LjM4NXoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvc3ZnPg==");
+}
+`);
+// src/cubing/twisty/views/document.ts
+var $8e08190ac5cfc1c3$var$globalSafeDocument = typeof document === "undefined" ? null : document;
+// src/cubing/twisty/views/control-panel/webkit-fullscreen.ts
+var $8e08190ac5cfc1c3$var$fullscreenEnabled = $8e08190ac5cfc1c3$var$globalSafeDocument?.fullscreenEnabled || !!$8e08190ac5cfc1c3$var$globalSafeDocument?.webkitFullscreenEnabled;
+function $8e08190ac5cfc1c3$var$documentExitFullscreen() {
+    if (document.exitFullscreen) return document.exitFullscreen();
+    else return document.webkitExitFullscreen();
+}
+function $8e08190ac5cfc1c3$var$documentFullscreenElement() {
+    if (document.fullscreenElement) return document.fullscreenElement;
+    else return document.webkitFullscreenElement ?? null;
+}
+function $8e08190ac5cfc1c3$var$requestFullscreen(element) {
+    if (element.requestFullscreen) return element.requestFullscreen();
+    else return element.webkitRequestFullscreen();
+}
+// src/cubing/twisty/model/props/viewer/ButtonAppearanceProp.ts
+var $8e08190ac5cfc1c3$var$buttonIcons = [
+    "skip-to-start",
+    "skip-to-end",
+    "step-forward",
+    "step-backward",
+    "pause",
+    "play",
+    "enter-fullscreen",
+    "exit-fullscreen",
+    "twizzle-tw"
+];
+var $8e08190ac5cfc1c3$var$ButtonAppearanceProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        const buttonAppearances = {
+            "fullscreen": {
+                enabled: $8e08190ac5cfc1c3$var$fullscreenEnabled,
+                icon: document.fullscreenElement === null ? "enter-fullscreen" : "exit-fullscreen",
+                title: "Enter fullscreen"
+            },
+            "jump-to-start": {
+                enabled: !inputs.coarseTimelineInfo.atStart,
+                icon: "skip-to-start",
+                title: "Restart"
+            },
+            "play-step-backwards": {
+                enabled: !inputs.coarseTimelineInfo.atStart,
+                icon: "step-backward",
+                title: "Step backward"
+            },
+            "play-pause": {
+                enabled: !(inputs.coarseTimelineInfo.atStart && inputs.coarseTimelineInfo.atEnd),
+                icon: inputs.coarseTimelineInfo.playing ? "pause" : "play",
+                title: inputs.coarseTimelineInfo.playing ? "Pause" : "Play"
+            },
+            "play-step": {
+                enabled: !inputs.coarseTimelineInfo.atEnd,
+                icon: "step-forward",
+                title: "Step forward"
+            },
+            "jump-to-end": {
+                enabled: !inputs.coarseTimelineInfo.atEnd,
+                icon: "skip-to-end",
+                title: "Skip to End"
+            },
+            "twizzle-link": {
+                enabled: true,
+                icon: "twizzle-tw",
+                title: "View at Twizzle",
+                hidden: inputs.viewerLink === "none"
+            }
+        };
+        return buttonAppearances;
+    }
+};
+// src/cubing/twisty/views/control-panel/TwistyButtons.ts
+var $8e08190ac5cfc1c3$var$buttonCommands = {
+    "fullscreen": true,
+    "jump-to-start": true,
+    "play-step-backwards": true,
+    "play-pause": true,
+    "play-step": true,
+    "jump-to-end": true,
+    "twizzle-link": true
+};
+var $8e08190ac5cfc1c3$var$_onCommand, $8e08190ac5cfc1c3$var$onCommand_fn;
+var $8e08190ac5cfc1c3$var$TwistyButtons = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(model, controller, fullscreenElement){
+        super();
+        this.model = model;
+        this.controller = controller;
+        this.fullscreenElement = fullscreenElement;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_onCommand);
+        this.buttons = null;
+    }
+    connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$buttonGridCSS);
+        const buttons = {};
+        for(const command in $8e08190ac5cfc1c3$var$buttonCommands){
+            const button = new $8e08190ac5cfc1c3$var$TwistyButton();
+            buttons[command] = button;
+            button.htmlButton.addEventListener("click", ()=>(0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_onCommand, $8e08190ac5cfc1c3$var$onCommand_fn).call(this, command));
+            this.addElement(button);
+        }
+        this.buttons = buttons;
+        this.model?.buttonAppearance.addFreshListener(this.update.bind(this));
+    }
+    async onFullscreenButton() {
+        if (!this.fullscreenElement) throw new Error("Attempted to go fullscreen without an element.");
+        if ($8e08190ac5cfc1c3$var$documentFullscreenElement() === this.fullscreenElement) $8e08190ac5cfc1c3$var$documentExitFullscreen();
+        else {
+            this.buttons?.fullscreen.setIcon("exit-fullscreen");
+            $8e08190ac5cfc1c3$var$requestFullscreen(this.fullscreenElement);
+            const onFullscreen = ()=>{
+                if ($8e08190ac5cfc1c3$var$documentFullscreenElement() !== this.fullscreenElement) {
+                    this.buttons?.fullscreen.setIcon("enter-fullscreen");
+                    window.removeEventListener("fullscreenchange", onFullscreen);
+                }
+            };
+            window.addEventListener("fullscreenchange", onFullscreen);
+        }
+    }
+    async update(buttonAppearances) {
+        for(const command in $8e08190ac5cfc1c3$var$buttonCommands){
+            const button = this.buttons[command];
+            const info = buttonAppearances[command];
+            button.htmlButton.disabled = !info.enabled;
+            button.htmlButton.title = info.title;
+            button.setIcon(info.icon);
+            button.hidden = !!info.hidden;
+        }
+    }
+};
+$8e08190ac5cfc1c3$var$_onCommand = new WeakSet();
+$8e08190ac5cfc1c3$var$onCommand_fn = function(command) {
+    switch(command){
+        case "fullscreen":
+            this.onFullscreenButton();
+            break;
+        case "jump-to-start":
+            this.controller?.jumpToStart({
+                flash: true
+            });
+            break;
+        case "play-step-backwards":
+            this.controller?.animationController.play({
+                direction: -1 /* Backwards */ ,
+                untilBoundary: "move" /* Move */ 
+            });
+            break;
+        case "play-pause":
+            this.controller?.togglePlay();
+            break;
+        case "play-step":
+            this.controller?.animationController.play({
+                direction: 1 /* Forwards */ ,
+                untilBoundary: "move" /* Move */ 
+            });
+            break;
+        case "jump-to-end":
+            this.controller?.jumpToEnd({
+                flash: true
+            });
+            break;
+        case "twizzle-link":
+            this.controller?.visitTwizzleLink();
+            break;
+        default:
+            throw new Error("Missing command");
+    }
+};
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-buttons", $8e08190ac5cfc1c3$var$TwistyButtons);
+var $8e08190ac5cfc1c3$var$_iconManager;
+var $8e08190ac5cfc1c3$var$TwistyButton = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(){
+        super(...arguments);
+        this.htmlButton = document.createElement("button");
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_iconManager, new $8e08190ac5cfc1c3$var$ClassListManager(this, "svg-", $8e08190ac5cfc1c3$var$buttonIcons));
+    }
+    connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$buttonCSS);
+        this.addElement(this.htmlButton);
+    }
+    setIcon(iconName) {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_iconManager).setValue(iconName);
+    }
+};
+$8e08190ac5cfc1c3$var$_iconManager = new WeakMap();
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-button", $8e08190ac5cfc1c3$var$TwistyButton);
+// src/cubing/twisty/views/control-panel/TwistyScrubber.css.ts
+var $8e08190ac5cfc1c3$var$twistyScrubberCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+:host {
+  width: 384px;
+  height: 16px;
+  display: grid;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(196, 196, 196, 0.75)
+}
+
+input:not(:disabled) {
+  cursor: ew-resize;
+}
+`);
+// src/cubing/twisty/views/control-panel/TwistyScrubber.ts
+var $8e08190ac5cfc1c3$var$SLOW_DOWN_SCRUBBING = false;
+var $8e08190ac5cfc1c3$var$isMouseDown = false;
+$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mousedown", function(event) {
+    if (event.which) $8e08190ac5cfc1c3$var$isMouseDown = true;
+}, true);
+$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mouseup", function(event) {
+    if (event.which) $8e08190ac5cfc1c3$var$isMouseDown = false;
+}, true);
+var $8e08190ac5cfc1c3$var$y = 0;
+var $8e08190ac5cfc1c3$var$clickNum = 0;
+$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mousedown", ()=>{
+    $8e08190ac5cfc1c3$var$clickNum++;
+}, false);
+$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mousemove", $8e08190ac5cfc1c3$var$onMouseUpdate, false);
+$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mouseenter", $8e08190ac5cfc1c3$var$onMouseUpdate, false);
+function $8e08190ac5cfc1c3$var$onMouseUpdate(e) {
+    $8e08190ac5cfc1c3$var$y = e.pageY;
+}
+var $8e08190ac5cfc1c3$var$lastVal = 0;
+var $8e08190ac5cfc1c3$var$lastPreval = 0;
+var $8e08190ac5cfc1c3$var$scaling = false;
+var $8e08190ac5cfc1c3$var$currentClickNum = 0;
+var $8e08190ac5cfc1c3$var$_inputElem;
+var $8e08190ac5cfc1c3$var$TwistyScrubber = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(model){
+        super();
+        this.model = model;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_inputElem, null);
+    }
+    async onDetailedTimelineInfo(detailedTimelineInfo) {
+        const inputElem = await this.inputElem();
+        inputElem.min = detailedTimelineInfo.timeRange.start.toString();
+        inputElem.max = detailedTimelineInfo.timeRange.end.toString();
+        inputElem.disabled = inputElem.min === inputElem.max;
+        inputElem.value = detailedTimelineInfo.timestamp.toString();
+    }
+    async connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$twistyScrubberCSS);
+        this.addElement(await this.inputElem());
+    }
+    async inputElem() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_inputElem) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_inputElem, (async ()=>{
+            const elem = document.createElement("input");
+            elem.type = "range";
+            elem.disabled = true;
+            this.model?.detailedTimelineInfo.addFreshListener(this.onDetailedTimelineInfo.bind(this));
+            elem.addEventListener("input", this.onInput.bind(this));
+            return elem;
+        })());
+    }
+    async onInput(e) {
+        if ($8e08190ac5cfc1c3$var$scaling) return;
+        const inputElem = await this.inputElem();
+        await this.slowDown(e, inputElem);
+        const value = parseInt(inputElem.value);
+        this.model?.playingInfo.set({
+            playing: false
+        });
+        this.model?.timestampRequest.set(value);
+    }
+    async slowDown(e, inputElem) {
+        if (!$8e08190ac5cfc1c3$var$SLOW_DOWN_SCRUBBING) return;
+        if ($8e08190ac5cfc1c3$var$isMouseDown) {
+            const rect = inputElem.getBoundingClientRect();
+            const sliderY = rect.top + rect.height / 2;
+            console.log(sliderY, e, $8e08190ac5cfc1c3$var$y, $8e08190ac5cfc1c3$var$isMouseDown);
+            const yDist = Math.abs(sliderY - $8e08190ac5cfc1c3$var$y);
+            let scale = 1;
+            if (yDist > 64) scale = Math.max(Math.pow(2, -(yDist - 64) / 64), 1 / 32);
+            const preVal = parseInt(inputElem.value);
+            console.log("cl", $8e08190ac5cfc1c3$var$currentClickNum, $8e08190ac5cfc1c3$var$clickNum, preVal);
+            if ($8e08190ac5cfc1c3$var$currentClickNum === $8e08190ac5cfc1c3$var$clickNum) {
+                const delta = (preVal - $8e08190ac5cfc1c3$var$lastPreval) * scale;
+                console.log("delta", delta, yDist);
+                $8e08190ac5cfc1c3$var$scaling = true;
+                let newVal = preVal;
+                newVal = $8e08190ac5cfc1c3$var$lastVal + delta * scale + (preVal - $8e08190ac5cfc1c3$var$lastVal) * Math.min(1, Math.pow(0.5, yDist * yDist / 64));
+                inputElem.value = newVal.toString();
+                console.log(scale);
+                $8e08190ac5cfc1c3$var$scaling = false;
+                this.contentWrapper.style.opacity = scale.toString();
+            } else $8e08190ac5cfc1c3$var$currentClickNum = $8e08190ac5cfc1c3$var$clickNum;
+            $8e08190ac5cfc1c3$var$lastPreval = preVal;
+        }
+    }
+};
+$8e08190ac5cfc1c3$var$_inputElem = new WeakMap();
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-scrubber", $8e08190ac5cfc1c3$var$TwistyScrubber);
+// src/cubing/twisty/views/screenshot.ts
+var $8e08190ac5cfc1c3$var$cachedCamera = null;
+async function $8e08190ac5cfc1c3$var$screenshot(model, options) {
+    const width = options?.width ?? 2048;
+    const height = options?.height ?? 2048;
+    const aspectRatio = width / height;
+    const camera = $8e08190ac5cfc1c3$var$cachedCamera ?? ($8e08190ac5cfc1c3$var$cachedCamera = await (async ()=>{
+        return new (await (0, $8JBxj.THREEJS)).PerspectiveCamera(20, aspectRatio, 0.1, 20);
+    })());
+    const scene = new (await (0, $8JBxj.THREEJS)).Scene();
+    const twisty3DWrapper = new $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper(model, {
+        scheduleRender: ()=>{}
+    }, await model.puzzleLoader.get(), await model.visualizationStrategy.get());
+    await model.twistySceneModel.stickering.get();
+    await new Promise((resolve)=>setTimeout(resolve, 1e3));
+    await model.legacyPosition.get();
+    scene.add(await twisty3DWrapper.twisty3DPuzzle());
+    const orbitCoordinates = await model.twistySceneModel.orbitCoordinates.get();
+    await $8e08190ac5cfc1c3$var$setCameraFromOrbitCoordinates(camera, orbitCoordinates);
+    const renderer = new (await (0, $8JBxj.THREEJS)).WebGLRenderer({
+        antialias: true,
+        alpha: true
+    });
+    renderer.setSize(width, height);
+    renderer.render(scene, camera);
+    const dataURL = renderer.domElement.toDataURL();
+    const defaultFilename = await $8e08190ac5cfc1c3$var$getDefaultFilename(model);
+    return {
+        dataURL: dataURL,
+        download: async (filename)=>{
+            $8e08190ac5cfc1c3$var$downloadURL(dataURL, filename ?? defaultFilename);
+        }
+    };
+}
+async function $8e08190ac5cfc1c3$var$getDefaultFilename(model) {
+    const [puzzleID, algWithIssues] = await Promise.all([
+        model.puzzleID.get(),
+        model.alg.get()
+    ]);
+    return `[${puzzleID}]${algWithIssues.alg.experimentalNumUnits() === 0 ? "" : " " + algWithIssues.alg.toString()}`;
+}
+function $8e08190ac5cfc1c3$var$downloadURL(url, name, extension = "png") {
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${name}.${extension}`;
+    a.click();
+}
+// src/cubing/twisty/views/TwistyPlayer.css.ts
+var $8e08190ac5cfc1c3$var$twistyPlayerCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+:host {
+  width: 384px;
+  height: 256px;
+  display: grid;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.wrapper {
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: 7fr minmax(1.5em, 0.5fr) minmax(2em, 1fr);
+}
+
+.wrapper > * {
+  width: inherit;
+  height: inherit;
+  overflow: hidden;
+}
+
+.wrapper.controls-none {
+  grid-template-rows: 7fr;
+}
+
+.wrapper.controls-none twisty-scrubber,
+.wrapper.controls-none twisty-control-button-panel ,
+.wrapper.controls-none twisty-scrubber,
+.wrapper.controls-none twisty-buttons {
+  display: none;
+}
+
+twisty-scrubber {
+  background: rgba(196, 196, 196, 0.5);
+}
+
+.wrapper.checkered {
+  background-color: #EAEAEA;
+  background-image: linear-gradient(45deg, #DDD 25%, transparent 25%, transparent 75%, #DDD 75%, #DDD),
+    linear-gradient(45deg, #DDD 25%, transparent 25%, transparent 75%, #DDD 75%, #DDD);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.visualization-wrapper > * {
+  width: 100%;
+  height: 100%;
+}
+
+.error-elem {
+  width: 100%;
+  height: 100%;
+  display: none;
+  place-content: center;
+  font-family: sans-serif;
+  box-shadow: inset 0 0 2em rgb(255, 0, 0);
+  color: red;
+  text-shadow: 0 0 0.2em white;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.wrapper.error .visualization-wrapper {
+  display: none;
+}
+
+.wrapper.error .error-elem {
+  display: grid;
+}
+`);
+// src/cubing/twisty/model/props/general/ArbitraryStringProp.ts
+var $8e08190ac5cfc1c3$var$ArbitraryStringProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return null;
+    }
+};
+// src/cubing/twisty/model/props/general/URLProp.ts
+var $8e08190ac5cfc1c3$var$URLProp = class extends (0, $8JBxj.TwistyPropSource) {
+    getDefaultValue() {
+        return null;
+    }
+    derive(input) {
+        if (typeof input === "string") return new URL(input, location.href);
+        return input;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/AlgProp.ts
+var $8e08190ac5cfc1c3$var$AlgIssues = class {
+    constructor(issues){
+        this.warnings = Object.freeze(issues?.warnings ?? []);
+        this.errors = Object.freeze(issues?.errors ?? []);
+        Object.freeze(this);
+    }
+    add(issues) {
+        return new $8e08190ac5cfc1c3$var$AlgIssues({
+            warnings: this.warnings.concat(issues?.warnings ?? []),
+            errors: this.errors.concat(issues?.errors ?? [])
+        });
+    }
+    log() {
+        if (this.errors.length > 0) console.error(`\u{1F6A8} ${this.errors[0]}`);
+        else if (this.warnings.length > 0) console.warn(`\u26A0\uFE0F ${this.warnings[0]}`);
+        else console.info("\uD83D\uDE0E No issues!");
+    }
+};
+function $8e08190ac5cfc1c3$var$algWithIssuesFromString(s) {
+    try {
+        const alg = (0, $kQo6d.Alg).fromString(s);
+        const warnings = [];
+        if (alg.toString() !== s) warnings.push(`Alg is non-canonical!`);
+        return {
+            alg: alg,
+            issues: new $8e08190ac5cfc1c3$var$AlgIssues({
+                warnings: warnings
+            })
+        };
+    } catch (e) {
+        return {
+            alg: new (0, $kQo6d.Alg)(),
+            issues: new $8e08190ac5cfc1c3$var$AlgIssues({
+                errors: [
+                    `Malformed alg: ${e.toString()}`
+                ]
+            })
+        };
+    }
+}
+function $8e08190ac5cfc1c3$var$algWithIssuesEquals(a1, a2) {
+    return a1.alg.isIdentical(a2.alg) && $8e08190ac5cfc1c3$var$arrayEquals(a1.issues.warnings, a2.issues.warnings) && $8e08190ac5cfc1c3$var$arrayEquals(a1.issues.errors, a2.issues.errors);
+}
+var $8e08190ac5cfc1c3$var$AlgProp = class extends (0, $8JBxj.TwistyPropSource) {
+    getDefaultValue() {
+        return {
+            alg: new (0, $kQo6d.Alg)(),
+            issues: new $8e08190ac5cfc1c3$var$AlgIssues()
+        };
+    }
+    canReuseValue(v1, v2) {
+        return $8e08190ac5cfc1c3$var$algWithIssuesEquals(v1, v2);
+    }
+    async derive(newAlg) {
+        if (typeof newAlg === "string") return $8e08190ac5cfc1c3$var$algWithIssuesFromString(newAlg);
+        else return {
+            alg: newAlg,
+            issues: new $8e08190ac5cfc1c3$var$AlgIssues()
+        };
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/AlgTransformationProp.ts
+var $8e08190ac5cfc1c3$var$AlgTransformationProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(input) {
+        return input.kpuzzle.algToTransformation(input.setupAlg.alg);
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/AnchorTransformationProp.ts
+var $8e08190ac5cfc1c3$var$AnchorTransformationProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        if (inputs.setupTransformation) return inputs.setupTransformation;
+        switch(inputs.setupAnchor){
+            case "start":
+                return inputs.setupAlgTransformation;
+            case "end":
+                {
+                    const algTransformation = inputs.indexer.transformationAtIndex(inputs.indexer.numAnimatedLeaves());
+                    const inverseAlgTransformation = algTransformation.invert();
+                    return inputs.setupAlgTransformation.applyTransformation(inverseAlgTransformation);
+                }
+            default:
+                throw new Error("Unimplemented!");
+        }
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/CatchUpMoveProp.ts
+var $8e08190ac5cfc1c3$var$CatchUpMoveProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return {
+            move: null,
+            amount: 0
+        };
+    }
+    canReuseValue(v1, v2) {
+        return v1.move === v2.move && v1.amount === v2.amount;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/CurrentLeavesSimplified.ts
+var $8e08190ac5cfc1c3$var$CurrentLeavesSimplifiedProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        return {
+            stateIndex: inputs.currentMoveInfo.stateIndex,
+            movesFinishing: inputs.currentMoveInfo.movesFinishing.map((currentMoveInfo)=>currentMoveInfo.move),
+            movesFinished: inputs.currentMoveInfo.movesFinished.map((currentMoveInfo)=>currentMoveInfo.move)
+        };
+    }
+    canReuse(v1, v2) {
+        return v1.stateIndex === v2.stateIndex && $8e08190ac5cfc1c3$var$arrayEqualsCompare(v1.movesFinishing, v2.movesFinishing, (m1, m2)=>m1.isIdentical(m2)) && $8e08190ac5cfc1c3$var$arrayEqualsCompare(v1.movesFinished, v2.movesFinished, (m1, m2)=>m1.isIdentical(m2));
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/CurrentMoveInfoProp.ts
+var $8e08190ac5cfc1c3$var$CurrentMoveInfoProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        function addCatchUpMove(currentMoveInfo) {
+            if (inputs.detailedTimelineInfo.atEnd && inputs.catchUpMove.move !== null) currentMoveInfo.currentMoves.push({
+                move: inputs.catchUpMove.move,
+                direction: -1 /* Backwards */ ,
+                fraction: 1 - inputs.catchUpMove.amount,
+                startTimestamp: -1,
+                endTimestamp: -1
+            });
+            return currentMoveInfo;
+        }
+        if (inputs.indexer.currentMoveInfo) return addCatchUpMove(inputs.indexer.currentMoveInfo(inputs.detailedTimelineInfo.timestamp));
+        else {
+            const idx = inputs.indexer.timestampToIndex(inputs.detailedTimelineInfo.timestamp);
+            const currentMoveInfo = {
+                stateIndex: idx,
+                currentMoves: [],
+                movesFinishing: [],
+                movesFinished: [],
+                movesStarting: [],
+                latestStart: -Infinity,
+                earliestEnd: Infinity
+            };
+            if (inputs.indexer.numAnimatedLeaves() > 0) {
+                const move = inputs.indexer.getAnimLeaf(idx)?.as((0, $kQo6d.Move));
+                if (!move) return addCatchUpMove(currentMoveInfo);
+                const start = inputs.indexer.indexToMoveStartTimestamp(idx);
+                const duration = inputs.indexer.moveDuration(idx);
+                const fraction = duration ? (inputs.detailedTimelineInfo.timestamp - start) / duration : 0;
+                const end = start + duration;
+                const currentMove = {
+                    move: move,
+                    direction: 1 /* Forwards */ ,
+                    fraction: fraction,
+                    startTimestamp: start,
+                    endTimestamp: end
+                };
+                if (fraction === 0) currentMoveInfo.movesStarting.push(currentMove);
+                else if (fraction === 1) currentMoveInfo.movesFinishing.push(currentMove);
+                else {
+                    currentMoveInfo.currentMoves.push(currentMove);
+                    currentMoveInfo.latestStart = Math.max(currentMoveInfo.latestStart, start);
+                    currentMoveInfo.earliestEnd = Math.min(currentMoveInfo.earliestEnd, end);
+                }
+            }
+            return addCatchUpMove(currentMoveInfo);
+        }
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/CurrentStateProp.ts
+var $8e08190ac5cfc1c3$var$CurrentStateProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        let transformation = inputs.indexer.transformationAtIndex(inputs.currentLeavesSimplified.stateIndex);
+        transformation = inputs.anchoredStart.applyTransformation(transformation);
+        for (const finishingMove of inputs.currentLeavesSimplified.movesFinishing)transformation = transformation.applyMove(finishingMove);
+        for (const finishedMove of inputs.currentLeavesSimplified.movesFinished)transformation = transformation.applyMove(finishedMove);
+        return transformation.toKState();
+    }
+};
+// src/cubing/twisty/controllers/indexer/AlgDuration.ts
+function $8e08190ac5cfc1c3$var$defaultDurationForAmount(amount) {
+    switch(Math.abs(amount)){
+        case 0:
+            return 0;
+        case 1:
+            return 1e3;
+        case 2:
+            return 1500;
+        default:
+            return 2e3;
+    }
+}
+var $8e08190ac5cfc1c3$var$AlgDuration = class extends (0, $kQo6d.TraversalUp) {
+    constructor(durationForAmount = $8e08190ac5cfc1c3$var$defaultDurationForAmount){
+        super();
+        this.durationForAmount = durationForAmount;
+    }
+    traverseAlg(alg) {
+        let total = 0;
+        for (const unit of alg.units())total += this.traverseUnit(unit);
+        return total;
+    }
+    traverseGrouping(grouping) {
+        return grouping.amount * this.traverseAlg(grouping.alg);
+    }
+    traverseMove(move) {
+        return this.durationForAmount(move.amount);
+    }
+    traverseCommutator(commutator) {
+        return 2 * (this.traverseAlg(commutator.A) + this.traverseAlg(commutator.B));
+    }
+    traverseConjugate(conjugate) {
+        return 2 * this.traverseAlg(conjugate.A) + this.traverseAlg(conjugate.B);
+    }
+    traversePause(_pause) {
+        return this.durationForAmount(1);
+    }
+    traverseNewline(_newline) {
+        return this.durationForAmount(1);
+    }
+    traverseLineComment(_comment) {
+        return this.durationForAmount(0);
+    }
+};
+// src/cubing/twisty/controllers/indexer/SimpleAlgIndexer.ts
+var $8e08190ac5cfc1c3$export$f1f512573dac63bc = class {
+    constructor(kpuzzle, alg){
+        this.kpuzzle = kpuzzle;
+        this.durationFn = new $8e08190ac5cfc1c3$var$AlgDuration($8e08190ac5cfc1c3$var$defaultDurationForAmount);
+        this.moves = new (0, $kQo6d.Alg)(alg.experimentalExpand());
+    }
+    getAnimLeaf(index) {
+        return Array.from(this.moves.units())[index];
+    }
+    indexToMoveStartTimestamp(index) {
+        const alg = new (0, $kQo6d.Alg)(Array.from(this.moves.units()).slice(0, index));
+        return this.durationFn.traverseAlg(alg);
+    }
+    timestampToIndex(timestamp) {
+        let cumulativeTime = 0;
+        let i;
+        for(i = 0; i < this.numAnimatedLeaves(); i++){
+            cumulativeTime += this.durationFn.traverseMove(this.getAnimLeaf(i));
+            if (cumulativeTime >= timestamp) return i;
+        }
+        return i;
+    }
+    stateAtIndex(index) {
+        return this.kpuzzle.startState().applyTransformation(this.transformationAtIndex(index));
+    }
+    transformationAtIndex(index) {
+        let state = this.kpuzzle.identityTransformation();
+        for (const move of Array.from(this.moves.units()).slice(0, index))state = state.applyMove(move);
+        return state;
+    }
+    algDuration() {
+        return this.durationFn.traverseAlg(this.moves);
+    }
+    numAnimatedLeaves() {
+        return (0, $0305d85fc2c30b4d$export$d5ea806fd922b359)(this.moves);
+    }
+    moveDuration(index) {
+        return this.durationFn.traverseMove(this.getAnimLeaf(index));
+    }
+};
+// src/cubing/twisty/controllers/indexer/simultaneous-moves/simul-moves.ts
+var $8e08190ac5cfc1c3$var$axisLookup = {
+    u: "y",
+    l: "x",
+    f: "z",
+    r: "x",
+    b: "z",
+    d: "y",
+    m: "x",
+    e: "y",
+    s: "z",
+    x: "x",
+    y: "y",
+    z: "z"
+};
+function $8e08190ac5cfc1c3$var$isSameAxis(move1, move2) {
+    return $8e08190ac5cfc1c3$var$axisLookup[move1.family[0].toLowerCase()] === $8e08190ac5cfc1c3$var$axisLookup[move2.family[0].toLowerCase()];
+}
+var $8e08190ac5cfc1c3$var$LocalSimulMoves = class extends (0, $kQo6d.TraversalUp) {
+    traverseAlg(alg) {
+        const processed = [];
+        for (const nestedUnit of alg.units())processed.push(this.traverseUnit(nestedUnit));
+        return Array.prototype.concat(...processed);
+    }
+    traverseGroupingOnce(alg) {
+        if (alg.experimentalIsEmpty()) return [];
+        for (const unit of alg.units()){
+            if (!unit.is((0, $kQo6d.Move))) return this.traverseAlg(alg);
+        }
+        const moves = Array.from(alg.units());
+        let maxSimulDur = $8e08190ac5cfc1c3$var$defaultDurationForAmount(moves[0].amount);
+        for(let i = 0; i < moves.length - 1; i++){
+            for(let j = 1; j < moves.length; j++){
+                if (!$8e08190ac5cfc1c3$var$isSameAxis(moves[i], moves[j])) return this.traverseAlg(alg);
+            }
+            maxSimulDur = Math.max(maxSimulDur, $8e08190ac5cfc1c3$var$defaultDurationForAmount(moves[i].amount));
+        }
+        const localMovesWithRange = moves.map((blockMove)=>{
+            return {
+                animLeafUnit: blockMove,
+                msUntilNext: 0,
+                duration: maxSimulDur
+            };
+        });
+        localMovesWithRange[localMovesWithRange.length - 1].msUntilNext = maxSimulDur;
+        return localMovesWithRange;
+    }
+    traverseGrouping(grouping) {
+        const processed = [];
+        const segmentOnce = grouping.amount > 0 ? grouping.alg : grouping.alg.invert();
+        for(let i = 0; i < Math.abs(grouping.amount); i++)processed.push(this.traverseGroupingOnce(segmentOnce));
+        return Array.prototype.concat(...processed);
+    }
+    traverseMove(move) {
+        const duration = $8e08190ac5cfc1c3$var$defaultDurationForAmount(move.amount);
+        return [
+            {
+                animLeafUnit: move,
+                msUntilNext: duration,
+                duration: duration
+            }
+        ];
+    }
+    traverseCommutator(commutator) {
+        const processed = [];
+        const segmentsOnce = [
+            commutator.A,
+            commutator.B,
+            commutator.A.invert(),
+            commutator.B.invert()
+        ];
+        for (const segment of segmentsOnce)processed.push(this.traverseGroupingOnce(segment));
+        return Array.prototype.concat(...processed);
+    }
+    traverseConjugate(conjugate) {
+        const processed = [];
+        const segmentsOnce = [
+            conjugate.A,
+            conjugate.B,
+            conjugate.A.invert()
+        ];
+        for (const segment of segmentsOnce)processed.push(this.traverseGroupingOnce(segment));
+        return Array.prototype.concat(...processed);
+    }
+    traversePause(pause) {
+        if (pause.experimentalNISSGrouping) return [];
+        const duration = $8e08190ac5cfc1c3$var$defaultDurationForAmount(1);
+        return [
+            {
+                animLeafUnit: pause,
+                msUntilNext: duration,
+                duration: duration
+            }
+        ];
+    }
+    traverseNewline(_newline) {
+        return [];
+    }
+    traverseLineComment(_comment) {
+        return [];
+    }
+};
+var $8e08190ac5cfc1c3$var$localSimulMovesInstance = new $8e08190ac5cfc1c3$var$LocalSimulMoves();
+var $8e08190ac5cfc1c3$var$localSimulMoves = $8e08190ac5cfc1c3$var$localSimulMovesInstance.traverseAlg.bind($8e08190ac5cfc1c3$var$localSimulMovesInstance);
+function $8e08190ac5cfc1c3$var$simulMoves(a) {
+    let timestamp = 0;
+    const l = $8e08190ac5cfc1c3$var$localSimulMoves(a).map((localSimulMove)=>{
+        const leafWithRange = {
+            animLeaf: localSimulMove.animLeafUnit,
+            start: timestamp,
+            end: timestamp + localSimulMove.duration
+        };
+        timestamp += localSimulMove.msUntilNext;
+        return leafWithRange;
+    });
+    return l;
+}
+// src/cubing/twisty/controllers/indexer/simultaneous-moves/SimultaneousMoveIndexer.ts
+var $8e08190ac5cfc1c3$var$demos = {
+    "y' y' U' E D R2 r2 F2 B2 U E D' R2 L2' z2 S2 U U D D S2 F2' B2": [
+        {
+            animLeaf: new (0, $kQo6d.Move)("y", -1),
+            start: 0,
+            end: 1e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("y", -1),
+            start: 1e3,
+            end: 2e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("U", -1),
+            start: 1e3,
+            end: 1600
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("E", 1),
+            start: 1200,
+            end: 1800
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("D"),
+            start: 1400,
+            end: 2e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("R", 2),
+            start: 2e3,
+            end: 3500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("r", 2),
+            start: 2e3,
+            end: 3500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("F", 2),
+            start: 3500,
+            end: 4200
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("B", 2),
+            start: 3800,
+            end: 4500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("U", 1),
+            start: 4500,
+            end: 5500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("E", 1),
+            start: 4500,
+            end: 5500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("D", -1),
+            start: 4500,
+            end: 5500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("R", 2),
+            start: 5500,
+            end: 6500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("L", -2),
+            start: 5500,
+            end: 6500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("z", 2),
+            start: 5500,
+            end: 6500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("S", 2),
+            start: 6500,
+            end: 7500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("U"),
+            start: 7500,
+            end: 8e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("D"),
+            start: 7750,
+            end: 8250
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("U"),
+            start: 8e3,
+            end: 8500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("D"),
+            start: 8250,
+            end: 8750
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("S", 2),
+            start: 8750,
+            end: 9250
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("F", -2),
+            start: 8750,
+            end: 1e4
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("B", 2),
+            start: 8750,
+            end: 1e4
+        }
+    ],
+    "M' R' U' D' M R": [
+        {
+            animLeaf: new (0, $kQo6d.Move)("M", -1),
+            start: 0,
+            end: 1e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("R", -1),
+            start: 0,
+            end: 1e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("U", -1),
+            start: 1e3,
+            end: 2e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("D", -1),
+            start: 1e3,
+            end: 2e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("M"),
+            start: 2e3,
+            end: 3e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("R"),
+            start: 2e3,
+            end: 3e3
+        }
+    ],
+    "U' E' r E r2' E r U E": [
+        {
+            animLeaf: new (0, $kQo6d.Move)("U", -1),
+            start: 0,
+            end: 1e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("E", -1),
+            start: 0,
+            end: 1e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("r"),
+            start: 1e3,
+            end: 2500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("E"),
+            start: 2500,
+            end: 3500
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("r", -2),
+            start: 3500,
+            end: 5e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("E"),
+            start: 5e3,
+            end: 6e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("r"),
+            start: 6e3,
+            end: 7e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("U"),
+            start: 7e3,
+            end: 8e3
+        },
+        {
+            animLeaf: new (0, $kQo6d.Move)("E"),
+            start: 7e3,
+            end: 8e3
+        }
+    ]
+};
+var $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer = class {
+    constructor(kpuzzle, alg){
+        this.kpuzzle = kpuzzle;
+        this.animLeaves = $8e08190ac5cfc1c3$var$demos[alg.toString()] ?? $8e08190ac5cfc1c3$var$simulMoves(alg);
+    }
+    getAnimLeaf(index) {
+        return this.animLeaves[Math.min(index, this.animLeaves.length - 1)]?.animLeaf ?? null;
+    }
+    getAnimLeafWithRange(index) {
+        return this.animLeaves[Math.min(index, this.animLeaves.length - 1)];
+    }
+    indexToMoveStartTimestamp(index) {
+        let start = 0;
+        if (this.animLeaves.length > 0) start = this.animLeaves[Math.min(index, this.animLeaves.length - 1)].start;
+        return start;
+    }
+    timestampToIndex(timestamp) {
+        let i = 0;
+        for(i = 0; i < this.animLeaves.length; i++){
+            if (this.animLeaves[i].start >= timestamp) return Math.max(0, i - 1);
+        }
+        return Math.max(0, i - 1);
+    }
+    timestampToPosition(timestamp, startState) {
+        const currentMoveInfo = this.currentMoveInfo(timestamp);
+        let state = startState ?? this.kpuzzle.identityTransformation().toKState();
+        for (const leafWithRange of this.animLeaves.slice(0, currentMoveInfo.stateIndex)){
+            const move = leafWithRange.animLeaf.as((0, $kQo6d.Move));
+            if (move !== null) state = state.applyMove(move);
+        }
+        return {
+            state: state,
+            movesInProgress: currentMoveInfo.currentMoves
+        };
+    }
+    currentMoveInfo(timestamp) {
+        let windowEarliestTimestamp = Infinity;
+        for (const leafWithRange of this.animLeaves){
+            if (leafWithRange.start <= timestamp && leafWithRange.end >= timestamp) windowEarliestTimestamp = Math.min(windowEarliestTimestamp, leafWithRange.start);
+            else if (leafWithRange.start > timestamp) break;
+        }
+        const currentMoves = [];
+        const movesStarting = [];
+        const movesFinishing = [];
+        const movesFinished = [];
+        let latestStart = -Infinity;
+        let earliestEnd = Infinity;
+        let stateIndex = 0;
+        for (const leafWithRange1 of this.animLeaves){
+            if (leafWithRange1.end <= windowEarliestTimestamp) stateIndex++;
+            else if (leafWithRange1.start > timestamp) break;
+            else {
+                const move = leafWithRange1.animLeaf.as((0, $kQo6d.Move));
+                if (move !== null) {
+                    let fraction = (timestamp - leafWithRange1.start) / (leafWithRange1.end - leafWithRange1.start);
+                    let moveFinished = false;
+                    if (fraction > 1) {
+                        fraction = 1;
+                        moveFinished = true;
+                    }
+                    const currentMove = {
+                        move: move,
+                        direction: 1 /* Forwards */ ,
+                        fraction: fraction,
+                        startTimestamp: leafWithRange1.start,
+                        endTimestamp: leafWithRange1.end
+                    };
+                    switch(fraction){
+                        case 0:
+                            movesStarting.push(currentMove);
+                            break;
+                        case 1:
+                            if (moveFinished) movesFinished.push(currentMove);
+                            else movesFinishing.push(currentMove);
+                            break;
+                        default:
+                            currentMoves.push(currentMove);
+                            latestStart = Math.max(latestStart, leafWithRange1.start);
+                            earliestEnd = Math.min(earliestEnd, leafWithRange1.end);
+                    }
+                }
+            }
+        }
+        return {
+            stateIndex: stateIndex,
+            currentMoves: currentMoves,
+            latestStart: latestStart,
+            earliestEnd: earliestEnd,
+            movesStarting: movesStarting,
+            movesFinishing: movesFinishing,
+            movesFinished: movesFinished
+        };
+    }
+    stateAtIndex(index, startState) {
+        let state = startState ?? this.kpuzzle.startState();
+        for(let i = 0; i < this.animLeaves.length && i < index; i++){
+            const leafWithRange = this.animLeaves[i];
+            const move = leafWithRange.animLeaf.as((0, $kQo6d.Move));
+            if (move !== null) state = state.applyMove(move);
+        }
+        return state;
+    }
+    transformationAtIndex(index) {
+        let transformation = this.kpuzzle.identityTransformation();
+        for (const leafWithRange of this.animLeaves.slice(0, index)){
+            const move = leafWithRange.animLeaf.as((0, $kQo6d.Move));
+            if (move !== null) transformation = transformation.applyMove(move);
+        }
+        return transformation;
+    }
+    algDuration() {
+        let max = 0;
+        for (const leafWithRange of this.animLeaves)max = Math.max(max, leafWithRange.end);
+        return max;
+    }
+    numAnimatedLeaves() {
+        return this.animLeaves.length;
+    }
+    moveDuration(index) {
+        const move = this.getAnimLeafWithRange(index);
+        return move.end - move.start;
+    }
+};
+// src/cubing/twisty/controllers/indexer/tree/AlgWalker.ts
+var $8e08190ac5cfc1c3$var$AlgPartDecoration = class {
+    constructor(moveCount, duration, forward, backward, children = []){
+        this.moveCount = moveCount;
+        this.duration = duration;
+        this.forward = forward;
+        this.backward = backward;
+        this.children = children;
+    }
+};
+var $8e08190ac5cfc1c3$var$DecoratorConstructor = class extends (0, $kQo6d.TraversalUp) {
+    constructor(kpuzzle){
+        super();
+        this.kpuzzle = kpuzzle;
+        this.durationFn = new $8e08190ac5cfc1c3$var$AlgDuration($8e08190ac5cfc1c3$var$defaultDurationForAmount);
+        this.cache = {};
+        this.identity = kpuzzle.identityTransformation();
+        this.dummyLeaf = new $8e08190ac5cfc1c3$var$AlgPartDecoration(0, 0, this.identity, this.identity, []);
+    }
+    traverseAlg(alg) {
+        let moveCount = 0;
+        let duration = 0;
+        let transformation = this.identity;
+        const child = [];
+        for (const unit of alg.units()){
+            const apd = this.traverseUnit(unit);
+            moveCount += apd.moveCount;
+            duration += apd.duration;
+            if (transformation === this.identity) transformation = apd.forward;
+            else transformation = transformation.applyTransformation(apd.forward);
+            child.push(apd);
+        }
+        return new $8e08190ac5cfc1c3$var$AlgPartDecoration(moveCount, duration, transformation, transformation.invert(), child);
+    }
+    traverseGrouping(grouping) {
+        const dec = this.traverseAlg(grouping.alg);
+        return this.mult(dec, grouping.amount, [
+            dec
+        ]);
+    }
+    traverseMove(move) {
+        const key = move.toString();
+        let r = this.cache[key];
+        if (r) return r;
+        const transformation = this.kpuzzle.moveToTransformation(move);
+        r = new $8e08190ac5cfc1c3$var$AlgPartDecoration(1, this.durationFn.traverseUnit(move), transformation, transformation.invert());
+        this.cache[key] = r;
+        return r;
+    }
+    traverseCommutator(commutator) {
+        const decA = this.traverseAlg(commutator.A);
+        const decB = this.traverseAlg(commutator.B);
+        const AB = decA.forward.applyTransformation(decB.forward);
+        const ApBp = decA.backward.applyTransformation(decB.backward);
+        const ABApBp = AB.applyTransformation(ApBp);
+        const dec = new $8e08190ac5cfc1c3$var$AlgPartDecoration(2 * (decA.moveCount + decB.moveCount), 2 * (decA.duration + decB.duration), ABApBp, ABApBp.invert(), [
+            decA,
+            decB
+        ]);
+        return this.mult(dec, 1, [
+            dec,
+            decA,
+            decB
+        ]);
+    }
+    traverseConjugate(conjugate) {
+        const decA = this.traverseAlg(conjugate.A);
+        const decB = this.traverseAlg(conjugate.B);
+        const AB = decA.forward.applyTransformation(decB.forward);
+        const ABAp = AB.applyTransformation(decA.backward);
+        const dec = new $8e08190ac5cfc1c3$var$AlgPartDecoration(2 * decA.moveCount + decB.moveCount, 2 * decA.duration + decB.duration, ABAp, ABAp.invert(), [
+            decA,
+            decB
+        ]);
+        return this.mult(dec, 1, [
+            dec,
+            decA,
+            decB
+        ]);
+    }
+    traversePause(pause) {
+        if (pause.experimentalNISSGrouping) return this.dummyLeaf;
+        return new $8e08190ac5cfc1c3$var$AlgPartDecoration(1, this.durationFn.traverseUnit(pause), this.identity, this.identity);
+    }
+    traverseNewline(_newline) {
+        return this.dummyLeaf;
+    }
+    traverseLineComment(_comment) {
+        return this.dummyLeaf;
+    }
+    mult(apd, n, child) {
+        const absn = Math.abs(n);
+        const st = apd.forward.selfMultiply(n);
+        return new $8e08190ac5cfc1c3$var$AlgPartDecoration(apd.moveCount * absn, apd.duration * absn, st, st.invert(), child);
+    }
+};
+var $8e08190ac5cfc1c3$var$WalkerDown = class {
+    constructor(apd, back){
+        this.apd = apd;
+        this.back = back;
+    }
+};
+var $8e08190ac5cfc1c3$var$AlgWalker = class extends (0, $kQo6d.TraversalDownUp) {
+    constructor(kpuzzle, algOrUnit, apd){
+        super();
+        this.kpuzzle = kpuzzle;
+        this.algOrUnit = algOrUnit;
+        this.apd = apd;
+        this.i = -1;
+        this.dur = -1;
+        this.goali = -1;
+        this.goaldur = -1;
+        this.move = void 0;
+        this.back = false;
+        this.moveDuration = 0;
+        this.st = this.kpuzzle.identityTransformation();
+        this.root = new $8e08190ac5cfc1c3$var$WalkerDown(this.apd, false);
+    }
+    moveByIndex(loc) {
+        if (this.i >= 0 && this.i === loc) return this.move !== void 0;
+        return this.dosearch(loc, Infinity);
+    }
+    moveByDuration(dur) {
+        if (this.dur >= 0 && this.dur < dur && this.dur + this.moveDuration >= dur) return this.move !== void 0;
+        return this.dosearch(Infinity, dur);
+    }
+    dosearch(loc, dur) {
+        this.goali = loc;
+        this.goaldur = dur;
+        this.i = 0;
+        this.dur = 0;
+        this.move = void 0;
+        this.moveDuration = 0;
+        this.back = false;
+        this.st = this.kpuzzle.identityTransformation();
+        const r = this.algOrUnit.is((0, $kQo6d.Alg)) ? this.traverseAlg(this.algOrUnit, this.root) : this.traverseUnit(this.algOrUnit, this.root);
+        return r;
+    }
+    traverseAlg(alg, wd) {
+        if (!this.firstcheck(wd)) return false;
+        let i = wd.back ? alg.experimentalNumUnits() - 1 : 0;
+        for (const unit of (0, $kQo6d.directedGenerator)(alg.units(), wd.back ? -1 /* Backwards */  : 1 /* Forwards */ )){
+            if (this.traverseUnit(unit, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[i], wd.back))) return true;
+            i += wd.back ? -1 : 1;
+        }
+        return false;
+    }
+    traverseGrouping(grouping, wd) {
+        if (!this.firstcheck(wd)) return false;
+        const back = this.domult(wd, grouping.amount);
+        return this.traverseAlg(grouping.alg, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[0], back));
+    }
+    traverseMove(move, wd) {
+        if (!this.firstcheck(wd)) return false;
+        this.move = move;
+        this.moveDuration = wd.apd.duration;
+        this.back = wd.back;
+        return true;
+    }
+    traverseCommutator(commutator, wd) {
+        if (!this.firstcheck(wd)) return false;
+        const back = this.domult(wd, 1);
+        if (back) return this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], !back)) || this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back)) || this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back));
+        else return this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back)) || this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back)) || this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], !back));
+    }
+    traverseConjugate(conjugate, wd) {
+        if (!this.firstcheck(wd)) return false;
+        const back = this.domult(wd, 1);
+        if (back) return this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back)) || this.traverseAlg(conjugate.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back));
+        else return this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back)) || this.traverseAlg(conjugate.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back));
+    }
+    traversePause(pause, wd) {
+        if (!this.firstcheck(wd)) return false;
+        this.move = pause;
+        this.moveDuration = wd.apd.duration;
+        this.back = wd.back;
+        return true;
+    }
+    traverseNewline(_newline, _wd) {
+        return false;
+    }
+    traverseLineComment(_lineComment, _wd) {
+        return false;
+    }
+    firstcheck(wd) {
+        if (wd.apd.moveCount + this.i <= this.goali && wd.apd.duration + this.dur < this.goaldur) return this.keepgoing(wd);
+        return true;
+    }
+    domult(wd, amount) {
+        let back = wd.back;
+        if (amount === 0) return back;
+        if (amount < 0) {
+            back = !back;
+            amount = -amount;
+        }
+        const base = wd.apd.children[0];
+        const full = Math.min(Math.floor((this.goali - this.i) / base.moveCount), Math.ceil((this.goaldur - this.dur) / base.duration - 1));
+        if (full > 0) this.keepgoing(new $8e08190ac5cfc1c3$var$WalkerDown(base, back), full);
+        return back;
+    }
+    keepgoing(wd, mul = 1) {
+        this.i += mul * wd.apd.moveCount;
+        this.dur += mul * wd.apd.duration;
+        if (mul !== 1) {
+            if (wd.back) this.st = this.st.applyTransformation(wd.apd.backward.selfMultiply(mul));
+            else this.st = this.st.applyTransformation(wd.apd.forward.selfMultiply(mul));
+        } else if (wd.back) this.st = this.st.applyTransformation(wd.apd.backward);
+        else this.st = this.st.applyTransformation(wd.apd.forward);
+        return false;
+    }
+};
+// src/cubing/twisty/controllers/indexer/tree/chunkAlgs.ts
+var $8e08190ac5cfc1c3$var$MIN_CHUNKING_THRESHOLD = 16;
+function $8e08190ac5cfc1c3$var$chunkifyAlg(alg, chunkMaxLength) {
+    const mainAlgBuilder = new (0, $kQo6d.AlgBuilder)();
+    const chunkAlgBuilder = new (0, $kQo6d.AlgBuilder)();
+    for (const unit of alg.units()){
+        chunkAlgBuilder.push(unit);
+        if (chunkAlgBuilder.experimentalNumUnits() >= chunkMaxLength) {
+            mainAlgBuilder.push(new (0, $kQo6d.Grouping)(chunkAlgBuilder.toAlg()));
+            chunkAlgBuilder.reset();
+        }
+    }
+    mainAlgBuilder.push(new (0, $kQo6d.Grouping)(chunkAlgBuilder.toAlg()));
+    return mainAlgBuilder.toAlg();
+}
+var $8e08190ac5cfc1c3$var$ChunkAlgs = class extends (0, $kQo6d.TraversalUp) {
+    traverseAlg(alg) {
+        const algLength = alg.experimentalNumUnits();
+        if (algLength < $8e08190ac5cfc1c3$var$MIN_CHUNKING_THRESHOLD) return alg;
+        return $8e08190ac5cfc1c3$var$chunkifyAlg(alg, Math.ceil(Math.sqrt(algLength)));
+    }
+    traverseGrouping(grouping) {
+        return new (0, $kQo6d.Grouping)(this.traverseAlg(grouping.alg), grouping.amount);
+    }
+    traverseMove(move) {
+        return move;
+    }
+    traverseCommutator(commutator) {
+        return new (0, $kQo6d.Conjugate)(this.traverseAlg(commutator.A), this.traverseAlg(commutator.B));
+    }
+    traverseConjugate(conjugate) {
+        return new (0, $kQo6d.Conjugate)(this.traverseAlg(conjugate.A), this.traverseAlg(conjugate.B));
+    }
+    traversePause(pause) {
+        return pause;
+    }
+    traverseNewline(newline) {
+        return newline;
+    }
+    traverseLineComment(comment) {
+        return comment;
+    }
+};
+var $8e08190ac5cfc1c3$var$chunkAlgsInstance = new $8e08190ac5cfc1c3$var$ChunkAlgs();
+var $8e08190ac5cfc1c3$var$chunkAlgs = $8e08190ac5cfc1c3$var$chunkAlgsInstance.traverseAlg.bind($8e08190ac5cfc1c3$var$chunkAlgsInstance);
+// src/cubing/twisty/controllers/indexer/tree/TreeAlgIndexer.ts
+var $8e08190ac5cfc1c3$export$ff289a905dec21cb = class {
+    constructor(kpuzzle, alg){
+        this.kpuzzle = kpuzzle;
+        const deccon = new $8e08190ac5cfc1c3$var$DecoratorConstructor(this.kpuzzle);
+        const chunkedAlg = $8e08190ac5cfc1c3$var$chunkAlgs(alg);
+        this.decoration = deccon.traverseAlg(chunkedAlg);
+        this.walker = new $8e08190ac5cfc1c3$var$AlgWalker(this.kpuzzle, chunkedAlg, this.decoration);
+    }
+    getAnimLeaf(index) {
+        if (this.walker.moveByIndex(index)) {
+            if (!this.walker.move) throw new Error("`this.walker.mv` missing");
+            const move = this.walker.move;
+            if (this.walker.back) return move.invert();
+            return move;
+        }
+        return null;
+    }
+    indexToMoveStartTimestamp(index) {
+        if (this.walker.moveByIndex(index) || this.walker.i === index) return this.walker.dur;
+        throw new Error(`Out of algorithm: index ${index}`);
+    }
+    indexToMovesInProgress(index) {
+        if (this.walker.moveByIndex(index) || this.walker.i === index) return this.walker.dur;
+        throw new Error(`Out of algorithm: index ${index}`);
+    }
+    stateAtIndex(index, startState) {
+        this.walker.moveByIndex(index);
+        return (startState ?? this.kpuzzle.startState()).applyTransformation(this.walker.st);
+    }
+    transformationAtIndex(index) {
+        this.walker.moveByIndex(index);
+        return this.walker.st;
+    }
+    numAnimatedLeaves() {
+        return this.decoration.moveCount;
+    }
+    timestampToIndex(timestamp) {
+        this.walker.moveByDuration(timestamp);
+        return this.walker.i;
+    }
+    algDuration() {
+        return this.decoration.duration;
+    }
+    moveDuration(index) {
+        this.walker.moveByIndex(index);
+        return this.walker.moveDuration;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/IndexerConstructorProp.ts
+var $8e08190ac5cfc1c3$var$IndexerConstructorProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        switch(inputs.indexerConstructorRequest){
+            case "auto":
+                if ((0, $0305d85fc2c30b4d$export$3bb9ec80d65f79cf)(inputs.alg.alg) < 100 && inputs.puzzle === "3x3x3" && inputs.visualizationStrategy === "Cube3D") return $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer;
+                else return $8e08190ac5cfc1c3$export$ff289a905dec21cb;
+            case "tree":
+                return $8e08190ac5cfc1c3$export$ff289a905dec21cb;
+            case "simple":
+                return $8e08190ac5cfc1c3$export$f1f512573dac63bc;
+            case "simultaneous":
+                return $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer;
+            default:
+                throw new Error("Invalid indexer request!");
+        }
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/IndexerConstructorRequestProp.ts
+var $8e08190ac5cfc1c3$var$IndexerConstructorRequestProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/IndexerProp.ts
+var $8e08190ac5cfc1c3$var$IndexerProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(input) {
+        return new input.indexerConstructor(input.kpuzzle, input.algWithIssues.alg);
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/LegacyPositionProp.ts
+var $8e08190ac5cfc1c3$var$LegacyPositionProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        return {
+            state: inputs.state,
+            movesInProgress: inputs.currentMoveInfo.currentMoves
+        };
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/NaiveMoveCountProp.ts
+var $8e08190ac5cfc1c3$var$NaiveMoveCountProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        if (inputs.alg.issues.errors.length > 0) return null;
+        return (0, $0305d85fc2c30b4d$export$3bb9ec80d65f79cf)(inputs.alg.alg);
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/PuzzleAlgProp.ts
+var $8e08190ac5cfc1c3$var$validate = true;
+var $8e08190ac5cfc1c3$var$PuzzleAlgProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    async derive(inputs) {
+        try {
+            if ($8e08190ac5cfc1c3$var$validate) inputs.kpuzzle.algToTransformation(inputs.algWithIssues.alg);
+            return inputs.algWithIssues;
+        } catch (e) {
+            return {
+                alg: new (0, $kQo6d.Alg)(),
+                issues: new $8e08190ac5cfc1c3$var$AlgIssues({
+                    errors: [
+                        `Invalid alg for puzzle: ${e.toString()}`
+                    ]
+                })
+            };
+        }
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/SetupAnchorProp.ts
+var $8e08190ac5cfc1c3$var$SetupAnchorProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "start";
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/SetupTransformationProp.ts
+var $8e08190ac5cfc1c3$var$SetupTransformationProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return null;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/structure/KPuzzleProp.ts
+var $8e08190ac5cfc1c3$var$KPuzzleProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    async derive(inputs) {
+        return inputs.puzzleLoader.kpuzzle();
+    }
+};
+// src/cubing/twisty/model/props/puzzle/structure/PuzzleDescriptionProp.ts
+var $8e08190ac5cfc1c3$var$PGPuzzleDescriptionStringProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return 0, $8JBxj.NO_VALUE;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/structure/PuzzleIDProp.ts
+var $8e08190ac5cfc1c3$var$PuzzleIDProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    async derive(inputs) {
+        return inputs.puzzleLoader.id;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/structure/PuzzleIDRequestProp.ts
+var $8e08190ac5cfc1c3$var$PuzzleIDRequestProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return 0, $8JBxj.NO_VALUE;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/structure/PuzzleLoaderProp.ts
+var $8e08190ac5cfc1c3$var$PuzzleLoaderProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        if (inputs.puzzleIDRequest && inputs.puzzleIDRequest !== (0, $8JBxj.NO_VALUE)) {
+            const puzzleLoader = (0, $d2uOu.puzzles)[inputs.puzzleIDRequest];
+            if (!puzzleLoader) this.userVisibleErrorTracker.set({
+                errors: [
+                    `Invalid puzzle ID: ${inputs.puzzleIDRequest}`
+                ]
+            });
+            return puzzleLoader;
+        }
+        if (inputs.puzzleDescriptionRequest && inputs.puzzleDescriptionRequest !== (0, $8JBxj.NO_VALUE)) return (0, $8IKgU.customPGPuzzleLoader)(inputs.puzzleDescriptionRequest);
+        return 0, $d2uOu.cube3x3x3;
+    }
+};
+// src/cubing/twisty/model/props/timeline/CoarseTimelineInfoProp.ts
+var $8e08190ac5cfc1c3$var$CoarseTimelineInfoProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        return {
+            playing: inputs.playingInfo.playing,
+            atStart: inputs.detailedTimelineInfo.atStart,
+            atEnd: inputs.detailedTimelineInfo.atEnd
+        };
+    }
+    canReuseValue(v1, v2) {
+        return v1.playing === v2.playing && v1.atStart === v2.atStart && v1.atEnd === v2.atEnd;
+    }
+};
+// src/cubing/twisty/model/props/timeline/DetailedTimelineInfoProp.ts
+var $8e08190ac5cfc1c3$var$_requestedTimestampToMilliseconds, $8e08190ac5cfc1c3$var$requestedTimestampToMilliseconds_fn;
+var $8e08190ac5cfc1c3$var$DetailedTimelineInfoProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    constructor(){
+        super(...arguments);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_requestedTimestampToMilliseconds);
+    }
+    derive(inputs) {
+        let timestamp = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_requestedTimestampToMilliseconds, $8e08190ac5cfc1c3$var$requestedTimestampToMilliseconds_fn).call(this, inputs);
+        let atStart = false;
+        let atEnd = false;
+        if (timestamp >= inputs.timeRange.end) {
+            atEnd = true;
+            timestamp = Math.min(inputs.timeRange.end, timestamp);
+        }
+        if (timestamp <= inputs.timeRange.start) {
+            atStart = true;
+            timestamp = Math.max(inputs.timeRange.start, timestamp);
+        }
+        return {
+            timestamp: timestamp,
+            timeRange: inputs.timeRange,
+            atStart: atStart,
+            atEnd: atEnd
+        };
+    }
+    canReuse(v1, v2) {
+        return v1.timestamp === v2.timestamp && v1.timeRange.start === v2.timeRange.start && v1.timeRange.end === v2.timeRange.end && v1.atStart === v2.atStart && v1.atEnd === v2.atEnd;
+    }
+};
+$8e08190ac5cfc1c3$var$_requestedTimestampToMilliseconds = new WeakSet();
+$8e08190ac5cfc1c3$var$requestedTimestampToMilliseconds_fn = function(inputs) {
+    switch(inputs.timestampRequest){
+        case "start":
+            return inputs.timeRange.start;
+        case "end":
+            return inputs.timeRange.end;
+        case "anchor":
+            return inputs.setupAnchor === "start" ? inputs.timeRange.start : inputs.timeRange.end;
+        case "opposite-anchor":
+            return inputs.setupAnchor === "start" ? inputs.timeRange.end : inputs.timeRange.start;
+        default:
+            return inputs.timestampRequest;
+    }
+};
+// src/cubing/twisty/model/props/timeline/PlayingInfoProp.ts
+var $8e08190ac5cfc1c3$var$PlayingInfoProp = class extends (0, $8JBxj.TwistyPropSource) {
+    async getDefaultValue() {
+        return {
+            direction: 1 /* Forwards */ ,
+            playing: false,
+            untilBoundary: "entire-timeline" /* EntireTimeline */ ,
+            loop: false
+        };
+    }
+    async derive(newInfo, oldValuePromise) {
+        const oldValue = await oldValuePromise;
+        const newValue = Object.assign({}, oldValue);
+        Object.assign(newValue, newInfo);
+        return newValue;
+    }
+    canReuseValue(v1, v2) {
+        return v1.direction === v2.direction && v1.playing === v2.playing && v1.untilBoundary === v2.untilBoundary && v1.loop === v2.loop;
+    }
+};
+// src/cubing/twisty/model/props/timeline/TempoScaleProp.ts
+var $8e08190ac5cfc1c3$var$TempoScaleProp = class extends (0, $8JBxj.TwistyPropSource) {
+    getDefaultValue() {
+        return 1;
+    }
+    derive(v) {
+        return v < 0 ? 1 : v;
+    }
+};
+// src/cubing/twisty/model/props/timeline/TimestampRequestProp.ts
+var $8e08190ac5cfc1c3$var$smartTimestamps = {
+    "start": true,
+    "end": true,
+    "anchor": true,
+    "opposite-anchor": true
+};
+var $8e08190ac5cfc1c3$var$TimestampRequestProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "opposite-anchor";
+    }
+    set(v) {
+        if (!this.validInput(v)) return;
+        super.set(v);
+    }
+    validInput(v) {
+        if (typeof v === "number") return true;
+        if ($8e08190ac5cfc1c3$var$smartTimestamps[v]) return true;
+        return false;
+    }
+};
+// src/cubing/twisty/model/props/viewer/BackViewProp.ts
+var $8e08190ac5cfc1c3$export$9052cca4b8cc895f = {
+    "none": true,
+    "side-by-side": true,
+    "top-right": true
+};
+var $8e08190ac5cfc1c3$var$BackViewProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/TimeRangeProp.ts
+var $8e08190ac5cfc1c3$var$TimeRangeProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        return {
+            start: 0,
+            end: inputs.indexer.algDuration()
+        };
+    }
+};
+// src/cubing/twisty/model/props/viewer/ViewerLinkProp.ts
+var $8e08190ac5cfc1c3$var$ViewerLinkProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/VisualizationProp.ts
+var $8e08190ac5cfc1c3$var$VisualizationFormatProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/VisualizationStrategyProp.ts
+var $8e08190ac5cfc1c3$var$VisualizationStrategyProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        switch(inputs.puzzleID){
+            case "clock":
+            case "square1":
+            case "kilominx":
+            case "redi_cube":
+                return "2D";
+            case "3x3x3":
+                switch(inputs.visualizationRequest){
+                    case "auto":
+                    case "3D":
+                        return "Cube3D";
+                    default:
+                        return inputs.visualizationRequest;
+                }
+            default:
+                switch(inputs.visualizationRequest){
+                    case "auto":
+                    case "3D":
+                        return "PG3D";
+                    case "experimental-2D-LL":
+                        return "2D";
+                    default:
+                        return inputs.visualizationRequest;
+                }
+        }
+    }
+};
+// src/cubing/twisty/model/props/puzzle/display/FoundationDisplayProp.ts
+var $8e08190ac5cfc1c3$var$FoundationDisplayProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/puzzle/display/SpriteProp.ts
+var $8e08190ac5cfc1c3$var$cachedLoader = null;
+async function $8e08190ac5cfc1c3$var$loader() {
+    return $8e08190ac5cfc1c3$var$cachedLoader ?? ($8e08190ac5cfc1c3$var$cachedLoader = new (await (0, $8JBxj.THREEJS)).TextureLoader());
+}
+var $8e08190ac5cfc1c3$var$SpriteProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    async derive(inputs) {
+        const { spriteURL: textureURL  } = inputs;
+        if (textureURL === null) return null;
+        return new Promise(async (resolve, _reject)=>{
+            const onLoadingError = ()=>{
+                console.warn("Could not load sprite:", textureURL.toString());
+                resolve(null);
+            };
+            try {
+                (await $8e08190ac5cfc1c3$var$loader()).load(textureURL.toString(), resolve, onLoadingError, onLoadingError);
+            } catch (e) {
+                onLoadingError();
+            }
+        });
+    }
+};
+// src/cubing/twisty/model/props/puzzle/display/StickeringProp.ts
+var $8e08190ac5cfc1c3$var$StickeringProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "full";
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/DragInputProp.ts
+var $8e08190ac5cfc1c3$var$DragInputProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/MovePressInputProp.ts
+var $8e08190ac5cfc1c3$var$MovePressInputProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/BackgroundProp.ts
+var $8e08190ac5cfc1c3$var$BackgroundProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/LatitudeLimit.ts
+var $8e08190ac5cfc1c3$var$DEFAULT_LATITUDE_LIMIT = 35;
+var $8e08190ac5cfc1c3$var$LatitudeLimitProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return $8e08190ac5cfc1c3$var$DEFAULT_LATITUDE_LIMIT;
+    }
+};
+// src/cubing/twisty/model/props/viewer/OrbitCoordinatesRequestProp.ts
+function $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(c1, c2) {
+    return c1.latitude === c2.latitude && c1.longitude === c2.longitude && c1.distance === c2.distance;
+}
+var $8e08190ac5cfc1c3$var$OrbitCoordinatesRequestProp = class extends (0, $8JBxj.TwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+    canReuseValue(v1, v2) {
+        return v1 === v2 || $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(v1, v2);
+    }
+    async derive(newCoordinates, oldValuePromise) {
+        if (newCoordinates === "auto") return "auto";
+        let oldValue = await oldValuePromise;
+        if (oldValue === "auto") oldValue = {};
+        const newValue = Object.assign({}, oldValue);
+        Object.assign(newValue, newCoordinates);
+        if (typeof newValue.latitude !== "undefined") newValue.latitude = Math.min(Math.max(newValue.latitude, -90), 90);
+        if (typeof newValue.longitude !== "undefined") newValue.longitude = $8e08190ac5cfc1c3$var$mod(newValue.longitude, 360, 180);
+        return newValue;
+    }
+};
+// src/cubing/twisty/model/props/viewer/OrbitCoordinatesProp.ts
+var $8e08190ac5cfc1c3$var$OrbitCoordinatesProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    canReuseValue(v1, v2) {
+        return $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(v1, v2);
+    }
+    async derive(inputs) {
+        if (inputs.orbitCoordinatesRequest === "auto") return $8e08190ac5cfc1c3$var$defaultCameraOrbitCoordinates(inputs.puzzleID, inputs.strategy);
+        const req = Object.assign(Object.assign({}, $8e08190ac5cfc1c3$var$defaultCameraOrbitCoordinates(inputs.puzzleID, inputs.strategy), inputs.orbitCoordinatesRequest));
+        if (Math.abs(req.latitude) <= inputs.latitudeLimit) return req;
+        else {
+            const { latitude: latitude , longitude: longitude , distance: distance  } = req;
+            return {
+                latitude: inputs.latitudeLimit * Math.sign(latitude),
+                longitude: longitude,
+                distance: distance
+            };
+        }
+    }
+};
+var $8e08190ac5cfc1c3$var$centeredCameraOrbitCoordinates = {
+    latitude: 31.717474411461005,
+    longitude: 0,
+    distance: 5.877852522924731
+};
+var $8e08190ac5cfc1c3$var$cubeCube3DCameraOrbitCoordinates = {
+    latitude: 35,
+    longitude: 30,
+    distance: 6
+};
+var $8e08190ac5cfc1c3$var$cubePG3DCameraOrbitCoordinates = {
+    latitude: 35,
+    longitude: 30,
+    distance: 6.25
+};
+var $8e08190ac5cfc1c3$var$megaminxCameraOrbitCoordinates = {
+    latitude: Math.atan(0.5) * (0, $8JBxj.DEGREES_PER_RADIAN),
+    longitude: 0,
+    distance: 6.7
+};
+var $8e08190ac5cfc1c3$var$pyraminxCameraOrbitCoordinates = {
+    latitude: 26.56505117707799,
+    longitude: 0,
+    distance: 6
+};
+function $8e08190ac5cfc1c3$var$defaultCameraOrbitCoordinates(puzzleID, strategy) {
+    if (puzzleID[1] === "x") {
+        if (strategy === "Cube3D") return $8e08190ac5cfc1c3$var$cubeCube3DCameraOrbitCoordinates;
+        else return $8e08190ac5cfc1c3$var$cubePG3DCameraOrbitCoordinates;
+    } else switch(puzzleID){
+        case "megaminx":
+        case "gigaminx":
+            return $8e08190ac5cfc1c3$var$megaminxCameraOrbitCoordinates;
+        case "pyraminx":
+        case "master_tetraminx":
+            return $8e08190ac5cfc1c3$var$pyraminxCameraOrbitCoordinates;
+        case "skewb":
+            return $8e08190ac5cfc1c3$var$cubePG3DCameraOrbitCoordinates;
+        default:
+            return $8e08190ac5cfc1c3$var$centeredCameraOrbitCoordinates;
+    }
+}
+// src/cubing/twisty/model/TwistySceneModel.ts
+var $8e08190ac5cfc1c3$var$TwistySceneModel = class {
+    constructor(twistyPlayerModel){
+        this.twistyPlayerModel = twistyPlayerModel;
+        this.background = new $8e08190ac5cfc1c3$var$BackgroundProp();
+        this.dragInput = new $8e08190ac5cfc1c3$var$DragInputProp();
+        this.foundationDisplay = new $8e08190ac5cfc1c3$var$FoundationDisplayProp();
+        this.foundationStickerSpriteURL = new $8e08190ac5cfc1c3$var$URLProp();
+        this.hintFacelet = new (0, $8JBxj.HintFaceletProp)();
+        this.hintStickerSpriteURL = new $8e08190ac5cfc1c3$var$URLProp();
+        this.latitudeLimit = new $8e08190ac5cfc1c3$var$LatitudeLimitProp();
+        this.movePressInput = new $8e08190ac5cfc1c3$var$MovePressInputProp();
+        this.orbitCoordinatesRequest = new $8e08190ac5cfc1c3$var$OrbitCoordinatesRequestProp();
+        this.stickering = new $8e08190ac5cfc1c3$var$StickeringProp();
+        this.foundationStickerSprite = new $8e08190ac5cfc1c3$var$SpriteProp({
+            spriteURL: this.foundationStickerSpriteURL
+        });
+        this.hintStickerSprite = new $8e08190ac5cfc1c3$var$SpriteProp({
+            spriteURL: this.hintStickerSpriteURL
+        });
+        this.orbitCoordinates = new $8e08190ac5cfc1c3$var$OrbitCoordinatesProp({
+            orbitCoordinatesRequest: this.orbitCoordinatesRequest,
+            latitudeLimit: this.latitudeLimit,
+            puzzleID: twistyPlayerModel.puzzleID,
+            strategy: twistyPlayerModel.visualizationStrategy
+        });
+    }
+};
+// src/cubing/twisty/model/UserVisibleErrorTracker.ts
+var $8e08190ac5cfc1c3$var$EMPTY_ERRORS = {
+    errors: []
+};
+var $8e08190ac5cfc1c3$var$UserVisibleErrorTracker = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return $8e08190ac5cfc1c3$var$EMPTY_ERRORS;
+    }
+    reset() {
+        this.set(this.getDefaultValue());
+    }
+    canReuseValue(_v1, _v2) {
+        return $8e08190ac5cfc1c3$var$arrayEquals(_v1.errors, _v2.errors);
+    }
+};
+// src/cubing/twisty/model/TwistyPlayerModel.ts
+var $8e08190ac5cfc1c3$var$TwistyPlayerModel = class {
+    constructor(){
+        this.userVisibleErrorTracker = new $8e08190ac5cfc1c3$var$UserVisibleErrorTracker();
+        this.alg = new $8e08190ac5cfc1c3$var$AlgProp();
+        this.backView = new $8e08190ac5cfc1c3$var$BackViewProp();
+        this.controlPanel = new $8e08190ac5cfc1c3$var$ControlPanelProp();
+        this.catchUpMove = new $8e08190ac5cfc1c3$var$CatchUpMoveProp();
+        this.indexerConstructorRequest = new $8e08190ac5cfc1c3$var$IndexerConstructorRequestProp();
+        this.playingInfo = new $8e08190ac5cfc1c3$var$PlayingInfoProp();
+        this.puzzleDescriptionRequest = new $8e08190ac5cfc1c3$var$PGPuzzleDescriptionStringProp();
+        this.puzzleIDRequest = new $8e08190ac5cfc1c3$var$PuzzleIDRequestProp();
+        this.setupAnchor = new $8e08190ac5cfc1c3$var$SetupAnchorProp();
+        this.setupAlg = new $8e08190ac5cfc1c3$var$AlgProp();
+        this.setupTransformation = new $8e08190ac5cfc1c3$var$SetupTransformationProp();
+        this.tempoScale = new $8e08190ac5cfc1c3$var$TempoScaleProp();
+        this.timestampRequest = new $8e08190ac5cfc1c3$var$TimestampRequestProp();
+        this.viewerLink = new $8e08190ac5cfc1c3$var$ViewerLinkProp();
+        this.visualizationFormat = new $8e08190ac5cfc1c3$var$VisualizationFormatProp();
+        this.title = new $8e08190ac5cfc1c3$var$ArbitraryStringProp();
+        this.videoURL = new $8e08190ac5cfc1c3$var$URLProp();
+        this.competitionID = new $8e08190ac5cfc1c3$var$ArbitraryStringProp();
+        this.puzzleLoader = new $8e08190ac5cfc1c3$var$PuzzleLoaderProp({
+            puzzleIDRequest: this.puzzleIDRequest,
+            puzzleDescriptionRequest: this.puzzleDescriptionRequest
+        }, this.userVisibleErrorTracker);
+        this.kpuzzle = new $8e08190ac5cfc1c3$var$KPuzzleProp({
+            puzzleLoader: this.puzzleLoader
+        });
+        this.puzzleID = new $8e08190ac5cfc1c3$var$PuzzleIDProp({
+            puzzleLoader: this.puzzleLoader
+        });
+        this.puzzleAlg = new $8e08190ac5cfc1c3$var$PuzzleAlgProp({
+            algWithIssues: this.alg,
+            kpuzzle: this.kpuzzle
+        });
+        this.puzzleSetupAlg = new $8e08190ac5cfc1c3$var$PuzzleAlgProp({
+            algWithIssues: this.setupAlg,
+            kpuzzle: this.kpuzzle
+        });
+        this.visualizationStrategy = new $8e08190ac5cfc1c3$var$VisualizationStrategyProp({
+            visualizationRequest: this.visualizationFormat,
+            puzzleID: this.puzzleID
+        });
+        this.indexerConstructor = new $8e08190ac5cfc1c3$var$IndexerConstructorProp({
+            alg: this.alg,
+            puzzle: this.puzzleID,
+            visualizationStrategy: this.visualizationStrategy,
+            indexerConstructorRequest: this.indexerConstructorRequest
+        });
+        this.moveCount = new $8e08190ac5cfc1c3$var$NaiveMoveCountProp({
+            alg: this.puzzleAlg
+        });
+        this.setupAlgTransformation = new $8e08190ac5cfc1c3$var$AlgTransformationProp({
+            setupAlg: this.puzzleSetupAlg,
+            kpuzzle: this.kpuzzle
+        });
+        this.indexer = new $8e08190ac5cfc1c3$var$IndexerProp({
+            indexerConstructor: this.indexerConstructor,
+            algWithIssues: this.puzzleAlg,
+            kpuzzle: this.kpuzzle
+        });
+        this.anchorTransformation = new $8e08190ac5cfc1c3$var$AnchorTransformationProp({
+            setupTransformation: this.setupTransformation,
+            setupAnchor: this.setupAnchor,
+            setupAlgTransformation: this.setupAlgTransformation,
+            indexer: this.indexer
+        });
+        this.timeRange = new $8e08190ac5cfc1c3$var$TimeRangeProp({
+            indexer: this.indexer
+        });
+        this.detailedTimelineInfo = new $8e08190ac5cfc1c3$var$DetailedTimelineInfoProp({
+            timestampRequest: this.timestampRequest,
+            timeRange: this.timeRange,
+            setupAnchor: this.setupAnchor
+        });
+        this.coarseTimelineInfo = new $8e08190ac5cfc1c3$var$CoarseTimelineInfoProp({
+            detailedTimelineInfo: this.detailedTimelineInfo,
+            playingInfo: this.playingInfo
+        });
+        this.currentMoveInfo = new $8e08190ac5cfc1c3$var$CurrentMoveInfoProp({
+            indexer: this.indexer,
+            detailedTimelineInfo: this.detailedTimelineInfo,
+            catchUpMove: this.catchUpMove
+        });
+        this.buttonAppearance = new $8e08190ac5cfc1c3$var$ButtonAppearanceProp({
+            coarseTimelineInfo: this.coarseTimelineInfo,
+            viewerLink: this.viewerLink
+        });
+        this.currentLeavesSimplified = new $8e08190ac5cfc1c3$var$CurrentLeavesSimplifiedProp({
+            currentMoveInfo: this.currentMoveInfo
+        });
+        this.currentState = new $8e08190ac5cfc1c3$var$CurrentStateProp({
+            anchoredStart: this.anchorTransformation,
+            currentLeavesSimplified: this.currentLeavesSimplified,
+            indexer: this.indexer
+        });
+        this.legacyPosition = new $8e08190ac5cfc1c3$var$LegacyPositionProp({
+            currentMoveInfo: this.currentMoveInfo,
+            state: this.currentState
+        });
+        this.twistySceneModel = new $8e08190ac5cfc1c3$var$TwistySceneModel(this);
+    }
+    async twizzleLink() {
+        const [viewerLink, puzzleID, puzzleDescription, alg, setup, anchor, experimentalStickering] = await Promise.all([
+            this.viewerLink.get(),
+            this.puzzleID.get(),
+            this.puzzleDescriptionRequest.get(),
+            this.alg.get(),
+            this.setupAlg.get(),
+            this.setupAnchor.get(),
+            this.twistySceneModel.stickering.get()
+        ]);
+        const isExplorer = viewerLink === "experimental-twizzle-explorer";
+        const url = new URL(`https://alpha.twizzle.net/${isExplorer ? "explore" : "edit"}/`);
+        if (!alg.alg.experimentalIsEmpty()) url.searchParams.set("alg", alg.alg.toString());
+        if (!setup.alg.experimentalIsEmpty()) url.searchParams.set("setup-alg", setup.alg.toString());
+        if (anchor !== "start") url.searchParams.set("setup-anchor", anchor);
+        if (experimentalStickering !== "full") url.searchParams.set("experimental-stickering", experimentalStickering);
+        if (isExplorer && puzzleDescription !== (0, $8JBxj.NO_VALUE)) url.searchParams.set("puzzle-description", puzzleDescription);
+        else if (puzzleID !== "3x3x3") url.searchParams.set("puzzle", puzzleID);
+        return url.toString();
+    }
+    experimentalAddMove(flexibleMove, options = {}) {
+        const move = typeof flexibleMove === "string" ? new (0, $kQo6d.Move)(flexibleMove) : flexibleMove;
+        (async ()=>{
+            const alg = (await this.alg.get()).alg;
+            const newAlg = (0, $kQo6d.experimentalAppendMove)(alg, move, {
+                coalesce: options?.coalesce,
+                mod: options?.mod
+            });
+            this.alg.set(newAlg);
+            this.timestampRequest.set("end");
+            this.catchUpMove.set({
+                move: move,
+                amount: 0
+            });
+        })();
+    }
+    get playingInfoProp() {
+        console.warn("Using deprecated prop: `playingInfoProp`. Please switch to: `playingInfo`");
+        return this.playingInfo;
+    }
+};
+// src/cubing/twisty/views/TwistyPlayerSettable.ts
+function $8e08190ac5cfc1c3$var$err(propName) {
+    return new Error(`Cannot get \`.${propName}\` directly from a \`TwistyPlayer\`.`);
+}
+var $8e08190ac5cfc1c3$var$TwistyPlayerSettable = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(){
+        super(...arguments);
+        this.experimentalModel = new $8e08190ac5cfc1c3$var$TwistyPlayerModel();
+        this.experimentalGet = new $8e08190ac5cfc1c3$var$ExperimentalGetters(this.experimentalModel);
+    }
+    set alg(newAlg) {
+        this.experimentalModel.alg.set(newAlg);
+    }
+    get alg() {
+        throw $8e08190ac5cfc1c3$var$err("alg");
+    }
+    set experimentalSetupAlg(newSetup) {
+        this.experimentalModel.setupAlg.set(newSetup);
+    }
+    get experimentalSetupAlg() {
+        throw $8e08190ac5cfc1c3$var$err("setup");
+    }
+    set experimentalSetupAnchor(anchor) {
+        this.experimentalModel.setupAnchor.set(anchor);
+    }
+    get experimentalSetupAnchor() {
+        throw $8e08190ac5cfc1c3$var$err("anchor");
+    }
+    set puzzle(puzzleID) {
+        this.experimentalModel.puzzleIDRequest.set(puzzleID);
+    }
+    get puzzle() {
+        throw $8e08190ac5cfc1c3$var$err("puzzle");
+    }
+    set experimentalPuzzleDescription(puzzleDescription) {
+        this.experimentalModel.puzzleDescriptionRequest.set(puzzleDescription);
+    }
+    get experimentalPuzzleDescription() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalPuzzleDescription");
+    }
+    set timestamp(timestamp) {
+        this.experimentalModel.timestampRequest.set(timestamp);
+    }
+    get timestamp() {
+        throw $8e08190ac5cfc1c3$var$err("timestamp");
+    }
+    set hintFacelets(hintFaceletStyle) {
+        this.experimentalModel.twistySceneModel.hintFacelet.set(hintFaceletStyle);
+    }
+    get hintFacelets() {
+        throw $8e08190ac5cfc1c3$var$err("hintFacelets");
+    }
+    set experimentalStickering(stickering) {
+        this.experimentalModel.twistySceneModel.stickering.set(stickering);
+    }
+    get experimentalStickering() {
+        throw $8e08190ac5cfc1c3$var$err("stickering");
+    }
+    set backView(backView) {
+        this.experimentalModel.backView.set(backView);
+    }
+    get backView() {
+        throw $8e08190ac5cfc1c3$var$err("backView");
+    }
+    set background(backgroundTheme) {
+        this.experimentalModel.twistySceneModel.background.set(backgroundTheme);
+    }
+    get background() {
+        throw $8e08190ac5cfc1c3$var$err("background");
+    }
+    set controlPanel(newControlPanel) {
+        this.experimentalModel.controlPanel.set(newControlPanel);
+    }
+    get controlPanel() {
+        throw $8e08190ac5cfc1c3$var$err("controlPanel");
+    }
+    set visualization(visualizationFormat) {
+        this.experimentalModel.visualizationFormat.set(visualizationFormat);
+    }
+    get visualization() {
+        throw $8e08190ac5cfc1c3$var$err("visualization");
+    }
+    set experimentalTitle(title) {
+        this.experimentalModel.title.set(title);
+    }
+    get experimentalTitle() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalTitle");
+    }
+    set experimentalVideoURL(videoURL) {
+        this.experimentalModel.videoURL.set(videoURL);
+    }
+    get experimentalVideoURL() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalVideoURL");
+    }
+    set experimentalCompetitionID(competitionID) {
+        this.experimentalModel.competitionID.set(competitionID);
+    }
+    get experimentalCompetitionID() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalCompetitionID");
+    }
+    set viewerLink(viewerLinkPage) {
+        this.experimentalModel.viewerLink.set(viewerLinkPage);
+    }
+    get viewerLink() {
+        throw $8e08190ac5cfc1c3$var$err("viewerLink");
+    }
+    set experimentalMovePressInput(movePressInput) {
+        this.experimentalModel.twistySceneModel.movePressInput.set(movePressInput);
+    }
+    get experimentalMovePressInput() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalMovePressInput");
+    }
+    set cameraLatitude(latitude) {
+        this.experimentalModel.twistySceneModel.orbitCoordinatesRequest.set({
+            latitude: latitude
+        });
+    }
+    get cameraLatitude() {
+        throw $8e08190ac5cfc1c3$var$err("cameraLatitude");
+    }
+    set cameraLongitude(longitude) {
+        this.experimentalModel.twistySceneModel.orbitCoordinatesRequest.set({
+            longitude: longitude
+        });
+    }
+    get cameraLongitude() {
+        throw $8e08190ac5cfc1c3$var$err("cameraLongitude");
+    }
+    set cameraDistance(distance) {
+        this.experimentalModel.twistySceneModel.orbitCoordinatesRequest.set({
+            distance: distance
+        });
+    }
+    get cameraDistance() {
+        throw $8e08190ac5cfc1c3$var$err("cameraDistance");
+    }
+    set cameraLatitudeLimit(latitudeLimit) {
+        this.experimentalModel.twistySceneModel.latitudeLimit.set(latitudeLimit);
+    }
+    get cameraLatitudeLimit() {
+        throw $8e08190ac5cfc1c3$var$err("cameraLatitudeLimit");
+    }
+    set indexer(indexer) {
+        this.experimentalModel.indexerConstructorRequest.set(indexer);
+    }
+    get indexer() {
+        throw $8e08190ac5cfc1c3$var$err("indexer");
+    }
+    set tempoScale(newTempoScale) {
+        this.experimentalModel.tempoScale.set(newTempoScale);
+    }
+    get tempoScale() {
+        throw $8e08190ac5cfc1c3$var$err("tempoScale");
+    }
+    set experimentalSprite(url) {
+        this.experimentalModel.twistySceneModel.foundationStickerSpriteURL.set(url);
+    }
+    get experimentalSprite() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalSprite");
+    }
+    set experimentalHintSprite(url) {
+        this.experimentalModel.twistySceneModel.hintStickerSpriteURL.set(url);
+    }
+    get experimentalHintSprite() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalHintSprite");
+    }
+    set experimentalDragInput(dragInputMode) {
+        this.experimentalModel.twistySceneModel.dragInput.set(dragInputMode);
+    }
+    get experimentalDragInput() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalDragInput");
+    }
+};
+var $8e08190ac5cfc1c3$var$ExperimentalGetters = class {
+    constructor(model){
+        this.model = model;
+    }
+    async alg() {
+        return (await this.model.alg.get()).alg;
+    }
+    async setupAlg() {
+        return (await this.model.setupAlg.get()).alg;
+    }
+    puzzleID() {
+        return this.model.puzzleID.get();
+    }
+    async timestamp() {
+        return (await this.model.detailedTimelineInfo.get()).timestamp;
+    }
+};
+// src/cubing/twisty/views/TwistyPlayer.ts
+var $8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX = "data-";
+var $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap = {
+    "alg": "alg",
+    "experimental-setup-alg": "experimentalSetupAlg",
+    "experimental-setup-anchor": "experimentalSetupAnchor",
+    "puzzle": "puzzle",
+    "experimental-puzzle-description": "experimentalPuzzleDescription",
+    "visualization": "visualization",
+    "hint-facelets": "hintFacelets",
+    "experimental-stickering": "experimentalStickering",
+    "background": "background",
+    "control-panel": "controlPanel",
+    "back-view": "backView",
+    "viewer-link": "viewerLink",
+    "experimental-move-press-input": "experimentalMovePressInput",
+    "experimental-drag-input": "experimentalDragInput",
+    "experimental-title": "experimentalTitle",
+    "experimental-video-url": "experimentalVideoURL",
+    "experimental-competition-id": "experimentalCompetitionID",
+    "camera-latitude": "cameraLatitude",
+    "camera-longitude": "cameraLongitude",
+    "camera-distance": "cameraDistance",
+    "camera-latitude-limit": "cameraLatitudeLimit",
+    "tempo-scale": "tempoScale",
+    "experimental-sprite": "experimentalSprite",
+    "experimental-hint-sprite": "experimentalHintSprite"
+};
+var $8e08190ac5cfc1c3$var$configKeys = Object.fromEntries(Object.values($8e08190ac5cfc1c3$var$twistyPlayerAttributeMap).map((s)=>[
+        s,
+        true
+    ]));
+var $8e08190ac5cfc1c3$var$_controlsManager, $8e08190ac5cfc1c3$var$_visualizationWrapperElem, $8e08190ac5cfc1c3$var$_errorElem, $8e08190ac5cfc1c3$var$_alreadyConnected, $8e08190ac5cfc1c3$var$_flashLevel, $8e08190ac5cfc1c3$var$_visualizationWrapper, $8e08190ac5cfc1c3$var$_initial3DVisualizationWrapper, $8e08190ac5cfc1c3$var$_visualizationStrategy, $8e08190ac5cfc1c3$var$_setVisualizationWrapper, $8e08190ac5cfc1c3$var$setVisualizationWrapper_fn;
+var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$var$TwistyPlayerSettable {
+    constructor(config = {}){
+        super();
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_setVisualizationWrapper);
+        this.controller = new $8e08190ac5cfc1c3$var$TwistyPlayerController(this.experimentalModel, this);
+        this.experimentalCanvasClickCallback = ()=>{};
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_controlsManager, new $8e08190ac5cfc1c3$var$ClassListManager(this, "controls-", [
+            "auto"
+        ].concat(Object.keys($8e08190ac5cfc1c3$var$controlsLocations))));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_visualizationWrapperElem, document.createElement("div"));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_errorElem, document.createElement("div"));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_alreadyConnected, false);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_flashLevel, "auto");
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_initial3DVisualizationWrapper, new $8e08190ac5cfc1c3$var$InitialValueTracker());
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_visualizationStrategy, null);
+        for (const [propName, value] of Object.entries(config)){
+            if (!$8e08190ac5cfc1c3$var$configKeys[propName]) {
+                console.warn(`Invalid config passed to TwistyPlayer: ${propName}`);
+                break;
+            }
+            this[propName] = value;
+        }
+    }
+    async connectedCallback() {
+        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_alreadyConnected)) return;
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_alreadyConnected, true);
+        this.addCSS($8e08190ac5cfc1c3$var$twistyPlayerCSS);
+        this.addElement((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapperElem)).classList.add("visualization-wrapper");
+        this.addElement((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_errorElem)).classList.add("error-elem");
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_errorElem).textContent = "Error";
+        this.experimentalModel.userVisibleErrorTracker.addFreshListener((userVisibleError)=>{
+            const errorString = userVisibleError.errors[0] ?? null;
+            this.contentWrapper.classList.toggle("error", !!errorString);
+            if (errorString) (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_errorElem).textContent = errorString;
+        });
+        const scrubber = new $8e08190ac5cfc1c3$var$TwistyScrubber(this.experimentalModel);
+        this.contentWrapper.appendChild(scrubber);
+        this.buttons = new $8e08190ac5cfc1c3$var$TwistyButtons(this.experimentalModel, this.controller, this);
+        this.contentWrapper.appendChild(this.buttons);
+        this.experimentalModel.twistySceneModel.background.addFreshListener((backgroundTheme)=>{
+            this.contentWrapper.classList.toggle("checkered", backgroundTheme !== "none");
+        });
+        this.experimentalModel.controlPanel.addFreshListener((controlPanel)=>{
+            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_controlsManager).setValue(controlPanel);
+        });
+        this.experimentalModel.visualizationStrategy.addFreshListener((0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_setVisualizationWrapper, $8e08190ac5cfc1c3$var$setVisualizationWrapper_fn).bind(this));
+        this.experimentalModel.puzzleID.addFreshListener(this.flash.bind(this));
+    }
+    experimentalSetFlashLevel(newLevel) {
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_flashLevel, newLevel);
+    }
+    flash() {
+        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_flashLevel) === "auto") (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper)?.animate([
+            {
+                opacity: 0.25
+            },
+            {
+                opacity: 1
+            }
+        ], {
+            duration: 250,
+            easing: "ease-out"
+        });
+    }
+    async experimentalCurrentVantages() {
+        this.connectedCallback();
+        const wrapper = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper);
+        if (wrapper instanceof $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper) return wrapper.experimentalVantages();
+        return [];
+    }
+    async experimentalCurrentCanvases() {
+        const vantages = await this.experimentalCurrentVantages();
+        const canvases = [];
+        for (const vantage of vantages)canvases.push((await vantage.canvasInfo()).canvas);
+        return canvases;
+    }
+    async experimentalCurrentThreeJSPuzzleObject(puzzleChangeCallback) {
+        this.connectedCallback();
+        const sceneWrapper = await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_initial3DVisualizationWrapper).promise;
+        const puzzleWrapper = await sceneWrapper.experimentalTwisty3DPuzzleWrapper();
+        const twisty3DPuzzlePromise = puzzleWrapper.twisty3DPuzzle();
+        const safeToCallback = (async ()=>{
+            await twisty3DPuzzlePromise;
+            await new Promise((resolve)=>setTimeout(resolve, 0));
+        })();
+        if (puzzleChangeCallback) {
+            const scheduler = new $8e08190ac5cfc1c3$var$RenderScheduler(async ()=>{});
+            puzzleWrapper.addEventListener("render-scheduled", async ()=>{
+                if (!scheduler.requestIsPending()) {
+                    scheduler.requestAnimFrame();
+                    await safeToCallback;
+                    puzzleChangeCallback();
+                }
+            });
+        }
+        return twisty3DPuzzlePromise;
+    }
+    jumpToStart(options) {
+        this.controller.jumpToStart(options);
+    }
+    jumpToEnd(options) {
+        this.controller.jumpToEnd(options);
+    }
+    play() {
+        this.controller.togglePlay(true);
+    }
+    pause() {
+        this.controller.togglePlay(false);
+    }
+    togglePlay(play) {
+        this.controller.togglePlay(play);
+    }
+    experimentalAddMove(flexibleMove, options = {}) {
+        this.experimentalModel.experimentalAddMove(flexibleMove, options);
+    }
+    static get observedAttributes() {
+        const observed = [];
+        for (const key of Object.keys($8e08190ac5cfc1c3$var$twistyPlayerAttributeMap))observed.push(key, $8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX + key);
+        return observed;
+    }
+    attributeChangedCallback(attributeName, _oldValue, newValue) {
+        if (attributeName.startsWith("data-")) attributeName = attributeName.slice(5);
+        const setterName = $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap[attributeName];
+        if (!setterName) return;
+        this[setterName] = newValue;
+    }
+    async experimentalScreenshot(options) {
+        return (await $8e08190ac5cfc1c3$var$screenshot(this.experimentalModel, options)).dataURL;
+    }
+    async experimentalDownloadScreenshot(filename) {
+        if ([
+            "2D",
+            "experimental-2D-LL"
+        ].includes(await this.experimentalModel.visualizationStrategy.get())) {
+            const wrapper2D = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper);
+            const twisty2DPuzzle = await wrapper2D.currentTwisty2DPuzzleWrapper().twisty2DPuzzle();
+            const str = new XMLSerializer().serializeToString(twisty2DPuzzle.svgWrapper.svgElement);
+            const url = URL.createObjectURL(new Blob([
+                str
+            ]));
+            $8e08190ac5cfc1c3$var$downloadURL(url, filename ?? await $8e08190ac5cfc1c3$var$getDefaultFilename(this.experimentalModel), "svg");
+        } else await (await $8e08190ac5cfc1c3$var$screenshot(this.experimentalModel)).download(filename);
+    }
+};
+$8e08190ac5cfc1c3$var$_controlsManager = new WeakMap();
+$8e08190ac5cfc1c3$var$_visualizationWrapperElem = new WeakMap();
+$8e08190ac5cfc1c3$var$_errorElem = new WeakMap();
+$8e08190ac5cfc1c3$var$_alreadyConnected = new WeakMap();
+$8e08190ac5cfc1c3$var$_flashLevel = new WeakMap();
+$8e08190ac5cfc1c3$var$_visualizationWrapper = new WeakMap();
+$8e08190ac5cfc1c3$var$_initial3DVisualizationWrapper = new WeakMap();
+$8e08190ac5cfc1c3$var$_visualizationStrategy = new WeakMap();
+$8e08190ac5cfc1c3$var$_setVisualizationWrapper = new WeakSet();
+$8e08190ac5cfc1c3$var$setVisualizationWrapper_fn = function(strategy) {
+    if (strategy !== (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationStrategy)) {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper)?.remove();
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper)?.disconnect();
+        let newWrapper;
+        switch(strategy){
+            case "2D":
+            case "experimental-2D-LL":
+                newWrapper = new $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper(this.experimentalModel.twistySceneModel, strategy);
+                break;
+            case "Cube3D":
+            case "PG3D":
+                newWrapper = new $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper(this.experimentalModel);
+                (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_initial3DVisualizationWrapper).handleNewValue(newWrapper);
+                break;
+            default:
+                throw new Error("Invalid visualization");
+        }
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapperElem).appendChild(newWrapper);
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper, newWrapper);
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_visualizationStrategy, strategy);
+    }
+};
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-player", $8e08190ac5cfc1c3$export$d03687cb83cd55dc);
+// src/cubing/twisty/views/TwistyAlgViewer.css.ts
+var $8e08190ac5cfc1c3$var$twistyAlgViewerCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+:host {
+  display: inline;
+}
+
+.wrapper {
+  display: inline;
+}
+
+a:not(:hover) {
+  color: inherit;
+  text-decoration: none;
+}
+
+twisty-alg-leaf-elem.twisty-alg-comment {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.wrapper.current-move {
+  background: rgba(66, 133, 244, 0.3);
+  margin-left: -0.1em;
+  margin-right: -0.1em;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+  border-radius: 0.1em;
+}
+`);
+// src/cubing/twisty/views/TwistyAlgViewer.ts
+var $8e08190ac5cfc1c3$var$DEFAULT_OFFSET_MS = 250;
+var $8e08190ac5cfc1c3$var$TwistyAlgLeafElem = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(className, text, dataDown, algOrUnit, offsetIntoMove, clickable){
+        super({
+            mode: "open"
+        });
+        this.algOrUnit = algOrUnit;
+        this.classList.add(className);
+        this.addCSS($8e08190ac5cfc1c3$var$twistyAlgViewerCSS);
+        if (clickable) {
+            const anchor = this.contentWrapper.appendChild(document.createElement("a"));
+            anchor.href = "#";
+            anchor.textContent = text;
+            anchor.addEventListener("click", (e)=>{
+                e.preventDefault();
+                dataDown.twistyAlgViewer.jumpToIndex(dataDown.earliestMoveIndex, offsetIntoMove);
+            });
+        } else this.contentWrapper.appendChild(document.createElement("span")).textContent = text;
+    }
+    pathToIndex(_index) {
+        return [];
+    }
+    setCurrentMove(current) {
+        this.contentWrapper.classList.toggle("current-move", current);
+    }
+};
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-alg-leaf-elem", $8e08190ac5cfc1c3$var$TwistyAlgLeafElem);
+var $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem = class extends $8e08190ac5cfc1c3$var$HTMLElementShim {
+    constructor(className, algOrUnit){
+        super();
+        this.algOrUnit = algOrUnit;
+        this.queue = [];
+        this.classList.add(className);
+    }
+    addString(str) {
+        this.queue.push(document.createTextNode(str));
+    }
+    addElem(dataUp) {
+        this.queue.push(dataUp.element);
+        return dataUp.moveCount;
+    }
+    flushQueue(direction = 1 /* Forwards */ ) {
+        for (const node of $8e08190ac5cfc1c3$var$maybeReverseList(this.queue, direction))this.append(node);
+        this.queue = [];
+    }
+    pathToIndex(_index) {
+        return [];
+    }
+};
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-alg-wrapper-elem", $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem);
+function $8e08190ac5cfc1c3$var$oppositeDirection(direction) {
+    return direction === 1 /* Forwards */  ? -1 /* Backwards */  : 1 /* Forwards */ ;
+}
+function $8e08190ac5cfc1c3$var$updateDirectionByAmount(currentDirection, amount) {
+    return amount < 0 ? $8e08190ac5cfc1c3$var$oppositeDirection(currentDirection) : currentDirection;
+}
+function $8e08190ac5cfc1c3$var$maybeReverseList(l, direction) {
+    if (direction === 1 /* Forwards */ ) return l;
+    const copy = Array.from(l);
+    copy.reverse();
+    return copy;
+}
+var $8e08190ac5cfc1c3$var$AlgToDOMTree = class extends (0, $kQo6d.TraversalDownUp) {
+    traverseAlg(alg, dataDown) {
+        let moveCount = 0;
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-alg", alg);
+        let first = true;
+        for (const unit of (0, $kQo6d.direct)(alg.units(), dataDown.direction)){
+            if (!first) element.addString(" ");
+            first = false;
+            if (unit.as((0, $kQo6d.Pause))?.experimentalNISSGrouping) element.addString("^(");
+            if (!unit.as((0, $kQo6d.Grouping))?.experimentalNISSPlaceholder) moveCount += element.addElem(this.traverseUnit(unit, {
+                earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+                twistyAlgViewer: dataDown.twistyAlgViewer,
+                direction: dataDown.direction
+            }));
+            if (unit.as((0, $kQo6d.Pause))?.experimentalNISSGrouping) element.addString(")");
+        }
+        element.flushQueue(dataDown.direction);
+        return {
+            moveCount: moveCount,
+            element: element
+        };
+    }
+    traverseGrouping(grouping, dataDown) {
+        const square1Tuple = grouping.experimentalAsSquare1Tuple();
+        const direction = $8e08190ac5cfc1c3$var$updateDirectionByAmount(dataDown.direction, grouping.amount);
+        let moveCount = 0;
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-grouping", grouping);
+        element.addString("(");
+        if (square1Tuple) {
+            moveCount += element.addElem({
+                moveCount: 1,
+                element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-move", square1Tuple[0].amount.toString(), dataDown, square1Tuple[0], true, true)
+            });
+            element.addString(", ");
+            moveCount += element.addElem({
+                moveCount: 1,
+                element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-move", square1Tuple[1].amount.toString(), dataDown, square1Tuple[1], true, true)
+            });
+        } else moveCount += element.addElem(this.traverseAlg(grouping.alg, {
+            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+            twistyAlgViewer: dataDown.twistyAlgViewer,
+            direction: direction
+        }));
+        element.addString(")" + grouping.experimentalRepetitionSuffix);
+        element.flushQueue();
+        return {
+            moveCount: moveCount * Math.abs(grouping.amount),
+            element: element
+        };
+    }
+    traverseMove(move, dataDown) {
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-move", move.toString(), dataDown, move, true, true);
+        dataDown.twistyAlgViewer.highlighter.addMove(move.startCharIndex, element);
+        return {
+            moveCount: 1,
+            element: element
+        };
+    }
+    traverseCommutator(commutator, dataDown) {
+        let moveCount = 0;
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-commutator", commutator);
+        element.addString("[");
+        element.flushQueue();
+        const [first, second] = $8e08190ac5cfc1c3$var$maybeReverseList([
+            commutator.A,
+            commutator.B
+        ], dataDown.direction);
+        moveCount += element.addElem(this.traverseAlg(first, {
+            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+            twistyAlgViewer: dataDown.twistyAlgViewer,
+            direction: dataDown.direction
+        }));
+        element.addString(", ");
+        moveCount += element.addElem(this.traverseAlg(second, {
+            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+            twistyAlgViewer: dataDown.twistyAlgViewer,
+            direction: dataDown.direction
+        }));
+        element.flushQueue(dataDown.direction);
+        element.addString("]");
+        element.flushQueue();
+        return {
+            moveCount: moveCount * 2,
+            element: element
+        };
+    }
+    traverseConjugate(conjugate, dataDown) {
+        let moveCount = 0;
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-conjugate", conjugate);
+        element.addString("[");
+        const aLen = element.addElem(this.traverseAlg(conjugate.A, {
+            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+            twistyAlgViewer: dataDown.twistyAlgViewer,
+            direction: dataDown.direction
+        }));
+        moveCount += aLen;
+        element.addString(": ");
+        moveCount += element.addElem(this.traverseAlg(conjugate.B, {
+            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+            twistyAlgViewer: dataDown.twistyAlgViewer,
+            direction: dataDown.direction
+        }));
+        element.addString("]");
+        element.flushQueue();
+        return {
+            moveCount: moveCount + aLen,
+            element: element
+        };
+    }
+    traversePause(pause, dataDown) {
+        if (pause.experimentalNISSGrouping) return this.traverseAlg(pause.experimentalNISSGrouping.alg, dataDown);
+        return {
+            moveCount: 1,
+            element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-pause", ".", dataDown, pause, true, true)
+        };
+    }
+    traverseNewline(newline, _dataDown) {
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-newline", newline);
+        element.append(document.createElement("br"));
+        return {
+            moveCount: 0,
+            element: element
+        };
+    }
+    traverseLineComment(lineComment, dataDown) {
+        return {
+            moveCount: 0,
+            element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-line-comment", `//${lineComment.text}`, dataDown, lineComment, false, false)
+        };
+    }
+};
+var $8e08190ac5cfc1c3$var$algToDOMTreeInstance = new $8e08190ac5cfc1c3$var$AlgToDOMTree();
+var $8e08190ac5cfc1c3$var$algToDOMTree = $8e08190ac5cfc1c3$var$algToDOMTreeInstance.traverseAlg.bind($8e08190ac5cfc1c3$var$algToDOMTreeInstance);
+var $8e08190ac5cfc1c3$var$MoveHighlighter = class {
+    constructor(){
+        this.moveCharIndexMap = /* @__PURE__ */ new Map();
+        this.currentElem = null;
+    }
+    addMove(charIndex, elem) {
+        this.moveCharIndexMap.set(charIndex, elem);
+    }
+    set(move) {
+        const newElem = move ? this.moveCharIndexMap.get(move.startCharIndex) ?? null : null;
+        if (this.currentElem === newElem) return;
+        this.currentElem?.classList.remove("twisty-alg-current-move");
+        this.currentElem?.setCurrentMove(false);
+        newElem?.classList.add("twisty-alg-current-move");
+        newElem?.setCurrentMove(true);
+        this.currentElem = newElem;
+    }
+};
+var $8e08190ac5cfc1c3$var$_domTree, $8e08190ac5cfc1c3$var$_twistyPlayer, $8e08190ac5cfc1c3$var$_setTwistyPlayer, $8e08190ac5cfc1c3$var$setTwistyPlayer_fn;
+var $8e08190ac5cfc1c3$export$e0a62567c31d067 = class extends $8e08190ac5cfc1c3$var$HTMLElementShim {
+    constructor(options){
+        super();
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_setTwistyPlayer);
+        this.highlighter = new $8e08190ac5cfc1c3$var$MoveHighlighter();
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_domTree, void 0);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_twistyPlayer, null);
+        this.lastClickTimestamp = null;
+        if (options?.twistyPlayer) this.twistyPlayer = options?.twistyPlayer;
+    }
+    connectedCallback() {}
+    setAlg(alg) {
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_domTree, $8e08190ac5cfc1c3$var$algToDOMTree(alg, {
+            earliestMoveIndex: 0,
+            twistyAlgViewer: this,
+            direction: 1 /* Forwards */ 
+        }).element);
+        this.textContent = "";
+        this.appendChild((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_domTree));
+    }
+    get twistyPlayer() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer);
+    }
+    set twistyPlayer(twistyPlayer) {
+        (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_setTwistyPlayer, $8e08190ac5cfc1c3$var$setTwistyPlayer_fn).call(this, twistyPlayer);
+    }
+    async jumpToIndex(index, offsetIntoMove) {
+        const twistyPlayer = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer);
+        if (twistyPlayer) {
+            twistyPlayer.pause();
+            const timestampPromise = (async ()=>{
+                const indexer = await twistyPlayer.experimentalModel.indexer.get();
+                const offset = offsetIntoMove ? $8e08190ac5cfc1c3$var$DEFAULT_OFFSET_MS : 0;
+                return (indexer.indexToMoveStartTimestamp(index) ?? -offset) + offset;
+            })();
+            twistyPlayer.experimentalModel.timestampRequest.set(await timestampPromise);
+            if (this.lastClickTimestamp === await timestampPromise) {
+                twistyPlayer.play();
+                this.lastClickTimestamp = null;
+            } else this.lastClickTimestamp = await timestampPromise;
+        }
+    }
+    async attributeChangedCallback(attributeName, _oldValue, newValue) {
+        if (attributeName === "for") {
+            const elem = document.getElementById(newValue);
+            if (!elem) {
+                console.warn("for= elem does not exist");
+                return;
+            }
+            await customElements.whenDefined("twisty-player");
+            if (!(elem instanceof $8e08190ac5cfc1c3$export$d03687cb83cd55dc)) {
+                console.warn("for= elem is not a twisty-player");
+                return;
+            }
+            this.twistyPlayer = elem;
+        }
+    }
+    static get observedAttributes() {
+        return [
+            "for"
+        ];
+    }
+};
+$8e08190ac5cfc1c3$var$_domTree = new WeakMap();
+$8e08190ac5cfc1c3$var$_twistyPlayer = new WeakMap();
+$8e08190ac5cfc1c3$var$_setTwistyPlayer = new WeakSet();
+$8e08190ac5cfc1c3$var$setTwistyPlayer_fn = async function(twistyPlayer) {
+    if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer)) {
+        console.warn("twisty-player reassignment is not supported");
+        return;
+    }
+    if (twistyPlayer === null) throw new Error("clearing twistyPlayer is not supported");
+    (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer, twistyPlayer);
+    (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer).experimentalModel.alg.addFreshListener((algWithIssues)=>{
+        this.setAlg(algWithIssues.alg);
+    });
+    const sourceAlg = (await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer).experimentalModel.alg.get()).alg;
+    const parsedAlg = "startCharIndex" in sourceAlg ? sourceAlg : (0, $kQo6d.Alg).fromString(sourceAlg.toString());
+    this.setAlg(parsedAlg);
+    twistyPlayer.experimentalModel.currentMoveInfo.addFreshListener((currentMoveInfo)=>{
+        let moveInfo = currentMoveInfo.currentMoves[0];
+        moveInfo ?? (moveInfo = currentMoveInfo.movesStarting[0]);
+        moveInfo ?? (moveInfo = currentMoveInfo.movesFinishing[0]);
+        if (!moveInfo) this.highlighter.set(null);
+        else {
+            const mainCurrentMove = moveInfo.move;
+            this.highlighter.set(mainCurrentMove);
+        }
+    });
+    twistyPlayer.experimentalModel.detailedTimelineInfo.addFreshListener((detailedTimelineInfo)=>{
+        if (detailedTimelineInfo.timestamp !== this.lastClickTimestamp) this.lastClickTimestamp = null;
+    });
+};
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-alg-viewer", $8e08190ac5cfc1c3$export$e0a62567c31d067);
+// src/cubing/twisty/views/TwistyAlgEditor/LeafTokens.ts
+var $8e08190ac5cfc1c3$var$LeafTokens = class extends (0, $kQo6d.TraversalDownUp) {
+    traverseAlg(alg, dataDown) {
+        const unitArrays = [];
+        let numMovesInside = 0;
+        for (const unit of alg.units()){
+            const dataUp = this.traverseUnit(unit, {
+                numMovesSofar: dataDown.numMovesSofar + numMovesInside
+            });
+            unitArrays.push(dataUp.tokens);
+            numMovesInside += dataUp.numLeavesInside;
+        }
+        return {
+            tokens: Array.prototype.concat(...unitArrays),
+            numLeavesInside: numMovesInside
+        };
+    }
+    traverseGrouping(grouping, dataDown) {
+        const dataUp = this.traverseAlg(grouping.alg, dataDown);
+        return {
+            tokens: dataUp.tokens,
+            numLeavesInside: dataUp.numLeavesInside * grouping.amount
+        };
+    }
+    traverseMove(move, dataDown) {
+        return {
+            tokens: [
+                {
+                    leaf: move,
+                    idx: dataDown.numMovesSofar
+                }
+            ],
+            numLeavesInside: 1
+        };
+    }
+    traverseCommutator(commutator, dataDown) {
+        const dataUpA = this.traverseAlg(commutator.A, dataDown);
+        const dataUpB = this.traverseAlg(commutator.B, {
+            numMovesSofar: dataDown.numMovesSofar + dataUpA.numLeavesInside
+        });
+        return {
+            tokens: dataUpA.tokens.concat(dataUpB.tokens),
+            numLeavesInside: dataUpA.numLeavesInside * 2 + dataUpB.numLeavesInside
+        };
+    }
+    traverseConjugate(conjugate, dataDown) {
+        const dataUpA = this.traverseAlg(conjugate.A, dataDown);
+        const dataUpB = this.traverseAlg(conjugate.B, {
+            numMovesSofar: dataDown.numMovesSofar + dataUpA.numLeavesInside
+        });
+        return {
+            tokens: dataUpA.tokens.concat(dataUpB.tokens),
+            numLeavesInside: dataUpA.numLeavesInside * 2 + dataUpB.numLeavesInside * 2
+        };
+    }
+    traversePause(pause, dataDown) {
+        return {
+            tokens: [
+                {
+                    leaf: pause,
+                    idx: dataDown.numMovesSofar
+                }
+            ],
+            numLeavesInside: 1
+        };
+    }
+    traverseNewline(_newline, _dataDown) {
+        return {
+            tokens: [],
+            numLeavesInside: 0
+        };
+    }
+    traverseLineComment(_comment, _dataDown) {
+        return {
+            tokens: [],
+            numLeavesInside: 0
+        };
+    }
+};
+var $8e08190ac5cfc1c3$var$leafTokensInstance = new $8e08190ac5cfc1c3$var$LeafTokens();
+var $8e08190ac5cfc1c3$var$leafTokens = $8e08190ac5cfc1c3$var$leafTokensInstance.traverseAlg.bind($8e08190ac5cfc1c3$var$leafTokensInstance);
+// src/cubing/twisty/views/TwistyAlgEditor/model.ts
+var $8e08190ac5cfc1c3$var$TwistyAlgEditorValueProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "";
+    }
+};
+var $8e08190ac5cfc1c3$var$AlgEditorAlgWithIssuesProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(input) {
+        return $8e08190ac5cfc1c3$var$algWithIssuesFromString(input.value);
+    }
+};
+var $8e08190ac5cfc1c3$var$TwistyAlgEditorSelectionProp = class extends (0, $8JBxj.TwistyPropSource) {
+    getDefaultValue() {
+        return {
+            selectionStart: 0,
+            selectionEnd: 0,
+            endChangedMostRecently: false
+        };
+    }
+    async derive(input, oldValue) {
+        const { selectionStart: selectionStart , selectionEnd: selectionEnd  } = input;
+        const lastResult = await oldValue;
+        const endChangedMostRecently = input.selectionStart === lastResult.selectionStart && input.selectionEnd !== (await oldValue).selectionEnd;
+        return {
+            selectionStart: selectionStart,
+            selectionEnd: selectionEnd,
+            endChangedMostRecently: endChangedMostRecently
+        };
+    }
+};
+var $8e08190ac5cfc1c3$var$TargetCharProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        return inputs.selectionInfo.endChangedMostRecently ? inputs.selectionInfo.selectionEnd : inputs.selectionInfo.selectionStart;
+    }
+};
+var $8e08190ac5cfc1c3$var$LeafTokensProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        return $8e08190ac5cfc1c3$var$leafTokens(inputs.algWithIssues.alg, {
+            numMovesSofar: 0
+        }).tokens;
+    }
+};
+var $8e08190ac5cfc1c3$var$LeafToHighlightProp = class extends (0, $8JBxj.TwistyPropDerived) {
+    derive(inputs) {
+        function withWhere(leafInfo) {
+            if (leafInfo === null) return null;
+            let where;
+            if (inputs.targetChar < leafInfo.leaf.startCharIndex) where = "before";
+            else if (inputs.targetChar === leafInfo.leaf.startCharIndex) where = "start";
+            else if (inputs.targetChar < leafInfo.leaf.endCharIndex) where = "inside";
+            else if (inputs.targetChar === leafInfo.leaf.endCharIndex) where = "end";
+            else where = "after";
+            return {
+                leafInfo: leafInfo,
+                where: where
+            };
+        }
+        let lastLeafInfo = null;
+        for (const leafInfo1 of inputs.leafTokens){
+            if (inputs.targetChar < leafInfo1.leaf.startCharIndex && lastLeafInfo !== null) return withWhere(lastLeafInfo);
+            if (inputs.targetChar <= leafInfo1.leaf.endCharIndex) return withWhere(leafInfo1);
+            lastLeafInfo = leafInfo1;
+        }
+        return withWhere(lastLeafInfo);
+    }
+};
+var $8e08190ac5cfc1c3$var$TwistyAlgEditorModel = class {
+    constructor(){
+        this.valueProp = new $8e08190ac5cfc1c3$var$TwistyAlgEditorValueProp();
+        this.selectionProp = new $8e08190ac5cfc1c3$var$TwistyAlgEditorSelectionProp();
+        this.targetCharProp = new $8e08190ac5cfc1c3$var$TargetCharProp({
+            selectionInfo: this.selectionProp
+        });
+        this.algEditorAlgWithIssues = new $8e08190ac5cfc1c3$var$AlgEditorAlgWithIssuesProp({
+            value: this.valueProp
+        });
+        this.leafTokensProp = new $8e08190ac5cfc1c3$var$LeafTokensProp({
+            algWithIssues: this.algEditorAlgWithIssues
+        });
+        this.leafToHighlight = new $8e08190ac5cfc1c3$var$LeafToHighlightProp({
+            leafTokens: this.leafTokensProp,
+            targetChar: this.targetCharProp
+        });
+    }
+};
+// src/cubing/twisty/views/TwistyAlgEditor/TwistyAlgEditor.css.ts
+var $8e08190ac5cfc1c3$var$twistyAlgEditorCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+:host {
+  width: 384px;
+  display: grid;
+}
+
+.wrapper {
+  /*overflow: hidden;
+  resize: horizontal;*/
+
+  background: var(--background, none);
+  display: grid;
+}
+
+textarea, .carbon-copy {
+  grid-area: 1 / 1 / 2 / 2;
+
+  width: 100%;
+  font-family: sans-serif;
+  line-height: 1.2em;
+
+  font-size: var(--font-size, inherit);
+  font-family: var(--font-family, sans-serif);
+
+  box-sizing: border-box;
+
+  padding: var(--padding, 0.5em);
+  /* Prevent horizontal growth. */
+  overflow-x: hidden;
+}
+
+textarea {
+  resize: none;
+  background: none;
+  z-index: 2;
+  overflow: hidden;
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.25));
+}
+
+.carbon-copy {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: transparent;
+  user-select: none;
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.carbon-copy .highlight {
+  background: var(--highlight-color, rgba(255, 128, 0, 0.5));
+  padding: 0.1em 0.2em;
+  margin: -0.1em -0.2em;
+  border-radius: 0.2em;
+}
+
+.wrapper.issue-warning textarea,
+.wrapper.valid-for-puzzle-warning textarea {
+  outline: none;
+  border: 1px solid rgba(200, 200, 0, 0.5);
+  background: rgba(255, 255, 0, 0.1);
+}
+
+.wrapper.issue-error textarea,
+.wrapper.valid-for-puzzle-error textarea {
+  outline: none;
+  border: 1px solid red;
+  background: rgba(255, 0, 0, 0.1);
+}
+`);
+// src/cubing/twisty/views/TwistyAlgEditor/TwistyAlgEditor.ts
+var $8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER = "for-twisty-player";
+var $8e08190ac5cfc1c3$var$ATTRIBUTE_PLACEHOLDER = "placeholder";
+var $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP = "twisty-player-prop";
+var $8e08190ac5cfc1c3$var$_textarea, $8e08190ac5cfc1c3$var$_carbonCopy, $8e08190ac5cfc1c3$var$_carbonCopyPrefix, $8e08190ac5cfc1c3$var$_carbonCopyHighlight, $8e08190ac5cfc1c3$var$_carbonCopySuffix, $8e08190ac5cfc1c3$var$_textareaClassListValidForPuzzleManager, $8e08190ac5cfc1c3$var$_twistyPlayer2, $8e08190ac5cfc1c3$var$_twistyPlayerProp, $8e08190ac5cfc1c3$var$_algProp, $8e08190ac5cfc1c3$var$algProp_get, $8e08190ac5cfc1c3$var$_onInputHasFired, $8e08190ac5cfc1c3$var$_padSuffix, $8e08190ac5cfc1c3$var$padSuffix_fn, $8e08190ac5cfc1c3$var$_highlightedLeaf;
+var $8e08190ac5cfc1c3$export$ca185a52cf2c5e67 = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(options){
+        super();
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_algProp);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_padSuffix);
+        this.model = new $8e08190ac5cfc1c3$var$TwistyAlgEditorModel();
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_textarea, document.createElement("textarea"));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_carbonCopy, document.createElement("div"));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_carbonCopyPrefix, document.createElement("span"));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight, document.createElement("span"));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_carbonCopySuffix, document.createElement("span"));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_textareaClassListValidForPuzzleManager, new $8e08190ac5cfc1c3$var$ClassListManager(this, "valid-for-puzzle-", [
+            "none",
+            "warning",
+            "error"
+        ]));
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2, null);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp, void 0);
+        this.debugNeverRequestTimestamp = false;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_onInputHasFired, false);
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_highlightedLeaf, null);
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopy).classList.add("carbon-copy");
+        this.addElement((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopy));
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).rows = 1;
+        this.addElement((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea));
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyPrefix).classList.add("prefix");
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopy).appendChild((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyPrefix));
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight).classList.add("highlight");
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopy).appendChild((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight));
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopySuffix).classList.add("suffix");
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopy).appendChild((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopySuffix));
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).placeholder = "Alg";
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).setAttribute("spellcheck", "false");
+        this.addCSS($8e08190ac5cfc1c3$var$twistyAlgEditorCSS);
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).addEventListener("input", ()=>{
+            (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_onInputHasFired, true);
+            this.onInput();
+        });
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).addEventListener("blur", ()=>this.onBlur());
+        document.addEventListener("selectionchange", ()=>this.onSelectionChange());
+        if (options?.twistyPlayer) this.twistyPlayer = options.twistyPlayer;
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp, options?.twistyPlayerProp ?? "alg");
+        if (options?.twistyPlayerProp === "alg") this.model.leafToHighlight.addFreshListener((highlightInfo)=>{
+            if (highlightInfo) this.highlightLeaf(highlightInfo.leafInfo.leaf);
+        });
+    }
+    set algString(s) {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value = s;
+        this.onInput();
+    }
+    get algString() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value;
+    }
+    set placeholder(placeholderText) {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).placeholder = placeholderText;
+    }
+    onInput() {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight).hidden = true;
+        this.highlightLeaf(null);
+        const endTrimmed = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value.trimEnd();
+        this.model.valueProp.set(endTrimmed);
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_algProp, $8e08190ac5cfc1c3$var$algProp_get)?.set(endTrimmed);
+    }
+    async onSelectionChange() {
+        if (document.activeElement !== this || this.shadow.activeElement !== (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea)) return;
+        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp) !== "alg") return;
+        const { selectionStart: selectionStart , selectionEnd: selectionEnd  } = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea);
+        this.model.selectionProp.set({
+            selectionStart: selectionStart,
+            selectionEnd: selectionEnd
+        });
+    }
+    async onBlur() {}
+    setAlgIssueClassForPuzzle(issues) {
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textareaClassListValidForPuzzleManager).setValue(issues);
+    }
+    highlightLeaf(leaf) {
+        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp) !== "alg") return;
+        if (leaf === null) {
+            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyPrefix).textContent = "";
+            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight).textContent = "";
+            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopySuffix).textContent = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_padSuffix, $8e08190ac5cfc1c3$var$padSuffix_fn).call(this, (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value);
+            return;
+        }
+        if (leaf === (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_highlightedLeaf)) return;
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_highlightedLeaf, leaf);
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyPrefix).textContent = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value.slice(0, leaf.startCharIndex);
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight).textContent = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value.slice(leaf.startCharIndex, leaf.endCharIndex);
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopySuffix).textContent = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_padSuffix, $8e08190ac5cfc1c3$var$padSuffix_fn).call(this, (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value.slice(leaf.endCharIndex));
+        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight).hidden = false;
+    }
+    get twistyPlayer() {
+        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2);
+    }
+    set twistyPlayer(twistyPlayer) {
+        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2)) {
+            console.warn("twisty-player reassignment/clearing is not supported");
+            return;
+        }
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2, twistyPlayer);
+        if (!twistyPlayer) return;
+        (async ()=>{
+            this.algString = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_algProp, $8e08190ac5cfc1c3$var$algProp_get) ? (await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_algProp, $8e08190ac5cfc1c3$var$algProp_get).get()).alg.toString() : "";
+        })();
+        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp) === "alg") {
+            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2)?.experimentalModel.puzzleAlg.addFreshListener((algWithIssues)=>{
+                if (algWithIssues.issues.errors.length === 0) {
+                    this.setAlgIssueClassForPuzzle(algWithIssues.issues.warnings.length === 0 ? "none" : "warning");
+                    const newAlg = algWithIssues.alg;
+                    const oldAlg = (0, $kQo6d.Alg).fromString(this.algString);
+                    if (!newAlg.isIdentical(oldAlg)) {
+                        this.algString = newAlg.toString();
+                        this.onInput();
+                    }
+                } else this.setAlgIssueClassForPuzzle("error");
+            });
+            this.model.leafToHighlight.addFreshListener(async (highlightInfo)=>{
+                if (highlightInfo === null) return;
+                const [indexer, timestampRequest] = await Promise.all([
+                    await twistyPlayer.experimentalModel.indexer.get(),
+                    await twistyPlayer.experimentalModel.timestampRequest.get()
+                ]);
+                if (timestampRequest === "opposite-anchor" && !(0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_onInputHasFired)) return;
+                const moveStartTimestamp = indexer.indexToMoveStartTimestamp(highlightInfo.leafInfo.idx);
+                const duration = indexer.moveDuration(highlightInfo.leafInfo.idx);
+                let newTimestamp;
+                switch(highlightInfo.where){
+                    case "before":
+                        newTimestamp = moveStartTimestamp;
+                        break;
+                    case "start":
+                    case "inside":
+                        newTimestamp = moveStartTimestamp + duration / 4;
+                        break;
+                    case "end":
+                    case "after":
+                        newTimestamp = moveStartTimestamp + duration;
+                        break;
+                    default:
+                        console.log("invalid where");
+                        throw new Error("Invalid where!");
+                }
+                if (!this.debugNeverRequestTimestamp) twistyPlayer.experimentalModel.timestampRequest.set(newTimestamp);
+            });
+            twistyPlayer.experimentalModel.currentLeavesSimplified.addFreshListener(async (currentLeavesSimplified)=>{
+                const indexer = await twistyPlayer.experimentalModel.indexer.get();
+                const leaf = indexer.getAnimLeaf(currentLeavesSimplified.stateIndex);
+                this.highlightLeaf(leaf);
+            });
+        }
+    }
+    attributeChangedCallback(attributeName, _oldValue, newValue) {
+        switch(attributeName){
+            case $8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER:
+                {
+                    const elem = document.getElementById(newValue);
+                    if (!elem) {
+                        console.warn(`${$8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER}= elem does not exist`);
+                        return;
+                    }
+                    if (!(elem instanceof $8e08190ac5cfc1c3$export$d03687cb83cd55dc)) {
+                        console.warn(`${$8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER}=is not a twisty-player`);
+                        return;
+                    }
+                    this.twistyPlayer = elem;
+                    return;
+                }
+            case $8e08190ac5cfc1c3$var$ATTRIBUTE_PLACEHOLDER:
+                this.placeholder = newValue;
+                return;
+            case $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP:
+                if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2)) {
+                    console.log("cannot set prop");
+                    throw new Error("cannot set prop after twisty player");
+                }
+                (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp, newValue);
+                return;
+        }
+    }
+    static get observedAttributes() {
+        return [
+            $8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER,
+            $8e08190ac5cfc1c3$var$ATTRIBUTE_PLACEHOLDER,
+            $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP
+        ];
+    }
+};
+$8e08190ac5cfc1c3$var$_textarea = new WeakMap();
+$8e08190ac5cfc1c3$var$_carbonCopy = new WeakMap();
+$8e08190ac5cfc1c3$var$_carbonCopyPrefix = new WeakMap();
+$8e08190ac5cfc1c3$var$_carbonCopyHighlight = new WeakMap();
+$8e08190ac5cfc1c3$var$_carbonCopySuffix = new WeakMap();
+$8e08190ac5cfc1c3$var$_textareaClassListValidForPuzzleManager = new WeakMap();
+$8e08190ac5cfc1c3$var$_twistyPlayer2 = new WeakMap();
+$8e08190ac5cfc1c3$var$_twistyPlayerProp = new WeakMap();
+$8e08190ac5cfc1c3$var$_algProp = new WeakSet();
+$8e08190ac5cfc1c3$var$algProp_get = function() {
+    if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2) === null) return null;
+    else return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2).experimentalModel[(0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp)];
+};
+$8e08190ac5cfc1c3$var$_onInputHasFired = new WeakMap();
+$8e08190ac5cfc1c3$var$_padSuffix = new WeakSet();
+$8e08190ac5cfc1c3$var$padSuffix_fn = function(s) {
+    return s.endsWith("\n") ? s + " " : s;
+};
+$8e08190ac5cfc1c3$var$_highlightedLeaf = new WeakMap();
+$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-alg-editor", $8e08190ac5cfc1c3$export$ca185a52cf2c5e67);
+// src/cubing/twisty/views/twizzle/TwizzleLink.css.ts
+var $8e08190ac5cfc1c3$var$twizzleLinkCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+.wrapper {
+  background: rgb(255, 245, 235);
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.setup-alg, twisty-alg-viewer {
+  padding: 0.5em 1em;
+}
+
+.heading {
+  background: rgba(255, 230, 210, 1);
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+}
+
+.heading.title {
+  background: rgb(255, 245, 235);
+  font-size: 150%;
+  white-space: pre;
+}
+
+twisty-player {
+  width: 100%;
+  resize: vertical;
+  overflow-y: hidden;
+}
+
+twisty-player + .heading {
+  padding-top: 0.5em;
+}
+`);
+// src/cubing/twisty/views/twizzle/url-params.ts
+function $8e08190ac5cfc1c3$var$updateURL(url) {
+    window.history.replaceState("", "", url.toString());
+}
+var $8e08190ac5cfc1c3$var$_prefix;
+var $8e08190ac5cfc1c3$var$URLParamUpdater = class {
+    constructor(model, options){
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_prefix, void 0);
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_prefix, options?.prefix ?? "");
+        this.listenToAlgProp(model.alg, "alg");
+        this.listenToAlgProp(model.setupAlg, "setup-alg");
+        this.listenToStringSourceProp(model.twistySceneModel.stickering, "stickering");
+        this.listenToStringSourceProp(model.setupAnchor, "setup-anchor");
+        this.listenToStringOrNullProp(model.title, "title");
+        this.listenToStringOrNoValueProp(model.puzzleIDRequest, "puzzle", (0, $8JBxj.NO_VALUE));
+        this.listenToStringOrNoValueProp(model.puzzleDescriptionRequest, "puzzle-description", (0, $8JBxj.NO_VALUE));
+    }
+    setURLParam(unprefixedKey, value, defaultString) {
+        const prefixedKey = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_prefix) + unprefixedKey;
+        const url = new URL(location.href);
+        if (value === defaultString) url.searchParams.delete(prefixedKey);
+        else url.searchParams.set(prefixedKey, value);
+        $8e08190ac5cfc1c3$var$updateURL(url);
+    }
+    async listenToStringSourceProp(prop, key, defaultString) {
+        const actualDefaultString = defaultString ?? await prop.getDefaultValue();
+        prop.addFreshListener((s)=>{
+            this.setURLParam(key, s, actualDefaultString);
+        });
+    }
+    async listenToStringOrNullProp(prop, key, defaultString = "") {
+        prop.addFreshListener((s)=>{
+            this.setURLParam(key, s ?? defaultString, defaultString);
+        });
+    }
+    async listenToStringOrNoValueProp(prop, key, defaultString) {
+        prop.addFreshListener((s)=>{
+            if (s === (0, $8JBxj.NO_VALUE)) s = defaultString;
+            if (s === (0, $8JBxj.NO_VALUE)) this.setURLParam(key, "", "");
+            else this.setURLParam(key, s, "");
+        });
+    }
+    listenToAlgProp(prop, key) {
+        prop.addFreshListener((algWithIssues)=>{
+            this.setURLParam(key, algWithIssues.alg.toString(), "");
+        });
+    }
+};
+$8e08190ac5cfc1c3$var$_prefix = new WeakMap();
+function $8e08190ac5cfc1c3$var$getConfigFromURL(prefix = "", url = location.href) {
+    const paramMapping = {
+        "alg": "alg",
+        "setup-alg": "experimental-setup-alg",
+        "setup-anchor": "experimental-setup-anchor",
+        "puzzle": "puzzle",
+        "stickering": "experimental-stickering",
+        "puzzle-description": "experimental-puzzle-description",
+        "title": "experimental-title",
+        "video-url": "experimental-video-url",
+        "competition": "experimental-competition-id"
+    };
+    const params = new URL(url).searchParams;
+    const config = {};
+    for (const [ourParam, twistyPlayerParam] of Object.entries(paramMapping)){
+        const paramValue = params.get(prefix + ourParam);
+        if (paramValue !== null) {
+            const configKey = $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap[twistyPlayerParam];
+            config[configKey] = paramValue;
+        }
+    }
+    return config;
+}
+// src/cubing/twisty/views/twizzle/TwizzleLink.ts
+var $8e08190ac5cfc1c3$var$_cssElem;
+
+var $8e08190ac5cfc1c3$export$6b2b3b705349e8be = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+    constructor(){
+        super({
+            mode: "open"
+        });
+        this.twistyPlayer = null;
+        this.a = null;
+        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cssElem, void 0);
+    }
+    fallback() {
+        this.contentWrapper.textContent = "";
+        if (this.a) {
+            const span = this.contentWrapper.appendChild(document.createElement("span"));
+            span.textContent = "\u2757\uFE0F";
+            span.title = "Could not show a player for link";
+            this.addElement(this.a);
+        }
+        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssElem)) (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssElem).remove();
+    }
+    async connectedCallback() {
+        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cssElem, this.addCSS($8e08190ac5cfc1c3$var$twizzleLinkCSS));
+        this.a = this.querySelector("a");
+        if (!this.a) return;
+        const config = $8e08190ac5cfc1c3$var$getConfigFromURL("", this.a.href);
+        const href = this.a?.href;
+        const { hostname: hostname , pathname: pathname  } = new URL(href);
+        if (hostname !== "alpha.twizzle.net") {
+            this.fallback();
+            return;
+        }
+        if ([
+            "/edit/",
+            "/explore/"
+        ].includes(pathname)) {
+            const isExplorer = pathname === "/explore/";
+            if (config.puzzle && !(config.puzzle in (0, $d2uOu.puzzles))) {
+                const puzzleDescription = (await (parcelRequire("ak7Jm"))).getPuzzleDescriptionString(config.puzzle);
+                delete config.puzzle;
+                config.experimentalPuzzleDescription = puzzleDescription;
+            }
+            this.twistyPlayer = this.addElement(new $8e08190ac5cfc1c3$export$d03687cb83cd55dc({
+                ...config,
+                viewerLink: isExplorer ? "experimental-twizzle-explorer" : "auto"
+            }));
+            if (config.experimentalTitle) this.addHeading(config.experimentalTitle).classList.add("title");
+            if (config.experimentalSetupAlg) {
+                this.addHeading("Setup");
+                const setupAlgDiv = this.addElement(document.createElement("div"));
+                setupAlgDiv.classList.add("setup-alg");
+                setupAlgDiv.textContent = new (0, $kQo6d.Alg)(config.experimentalSetupAlg).toString();
+            }
+            this.addHeading("Moves");
+            const twistyAlgViewer = this.addElement(new $8e08190ac5cfc1c3$export$e0a62567c31d067({
+                twistyPlayer: this.twistyPlayer
+            }));
+            twistyAlgViewer.part.add("twisty-alg-viewer");
+        } else this.fallback();
+    }
+    addHeading(text) {
+        const headingDiv = this.addElement(document.createElement("div"));
+        headingDiv.classList.add("heading");
+        headingDiv.textContent = text;
+        return headingDiv;
+    }
+};
+$8e08190ac5cfc1c3$var$_cssElem = new WeakMap();
+$8e08190ac5cfc1c3$var$customElementsShim.define("twizzle-link", $8e08190ac5cfc1c3$export$6b2b3b705349e8be);
+
+
+
+var $kQo6d = parcelRequire("kQo6d");
+parcelRequire("hJBlP");
+
+
+var $kQo6d = parcelRequire("kQo6d");
+
+var $7f96fd5d73b99479$exports = {};
 "use strict";
 var $69f4ded615f6c2c8$exports = {};
 function $69f4ded615f6c2c8$var$_interopRequireDefault(obj) {
@@ -20314,39 +27863,81 @@ function $69f4ded615f6c2c8$var$_interopRequireDefault(obj) {
 $69f4ded615f6c2c8$exports = $69f4ded615f6c2c8$var$_interopRequireDefault, $69f4ded615f6c2c8$exports.__esModule = true, $69f4ded615f6c2c8$exports["default"] = $69f4ded615f6c2c8$exports;
 
 
-Object.defineProperty($9c747f1db1bfcaa5$exports, "__esModule", {
+Object.defineProperty($7f96fd5d73b99479$exports, "__esModule", {
     value: true
 });
-$9c747f1db1bfcaa5$exports.default = void 0;
+$7f96fd5d73b99479$exports.default = void 0;
 
-var $9c747f1db1bfcaa5$var$_createSvgIcon = $69f4ded615f6c2c8$exports((parcelRequire("33Ex0")));
+var $7f96fd5d73b99479$var$_createSvgIcon = $69f4ded615f6c2c8$exports((parcelRequire("33Ex0")));
 
 var $228IU = parcelRequire("228IU");
-var $9c747f1db1bfcaa5$var$_default = (0, $9c747f1db1bfcaa5$var$_createSvgIcon.default)(/*#__PURE__*/ (0, $228IU.jsx)("path", {
-    d: "M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
-}), "OpenInNew");
-$9c747f1db1bfcaa5$exports.default = $9c747f1db1bfcaa5$var$_default;
+var $7f96fd5d73b99479$var$_default = (0, $7f96fd5d73b99479$var$_createSvgIcon.default)(/*#__PURE__*/ (0, $228IU.jsx)("path", {
+    d: "M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+}), "Close");
+$7f96fd5d73b99479$exports.default = $7f96fd5d73b99479$var$_default;
 
 
-
-const $85d868e1e5abbef8$export$581f644880f842c0 = ({ onclick: onclick , alg: alg  })=>{
-    return /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
-        onClick: onclick,
-        sx: {
-            fontSize: "16px",
-            display: "flex",
-            alignItems: "center",
-            "&:hover": {
-                cursor: "pointer"
-            }
-        },
+const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ solutions: solutions , handleClose: handleClose  })=>{
+    const [player1, setPlayer] = (0, $d4J5n.useState)();
+    const twistyPlayerRef = (0, $d4J5n.useCallback)((node)=>{
+        if (node) {
+            const player = new (0, $8e08190ac5cfc1c3$export$d03687cb83cd55dc)({
+                puzzle: "3x3x3",
+                alg: solutions[0],
+                hintFacelets: "none",
+                background: "none",
+                experimentalSetupAnchor: "end",
+                experimentalSetupAlg: "x2",
+                controlPanel: "none",
+                experimentalDragInput: "none"
+            });
+            node.appendChild(player);
+            setPlayer(player);
+        }
+    }, []);
+    const handleClick = (e)=>{
+        if (player1) {
+            player1.alg = new (0, $kQo6d.Alg)(e.currentTarget.innerText);
+            player1.play();
+        }
+        return null;
+    };
+    return /*#__PURE__*/ (0, $228IU.jsxs)((0, $d6f0347ecedd0ecf$export$2e2bcd8739ae039), {
+        open: !!solutions,
+        onClose: handleClose,
         children: [
-            alg,
-            /*#__PURE__*/ (0, $228IU.jsx)((0, (/*@__PURE__*/$parcel$interopDefault($9c747f1db1bfcaa5$exports))), {
-                fontSize: "inherit",
+            /*#__PURE__*/ (0, $228IU.jsx)((0, $fcf2823dd0ffe4e8$export$2e2bcd8739ae039), {
                 sx: {
-                    marginLeft: "auto"
-                }
+                    m: 0,
+                    p: 2
+                },
+                children: /*#__PURE__*/ (0, $228IU.jsx)((0, $e6fb12cd5811ce97$export$2e2bcd8739ae039), {
+                    "aria-label": "close",
+                    onClick: handleClose,
+                    sx: {
+                        position: "absolute",
+                        right: 8,
+                        top: 8,
+                        color: (theme)=>theme.palette.grey[700]
+                    },
+                    children: /*#__PURE__*/ (0, $228IU.jsx)((0, (/*@__PURE__*/$parcel$interopDefault($7f96fd5d73b99479$exports))), {})
+                })
+            }),
+            /*#__PURE__*/ (0, $228IU.jsxs)((0, $63631a44a86d4e62$export$2e2bcd8739ae039), {
+                children: [
+                    /*#__PURE__*/ (0, $228IU.jsx)("div", {
+                        id: "twisty-player",
+                        ref: twistyPlayerRef,
+                        style: {
+                            margin: "0 auto",
+                            width: "384px"
+                        }
+                    }),
+                    solutions.map((solution)=>/*#__PURE__*/ (0, $228IU.jsx)((0, $85d868e1e5abbef8$export$581f644880f842c0), {
+                            alg: solution,
+                            onClick: handleClick
+                        }, solution))
+                ]
             })
         ]
     });
@@ -20359,6 +27950,7 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
             ...acc,
             [cur]: false
         }), {}));
+    const [algDialog, setAlgDialog] = (0, $d4J5n.useState)();
     const navigate = (0, $bd647cfe352699a5$export$9770f232ac06a008)();
     const startTrainer = ()=>navigate("trainer");
     const getImage = (alg)=>`https://cubiclealgdbimagegen.azurewebsites.net/generator?${step.visualCubeParams}&case=${alg}`;
@@ -20368,8 +27960,11 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
             [event.target.name]: event.target.checked
         });
     };
-    const algRowClick = (alg)=>{
-        window.open(`https://alpha.twizzle.net/edit/?puzzle=3x3x3&alg=${alg}&setup-anchor=end`, "_blank");
+    const algRowClick = (solutions)=>{
+        setAlgDialog(solutions);
+    };
+    const handleClose = ()=>{
+        setAlgDialog(null);
     };
     return /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
         sx: {
@@ -20437,7 +28032,7 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
                                         component: "th",
                                         scope: "row",
                                         children: /*#__PURE__*/ (0, $228IU.jsx)((0, $85d868e1e5abbef8$export$581f644880f842c0), {
-                                            onclick: ()=>algRowClick(alg),
+                                            onClick: ()=>algRowClick(value.solutions),
                                             alg: value.solutions[0]
                                         })
                                     })
@@ -20445,6 +28040,10 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
                             }, alg))
                     })
                 })
+            }),
+            !!algDialog && /*#__PURE__*/ (0, $228IU.jsx)((0, $7f9ac80f7f0322b6$export$86e0764efc64e1d1), {
+                handleClose: handleClose,
+                solutions: algDialog
             })
         ]
     });
@@ -20510,4 +28109,4 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $228IU.jsx)((0, $414bf34
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.57431ae8.js.map
+//# sourceMappingURL=index.fbf2f8c5.js.map
