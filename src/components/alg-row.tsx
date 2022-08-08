@@ -1,17 +1,16 @@
-import { MouseEventHandler } from "react";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import { Box } from "@mui/material";
+import { MouseEvent } from "react";
+import { Box, Typography } from "@mui/material";
 
 export const AlgRow = ({
-  onclick,
+  onClick,
   alg,
 }: {
-  onclick: MouseEventHandler<HTMLSpanElement>;
+  onClick: (e: MouseEvent<HTMLElement>) => void;
   alg: string;
 }) => {
   return (
     <Box
-      onClick={onclick}
+      onClick={onClick}
       sx={{
         fontSize: "16px",
         display: "flex",
@@ -19,8 +18,9 @@ export const AlgRow = ({
         "&:hover": { cursor: "pointer" },
       }}
     >
-      {alg}
-      <OpenInNewIcon fontSize="inherit" sx={{ marginLeft: "auto" }} />
+      <Typography component={"p"} variant={"h6"}>
+        {alg}
+      </Typography>
     </Box>
   );
 };

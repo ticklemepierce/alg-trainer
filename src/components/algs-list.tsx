@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import {
   Table,
   TableBody,
@@ -17,6 +17,7 @@ import { useOutletContext, useNavigate } from "react-router-dom";
 import { IAlgsListContext, IFilter } from "../puzzles";
 import { useLocalStorage } from "usehooks-ts";
 import { AlgRow } from "./alg-row";
+import { AlgModal } from "./alg-modal";
 
 export const AlgsList = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
@@ -30,6 +31,8 @@ export const AlgsList = () => {
       {}
     )
   );
+  const [algDialog, setAlgDialog] = useState<string[] | null>();
+
   const navigate = useNavigate();
 
   const startTrainer = () => navigate("trainer");
@@ -44,11 +47,12 @@ export const AlgsList = () => {
     });
   };
 
-  const algRowClick = (alg: string) => {
-    window.open(
-      `https://alpha.twizzle.net/edit/?puzzle=3x3x3&alg=${alg}&setup-anchor=end`,
-      "_blank"
-    );
+  const algRowClick = (solutions: string[]) => {
+    setAlgDialog(solutions);
+  };
+
+  const handleClose = () => {
+    setAlgDialog(null);
   };
 
   return (
@@ -111,7 +115,7 @@ export const AlgsList = () => {
                   </TableCell>
                   <TableCell component="th" scope="row">
                     <AlgRow
-                      onclick={() => algRowClick(alg)}
+                      onClick={() => algRowClick(value.solutions)}
                       alg={value.solutions[0]}
                     />
                   </TableCell>
@@ -120,6 +124,9 @@ export const AlgsList = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      {!!algDialog && (
+        <AlgModal handleClose={handleClose} solutions={algDialog} />
+      )}
     </Box>
   );
 };
