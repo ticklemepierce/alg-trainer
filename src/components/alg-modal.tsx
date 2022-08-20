@@ -1,20 +1,32 @@
 import { useCallback, useState, MouseEvent } from "react";
-import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  Radio,
+} from "@mui/material";
 import { TwistyPlayer } from "cubing/twisty";
 import { Alg } from "cubing/alg";
 import { AlgRow } from "./alg-row";
 import CloseIcon from "@mui/icons-material/Close";
+import { useLocalStorage } from "usehooks-ts";
+import { IBaseStep } from "../puzzles";
 
-// TODO fix any type
 export const AlgModal = ({
+  step,
   solutions,
   handleClose,
 }: {
+  step: IBaseStep;
   solutions: string[];
   handleClose: () => void;
 }) => {
   const [player, setPlayer] = useState<TwistyPlayer>();
-
+  const [preferredSolution, setPreferredSolution] = useLocalStorage<string>(
+    `${step.slug}-${solutions[0]}-preferred`,
+    solutions[0]
+  );
   const twistyPlayerRef = useCallback((node) => {
     if (node) {
       const player = new TwistyPlayer({
@@ -35,10 +47,13 @@ export const AlgModal = ({
   }, []);
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {
+    const solution = e.currentTarget.innerText;
     if (player) {
       player.alg = new Alg(e.currentTarget.innerText);
       player.play();
     }
+
+    setPreferredSolution(solution);
 
     return null;
   };
@@ -66,7 +81,9 @@ export const AlgModal = ({
           style={{ margin: "0 auto", width: "384px" }}
         />
         {solutions.map((solution) => (
-          <AlgRow alg={solution} onClick={handleClick} key={solution} />
+          <AlgRow alg={solution} onClick={handleClick} key={solution}>
+            <Radio checked={solution === preferredSolution} />
+          </AlgRow>
         ))}
       </DialogContent>
     </Dialog>

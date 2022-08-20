@@ -18,6 +18,7 @@ import { IAlgsListContext, IFilter } from "../puzzles";
 import { useLocalStorage } from "usehooks-ts";
 import { AlgRow } from "./alg-row";
 import { AlgModal } from "./alg-modal";
+import { getLocalStorage } from "./utils/get-local-storage";
 
 export const AlgsList = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
@@ -111,13 +112,20 @@ export const AlgsList = () => {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    <img src={getImage(alg)} height={75} />
-                  </TableCell>
-                  <TableCell component="th" scope="row">
                     <AlgRow
                       onClick={() => algRowClick(value.solutions)}
-                      alg={value.solutions[0]}
-                    />
+                      alg={getLocalStorage(
+                        `${step.slug}-${value.solutions[0]}-preferred`,
+                        value.solutions[0]
+                      )}
+                    >
+                      <img
+                        src={getImage(alg)}
+                        height={75}
+                        width={75}
+                        style={{ marginRight: "24px" }}
+                      />
+                    </AlgRow>
                   </TableCell>
                 </TableRow>
               ))}
@@ -125,7 +133,7 @@ export const AlgsList = () => {
         </Table>
       </TableContainer>
       {!!algDialog && (
-        <AlgModal handleClose={handleClose} solutions={algDialog} />
+        <AlgModal handleClose={handleClose} solutions={algDialog} step={step} />
       )}
     </Box>
   );

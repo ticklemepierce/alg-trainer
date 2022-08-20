@@ -1,12 +1,14 @@
-import { MouseEvent } from "react";
+import { MouseEvent, ReactElement } from "react";
 import { Box, Typography } from "@mui/material";
 
 export const AlgRow = ({
   onClick,
   alg,
+  children,
 }: {
   onClick: (e: MouseEvent<HTMLElement>) => void;
   alg: string;
+  children: ReactElement;
 }) => {
   return (
     <Box
@@ -18,6 +20,7 @@ export const AlgRow = ({
         "&:hover": { cursor: "pointer" },
       }}
     >
+      {children}
       <Typography component={"p"} variant={"h6"}>
         {alg}
       </Typography>
