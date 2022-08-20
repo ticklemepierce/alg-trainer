@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, KeyboardEvent } from "react";
 import { IAlgsListContext, IFilter } from "../puzzles";
 import { Box, Button, Typography } from "@mui/material";
 import randomItem from "random-item";
@@ -6,6 +6,7 @@ import shuffle from "lodash.shuffle";
 import useKeypress from "../hooks/useKeypress";
 import { useOutletContext } from "react-router-dom";
 import { useLocalStorage } from "usehooks-ts";
+import { getLocalStorage } from "../components/utils/get-local-storage";
 
 export const Trainer = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
@@ -39,15 +40,20 @@ export const Trainer = () => {
   const [order, setOrder] = useState<string[]>(shuffle(filterAlgs()));
   const [index, setIndex] = useState<number>(0);
   const [currentCase, setCurrentCase] = useState<string>();
+  const [hint, setHint] = useState<string>("");
 
   const isLast = useMemo(() => index >= order.length - 1, [index]);
   const isFirst = useMemo(() => index === 0, [index]);
 
   const previousCase = () => {
+    setHint("");
+
     setIndex((index) => index - 1);
   };
 
   const nextCase = () => {
+    setHint("");
+
     if (isLast) {
       alert("starting over!!");
       setOrder(shuffle(Object.keys(algs)));
@@ -56,11 +62,29 @@ export const Trainer = () => {
       setIndex((index) => index + 1);
     }
   };
-  useKeypress(" ", nextCase, [isLast]);
+
+  const handleSpace = (e: KeyboardEvent) => {
+    e.preventDefault();
+    nextCase();
+  };
+
+  useKeypress(" ", handleSpace, [isLast]);
 
   useEffect(() => {
     setCurrentCase(randomItem(algs[order[index]].setups));
   }, [index]);
+
+  const updateHint = () => {
+    const { solutions } = algs[order[index]];
+    const preferredSolution = getLocalStorage(
+      `${step.slug}-${solutions[0]}-preferred`,
+      solutions[0]
+    ).split(" ");
+
+    const newHintLength = hint.length > 0 ? hint.split(" ").length + 1 : 1;
+
+    setHint(preferredSolution.slice(0, newHintLength).join(" "));
+  };
 
   return (
     <Box
@@ -82,6 +106,12 @@ export const Trainer = () => {
       >
         {isLast ? "Start over" : "Next case"}
       </Button>
+      <Button variant="text" sx={{ mt: 2 }} size="large" onClick={updateHint}>
+        Hint
+      </Button>
+      <Typography component="h5" variant="h5">
+        {hint}
+      </Typography>
       {!isFirst && (
         <Button
           variant="text"

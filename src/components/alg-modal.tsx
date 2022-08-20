@@ -13,6 +13,14 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useLocalStorage } from "usehooks-ts";
 import { IBaseStep } from "../puzzles";
 
+// TODO move to puzzles file
+type status = "unstarted" | "learning" | "learned";
+
+interface IAlgStorage {
+  preferred: string;
+  status: status;
+}
+
 export const AlgModal = ({
   step,
   solutions,
@@ -23,10 +31,14 @@ export const AlgModal = ({
   handleClose: () => void;
 }) => {
   const [player, setPlayer] = useState<TwistyPlayer>();
-  const [preferredSolution, setPreferredSolution] = useLocalStorage<string>(
-    `${step.slug}-${solutions[0]}-preferred`,
-    solutions[0]
+  const [algStorage, setAlgStorage] = useLocalStorage<IAlgStorage>(
+    `${step.slug}-${solutions[0]}`,
+    {
+      preferred: solutions[0],
+      status: "unstarted",
+    }
   );
+
   const twistyPlayerRef = useCallback((node) => {
     if (node) {
       const player = new TwistyPlayer({
@@ -53,7 +65,10 @@ export const AlgModal = ({
       player.play();
     }
 
-    setPreferredSolution(solution);
+    setAlgStorage({
+      ...algStorage,
+      preferred: solution,
+    });
 
     return null;
   };
@@ -82,7 +97,7 @@ export const AlgModal = ({
         />
         {solutions.map((solution) => (
           <AlgRow alg={solution} onClick={handleClick} key={solution}>
-            <Radio checked={solution === preferredSolution} />
+            <Radio checked={solution === algStorage.preferred} />
           </AlgRow>
         ))}
       </DialogContent>

@@ -8,7 +8,7 @@ export default function useKeypress(
   useEffect(() => {
     function onKeyup(e: KeyboardEvent) {
       if (e.key === key) {
-        return action();
+        return action(e);
       }
     }
     window.addEventListener("keyup", onKeyup);
