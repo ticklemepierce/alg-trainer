@@ -10,6 +10,7 @@ import {
   FormGroup,
   FormControlLabel,
   Switch,
+  IconButton,
 } from "@mui/material";
 import { useOutletContext, useNavigate } from "react-router-dom";
 import { IAlgsListContext, IFilter } from "../puzzles";
@@ -17,6 +18,7 @@ import { useLocalStorage } from "usehooks-ts";
 import { getLocalStorage } from "../components/utils/get-local-storage";
 import { AlgModal } from "./alg-modal";
 import { AlgTableRow } from "./alg-table-row";
+import TuneIcon from "@mui/icons-material/Tune";
 
 type status = "unstarted" | "learning" | "learned";
 
@@ -77,6 +79,13 @@ export const AlgsList = () => {
         justifyContent: "center",
       }}
     >
+      <IconButton
+        aria-label="delete"
+        sx={{ position: "fixed", top: 20, right: 20 }}
+        onClick={() => alert("click")}
+      >
+        <TuneIcon fontSize="large" color="action" />
+      </IconButton>
       <Button
         variant="contained"
         sx={{ my: 4, mx: "auto" }}
