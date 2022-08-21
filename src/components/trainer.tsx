@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo, KeyboardEvent } from "react";
-import { IAlgsListContext, IFilter } from "../puzzles";
+import { IAlgsListContext, IStepStorage } from "../puzzles";
 import { Box, Button, Typography } from "@mui/material";
 import randomItem from "random-item";
 import shuffle from "lodash.shuffle";
@@ -11,30 +11,43 @@ import { getLocalStorage } from "../components/utils/get-local-storage";
 export const Trainer = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
 
-  const [filters] = useLocalStorage<IFilter>(
-    `${step.slug}-filters`,
-    Object.keys(step.filters).reduce(
+  const [stepStorage] = useLocalStorage<IStepStorage>(step.slug, {
+    filters: Object.keys(step.filters).reduce(
       (acc, cur) => ({
         ...acc,
         [cur]: false,
       }),
       {}
-    )
-  );
+    ),
+    options: {
+      "learning-first": true,
+      "learned-last": true,
+      "exclude-unstarted": true,
+      "exclude-learned": true,
+    },
+    cases: Object.entries(algs!).reduce(
+      (acc, [, cur]) => ({
+        ...acc,
+        [cur.solutions[0]]: {
+          preferred: cur.solutions[0],
+          status: "unstarted",
+        },
+      }),
+      {}
+    ),
+  });
+
   const filterAlgs = () =>
     Object.entries(algs!)
-      .filter(([, algValue]) => {
-        if (!Object.values(filters).some((filter) => filter === true)) {
-          return true;
-        }
-        let shouldShow = false;
-        Object.entries(filters).forEach(([key, value]) => {
-          if (value && !shouldShow) {
-            shouldShow = algValue.filters[key];
-          }
-        });
-        return shouldShow;
-      })
+      .filter(
+        ([, algValue]) =>
+          !(
+            (stepStorage.options["exclude-learned"] &&
+              stepStorage.cases[algValue.solutions[0]].status === "learned") ||
+            (stepStorage.options["exclude-unstarted"] &&
+              stepStorage.cases[algValue.solutions[0]].status === "unstarted")
+          )
+      )
       .map(([algKey]) => algKey);
 
   const [order, setOrder] = useState<string[]>(shuffle(filterAlgs()));

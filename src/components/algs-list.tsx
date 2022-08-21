@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import {
   Table,
   TableBody,
@@ -6,70 +6,66 @@ import {
   Paper,
   Button,
   Box,
-  FormControl,
-  FormGroup,
-  FormControlLabel,
-  Switch,
   IconButton,
 } from "@mui/material";
 import { useOutletContext, useNavigate } from "react-router-dom";
-import { IAlgsListContext, IFilter } from "../puzzles";
+import { IAlgsListContext, IStepStorage } from "../puzzles";
 import { useLocalStorage } from "usehooks-ts";
-import { getLocalStorage } from "../components/utils/get-local-storage";
 import { AlgModal } from "./alg-modal";
+import { OptionsModal } from "./options-modal";
 import { AlgTableRow } from "./alg-table-row";
 import TuneIcon from "@mui/icons-material/Tune";
-
-type status = "unstarted" | "learning" | "learned";
-
-type StatusMap = {
-  [key in status]: number;
-};
+import { StatusMap } from "../puzzles";
 
 export const AlgsList = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
-  const [filters, setFilters] = useLocalStorage<IFilter>(
-    `${step.slug}-filters`,
-    Object.keys(step.filters).reduce(
-      (acc, cur) => ({
-        ...acc,
-        [cur]: false,
-      }),
-      {}
-    )
-  );
-  const [options, setOptions] = useLocalStorage<IFilter>(
-    `${step.slug}-options`,
-    { "learning-first": true, "learned-last": true }
+  const [stepStorage, setStepStorage] = useLocalStorage<IStepStorage>(
+    step.slug,
+    {
+      filters: Object.keys(step.filters).reduce(
+        (acc, cur) => ({
+          ...acc,
+          [cur]: false,
+        }),
+        {}
+      ),
+      options: {
+        "learning-first": true,
+        "learned-last": true,
+        "exclude-unstarted": true,
+        "exclude-learned": true,
+      },
+      cases: Object.entries(algs!).reduce(
+        (acc, [, cur]) => ({
+          ...acc,
+          [cur.solutions[0]]: {
+            preferred: cur.solutions[0],
+            status: "unstarted",
+          },
+        }),
+        {}
+      ),
+    }
   );
 
   const [algDialog, setAlgDialog] = useState<string[] | null>();
+  const [optionsDialogOpen, setOptionsDialogOpen] = useState(false);
 
   const navigate = useNavigate();
 
   const startTrainer = () => navigate("trainer");
 
-  const updateFilters = (event: ChangeEvent<HTMLInputElement>) => {
-    setFilters({
-      ...filters,
-      [event.target.name]: event.target.checked,
-    });
-  };
-
-  const updateOptions = (event: ChangeEvent<HTMLInputElement>) => {
-    setOptions({
-      ...options,
-      [event.target.name]: event.target.checked,
-    });
-  };
+  const getImage = (alg: string) =>
+    `https://cubiclealgdbimagegen.azurewebsites.net/generator?${step.visualCubeParams}&case=${alg}`;
 
   const algRowClick = (solutions: string[]) => {
     setAlgDialog(solutions);
   };
 
-  const handleClose = () => {
-    setAlgDialog(null);
-  };
+  const closeAlgModal = () => setAlgDialog(null);
+
+  const closeOptionsModal = () => setOptionsDialogOpen(false);
+  const openOptionsModal = () => setOptionsDialogOpen(true);
 
   return (
     <Box
@@ -82,7 +78,7 @@ export const AlgsList = () => {
       <IconButton
         aria-label="delete"
         sx={{ position: "fixed", top: 20, right: 20 }}
-        onClick={() => alert("click")}
+        onClick={openOptionsModal}
       >
         <TuneIcon fontSize="large" color="action" />
       </IconButton>
@@ -94,44 +90,6 @@ export const AlgsList = () => {
       >
         Start Trainer
       </Button>
-      {/* TODO make the filters prettier */}
-      <FormControl component="fieldset" variant="standard">
-        <FormGroup>
-          {Object.entries(step.filters).map(([filter, displayName]) => (
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={updateFilters}
-                  name={filter}
-                  checked={filters[filter]}
-                />
-              }
-              label={displayName}
-              key={filter}
-            />
-          ))}
-          <FormControlLabel
-            control={
-              <Switch
-                onChange={updateOptions}
-                name={"learning-first"}
-                checked={options["learning-first"]}
-              />
-            }
-            label={"Move learned cases to the bottom"}
-          />
-          <FormControlLabel
-            control={
-              <Switch
-                onChange={updateOptions}
-                name={"learned-last"}
-                checked={options["learned-last"]}
-              />
-            }
-            label={"Move cases being worked on to the top"}
-          />
-        </FormGroup>
-      </FormControl>
       <TableContainer
         component={Paper}
         sx={{ maxWidth: 650, m: "0 auto" }}
@@ -141,14 +99,8 @@ export const AlgsList = () => {
           <TableBody>
             {Object.entries(algs!)
               .sort(([, alg1], [, alg2]) => {
-                const status1 = getLocalStorage(
-                  `${step.slug}-${alg1.solutions[0]}`,
-                  { status: "unstarted" }
-                ).status as status;
-                const status2 = getLocalStorage(
-                  `${step.slug}-${alg2.solutions[0]}`,
-                  { status: "unstarted" }
-                ).status as status;
+                const status1 = stepStorage.cases[alg1.solutions[0]].status;
+                const status2 = stepStorage.cases[alg2.solutions[0]].status;
 
                 if (status1 === status2) {
                   return 0;
@@ -162,11 +114,15 @@ export const AlgsList = () => {
                 return valMap[status1] - valMap[status2];
               })
               .filter(([, algValue]) => {
-                if (!Object.values(filters).some((filter) => filter === true)) {
+                if (
+                  !Object.values(stepStorage.filters).some(
+                    (filter) => filter === true
+                  )
+                ) {
                   return true;
                 }
                 let shouldShow = false;
-                Object.entries(filters).forEach(([key, value]) => {
+                Object.entries(stepStorage.filters).forEach(([key, value]) => {
                   if (value && !shouldShow) {
                     shouldShow = algValue.filters[key];
                   }
@@ -176,18 +132,32 @@ export const AlgsList = () => {
               .map(([alg, value]) => (
                 <AlgTableRow
                   key={alg}
-                  alg={alg}
-                  value={value}
+                  solutions={value.solutions}
                   algRowClick={algRowClick}
-                  step={step}
-                  storageKey={`${step.slug}-${value.solutions[0]}`}
+                  stepStorage={stepStorage}
+                  setStepStorage={setStepStorage}
+                  image={getImage(alg)}
+                  id={value.solutions[0]}
                 />
               ))}
           </TableBody>
         </Table>
       </TableContainer>
       {!!algDialog && (
-        <AlgModal handleClose={handleClose} solutions={algDialog} step={step} />
+        <AlgModal
+          handleClose={closeAlgModal}
+          solutions={algDialog}
+          stepStorage={stepStorage}
+          setStepStorage={setStepStorage}
+        />
+      )}
+      {optionsDialogOpen && (
+        <OptionsModal
+          handleClose={closeOptionsModal}
+          stepStorage={stepStorage}
+          setStepStorage={setStepStorage}
+          step={step}
+        />
       )}
     </Box>
   );

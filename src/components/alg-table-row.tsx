@@ -3,54 +3,44 @@ import {
   TableRow,
   FormControl,
   Select,
-  MenuItem,
   SelectChangeEvent,
 } from "@mui/material";
-import { Step } from "../puzzles";
-import { useLocalStorage } from "usehooks-ts";
 import { AlgRow } from "./alg-row";
+import { IStepStorage, Status } from "../puzzles";
 
 const colorMap = {
   unstarted: "none",
-  learning: "yellow",
-  learned: "green",
+  learning: "#FDD835",
+  learned: "#43A047",
 };
 
-type status = "unstarted" | "learning" | "learned";
-
-interface IAlgStorage {
-  preferred: string;
-  status: status;
-}
-
-// TODO any
 export const AlgTableRow = ({
-  alg,
-  value,
-  step,
+  solutions,
   algRowClick,
-  storageKey,
+  stepStorage,
+  setStepStorage,
+  image,
+  id,
 }: {
-  alg: string;
-  value: any;
-  step: Step;
+  solutions: string[];
   algRowClick: Function;
-  storageKey: string;
+  stepStorage: IStepStorage;
+  setStepStorage: Function;
+  image: string;
+  id: string;
 }) => {
-  const [algStorage, setAlgStorage] = useLocalStorage<IAlgStorage>(storageKey, {
-    preferred: value.solutions[0],
-    status: "unstarted",
-  });
-
   const handleChange = (e: SelectChangeEvent) => {
-    setAlgStorage({
-      ...algStorage,
-      status: e.target.value as status,
+    setStepStorage({
+      ...stepStorage,
+      cases: {
+        ...stepStorage.cases,
+        [id]: {
+          ...stepStorage.cases[id],
+          status: e.target.value as Status,
+        },
+      },
     });
   };
-
-  const getImage = (alg: string) =>
-    `https://cubiclealgdbimagegen.azurewebsites.net/generator?${step.visualCubeParams}&case=${alg}`;
 
   return (
     <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
@@ -61,31 +51,31 @@ export const AlgTableRow = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: colorMap[algStorage.status],
+          backgroundColor: colorMap[stepStorage.cases[id].status],
         }}
       >
         <AlgRow
-          onClick={() => algRowClick(value.solutions)}
-          alg={algStorage.preferred}
+          onClick={() => algRowClick(solutions)}
+          alg={stepStorage.cases[id].preferred}
         >
           <img
-            src={getImage(alg)}
+            src={image}
             height={75}
             width={75}
             style={{ marginRight: "24px" }}
           />
         </AlgRow>
-
         <FormControl size="small">
           <Select
-            value={algStorage.status}
+            value={stepStorage.cases[id].status}
             onChange={handleChange}
             displayEmpty
             inputProps={{ "aria-label": "Without label" }}
+            native
           >
-            <MenuItem value={"unstarted"}>Unstarted</MenuItem>
-            <MenuItem value={"learning"}>Learning</MenuItem>
-            <MenuItem value={"learned"}>Learned</MenuItem>
+            <option value={"unstarted"}>Unstarted</option>
+            <option value={"learning"}>Learning</option>
+            <option value={"learned"}>Learned</option>
           </Select>
         </FormControl>
       </TableCell>

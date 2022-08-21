@@ -110,3 +110,27 @@ export interface IAlgsListContext {
 export interface IFilter {
   [key: string]: boolean;
 }
+
+export type Status = "unstarted" | "learning" | "learned";
+
+export type StatusMap = {
+  [key in Status]: number;
+};
+
+export interface IStepStorage {
+  filters: {
+    [key: string]: boolean;
+  };
+  options: {
+    "learning-first": boolean;
+    "learned-last": boolean;
+    "exclude-unstarted": boolean;
+    "exclude-learned": boolean;
+  };
+  cases: {
+    [key: string]: {
+      preferred: string;
+      status: Status;
+    };
+  };
+}

@@ -10,34 +10,20 @@ import { TwistyPlayer } from "cubing/twisty";
 import { Alg } from "cubing/alg";
 import { AlgRow } from "./alg-row";
 import CloseIcon from "@mui/icons-material/Close";
-import { useLocalStorage } from "usehooks-ts";
-import { IBaseStep } from "../puzzles";
-
-// TODO move to puzzles file
-type status = "unstarted" | "learning" | "learned";
-
-interface IAlgStorage {
-  preferred: string;
-  status: status;
-}
+import { IStepStorage } from "../puzzles";
 
 export const AlgModal = ({
-  step,
   solutions,
   handleClose,
+  stepStorage,
+  setStepStorage,
 }: {
-  step: IBaseStep;
   solutions: string[];
   handleClose: () => void;
+  stepStorage: IStepStorage;
+  setStepStorage: Function;
 }) => {
   const [player, setPlayer] = useState<TwistyPlayer>();
-  const [algStorage, setAlgStorage] = useLocalStorage<IAlgStorage>(
-    `${step.slug}-${solutions[0]}`,
-    {
-      preferred: solutions[0],
-      status: "unstarted",
-    }
-  );
 
   const twistyPlayerRef = useCallback((node) => {
     if (node) {
@@ -59,15 +45,21 @@ export const AlgModal = ({
   }, []);
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {
-    const solution = e.currentTarget.innerText;
+    const preferred = e.currentTarget.innerText;
     if (player) {
       player.alg = new Alg(e.currentTarget.innerText);
       player.play();
     }
 
-    setAlgStorage({
-      ...algStorage,
-      preferred: solution,
+    setStepStorage({
+      ...stepStorage,
+      cases: {
+        ...stepStorage.cases,
+        [solutions[0]]: {
+          ...stepStorage.cases[solutions[0]],
+          preferred,
+        },
+      },
     });
 
     return null;
@@ -97,7 +89,9 @@ export const AlgModal = ({
         />
         {solutions.map((solution) => (
           <AlgRow alg={solution} onClick={handleClick} key={solution}>
-            <Radio checked={solution === algStorage.preferred} />
+            <Radio
+              checked={solution === stepStorage.cases[solutions[0]].preferred}
+            />
           </AlgRow>
         ))}
       </DialogContent>
