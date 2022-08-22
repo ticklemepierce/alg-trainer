@@ -13232,7 +13232,7 @@ var $2edae841494e9a49$export$2e2bcd8739ae039 = $2edae841494e9a49$var$svgIconClas
 
 var $92fbd03b625c98d2$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.d8871f14.js","eXwSi":"puzzle-geometry.db2a4a3f.js","bJecT":"index.04ff6efc.js"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.cde56485.js","eXwSi":"puzzle-geometry.db2a4a3f.js","bJecT":"index.04ff6efc.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -31598,7 +31598,8 @@ const $85d868e1e5abbef8$export$581f644880f842c0 = ({ onClick: onClick , alg: alg
             alignItems: "center",
             "&:hover": {
                 cursor: "pointer"
-            }
+            },
+            width: "100%"
         },
         children: [
             children,
@@ -31651,6 +31652,8 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ solutions: solutions , hand
                 controlPanel: "none",
                 experimentalDragInput: "none"
             });
+            // TODO ask lucas if there is a better way for this
+            player.style.maxWidth = "100%";
             node.appendChild(player);
             setPlayer(player);
         }
@@ -31700,8 +31703,7 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ solutions: solutions , hand
                         id: "twisty-player",
                         ref: twistyPlayerRef,
                         style: {
-                            margin: "0 auto",
-                            width: "384px"
+                            margin: "0 auto"
                         }
                     }),
                     solutions.map((solution)=>/*#__PURE__*/ (0, $228IU.jsx)((0, $85d868e1e5abbef8$export$581f644880f842c0), {
@@ -31795,7 +31797,7 @@ const $8256681cffce63c2$export$905b2330489c9c36 = ({ handleClose: handleClose , 
                             /*#__PURE__*/ (0, $228IU.jsx)((0, $d0429b7da69f20b5$export$2e2bcd8739ae039), {
                                 control: /*#__PURE__*/ (0, $228IU.jsx)((0, $07fd80317d0540d4$export$2e2bcd8739ae039), {
                                     onChange: updateOptions,
-                                    name: "learned-last",
+                                    name: "exclude-unstarted",
                                     checked: stepStorage.options["exclude-unstarted"]
                                 }),
                                 label: "Exclude 'Unstarted' cases from trainer"
@@ -31803,7 +31805,7 @@ const $8256681cffce63c2$export$905b2330489c9c36 = ({ handleClose: handleClose , 
                             /*#__PURE__*/ (0, $228IU.jsx)((0, $d0429b7da69f20b5$export$2e2bcd8739ae039), {
                                 control: /*#__PURE__*/ (0, $228IU.jsx)((0, $07fd80317d0540d4$export$2e2bcd8739ae039), {
                                     onChange: updateOptions,
-                                    name: "learned-last",
+                                    name: "exclude-learned",
                                     checked: stepStorage.options["exclude-learned"]
                                 }),
                                 label: "Exclude 'Learned' cases from trainer"
@@ -31869,12 +31871,18 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ solutions: solutions , algR
                 }),
                 /*#__PURE__*/ (0, $228IU.jsx)((0, $0f8f482c0984ea7e$export$2e2bcd8739ae039), {
                     size: "small",
+                    sx: {
+                        flexShrink: 0
+                    },
                     children: /*#__PURE__*/ (0, $228IU.jsxs)((0, $e3197f14ba4aa5f6$export$2e2bcd8739ae039), {
                         value: stepStorage.cases[id].status,
                         onChange: handleChange,
                         displayEmpty: true,
                         inputProps: {
                             "aria-label": "Without label"
+                        },
+                        sx: {
+                            ml: 2
                         },
                         native: true,
                         children: [
@@ -31955,28 +31963,39 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
             justifyContent: "center"
         },
         children: [
-            /*#__PURE__*/ (0, $228IU.jsx)((0, $e6fb12cd5811ce97$export$2e2bcd8739ae039), {
-                "aria-label": "delete",
+            /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
                 sx: {
-                    position: "fixed",
-                    top: 20,
-                    right: 20
+                    display: "grid"
                 },
-                onClick: openOptionsModal,
-                children: /*#__PURE__*/ (0, $228IU.jsx)((0, (/*@__PURE__*/$parcel$interopDefault($8ab8335d22920ef2$exports))), {
-                    fontSize: "large",
-                    color: "action"
-                })
-            }),
-            /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
-                variant: "contained",
-                sx: {
-                    my: 4,
-                    mx: "auto"
-                },
-                size: "large",
-                onClick: startTrainer,
-                children: "Start Trainer"
+                children: [
+                    /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
+                        variant: "contained",
+                        // sx={{ my: 4, mx: "auto" }}
+                        sx: {
+                            my: 2,
+                            gridColumnStart: 1,
+                            gridRowStart: 1,
+                            justifySelf: "center"
+                        },
+                        size: "large",
+                        onClick: startTrainer,
+                        children: "Start Trainer"
+                    }),
+                    /*#__PURE__*/ (0, $228IU.jsx)((0, $e6fb12cd5811ce97$export$2e2bcd8739ae039), {
+                        "aria-label": "delete",
+                        onClick: openOptionsModal,
+                        size: "large",
+                        sx: {
+                            gridColumnStart: 1,
+                            gridRowStart: 1,
+                            justifySelf: "right"
+                        },
+                        children: /*#__PURE__*/ (0, $228IU.jsx)((0, (/*@__PURE__*/$parcel$interopDefault($8ab8335d22920ef2$exports))), {
+                            fontSize: "large",
+                            color: "action"
+                        })
+                    })
+                ]
             }),
             /*#__PURE__*/ (0, $228IU.jsx)((0, $0e00319323b2de2e$export$2e2bcd8739ae039), {
                 component: (0, $af776c8e01c32094$export$2e2bcd8739ae039),
@@ -32092,4 +32111,4 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $228IU.jsx)((0, $414bf34
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.d8871f14.js.map
+//# sourceMappingURL=index.cde56485.js.map
