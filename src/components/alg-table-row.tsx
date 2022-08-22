@@ -65,12 +65,13 @@ export const AlgTableRow = ({
             style={{ marginRight: "24px" }}
           />
         </AlgRow>
-        <FormControl size="small">
+        <FormControl size="small" sx={{ flexShrink: 0 }}>
           <Select
             value={stepStorage.cases[id].status}
             onChange={handleChange}
             displayEmpty
             inputProps={{ "aria-label": "Without label" }}
+            sx={{ ml: 2 }}
             native
           >
             <option value={"unstarted"}>Unstarted</option>

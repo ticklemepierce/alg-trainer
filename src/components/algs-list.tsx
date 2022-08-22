@@ -75,21 +75,34 @@ export const AlgsList = () => {
         justifyContent: "center",
       }}
     >
-      <IconButton
-        aria-label="delete"
-        sx={{ position: "fixed", top: 20, right: 20 }}
-        onClick={openOptionsModal}
+      <Box
+        sx={{
+          display: "grid",
+        }}
       >
-        <TuneIcon fontSize="large" color="action" />
-      </IconButton>
-      <Button
-        variant="contained"
-        sx={{ my: 4, mx: "auto" }}
-        size="large"
-        onClick={startTrainer}
-      >
-        Start Trainer
-      </Button>
+        <Button
+          variant="contained"
+          // sx={{ my: 4, mx: "auto" }}
+          sx={{
+            my: 2,
+            gridColumnStart: 1,
+            gridRowStart: 1,
+            justifySelf: "center",
+          }}
+          size="large"
+          onClick={startTrainer}
+        >
+          Start Trainer
+        </Button>
+        <IconButton
+          aria-label="delete"
+          onClick={openOptionsModal}
+          size={"large"}
+          sx={{ gridColumnStart: 1, gridRowStart: 1, justifySelf: "right" }}
+        >
+          <TuneIcon fontSize="large" color="action" />
+        </IconButton>
+      </Box>
       <TableContainer
         component={Paper}
         sx={{ maxWidth: 650, m: "0 auto" }}

@@ -38,6 +38,9 @@ export const AlgModal = ({
         experimentalDragInput: "none",
       });
 
+      // TODO ask lucas if there is a better way for this
+      player.style.maxWidth = "100%";
+
       node.appendChild(player);
 
       setPlayer(player);
@@ -85,7 +88,7 @@ export const AlgModal = ({
         <div
           id="twisty-player"
           ref={twistyPlayerRef}
-          style={{ margin: "0 auto", width: "384px" }}
+          style={{ margin: "0 auto" }}
         />
         {solutions.map((solution) => (
           <AlgRow alg={solution} onClick={handleClick} key={solution}>

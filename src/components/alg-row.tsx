@@ -18,6 +18,7 @@ export const AlgRow = ({
         display: "flex",
         alignItems: "center",
         "&:hover": { cursor: "pointer" },
+        width: "100%",
       }}
     >
       {children}

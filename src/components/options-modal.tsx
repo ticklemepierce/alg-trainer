@@ -101,7 +101,7 @@ export const OptionsModal = ({
               control={
                 <Switch
                   onChange={updateOptions}
-                  name={"learned-last"}
+                  name={"exclude-unstarted"}
                   checked={stepStorage.options["exclude-unstarted"]}
                 />
               }
@@ -111,7 +111,7 @@ export const OptionsModal = ({
               control={
                 <Switch
                   onChange={updateOptions}
-                  name={"learned-last"}
+                  name={"exclude-learned"}
                   checked={stepStorage.options["exclude-learned"]}
                 />
               }
