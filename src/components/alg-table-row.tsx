@@ -6,7 +6,8 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { AlgRow } from "./alg-row";
-import { IStepStorage, Status } from "../puzzles";
+import { IStepStorage, Status, IAlg, IBaseStep } from "../puzzles";
+import { expandTriggers } from "../triggers";
 
 const colorMap = {
   unstarted: "none",
@@ -15,32 +16,37 @@ const colorMap = {
 };
 
 export const AlgTableRow = ({
-  solutions,
+  alg,
   algRowClick,
   stepStorage,
   setStepStorage,
-  image,
-  id,
+  step,
 }: {
-  solutions: string[];
+  alg: IAlg;
   algRowClick: Function;
   stepStorage: IStepStorage;
   setStepStorage: Function;
-  image: string;
-  id: string;
+  step: IBaseStep;
 }) => {
   const handleChange = (e: SelectChangeEvent) => {
     setStepStorage({
       ...stepStorage,
       cases: {
         ...stepStorage.cases,
-        [id]: {
-          ...stepStorage.cases[id],
+        [alg.name]: {
+          ...stepStorage.cases[alg.name],
           status: e.target.value as Status,
         },
       },
     });
   };
+
+  const { preferred, status } = stepStorage.cases[alg.name];
+
+  const getImage = () =>
+    `https://cubiclealgdbimagegen.azurewebsites.net/generator?${
+      step.visualCubeParams
+    }&case=${expandTriggers(alg.solutions[0])}`;
 
   return (
     <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
@@ -51,15 +57,12 @@ export const AlgTableRow = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: colorMap[stepStorage.cases[id].status],
+          backgroundColor: colorMap[status],
         }}
       >
-        <AlgRow
-          onClick={() => algRowClick(solutions)}
-          alg={stepStorage.cases[id].preferred}
-        >
+        <AlgRow onClick={() => algRowClick(alg)} alg={alg.solutions[preferred]}>
           <img
-            src={image}
+            src={getImage()}
             height={75}
             width={75}
             style={{ marginRight: "24px" }}
@@ -67,7 +70,7 @@ export const AlgTableRow = ({
         </AlgRow>
         <FormControl size="small" sx={{ flexShrink: 0 }}>
           <Select
-            value={stepStorage.cases[id].status}
+            value={status}
             onChange={handleChange}
             displayEmpty
             inputProps={{ "aria-label": "Without label" }}

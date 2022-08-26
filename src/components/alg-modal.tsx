@@ -1,4 +1,4 @@
-import { useCallback, useState, MouseEvent } from "react";
+import { useCallback, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -10,15 +10,16 @@ import { TwistyPlayer } from "cubing/twisty";
 import { Alg } from "cubing/alg";
 import { AlgRow } from "./alg-row";
 import CloseIcon from "@mui/icons-material/Close";
-import { IStepStorage } from "../puzzles";
+import { IStepStorage, IAlg } from "../puzzles";
+import { expandTriggers } from "../triggers";
 
 export const AlgModal = ({
-  solutions,
+  alg,
   handleClose,
   stepStorage,
   setStepStorage,
 }: {
-  solutions: string[];
+  alg: IAlg;
   handleClose: () => void;
   stepStorage: IStepStorage;
   setStepStorage: Function;
@@ -29,7 +30,7 @@ export const AlgModal = ({
     if (node) {
       const player = new TwistyPlayer({
         puzzle: "3x3x3",
-        alg: solutions[0],
+        alg: alg.solutions[0],
         hintFacelets: "none",
         background: "none",
         experimentalSetupAnchor: "end",
@@ -47,10 +48,9 @@ export const AlgModal = ({
     }
   }, []);
 
-  const handleClick = (e: MouseEvent<HTMLElement>) => {
-    const preferred = e.currentTarget.innerText;
+  const handleClick = (preferred: number) => {
     if (player) {
-      player.alg = new Alg(e.currentTarget.innerText);
+      player.alg = new Alg(expandTriggers(alg.solutions[preferred]));
       player.play();
     }
 
@@ -58,8 +58,8 @@ export const AlgModal = ({
       ...stepStorage,
       cases: {
         ...stepStorage.cases,
-        [solutions[0]]: {
-          ...stepStorage.cases[solutions[0]],
+        [alg.name]: {
+          ...stepStorage.cases[alg.name],
           preferred,
         },
       },
@@ -69,7 +69,7 @@ export const AlgModal = ({
   };
 
   return (
-    <Dialog open={!!solutions} onClose={handleClose}>
+    <Dialog open={!!alg} onClose={handleClose}>
       <DialogTitle sx={{ m: 0, p: 2 }}>
         <IconButton
           aria-label="close"
@@ -90,11 +90,13 @@ export const AlgModal = ({
           ref={twistyPlayerRef}
           style={{ margin: "0 auto" }}
         />
-        {solutions.map((solution) => (
-          <AlgRow alg={solution} onClick={handleClick} key={solution}>
-            <Radio
-              checked={solution === stepStorage.cases[solutions[0]].preferred}
-            />
+        {alg.solutions.map((solution, idx) => (
+          <AlgRow
+            alg={solution}
+            onClick={() => handleClick(idx)}
+            key={solution}
+          >
+            <Radio checked={idx === stepStorage.cases[alg.name].preferred} />
           </AlgRow>
         ))}
       </DialogContent>

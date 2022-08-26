@@ -1,12 +1,12 @@
-import { useEffect, useState, useMemo, KeyboardEvent } from "react";
-import { IAlgsListContext, IStepStorage } from "../puzzles";
+import { useState, useMemo, KeyboardEvent } from "react";
+import { IAlgsListContext, IStepStorage, IAlg } from "../puzzles";
 import { Box, Button, Typography } from "@mui/material";
 import randomItem from "random-item";
 import shuffle from "lodash.shuffle";
 import useKeypress from "../hooks/useKeypress";
 import { useOutletContext } from "react-router-dom";
 import { useLocalStorage } from "usehooks-ts";
-import { getLocalStorage } from "../components/utils/get-local-storage";
+import { expandTriggers } from "../triggers";
 
 export const Trainer = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
@@ -25,11 +25,11 @@ export const Trainer = () => {
       "exclude-unstarted": true,
       "exclude-learned": true,
     },
-    cases: Object.entries(algs!).reduce(
-      (acc, [, cur]) => ({
+    cases: algs.reduce(
+      (acc, curr) => ({
         ...acc,
-        [cur.solutions[0]]: {
-          preferred: cur.solutions[0],
+        [curr.name]: {
+          preferred: 0,
           status: "unstarted",
         },
       }),
@@ -38,25 +38,33 @@ export const Trainer = () => {
   });
 
   const filterAlgs = () =>
-    Object.entries(algs!)
-      .filter(
-        ([, algValue]) =>
-          !(
-            (stepStorage.options["exclude-learned"] &&
-              stepStorage.cases[algValue.solutions[0]].status === "learned") ||
-            (stepStorage.options["exclude-unstarted"] &&
-              stepStorage.cases[algValue.solutions[0]].status === "unstarted")
-          )
-      )
-      .map(([algKey]) => algKey);
+    algs.filter(
+      (alg) =>
+        !(
+          (stepStorage.options["exclude-learned"] &&
+            stepStorage.cases[alg.name]!.status === "learned") ||
+          (stepStorage.options["exclude-unstarted"] &&
+            stepStorage.cases[alg.name]!.status === "unstarted")
+        )
+    );
 
-  const [order, setOrder] = useState<string[]>(shuffle(filterAlgs()));
+  const [order, setOrder] = useState<IAlg[]>(shuffle(filterAlgs()));
   const [index, setIndex] = useState<number>(0);
-  const [currentCase, setCurrentCase] = useState<string>();
+
   const [hint, setHint] = useState<string>("");
 
   const isLast = useMemo(() => index >= order.length - 1, [index]);
   const isFirst = useMemo(() => index === 0, [index]);
+
+  const currentCase = useMemo(() => order[index], [index]);
+
+  const preferredSolution = useMemo(
+    () =>
+      expandTriggers(
+        currentCase.solutions[stepStorage.cases[currentCase.name]!.preferred]
+      ).split(" "),
+    [currentCase]
+  );
 
   const previousCase = () => {
     setHint("");
@@ -69,7 +77,7 @@ export const Trainer = () => {
 
     if (isLast) {
       alert("starting over!!");
-      setOrder(shuffle(Object.keys(algs)));
+      setOrder(shuffle(filterAlgs()));
       setIndex(0);
     } else {
       setIndex((index) => index + 1);
@@ -83,17 +91,7 @@ export const Trainer = () => {
 
   useKeypress(" ", handleSpace, [isLast]);
 
-  useEffect(() => {
-    setCurrentCase(randomItem(algs[order[index]].setups));
-  }, [index]);
-
   const updateHint = () => {
-    const { solutions } = algs[order[index]];
-    const preferredSolution = getLocalStorage(
-      `${step.slug}-${solutions[0]}-preferred`,
-      solutions[0]
-    ).split(" ");
-
     const newHintLength = hint.length > 0 ? hint.split(" ").length + 1 : 1;
 
     setHint(preferredSolution.slice(0, newHintLength).join(" "));
@@ -109,7 +107,7 @@ export const Trainer = () => {
       textAlign="center"
     >
       <Typography component="h1" variant="h3">
-        {currentCase}
+        {randomItem(currentCase.setups)}
       </Typography>
       <Button
         variant="contained"

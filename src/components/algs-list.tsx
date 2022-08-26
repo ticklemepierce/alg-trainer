@@ -15,7 +15,7 @@ import { AlgModal } from "./alg-modal";
 import { OptionsModal } from "./options-modal";
 import { AlgTableRow } from "./alg-table-row";
 import TuneIcon from "@mui/icons-material/Tune";
-import { StatusMap } from "../puzzles";
+import { StatusMap, IAlg } from "../puzzles";
 
 export const AlgsList = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
@@ -35,11 +35,11 @@ export const AlgsList = () => {
         "exclude-unstarted": true,
         "exclude-learned": true,
       },
-      cases: Object.entries(algs!).reduce(
-        (acc, [, cur]) => ({
+      cases: algs.reduce(
+        (acc, curr) => ({
           ...acc,
-          [cur.solutions[0]]: {
-            preferred: cur.solutions[0],
+          [curr.name]: {
+            preferred: 0,
             status: "unstarted",
           },
         }),
@@ -48,18 +48,15 @@ export const AlgsList = () => {
     }
   );
 
-  const [algDialog, setAlgDialog] = useState<string[] | null>();
+  const [algDialog, setAlgDialog] = useState<IAlg | null>();
   const [optionsDialogOpen, setOptionsDialogOpen] = useState(false);
 
   const navigate = useNavigate();
 
   const startTrainer = () => navigate("trainer");
 
-  const getImage = (alg: string) =>
-    `https://cubiclealgdbimagegen.azurewebsites.net/generator?${step.visualCubeParams}&case=${alg}`;
-
-  const algRowClick = (solutions: string[]) => {
-    setAlgDialog(solutions);
+  const algRowClick = (alg: IAlg) => {
+    setAlgDialog(alg);
   };
 
   const closeAlgModal = () => setAlgDialog(null);
@@ -82,7 +79,6 @@ export const AlgsList = () => {
       >
         <Button
           variant="contained"
-          // sx={{ my: 4, mx: "auto" }}
           sx={{
             my: 2,
             gridColumnStart: 1,
@@ -110,10 +106,10 @@ export const AlgsList = () => {
       >
         <Table aria-label="simple table">
           <TableBody>
-            {Object.entries(algs!)
-              .sort(([, alg1], [, alg2]) => {
-                const status1 = stepStorage.cases[alg1.solutions[0]].status;
-                const status2 = stepStorage.cases[alg2.solutions[0]].status;
+            {algs
+              .sort((alg1, alg2) => {
+                const status1 = stepStorage.cases[alg1.name]!.status;
+                const status2 = stepStorage.cases[alg2.name]!.status;
 
                 if (status1 === status2) {
                   return 0;
@@ -126,7 +122,7 @@ export const AlgsList = () => {
 
                 return valMap[status1] - valMap[status2];
               })
-              .filter(([, algValue]) => {
+              .filter((alg) => {
                 if (
                   !Object.values(stepStorage.filters).some(
                     (filter) => filter === true
@@ -137,20 +133,19 @@ export const AlgsList = () => {
                 let shouldShow = false;
                 Object.entries(stepStorage.filters).forEach(([key, value]) => {
                   if (value && !shouldShow) {
-                    shouldShow = algValue.filters[key];
+                    shouldShow = alg.filters[key];
                   }
                 });
                 return shouldShow;
               })
-              .map(([alg, value]) => (
+              .map((alg) => (
                 <AlgTableRow
-                  key={alg}
-                  solutions={value.solutions}
+                  key={alg.name}
+                  alg={alg}
                   algRowClick={algRowClick}
                   stepStorage={stepStorage}
                   setStepStorage={setStepStorage}
-                  image={getImage(alg)}
-                  id={value.solutions[0]}
+                  step={step}
                 />
               ))}
           </TableBody>
@@ -159,7 +154,7 @@ export const AlgsList = () => {
       {!!algDialog && (
         <AlgModal
           handleClose={closeAlgModal}
-          solutions={algDialog}
+          alg={algDialog}
           stepStorage={stepStorage}
           setStepStorage={setStepStorage}
         />

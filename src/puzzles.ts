@@ -16,17 +16,14 @@ export interface IBaseStep {
 
 export type Step = ISubStep | IBaseStep;
 
-export interface IAlg {
+export type IAlg = {
+  name: string;
   setups: string[];
   filters: {
     [key: string]: boolean;
   };
   solutions: string[];
-}
-
-export interface IAlgs {
-  [key: string]: IAlg;
-}
+};
 
 export const Puzzles: ISubStep[] = [
   {
@@ -103,7 +100,7 @@ export function isSubStep(step: Step): step is ISubStep {
 }
 
 export interface IAlgsListContext {
-  algs: IAlgs;
+  algs: IAlg[];
   step: IBaseStep;
 }
 
@@ -129,7 +126,7 @@ export interface IStepStorage {
   };
   cases: {
     [key: string]: {
-      preferred: string;
+      preferred: number;
       status: Status;
     };
   };
