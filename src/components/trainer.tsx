@@ -89,6 +89,11 @@ export const Trainer = () => {
     nextCase();
   };
 
+  const currentSetup = useMemo(
+    () => randomItem(currentCase.setups),
+    [currentCase]
+  );
+
   useKeypress(" ", handleSpace, [isLast]);
 
   const updateHint = () => {
@@ -107,7 +112,7 @@ export const Trainer = () => {
       textAlign="center"
     >
       <Typography component="h1" variant="h3">
-        {randomItem(currentCase.setups)}
+        {currentSetup}
       </Typography>
       <Button
         variant="contained"
