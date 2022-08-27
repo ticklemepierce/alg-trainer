@@ -8276,6 +8276,21 @@ var $c62da169c755bd5c$export$2e2bcd8739ae039 = $c62da169c755bd5c$export$4f5d2d50
 
 });
 
+parcelRequire.register("daALM", function(module, exports) {
+
+$parcel$export(module.exports, "default", () => $9968bb3ba6f72391$export$2e2bcd8739ae039);
+
+var $29rXr = parcelRequire("29rXr");
+
+var $eI4jf = parcelRequire("eI4jf");
+function $9968bb3ba6f72391$export$2e2bcd8739ae039(elementType, otherProps = {}, ownerState) {
+    if ((0, $eI4jf.default)(elementType)) return otherProps;
+    return (0, $29rXr.default)({}, otherProps, {
+        ownerState: (0, $29rXr.default)({}, otherProps.ownerState, ownerState)
+    });
+}
+
+});
 parcelRequire.register("eI4jf", function(module, exports) {
 
 $parcel$export(module.exports, "default", () => $ab588489a35ee716$export$2e2bcd8739ae039);
@@ -8287,6 +8302,7 @@ $parcel$export(module.exports, "default", () => $ab588489a35ee716$export$2e2bcd8
 var $ab588489a35ee716$export$2e2bcd8739ae039 = $ab588489a35ee716$var$isHostComponent;
 
 });
+
 
 parcelRequire.register("fzp0a", function(module, exports) {
 
@@ -8333,22 +8349,6 @@ function $3b7e5c2a3e9be835$export$2e2bcd8739ae039(parameters) {
 }
 
 });
-parcelRequire.register("daALM", function(module, exports) {
-
-$parcel$export(module.exports, "default", () => $9968bb3ba6f72391$export$2e2bcd8739ae039);
-
-var $29rXr = parcelRequire("29rXr");
-
-var $eI4jf = parcelRequire("eI4jf");
-function $9968bb3ba6f72391$export$2e2bcd8739ae039(elementType, otherProps = {}, ownerState) {
-    if ((0, $eI4jf.default)(elementType)) return otherProps;
-    return (0, $29rXr.default)({}, otherProps, {
-        ownerState: (0, $29rXr.default)({}, otherProps.ownerState, ownerState)
-    });
-}
-
-});
-
 parcelRequire.register("2Blea", function(module, exports) {
 
 $parcel$export(module.exports, "default", () => $1e4f80d1a1c43d3a$export$2e2bcd8739ae039);
@@ -13230,9 +13230,9 @@ var $2edae841494e9a49$export$2e2bcd8739ae039 = $2edae841494e9a49$var$svgIconClas
 
 
 
-var $92fbd03b625c98d2$exports = {};
+var $bee16b8a2a7b1743$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.cde56485.js","eXwSi":"puzzle-geometry.db2a4a3f.js","bJecT":"index.04ff6efc.js"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.7bc0fe28.js","eXwSi":"puzzle-geometry.db2a4a3f.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -13248,6 +13248,16 @@ var $ifXLh = parcelRequire("ifXLh");
 
 
 var $2I6mJ = parcelRequire("2I6mJ");
+parcelRequire("d4J5n");
+
+var $4JDg8 = parcelRequire("4JDg8");
+
+var $g8cbf = parcelRequire("g8cbf");
+function $cb404980a6d8b614$export$2e2bcd8739ae039() {
+    const theme = (0, $4JDg8.default)((0, $g8cbf.default));
+    return theme;
+}
+
 
 
 var $5eB1p = parcelRequire("5eB1p");
@@ -16480,16 +16490,6 @@ var $9Zx8w = parcelRequire("9Zx8w");
 var $d4J5n = parcelRequire("d4J5n");
 
 
-
-parcelRequire("d4J5n");
-
-var $4JDg8 = parcelRequire("4JDg8");
-
-var $g8cbf = parcelRequire("g8cbf");
-function $cb404980a6d8b614$export$2e2bcd8739ae039() {
-    const theme = (0, $4JDg8.default)((0, $g8cbf.default));
-    return theme;
-}
 
 
 const $6c3a9351414de729$export$b7a864e1eaef9de5 = (node)=>node.scrollTop;
@@ -24197,7 +24197,14 @@ $b185d4af41cc8f6f$exports = $b185d4af41cc8f6f$var$useFetch;
 
 const $2fa3bc6d8341a2bf$export$fe7028753523ed1f = ({ step: step  })=>{
     const { isLoading: isLoading , data: data  } = (0, (/*@__PURE__*/$parcel$interopDefault($b185d4af41cc8f6f$exports)))(`${step.slug}.json`);
-    if (isLoading) return /*#__PURE__*/ (0, $228IU.jsx)((0, $c0c7c6801e66d553$export$2e2bcd8739ae039), {});
+    if (isLoading) return /*#__PURE__*/ (0, $228IU.jsx)((0, $c0c7c6801e66d553$export$2e2bcd8739ae039), {
+        sx: {
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)"
+        }
+    });
     return /*#__PURE__*/ (0, $228IU.jsx)((0, $bd647cfe352699a5$export$910ae8079b2c2852), {
         context: {
             step: step,
@@ -26208,10 +26215,59 @@ var $360ba78f4fefdfd0$export$2e2bcd8739ae039 = $360ba78f4fefdfd0$var$useWindowSi
 
 
 
-const $6a81c363dfde4e09$export$d3720feff416e85b = (key, defaultValue)=>{
-    const localStorageValue = localStorage.getItem(key);
-    return localStorageValue ? JSON.parse(localStorageValue) : defaultValue;
-};
+const $b1410301c6957cc6$export$d98315f3131b26fb = [
+    {
+        name: "Sledgehammer",
+        key: "sledge",
+        alg: "R' F R F'",
+        color: "red",
+        notes: "sledgehammer"
+    },
+    {
+        name: "Hedgeslammer",
+        key: "hedge",
+        alg: "F R' F' R",
+        color: "blue"
+    },
+    {
+        name: "Sexy Move",
+        key: "sexy",
+        alg: "R U R' U'",
+        color: "purple"
+    },
+    {
+        name: "Inverse Sexy Move",
+        key: "inversesexy",
+        alg: "U R U' R'",
+        color: "black"
+    },
+    {
+        name: "Sledgehammer (Left)",
+        key: "leftsledge",
+        alg: "L F' L' F",
+        color: "red"
+    },
+    {
+        name: "Hedgeslammer (Left)",
+        key: "lefthedge",
+        alg: "F' L F L'",
+        color: "blue"
+    },
+    {
+        name: "Sexy Move (Left)",
+        key: "leftsexy",
+        alg: "L' U' L U",
+        color: "purple"
+    },
+    {
+        name: "Inverse Sexy Move (Left)",
+        key: "leftinversesexy",
+        alg: "U' L' U L",
+        color: "black"
+    }, 
+];
+const $b1410301c6957cc6$export$79ed9616e69ab1ba = /\[\[(.+?)\]\]/g;
+const $b1410301c6957cc6$export$cc64fe338ae13d0f = (alg)=>alg.replace($b1410301c6957cc6$export$79ed9616e69ab1ba, (_brackets, match)=>$b1410301c6957cc6$export$d98315f3131b26fb.find((trigger)=>trigger.key === match).alg);
 
 
 const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
@@ -26227,24 +26283,29 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
             "exclude-unstarted": true,
             "exclude-learned": true
         },
-        cases: Object.entries(algs).reduce((acc, [, cur])=>({
+        cases: algs.reduce((acc, curr)=>({
                 ...acc,
-                [cur.solutions[0]]: {
-                    preferred: cur.solutions[0],
+                [curr.name]: {
+                    preferred: 0,
                     status: "unstarted"
                 }
             }), {})
     });
-    const filterAlgs = ()=>Object.entries(algs).filter(([, algValue])=>!(stepStorage.options["exclude-learned"] && stepStorage.cases[algValue.solutions[0]].status === "learned" || stepStorage.options["exclude-unstarted"] && stepStorage.cases[algValue.solutions[0]].status === "unstarted")).map(([algKey])=>algKey);
+    const filterAlgs = ()=>algs.filter((alg)=>!(stepStorage.options["exclude-learned"] && stepStorage.cases[alg.name].status === "learned" || stepStorage.options["exclude-unstarted"] && stepStorage.cases[alg.name].status === "unstarted"));
     const [order, setOrder] = (0, $d4J5n.useState)((0, (/*@__PURE__*/$parcel$interopDefault($d3ff3298a4c42353$exports)))(filterAlgs()));
     const [index1, setIndex] = (0, $d4J5n.useState)(0);
-    const [currentCase, setCurrentCase] = (0, $d4J5n.useState)();
     const [hint, setHint] = (0, $d4J5n.useState)("");
     const isLast = (0, $d4J5n.useMemo)(()=>index1 >= order.length - 1, [
         index1
     ]);
     const isFirst = (0, $d4J5n.useMemo)(()=>index1 === 0, [
         index1
+    ]);
+    const currentCase = (0, $d4J5n.useMemo)(()=>order[index1], [
+        index1
+    ]);
+    const preferredSolution = (0, $d4J5n.useMemo)(()=>(0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(currentCase.solutions[stepStorage.cases[currentCase.name].preferred]).split(" "), [
+        currentCase
     ]);
     const previousCase = ()=>{
         setHint("");
@@ -26254,7 +26315,7 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
         setHint("");
         if (isLast) {
             alert("starting over!!");
-            setOrder((0, (/*@__PURE__*/$parcel$interopDefault($d3ff3298a4c42353$exports)))(Object.keys(algs)));
+            setOrder((0, (/*@__PURE__*/$parcel$interopDefault($d3ff3298a4c42353$exports)))(filterAlgs()));
             setIndex(0);
         } else setIndex((index)=>index + 1);
     };
@@ -26262,17 +26323,13 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
         e.preventDefault();
         nextCase();
     };
+    const currentSetup = (0, $d4J5n.useMemo)(()=>(0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(currentCase.setups), [
+        currentCase
+    ]);
     (0, $d325342d90344c14$export$2e2bcd8739ae039)(" ", handleSpace, [
         isLast
     ]);
-    (0, $d4J5n.useEffect)(()=>{
-        setCurrentCase((0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(algs[order[index1]].setups));
-    }, [
-        index1
-    ]);
     const updateHint = ()=>{
-        const { solutions: solutions  } = algs[order[index1]];
-        const preferredSolution = (0, $6a81c363dfde4e09$export$d3720feff416e85b)(`${step.slug}-${solutions[0]}-preferred`, solutions[0]).split(" ");
         const newHintLength = hint.length > 0 ? hint.split(" ").length + 1 : 1;
         setHint(preferredSolution.slice(0, newHintLength).join(" "));
     };
@@ -26287,7 +26344,7 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
             /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
                 component: "h1",
                 variant: "h3",
-                children: currentCase
+                children: currentSetup
             }),
             /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
                 variant: "contained",
@@ -31589,7 +31646,2544 @@ var $kQo6d = parcelRequire("kQo6d");
 
 var $228IU = parcelRequire("228IU");
 
+
+var $58ad8d8ef78eb4df$exports = {};
+/* eslint-disable vars-on-top, no-var, prefer-template */ var $58ad8d8ef78eb4df$var$isRegExp = function(re) {
+    return re instanceof RegExp;
+};
+var $58ad8d8ef78eb4df$var$escapeRegExp = function escapeRegExp(string) {
+    var reRegExpChar = /[\\^$.*+?()[\]{}|]/g, reHasRegExpChar = RegExp(reRegExpChar.source);
+    return string && reHasRegExpChar.test(string) ? string.replace(reRegExpChar, "\\$&") : string;
+};
+var $58ad8d8ef78eb4df$var$isString = function(value) {
+    return typeof value === "string";
+};
+var $58ad8d8ef78eb4df$var$flatten = function(array) {
+    var newArray = [];
+    array.forEach(function(item) {
+        if (Array.isArray(item)) newArray = newArray.concat(item);
+        else newArray.push(item);
+    });
+    return newArray;
+};
+/**
+ * Given a string, replace every substring that is matched by the `match` regex
+ * with the result of calling `fn` on matched substring. The result will be an
+ * array with all odd indexed elements containing the replacements. The primary
+ * use case is similar to using String.prototype.replace except for React.
+ *
+ * React will happily render an array as children of a react element, which
+ * makes this approach very useful for tasks like surrounding certain text
+ * within a string with react elements.
+ *
+ * Example:
+ * matchReplace(
+ *   'Emphasize all phone numbers like 884-555-4443.',
+ *   /([\d|-]+)/g,
+ *   (number, i) => <strong key={i}>{number}</strong>
+ * );
+ * // => ['Emphasize all phone numbers like ', <strong>884-555-4443</strong>, '.'
+ *
+ * @param {string} str
+ * @param {RegExp|str} match Must contain a matching group
+ * @param {function} fn
+ * @return {array}
+ */ function $58ad8d8ef78eb4df$var$replaceString(str, match, fn) {
+    var curCharStart = 0;
+    var curCharLen = 0;
+    if (str === "") return str;
+    else if (!str || !$58ad8d8ef78eb4df$var$isString(str)) throw new TypeError("First argument to react-string-replace#replaceString must be a string");
+    var re = match;
+    if (!$58ad8d8ef78eb4df$var$isRegExp(re)) re = new RegExp("(" + $58ad8d8ef78eb4df$var$escapeRegExp(re) + ")", "gi");
+    var result = str.split(re);
+    // Apply fn to all odd elements
+    for(var i = 1, length = result.length; i < length; i += 2){
+        /** @see {@link https://github.com/iansinnott/react-string-replace/issues/74} */ if (result[i] === undefined || result[i - 1] === undefined) {
+            console.warn("reactStringReplace: Encountered undefined value during string replacement. Your RegExp may not be working the way you expect.");
+            continue;
+        }
+        curCharLen = result[i].length;
+        curCharStart += result[i - 1].length;
+        result[i] = fn(result[i], i, curCharStart);
+        curCharStart += curCharLen;
+    }
+    return result;
+}
+$58ad8d8ef78eb4df$exports = function reactStringReplace(source, match, fn) {
+    if (!Array.isArray(source)) source = [
+        source
+    ];
+    return $58ad8d8ef78eb4df$var$flatten(source.map(function(x) {
+        return $58ad8d8ef78eb4df$var$isString(x) ? $58ad8d8ef78eb4df$var$replaceString(x, match, fn) : x;
+    }));
+};
+
+
+
+var $228IU = parcelRequire("228IU");
+
+var $3Rzkk = parcelRequire("3Rzkk");
+var $7d542fbe98f7d6d1$exports = {};
+
+$parcel$defineInteropFlag($7d542fbe98f7d6d1$exports);
+
+$parcel$export($7d542fbe98f7d6d1$exports, "default", () => $95c1f43bc91a817d$export$2e2bcd8739ae039);
+$parcel$export($7d542fbe98f7d6d1$exports, "tooltipClasses", () => $fb6c0fa80c9e3e33$export$2e2bcd8739ae039);
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $29rXr = parcelRequire("29rXr");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+
+var $h0TGs = parcelRequire("h0TGs");
+
+
+var $gfogg = parcelRequire("gfogg");
+var $daALM = parcelRequire("daALM");
+
+var $dcYDA = parcelRequire("dcYDA");
+
+var $3Rzkk = parcelRequire("3Rzkk");
+
+
+var $i1cZ3 = parcelRequire("i1cZ3");
+
+var $kJ9SM = parcelRequire("kJ9SM");
+
+
+var $29rXr = parcelRequire("29rXr");
+
+var $29rXr = parcelRequire("29rXr");
+
+var $9Zx8w = parcelRequire("9Zx8w");
+
+var $d4J5n = parcelRequire("d4J5n");
+
+var $2uAQY = parcelRequire("2uAQY");
+var $FtJh7 = parcelRequire("FtJh7");
+var $k3rwj = parcelRequire("k3rwj");
+function $30cb9ba4921cb24c$export$2e2bcd8739ae039(node) {
+    if (node == null) return window;
+    if (node.toString() !== "[object Window]") {
+        var ownerDocument = node.ownerDocument;
+        return ownerDocument ? ownerDocument.defaultView || window : window;
+    }
+    return node;
+}
+
+
+function $98a5ed6e9cc93b6b$export$45a5e7f76e0caa8d(node) {
+    var OwnElement = (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(node).Element;
+    return node instanceof OwnElement || node instanceof Element;
+}
+function $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa(node) {
+    var OwnElement = (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(node).HTMLElement;
+    return node instanceof OwnElement || node instanceof HTMLElement;
+}
+function $98a5ed6e9cc93b6b$export$af51f0f06c0f328a(node) {
+    // IE 11 has no ShadowRoot
+    if (typeof ShadowRoot === "undefined") return false;
+    var OwnElement = (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(node).ShadowRoot;
+    return node instanceof OwnElement || node instanceof ShadowRoot;
+}
+
+
+var $d888c1c5c6139f87$export$8960430cfd85939f = Math.max;
+var $d888c1c5c6139f87$export$96ec731ed4dcb222 = Math.min;
+var $d888c1c5c6139f87$export$2077e0241d6afd3c = Math.round;
+
+
+function $b5d1770c17971102$export$2e2bcd8739ae039(element, includeScale) {
+    if (includeScale === void 0) includeScale = false;
+    var rect = element.getBoundingClientRect();
+    var scaleX = 1;
+    var scaleY = 1;
+    if ((0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(element) && includeScale) {
+        var offsetHeight = element.offsetHeight;
+        var offsetWidth = element.offsetWidth; // Do not attempt to divide by 0, otherwise we get `Infinity` as scale
+        // Fallback to 1 in case both values are `0`
+        if (offsetWidth > 0) scaleX = (0, $d888c1c5c6139f87$export$2077e0241d6afd3c)(rect.width) / offsetWidth || 1;
+        if (offsetHeight > 0) scaleY = (0, $d888c1c5c6139f87$export$2077e0241d6afd3c)(rect.height) / offsetHeight || 1;
+    }
+    return {
+        width: rect.width / scaleX,
+        height: rect.height / scaleY,
+        top: rect.top / scaleY,
+        right: rect.right / scaleX,
+        bottom: rect.bottom / scaleY,
+        left: rect.left / scaleX,
+        x: rect.left / scaleX,
+        y: rect.top / scaleY
+    };
+}
+
+
+
+function $68c73aba05e12bb4$export$2e2bcd8739ae039(node) {
+    var win = (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(node);
+    var scrollLeft = win.pageXOffset;
+    var scrollTop = win.pageYOffset;
+    return {
+        scrollLeft: scrollLeft,
+        scrollTop: scrollTop
+    };
+}
+
+
+
+
+function $d60097371f30bca0$export$2e2bcd8739ae039(element) {
+    return {
+        scrollLeft: element.scrollLeft,
+        scrollTop: element.scrollTop
+    };
+}
+
+
+function $1aec7390888aa5e7$export$2e2bcd8739ae039(node) {
+    if (node === (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(node) || !(0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(node)) return (0, $68c73aba05e12bb4$export$2e2bcd8739ae039)(node);
+    else return (0, $d60097371f30bca0$export$2e2bcd8739ae039)(node);
+}
+
+
+function $a99f9ebca3ba2730$export$2e2bcd8739ae039(element) {
+    return element ? (element.nodeName || "").toLowerCase() : null;
+}
+
+
+
+
+
+function $051b9280bc9384db$export$2e2bcd8739ae039(element) {
+    // $FlowFixMe[incompatible-return]: assume body is always available
+    return (((0, $98a5ed6e9cc93b6b$export$45a5e7f76e0caa8d)(element) ? element.ownerDocument : element.document) || window.document).documentElement;
+}
+
+
+
+function $83d7cdd03a66c6bd$export$2e2bcd8739ae039(element) {
+    // If <html> has a CSS width greater than the viewport, then this will be
+    // incorrect for RTL.
+    // Popper 1 is broken in this case and never had a bug report so let's assume
+    // it's not an issue. I don't think anyone ever specifies width on <html>
+    // anyway.
+    // Browsers where the left scrollbar doesn't cause an issue report `0` for
+    // this (e.g. Edge 2019, IE11, Safari)
+    return (0, $b5d1770c17971102$export$2e2bcd8739ae039)((0, $051b9280bc9384db$export$2e2bcd8739ae039)(element)).left + (0, $68c73aba05e12bb4$export$2e2bcd8739ae039)(element).scrollLeft;
+}
+
+
+
+
+function $95179c71c901ae5b$export$2e2bcd8739ae039(element) {
+    return (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(element).getComputedStyle(element);
+}
+
+
+function $7cb5ecfccce08936$export$2e2bcd8739ae039(element) {
+    // Firefox wants us to check `-x` and `-y` variations as well
+    var _getComputedStyle = (0, $95179c71c901ae5b$export$2e2bcd8739ae039)(element), overflow = _getComputedStyle.overflow, overflowX = _getComputedStyle.overflowX, overflowY = _getComputedStyle.overflowY;
+    return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
+}
+
+
+
+function $1bd47066b42a5b5d$var$isElementScaled(element) {
+    var rect = element.getBoundingClientRect();
+    var scaleX = (0, $d888c1c5c6139f87$export$2077e0241d6afd3c)(rect.width) / element.offsetWidth || 1;
+    var scaleY = (0, $d888c1c5c6139f87$export$2077e0241d6afd3c)(rect.height) / element.offsetHeight || 1;
+    return scaleX !== 1 || scaleY !== 1;
+} // Returns the composite rect of an element relative to its offsetParent.
+function $1bd47066b42a5b5d$export$2e2bcd8739ae039(elementOrVirtualElement, offsetParent, isFixed) {
+    if (isFixed === void 0) isFixed = false;
+    var isOffsetParentAnElement = (0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(offsetParent);
+    var offsetParentIsScaled = (0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(offsetParent) && $1bd47066b42a5b5d$var$isElementScaled(offsetParent);
+    var documentElement = (0, $051b9280bc9384db$export$2e2bcd8739ae039)(offsetParent);
+    var rect = (0, $b5d1770c17971102$export$2e2bcd8739ae039)(elementOrVirtualElement, offsetParentIsScaled);
+    var scroll = {
+        scrollLeft: 0,
+        scrollTop: 0
+    };
+    var offsets = {
+        x: 0,
+        y: 0
+    };
+    if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+        if ((0, $a99f9ebca3ba2730$export$2e2bcd8739ae039)(offsetParent) !== "body" || (0, $7cb5ecfccce08936$export$2e2bcd8739ae039)(documentElement)) scroll = (0, $1aec7390888aa5e7$export$2e2bcd8739ae039)(offsetParent);
+        if ((0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(offsetParent)) {
+            offsets = (0, $b5d1770c17971102$export$2e2bcd8739ae039)(offsetParent, true);
+            offsets.x += offsetParent.clientLeft;
+            offsets.y += offsetParent.clientTop;
+        } else if (documentElement) offsets.x = (0, $83d7cdd03a66c6bd$export$2e2bcd8739ae039)(documentElement);
+    }
+    return {
+        x: rect.left + scroll.scrollLeft - offsets.x,
+        y: rect.top + scroll.scrollTop - offsets.y,
+        width: rect.width,
+        height: rect.height
+    };
+}
+
+
+
+function $e6ac2fccfcb26231$export$2e2bcd8739ae039(element) {
+    var clientRect = (0, $b5d1770c17971102$export$2e2bcd8739ae039)(element); // Use the clientRect sizes if it's not been transformed.
+    // Fixes https://github.com/popperjs/popper-core/issues/1223
+    var width = element.offsetWidth;
+    var height = element.offsetHeight;
+    if (Math.abs(clientRect.width - width) <= 1) width = clientRect.width;
+    if (Math.abs(clientRect.height - height) <= 1) height = clientRect.height;
+    return {
+        x: element.offsetLeft,
+        y: element.offsetTop,
+        width: width,
+        height: height
+    };
+}
+
+
+
+
+
+function $5ecd5a6819f6d2de$export$2e2bcd8739ae039(element) {
+    if ((0, $a99f9ebca3ba2730$export$2e2bcd8739ae039)(element) === "html") return element;
+    return(// $FlowFixMe[incompatible-return]
+    // $FlowFixMe[prop-missing]
+    element.assignedSlot || element.parentNode || ((0, $98a5ed6e9cc93b6b$export$af51f0f06c0f328a)(element) ? element.host : null) || // $FlowFixMe[incompatible-call]: HTMLElement is a Node
+    (0, $051b9280bc9384db$export$2e2bcd8739ae039)(element) // fallback
+    );
+}
+
+
+
+
+
+function $42c7d101bf7d5a5d$export$2e2bcd8739ae039(node) {
+    if ([
+        "html",
+        "body",
+        "#document"
+    ].indexOf((0, $a99f9ebca3ba2730$export$2e2bcd8739ae039)(node)) >= 0) // $FlowFixMe[incompatible-return]: assume body is always available
+    return node.ownerDocument.body;
+    if ((0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(node) && (0, $7cb5ecfccce08936$export$2e2bcd8739ae039)(node)) return node;
+    return $42c7d101bf7d5a5d$export$2e2bcd8739ae039((0, $5ecd5a6819f6d2de$export$2e2bcd8739ae039)(node));
+}
+
+
+
+
+
+function $6e71595481654e2c$export$2e2bcd8739ae039(element, list) {
+    var _element$ownerDocumen;
+    if (list === void 0) list = [];
+    var scrollParent = (0, $42c7d101bf7d5a5d$export$2e2bcd8739ae039)(element);
+    var isBody = scrollParent === ((_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body);
+    var win = (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(scrollParent);
+    var target = isBody ? [
+        win
+    ].concat(win.visualViewport || [], (0, $7cb5ecfccce08936$export$2e2bcd8739ae039)(scrollParent) ? scrollParent : []) : scrollParent;
+    var updatedList = list.concat(target);
+    return isBody ? updatedList : updatedList.concat($6e71595481654e2c$export$2e2bcd8739ae039((0, $5ecd5a6819f6d2de$export$2e2bcd8739ae039)(target)));
+}
+
+
+
+
+
+
+
+function $0ff7c807099d5305$export$2e2bcd8739ae039(element) {
+    return [
+        "table",
+        "td",
+        "th"
+    ].indexOf((0, $a99f9ebca3ba2730$export$2e2bcd8739ae039)(element)) >= 0;
+}
+
+
+
+function $eba16a63ee488722$var$getTrueOffsetParent(element) {
+    if (!(0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(element) || (0, $95179c71c901ae5b$export$2e2bcd8739ae039)(element).position === "fixed") return null;
+    return element.offsetParent;
+} // `.offsetParent` reports `null` for fixed elements, while absolute elements
+// return the containing block
+function $eba16a63ee488722$var$getContainingBlock(element) {
+    var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") !== -1;
+    var isIE = navigator.userAgent.indexOf("Trident") !== -1;
+    if (isIE && (0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(element)) {
+        // In IE 9, 10 and 11 fixed elements containing block is always established by the viewport
+        var elementCss = (0, $95179c71c901ae5b$export$2e2bcd8739ae039)(element);
+        if (elementCss.position === "fixed") return null;
+    }
+    var currentNode = (0, $5ecd5a6819f6d2de$export$2e2bcd8739ae039)(element);
+    if ((0, $98a5ed6e9cc93b6b$export$af51f0f06c0f328a)(currentNode)) currentNode = currentNode.host;
+    while((0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(currentNode) && [
+        "html",
+        "body"
+    ].indexOf((0, $a99f9ebca3ba2730$export$2e2bcd8739ae039)(currentNode)) < 0){
+        var css = (0, $95179c71c901ae5b$export$2e2bcd8739ae039)(currentNode); // This is non-exhaustive but covers the most common CSS properties that
+        // create a containing block.
+        // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
+        if (css.transform !== "none" || css.perspective !== "none" || css.contain === "paint" || [
+            "transform",
+            "perspective"
+        ].indexOf(css.willChange) !== -1 || isFirefox && css.willChange === "filter" || isFirefox && css.filter && css.filter !== "none") return currentNode;
+        else currentNode = currentNode.parentNode;
+    }
+    return null;
+} // Gets the closest ancestor positioned element. Handles some edge cases,
+function $eba16a63ee488722$export$2e2bcd8739ae039(element) {
+    var window = (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(element);
+    var offsetParent = $eba16a63ee488722$var$getTrueOffsetParent(element);
+    while(offsetParent && (0, $0ff7c807099d5305$export$2e2bcd8739ae039)(offsetParent) && (0, $95179c71c901ae5b$export$2e2bcd8739ae039)(offsetParent).position === "static")offsetParent = $eba16a63ee488722$var$getTrueOffsetParent(offsetParent);
+    if (offsetParent && ((0, $a99f9ebca3ba2730$export$2e2bcd8739ae039)(offsetParent) === "html" || (0, $a99f9ebca3ba2730$export$2e2bcd8739ae039)(offsetParent) === "body" && (0, $95179c71c901ae5b$export$2e2bcd8739ae039)(offsetParent).position === "static")) return window;
+    return offsetParent || $eba16a63ee488722$var$getContainingBlock(element) || window;
+}
+
+
+
+var $2e89e95ac593bfb0$export$1e95b668f3b82d = "top";
+var $2e89e95ac593bfb0$export$40e543e69a8b3fbb = "bottom";
+var $2e89e95ac593bfb0$export$79ffe56a765070d2 = "right";
+var $2e89e95ac593bfb0$export$eabcd2c8791e7bf4 = "left";
+var $2e89e95ac593bfb0$export$dfb5619354ba860 = "auto";
+var $2e89e95ac593bfb0$export$aec2ce47c367b8c3 = [
+    $2e89e95ac593bfb0$export$1e95b668f3b82d,
+    $2e89e95ac593bfb0$export$40e543e69a8b3fbb,
+    $2e89e95ac593bfb0$export$79ffe56a765070d2,
+    $2e89e95ac593bfb0$export$eabcd2c8791e7bf4
+];
+var $2e89e95ac593bfb0$export$b3571188c770cc5a = "start";
+var $2e89e95ac593bfb0$export$bd5df0f255a350f8 = "end";
+var $2e89e95ac593bfb0$export$390fd549c5303b4d = "clippingParents";
+var $2e89e95ac593bfb0$export$d7b7311ec04a3e8f = "viewport";
+var $2e89e95ac593bfb0$export$ae5ab1c730825774 = "popper";
+var $2e89e95ac593bfb0$export$ca50aac9f3ba507f = "reference";
+var $2e89e95ac593bfb0$export$368f9a87e87fa4e1 = /*#__PURE__*/ $2e89e95ac593bfb0$export$aec2ce47c367b8c3.reduce(function(acc, placement) {
+    return acc.concat([
+        placement + "-" + $2e89e95ac593bfb0$export$b3571188c770cc5a,
+        placement + "-" + $2e89e95ac593bfb0$export$bd5df0f255a350f8
+    ]);
+}, []);
+var $2e89e95ac593bfb0$export$803cd8101b6c182b = /*#__PURE__*/ [].concat($2e89e95ac593bfb0$export$aec2ce47c367b8c3, [
+    $2e89e95ac593bfb0$export$dfb5619354ba860
+]).reduce(function(acc, placement) {
+    return acc.concat([
+        placement,
+        placement + "-" + $2e89e95ac593bfb0$export$b3571188c770cc5a,
+        placement + "-" + $2e89e95ac593bfb0$export$bd5df0f255a350f8
+    ]);
+}, []); // modifiers that need to read the DOM
+var $2e89e95ac593bfb0$export$421679a7c3d56e = "beforeRead";
+var $2e89e95ac593bfb0$export$aafa59e2e03f2942 = "read";
+var $2e89e95ac593bfb0$export$6964f6c886723980 = "afterRead"; // pure-logic modifiers
+var $2e89e95ac593bfb0$export$c65e99957a05207c = "beforeMain";
+var $2e89e95ac593bfb0$export$f22da7240b7add18 = "main";
+var $2e89e95ac593bfb0$export$bab79516f2d662fe = "afterMain"; // modifier with the purpose to write to the DOM (or write into a framework state)
+var $2e89e95ac593bfb0$export$8d4d2d70e7d46032 = "beforeWrite";
+var $2e89e95ac593bfb0$export$68d8715fc104d294 = "write";
+var $2e89e95ac593bfb0$export$70a6e5159acce2e6 = "afterWrite";
+var $2e89e95ac593bfb0$export$d087d3878fdf71d5 = [
+    $2e89e95ac593bfb0$export$421679a7c3d56e,
+    $2e89e95ac593bfb0$export$aafa59e2e03f2942,
+    $2e89e95ac593bfb0$export$6964f6c886723980,
+    $2e89e95ac593bfb0$export$c65e99957a05207c,
+    $2e89e95ac593bfb0$export$f22da7240b7add18,
+    $2e89e95ac593bfb0$export$bab79516f2d662fe,
+    $2e89e95ac593bfb0$export$8d4d2d70e7d46032,
+    $2e89e95ac593bfb0$export$68d8715fc104d294,
+    $2e89e95ac593bfb0$export$70a6e5159acce2e6
+];
+
+
+function $4a32e2579d0de4f9$var$order(modifiers) {
+    var map = new Map();
+    var visited = new Set();
+    var result = [];
+    modifiers.forEach(function(modifier) {
+        map.set(modifier.name, modifier);
+    }); // On visiting object, check for its dependencies and visit them recursively
+    function sort(modifier) {
+        visited.add(modifier.name);
+        var requires = [].concat(modifier.requires || [], modifier.requiresIfExists || []);
+        requires.forEach(function(dep) {
+            if (!visited.has(dep)) {
+                var depModifier = map.get(dep);
+                if (depModifier) sort(depModifier);
+            }
+        });
+        result.push(modifier);
+    }
+    modifiers.forEach(function(modifier) {
+        if (!visited.has(modifier.name)) // check for visited object
+        sort(modifier);
+    });
+    return result;
+}
+function $4a32e2579d0de4f9$export$2e2bcd8739ae039(modifiers) {
+    // order based on dependencies
+    var orderedModifiers = $4a32e2579d0de4f9$var$order(modifiers); // order based on phase
+    return (0, $2e89e95ac593bfb0$export$d087d3878fdf71d5).reduce(function(acc, phase) {
+        return acc.concat(orderedModifiers.filter(function(modifier) {
+            return modifier.phase === phase;
+        }));
+    }, []);
+}
+
+
+function $550302ce282a655b$export$2e2bcd8739ae039(fn) {
+    var pending;
+    return function() {
+        if (!pending) pending = new Promise(function(resolve) {
+            Promise.resolve().then(function() {
+                pending = undefined;
+                resolve(fn());
+            });
+        });
+        return pending;
+    };
+}
+
+
+
+
+
+function $5e881110320a085b$export$2e2bcd8739ae039(modifiers) {
+    var merged1 = modifiers.reduce(function(merged, current) {
+        var existing = merged[current.name];
+        merged[current.name] = existing ? Object.assign({}, existing, current, {
+            options: Object.assign({}, existing.options, current.options),
+            data: Object.assign({}, existing.data, current.data)
+        }) : current;
+        return merged;
+    }, {}); // IE11 does not support Object.values
+    return Object.keys(merged1).map(function(key) {
+        return merged1[key];
+    });
+}
+
+
+
+
+
+var $63bad0d90002a387$var$INVALID_ELEMENT_ERROR = "Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.";
+var $63bad0d90002a387$var$INFINITE_LOOP_ERROR = "Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.";
+var $63bad0d90002a387$var$DEFAULT_OPTIONS = {
+    placement: "bottom",
+    modifiers: [],
+    strategy: "absolute"
+};
+function $63bad0d90002a387$var$areValidElements() {
+    for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
+    return !args.some(function(element) {
+        return !(element && typeof element.getBoundingClientRect === "function");
+    });
+}
+function $63bad0d90002a387$export$ed5e13716264f202(generatorOptions) {
+    if (generatorOptions === void 0) generatorOptions = {};
+    var _generatorOptions = generatorOptions, _generatorOptions$def = _generatorOptions.defaultModifiers, defaultModifiers = _generatorOptions$def === void 0 ? [] : _generatorOptions$def, _generatorOptions$def2 = _generatorOptions.defaultOptions, defaultOptions = _generatorOptions$def2 === void 0 ? $63bad0d90002a387$var$DEFAULT_OPTIONS : _generatorOptions$def2;
+    return function createPopper(reference1, popper1, options1) {
+        if (options1 === void 0) options1 = defaultOptions;
+        var state1 = {
+            placement: "bottom",
+            orderedModifiers: [],
+            options: Object.assign({}, $63bad0d90002a387$var$DEFAULT_OPTIONS, defaultOptions),
+            modifiersData: {},
+            elements: {
+                reference: reference1,
+                popper: popper1
+            },
+            attributes: {},
+            styles: {}
+        };
+        var effectCleanupFns = [];
+        var isDestroyed = false;
+        var instance = {
+            state: state1,
+            setOptions: function setOptions(setOptionsAction) {
+                var options = typeof setOptionsAction === "function" ? setOptionsAction(state1.options) : setOptionsAction;
+                cleanupModifierEffects();
+                state1.options = Object.assign({}, defaultOptions, state1.options, options);
+                state1.scrollParents = {
+                    reference: (0, $98a5ed6e9cc93b6b$export$45a5e7f76e0caa8d)(reference1) ? (0, $6e71595481654e2c$export$2e2bcd8739ae039)(reference1) : reference1.contextElement ? (0, $6e71595481654e2c$export$2e2bcd8739ae039)(reference1.contextElement) : [],
+                    popper: (0, $6e71595481654e2c$export$2e2bcd8739ae039)(popper1)
+                }; // Orders the modifiers based on their dependencies and `phase`
+                // properties
+                var orderedModifiers = (0, $4a32e2579d0de4f9$export$2e2bcd8739ae039)((0, $5e881110320a085b$export$2e2bcd8739ae039)([].concat(defaultModifiers, state1.options.modifiers))); // Strip out disabled modifiers
+                state1.orderedModifiers = orderedModifiers.filter(function(m) {
+                    return m.enabled;
+                }); // Validate the provided modifiers so that the consumer will get warned
+                var modifiers, _ref, name, flipModifier, _ref2, name1, _getComputedStyle, marginTop, marginRight, marginBottom, marginLeft, margin;
+                runModifierEffects();
+                return instance.update();
+            },
+            // Sync update – it will always be executed, even if not necessary. This
+            // is useful for low frequency updates where sync behavior simplifies the
+            // logic.
+            // For high frequency updates (e.g. `resize` and `scroll` events), always
+            // prefer the async Popper#update method
+            forceUpdate: function forceUpdate() {
+                if (isDestroyed) return;
+                var _state$elements = state1.elements, reference = _state$elements.reference, popper = _state$elements.popper; // Don't proceed if `reference` or `popper` are not valid elements
+                // anymore
+                if (!$63bad0d90002a387$var$areValidElements(reference, popper)) return;
+                 // Store the reference and popper rects to be read by modifiers
+                state1.rects = {
+                    reference: (0, $1bd47066b42a5b5d$export$2e2bcd8739ae039)(reference, (0, $eba16a63ee488722$export$2e2bcd8739ae039)(popper), state1.options.strategy === "fixed"),
+                    popper: (0, $e6ac2fccfcb26231$export$2e2bcd8739ae039)(popper)
+                }; // Modifiers have the ability to reset the current update cycle. The
+                // most common use case for this is the `flip` modifier changing the
+                // placement, which then needs to re-run all the modifiers, because the
+                // logic was previously ran for the previous placement and is therefore
+                // stale/incorrect
+                state1.reset = false;
+                state1.placement = state1.options.placement; // On each update cycle, the `modifiersData` property for each modifier
+                // is filled with the initial data specified by the modifier. This means
+                // it doesn't persist and is fresh on each update.
+                // To ensure persistent data, use `${name}#persistent`
+                state1.orderedModifiers.forEach(function(modifier) {
+                    return state1.modifiersData[modifier.name] = Object.assign({}, modifier.data);
+                });
+                var __debug_loops__ = 0;
+                for(var index = 0; index < state1.orderedModifiers.length; index++){
+                    if (state1.reset === true) {
+                        state1.reset = false;
+                        index = -1;
+                        continue;
+                    }
+                    var _state$orderedModifie = state1.orderedModifiers[index], fn = _state$orderedModifie.fn, _state$orderedModifie2 = _state$orderedModifie.options, _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2, name = _state$orderedModifie.name;
+                    if (typeof fn === "function") state1 = fn({
+                        state: state1,
+                        options: _options,
+                        name: name,
+                        instance: instance
+                    }) || state1;
+                }
+            },
+            // Async and optimistically optimized update – it will not be executed if
+            // not necessary (debounced to run at most once-per-tick)
+            update: (0, $550302ce282a655b$export$2e2bcd8739ae039)(function() {
+                return new Promise(function(resolve) {
+                    instance.forceUpdate();
+                    resolve(state1);
+                });
+            }),
+            destroy: function destroy() {
+                cleanupModifierEffects();
+                isDestroyed = true;
+            }
+        };
+        if (!$63bad0d90002a387$var$areValidElements(reference1, popper1)) return instance;
+        instance.setOptions(options1).then(function(state) {
+            if (!isDestroyed && options1.onFirstUpdate) options1.onFirstUpdate(state);
+        }); // Modifiers have the ability to execute arbitrary code before the first
+        // update cycle runs. They will be executed in the same order as the update
+        // cycle. This is useful when a modifier adds some persistent data that
+        // other modifiers need to use, but the modifier is run after the dependent
+        // one.
+        function runModifierEffects() {
+            state1.orderedModifiers.forEach(function(_ref3) {
+                var name = _ref3.name, _ref3$options = _ref3.options, options = _ref3$options === void 0 ? {} : _ref3$options, effect = _ref3.effect;
+                if (typeof effect === "function") {
+                    var cleanupFn = effect({
+                        state: state1,
+                        name: name,
+                        instance: instance,
+                        options: options
+                    });
+                    var noopFn = function noopFn() {};
+                    effectCleanupFns.push(cleanupFn || noopFn);
+                }
+            });
+        }
+        function cleanupModifierEffects() {
+            effectCleanupFns.forEach(function(fn) {
+                return fn();
+            });
+            effectCleanupFns = [];
+        }
+        return instance;
+    };
+}
+var $63bad0d90002a387$export$8f7491d57c8f97a9 = /*#__PURE__*/ $63bad0d90002a387$export$ed5e13716264f202(); // eslint-disable-next-line import/no-unused-modules
+
+
+
+var $e8e0c7c69245c49b$var$passive = {
+    passive: true
+};
+function $e8e0c7c69245c49b$var$effect(_ref) {
+    var state = _ref.state, instance = _ref.instance, options = _ref.options;
+    var _options$scroll = options.scroll, scroll = _options$scroll === void 0 ? true : _options$scroll, _options$resize = options.resize, resize = _options$resize === void 0 ? true : _options$resize;
+    var window = (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(state.elements.popper);
+    var scrollParents = [].concat(state.scrollParents.reference, state.scrollParents.popper);
+    if (scroll) scrollParents.forEach(function(scrollParent) {
+        scrollParent.addEventListener("scroll", instance.update, $e8e0c7c69245c49b$var$passive);
+    });
+    if (resize) window.addEventListener("resize", instance.update, $e8e0c7c69245c49b$var$passive);
+    return function() {
+        if (scroll) scrollParents.forEach(function(scrollParent) {
+            scrollParent.removeEventListener("scroll", instance.update, $e8e0c7c69245c49b$var$passive);
+        });
+        if (resize) window.removeEventListener("resize", instance.update, $e8e0c7c69245c49b$var$passive);
+    };
+} // eslint-disable-next-line import/no-unused-modules
+var $e8e0c7c69245c49b$export$2e2bcd8739ae039 = {
+    name: "eventListeners",
+    enabled: true,
+    phase: "write",
+    fn: function fn() {},
+    effect: $e8e0c7c69245c49b$var$effect,
+    data: {}
+};
+
+
+
+function $ab879862a948a1f3$export$2e2bcd8739ae039(placement) {
+    return placement.split("-")[0];
+}
+
+
+function $a6ffbe6b3b795e7b$export$2e2bcd8739ae039(placement) {
+    return placement.split("-")[1];
+}
+
+
+function $062b0bd957edc577$export$2e2bcd8739ae039(placement) {
+    return [
+        "top",
+        "bottom"
+    ].indexOf(placement) >= 0 ? "x" : "y";
+}
+
+
+
+function $56c8084ae97fa384$export$2e2bcd8739ae039(_ref) {
+    var reference = _ref.reference, element = _ref.element, placement = _ref.placement;
+    var basePlacement = placement ? (0, $ab879862a948a1f3$export$2e2bcd8739ae039)(placement) : null;
+    var variation = placement ? (0, $a6ffbe6b3b795e7b$export$2e2bcd8739ae039)(placement) : null;
+    var commonX = reference.x + reference.width / 2 - element.width / 2;
+    var commonY = reference.y + reference.height / 2 - element.height / 2;
+    var offsets;
+    switch(basePlacement){
+        case 0, $2e89e95ac593bfb0$export$1e95b668f3b82d:
+            offsets = {
+                x: commonX,
+                y: reference.y - element.height
+            };
+            break;
+        case 0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb:
+            offsets = {
+                x: commonX,
+                y: reference.y + reference.height
+            };
+            break;
+        case 0, $2e89e95ac593bfb0$export$79ffe56a765070d2:
+            offsets = {
+                x: reference.x + reference.width,
+                y: commonY
+            };
+            break;
+        case 0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4:
+            offsets = {
+                x: reference.x - element.width,
+                y: commonY
+            };
+            break;
+        default:
+            offsets = {
+                x: reference.x,
+                y: reference.y
+            };
+    }
+    var mainAxis = basePlacement ? (0, $062b0bd957edc577$export$2e2bcd8739ae039)(basePlacement) : null;
+    if (mainAxis != null) {
+        var len = mainAxis === "y" ? "height" : "width";
+        switch(variation){
+            case 0, $2e89e95ac593bfb0$export$b3571188c770cc5a:
+                offsets[mainAxis] = offsets[mainAxis] - (reference[len] / 2 - element[len] / 2);
+                break;
+            case 0, $2e89e95ac593bfb0$export$bd5df0f255a350f8:
+                offsets[mainAxis] = offsets[mainAxis] + (reference[len] / 2 - element[len] / 2);
+                break;
+            default:
+        }
+    }
+    return offsets;
+}
+
+
+function $d284fc136785a15e$var$popperOffsets(_ref) {
+    var state = _ref.state, name = _ref.name;
+    // Offsets are the actual position the popper needs to have to be
+    // properly positioned near its reference element
+    // This is the most basic placement, and will be adjusted by
+    // the modifiers in the next step
+    state.modifiersData[name] = (0, $56c8084ae97fa384$export$2e2bcd8739ae039)({
+        reference: state.rects.reference,
+        element: state.rects.popper,
+        strategy: "absolute",
+        placement: state.placement
+    });
+} // eslint-disable-next-line import/no-unused-modules
+var $d284fc136785a15e$export$2e2bcd8739ae039 = {
+    name: "popperOffsets",
+    enabled: true,
+    phase: "read",
+    fn: $d284fc136785a15e$var$popperOffsets,
+    data: {}
+};
+
+
+
+
+
+
+
+
+
+
+var $256aa699194dfe79$var$unsetSides = {
+    top: "auto",
+    right: "auto",
+    bottom: "auto",
+    left: "auto"
+}; // Round the offsets to the nearest suitable subpixel based on the DPR.
+// Zooming can change the DPR, but it seems to report a value that will
+// cleanly divide the values into the appropriate subpixels.
+function $256aa699194dfe79$var$roundOffsetsByDPR(_ref) {
+    var x = _ref.x, y = _ref.y;
+    var win = window;
+    var dpr = win.devicePixelRatio || 1;
+    return {
+        x: (0, $d888c1c5c6139f87$export$2077e0241d6afd3c)(x * dpr) / dpr || 0,
+        y: (0, $d888c1c5c6139f87$export$2077e0241d6afd3c)(y * dpr) / dpr || 0
+    };
+}
+function $256aa699194dfe79$export$378fa78a8fea596f(_ref2) {
+    var _Object$assign2;
+    var popper = _ref2.popper, popperRect = _ref2.popperRect, placement = _ref2.placement, variation = _ref2.variation, offsets = _ref2.offsets, position = _ref2.position, gpuAcceleration = _ref2.gpuAcceleration, adaptive = _ref2.adaptive, roundOffsets = _ref2.roundOffsets, isFixed = _ref2.isFixed;
+    var _offsets$x = offsets.x, x = _offsets$x === void 0 ? 0 : _offsets$x, _offsets$y = offsets.y, y = _offsets$y === void 0 ? 0 : _offsets$y;
+    var _ref3 = typeof roundOffsets === "function" ? roundOffsets({
+        x: x,
+        y: y
+    }) : {
+        x: x,
+        y: y
+    };
+    x = _ref3.x;
+    y = _ref3.y;
+    var hasX = offsets.hasOwnProperty("x");
+    var hasY = offsets.hasOwnProperty("y");
+    var sideX = (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4);
+    var sideY = (0, $2e89e95ac593bfb0$export$1e95b668f3b82d);
+    var win = window;
+    if (adaptive) {
+        var offsetParent = (0, $eba16a63ee488722$export$2e2bcd8739ae039)(popper);
+        var heightProp = "clientHeight";
+        var widthProp = "clientWidth";
+        if (offsetParent === (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(popper)) {
+            offsetParent = (0, $051b9280bc9384db$export$2e2bcd8739ae039)(popper);
+            if ((0, $95179c71c901ae5b$export$2e2bcd8739ae039)(offsetParent).position !== "static" && position === "absolute") {
+                heightProp = "scrollHeight";
+                widthProp = "scrollWidth";
+            }
+        } // $FlowFixMe[incompatible-cast]: force type refinement, we compare offsetParent with window above, but Flow doesn't detect it
+        offsetParent;
+        if (placement === (0, $2e89e95ac593bfb0$export$1e95b668f3b82d) || (placement === (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4) || placement === (0, $2e89e95ac593bfb0$export$79ffe56a765070d2)) && variation === (0, $2e89e95ac593bfb0$export$bd5df0f255a350f8)) {
+            sideY = (0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb);
+            var offsetY = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.height : offsetParent[heightProp];
+            y -= offsetY - popperRect.height;
+            y *= gpuAcceleration ? 1 : -1;
+        }
+        if (placement === (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4) || (placement === (0, $2e89e95ac593bfb0$export$1e95b668f3b82d) || placement === (0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb)) && variation === (0, $2e89e95ac593bfb0$export$bd5df0f255a350f8)) {
+            sideX = (0, $2e89e95ac593bfb0$export$79ffe56a765070d2);
+            var offsetX = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.width : offsetParent[widthProp];
+            x -= offsetX - popperRect.width;
+            x *= gpuAcceleration ? 1 : -1;
+        }
+    }
+    var commonStyles = Object.assign({
+        position: position
+    }, adaptive && $256aa699194dfe79$var$unsetSides);
+    var _ref4 = roundOffsets === true ? $256aa699194dfe79$var$roundOffsetsByDPR({
+        x: x,
+        y: y
+    }) : {
+        x: x,
+        y: y
+    };
+    x = _ref4.x;
+    y = _ref4.y;
+    if (gpuAcceleration) {
+        var _Object$assign;
+        return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? "0" : "", _Object$assign[sideX] = hasX ? "0" : "", _Object$assign.transform = (win.devicePixelRatio || 1) <= 1 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
+    }
+    return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : "", _Object$assign2[sideX] = hasX ? x + "px" : "", _Object$assign2.transform = "", _Object$assign2));
+}
+function $256aa699194dfe79$var$computeStyles(_ref5) {
+    var state = _ref5.state, options = _ref5.options;
+    var _options$gpuAccelerat = options.gpuAcceleration, gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat, _options$adaptive = options.adaptive, adaptive = _options$adaptive === void 0 ? true : _options$adaptive, _options$roundOffsets = options.roundOffsets, roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
+    var transitionProperty, property;
+    var commonStyles = {
+        placement: (0, $ab879862a948a1f3$export$2e2bcd8739ae039)(state.placement),
+        variation: (0, $a6ffbe6b3b795e7b$export$2e2bcd8739ae039)(state.placement),
+        popper: state.elements.popper,
+        popperRect: state.rects.popper,
+        gpuAcceleration: gpuAcceleration,
+        isFixed: state.options.strategy === "fixed"
+    };
+    if (state.modifiersData.popperOffsets != null) state.styles.popper = Object.assign({}, state.styles.popper, $256aa699194dfe79$export$378fa78a8fea596f(Object.assign({}, commonStyles, {
+        offsets: state.modifiersData.popperOffsets,
+        position: state.options.strategy,
+        adaptive: adaptive,
+        roundOffsets: roundOffsets
+    })));
+    if (state.modifiersData.arrow != null) state.styles.arrow = Object.assign({}, state.styles.arrow, $256aa699194dfe79$export$378fa78a8fea596f(Object.assign({}, commonStyles, {
+        offsets: state.modifiersData.arrow,
+        position: "absolute",
+        adaptive: false,
+        roundOffsets: roundOffsets
+    })));
+    state.attributes.popper = Object.assign({}, state.attributes.popper, {
+        "data-popper-placement": state.placement
+    });
+} // eslint-disable-next-line import/no-unused-modules
+var $256aa699194dfe79$export$2e2bcd8739ae039 = {
+    name: "computeStyles",
+    enabled: true,
+    phase: "beforeWrite",
+    fn: $256aa699194dfe79$var$computeStyles,
+    data: {}
+};
+
+
+
+
+// and applies them to the HTMLElements such as popper and arrow
+function $bc04af748f55319c$var$applyStyles(_ref) {
+    var state = _ref.state;
+    Object.keys(state.elements).forEach(function(name1) {
+        var style = state.styles[name1] || {};
+        var attributes = state.attributes[name1] || {};
+        var element = state.elements[name1]; // arrow is optional + virtual elements
+        if (!(0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(element) || !(0, $a99f9ebca3ba2730$export$2e2bcd8739ae039)(element)) return;
+         // Flow doesn't support to extend this property, but it's the most
+        // effective way to apply styles to an HTMLElement
+        // $FlowFixMe[cannot-write]
+        Object.assign(element.style, style);
+        Object.keys(attributes).forEach(function(name) {
+            var value = attributes[name];
+            if (value === false) element.removeAttribute(name);
+            else element.setAttribute(name, value === true ? "" : value);
+        });
+    });
+}
+function $bc04af748f55319c$var$effect(_ref2) {
+    var state = _ref2.state;
+    var initialStyles = {
+        popper: {
+            position: state.options.strategy,
+            left: "0",
+            top: "0",
+            margin: "0"
+        },
+        arrow: {
+            position: "absolute"
+        },
+        reference: {}
+    };
+    Object.assign(state.elements.popper.style, initialStyles.popper);
+    state.styles = initialStyles;
+    if (state.elements.arrow) Object.assign(state.elements.arrow.style, initialStyles.arrow);
+    return function() {
+        Object.keys(state.elements).forEach(function(name) {
+            var element = state.elements[name];
+            var attributes = state.attributes[name] || {};
+            var styleProperties = Object.keys(state.styles.hasOwnProperty(name) ? state.styles[name] : initialStyles[name]); // Set all values to an empty string to unset them
+            var style1 = styleProperties.reduce(function(style, property) {
+                style[property] = "";
+                return style;
+            }, {}); // arrow is optional + virtual elements
+            if (!(0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(element) || !(0, $a99f9ebca3ba2730$export$2e2bcd8739ae039)(element)) return;
+            Object.assign(element.style, style1);
+            Object.keys(attributes).forEach(function(attribute) {
+                element.removeAttribute(attribute);
+            });
+        });
+    };
+} // eslint-disable-next-line import/no-unused-modules
+var $bc04af748f55319c$export$2e2bcd8739ae039 = {
+    name: "applyStyles",
+    enabled: true,
+    phase: "write",
+    fn: $bc04af748f55319c$var$applyStyles,
+    effect: $bc04af748f55319c$var$effect,
+    requires: [
+        "computeStyles"
+    ]
+};
+
+
+
+
+function $a330bb739738cf18$export$7fa02d8595b015ed(placement, rects, offset1) {
+    var basePlacement = (0, $ab879862a948a1f3$export$2e2bcd8739ae039)(placement);
+    var invertDistance = [
+        (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4),
+        (0, $2e89e95ac593bfb0$export$1e95b668f3b82d)
+    ].indexOf(basePlacement) >= 0 ? -1 : 1;
+    var _ref = typeof offset1 === "function" ? offset1(Object.assign({}, rects, {
+        placement: placement
+    })) : offset1, skidding = _ref[0], distance = _ref[1];
+    skidding = skidding || 0;
+    distance = (distance || 0) * invertDistance;
+    return [
+        (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4),
+        (0, $2e89e95ac593bfb0$export$79ffe56a765070d2)
+    ].indexOf(basePlacement) >= 0 ? {
+        x: distance,
+        y: skidding
+    } : {
+        x: skidding,
+        y: distance
+    };
+}
+function $a330bb739738cf18$var$offset(_ref2) {
+    var state = _ref2.state, options = _ref2.options, name = _ref2.name;
+    var _options$offset = options.offset, offset2 = _options$offset === void 0 ? [
+        0,
+        0
+    ] : _options$offset;
+    var data = (0, $2e89e95ac593bfb0$export$803cd8101b6c182b).reduce(function(acc, placement) {
+        acc[placement] = $a330bb739738cf18$export$7fa02d8595b015ed(placement, state.rects, offset2);
+        return acc;
+    }, {});
+    var _data$state$placement = data[state.placement], x = _data$state$placement.x, y = _data$state$placement.y;
+    if (state.modifiersData.popperOffsets != null) {
+        state.modifiersData.popperOffsets.x += x;
+        state.modifiersData.popperOffsets.y += y;
+    }
+    state.modifiersData[name] = data;
+} // eslint-disable-next-line import/no-unused-modules
+var $a330bb739738cf18$export$2e2bcd8739ae039 = {
+    name: "offset",
+    enabled: true,
+    phase: "main",
+    requires: [
+        "popperOffsets"
+    ],
+    fn: $a330bb739738cf18$var$offset
+};
+
+
+var $4cec354ece277182$var$hash = {
+    left: "right",
+    right: "left",
+    bottom: "top",
+    top: "bottom"
+};
+function $4cec354ece277182$export$2e2bcd8739ae039(placement) {
+    return placement.replace(/left|right|bottom|top/g, function(matched) {
+        return $4cec354ece277182$var$hash[matched];
+    });
+}
+
+
+
+var $7e39388afe8fd057$var$hash = {
+    start: "end",
+    end: "start"
+};
+function $7e39388afe8fd057$export$2e2bcd8739ae039(placement) {
+    return placement.replace(/start|end/g, function(matched) {
+        return $7e39388afe8fd057$var$hash[matched];
+    });
+}
+
+
+
+
+
+
+function $37c225d49e918c6b$export$2e2bcd8739ae039(element) {
+    var win = (0, $30cb9ba4921cb24c$export$2e2bcd8739ae039)(element);
+    var html = (0, $051b9280bc9384db$export$2e2bcd8739ae039)(element);
+    var visualViewport = win.visualViewport;
+    var width = html.clientWidth;
+    var height = html.clientHeight;
+    var x = 0;
+    var y = 0; // NB: This isn't supported on iOS <= 12. If the keyboard is open, the popper
+    // can be obscured underneath it.
+    // Also, `html.clientHeight` adds the bottom bar height in Safari iOS, even
+    // if it isn't open, so if this isn't available, the popper will be detected
+    // to overflow the bottom of the screen too early.
+    if (visualViewport) {
+        width = visualViewport.width;
+        height = visualViewport.height; // Uses Layout Viewport (like Chrome; Safari does not currently)
+        // In Chrome, it returns a value very close to 0 (+/-) but contains rounding
+        // errors due to floating point numbers, so we need to check precision.
+        // Safari returns a number <= 0, usually < -1 when pinch-zoomed
+        // Feature detection fails in mobile emulation mode in Chrome.
+        // Math.abs(win.innerWidth / visualViewport.scale - visualViewport.width) <
+        // 0.001
+        // Fallback here: "Not Safari" userAgent
+        if (!/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+            x = visualViewport.offsetLeft;
+            y = visualViewport.offsetTop;
+        }
+    }
+    return {
+        width: width,
+        height: height,
+        x: x + (0, $83d7cdd03a66c6bd$export$2e2bcd8739ae039)(element),
+        y: y
+    };
+}
+
+
+
+
+
+
+
+function $6cb7b16a24759d72$export$2e2bcd8739ae039(element) {
+    var _element$ownerDocumen;
+    var html = (0, $051b9280bc9384db$export$2e2bcd8739ae039)(element);
+    var winScroll = (0, $68c73aba05e12bb4$export$2e2bcd8739ae039)(element);
+    var body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
+    var width = (0, $d888c1c5c6139f87$export$8960430cfd85939f)(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+    var height = (0, $d888c1c5c6139f87$export$8960430cfd85939f)(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+    var x = -winScroll.scrollLeft + (0, $83d7cdd03a66c6bd$export$2e2bcd8739ae039)(element);
+    var y = -winScroll.scrollTop;
+    if ((0, $95179c71c901ae5b$export$2e2bcd8739ae039)(body || html).direction === "rtl") x += (0, $d888c1c5c6139f87$export$8960430cfd85939f)(html.clientWidth, body ? body.clientWidth : 0) - width;
+    return {
+        width: width,
+        height: height,
+        x: x,
+        y: y
+    };
+}
+
+
+
+
+
+
+
+
+
+
+function $a713e46d1a16fece$export$2e2bcd8739ae039(parent, child) {
+    var rootNode = child.getRootNode && child.getRootNode(); // First, attempt with faster native method
+    if (parent.contains(child)) return true;
+    else if (rootNode && (0, $98a5ed6e9cc93b6b$export$af51f0f06c0f328a)(rootNode)) {
+        var next = child;
+        do {
+            if (next && parent.isSameNode(next)) return true;
+             // $FlowFixMe[prop-missing]: need a better way to handle this...
+            next = next.parentNode || next.host;
+        }while (next);
+    } // Give up, the result is false
+    return false;
+}
+
+
+
+function $950d624f2d59e88c$export$2e2bcd8739ae039(rect) {
+    return Object.assign({}, rect, {
+        left: rect.x,
+        top: rect.y,
+        right: rect.x + rect.width,
+        bottom: rect.y + rect.height
+    });
+}
+
+
+
+function $41746b27f6218672$var$getInnerBoundingClientRect(element) {
+    var rect = (0, $b5d1770c17971102$export$2e2bcd8739ae039)(element);
+    rect.top = rect.top + element.clientTop;
+    rect.left = rect.left + element.clientLeft;
+    rect.bottom = rect.top + element.clientHeight;
+    rect.right = rect.left + element.clientWidth;
+    rect.width = element.clientWidth;
+    rect.height = element.clientHeight;
+    rect.x = rect.left;
+    rect.y = rect.top;
+    return rect;
+}
+function $41746b27f6218672$var$getClientRectFromMixedType(element, clippingParent) {
+    return clippingParent === (0, $2e89e95ac593bfb0$export$d7b7311ec04a3e8f) ? (0, $950d624f2d59e88c$export$2e2bcd8739ae039)((0, $37c225d49e918c6b$export$2e2bcd8739ae039)(element)) : (0, $98a5ed6e9cc93b6b$export$45a5e7f76e0caa8d)(clippingParent) ? $41746b27f6218672$var$getInnerBoundingClientRect(clippingParent) : (0, $950d624f2d59e88c$export$2e2bcd8739ae039)((0, $6cb7b16a24759d72$export$2e2bcd8739ae039)((0, $051b9280bc9384db$export$2e2bcd8739ae039)(element)));
+} // A "clipping parent" is an overflowable container with the characteristic of
+// clipping (or hiding) overflowing elements with a position different from
+// `initial`
+function $41746b27f6218672$var$getClippingParents(element) {
+    var clippingParents = (0, $6e71595481654e2c$export$2e2bcd8739ae039)((0, $5ecd5a6819f6d2de$export$2e2bcd8739ae039)(element));
+    var canEscapeClipping = [
+        "absolute",
+        "fixed"
+    ].indexOf((0, $95179c71c901ae5b$export$2e2bcd8739ae039)(element).position) >= 0;
+    var clipperElement = canEscapeClipping && (0, $98a5ed6e9cc93b6b$export$1b3bfaa9684536aa)(element) ? (0, $eba16a63ee488722$export$2e2bcd8739ae039)(element) : element;
+    if (!(0, $98a5ed6e9cc93b6b$export$45a5e7f76e0caa8d)(clipperElement)) return [];
+     // $FlowFixMe[incompatible-return]: https://github.com/facebook/flow/issues/1414
+    return clippingParents.filter(function(clippingParent) {
+        return (0, $98a5ed6e9cc93b6b$export$45a5e7f76e0caa8d)(clippingParent) && (0, $a713e46d1a16fece$export$2e2bcd8739ae039)(clippingParent, clipperElement) && (0, $a99f9ebca3ba2730$export$2e2bcd8739ae039)(clippingParent) !== "body";
+    });
+} // Gets the maximum area that the element is visible in due to any number of
+function $41746b27f6218672$export$2e2bcd8739ae039(element, boundary, rootBoundary) {
+    var mainClippingParents = boundary === "clippingParents" ? $41746b27f6218672$var$getClippingParents(element) : [].concat(boundary);
+    var clippingParents = [].concat(mainClippingParents, [
+        rootBoundary
+    ]);
+    var firstClippingParent = clippingParents[0];
+    var clippingRect = clippingParents.reduce(function(accRect, clippingParent) {
+        var rect = $41746b27f6218672$var$getClientRectFromMixedType(element, clippingParent);
+        accRect.top = (0, $d888c1c5c6139f87$export$8960430cfd85939f)(rect.top, accRect.top);
+        accRect.right = (0, $d888c1c5c6139f87$export$96ec731ed4dcb222)(rect.right, accRect.right);
+        accRect.bottom = (0, $d888c1c5c6139f87$export$96ec731ed4dcb222)(rect.bottom, accRect.bottom);
+        accRect.left = (0, $d888c1c5c6139f87$export$8960430cfd85939f)(rect.left, accRect.left);
+        return accRect;
+    }, $41746b27f6218672$var$getClientRectFromMixedType(element, firstClippingParent));
+    clippingRect.width = clippingRect.right - clippingRect.left;
+    clippingRect.height = clippingRect.bottom - clippingRect.top;
+    clippingRect.x = clippingRect.left;
+    clippingRect.y = clippingRect.top;
+    return clippingRect;
+}
+
+
+
+
+
+
+
+
+function $d19f335b8f35ec35$export$2e2bcd8739ae039() {
+    return {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+    };
+}
+
+
+function $198985865496074e$export$2e2bcd8739ae039(paddingObject) {
+    return Object.assign({}, (0, $d19f335b8f35ec35$export$2e2bcd8739ae039)(), paddingObject);
+}
+
+
+function $24d27a140f178159$export$2e2bcd8739ae039(value, keys) {
+    return keys.reduce(function(hashMap, key) {
+        hashMap[key] = value;
+        return hashMap;
+    }, {});
+}
+
+
+function $b39aa2f9306db321$export$2e2bcd8739ae039(state, options) {
+    if (options === void 0) options = {};
+    var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state.placement : _options$placement, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? (0, $2e89e95ac593bfb0$export$390fd549c5303b4d) : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? (0, $2e89e95ac593bfb0$export$d7b7311ec04a3e8f) : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? (0, $2e89e95ac593bfb0$export$ae5ab1c730825774) : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding = _options$padding === void 0 ? 0 : _options$padding;
+    var paddingObject = (0, $198985865496074e$export$2e2bcd8739ae039)(typeof padding !== "number" ? padding : (0, $24d27a140f178159$export$2e2bcd8739ae039)(padding, (0, $2e89e95ac593bfb0$export$aec2ce47c367b8c3)));
+    var altContext = elementContext === (0, $2e89e95ac593bfb0$export$ae5ab1c730825774) ? (0, $2e89e95ac593bfb0$export$ca50aac9f3ba507f) : (0, $2e89e95ac593bfb0$export$ae5ab1c730825774);
+    var popperRect = state.rects.popper;
+    var element = state.elements[altBoundary ? altContext : elementContext];
+    var clippingClientRect = (0, $41746b27f6218672$export$2e2bcd8739ae039)((0, $98a5ed6e9cc93b6b$export$45a5e7f76e0caa8d)(element) ? element : element.contextElement || (0, $051b9280bc9384db$export$2e2bcd8739ae039)(state.elements.popper), boundary, rootBoundary);
+    var referenceClientRect = (0, $b5d1770c17971102$export$2e2bcd8739ae039)(state.elements.reference);
+    var popperOffsets = (0, $56c8084ae97fa384$export$2e2bcd8739ae039)({
+        reference: referenceClientRect,
+        element: popperRect,
+        strategy: "absolute",
+        placement: placement
+    });
+    var popperClientRect = (0, $950d624f2d59e88c$export$2e2bcd8739ae039)(Object.assign({}, popperRect, popperOffsets));
+    var elementClientRect = elementContext === (0, $2e89e95ac593bfb0$export$ae5ab1c730825774) ? popperClientRect : referenceClientRect; // positive = overflowing the clipping rect
+    // 0 or negative = within the clipping rect
+    var overflowOffsets = {
+        top: clippingClientRect.top - elementClientRect.top + paddingObject.top,
+        bottom: elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom,
+        left: clippingClientRect.left - elementClientRect.left + paddingObject.left,
+        right: elementClientRect.right - clippingClientRect.right + paddingObject.right
+    };
+    var offsetData = state.modifiersData.offset; // Offsets can be applied only to the popper element
+    if (elementContext === (0, $2e89e95ac593bfb0$export$ae5ab1c730825774) && offsetData) {
+        var offset = offsetData[placement];
+        Object.keys(overflowOffsets).forEach(function(key) {
+            var multiply = [
+                (0, $2e89e95ac593bfb0$export$79ffe56a765070d2),
+                (0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb)
+            ].indexOf(key) >= 0 ? 1 : -1;
+            var axis = [
+                (0, $2e89e95ac593bfb0$export$1e95b668f3b82d),
+                (0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb)
+            ].indexOf(key) >= 0 ? "y" : "x";
+            overflowOffsets[key] += offset[axis] * multiply;
+        });
+    }
+    return overflowOffsets;
+}
+
+
+
+
+
+
+function $1aa279fa58755a4a$export$2e2bcd8739ae039(state, options) {
+    if (options === void 0) options = {};
+    var _options = options, placement1 = _options.placement, boundary = _options.boundary, rootBoundary = _options.rootBoundary, padding = _options.padding, flipVariations = _options.flipVariations, _options$allowedAutoP = _options.allowedAutoPlacements, allowedAutoPlacements = _options$allowedAutoP === void 0 ? (0, $2e89e95ac593bfb0$export$803cd8101b6c182b) : _options$allowedAutoP;
+    var variation = (0, $a6ffbe6b3b795e7b$export$2e2bcd8739ae039)(placement1);
+    var placements = variation ? flipVariations ? (0, $2e89e95ac593bfb0$export$368f9a87e87fa4e1) : (0, $2e89e95ac593bfb0$export$368f9a87e87fa4e1).filter(function(placement) {
+        return (0, $a6ffbe6b3b795e7b$export$2e2bcd8739ae039)(placement) === variation;
+    }) : (0, $2e89e95ac593bfb0$export$aec2ce47c367b8c3);
+    var allowedPlacements = placements.filter(function(placement) {
+        return allowedAutoPlacements.indexOf(placement) >= 0;
+    });
+    if (allowedPlacements.length === 0) allowedPlacements = placements;
+     // $FlowFixMe[incompatible-type]: Flow seems to have problems with two array unions...
+    var overflows = allowedPlacements.reduce(function(acc, placement) {
+        acc[placement] = (0, $b39aa2f9306db321$export$2e2bcd8739ae039)(state, {
+            placement: placement,
+            boundary: boundary,
+            rootBoundary: rootBoundary,
+            padding: padding
+        })[(0, $ab879862a948a1f3$export$2e2bcd8739ae039)(placement)];
+        return acc;
+    }, {});
+    return Object.keys(overflows).sort(function(a, b) {
+        return overflows[a] - overflows[b];
+    });
+}
+
+
+
+
+function $2f96817885d7e372$var$getExpandedFallbackPlacements(placement) {
+    if ((0, $ab879862a948a1f3$export$2e2bcd8739ae039)(placement) === (0, $2e89e95ac593bfb0$export$dfb5619354ba860)) return [];
+    var oppositePlacement = (0, $4cec354ece277182$export$2e2bcd8739ae039)(placement);
+    return [
+        (0, $7e39388afe8fd057$export$2e2bcd8739ae039)(placement),
+        oppositePlacement,
+        (0, $7e39388afe8fd057$export$2e2bcd8739ae039)(oppositePlacement)
+    ];
+}
+function $2f96817885d7e372$var$flip(_ref) {
+    var state = _ref.state, options = _ref.options, name = _ref.name;
+    if (state.modifiersData[name]._skip) return;
+    var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? true : _options$altAxis, specifiedFallbackPlacements = options.fallbackPlacements, padding = options.padding, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, _options$flipVariatio = options.flipVariations, flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio, allowedAutoPlacements = options.allowedAutoPlacements;
+    var preferredPlacement = state.options.placement;
+    var basePlacement = (0, $ab879862a948a1f3$export$2e2bcd8739ae039)(preferredPlacement);
+    var isBasePlacement = basePlacement === preferredPlacement;
+    var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [
+        (0, $4cec354ece277182$export$2e2bcd8739ae039)(preferredPlacement)
+    ] : $2f96817885d7e372$var$getExpandedFallbackPlacements(preferredPlacement));
+    var placements = [
+        preferredPlacement
+    ].concat(fallbackPlacements).reduce(function(acc, placement) {
+        return acc.concat((0, $ab879862a948a1f3$export$2e2bcd8739ae039)(placement) === (0, $2e89e95ac593bfb0$export$dfb5619354ba860) ? (0, $1aa279fa58755a4a$export$2e2bcd8739ae039)(state, {
+            placement: placement,
+            boundary: boundary,
+            rootBoundary: rootBoundary,
+            padding: padding,
+            flipVariations: flipVariations,
+            allowedAutoPlacements: allowedAutoPlacements
+        }) : placement);
+    }, []);
+    var referenceRect = state.rects.reference;
+    var popperRect = state.rects.popper;
+    var checksMap = new Map();
+    var makeFallbackChecks = true;
+    var firstFittingPlacement = placements[0];
+    for(var i = 0; i < placements.length; i++){
+        var placement1 = placements[i];
+        var _basePlacement = (0, $ab879862a948a1f3$export$2e2bcd8739ae039)(placement1);
+        var isStartVariation = (0, $a6ffbe6b3b795e7b$export$2e2bcd8739ae039)(placement1) === (0, $2e89e95ac593bfb0$export$b3571188c770cc5a);
+        var isVertical = [
+            (0, $2e89e95ac593bfb0$export$1e95b668f3b82d),
+            (0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb)
+        ].indexOf(_basePlacement) >= 0;
+        var len = isVertical ? "width" : "height";
+        var overflow = (0, $b39aa2f9306db321$export$2e2bcd8739ae039)(state, {
+            placement: placement1,
+            boundary: boundary,
+            rootBoundary: rootBoundary,
+            altBoundary: altBoundary,
+            padding: padding
+        });
+        var mainVariationSide = isVertical ? isStartVariation ? (0, $2e89e95ac593bfb0$export$79ffe56a765070d2) : (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4) : isStartVariation ? (0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb) : (0, $2e89e95ac593bfb0$export$1e95b668f3b82d);
+        if (referenceRect[len] > popperRect[len]) mainVariationSide = (0, $4cec354ece277182$export$2e2bcd8739ae039)(mainVariationSide);
+        var altVariationSide = (0, $4cec354ece277182$export$2e2bcd8739ae039)(mainVariationSide);
+        var checks = [];
+        if (checkMainAxis) checks.push(overflow[_basePlacement] <= 0);
+        if (checkAltAxis) checks.push(overflow[mainVariationSide] <= 0, overflow[altVariationSide] <= 0);
+        if (checks.every(function(check) {
+            return check;
+        })) {
+            firstFittingPlacement = placement1;
+            makeFallbackChecks = false;
+            break;
+        }
+        checksMap.set(placement1, checks);
+    }
+    if (makeFallbackChecks) {
+        // `2` may be desired in some cases – research later
+        var numberOfChecks = flipVariations ? 3 : 1;
+        var _loop = function _loop(_i) {
+            var fittingPlacement = placements.find(function(placement) {
+                var checks = checksMap.get(placement);
+                if (checks) return checks.slice(0, _i).every(function(check) {
+                    return check;
+                });
+            });
+            if (fittingPlacement) {
+                firstFittingPlacement = fittingPlacement;
+                return "break";
+            }
+        };
+        for(var _i1 = numberOfChecks; _i1 > 0; _i1--){
+            var _ret = _loop(_i1);
+            if (_ret === "break") break;
+        }
+    }
+    if (state.placement !== firstFittingPlacement) {
+        state.modifiersData[name]._skip = true;
+        state.placement = firstFittingPlacement;
+        state.reset = true;
+    }
+} // eslint-disable-next-line import/no-unused-modules
+var $2f96817885d7e372$export$2e2bcd8739ae039 = {
+    name: "flip",
+    enabled: true,
+    phase: "main",
+    fn: $2f96817885d7e372$var$flip,
+    requiresIfExists: [
+        "offset"
+    ],
+    data: {
+        _skip: false
+    }
+};
+
+
+
+
+
+function $117caa8bfa49c53b$export$2e2bcd8739ae039(axis) {
+    return axis === "x" ? "y" : "x";
+}
+
+
+
+function $720afa5761e0363d$export$f28d906d67a997f3(min, value, max) {
+    return (0, $d888c1c5c6139f87$export$8960430cfd85939f)(min, (0, $d888c1c5c6139f87$export$96ec731ed4dcb222)(value, max));
+}
+function $720afa5761e0363d$export$86c8af6d3ef0b4a(min, value, max) {
+    var v = $720afa5761e0363d$export$f28d906d67a997f3(min, value, max);
+    return v > max ? max : v;
+}
+
+
+
+
+
+
+
+
+function $fc06601977373d48$var$preventOverflow(_ref) {
+    var state = _ref.state, options = _ref.options, name = _ref.name;
+    var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? false : _options$altAxis, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, padding = options.padding, _options$tether = options.tether, tether = _options$tether === void 0 ? true : _options$tether, _options$tetherOffset = options.tetherOffset, tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;
+    var overflow = (0, $b39aa2f9306db321$export$2e2bcd8739ae039)(state, {
+        boundary: boundary,
+        rootBoundary: rootBoundary,
+        padding: padding,
+        altBoundary: altBoundary
+    });
+    var basePlacement = (0, $ab879862a948a1f3$export$2e2bcd8739ae039)(state.placement);
+    var variation = (0, $a6ffbe6b3b795e7b$export$2e2bcd8739ae039)(state.placement);
+    var isBasePlacement = !variation;
+    var mainAxis = (0, $062b0bd957edc577$export$2e2bcd8739ae039)(basePlacement);
+    var altAxis = (0, $117caa8bfa49c53b$export$2e2bcd8739ae039)(mainAxis);
+    var popperOffsets = state.modifiersData.popperOffsets;
+    var referenceRect = state.rects.reference;
+    var popperRect = state.rects.popper;
+    var tetherOffsetValue = typeof tetherOffset === "function" ? tetherOffset(Object.assign({}, state.rects, {
+        placement: state.placement
+    })) : tetherOffset;
+    var normalizedTetherOffsetValue = typeof tetherOffsetValue === "number" ? {
+        mainAxis: tetherOffsetValue,
+        altAxis: tetherOffsetValue
+    } : Object.assign({
+        mainAxis: 0,
+        altAxis: 0
+    }, tetherOffsetValue);
+    var offsetModifierState = state.modifiersData.offset ? state.modifiersData.offset[state.placement] : null;
+    var data = {
+        x: 0,
+        y: 0
+    };
+    if (!popperOffsets) return;
+    if (checkMainAxis) {
+        var _offsetModifierState$;
+        var mainSide = mainAxis === "y" ? (0, $2e89e95ac593bfb0$export$1e95b668f3b82d) : (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4);
+        var altSide = mainAxis === "y" ? (0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb) : (0, $2e89e95ac593bfb0$export$79ffe56a765070d2);
+        var len = mainAxis === "y" ? "height" : "width";
+        var offset = popperOffsets[mainAxis];
+        var min = offset + overflow[mainSide];
+        var max = offset - overflow[altSide];
+        var additive = tether ? -popperRect[len] / 2 : 0;
+        var minLen = variation === (0, $2e89e95ac593bfb0$export$b3571188c770cc5a) ? referenceRect[len] : popperRect[len];
+        var maxLen = variation === (0, $2e89e95ac593bfb0$export$b3571188c770cc5a) ? -popperRect[len] : -referenceRect[len]; // We need to include the arrow in the calculation so the arrow doesn't go
+        // outside the reference bounds
+        var arrowElement = state.elements.arrow;
+        var arrowRect = tether && arrowElement ? (0, $e6ac2fccfcb26231$export$2e2bcd8739ae039)(arrowElement) : {
+            width: 0,
+            height: 0
+        };
+        var arrowPaddingObject = state.modifiersData["arrow#persistent"] ? state.modifiersData["arrow#persistent"].padding : (0, $d19f335b8f35ec35$export$2e2bcd8739ae039)();
+        var arrowPaddingMin = arrowPaddingObject[mainSide];
+        var arrowPaddingMax = arrowPaddingObject[altSide]; // If the reference length is smaller than the arrow length, we don't want
+        // to include its full size in the calculation. If the reference is small
+        // and near the edge of a boundary, the popper can overflow even if the
+        // reference is not overflowing as well (e.g. virtual elements with no
+        // width or height)
+        var arrowLen = (0, $720afa5761e0363d$export$f28d906d67a997f3)(0, referenceRect[len], arrowRect[len]);
+        var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis : minLen - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis;
+        var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis : maxLen + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis;
+        var arrowOffsetParent = state.elements.arrow && (0, $eba16a63ee488722$export$2e2bcd8739ae039)(state.elements.arrow);
+        var clientOffset = arrowOffsetParent ? mainAxis === "y" ? arrowOffsetParent.clientTop || 0 : arrowOffsetParent.clientLeft || 0 : 0;
+        var offsetModifierValue = (_offsetModifierState$ = offsetModifierState == null ? void 0 : offsetModifierState[mainAxis]) != null ? _offsetModifierState$ : 0;
+        var tetherMin = offset + minOffset - offsetModifierValue - clientOffset;
+        var tetherMax = offset + maxOffset - offsetModifierValue;
+        var preventedOffset = (0, $720afa5761e0363d$export$f28d906d67a997f3)(tether ? (0, $d888c1c5c6139f87$export$96ec731ed4dcb222)(min, tetherMin) : min, offset, tether ? (0, $d888c1c5c6139f87$export$8960430cfd85939f)(max, tetherMax) : max);
+        popperOffsets[mainAxis] = preventedOffset;
+        data[mainAxis] = preventedOffset - offset;
+    }
+    if (checkAltAxis) {
+        var _offsetModifierState$2;
+        var _mainSide = mainAxis === "x" ? (0, $2e89e95ac593bfb0$export$1e95b668f3b82d) : (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4);
+        var _altSide = mainAxis === "x" ? (0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb) : (0, $2e89e95ac593bfb0$export$79ffe56a765070d2);
+        var _offset = popperOffsets[altAxis];
+        var _len = altAxis === "y" ? "height" : "width";
+        var _min = _offset + overflow[_mainSide];
+        var _max = _offset - overflow[_altSide];
+        var isOriginSide = [
+            (0, $2e89e95ac593bfb0$export$1e95b668f3b82d),
+            (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4)
+        ].indexOf(basePlacement) !== -1;
+        var _offsetModifierValue = (_offsetModifierState$2 = offsetModifierState == null ? void 0 : offsetModifierState[altAxis]) != null ? _offsetModifierState$2 : 0;
+        var _tetherMin = isOriginSide ? _min : _offset - referenceRect[_len] - popperRect[_len] - _offsetModifierValue + normalizedTetherOffsetValue.altAxis;
+        var _tetherMax = isOriginSide ? _offset + referenceRect[_len] + popperRect[_len] - _offsetModifierValue - normalizedTetherOffsetValue.altAxis : _max;
+        var _preventedOffset = tether && isOriginSide ? (0, $720afa5761e0363d$export$86c8af6d3ef0b4a)(_tetherMin, _offset, _tetherMax) : (0, $720afa5761e0363d$export$f28d906d67a997f3)(tether ? _tetherMin : _min, _offset, tether ? _tetherMax : _max);
+        popperOffsets[altAxis] = _preventedOffset;
+        data[altAxis] = _preventedOffset - _offset;
+    }
+    state.modifiersData[name] = data;
+} // eslint-disable-next-line import/no-unused-modules
+var $fc06601977373d48$export$2e2bcd8739ae039 = {
+    name: "preventOverflow",
+    enabled: true,
+    phase: "main",
+    fn: $fc06601977373d48$var$preventOverflow,
+    requiresIfExists: [
+        "offset"
+    ]
+};
+
+
+
+
+
+
+
+
+
+
+
+
+var $539c3eb46bc0c50d$var$toPaddingObject = function toPaddingObject(padding, state) {
+    padding = typeof padding === "function" ? padding(Object.assign({}, state.rects, {
+        placement: state.placement
+    })) : padding;
+    return (0, $198985865496074e$export$2e2bcd8739ae039)(typeof padding !== "number" ? padding : (0, $24d27a140f178159$export$2e2bcd8739ae039)(padding, (0, $2e89e95ac593bfb0$export$aec2ce47c367b8c3)));
+};
+function $539c3eb46bc0c50d$var$arrow(_ref) {
+    var _state$modifiersData$;
+    var state = _ref.state, name = _ref.name, options = _ref.options;
+    var arrowElement = state.elements.arrow;
+    var popperOffsets = state.modifiersData.popperOffsets;
+    var basePlacement = (0, $ab879862a948a1f3$export$2e2bcd8739ae039)(state.placement);
+    var axis = (0, $062b0bd957edc577$export$2e2bcd8739ae039)(basePlacement);
+    var isVertical = [
+        (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4),
+        (0, $2e89e95ac593bfb0$export$79ffe56a765070d2)
+    ].indexOf(basePlacement) >= 0;
+    var len = isVertical ? "height" : "width";
+    if (!arrowElement || !popperOffsets) return;
+    var paddingObject = $539c3eb46bc0c50d$var$toPaddingObject(options.padding, state);
+    var arrowRect = (0, $e6ac2fccfcb26231$export$2e2bcd8739ae039)(arrowElement);
+    var minProp = axis === "y" ? (0, $2e89e95ac593bfb0$export$1e95b668f3b82d) : (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4);
+    var maxProp = axis === "y" ? (0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb) : (0, $2e89e95ac593bfb0$export$79ffe56a765070d2);
+    var endDiff = state.rects.reference[len] + state.rects.reference[axis] - popperOffsets[axis] - state.rects.popper[len];
+    var startDiff = popperOffsets[axis] - state.rects.reference[axis];
+    var arrowOffsetParent = (0, $eba16a63ee488722$export$2e2bcd8739ae039)(arrowElement);
+    var clientSize = arrowOffsetParent ? axis === "y" ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
+    var centerToReference = endDiff / 2 - startDiff / 2; // Make sure the arrow doesn't overflow the popper if the center point is
+    // outside of the popper bounds
+    var min = paddingObject[minProp];
+    var max = clientSize - arrowRect[len] - paddingObject[maxProp];
+    var center = clientSize / 2 - arrowRect[len] / 2 + centerToReference;
+    var offset = (0, $720afa5761e0363d$export$f28d906d67a997f3)(min, center, max); // Prevents breaking syntax highlighting...
+    var axisProp = axis;
+    state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset, _state$modifiersData$.centerOffset = offset - center, _state$modifiersData$);
+}
+function $539c3eb46bc0c50d$var$effect(_ref2) {
+    var state = _ref2.state, options = _ref2.options;
+    var _options$element = options.element, arrowElement = _options$element === void 0 ? "[data-popper-arrow]" : _options$element;
+    if (arrowElement == null) return;
+     // CSS selector
+    if (typeof arrowElement === "string") {
+        arrowElement = state.elements.popper.querySelector(arrowElement);
+        if (!arrowElement) return;
+    }
+    if (!(0, $a713e46d1a16fece$export$2e2bcd8739ae039)(state.elements.popper, arrowElement)) return;
+    state.elements.arrow = arrowElement;
+} // eslint-disable-next-line import/no-unused-modules
+var $539c3eb46bc0c50d$export$2e2bcd8739ae039 = {
+    name: "arrow",
+    enabled: true,
+    phase: "main",
+    fn: $539c3eb46bc0c50d$var$arrow,
+    effect: $539c3eb46bc0c50d$var$effect,
+    requires: [
+        "popperOffsets"
+    ],
+    requiresIfExists: [
+        "preventOverflow"
+    ]
+};
+
+
+
+
+function $dd2f448e6dbb0944$var$getSideOffsets(overflow, rect, preventedOffsets) {
+    if (preventedOffsets === void 0) preventedOffsets = {
+        x: 0,
+        y: 0
+    };
+    return {
+        top: overflow.top - rect.height - preventedOffsets.y,
+        right: overflow.right - rect.width + preventedOffsets.x,
+        bottom: overflow.bottom - rect.height + preventedOffsets.y,
+        left: overflow.left - rect.width - preventedOffsets.x
+    };
+}
+function $dd2f448e6dbb0944$var$isAnySideFullyClipped(overflow) {
+    return [
+        (0, $2e89e95ac593bfb0$export$1e95b668f3b82d),
+        (0, $2e89e95ac593bfb0$export$79ffe56a765070d2),
+        (0, $2e89e95ac593bfb0$export$40e543e69a8b3fbb),
+        (0, $2e89e95ac593bfb0$export$eabcd2c8791e7bf4)
+    ].some(function(side) {
+        return overflow[side] >= 0;
+    });
+}
+function $dd2f448e6dbb0944$var$hide(_ref) {
+    var state = _ref.state, name = _ref.name;
+    var referenceRect = state.rects.reference;
+    var popperRect = state.rects.popper;
+    var preventedOffsets = state.modifiersData.preventOverflow;
+    var referenceOverflow = (0, $b39aa2f9306db321$export$2e2bcd8739ae039)(state, {
+        elementContext: "reference"
+    });
+    var popperAltOverflow = (0, $b39aa2f9306db321$export$2e2bcd8739ae039)(state, {
+        altBoundary: true
+    });
+    var referenceClippingOffsets = $dd2f448e6dbb0944$var$getSideOffsets(referenceOverflow, referenceRect);
+    var popperEscapeOffsets = $dd2f448e6dbb0944$var$getSideOffsets(popperAltOverflow, popperRect, preventedOffsets);
+    var isReferenceHidden = $dd2f448e6dbb0944$var$isAnySideFullyClipped(referenceClippingOffsets);
+    var hasPopperEscaped = $dd2f448e6dbb0944$var$isAnySideFullyClipped(popperEscapeOffsets);
+    state.modifiersData[name] = {
+        referenceClippingOffsets: referenceClippingOffsets,
+        popperEscapeOffsets: popperEscapeOffsets,
+        isReferenceHidden: isReferenceHidden,
+        hasPopperEscaped: hasPopperEscaped
+    };
+    state.attributes.popper = Object.assign({}, state.attributes.popper, {
+        "data-popper-reference-hidden": isReferenceHidden,
+        "data-popper-escaped": hasPopperEscaped
+    });
+} // eslint-disable-next-line import/no-unused-modules
+var $dd2f448e6dbb0944$export$2e2bcd8739ae039 = {
+    name: "hide",
+    enabled: true,
+    phase: "main",
+    requiresIfExists: [
+        "preventOverflow"
+    ],
+    fn: $dd2f448e6dbb0944$var$hide
+};
+
+
+
+
+var $a3964a39831c9644$export$d34966752335dd47 = [
+    (0, $e8e0c7c69245c49b$export$2e2bcd8739ae039),
+    (0, $d284fc136785a15e$export$2e2bcd8739ae039),
+    (0, $256aa699194dfe79$export$2e2bcd8739ae039),
+    (0, $bc04af748f55319c$export$2e2bcd8739ae039),
+    (0, $a330bb739738cf18$export$2e2bcd8739ae039),
+    (0, $2f96817885d7e372$export$2e2bcd8739ae039),
+    (0, $fc06601977373d48$export$2e2bcd8739ae039),
+    (0, $539c3eb46bc0c50d$export$2e2bcd8739ae039),
+    (0, $dd2f448e6dbb0944$export$2e2bcd8739ae039)
+];
+var $a3964a39831c9644$export$8f7491d57c8f97a9 = /*#__PURE__*/ (0, $63bad0d90002a387$export$ed5e13716264f202)({
+    defaultModifiers: $a3964a39831c9644$export$d34966752335dd47
+}); // eslint-disable-next-line import/no-unused-modules
+
+
+
+
+
+var $gfogg = parcelRequire("gfogg");
+
+
+var $b85LX = parcelRequire("b85LX");
+
+var $b4FaI = parcelRequire("b4FaI");
+function $b56b1f206ed6396f$export$b4312079ad514ba0(slot) {
+    return (0, $b85LX.default)("MuiPopperUnstyled", slot);
+}
+const $b56b1f206ed6396f$var$popperUnstyledClasses = (0, $b4FaI.default)("MuiPopperUnstyled", [
+    "root"
+]);
+var $b56b1f206ed6396f$export$2e2bcd8739ae039 = $b56b1f206ed6396f$var$popperUnstyledClasses;
+
+
+
+var $56Gls = parcelRequire("56Gls");
+
+var $228IU = parcelRequire("228IU");
+const $e77baa03bdd574d4$var$_excluded = [
+    "anchorEl",
+    "children",
+    "component",
+    "components",
+    "componentsProps",
+    "direction",
+    "disablePortal",
+    "modifiers",
+    "open",
+    "ownerState",
+    "placement",
+    "popperOptions",
+    "popperRef",
+    "TransitionProps"
+], $e77baa03bdd574d4$var$_excluded2 = [
+    "anchorEl",
+    "children",
+    "container",
+    "direction",
+    "disablePortal",
+    "keepMounted",
+    "modifiers",
+    "open",
+    "placement",
+    "popperOptions",
+    "popperRef",
+    "style",
+    "transition"
+];
+function $e77baa03bdd574d4$var$flipPlacement(placement, direction) {
+    if (direction === "ltr") return placement;
+    switch(placement){
+        case "bottom-end":
+            return "bottom-start";
+        case "bottom-start":
+            return "bottom-end";
+        case "top-end":
+            return "top-start";
+        case "top-start":
+            return "top-end";
+        default:
+            return placement;
+    }
+}
+function $e77baa03bdd574d4$var$resolveAnchorEl(anchorEl) {
+    return typeof anchorEl === "function" ? anchorEl() : anchorEl;
+}
+const $e77baa03bdd574d4$var$useUtilityClasses = ()=>{
+    const slots = {
+        root: [
+            "root"
+        ]
+    };
+    return (0, $gfogg.default)(slots, (0, $b56b1f206ed6396f$export$b4312079ad514ba0), {});
+};
+const $e77baa03bdd574d4$var$defaultPopperOptions = {};
+/* eslint-disable react/prop-types */ const $e77baa03bdd574d4$var$PopperTooltip = /*#__PURE__*/ $d4J5n.forwardRef(function PopperTooltip(props, ref) {
+    var _ref;
+    const { anchorEl: anchorEl , children: children , component: component , components: components = {} , componentsProps: componentsProps = {} , direction: direction , disablePortal: disablePortal , modifiers: modifiers , open: open , ownerState: ownerState , placement: initialPlacement , popperOptions: popperOptions , popperRef: popperRefProp , TransitionProps: TransitionProps  } = props, other = (0, $9Zx8w.default)(props, $e77baa03bdd574d4$var$_excluded);
+    const tooltipRef = $d4J5n.useRef(null);
+    const ownRef = (0, $2uAQY.default)(tooltipRef, ref);
+    const popperRef = $d4J5n.useRef(null);
+    const handlePopperRef = (0, $2uAQY.default)(popperRef, popperRefProp);
+    const handlePopperRefRef = $d4J5n.useRef(handlePopperRef);
+    (0, $FtJh7.default)(()=>{
+        handlePopperRefRef.current = handlePopperRef;
+    }, [
+        handlePopperRef
+    ]);
+    $d4J5n.useImperativeHandle(popperRefProp, ()=>popperRef.current, []);
+    const rtlPlacement = $e77baa03bdd574d4$var$flipPlacement(initialPlacement, direction);
+    /**
+   * placement initialized from prop but can change during lifetime if modifiers.flip.
+   * modifiers.flip is essentially a flip for controlled/uncontrolled behavior
+   */ const [placement, setPlacement] = $d4J5n.useState(rtlPlacement);
+    $d4J5n.useEffect(()=>{
+        if (popperRef.current) popperRef.current.forceUpdate();
+    });
+    (0, $FtJh7.default)(()=>{
+        if (!anchorEl || !open) return undefined;
+        const handlePopperUpdate = (data)=>{
+            setPlacement(data.placement);
+        };
+        const resolvedAnchorEl = $e77baa03bdd574d4$var$resolveAnchorEl(anchorEl);
+        let popperModifiers = [
+            {
+                name: "preventOverflow",
+                options: {
+                    altBoundary: disablePortal
+                }
+            },
+            {
+                name: "flip",
+                options: {
+                    altBoundary: disablePortal
+                }
+            },
+            {
+                name: "onUpdate",
+                enabled: true,
+                phase: "afterWrite",
+                fn: ({ state: state  })=>{
+                    handlePopperUpdate(state);
+                }
+            }
+        ];
+        if (modifiers != null) popperModifiers = popperModifiers.concat(modifiers);
+        if (popperOptions && popperOptions.modifiers != null) popperModifiers = popperModifiers.concat(popperOptions.modifiers);
+        const popper = (0, $a3964a39831c9644$export$8f7491d57c8f97a9)($e77baa03bdd574d4$var$resolveAnchorEl(anchorEl), tooltipRef.current, (0, $29rXr.default)({
+            placement: rtlPlacement
+        }, popperOptions, {
+            modifiers: popperModifiers
+        }));
+        handlePopperRefRef.current(popper);
+        return ()=>{
+            popper.destroy();
+            handlePopperRefRef.current(null);
+        };
+    }, [
+        anchorEl,
+        disablePortal,
+        modifiers,
+        open,
+        popperOptions,
+        rtlPlacement
+    ]);
+    const childProps = {
+        placement: placement
+    };
+    if (TransitionProps !== null) childProps.TransitionProps = TransitionProps;
+    const classes = $e77baa03bdd574d4$var$useUtilityClasses();
+    const Root = (_ref = component != null ? component : components.Root) != null ? _ref : "div";
+    const rootProps = (0, $56Gls.default)({
+        elementType: Root,
+        externalSlotProps: componentsProps.root,
+        externalForwardedProps: other,
+        additionalProps: {
+            role: "tooltip",
+            ref: ownRef
+        },
+        ownerState: (0, $29rXr.default)({}, props, ownerState),
+        className: classes.root
+    });
+    return /*#__PURE__*/ (0, $228IU.jsx)(Root, (0, $29rXr.default)({}, rootProps, {
+        children: typeof children === "function" ? children(childProps) : children
+    }));
+});
+/* eslint-enable react/prop-types */ /**
+ * Poppers rely on the 3rd party library [Popper.js](https://popper.js.org/docs/v2/) for positioning.
+ */ const $e77baa03bdd574d4$var$PopperUnstyled = /*#__PURE__*/ $d4J5n.forwardRef(function PopperUnstyled(props, ref) {
+    const { anchorEl: anchorEl , children: children , container: containerProp , direction: direction = "ltr" , disablePortal: disablePortal = false , keepMounted: keepMounted = false , modifiers: modifiers , open: open , placement: placement = "bottom" , popperOptions: popperOptions = $e77baa03bdd574d4$var$defaultPopperOptions , popperRef: popperRef , style: style , transition: transition = false  } = props, other = (0, $9Zx8w.default)(props, $e77baa03bdd574d4$var$_excluded2);
+    const [exited, setExited] = $d4J5n.useState(true);
+    const handleEnter = ()=>{
+        setExited(false);
+    };
+    const handleExited = ()=>{
+        setExited(true);
+    };
+    if (!keepMounted && !open && (!transition || exited)) return null;
+     // If the container prop is provided, use that
+    // If the anchorEl prop is provided, use its parent body element as the container
+    // If neither are provided let the Modal take care of choosing the container
+    const container = containerProp || (anchorEl ? (0, $k3rwj.default)($e77baa03bdd574d4$var$resolveAnchorEl(anchorEl)).body : undefined);
+    return /*#__PURE__*/ (0, $228IU.jsx)((0, $6ad13a1eb061a6b7$export$2e2bcd8739ae039), {
+        disablePortal: disablePortal,
+        container: container,
+        children: /*#__PURE__*/ (0, $228IU.jsx)($e77baa03bdd574d4$var$PopperTooltip, (0, $29rXr.default)({
+            anchorEl: anchorEl,
+            direction: direction,
+            disablePortal: disablePortal,
+            modifiers: modifiers,
+            ref: ref,
+            open: transition ? !exited : open,
+            placement: placement,
+            popperOptions: popperOptions,
+            popperRef: popperRef
+        }, other, {
+            style: (0, $29rXr.default)({
+                // Prevents scroll issue, waiting for Popper.js to add this style once initiated.
+                position: "fixed",
+                // Fix Popper.js display issue
+                top: 0,
+                left: 0,
+                display: !open && keepMounted && (!transition || exited) ? "none" : null
+            }, style),
+            TransitionProps: transition ? {
+                in: open,
+                onEnter: handleEnter,
+                onExited: handleExited
+            } : null,
+            children: children
+        }))
+    });
+});
+var $e77baa03bdd574d4$export$2e2bcd8739ae039 = $e77baa03bdd574d4$var$PopperUnstyled;
+
+
+
+
+var $eFKMF = parcelRequire("eFKMF");
+
+
+
+var $d4J5n = parcelRequire("d4J5n");
+
+var $3Rzkk = parcelRequire("3Rzkk");
+var $i1cZ3 = parcelRequire("i1cZ3");
+
+var $228IU = parcelRequire("228IU");
+const $dbddfb465eb52ee8$var$PopperRoot = (0, $3Rzkk.default)((0, $e77baa03bdd574d4$export$2e2bcd8739ae039), {
+    name: "MuiPopper",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})({});
+/**
+ *
+ * Demos:
+ *
+ * - [Autocomplete](https://mui.com/material-ui/react-autocomplete/)
+ * - [Menus](https://mui.com/material-ui/react-menu/)
+ * - [Popper](https://mui.com/material-ui/react-popper/)
+ *
+ * API:
+ *
+ * - [Popper API](https://mui.com/material-ui/api/popper/)
+ */ const $dbddfb465eb52ee8$var$Popper = /*#__PURE__*/ $d4J5n.forwardRef(function Popper(inProps, ref) {
+    const theme = (0, $eFKMF.default)();
+    const props = (0, $i1cZ3.default)({
+        props: inProps,
+        name: "MuiPopper"
+    });
+    return /*#__PURE__*/ (0, $228IU.jsx)($dbddfb465eb52ee8$var$PopperRoot, (0, $29rXr.default)({
+        direction: theme == null ? void 0 : theme.direction
+    }, props, {
+        ref: ref
+    }));
+});
+var $dbddfb465eb52ee8$export$2e2bcd8739ae039 = $dbddfb465eb52ee8$var$Popper;
+
+
+
+
+
+
+var $1ZpZm = parcelRequire("1ZpZm");
+var $5124c7abd04b48ba$export$2e2bcd8739ae039 = (0, $1ZpZm.default);
+
+
+
+
+
+var $b85LX = parcelRequire("b85LX");
+var $b4FaI = parcelRequire("b4FaI");
+function $fb6c0fa80c9e3e33$export$837848f5f6cee923(slot) {
+    return (0, $b85LX.default)("MuiTooltip", slot);
+}
+const $fb6c0fa80c9e3e33$var$tooltipClasses = (0, $b4FaI.default)("MuiTooltip", [
+    "popper",
+    "popperInteractive",
+    "popperArrow",
+    "popperClose",
+    "tooltip",
+    "tooltipArrow",
+    "touch",
+    "tooltipPlacementLeft",
+    "tooltipPlacementRight",
+    "tooltipPlacementTop",
+    "tooltipPlacementBottom",
+    "arrow"
+]);
+var $fb6c0fa80c9e3e33$export$2e2bcd8739ae039 = $fb6c0fa80c9e3e33$var$tooltipClasses;
+
+
+
+var $228IU = parcelRequire("228IU");
+
+var $228IU = parcelRequire("228IU");
+const $95c1f43bc91a817d$var$_excluded = [
+    "arrow",
+    "children",
+    "classes",
+    "components",
+    "componentsProps",
+    "describeChild",
+    "disableFocusListener",
+    "disableHoverListener",
+    "disableInteractive",
+    "disableTouchListener",
+    "enterDelay",
+    "enterNextDelay",
+    "enterTouchDelay",
+    "followCursor",
+    "id",
+    "leaveDelay",
+    "leaveTouchDelay",
+    "onClose",
+    "onOpen",
+    "open",
+    "placement",
+    "PopperComponent",
+    "PopperProps",
+    "title",
+    "TransitionComponent",
+    "TransitionProps"
+];
+function $95c1f43bc91a817d$var$round(value) {
+    return Math.round(value * 1e5) / 1e5;
+}
+const $95c1f43bc91a817d$var$useUtilityClasses = (ownerState)=>{
+    const { classes: classes , disableInteractive: disableInteractive , arrow: arrow , touch: touch , placement: placement  } = ownerState;
+    const slots = {
+        popper: [
+            "popper",
+            !disableInteractive && "popperInteractive",
+            arrow && "popperArrow"
+        ],
+        tooltip: [
+            "tooltip",
+            arrow && "tooltipArrow",
+            touch && "touch",
+            `tooltipPlacement${(0, $kJ9SM.default)(placement.split("-")[0])}`
+        ],
+        arrow: [
+            "arrow"
+        ]
+    };
+    return (0, $gfogg.default)(slots, (0, $fb6c0fa80c9e3e33$export$837848f5f6cee923), classes);
+};
+const $95c1f43bc91a817d$var$TooltipPopper = (0, $3Rzkk.default)((0, $dbddfb465eb52ee8$export$2e2bcd8739ae039), {
+    name: "MuiTooltip",
+    slot: "Popper",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.popper,
+            !ownerState.disableInteractive && styles.popperInteractive,
+            ownerState.arrow && styles.popperArrow,
+            !ownerState.open && styles.popperClose
+        ];
+    }
+})(({ theme: theme , ownerState: ownerState , open: open  })=>(0, $29rXr.default)({
+        zIndex: (theme.vars || theme).zIndex.tooltip,
+        pointerEvents: "none"
+    }, !ownerState.disableInteractive && {
+        pointerEvents: "auto"
+    }, !open && {
+        pointerEvents: "none"
+    }, ownerState.arrow && {
+        [`&[data-popper-placement*="bottom"] .${(0, $fb6c0fa80c9e3e33$export$2e2bcd8739ae039).arrow}`]: {
+            top: 0,
+            marginTop: "-0.71em",
+            "&::before": {
+                transformOrigin: "0 100%"
+            }
+        },
+        [`&[data-popper-placement*="top"] .${(0, $fb6c0fa80c9e3e33$export$2e2bcd8739ae039).arrow}`]: {
+            bottom: 0,
+            marginBottom: "-0.71em",
+            "&::before": {
+                transformOrigin: "100% 0"
+            }
+        },
+        [`&[data-popper-placement*="right"] .${(0, $fb6c0fa80c9e3e33$export$2e2bcd8739ae039).arrow}`]: (0, $29rXr.default)({}, !ownerState.isRtl ? {
+            left: 0,
+            marginLeft: "-0.71em"
+        } : {
+            right: 0,
+            marginRight: "-0.71em"
+        }, {
+            height: "1em",
+            width: "0.71em",
+            "&::before": {
+                transformOrigin: "100% 100%"
+            }
+        }),
+        [`&[data-popper-placement*="left"] .${(0, $fb6c0fa80c9e3e33$export$2e2bcd8739ae039).arrow}`]: (0, $29rXr.default)({}, !ownerState.isRtl ? {
+            right: 0,
+            marginRight: "-0.71em"
+        } : {
+            left: 0,
+            marginLeft: "-0.71em"
+        }, {
+            height: "1em",
+            width: "0.71em",
+            "&::before": {
+                transformOrigin: "0 0"
+            }
+        })
+    }));
+const $95c1f43bc91a817d$var$TooltipTooltip = (0, $3Rzkk.default)("div", {
+    name: "MuiTooltip",
+    slot: "Tooltip",
+    overridesResolver: (props, styles)=>{
+        const { ownerState: ownerState  } = props;
+        return [
+            styles.tooltip,
+            ownerState.touch && styles.touch,
+            ownerState.arrow && styles.tooltipArrow,
+            styles[`tooltipPlacement${(0, $kJ9SM.default)(ownerState.placement.split("-")[0])}`]
+        ];
+    }
+})(({ theme: theme , ownerState: ownerState  })=>(0, $29rXr.default)({
+        backgroundColor: theme.vars ? theme.vars.palette.Tooltip.bg : (0, $dcYDA.alpha)(theme.palette.grey[700], 0.92),
+        borderRadius: (theme.vars || theme).shape.borderRadius,
+        color: (theme.vars || theme).palette.common.white,
+        fontFamily: theme.typography.fontFamily,
+        padding: "4px 8px",
+        fontSize: theme.typography.pxToRem(11),
+        maxWidth: 300,
+        margin: 2,
+        wordWrap: "break-word",
+        fontWeight: theme.typography.fontWeightMedium
+    }, ownerState.arrow && {
+        position: "relative",
+        margin: 0
+    }, ownerState.touch && {
+        padding: "8px 16px",
+        fontSize: theme.typography.pxToRem(14),
+        lineHeight: `${$95c1f43bc91a817d$var$round(16 / 14)}em`,
+        fontWeight: theme.typography.fontWeightRegular
+    }, {
+        [`.${(0, $fb6c0fa80c9e3e33$export$2e2bcd8739ae039).popper}[data-popper-placement*="left"] &`]: (0, $29rXr.default)({
+            transformOrigin: "right center"
+        }, !ownerState.isRtl ? (0, $29rXr.default)({
+            marginRight: "14px"
+        }, ownerState.touch && {
+            marginRight: "24px"
+        }) : (0, $29rXr.default)({
+            marginLeft: "14px"
+        }, ownerState.touch && {
+            marginLeft: "24px"
+        })),
+        [`.${(0, $fb6c0fa80c9e3e33$export$2e2bcd8739ae039).popper}[data-popper-placement*="right"] &`]: (0, $29rXr.default)({
+            transformOrigin: "left center"
+        }, !ownerState.isRtl ? (0, $29rXr.default)({
+            marginLeft: "14px"
+        }, ownerState.touch && {
+            marginLeft: "24px"
+        }) : (0, $29rXr.default)({
+            marginRight: "14px"
+        }, ownerState.touch && {
+            marginRight: "24px"
+        })),
+        [`.${(0, $fb6c0fa80c9e3e33$export$2e2bcd8739ae039).popper}[data-popper-placement*="top"] &`]: (0, $29rXr.default)({
+            transformOrigin: "center bottom",
+            marginBottom: "14px"
+        }, ownerState.touch && {
+            marginBottom: "24px"
+        }),
+        [`.${(0, $fb6c0fa80c9e3e33$export$2e2bcd8739ae039).popper}[data-popper-placement*="bottom"] &`]: (0, $29rXr.default)({
+            transformOrigin: "center top",
+            marginTop: "14px"
+        }, ownerState.touch && {
+            marginTop: "24px"
+        })
+    }));
+const $95c1f43bc91a817d$var$TooltipArrow = (0, $3Rzkk.default)("span", {
+    name: "MuiTooltip",
+    slot: "Arrow",
+    overridesResolver: (props, styles)=>styles.arrow
+})(({ theme: theme  })=>({
+        overflow: "hidden",
+        position: "absolute",
+        width: "1em",
+        height: "0.71em",
+        boxSizing: "border-box",
+        color: theme.vars ? `rgba(${theme.vars.palette.grey.darkChannel} / 0.9)` : (0, $dcYDA.alpha)(theme.palette.grey[700], 0.9),
+        "&::before": {
+            content: '""',
+            margin: "auto",
+            display: "block",
+            width: "100%",
+            height: "100%",
+            backgroundColor: "currentColor",
+            transform: "rotate(45deg)"
+        }
+    }));
+let $95c1f43bc91a817d$var$hystersisOpen = false;
+let $95c1f43bc91a817d$var$hystersisTimer = null;
+function $95c1f43bc91a817d$export$b9ee5a7ace0541f8() {
+    $95c1f43bc91a817d$var$hystersisOpen = false;
+    clearTimeout($95c1f43bc91a817d$var$hystersisTimer);
+}
+function $95c1f43bc91a817d$var$composeEventHandler(handler, eventHandler) {
+    return (event)=>{
+        if (eventHandler) eventHandler(event);
+        handler(event);
+    };
+} // TODO v6: Remove PopperComponent, PopperProps, TransitionComponent and TransitionProps.
+const $95c1f43bc91a817d$var$Tooltip = /*#__PURE__*/ $d4J5n.forwardRef(function Tooltip(inProps, ref) {
+    var _components$Popper, _ref, _components$Transitio, _components$Tooltip, _components$Arrow, _componentsProps$popp;
+    const props = (0, $i1cZ3.default)({
+        props: inProps,
+        name: "MuiTooltip"
+    });
+    const { arrow: arrow = false , children: children , components: components = {} , componentsProps: componentsProps = {} , describeChild: describeChild = false , disableFocusListener: disableFocusListener = false , disableHoverListener: disableHoverListener = false , disableInteractive: disableInteractiveProp = false , disableTouchListener: disableTouchListener = false , enterDelay: enterDelay = 100 , enterNextDelay: enterNextDelay = 0 , enterTouchDelay: enterTouchDelay = 700 , followCursor: followCursor = false , id: idProp , leaveDelay: leaveDelay = 0 , leaveTouchDelay: leaveTouchDelay = 1500 , onClose: onClose , onOpen: onOpen , open: openProp , placement: placement = "bottom" , PopperComponent: PopperComponentProp , PopperProps: PopperProps = {} , title: title , TransitionComponent: TransitionComponentProp = (0, $e6f86c662b4e0f85$export$2e2bcd8739ae039) , TransitionProps: TransitionProps  } = props, other = (0, $9Zx8w.default)(props, $95c1f43bc91a817d$var$_excluded);
+    const theme = (0, $cb404980a6d8b614$export$2e2bcd8739ae039)();
+    const isRtl = theme.direction === "rtl";
+    const [childNode, setChildNode] = $d4J5n.useState();
+    const [arrowRef, setArrowRef] = $d4J5n.useState(null);
+    const ignoreNonTouchEvents = $d4J5n.useRef(false);
+    const disableInteractive = disableInteractiveProp || followCursor;
+    const closeTimer = $d4J5n.useRef();
+    const enterTimer = $d4J5n.useRef();
+    const leaveTimer = $d4J5n.useRef();
+    const touchTimer = $d4J5n.useRef();
+    const [openState, setOpenState] = (0, $adebe480fccd621e$export$2e2bcd8739ae039)({
+        controlled: openProp,
+        default: false,
+        name: "Tooltip",
+        state: "open"
+    });
+    let open = openState;
+    const id = (0, $5124c7abd04b48ba$export$2e2bcd8739ae039)(idProp);
+    const prevUserSelect = $d4J5n.useRef();
+    const stopTouchInteraction = $d4J5n.useCallback(()=>{
+        if (prevUserSelect.current !== undefined) {
+            document.body.style.WebkitUserSelect = prevUserSelect.current;
+            prevUserSelect.current = undefined;
+        }
+        clearTimeout(touchTimer.current);
+    }, []);
+    $d4J5n.useEffect(()=>{
+        return ()=>{
+            clearTimeout(closeTimer.current);
+            clearTimeout(enterTimer.current);
+            clearTimeout(leaveTimer.current);
+            stopTouchInteraction();
+        };
+    }, [
+        stopTouchInteraction
+    ]);
+    const handleOpen = (event)=>{
+        clearTimeout($95c1f43bc91a817d$var$hystersisTimer);
+        $95c1f43bc91a817d$var$hystersisOpen = true; // The mouseover event will trigger for every nested element in the tooltip.
+        // We can skip rerendering when the tooltip is already open.
+        // We are using the mouseover event instead of the mouseenter event to fix a hide/show issue.
+        setOpenState(true);
+        if (onOpen && !open) onOpen(event);
+    };
+    const handleClose = (0, $354a4d12df0a99a1$export$2e2bcd8739ae039)(/**
+   * @param {React.SyntheticEvent | Event} event
+   */ (event)=>{
+        clearTimeout($95c1f43bc91a817d$var$hystersisTimer);
+        $95c1f43bc91a817d$var$hystersisTimer = setTimeout(()=>{
+            $95c1f43bc91a817d$var$hystersisOpen = false;
+        }, 800 + leaveDelay);
+        setOpenState(false);
+        if (onClose && open) onClose(event);
+        clearTimeout(closeTimer.current);
+        closeTimer.current = setTimeout(()=>{
+            ignoreNonTouchEvents.current = false;
+        }, theme.transitions.duration.shortest);
+    });
+    const handleEnter = (event)=>{
+        if (ignoreNonTouchEvents.current && event.type !== "touchstart") return;
+         // Remove the title ahead of time.
+        // We don't want to wait for the next render commit.
+        // We would risk displaying two tooltips at the same time (native + this one).
+        if (childNode) childNode.removeAttribute("title");
+        clearTimeout(enterTimer.current);
+        clearTimeout(leaveTimer.current);
+        if (enterDelay || $95c1f43bc91a817d$var$hystersisOpen && enterNextDelay) enterTimer.current = setTimeout(()=>{
+            handleOpen(event);
+        }, $95c1f43bc91a817d$var$hystersisOpen ? enterNextDelay : enterDelay);
+        else handleOpen(event);
+    };
+    const handleLeave = (event)=>{
+        clearTimeout(enterTimer.current);
+        clearTimeout(leaveTimer.current);
+        leaveTimer.current = setTimeout(()=>{
+            handleClose(event);
+        }, leaveDelay);
+    };
+    const { isFocusVisibleRef: isFocusVisibleRef , onBlur: handleBlurVisible , onFocus: handleFocusVisible , ref: focusVisibleRef  } = (0, $4fb087f50890693d$export$2e2bcd8739ae039)(); // We don't necessarily care about the focusVisible state (which is safe to access via ref anyway).
+    // We just need to re-render the Tooltip if the focus-visible state changes.
+    const [, setChildIsFocusVisible] = $d4J5n.useState(false);
+    const handleBlur = (event)=>{
+        handleBlurVisible(event);
+        if (isFocusVisibleRef.current === false) {
+            setChildIsFocusVisible(false);
+            handleLeave(event);
+        }
+    };
+    const handleFocus = (event)=>{
+        // Workaround for https://github.com/facebook/react/issues/7769
+        // The autoFocus of React might trigger the event before the componentDidMount.
+        // We need to account for this eventuality.
+        if (!childNode) setChildNode(event.currentTarget);
+        handleFocusVisible(event);
+        if (isFocusVisibleRef.current === true) {
+            setChildIsFocusVisible(true);
+            handleEnter(event);
+        }
+    };
+    const detectTouchStart = (event)=>{
+        ignoreNonTouchEvents.current = true;
+        const childrenProps = children.props;
+        if (childrenProps.onTouchStart) childrenProps.onTouchStart(event);
+    };
+    const handleMouseOver = handleEnter;
+    const handleMouseLeave = handleLeave;
+    const handleTouchStart = (event)=>{
+        detectTouchStart(event);
+        clearTimeout(leaveTimer.current);
+        clearTimeout(closeTimer.current);
+        stopTouchInteraction();
+        prevUserSelect.current = document.body.style.WebkitUserSelect; // Prevent iOS text selection on long-tap.
+        document.body.style.WebkitUserSelect = "none";
+        touchTimer.current = setTimeout(()=>{
+            document.body.style.WebkitUserSelect = prevUserSelect.current;
+            handleEnter(event);
+        }, enterTouchDelay);
+    };
+    const handleTouchEnd = (event)=>{
+        if (children.props.onTouchEnd) children.props.onTouchEnd(event);
+        stopTouchInteraction();
+        clearTimeout(leaveTimer.current);
+        leaveTimer.current = setTimeout(()=>{
+            handleClose(event);
+        }, leaveTouchDelay);
+    };
+    $d4J5n.useEffect(()=>{
+        if (!open) return undefined;
+        /**
+     * @param {KeyboardEvent} nativeEvent
+     */ function handleKeyDown(nativeEvent) {
+            // IE11, Edge (prior to using Bink?) use 'Esc'
+            if (nativeEvent.key === "Escape" || nativeEvent.key === "Esc") handleClose(nativeEvent);
+        }
+        document.addEventListener("keydown", handleKeyDown);
+        return ()=>{
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [
+        handleClose,
+        open
+    ]);
+    const handleUseRef = (0, $07ea1ddd799bf178$export$2e2bcd8739ae039)(setChildNode, ref);
+    const handleFocusRef = (0, $07ea1ddd799bf178$export$2e2bcd8739ae039)(focusVisibleRef, handleUseRef);
+    const handleRef = (0, $07ea1ddd799bf178$export$2e2bcd8739ae039)(children.ref, handleFocusRef); // There is no point in displaying an empty tooltip.
+    if (title === "") open = false;
+    const positionRef = $d4J5n.useRef({
+        x: 0,
+        y: 0
+    });
+    const popperRef = $d4J5n.useRef();
+    const handleMouseMove = (event)=>{
+        const childrenProps = children.props;
+        if (childrenProps.onMouseMove) childrenProps.onMouseMove(event);
+        positionRef.current = {
+            x: event.clientX,
+            y: event.clientY
+        };
+        if (popperRef.current) popperRef.current.update();
+    };
+    const nameOrDescProps = {};
+    const titleIsString = typeof title === "string";
+    if (describeChild) {
+        nameOrDescProps.title = !open && titleIsString && !disableHoverListener ? title : null;
+        nameOrDescProps["aria-describedby"] = open ? id : null;
+    } else {
+        nameOrDescProps["aria-label"] = titleIsString ? title : null;
+        nameOrDescProps["aria-labelledby"] = open && !titleIsString ? id : null;
+    }
+    const childrenProps1 = (0, $29rXr.default)({}, nameOrDescProps, other, children.props, {
+        className: (0, $h0TGs.default)(other.className, children.props.className),
+        onTouchStart: detectTouchStart,
+        ref: handleRef
+    }, followCursor ? {
+        onMouseMove: handleMouseMove
+    } : {});
+    const interactiveWrapperListeners = {};
+    if (!disableTouchListener) {
+        childrenProps1.onTouchStart = handleTouchStart;
+        childrenProps1.onTouchEnd = handleTouchEnd;
+    }
+    if (!disableHoverListener) {
+        childrenProps1.onMouseOver = $95c1f43bc91a817d$var$composeEventHandler(handleMouseOver, childrenProps1.onMouseOver);
+        childrenProps1.onMouseLeave = $95c1f43bc91a817d$var$composeEventHandler(handleMouseLeave, childrenProps1.onMouseLeave);
+        if (!disableInteractive) {
+            interactiveWrapperListeners.onMouseOver = handleMouseOver;
+            interactiveWrapperListeners.onMouseLeave = handleMouseLeave;
+        }
+    }
+    if (!disableFocusListener) {
+        childrenProps1.onFocus = $95c1f43bc91a817d$var$composeEventHandler(handleFocus, childrenProps1.onFocus);
+        childrenProps1.onBlur = $95c1f43bc91a817d$var$composeEventHandler(handleBlur, childrenProps1.onBlur);
+        if (!disableInteractive) {
+            interactiveWrapperListeners.onFocus = handleFocus;
+            interactiveWrapperListeners.onBlur = handleBlur;
+        }
+    }
+    const popperOptions = $d4J5n.useMemo(()=>{
+        var _PopperProps$popperOp;
+        let tooltipModifiers = [
+            {
+                name: "arrow",
+                enabled: Boolean(arrowRef),
+                options: {
+                    element: arrowRef,
+                    padding: 4
+                }
+            }
+        ];
+        if ((_PopperProps$popperOp = PopperProps.popperOptions) != null && _PopperProps$popperOp.modifiers) tooltipModifiers = tooltipModifiers.concat(PopperProps.popperOptions.modifiers);
+        return (0, $29rXr.default)({}, PopperProps.popperOptions, {
+            modifiers: tooltipModifiers
+        });
+    }, [
+        arrowRef,
+        PopperProps
+    ]);
+    const ownerState = (0, $29rXr.default)({}, props, {
+        isRtl: isRtl,
+        arrow: arrow,
+        disableInteractive: disableInteractive,
+        placement: placement,
+        PopperComponentProp: PopperComponentProp,
+        touch: ignoreNonTouchEvents.current
+    });
+    const classes = $95c1f43bc91a817d$var$useUtilityClasses(ownerState);
+    const PopperComponent = (_components$Popper = components.Popper) != null ? _components$Popper : $95c1f43bc91a817d$var$TooltipPopper;
+    const TransitionComponent = (_ref = (_components$Transitio = components.Transition) != null ? _components$Transitio : TransitionComponentProp) != null ? _ref : (0, $e6f86c662b4e0f85$export$2e2bcd8739ae039);
+    const TooltipComponent = (_components$Tooltip = components.Tooltip) != null ? _components$Tooltip : $95c1f43bc91a817d$var$TooltipTooltip;
+    const ArrowComponent = (_components$Arrow = components.Arrow) != null ? _components$Arrow : $95c1f43bc91a817d$var$TooltipArrow;
+    const popperProps = (0, $daALM.default)(PopperComponent, (0, $29rXr.default)({}, PopperProps, componentsProps.popper), ownerState);
+    const transitionProps = (0, $daALM.default)(TransitionComponent, (0, $29rXr.default)({}, TransitionProps, componentsProps.transition), ownerState);
+    const tooltipProps = (0, $daALM.default)(TooltipComponent, (0, $29rXr.default)({}, componentsProps.tooltip), ownerState);
+    const tooltipArrowProps = (0, $daALM.default)(ArrowComponent, (0, $29rXr.default)({}, componentsProps.arrow), ownerState);
+    return /*#__PURE__*/ (0, $228IU.jsxs)($d4J5n.Fragment, {
+        children: [
+            /*#__PURE__*/ $d4J5n.cloneElement(children, childrenProps1),
+            /*#__PURE__*/ (0, $228IU.jsx)(PopperComponent, (0, $29rXr.default)({
+                as: PopperComponentProp != null ? PopperComponentProp : (0, $dbddfb465eb52ee8$export$2e2bcd8739ae039),
+                placement: placement,
+                anchorEl: followCursor ? {
+                    getBoundingClientRect: ()=>({
+                            top: positionRef.current.y,
+                            left: positionRef.current.x,
+                            right: positionRef.current.x,
+                            bottom: positionRef.current.y,
+                            width: 0,
+                            height: 0
+                        })
+                } : childNode,
+                popperRef: popperRef,
+                open: childNode ? open : false,
+                id: id,
+                transition: true
+            }, interactiveWrapperListeners, popperProps, {
+                className: (0, $h0TGs.default)(classes.popper, PopperProps == null ? void 0 : PopperProps.className, (_componentsProps$popp = componentsProps.popper) == null ? void 0 : _componentsProps$popp.className),
+                popperOptions: popperOptions,
+                children: ({ TransitionProps: TransitionPropsInner  })=>{
+                    var _componentsProps$tool, _componentsProps$arro;
+                    return /*#__PURE__*/ (0, $228IU.jsx)(TransitionComponent, (0, $29rXr.default)({
+                        timeout: theme.transitions.duration.shorter
+                    }, TransitionPropsInner, transitionProps, {
+                        children: /*#__PURE__*/ (0, $228IU.jsxs)(TooltipComponent, (0, $29rXr.default)({}, tooltipProps, {
+                            className: (0, $h0TGs.default)(classes.tooltip, (_componentsProps$tool = componentsProps.tooltip) == null ? void 0 : _componentsProps$tool.className),
+                            children: [
+                                title,
+                                arrow ? /*#__PURE__*/ (0, $228IU.jsx)(ArrowComponent, (0, $29rXr.default)({}, tooltipArrowProps, {
+                                    className: (0, $h0TGs.default)(classes.arrow, (_componentsProps$arro = componentsProps.arrow) == null ? void 0 : _componentsProps$arro.className),
+                                    ref: setArrowRef
+                                })) : null
+                            ]
+                        }))
+                    }));
+                }
+            }))
+        ]
+    });
+});
+var $95c1f43bc91a817d$export$2e2bcd8739ae039 = $95c1f43bc91a817d$var$Tooltip;
+
+
+
+
+
+
+const $bbe87a2964e37ffb$export$28c660c63b792dea = (0, $3Rzkk.default)(({ className: className , ...props })=>/*#__PURE__*/ (0, $228IU.jsx)((0, $95c1f43bc91a817d$export$2e2bcd8739ae039), {
+        ...props,
+        classes: {
+            popper: className
+        }
+    }))(({ theme: theme  })=>({
+        [`& .${(0, $fb6c0fa80c9e3e33$export$2e2bcd8739ae039).tooltip}`]: {
+            backgroundColor: "#f5f5f9",
+            color: "rgba(0, 0, 0, 0.87)",
+            maxWidth: 220,
+            fontSize: theme.typography.pxToRem(12),
+            border: "1px solid #dadde9"
+        }
+    }));
+
+
 const $85d868e1e5abbef8$export$581f644880f842c0 = ({ onClick: onClick , alg: alg , children: children  })=>{
+    const fullAlg = (0, (/*@__PURE__*/$parcel$interopDefault($58ad8d8ef78eb4df$exports)))(alg, (0, $b1410301c6957cc6$export$79ed9616e69ab1ba), (match, i)=>{
+        const trigger1 = (0, $b1410301c6957cc6$export$d98315f3131b26fb).find((trigger)=>trigger.key === match);
+        const tooltipContent = /*#__PURE__*/ (0, $228IU.jsx)((0, $228IU.Fragment), {
+            children: trigger1.name
+        });
+        return /*#__PURE__*/ (0, $228IU.jsx)((0, $bbe87a2964e37ffb$export$28c660c63b792dea), {
+            title: tooltipContent,
+            children: /*#__PURE__*/ (0, $228IU.jsxs)("strong", {
+                style: {
+                    color: trigger1.color
+                },
+                children: [
+                    "(",
+                    trigger1.alg,
+                    ")"
+                ]
+            })
+        }, i);
+    });
     return /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
         onClick: onClick,
         sx: {
@@ -31606,7 +34200,7 @@ const $85d868e1e5abbef8$export$581f644880f842c0 = ({ onClick: onClick , alg: alg
             /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
                 component: "p",
                 variant: "h6",
-                children: alg
+                children: fullAlg
             })
         ]
     });
@@ -31638,13 +34232,14 @@ var $7f96fd5d73b99479$var$_default = (0, $7f96fd5d73b99479$var$_createSvgIcon.de
 $7f96fd5d73b99479$exports.default = $7f96fd5d73b99479$var$_default;
 
 
-const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ solutions: solutions , handleClose: handleClose , stepStorage: stepStorage , setStepStorage: setStepStorage  })=>{
+
+const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ alg: alg , handleClose: handleClose , stepStorage: stepStorage , setStepStorage: setStepStorage  })=>{
     const [player1, setPlayer] = (0, $d4J5n.useState)();
     const twistyPlayerRef = (0, $d4J5n.useCallback)((node)=>{
         if (node) {
             const player = new (0, $8e08190ac5cfc1c3$export$d03687cb83cd55dc)({
                 puzzle: "3x3x3",
-                alg: solutions[0],
+                alg: alg.solutions[0],
                 hintFacelets: "none",
                 background: "none",
                 experimentalSetupAnchor: "end",
@@ -31658,18 +34253,17 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ solutions: solutions , hand
             setPlayer(player);
         }
     }, []);
-    const handleClick = (e)=>{
-        const preferred = e.currentTarget.innerText;
+    const handleClick = (preferred)=>{
         if (player1) {
-            player1.alg = new (0, $kQo6d.Alg)(e.currentTarget.innerText);
+            player1.alg = new (0, $kQo6d.Alg)((0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[preferred]));
             player1.play();
         }
         setStepStorage({
             ...stepStorage,
             cases: {
                 ...stepStorage.cases,
-                [solutions[0]]: {
-                    ...stepStorage.cases[solutions[0]],
+                [alg.name]: {
+                    ...stepStorage.cases[alg.name],
                     preferred: preferred
                 }
             }
@@ -31677,7 +34271,7 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ solutions: solutions , hand
         return null;
     };
     return /*#__PURE__*/ (0, $228IU.jsxs)((0, $d6f0347ecedd0ecf$export$2e2bcd8739ae039), {
-        open: !!solutions,
+        open: !!alg,
         onClose: handleClose,
         children: [
             /*#__PURE__*/ (0, $228IU.jsx)((0, $fcf2823dd0ffe4e8$export$2e2bcd8739ae039), {
@@ -31706,11 +34300,11 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ solutions: solutions , hand
                             margin: "0 auto"
                         }
                     }),
-                    solutions.map((solution)=>/*#__PURE__*/ (0, $228IU.jsx)((0, $85d868e1e5abbef8$export$581f644880f842c0), {
+                    alg.solutions.map((solution, idx)=>/*#__PURE__*/ (0, $228IU.jsx)((0, $85d868e1e5abbef8$export$581f644880f842c0), {
                             alg: solution,
-                            onClick: handleClick,
+                            onClick: ()=>handleClick(idx),
                             children: /*#__PURE__*/ (0, $228IU.jsx)((0, $778717fca68858db$export$2e2bcd8739ae039), {
-                                checked: solution === stepStorage.cases[solutions[0]].preferred
+                                checked: idx === stepStorage.cases[alg.name].preferred
                             })
                         }, solution))
                 ]
@@ -31823,85 +34417,202 @@ const $8256681cffce63c2$export$905b2330489c9c36 = ({ handleClose: handleClose , 
 var $228IU = parcelRequire("228IU");
 
 
+var $228IU = parcelRequire("228IU");
+
+
+
+
+const $fd9d51ad3790d9fb$export$e5a7308a1ffbe909 = ({ alg: alg  })=>{
+    const fullAlg = (0, (/*@__PURE__*/$parcel$interopDefault($58ad8d8ef78eb4df$exports)))(alg, (0, $b1410301c6957cc6$export$79ed9616e69ab1ba), (match, i)=>{
+        const trigger1 = (0, $b1410301c6957cc6$export$d98315f3131b26fb).find((trigger)=>trigger.key === match);
+        const tooltipContent = /*#__PURE__*/ (0, $228IU.jsx)((0, $228IU.Fragment), {
+            children: trigger1.name
+        });
+        return /*#__PURE__*/ (0, $228IU.jsx)((0, $bbe87a2964e37ffb$export$28c660c63b792dea), {
+            title: tooltipContent,
+            children: /*#__PURE__*/ (0, $228IU.jsxs)("strong", {
+                style: {
+                    color: trigger1.color
+                },
+                children: [
+                    "(",
+                    trigger1.alg,
+                    ")"
+                ]
+            })
+        }, i);
+    });
+    return /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+        component: "p",
+        variant: "inherit",
+        children: fullAlg
+    });
+};
+
+
+
+
+const $d99c51b3a6101237$var$yellow = {
+    50: "#fffde7",
+    100: "#fff9c4",
+    200: "#fff59d",
+    300: "#fff176",
+    400: "#ffee58",
+    500: "#ffeb3b",
+    600: "#fdd835",
+    700: "#fbc02d",
+    800: "#f9a825",
+    900: "#f57f17",
+    A100: "#ffff8d",
+    A200: "#ffff00",
+    A400: "#ffea00",
+    A700: "#ffd600"
+};
+var $d99c51b3a6101237$export$2e2bcd8739ae039 = $d99c51b3a6101237$var$yellow;
+
+
+
+var $iKTt2 = parcelRequire("iKTt2");
 const $2bdbbbe37662fb75$var$colorMap = {
     unstarted: "none",
-    learning: "#FDD835",
-    learned: "#43A047"
+    learning: (0, $d99c51b3a6101237$export$2e2bcd8739ae039)[500],
+    learned: (0, $iKTt2.default)[500]
 };
-const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ solutions: solutions , algRowClick: algRowClick , stepStorage: stepStorage , setStepStorage: setStepStorage , image: image , id: id  })=>{
+const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: algRowClick , stepStorage: stepStorage , setStepStorage: setStepStorage , step: step  })=>{
     const handleChange = (e)=>{
         setStepStorage({
             ...stepStorage,
             cases: {
                 ...stepStorage.cases,
-                [id]: {
-                    ...stepStorage.cases[id],
+                [alg.name]: {
+                    ...stepStorage.cases[alg.name],
                     status: e.target.value
                 }
             }
         });
     };
+    const theme = (0, $cb404980a6d8b614$export$2e2bcd8739ae039)();
+    const { preferred: preferred , status: status  } = stepStorage.cases[alg.name];
+    const getImage = ()=>`https://cubiclealgdbimagegen.azurewebsites.net/generator?${step.visualCubeParams}&case=${(0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[0])}`;
     return /*#__PURE__*/ (0, $228IU.jsx)((0, $86336a779a56c56e$export$2e2bcd8739ae039), {
         sx: {
             "&:last-child td, &:last-child th": {
                 border: 0
             }
         },
-        children: /*#__PURE__*/ (0, $228IU.jsxs)((0, $688079f9c20238ed$export$2e2bcd8739ae039), {
+        children: /*#__PURE__*/ (0, $228IU.jsx)((0, $688079f9c20238ed$export$2e2bcd8739ae039), {
             component: "th",
             scope: "row",
             sx: {
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                backgroundColor: $2bdbbbe37662fb75$var$colorMap[stepStorage.cases[id].status]
+                backgroundColor: $2bdbbbe37662fb75$var$colorMap[status]
             },
-            children: [
-                /*#__PURE__*/ (0, $228IU.jsx)((0, $85d868e1e5abbef8$export$581f644880f842c0), {
-                    onClick: ()=>algRowClick(solutions),
-                    alg: stepStorage.cases[id].preferred,
-                    children: /*#__PURE__*/ (0, $228IU.jsx)("img", {
-                        src: image,
+            children: /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
+                sx: {
+                    display: "inline-flex",
+                    alignItems: "center",
+                    fontSize: theme.typography.h6,
+                    width: "100%",
+                    [theme.breakpoints.down("sm")]: {
+                        fontSize: theme.typography.body1
+                    }
+                },
+                children: [
+                    /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+                        variant: "inherit",
+                        component: "span",
+                        sx: {
+                            mr: 2,
+                            flexShrink: 0,
+                            width: "65px"
+                        },
+                        children: alg.name
+                    }),
+                    /*#__PURE__*/ (0, $228IU.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
+                        component: "img",
                         height: 75,
                         width: 75,
-                        style: {
-                            marginRight: "24px"
-                        }
-                    })
-                }),
-                /*#__PURE__*/ (0, $228IU.jsx)((0, $0f8f482c0984ea7e$export$2e2bcd8739ae039), {
-                    size: "small",
-                    sx: {
-                        flexShrink: 0
-                    },
-                    children: /*#__PURE__*/ (0, $228IU.jsxs)((0, $e3197f14ba4aa5f6$export$2e2bcd8739ae039), {
-                        value: stepStorage.cases[id].status,
-                        onChange: handleChange,
-                        displayEmpty: true,
-                        inputProps: {
-                            "aria-label": "Without label"
-                        },
                         sx: {
-                            ml: 2
+                            mr: 2,
+                            flexShrink: 0
                         },
-                        native: true,
+                        src: getImage()
+                    }),
+                    /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
+                        sx: {
+                            height: "100%",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            flexWrap: "wrap",
+                            flexGrow: "1",
+                            justifyContent: "space-between"
+                        },
                         children: [
-                            /*#__PURE__*/ (0, $228IU.jsx)("option", {
-                                value: "unstarted",
-                                children: "Unstarted"
+                            /*#__PURE__*/ (0, $228IU.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
+                                onClick: ()=>algRowClick(alg),
+                                sx: {
+                                    height: "100%",
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    "&:hover": {
+                                        cursor: "pointer"
+                                    },
+                                    [theme.breakpoints.down("sm")]: {
+                                        width: "100%"
+                                    }
+                                },
+                                children: /*#__PURE__*/ (0, $228IU.jsx)((0, $fd9d51ad3790d9fb$export$e5a7308a1ffbe909), {
+                                    alg: alg.solutions[preferred]
+                                })
                             }),
-                            /*#__PURE__*/ (0, $228IU.jsx)("option", {
-                                value: "learning",
-                                children: "Learning"
-                            }),
-                            /*#__PURE__*/ (0, $228IU.jsx)("option", {
-                                value: "learned",
-                                children: "Learned"
+                            /*#__PURE__*/ (0, $228IU.jsx)((0, $0f8f482c0984ea7e$export$2e2bcd8739ae039), {
+                                size: "small",
+                                sx: {
+                                    flexShrink: 0,
+                                    [theme.breakpoints.down("sm")]: {
+                                        margin: "auto"
+                                    }
+                                },
+                                children: /*#__PURE__*/ (0, $228IU.jsxs)((0, $e3197f14ba4aa5f6$export$2e2bcd8739ae039), {
+                                    value: status,
+                                    onChange: handleChange,
+                                    displayEmpty: true,
+                                    inputProps: {
+                                        "aria-label": "Without label"
+                                    },
+                                    native: true,
+                                    sx: {
+                                        alignSelf: "end",
+                                        ml: 2,
+                                        flexShrink: 0,
+                                        [theme.breakpoints.down("sm")]: {
+                                            "& .MuiNativeSelect-select": {
+                                                padding: "5px 14px"
+                                            },
+                                            mt: 1,
+                                            ml: 0
+                                        }
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, $228IU.jsx)("option", {
+                                            value: "unstarted",
+                                            children: "Unstarted"
+                                        }),
+                                        /*#__PURE__*/ (0, $228IU.jsx)("option", {
+                                            value: "learning",
+                                            children: "Learning"
+                                        }),
+                                        /*#__PURE__*/ (0, $228IU.jsx)("option", {
+                                            value: "learned",
+                                            children: "Learned"
+                                        })
+                                    ]
+                                })
                             })
                         ]
                     })
-                })
-            ]
+                ]
+            })
         })
     });
 };
@@ -31924,6 +34635,96 @@ var $8ab8335d22920ef2$var$_default = (0, $8ab8335d22920ef2$var$_createSvgIcon.de
 $8ab8335d22920ef2$exports.default = $8ab8335d22920ef2$var$_default;
 
 
+
+var $228IU = parcelRequire("228IU");
+
+
+var $iKTt2 = parcelRequire("iKTt2");
+var $5Cz32 = parcelRequire("5Cz32");
+var $7b4d9491b37fa408$export$1237798dc640739a;
+var $7b4d9491b37fa408$export$d927737047eb3867;
+var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
+var $7b4d9491b37fa408$export$9a9b59e08de24cef;
+var $7b4d9491b37fa408$export$33854e570d464ff0;
+var $7b4d9491b37fa408$export$94132a0e348806d4;
+var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
+var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
+var $7b4d9491b37fa408$export$60912654947077e3;
+$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
+$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
+$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
+$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
+$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
+$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
+$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
+$7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
+$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
+
+
+const $8c09dba8c18700a3$var$colorMap = {
+    learning: (0, $d99c51b3a6101237$export$2e2bcd8739ae039)[600],
+    learned: (0, $iKTt2.default)[500]
+};
+const $8c09dba8c18700a3$export$eddf502a5ea0cebd = ({ data: data  })=>{
+    const totalPercent = data.reduce((acc, curr)=>{
+        return acc + curr.value;
+    }, 0);
+    // TODO refactor with fewer loops??
+    const legends = data.map(function(item, i) {
+        if (item.value > 0) return /*#__PURE__*/ (0, $228IU.jsxs)("div", {
+            className: $7b4d9491b37fa408$export$9a9b59e08de24cef,
+            children: [
+                /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+                    className: $7b4d9491b37fa408$export$94132a0e348806d4,
+                    style: {
+                        color: $8c09dba8c18700a3$var$colorMap[item.name]
+                    },
+                    children: "\u25CF"
+                }),
+                /*#__PURE__*/ (0, $228IU.jsxs)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+                    className: $7b4d9491b37fa408$export$1237798dc640739a,
+                    children: [
+                        `${item.name[0].toUpperCase()}${item.name.slice(1)}`,
+                        ": ",
+                        item.value,
+                        "%"
+                    ]
+                })
+            ]
+        }, i);
+    });
+    const bars = data.map(function(item, i) {
+        if (item.value > 0) return /*#__PURE__*/ (0, $228IU.jsx)("div", {
+            className: $7b4d9491b37fa408$export$d927737047eb3867,
+            style: {
+                backgroundColor: $8c09dba8c18700a3$var$colorMap[item.name],
+                width: item.value + "%"
+            }
+        }, i);
+    });
+    bars.push(/*#__PURE__*/ (0, $228IU.jsx)("div", {
+        className: $7b4d9491b37fa408$export$d927737047eb3867,
+        style: {
+            backgroundColor: (0, $5Cz32.default)[400],
+            width: 100 - totalPercent + "%"
+        }
+    }));
+    return /*#__PURE__*/ (0, $228IU.jsxs)("div", {
+        className: $7b4d9491b37fa408$export$cc74dcc53cfce4eb,
+        children: [
+            /*#__PURE__*/ (0, $228IU.jsx)("div", {
+                className: $7b4d9491b37fa408$export$60912654947077e3,
+                children: bars
+            }),
+            /*#__PURE__*/ (0, $228IU.jsx)("div", {
+                className: $7b4d9491b37fa408$export$33854e570d464ff0,
+                children: legends
+            })
+        ]
+    });
+};
+
+
 const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
     const { algs: algs , step: step  } = (0, $bd647cfe352699a5$export$4138103a3ae699cc)();
     const [stepStorage, setStepStorage] = (0, $9517aa852f99e8b1$export$2e2bcd8739ae039)(step.slug, {
@@ -31937,10 +34738,10 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
             "exclude-unstarted": true,
             "exclude-learned": true
         },
-        cases: Object.entries(algs).reduce((acc, [, cur])=>({
+        cases: algs.reduce((acc, curr)=>({
                 ...acc,
-                [cur.solutions[0]]: {
-                    preferred: cur.solutions[0],
+                [curr.name]: {
+                    preferred: 0,
                     status: "unstarted"
                 }
             }), {})
@@ -31949,13 +34750,20 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
     const [optionsDialogOpen, setOptionsDialogOpen] = (0, $d4J5n.useState)(false);
     const navigate = (0, $bd647cfe352699a5$export$9770f232ac06a008)();
     const startTrainer = ()=>navigate("trainer");
-    const getImage = (alg)=>`https://cubiclealgdbimagegen.azurewebsites.net/generator?${step.visualCubeParams}&case=${alg}`;
-    const algRowClick = (solutions)=>{
-        setAlgDialog(solutions);
+    const algRowClick = (alg)=>{
+        setAlgDialog(alg);
     };
     const closeAlgModal = ()=>setAlgDialog(null);
     const closeOptionsModal = ()=>setOptionsDialogOpen(false);
     const openOptionsModal = ()=>setOptionsDialogOpen(true);
+    const percentLearned = algs.reduce((acc, curr)=>{
+        if (stepStorage.cases[curr.name].status === "learned") acc++;
+        return acc;
+    }, 0);
+    const percentLearning = algs.reduce((acc, curr)=>{
+        if (stepStorage.cases[curr.name].status === "learning") acc++;
+        return acc;
+    }, 0);
     return /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
         sx: {
             display: "flex",
@@ -31970,7 +34778,6 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
                 children: [
                     /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
                         variant: "contained",
-                        // sx={{ my: 4, mx: "auto" }}
                         sx: {
                             my: 2,
                             gridColumnStart: 1,
@@ -31997,6 +34804,18 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
                     })
                 ]
             }),
+            /*#__PURE__*/ (0, $228IU.jsx)((0, $8c09dba8c18700a3$export$eddf502a5ea0cebd), {
+                data: [
+                    {
+                        name: "learned",
+                        value: percentLearned
+                    },
+                    {
+                        name: "learning",
+                        value: percentLearning
+                    }, 
+                ]
+            }),
             /*#__PURE__*/ (0, $228IU.jsx)((0, $0e00319323b2de2e$export$2e2bcd8739ae039), {
                 component: (0, $af776c8e01c32094$export$2e2bcd8739ae039),
                 sx: {
@@ -32007,9 +34826,9 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
                 children: /*#__PURE__*/ (0, $228IU.jsx)((0, $d5ab6fa1fabc0378$export$2e2bcd8739ae039), {
                     "aria-label": "simple table",
                     children: /*#__PURE__*/ (0, $228IU.jsx)((0, $9fa4bdca55bc9b59$export$2e2bcd8739ae039), {
-                        children: Object.entries(algs).sort(([, alg1], [, alg2])=>{
-                            const status1 = stepStorage.cases[alg1.solutions[0]].status;
-                            const status2 = stepStorage.cases[alg2.solutions[0]].status;
+                        children: algs.sort((alg1, alg2)=>{
+                            const status1 = stepStorage.cases[alg1.name].status;
+                            const status2 = stepStorage.cases[alg2.name].status;
                             if (status1 === status2) return 0;
                             const valMap = {
                                 learning: 0,
@@ -32017,27 +34836,26 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
                                 learned: 2
                             };
                             return valMap[status1] - valMap[status2];
-                        }).filter(([, algValue])=>{
+                        }).filter((alg)=>{
                             if (!Object.values(stepStorage.filters).some((filter)=>filter === true)) return true;
                             let shouldShow = false;
                             Object.entries(stepStorage.filters).forEach(([key, value])=>{
-                                if (value && !shouldShow) shouldShow = algValue.filters[key];
+                                if (value && !shouldShow) shouldShow = alg.filters[key];
                             });
                             return shouldShow;
-                        }).map(([alg, value])=>/*#__PURE__*/ (0, $228IU.jsx)((0, $2bdbbbe37662fb75$export$5d43e6e447ed594e), {
-                                solutions: value.solutions,
+                        }).map((alg)=>/*#__PURE__*/ (0, $228IU.jsx)((0, $2bdbbbe37662fb75$export$5d43e6e447ed594e), {
+                                alg: alg,
                                 algRowClick: algRowClick,
                                 stepStorage: stepStorage,
                                 setStepStorage: setStepStorage,
-                                image: getImage(alg),
-                                id: value.solutions[0]
-                            }, alg))
+                                step: step
+                            }, alg.name))
                     })
                 })
             }),
             !!algDialog && /*#__PURE__*/ (0, $228IU.jsx)((0, $7f9ac80f7f0322b6$export$86e0764efc64e1d1), {
                 handleClose: closeAlgModal,
-                solutions: algDialog,
+                alg: algDialog,
                 stepStorage: stepStorage,
                 setStepStorage: setStepStorage
             }),
@@ -32111,4 +34929,4 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $228IU.jsx)((0, $414bf34
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.cde56485.js.map
+//# sourceMappingURL=index.7bc0fe28.js.map

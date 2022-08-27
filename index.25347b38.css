@@ -1,0 +1,53 @@
+.mkHomW_wrapper {
+  margin: 20px 20%;
+}
+
+.mkHomW_value, .mkHomW_graduation {
+  float: left;
+  text-align: center;
+}
+
+.mkHomW_bars {
+  height: 10px;
+}
+
+.mkHomW_bars .mkHomW_bar {
+  float: left;
+  height: 10px;
+}
+
+.mkHomW_bars div.mkHomW_bar:first-of-type {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.mkHomW_bars div.mkHomW_bar:last-of-type {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.mkHomW_legends {
+  text-align: center;
+  display: block;
+}
+
+.mkHomW_legends .mkHomW_legend {
+  justify-content: center;
+  margin: 5px;
+  display: flex;
+}
+
+.mkHomW_legends .mkHomW_legend .mkHomW_dot {
+  margin: 0;
+  font-size: 25px;
+  line-height: 30px;
+  display: inline-block;
+}
+
+.mkHomW_legends .mkHomW_legend .mkHomW_label {
+  margin: 0 0 0 7px;
+  line-height: 30px;
+  display: inline-block;
+}
+
+/*# sourceMappingURL=index.25347b38.css.map */

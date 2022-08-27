@@ -1,5 +1,6 @@
-{
-  "R' F R F'": {
+[
+  {
+    "name": "F2L 1",
     "setups": [
       "R U R' U F' L F' L' F L' U2 L F",
       "U R U R' F2 U2 F U F' U F U' F U'",
@@ -53,9 +54,10 @@
       "incorrectlyConnected": false,
       "bothInSlot": false
     },
-    "solutions": ["R' F R F'", "U R U' R'"]
+    "solutions": ["[[sledge]]", "[[inversesexy]]"]
   },
-  "F R' F' R": {
+  {
+    "name": "F2L 2",
     "setups": [
       "R U R' U R U B' R B R2 U",
       "R U R' U L' U2 L2 F2 R' L' F' R F'",
@@ -115,9 +117,10 @@
       "incorrectlyConnected": false,
       "bothInSlot": false
     },
-    "solutions": ["y' U' R' U R", "d L' U L", "F R' F' R"]
+    "solutions": ["y' U' R' U R", "d L' U L", "[[hedge]]"]
   },
-  "F' U' F": {
+  {
+    "name": "F2L 3",
     "setups": [
       "R U R' U R B U B' R' U2",
       "F' U F U' R2 B U B' U' R2 U",
@@ -179,7 +182,8 @@
     },
     "solutions": ["y' R' U' R", "y L' U' L", "F' U' F", "U M R U' R' U M'"]
   },
-  "R U R'": {
+  {
+    "name": "F2L 4",
     "setups": [
       "R U B U2 L U L' B' U' R'",
       "R U B U R' F' R B' R' U F",
@@ -242,7 +246,8 @@
     },
     "solutions": ["R U R'"]
   },
-  "U' R U R' U2 R U' R'": {
+  {
+    "name": "F2L 5",
     "setups": [
       "R U R' D B U' B' U2 B U' B' U2 D'",
       "R U R' U2 D' F U' F' U2 F U' F' D",
@@ -328,12 +333,13 @@
     "solutions": [
       "U' R U R' U2 R U' R'",
       "U' R U R' U' R U2 R'",
-      "F2 L' U' L U F2",
-      "U' R U R' U R' F R F'",
+      "F2 [[leftsexy]] F2",
+      "U' R U R' U [[sledge]]",
       "y U l' U L U' L' U' l"
     ]
   },
-  "U' r U' R' U R U r'": {
+  {
+    "name": "F2L 6",
     "setups": [
       "U R2 B R2 U B' U' B R2 B' R' U2 R' U",
       "R U2 F U F' R L D' L2 B L2 D R2 L'",
@@ -425,7 +431,8 @@
       "y' U R' U' R U2' R' U R"
     ]
   },
-  "U' R U2 R' U2 R U' R'": {
+  {
+    "name": "F2L 7",
     "setups": [
       "R U R' U R2 B' R' B R' F' U2 F U2",
       "R U R' U R U' R2 L F2 R F2 L' U",
@@ -513,12 +520,13 @@
     "solutions": [
       "U' R U2 R' U2 R U' R'",
       "U' R U2 R' U' R U2 R'",
-      "U' R U2 R' U R' F R F'",
+      "U' R U2 R' U [[sledge]]",
       "M' U' M U2 r U' r'",
       "y l U2 L2' U' L2 U' l'"
     ]
   },
-  "r' U2 R2 U R2' U r": {
+  {
+    "name": "F2L 8",
     "setups": [
       "R2 F' U2 F U2 F R F' R F' U F U",
       "R2 B' R2 F R2 B R F' R F' U F U",
@@ -609,7 +617,8 @@
       "y' U R' U2 R U2' R' U R"
     ]
   },
-  "U' R U' R' U F' U' F": {
+  {
+    "name": "F2L 9",
     "setups": [
       "F' U F U' R2 B U B' U' R' U R' U",
       "U F' U2 F' R2 L D L D' L' D' R2 L' F2",
@@ -695,13 +704,14 @@
     "solutions": [
       "U' R U' R' U F' U' F",
       "U' R U' R' d R' U' R",
-      "F R U R' U' F' R U' R'",
+      "F [[sexy]] F' R U' R'",
       "y' U R' U' R U' R' U' R",
       "y U L' U' L U' L' U' L",
       "y U2 L' U L U L' U' L"
     ]
   },
-  "U2 R U' R' U' R U R'": {
+  {
+    "name": "F2L 10",
     "setups": [
       "U' R U R' U F U2 F' U' F U' F'",
       "U' R U' R' U' R' F D R' D' R2 F'",
@@ -791,7 +801,8 @@
       "R' U R2 U R'"
     ]
   },
-  "U' R U2 R' U F' U' F": {
+  {
+    "name": "F2L 11",
     "setups": [
       "R U R' U2 F U F R' F' R U' F'",
       "U F U F' L' U2 L F' U F2 U2 F'",
@@ -886,7 +897,8 @@
       "U' R U2 R' U y L' U' L"
     ]
   },
-  "R' U2 R2 U R2 U R": {
+  {
+    "name": "F2L 12",
     "setups": [
       "R U R' U2 F U2 F2 U' F2 U' F2 U2 F U'",
       "R U R' U' L U2 L2 U' L2 U' L2 U2 L U2",
@@ -969,15 +981,16 @@
       "bothInSlot": false
     },
     "solutions": [
-      "R U' R' U R U' R' U2 R U' R'",
+      "R U' R' [[inversesexy]] U2 R U' R'",
       "R' U2 R2 U R2 U R",
       "U F' U2 F U' R U R'",
-      "U R U' R' U' R U R' U' R U R'",
+      "[[inversesexy]] U' [[sexy]] R U R'",
       "y U L' U2 L U' y' R U R'",
       "y' U R' U2 R U' y R U R'"
     ]
   },
-  "d R' U R U' R' U' R U d'": {
+  {
+    "name": "F2L 13",
     "setups": [
       "L F R' U L F L' U' F' L' U' R",
       "L B U' F' U F U B' L' U B U2 B'",
@@ -1064,10 +1077,11 @@
       "y' U R' U R U' R' U' R",
       "d R' U R U' R' U' R",
       "y U L' U L U' L' U' L",
-      "M' U' R U R' U' R U2 r'"
+      "M' U' [[sexy]] R U2 r'"
     ]
   },
-  "U' R U' R' U R U R'": {
+  {
+    "name": "F2L 14",
     "setups": [
       "R U2 R B' R2 U' D2 L2 F' L2 D2 B' U B",
       "L2 D2 R D2 L F' B2 U' B2 U F B2 L U",
@@ -1158,7 +1172,8 @@
       "R U' R' U R U2 R' U2 R U' R'"
     ]
   },
-  "R U R' U2 R U' R' U R U' R'": {
+  {
+    "name": "F2L 15",
     "setups": [
       "U F' R' U D2 B' L B2 L B' U' D2 F R F'",
       "R U R' F U2 F2 U F' U' F2 U2 F U' F2 U'",
@@ -1253,7 +1268,8 @@
       "y2 f' L f U2 L U L'"
     ]
   },
-  "R U' R' U2 F' U' F": {
+  {
+    "name": "F2L 16",
     "setups": [
       "L F R' F R U F U' F2 R L' U' R'",
       "R U R' B L U L' U' B' U R U2 R'",
@@ -1340,15 +1356,16 @@
       "R U' R' U2 F' U' F",
       "R U' R' U2 y L' U' L",
       "R U' R' U d R' U' R",
-      "U F U R U' R' F' R U R'",
+      "U F [[inversesexy]] F' R U R'",
       "R U' R' U2 y' R' U' R",
-      "U F R U R' U' F' U R U' R'",
+      "U F [[sexy]] F' [[inversesexy]]",
       "y M U' R' F R U M'",
       "y2 L2 F' L' F L' U2 L U' L'",
       "y' f R' f' U2 R' U' R"
     ]
   },
-  "R U2 R' U' R U R'": {
+  {
+    "name": "F2L 17",
     "setups": [
       "R U R' U R U R' U R U2 R'",
       "R U R' U2 F U F' U F U2 F' U'",
@@ -1433,11 +1450,12 @@
     },
     "solutions": [
       "R U2 R' U' R U R'",
-      "y L F' L' F L' U L U' L' U L",
+      "y [[leftsledge]] L' U L U' L' U L",
       "U' R U' R' U2 R U2 R2 F R F'"
     ]
   },
-  "R' F R F' R U' R' U R U' R'": {
+  {
+    "name": "F2L 18",
     "setups": [
       "F' U R B U B' U' L2 D' B' D R' L2 F U'",
       "U F' U2 F U F' U2 F2 B' D R2 D' F' B U'",
@@ -1523,11 +1541,12 @@
     "solutions": [
       "y' R' U2 R U R' U' R",
       "y L' U2 L U L' U' L",
-      "R' F R F' R U' R' U R U' R'",
-      "R U R' U' R U R' U' F R' F' R"
+      "[[sledge]] R U' R' U R U' R'",
+      "[[sexy]]2 [[hedge]]"
     ]
   },
-  "U R U2 R' U R U' R'": {
+  {
+    "name": "F2L 19",
     "setups": [
       "R U R' D B U' B' U' B U2 B' D'",
       "R U R' B U R U2 B' U' B U' R' U' B'",
@@ -1613,12 +1632,13 @@
       "bothInSlot": false
     },
     "solutions": [
-      "U R U2 R' U R U' R'",
+      "U R U2 R' [[inversesexy]]",
       "U R U2 R2 F R F'",
       "R U' R' U R U' R' U R U R'"
     ]
   },
-  "U' R U' R2 F R F' R U' R'": {
+  {
+    "name": "F2L 20",
     "setups": [
       "U2 R U R' F2 L F L2 U2 L U2 F U2",
       "U2 R U2 B U B2 U B U R' U B' U B",
@@ -1709,7 +1729,8 @@
       "U' R U R' U r U' r' U2 r U r'"
     ]
   },
-  "U2 R U R' U R U' R'": {
+  {
+    "name": "F2L 21",
     "setups": [
       "R U R' U R U' R' U' F' U2 L' U' L F",
       "R B' R B U R' B R U' R' B' U' R' U2",
@@ -1800,7 +1821,8 @@
       "y' r' U r U2 r' U' r"
     ]
   },
-  "F' L' U2 L F": {
+  {
+    "name": "F2L 22",
     "setups": [
       "F' B U L U' L' B' L' U L F U",
       "U2 F' U F' R2 B' R' B R2 F2 R U",
@@ -1877,13 +1899,14 @@
       "bothInSlot": false
     },
     "solutions": [
-      "y U2 L' U' L U' L' U L",
+      "y U2 [[leftsexy]] L' U L",
       "F' L' U2 L F",
       "y' U2 R' U' R U' R' U R",
       "r U' r' U2 r U r'"
     ]
   },
-  "R U R' U2 R U R' U' R U R'": {
+  {
+    "name": "F2L 23",
     "setups": [
       "R U R2 L D R F' L2 U R2 B2 R2 L U' F'",
       "U F2 U R L' U R' L U2 F2 U' R U2 R' F2",
@@ -1967,15 +1990,16 @@
       "bothInSlot": false
     },
     "solutions": [
-      "R U R' U2 R U R' U' R U R'",
-      "U R U' R' U' R U' R' U R U' R'",
+      "R U R' U2 [[sexy]] R U R'",
+      "[[inversesexy]] U' R U' R' [[inversesexy]]",
       "U2 R2 U2 R' U' R U' R2",
-      "y F' U' L' U L F L' U L",
-      "U F R' F' R U R U R'",
+      "y F' [[leftinversesexy]] F L' U L",
+      "U [[hedge]] U R U R'",
       "y U L' U' L2 F' L' F L' U L"
     ]
   },
-  "F U R U' R' F' R U' R'": {
+  {
+    "name": "F2L 24",
     "setups": [
       "R U R' U R U' R' F R U R' U' F'",
       "R U R' D B D' R' F R D B' D' F'",
@@ -2061,16 +2085,17 @@
       "bothInSlot": false
     },
     "solutions": [
-      "F U R U' R' F' R U' R'",
-      "y U' L' U L U L' U L U' L' U L",
+      "F [[inversesexy]] F' R U' R'",
+      "y [[leftinversesexy]] U L' U L leftinversesexy",
       "U' R U R2 F R F' R U' R'",
       "y' R' U' R U2 R' U' R U R' U' R",
       "y' U' R' U R U R' U R U' R' U R",
-      "y U' F' L F L' U' L' U' L",
+      "y U' [[lefthedge]] U' L' U' L",
       "U' R U R2' F R F' R U' R'"
     ]
   },
-  "R' F' R U R U' R' F": {
+  {
+    "name": "F2L 25",
     "setups": [
       "U' F R U R' U L F L' U2 F'",
       "L F R' F R L' U' F U F' U' F'",
@@ -2155,17 +2180,18 @@
       "bothInSlot": false
     },
     "solutions": [
-      "R' F' R U R U' R' F",
-      "U' R' F R F' R U R'",
-      "y U' L' U L y' U R U' R'",
+      "R' F' R [[inversesexy]] F",
+      "U' [[sledge]] R U R'",
+      "y [[leftinversesexy]] y' [[inversesexy]]",
       "R' U' R' U' R' U R U R",
-      "U' F' R U R' U' R' F R",
-      "y U' L' U L F' L F L'",
+      "U' F' [[sexy]] R' F R",
+      "y [[leftinversesexy]] [[lefthedge]]",
       "y2 U' M U L U' M' U L'",
       "y' U' R' U M U' R U M'"
     ]
   },
-  "U R U' R' U' F' U F": {
+  {
+    "name": "F2L 26",
     "setups": [
       "R2 U R' F D R' D' F' R'",
       "B' R2 B U R' U' R U R",
@@ -2250,18 +2276,19 @@
       "bothInSlot": false
     },
     "solutions": [
-      "U R U' R' U' F' U F",
-      "U R U' R' F R' F' R",
+      "[[inversesexy]] U' F' U F",
+      "[[inversesexy]] [[hedge]]",
       "y r U r' U' r' F r F'",
-      "U R U' R' d' L' U L",
-      "y U L F' L' F L' U' L",
-      "y L F L' U' L' U L F'",
-      "y U F L' U' L U L F' L'",
+      "[[inversesexy]] d' L' U L",
+      "y U [[leftsledge]] L' U' L",
+      "y L F L' [[leftinversesexy]] F'",
+      "y U F [[leftsexy]] L F' L'",
       "y' U M U' R' U M' U' R",
       "y2 U L U' M U L' U' M'"
     ]
   },
-  "R U' R' U R U' R'": {
+  {
+    "name": "F2L 27",
     "setups": [
       "R B' R B U R' B R U' R' B' U R'",
       "U' B U R B' U B R' U' B' R U R'",
@@ -2349,10 +2376,11 @@
       "R U' R' U R U' R'",
       "R U' R2 F R F'",
       "y L' U' L U2 F U' F'",
-      "y' R' U' R U y U R U' R'"
+      "y' R' U' R U y [[inversesexy]]"
     ]
   },
-  "R U R' U' F R' F' R": {
+  {
+    "name": "F2L 28",
     "setups": [
       "F2 B L2 F2 U2 D2 B' R2 U' B U' D2 B'",
       "F2 B' U2 D2 F2 R2 B R2 U' B U' D2 B'",
@@ -2437,12 +2465,13 @@
     },
     "solutions": [
       "y L' U L U' L' U L",
-      "R U R' U' F R' F' R",
+      "[[sexy]] [[hedge]]",
       "y' R' U R U' R' U R",
       "R U R' U2 F' U F"
     ]
   },
-  "R' F R F' U R U' R'": {
+  {
+    "name": "F2L 29",
     "setups": [
       "U' F R U' D2 L' B L U D2 R2 F' R",
       "U2 F' U2 R U' L' U R' U B' U' B L F",
@@ -2526,14 +2555,15 @@
       "bothInSlot": false
     },
     "solutions": [
-      "R' F R F' R' F R F'",
-      "y L' U' L U L' U' L",
+      "[[sledge]]2",
+      "y [[leftsexy]] L' U' L",
       "y' R' U' R U R' U' R",
-      "R' F R F' U R U' R'",
-      "M' U R U' R' U R U' r'"
+      "[[sledge]] [[inversesexy]]",
+      "M' [[inversesexy]] U R U' r'"
     ]
   },
-  "R U R' U' R U R'": {
+  {
+    "name": "F2L 30",
     "setups": [
       "U' R U' R' U' R U' R' U' R U2 R'",
       "R U R' B U R B' U B R' U' B' U",
@@ -2618,14 +2648,15 @@
       "bothInSlot": false
     },
     "solutions": [
-      "R U R' U' R U R'",
-      "F R' F' R F R' F' R",
+      "[[sexy]] R U R'",
+      "[[hedge]]2",
       "y U' L' U' L U2 F U2 F' U F U' F'",
-      "y M' U' L' U L U' L' U l",
-      "y L F' L' F L F' L' F"
+      "y M' [[leftinversesexy]] U' L' U l",
+      "y [[leftsledge]]2"
     ]
   },
-  "U' R' F R F' R U' R'": {
+  {
+    "name": "F2L 31",
     "setups": [
       "R U R' U R U' R' F R' F' R U",
       "R U R' U F2 R' F2 R F' U' F2 U F'",
@@ -2710,9 +2741,9 @@
       "bothInSlot": false
     },
     "solutions": [
-      "U' R' F R F' R U' R'",
+      "U' [[sledge]] R U' R'",
       "R U' R' y L' U2 L",
-      "R U' R' U2 F R' F' R",
+      "R U' R' U2 [[hedge]]",
       "l F' R U' R' U l'",
       "R U' R' F' U2 F",
       "y' R' U R' F R F' R",
@@ -2720,7 +2751,8 @@
       "R U' R' U y' R' U R"
     ]
   },
-  "R U R' U' R U R' U' R U R'": {
+  {
+    "name": "F2L 32",
     "setups": [
       "L D' L B' U B U F' L2 F U L' D L'",
       "U' F D F2 D2 B L2 B' U' D2 F U F2 D' F2",
@@ -2804,13 +2836,14 @@
       "bothInSlot": false
     },
     "solutions": [
-      "U R U' R' U R U' R' U R U' R'",
-      "R U R' U' R U R' U' R U R'",
+      "[[inversesexy]]3",
+      "[[sexy]]2",
       "R2 U R2 U R2 U2 R2",
-      "U R U R' U' R U2 R' U R U' R'"
+      "U R U R' U' R U2 R' [[inversesexy]]"
     ]
   },
-  "U' R U' R' U2 R U' R'": {
+  {
+    "name": "F2L 33",
     "setups": [
       "L' F2 L2 B L2 F2 D2 L2 F' L2 D2 B' L U2",
       "L' B2 R2 B R2 B2 D2 L2 F' L2 D2 B' L U2",
@@ -2896,14 +2929,15 @@
     },
     "solutions": [
       "U' R U' R' U2 R U' R'",
-      "U' R U' R' U R' F R F'",
+      "U' R U' R' U [[sledge]]",
       "y R' D R U' R' D' R",
-      "R U R' U' R U' R' U R U' R'",
+      "[[sexy]] R U' R' [[inversesexy]]",
       "y U' L' U' L U2 L' U' L",
       "y U L' U2 L U' L' U' L"
     ]
   },
-  "U R U R' U2 R U R'": {
+  {
+    "name": "F2L 34",
     "setups": [
       "R U R' U R U R' U2 R U' R' U'",
       "R D B' U B U B' U2 B D' R' U'",
@@ -2995,7 +3029,8 @@
       "y' U R' U R U2 R' U R"
     ]
   },
-  "U' R U R' U F' U' F": {
+  {
+    "name": "F2L 35",
     "setups": [
       "R U R' U' L F2 L' F U F2 U' F'",
       "R U R' U' F' L F' L' F U F U'",
@@ -3080,16 +3115,17 @@
     },
     "solutions": [
       "U' R U R' U F' U' F",
-      "U2 R U R' F R' F' R",
+      "U2 R U R' [[hedge]]",
       "U' R U R' d R' U' R",
       "U M' U R U' r' R U' R'",
       "y U' F U F' U L' U' L",
-      "y2 U2 L U L' y' U' L' U L",
+      "y2 U2 L U L' y' [[leftinversesexy]]",
       "y2 U2 L U M U L' U' M'",
       "y' U' f R f' U R' U' R"
     ]
   },
-  "U2 R' F R F' U2 R U R'": {
+  {
+    "name": "F2L 36",
     "setups": [
       "U' R U' R' U' R U' R' U' F' U F U",
       "U R2 B' L2 U' R' U R2 L2 F B D R D' F'",
@@ -3173,18 +3209,19 @@
       "bothInSlot": false
     },
     "solutions": [
-      "U2 R' F R F' U2 R U R'",
+      "U2 [[sledge]] U2 R U R'",
       "U F' U' F U' R U R'",
       "y U L' U' L y' U' R U R'",
-      "U2 F' U' F U R U' R'",
-      "y U2 L' U' L F' L F L'",
+      "U2 F' U' F [[inversesexy]]",
+      "y U2 L' U' L [[lefthedge]]",
       "y U' M' U' L' U l L' U L",
-      "y' U2 R' U' R y U R U' R'",
+      "y' U2 R' U' R y [[inversesexy]]",
       "y' U2 R' U' M U' R U M'",
       "y2 U f' L' f U' L U L'"
     ]
   },
-  "R2 U2 F R2 F' U2 R' U R'": {
+  {
+    "name": "F2L 37",
     "setups": [
       "R U' R' F U F U2 D' B L2 B' U D F' U'",
       "L F' R2 F2 R F R F R U' R2 U R L' U2",
@@ -3273,13 +3310,14 @@
       "R2' U2' F R2 F' U2' R' U R'",
       "R U' R' d R' U2 R U2 R' U R",
       "R U2 R' U R U2 R' U F' U' F",
-      "R' F R F' R U' R' U R U' R' U2 R U' R'",
+      "[[sledge]] R U' R' U R U' R' U2 R U' R'",
       "y L2 U2 F' L2' F U2 L U' L",
       "y' f R' f' U R' U2' R U R' U2' R",
       "y2 f' L f U' L U2 L' U' L U2 L'"
     ]
   },
-  "R U R' U' R U2 R' U' R U R'": {
+  {
+    "name": "F2L 38",
     "setups": [
       "B R L U L2 D' B2 D L U' R' B'",
       "R' B2 L D F2 D' L2 U L U' B2 R",
@@ -3363,14 +3401,15 @@
       "bothInSlot": true
     },
     "solutions": [
-      "R U R' U' R U2 R' U' R U R'",
+      "[[sexy]] R U2 R' U' R U R'",
       "R U' R' U' R U R' U2 R U' R'",
       "R2 U2 R' U' R U' R' U2 R'",
       "F R' F' R2 U2 R' U' R U R'",
       "y' L' U L U' L' U2' L U' L' U L"
     ]
   },
-  "R U R' U2 R U' R' U R U R'": {
+  {
+    "name": "F2L 39",
     "setups": [
       "D' L2 F U2 F' U L2 U F' L2 F D",
       "B D L2 D L2 D F2 D' F L2 F D2 B'",
@@ -3461,7 +3500,8 @@
       "y' L' U L U L' U' L U2' L' U L"
     ]
   },
-  "R U' R' F R U R' U' F' R U' R'": {
+  {
+    "name": "F2L 40",
     "setups": [
       "U2 B U' L' F B D F' L D' R' D R B2",
       "F' U B L F2 D F D' F' L' D' L D F' B'",
@@ -3547,18 +3587,19 @@
       "bothInSlot": true
     },
     "solutions": [
-      "R U' R' F R U R' U' F' R U' R'",
+      "R U' R' F [[sexy]] F' R U' R'",
       "r U' r' U2 r U r' R U R'",
       "R U' R' U' R U' R' U F' U' F",
-      "R F U R U' R' F' U' R'",
-      "F' U F U2 R U R' U R U' R'",
+      "R F [[inversesexy]] F' U' R'",
+      "F' U F U2 R U R' [[inversesexy]]",
       "y L' U L F R U2' R' F'",
       "F' L' U2 L F R U R'",
       "y' R2' F' U' F U R U' R",
       "y2 L U' L U F U' F' L2'"
     ]
   },
-  "R U F R U R' U' F' R'": {
+  {
+    "name": "F2L 41",
     "setups": [
       "R U R' U R B U L U' L' B' U R'",
       "U' L D F2 R U F2 U2 R' U F' D' L' F'",
@@ -3642,8 +3683,8 @@
       "bothInSlot": true
     },
     "solutions": [
-      "R U R' U' R U' R' U2 y' R' U' R",
-      "R U F R U R' U' F' R'",
+      "[[sexy]] R U' R' U2 y' R' U' R",
+      "R U F [[sexy]] F' R'",
       "R U' R' F' L' U2 L F",
       "R U' M' U' r' U2 r U r'",
       "y F R U2' R' F' L' U' L",
@@ -3651,4 +3692,4 @@
       "y' R' U R' U' F' U F R2"
     ]
   }
-}
+]
