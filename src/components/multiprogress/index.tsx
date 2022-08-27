@@ -57,30 +57,3 @@ export const MultiProgress = ({ data }: IMultiProgress) => {
     </div>
   );
 };
-
-// class MultiColorProgressBar extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   render() {
-//     	const parent = this.props;
-
-//     return (
-//       <div className="multicolor-bar">
-//       	<div className="values">
-//       		{values == ''?'':values}
-//       	</div>
-//       	<div className="scale">
-//       		{calibrations == ''?'':calibrations}
-//       	</div>
-//       	<div className="bars">
-//       		{bars == ''?'':bars}
-//       	</div>
-//       	<div className="legends">
-//       		{legends == ''?'':legends}
-//       	</div>
-//       </div>
-//     );
-//   }
-// }

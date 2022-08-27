@@ -1,13 +1,16 @@
 import {
+  Box,
   TableCell,
   TableRow,
   FormControl,
   Select,
   SelectChangeEvent,
+  Typography,
 } from "@mui/material";
-import { AlgRow } from "./alg-row";
+import { Alg } from "./alg";
 import { IStepStorage, Status, IAlg, IBaseStep } from "../puzzles";
 import { expandTriggers } from "../triggers";
+import { useTheme } from "@mui/material/styles";
 
 const colorMap = {
   unstarted: "none",
@@ -41,6 +44,8 @@ export const AlgTableRow = ({
     });
   };
 
+  const theme = useTheme();
+
   const { preferred, status } = stepStorage.cases[alg.name];
 
   const getImage = () =>
@@ -53,35 +58,93 @@ export const AlgTableRow = ({
       <TableCell
         component="th"
         scope="row"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          backgroundColor: colorMap[status],
-        }}
+        sx={{ backgroundColor: colorMap[status] }}
       >
-        <AlgRow onClick={() => algRowClick(alg)} alg={alg.solutions[preferred]}>
-          <img
-            src={getImage()}
+        <Box
+          sx={{
+            display: "inline-flex",
+            alignItems: "center",
+            fontSize: theme.typography.h6,
+            width: "100%",
+            [theme.breakpoints.down("sm")]: {
+              fontSize: theme.typography.body1,
+            },
+          }}
+        >
+          <Typography
+            variant="inherit"
+            component="span"
+            sx={{ mr: 2, flexShrink: 0, width: "65px" }}
+          >
+            {alg.name}
+          </Typography>
+          <Box
+            component="img"
             height={75}
             width={75}
-            style={{ marginRight: "24px" }}
+            sx={{ mr: 2, flexShrink: 0 }}
+            src={getImage()}
           />
-        </AlgRow>
-        <FormControl size="small" sx={{ flexShrink: 0 }}>
-          <Select
-            value={status}
-            onChange={handleChange}
-            displayEmpty
-            inputProps={{ "aria-label": "Without label" }}
-            sx={{ ml: 2 }}
-            native
+          <Box
+            sx={{
+              height: "100%",
+              display: "inline-flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+              flexGrow: "1",
+              justifyContent: "space-between",
+            }}
           >
-            <option value={"unstarted"}>Unstarted</option>
-            <option value={"learning"}>Learning</option>
-            <option value={"learned"}>Learned</option>
-          </Select>
-        </FormControl>
+            <Box
+              onClick={() => algRowClick(alg)}
+              sx={{
+                height: "100%",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                "&:hover": { cursor: "pointer" },
+                [theme.breakpoints.down("sm")]: {
+                  width: "100%",
+                },
+              }}
+            >
+              <Alg alg={alg.solutions[preferred]} />
+            </Box>
+            <FormControl
+              size="small"
+              sx={{
+                flexShrink: 0,
+                [theme.breakpoints.down("sm")]: {
+                  margin: "auto",
+                },
+              }}
+            >
+              <Select
+                value={status}
+                onChange={handleChange}
+                displayEmpty
+                inputProps={{ "aria-label": "Without label" }}
+                native
+                sx={{
+                  alignSelf: "end",
+                  ml: 2,
+                  flexShrink: 0,
+                  [theme.breakpoints.down("sm")]: {
+                    "& .MuiNativeSelect-select": {
+                      padding: "5px 14px",
+                    },
+                    mt: 1,
+                    ml: 0,
+                  },
+                }}
+              >
+                <option value={"unstarted"}>Unstarted</option>
+                <option value={"learning"}>Learning</option>
+                <option value={"learned"}>Learned</option>
+              </Select>
+            </FormControl>
+          </Box>
+        </Box>
       </TableCell>
     </TableRow>
   );
