@@ -7,7 +7,6 @@ import {
   Button,
   Box,
   IconButton,
-  Typography,
 } from "@mui/material";
 import { useOutletContext, useNavigate } from "react-router-dom";
 import { IAlgsListContext, IStepStorage } from "../puzzles";
@@ -118,14 +117,12 @@ export const AlgsList = () => {
       <MultiProgress
         data={[
           {
-            name: "Learned",
+            name: "learned",
             value: percentLearned,
-            color: "#eb4d4b",
           },
           {
-            name: "Learning",
+            name: "learning",
             value: percentLearning,
-            color: "#22a6b3",
           },
         ]}
       />

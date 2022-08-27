@@ -1,12 +1,16 @@
 import { Typography } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { grey, yellow, green } from "@mui/material/colors";
 import * as classes from "./styles.module.css";
+
+const colorMap = {
+  learning: yellow[600],
+  learned: green[500],
+};
 
 interface IMultiProgress {
   data: Array<{
     value: number;
-    name: string;
-    color: string; // TODO color type?
+    name: "learning" | "learned"; //TODO change this to 'Learning' and 'Learned' to avoid hacky capitalization
   }>;
 }
 
@@ -20,11 +24,15 @@ export const MultiProgress = ({ data }: IMultiProgress) => {
     if (item.value > 0) {
       return (
         <div className={classes.legend} key={i}>
-          <Typography className={classes.dot} style={{ color: item.color }}>
+          <Typography
+            className={classes.dot}
+            style={{ color: colorMap[item.name] }}
+          >
             ●
           </Typography>
           <Typography className={classes.label}>
-            {item.name}: {item.value}%
+            {`${item.name[0].toUpperCase()}${item.name.slice(1)}`}: {item.value}
+            %
           </Typography>
         </div>
       );
@@ -36,7 +44,10 @@ export const MultiProgress = ({ data }: IMultiProgress) => {
       return (
         <div
           className={classes.bar}
-          style={{ backgroundColor: item.color, width: item.value + "%" }}
+          style={{
+            backgroundColor: colorMap[item.name],
+            width: item.value + "%",
+          }}
           key={i}
         />
       );

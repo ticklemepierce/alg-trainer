@@ -11,11 +11,12 @@ import { Alg } from "./alg";
 import { IStepStorage, Status, IAlg, IBaseStep } from "../puzzles";
 import { expandTriggers } from "../triggers";
 import { useTheme } from "@mui/material/styles";
+import { yellow, green } from "@mui/material/colors";
 
 const colorMap = {
   unstarted: "none",
-  learning: "#FDD835",
-  learned: "#43A047",
+  learning: yellow[500],
+  learned: green[500],
 };
 
 export const AlgTableRow = ({

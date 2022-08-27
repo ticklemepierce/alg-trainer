@@ -19,7 +19,6 @@
 .bars .bar {
   float: left;
   height: 10px;
-  background-color: yellow;
 }
 
 .bars div.bar:first-of-type {
