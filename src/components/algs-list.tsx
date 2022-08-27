@@ -7,6 +7,7 @@ import {
   Button,
   Box,
   IconButton,
+  Typography,
 } from "@mui/material";
 import { useOutletContext, useNavigate } from "react-router-dom";
 import { IAlgsListContext, IStepStorage } from "../puzzles";
@@ -16,6 +17,7 @@ import { OptionsModal } from "./options-modal";
 import { AlgTableRow } from "./alg-table-row";
 import TuneIcon from "@mui/icons-material/Tune";
 import { StatusMap, IAlg } from "../puzzles";
+import { MultiProgress } from "./multiprogress";
 
 export const AlgsList = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
@@ -64,6 +66,20 @@ export const AlgsList = () => {
   const closeOptionsModal = () => setOptionsDialogOpen(false);
   const openOptionsModal = () => setOptionsDialogOpen(true);
 
+  const percentLearned = algs.reduce((acc, curr) => {
+    if (stepStorage.cases[curr.name].status === "learned") {
+      acc++;
+    }
+    return acc;
+  }, 0);
+
+  const percentLearning = algs.reduce((acc, curr) => {
+    if (stepStorage.cases[curr.name].status === "learning") {
+      acc++;
+    }
+    return acc;
+  }, 0);
+
   return (
     <Box
       sx={{
@@ -99,6 +115,20 @@ export const AlgsList = () => {
           <TuneIcon fontSize="large" color="action" />
         </IconButton>
       </Box>
+      <MultiProgress
+        data={[
+          {
+            name: "Learned",
+            value: percentLearned,
+            color: "#eb4d4b",
+          },
+          {
+            name: "Learning",
+            value: percentLearning,
+            color: "#22a6b3",
+          },
+        ]}
+      />
       <TableContainer
         component={Paper}
         sx={{ maxWidth: 650, m: "0 auto" }}

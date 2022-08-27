@@ -17,10 +17,8 @@ export const AlgRow = ({
     const trigger = triggers.find((trigger) => trigger.key === match)!;
     const tooltipContent = <>{trigger.name}</>;
     return (
-      <Tooltip title={tooltipContent}>
-        <strong key={i} style={{ color: trigger.color }}>
-          ({trigger.alg})
-        </strong>
+      <Tooltip title={tooltipContent} key={i}>
+        <strong style={{ color: trigger.color }}>({trigger.alg})</strong>
       </Tooltip>
     );
   });
