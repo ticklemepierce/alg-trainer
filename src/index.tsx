@@ -43,14 +43,12 @@ const App = () => (
 );
 
 if ("serviceWorker" in navigator) {
-  console.log(new URL("../service-worker.js", import.meta.url));
   navigator.serviceWorker
     .register(new URL("../service-worker.js", import.meta.url), {
       type: "module",
     })
-    .then((registration) => {
-      console.log("SW Registered");
-      console.log(registration);
+    .then((_registration) => {
+      // No Op
     })
     .catch((e) => {
       console.error(e);

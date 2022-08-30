@@ -4,7 +4,6 @@ self.addEventListener("install", (e) => {
       return cache.addAll(["./"]);
     })
   );
-  console.log("Install!");
 });
 
 self.addEventListener("fetch", (e) => {
