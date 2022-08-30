@@ -7553,12 +7553,6 @@ $fe67f1ac7d84803d$export$f5bbd400c2f4426f = $fe67f1ac7d84803d$var$v;
 
 });
 
-parcelRequire.register("ak7Jm", function(module, exports) {
-
-module.exports = import("./" + (parcelRequire("aKzDW")).resolve("eXwSi")).then(()=>parcelRequire("bYa3M"));
-
-});
-
 parcelRequire.register("33Ex0", function(module, exports) {
 "use strict";
 Object.defineProperty(module.exports, "__esModule", {
@@ -13230,9 +13224,15 @@ var $2edae841494e9a49$export$2e2bcd8739ae039 = $2edae841494e9a49$var$svgIconClas
 
 
 
-var $bee16b8a2a7b1743$exports = {};
+parcelRequire.register("ak7Jm", function(module, exports) {
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.7bc0fe28.js","eXwSi":"puzzle-geometry.db2a4a3f.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
+module.exports = import("./" + (parcelRequire("aKzDW")).resolve("eXwSi")).then(()=>parcelRequire("bYa3M"));
+
+});
+
+var $e87295484921f267$exports = {};
+
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.999ee6b9.js","eXwSi":"puzzle-geometry.db2a4a3f.js","gEiMW":"service-worker.5f6d7fdc.js","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -26270,6 +26270,32 @@ const $b1410301c6957cc6$export$79ed9616e69ab1ba = /\[\[(.+?)\]\]/g;
 const $b1410301c6957cc6$export$cc64fe338ae13d0f = (alg)=>alg.replace($b1410301c6957cc6$export$79ed9616e69ab1ba, (_brackets, match)=>$b1410301c6957cc6$export$d98315f3131b26fb.find((trigger)=>trigger.key === match).alg);
 
 
+var $8de17e0fde46ad1c$exports = {};
+"use strict";
+var $69f4ded615f6c2c8$exports = {};
+function $69f4ded615f6c2c8$var$_interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        "default": obj
+    };
+}
+$69f4ded615f6c2c8$exports = $69f4ded615f6c2c8$var$_interopRequireDefault, $69f4ded615f6c2c8$exports.__esModule = true, $69f4ded615f6c2c8$exports["default"] = $69f4ded615f6c2c8$exports;
+
+
+Object.defineProperty($8de17e0fde46ad1c$exports, "__esModule", {
+    value: true
+});
+$8de17e0fde46ad1c$exports.default = void 0;
+
+var $8de17e0fde46ad1c$var$_createSvgIcon = $69f4ded615f6c2c8$exports((parcelRequire("33Ex0")));
+
+var $228IU = parcelRequire("228IU");
+var $8de17e0fde46ad1c$var$_default = (0, $8de17e0fde46ad1c$var$_createSvgIcon.default)(/*#__PURE__*/ (0, $228IU.jsx)("path", {
+    d: "M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+}), "ArrowBack");
+$8de17e0fde46ad1c$exports.default = $8de17e0fde46ad1c$var$_default;
+
+
+
 const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
     const { algs: algs , step: step  } = (0, $bd647cfe352699a5$export$4138103a3ae699cc)();
     const [stepStorage] = (0, $9517aa852f99e8b1$export$2e2bcd8739ae039)(step.slug, {
@@ -26278,9 +26304,9 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
                 [cur]: false
             }), {}),
         options: {
-            "learning-first": true,
-            "learned-last": true,
-            "exclude-unstarted": true,
+            "learning-first": false,
+            "learned-last": false,
+            "exclude-unstarted": false,
             "exclude-learned": true
         },
         cases: algs.reduce((acc, curr)=>({
@@ -26304,7 +26330,7 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
     const currentCase = (0, $d4J5n.useMemo)(()=>order[index1], [
         index1
     ]);
-    const preferredSolution = (0, $d4J5n.useMemo)(()=>(0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(currentCase.solutions[stepStorage.cases[currentCase.name].preferred]).split(" "), [
+    const preferredSolution = (0, $d4J5n.useMemo)(()=>currentCase && (0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(currentCase.solutions[stepStorage.cases[currentCase.name].preferred]).split(" "), [
         currentCase
     ]);
     const previousCase = ()=>{
@@ -26323,7 +26349,7 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
         e.preventDefault();
         nextCase();
     };
-    const currentSetup = (0, $d4J5n.useMemo)(()=>(0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(currentCase.setups), [
+    const currentSetup = (0, $d4J5n.useMemo)(()=>currentCase ? (0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(currentCase.setups) : "No cases found that match your current filters.", [
         currentCase
     ]);
     (0, $d325342d90344c14$export$2e2bcd8739ae039)(" ", handleSpace, [
@@ -26333,52 +26359,76 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
         const newHintLength = hint.length > 0 ? hint.split(" ").length + 1 : 1;
         setHint(preferredSolution.slice(0, newHintLength).join(" "));
     };
-    return /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        minHeight: "95vh",
-        textAlign: "center",
+    const navigate = (0, $bd647cfe352699a5$export$9770f232ac06a008)();
+    function handleClick() {
+        navigate("..");
+    }
+    return /*#__PURE__*/ (0, $228IU.jsxs)((0, $228IU.Fragment), {
         children: [
-            /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
-                component: "h1",
-                variant: "h3",
-                children: currentSetup
-            }),
-            /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
-                variant: "contained",
+            /*#__PURE__*/ (0, $228IU.jsx)((0, $e6fb12cd5811ce97$export$2e2bcd8739ae039), {
+                "aria-label": "close",
+                onClick: handleClick,
                 sx: {
-                    mt: 3
-                },
-                size: "large",
-                onClick: nextCase,
-                children: isLast ? "Start over" : "Next case"
-            }),
-            /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
-                variant: "text",
-                sx: {
-                    mt: 2
-                },
-                size: "large",
-                onClick: updateHint,
-                children: "Hint"
-            }),
-            /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
-                component: "h5",
-                variant: "h5",
-                children: hint
-            }),
-            !isFirst && /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
-                variant: "text",
-                sx: {
-                    mt: 3,
                     position: "fixed",
-                    bottom: 50
+                    left: 8,
+                    top: 8,
+                    color: (theme)=>theme.palette.grey[700]
                 },
-                size: "small",
-                onClick: previousCase,
-                children: "Previous case"
+                children: /*#__PURE__*/ (0, $228IU.jsx)((0, (/*@__PURE__*/$parcel$interopDefault($8de17e0fde46ad1c$exports))), {})
+            }),
+            /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                minHeight: "95vh",
+                maxWidth: "95vw",
+                textAlign: "center",
+                children: [
+                    /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+                        component: "h1",
+                        variant: "h3",
+                        children: currentSetup
+                    }),
+                    currentCase && /*#__PURE__*/ (0, $228IU.jsxs)((0, $228IU.Fragment), {
+                        children: [
+                            /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
+                                variant: "contained",
+                                sx: {
+                                    mt: 3
+                                },
+                                size: "large",
+                                onClick: nextCase,
+                                children: isLast ? "Start over" : "Next case"
+                            }),
+                            /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
+                                variant: "text",
+                                sx: {
+                                    mt: 2
+                                },
+                                size: "large",
+                                onClick: updateHint,
+                                children: "Hint"
+                            }),
+                            /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+                                component: "h5",
+                                variant: "h5",
+                                children: hint
+                            }),
+                            !isFirst && /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
+                                variant: "text",
+                                sx: {
+                                    mt: 3,
+                                    position: "fixed",
+                                    bottom: 50
+                                },
+                                size: "small",
+                                onClick: previousCase,
+                                children: "Previous case"
+                            })
+                        ]
+                    })
+                ]
             })
         ]
     });
@@ -34209,14 +34259,6 @@ const $85d868e1e5abbef8$export$581f644880f842c0 = ({ onClick: onClick , alg: alg
 
 var $7f96fd5d73b99479$exports = {};
 "use strict";
-var $69f4ded615f6c2c8$exports = {};
-function $69f4ded615f6c2c8$var$_interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-        "default": obj
-    };
-}
-$69f4ded615f6c2c8$exports = $69f4ded615f6c2c8$var$_interopRequireDefault, $69f4ded615f6c2c8$exports.__esModule = true, $69f4ded615f6c2c8$exports["default"] = $69f4ded615f6c2c8$exports;
-
 
 Object.defineProperty($7f96fd5d73b99479$exports, "__esModule", {
     value: true
@@ -34318,6 +34360,24 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ alg: alg , handleClose: han
 var $228IU = parcelRequire("228IU");
 
 
+const $8256681cffce63c2$var$options = [
+    {
+        name: "learning-first",
+        label: "List 'Learning' cases first"
+    },
+    {
+        name: "learned-last",
+        label: "List 'Learned' cases last"
+    },
+    {
+        name: "exclude-unstarted",
+        label: "Exclude 'Unstarted' cases from trainer"
+    },
+    {
+        name: "exclude-learned",
+        label: "Exclude 'Learned' cases from trainer"
+    }, 
+];
 const $8256681cffce63c2$export$905b2330489c9c36 = ({ handleClose: handleClose , stepStorage: stepStorage , setStepStorage: setStepStorage , step: step  })=>{
     const updateOptions = (event)=>{
         setStepStorage({
@@ -34336,6 +34396,11 @@ const $8256681cffce63c2$export$905b2330489c9c36 = ({ handleClose: handleClose , 
                 [event.target.name]: event.target.checked
             }
         });
+    };
+    const checkDisableOption = (optionName)=>{
+        if (optionName === "exclude-learned" && !Object.values(stepStorage.cases).some((_case)=>_case.status === "learned")) return true;
+        if (optionName === "exclude-unstarted" && !Object.values(stepStorage.cases).some((_case)=>_case.status === "learned" || _case.status === "learning")) return true;
+        return false;
     };
     return /*#__PURE__*/ (0, $228IU.jsxs)((0, $d6f0347ecedd0ecf$export$2e2bcd8739ae039), {
         open: true,
@@ -34372,38 +34437,15 @@ const $8256681cffce63c2$export$905b2330489c9c36 = ({ handleClose: handleClose , 
                                     }),
                                     label: displayName
                                 }, filter)),
-                            /*#__PURE__*/ (0, $228IU.jsx)((0, $d0429b7da69f20b5$export$2e2bcd8739ae039), {
-                                control: /*#__PURE__*/ (0, $228IU.jsx)((0, $07fd80317d0540d4$export$2e2bcd8739ae039), {
-                                    onChange: updateOptions,
-                                    name: "learning-first",
-                                    checked: stepStorage.options["learning-first"]
-                                }),
-                                label: "List 'Learning' cases first"
-                            }),
-                            /*#__PURE__*/ (0, $228IU.jsx)((0, $d0429b7da69f20b5$export$2e2bcd8739ae039), {
-                                control: /*#__PURE__*/ (0, $228IU.jsx)((0, $07fd80317d0540d4$export$2e2bcd8739ae039), {
-                                    onChange: updateOptions,
-                                    name: "learned-last",
-                                    checked: stepStorage.options["learned-last"]
-                                }),
-                                label: "List 'Learned' cases last"
-                            }),
-                            /*#__PURE__*/ (0, $228IU.jsx)((0, $d0429b7da69f20b5$export$2e2bcd8739ae039), {
-                                control: /*#__PURE__*/ (0, $228IU.jsx)((0, $07fd80317d0540d4$export$2e2bcd8739ae039), {
-                                    onChange: updateOptions,
-                                    name: "exclude-unstarted",
-                                    checked: stepStorage.options["exclude-unstarted"]
-                                }),
-                                label: "Exclude 'Unstarted' cases from trainer"
-                            }),
-                            /*#__PURE__*/ (0, $228IU.jsx)((0, $d0429b7da69f20b5$export$2e2bcd8739ae039), {
-                                control: /*#__PURE__*/ (0, $228IU.jsx)((0, $07fd80317d0540d4$export$2e2bcd8739ae039), {
-                                    onChange: updateOptions,
-                                    name: "exclude-learned",
-                                    checked: stepStorage.options["exclude-learned"]
-                                }),
-                                label: "Exclude 'Learned' cases from trainer"
-                            })
+                            $8256681cffce63c2$var$options.map((option)=>/*#__PURE__*/ (0, $228IU.jsx)((0, $d0429b7da69f20b5$export$2e2bcd8739ae039), {
+                                    control: /*#__PURE__*/ (0, $228IU.jsx)((0, $07fd80317d0540d4$export$2e2bcd8739ae039), {
+                                        onChange: updateOptions,
+                                        name: option.name,
+                                        checked: stepStorage.options[option.name],
+                                        disabled: checkDisableOption(option.name)
+                                    }),
+                                    label: option.label
+                                }))
                         ]
                     })
                 })
@@ -34641,21 +34683,21 @@ var $228IU = parcelRequire("228IU");
 
 var $iKTt2 = parcelRequire("iKTt2");
 var $5Cz32 = parcelRequire("5Cz32");
+var $7b4d9491b37fa408$export$9a9b59e08de24cef;
+var $7b4d9491b37fa408$export$94132a0e348806d4;
 var $7b4d9491b37fa408$export$1237798dc640739a;
 var $7b4d9491b37fa408$export$d927737047eb3867;
 var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
-var $7b4d9491b37fa408$export$9a9b59e08de24cef;
 var $7b4d9491b37fa408$export$33854e570d464ff0;
-var $7b4d9491b37fa408$export$94132a0e348806d4;
 var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
 var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
 var $7b4d9491b37fa408$export$60912654947077e3;
+$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
+$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
 $7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
 $7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
 $7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
-$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
 $7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
-$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
 $7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
 $7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
 $7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
@@ -34669,56 +34711,52 @@ const $8c09dba8c18700a3$export$eddf502a5ea0cebd = ({ data: data  })=>{
     const totalPercent = data.reduce((acc, curr)=>{
         return acc + curr.value;
     }, 0);
-    // TODO refactor with fewer loops??
-    const legends = data.map(function(item, i) {
-        if (item.value > 0) return /*#__PURE__*/ (0, $228IU.jsxs)("div", {
-            className: $7b4d9491b37fa408$export$9a9b59e08de24cef,
-            children: [
-                /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
-                    className: $7b4d9491b37fa408$export$94132a0e348806d4,
-                    style: {
-                        color: $8c09dba8c18700a3$var$colorMap[item.name]
-                    },
-                    children: "\u25CF"
-                }),
-                /*#__PURE__*/ (0, $228IU.jsxs)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
-                    className: $7b4d9491b37fa408$export$1237798dc640739a,
-                    children: [
-                        `${item.name[0].toUpperCase()}${item.name.slice(1)}`,
-                        ": ",
-                        item.value,
-                        "%"
-                    ]
-                })
-            ]
-        }, i);
-    });
-    const bars = data.map(function(item, i) {
-        if (item.value > 0) return /*#__PURE__*/ (0, $228IU.jsx)("div", {
-            className: $7b4d9491b37fa408$export$d927737047eb3867,
-            style: {
-                backgroundColor: $8c09dba8c18700a3$var$colorMap[item.name],
-                width: item.value + "%"
-            }
-        }, i);
-    });
-    bars.push(/*#__PURE__*/ (0, $228IU.jsx)("div", {
-        className: $7b4d9491b37fa408$export$d927737047eb3867,
-        style: {
-            backgroundColor: (0, $5Cz32.default)[400],
-            width: 100 - totalPercent + "%"
-        }
-    }));
     return /*#__PURE__*/ (0, $228IU.jsxs)("div", {
         className: $7b4d9491b37fa408$export$cc74dcc53cfce4eb,
         children: [
-            /*#__PURE__*/ (0, $228IU.jsx)("div", {
+            /*#__PURE__*/ (0, $228IU.jsxs)("div", {
                 className: $7b4d9491b37fa408$export$60912654947077e3,
-                children: bars
+                children: [
+                    data.map((item, i)=>/*#__PURE__*/ (0, $228IU.jsx)("div", {
+                            className: $7b4d9491b37fa408$export$d927737047eb3867,
+                            style: {
+                                backgroundColor: $8c09dba8c18700a3$var$colorMap[item.name],
+                                width: item.value + "%"
+                            }
+                        }, i)),
+                    /*#__PURE__*/ (0, $228IU.jsx)("div", {
+                        className: $7b4d9491b37fa408$export$d927737047eb3867,
+                        style: {
+                            backgroundColor: (0, $5Cz32.default)[400],
+                            width: 100 - totalPercent + "%"
+                        }
+                    })
+                ]
             }),
             /*#__PURE__*/ (0, $228IU.jsx)("div", {
                 className: $7b4d9491b37fa408$export$33854e570d464ff0,
-                children: legends
+                children: data.map((item, i)=>/*#__PURE__*/ (0, $228IU.jsxs)("div", {
+                        className: $7b4d9491b37fa408$export$9a9b59e08de24cef,
+                        children: [
+                            /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+                                className: $7b4d9491b37fa408$export$94132a0e348806d4,
+                                style: {
+                                    color: $8c09dba8c18700a3$var$colorMap[item.name]
+                                },
+                                children: "\u25CF"
+                            }),
+                            /*#__PURE__*/ (0, $228IU.jsxs)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+                                className: $7b4d9491b37fa408$export$1237798dc640739a,
+                                children: [
+                                    `${item.name[0].toUpperCase()}${item.name.slice(1)}`,
+                                    ":",
+                                    " ",
+                                    item.value,
+                                    "%"
+                                ]
+                            })
+                        ]
+                    }, i))
             })
         ]
     });
@@ -34733,10 +34771,10 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
                 [cur]: false
             }), {}),
         options: {
-            "learning-first": true,
-            "learned-last": true,
-            "exclude-unstarted": true,
-            "exclude-learned": true
+            "learning-first": false,
+            "learned-last": false,
+            "exclude-unstarted": false,
+            "exclude-learned": false
         },
         cases: algs.reduce((acc, curr)=>({
                 ...acc,
@@ -34773,7 +34811,8 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
         children: [
             /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
                 sx: {
-                    display: "grid"
+                    display: "grid",
+                    alignItems: "center"
                 },
                 children: [
                     /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
@@ -34795,7 +34834,8 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
                         sx: {
                             gridColumnStart: 1,
                             gridRowStart: 1,
-                            justifySelf: "right"
+                            justifySelf: "right",
+                            display: "flex"
                         },
                         children: /*#__PURE__*/ (0, $228IU.jsx)((0, (/*@__PURE__*/$parcel$interopDefault($8ab8335d22920ef2$exports))), {
                             fontSize: "large",
@@ -34804,7 +34844,7 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
                     })
                 ]
             }),
-            /*#__PURE__*/ (0, $228IU.jsx)((0, $8c09dba8c18700a3$export$eddf502a5ea0cebd), {
+            (percentLearned > 0 || percentLearning > 0) && /*#__PURE__*/ (0, $228IU.jsx)((0, $8c09dba8c18700a3$export$eddf502a5ea0cebd), {
                 data: [
                     {
                         name: "learned",
@@ -34924,9 +34964,28 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $228IU.jsx)((0, $414bf34
             ]
         })
     });
+var $5273b7e68c6650c9$exports = {};
+
+$5273b7e68c6650c9$exports = new URL((parcelRequire("aKzDW")).resolve("gEiMW"), import.meta.url).toString();
+
+
+var $9766102c6225d9c4$exports = {};
+
+$9766102c6225d9c4$exports = new URL((parcelRequire("aKzDW")).resolve("68BlW"), import.meta.url).toString();
+
+
+if ("serviceWorker" in navigator) {
+    console.log(new URL($5273b7e68c6650c9$exports));
+    navigator.serviceWorker.register($9766102c6225d9c4$exports).then((registration)=>{
+        console.log("SW Registered");
+        console.log(registration);
+    }).catch((e)=>{
+        console.error(e);
+    });
+}
 (0, (/*@__PURE__*/$parcel$interopDefault($66G66))).render(/*#__PURE__*/ (0, $228IU.jsx)((0, $d4J5n.StrictMode), {
     children: /*#__PURE__*/ (0, $228IU.jsx)($ab1cd5f3b8d0b6aa$var$App, {})
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.7bc0fe28.js.map
+//# sourceMappingURL=index.999ee6b9.js.map
