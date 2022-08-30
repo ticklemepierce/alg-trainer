@@ -2,7 +2,7 @@
   "name": "alg-trainer",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "start": "cross-env NODE_ENV=development parcel index.html --no-cache ",
+    "start": "cross-env NODE_ENV=development parcel index.html --https --no-cache ",
     "build": "cross-env NODE_ENV=production parcel build index.html --no-optimize --public-url ./",
     "generate-scrambles": "node scripts/generate-scrambles.mjs",
     "prepare": "husky install"
@@ -33,7 +33,9 @@
     "usehooks-ts": "^2.6.0"
   },
   "devDependencies": {
+    "@parcel/packager-raw-url": "2.6.2",
     "@parcel/transformer-sass": "2.3.1",
+    "@parcel/transformer-webmanifest": "2.6.2",
     "@types/lodash.shuffle": "^4.2.7",
     "cross-env": "^5.1.1",
     "husky": "^8.0.1",
