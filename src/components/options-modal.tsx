@@ -10,7 +10,26 @@ import {
   FormControl,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { IBaseStep, IStepStorage } from "../puzzles";
+import { IBaseStep, IStepStorage, Options, OptionKeys } from "../puzzles";
+
+const options: Options = [
+  {
+    name: "learning-first",
+    label: "List 'Learning' cases first",
+  },
+  {
+    name: "learned-last",
+    label: "List 'Learned' cases last",
+  },
+  {
+    name: "exclude-unstarted",
+    label: "Exclude 'Unstarted' cases from trainer",
+  },
+  {
+    name: "exclude-learned",
+    label: "Exclude 'Learned' cases from trainer",
+  },
+];
 
 export const OptionsModal = ({
   handleClose,
@@ -41,6 +60,26 @@ export const OptionsModal = ({
         [event.target.name]: event.target.checked,
       },
     });
+  };
+
+  const checkDisableOption = (optionName: OptionKeys) => {
+    if (
+      optionName === "exclude-learned" &&
+      !Object.values(stepStorage.cases).some(
+        (_case) => _case.status === "learned"
+      )
+    ) {
+      return true;
+    }
+    if (
+      optionName === "exclude-unstarted" &&
+      !Object.values(stepStorage.cases).some(
+        (_case) => _case.status === "learned" || _case.status === "learning"
+      )
+    ) {
+      return true;
+    }
+    return false;
   };
 
   return (
@@ -75,48 +114,19 @@ export const OptionsModal = ({
                 key={filter}
               />
             ))}
-            {/* TODO make this a loop */}
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={updateOptions}
-                  name={"learning-first"}
-                  checked={stepStorage.options["learning-first"]}
-                />
-              }
-              label={"List 'Learning' cases first"}
-            />
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={updateOptions}
-                  name={"learned-last"}
-                  checked={stepStorage.options["learned-last"]}
-                />
-              }
-              label={"List 'Learned' cases last"}
-            />
-            {/* TODO disable these options if not applicable? */}
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={updateOptions}
-                  name={"exclude-unstarted"}
-                  checked={stepStorage.options["exclude-unstarted"]}
-                />
-              }
-              label={"Exclude 'Unstarted' cases from trainer"}
-            />
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={updateOptions}
-                  name={"exclude-learned"}
-                  checked={stepStorage.options["exclude-learned"]}
-                />
-              }
-              label={"Exclude 'Learned' cases from trainer"}
-            />
+            {options.map((option) => (
+              <FormControlLabel
+                control={
+                  <Switch
+                    onChange={updateOptions}
+                    name={option.name}
+                    checked={stepStorage.options[option.name]}
+                    disabled={checkDisableOption(option.name)}
+                  />
+                }
+                label={option.label}
+              />
+            ))}
           </FormGroup>
         </FormControl>
       </DialogContent>

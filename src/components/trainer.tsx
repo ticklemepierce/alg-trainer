@@ -1,13 +1,17 @@
 import { useState, useMemo, KeyboardEvent } from "react";
 import { IAlgsListContext, IStepStorage, IAlg } from "../puzzles";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, IconButton } from "@mui/material";
 import randomItem from "random-item";
 import shuffle from "lodash.shuffle";
 import useKeypress from "../hooks/useKeypress";
 import { useOutletContext } from "react-router-dom";
 import { useLocalStorage } from "usehooks-ts";
 import { expandTriggers } from "../triggers";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useNavigate } from "react-router-dom";
 
+// TODO add timer
+// TODO add ability to change status of case from trainer
 export const Trainer = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
 
@@ -20,9 +24,9 @@ export const Trainer = () => {
       {}
     ),
     options: {
-      "learning-first": true,
-      "learned-last": true,
-      "exclude-unstarted": true,
+      "learning-first": false,
+      "learned-last": false,
+      "exclude-unstarted": false,
       "exclude-learned": true,
     },
     cases: algs.reduce(
@@ -60,6 +64,7 @@ export const Trainer = () => {
 
   const preferredSolution = useMemo(
     () =>
+      currentCase &&
       expandTriggers(
         currentCase.solutions[stepStorage.cases[currentCase.name]!.preferred]
       ).split(" "),
@@ -90,7 +95,10 @@ export const Trainer = () => {
   };
 
   const currentSetup = useMemo(
-    () => randomItem(currentCase.setups),
+    () =>
+      currentCase
+        ? randomItem(currentCase.setups)
+        : "No cases found that match your current filters.",
     [currentCase]
   );
 
@@ -102,42 +110,71 @@ export const Trainer = () => {
     setHint(preferredSolution.slice(0, newHintLength).join(" "));
   };
 
+  const navigate = useNavigate();
+  function handleClick() {
+    navigate("..");
+  }
+
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
-      minHeight="95vh"
-      textAlign="center"
-    >
-      <Typography component="h1" variant="h3">
-        {currentSetup}
-      </Typography>
-      <Button
-        variant="contained"
-        sx={{ mt: 3 }}
-        size="large"
-        onClick={nextCase}
+    <>
+      <IconButton
+        aria-label="close"
+        onClick={handleClick}
+        sx={{
+          position: "fixed",
+          left: 8,
+          top: 8,
+          color: (theme) => theme.palette.grey[700],
+        }}
       >
-        {isLast ? "Start over" : "Next case"}
-      </Button>
-      <Button variant="text" sx={{ mt: 2 }} size="large" onClick={updateHint}>
-        Hint
-      </Button>
-      <Typography component="h5" variant="h5">
-        {hint}
-      </Typography>
-      {!isFirst && (
-        <Button
-          variant="text"
-          sx={{ mt: 3, position: "fixed", bottom: 50 }}
-          size="small"
-          onClick={previousCase}
-        >
-          Previous case
-        </Button>
-      )}
-    </Box>
+        <ArrowBackIcon />
+      </IconButton>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        minHeight="95vh"
+        maxWidth="95vw"
+        textAlign="center"
+      >
+        <Typography component="h1" variant="h3">
+          {currentSetup}
+        </Typography>
+        {currentCase && (
+          <>
+            <Button
+              variant="contained"
+              sx={{ mt: 3 }}
+              size="large"
+              onClick={nextCase}
+            >
+              {isLast ? "Start over" : "Next case"}
+            </Button>
+            <Button
+              variant="text"
+              sx={{ mt: 2 }}
+              size="large"
+              onClick={updateHint}
+            >
+              Hint
+            </Button>
+            <Typography component="h5" variant="h5">
+              {hint}
+            </Typography>
+            {!isFirst && (
+              <Button
+                variant="text"
+                sx={{ mt: 3, position: "fixed", bottom: 50 }}
+                size="small"
+                onClick={previousCase}
+              >
+                Previous case
+              </Button>
+            )}
+          </>
+        )}
+      </Box>
+    </>
   );
 };

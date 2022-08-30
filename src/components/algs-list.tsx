@@ -31,10 +31,10 @@ export const AlgsList = () => {
         {}
       ),
       options: {
-        "learning-first": true,
-        "learned-last": true,
-        "exclude-unstarted": true,
-        "exclude-learned": true,
+        "learning-first": false,
+        "learned-last": false,
+        "exclude-unstarted": false,
+        "exclude-learned": false,
       },
       cases: algs.reduce(
         (acc, curr) => ({
@@ -90,6 +90,7 @@ export const AlgsList = () => {
       <Box
         sx={{
           display: "grid",
+          alignItems: "center",
         }}
       >
         <Button
@@ -109,23 +110,30 @@ export const AlgsList = () => {
           aria-label="delete"
           onClick={openOptionsModal}
           size={"large"}
-          sx={{ gridColumnStart: 1, gridRowStart: 1, justifySelf: "right" }}
+          sx={{
+            gridColumnStart: 1,
+            gridRowStart: 1,
+            justifySelf: "right",
+            display: "flex",
+          }}
         >
           <TuneIcon fontSize="large" color="action" />
         </IconButton>
       </Box>
-      <MultiProgress
-        data={[
-          {
-            name: "learned",
-            value: percentLearned,
-          },
-          {
-            name: "learning",
-            value: percentLearning,
-          },
-        ]}
-      />
+      {(percentLearned > 0 || percentLearning > 0) && (
+        <MultiProgress
+          data={[
+            {
+              name: "learned",
+              value: percentLearned,
+            },
+            {
+              name: "learning",
+              value: percentLearning,
+            },
+          ]}
+        />
+      )}
       <TableContainer
         component={Paper}
         sx={{ maxWidth: 650, m: "0 auto" }}

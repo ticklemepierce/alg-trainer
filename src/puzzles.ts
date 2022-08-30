@@ -114,15 +114,23 @@ export type StatusMap = {
   [key in Status]: number;
 };
 
+export type OptionKeys =
+  | "learning-first"
+  | "learned-last"
+  | "exclude-unstarted"
+  | "exclude-learned";
+
+export type Options = Array<{
+  name: OptionKeys;
+  label: string;
+}>;
+
 export interface IStepStorage {
   filters: {
     [key: string]: boolean;
   };
   options: {
-    "learning-first": boolean;
-    "learned-last": boolean;
-    "exclude-unstarted": boolean;
-    "exclude-learned": boolean;
+    [key in OptionKeys]: boolean;
   };
   cases: {
     [key: string]: {

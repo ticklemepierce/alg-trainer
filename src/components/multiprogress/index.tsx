@@ -10,7 +10,7 @@ const colorMap = {
 interface IMultiProgress {
   data: Array<{
     value: number;
-    name: "learning" | "learned"; //TODO change this to 'Learning' and 'Learned' to avoid hacky capitalization
+    name: "learning" | "learned";
   }>;
 }
 
@@ -19,52 +19,43 @@ export const MultiProgress = ({ data }: IMultiProgress) => {
     return acc + curr.value;
   }, 0);
 
-  // TODO refactor with fewer loops??
-  const legends = data.map(function (item, i) {
-    if (item.value > 0) {
-      return (
-        <div className={classes.legend} key={i}>
-          <Typography
-            className={classes.dot}
-            style={{ color: colorMap[item.name] }}
-          >
-            ●
-          </Typography>
-          <Typography className={classes.label}>
-            {`${item.name[0].toUpperCase()}${item.name.slice(1)}`}: {item.value}
-            %
-          </Typography>
-        </div>
-      );
-    }
-  });
-
-  const bars = data.map(function (item, i) {
-    if (item.value > 0) {
-      return (
+  return (
+    <div className={classes.wrapper}>
+      <div className={classes.bars}>
+        {data.map((item, i) => (
+          <div
+            className={classes.bar}
+            style={{
+              backgroundColor: colorMap[item.name],
+              width: item.value + "%",
+            }}
+            key={i}
+          />
+        ))}
         <div
           className={classes.bar}
           style={{
-            backgroundColor: colorMap[item.name],
-            width: item.value + "%",
+            backgroundColor: grey[400],
+            width: 100 - totalPercent + "%",
           }}
-          key={i}
         />
-      );
-    }
-  });
-
-  bars.push(
-    <div
-      className={classes.bar}
-      style={{ backgroundColor: grey[400], width: 100 - totalPercent + "%" }}
-    />
-  );
-
-  return (
-    <div className={classes.wrapper}>
-      <div className={classes.bars}>{bars}</div>
-      <div className={classes.legends}>{legends}</div>
+      </div>
+      <div className={classes.legends}>
+        {data.map((item, i) => (
+          <div className={classes.legend} key={i}>
+            <Typography
+              className={classes.dot}
+              style={{ color: colorMap[item.name] }}
+            >
+              ●
+            </Typography>
+            <Typography className={classes.label}>
+              {`${item.name[0].toUpperCase()}${item.name.slice(1)}`}:{" "}
+              {item.value}%
+            </Typography>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
