@@ -6,7 +6,6 @@ self.addEventListener("install", (e)=>{
             "./"
         ]);
     }));
-    console.log("Install!");
 });
 self.addEventListener("fetch", (e)=>{
     e.respondWith(caches.match(e.request).then((response)=>{

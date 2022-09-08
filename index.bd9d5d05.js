@@ -13230,9 +13230,9 @@ module.exports = import("./" + (parcelRequire("aKzDW")).resolve("eXwSi")).then((
 
 });
 
-var $e87295484921f267$exports = {};
+var $f983d1ebcc4e165d$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.999ee6b9.js","eXwSi":"puzzle-geometry.db2a4a3f.js","gEiMW":"service-worker.5f6d7fdc.js","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.bd9d5d05.js","eXwSi":"puzzle-geometry.db2a4a3f.js","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -34458,6 +34458,8 @@ const $8256681cffce63c2$export$905b2330489c9c36 = ({ handleClose: handleClose , 
 
 var $228IU = parcelRequire("228IU");
 
+var $d4J5n = parcelRequire("d4J5n");
+
 
 var $228IU = parcelRequire("228IU");
 
@@ -34515,12 +34517,7290 @@ var $d99c51b3a6101237$export$2e2bcd8739ae039 = $d99c51b3a6101237$var$yellow;
 
 
 var $iKTt2 = parcelRequire("iKTt2");
+var $68fd4c41993b3878$export$b3ef12f1067db51f;
+(function(TurnType1) {
+    TurnType1[TurnType1["Clockwise"] = 0] = "Clockwise";
+    TurnType1[TurnType1["CounterClockwise"] = 1] = "CounterClockwise";
+    TurnType1[TurnType1["Double"] = 2] = "Double";
+})($68fd4c41993b3878$export$b3ef12f1067db51f || ($68fd4c41993b3878$export$b3ef12f1067db51f = {}));
+
+
+
+var $124cae5f9b200e70$var$TurnAbbreviation;
+(function(TurnAbbreviation1) {
+    TurnAbbreviation1["Clockwise"] = "";
+    TurnAbbreviation1["CounterClockwise"] = "'";
+    TurnAbbreviation1["Double"] = "2";
+})($124cae5f9b200e70$var$TurnAbbreviation || ($124cae5f9b200e70$var$TurnAbbreviation = {}));
+var $124cae5f9b200e70$export$3732f170b13d5060;
+(function(CubeAlgorithmUnit1) {
+    CubeAlgorithmUnit1["F"] = "F";
+    CubeAlgorithmUnit1["U"] = "U";
+    CubeAlgorithmUnit1["R"] = "R";
+    CubeAlgorithmUnit1["L"] = "L";
+    CubeAlgorithmUnit1["D"] = "D";
+    CubeAlgorithmUnit1["B"] = "B";
+    CubeAlgorithmUnit1["M"] = "M";
+    CubeAlgorithmUnit1["E"] = "E";
+    CubeAlgorithmUnit1["S"] = "S";
+    CubeAlgorithmUnit1["X"] = "x";
+    CubeAlgorithmUnit1["Y"] = "y";
+    CubeAlgorithmUnit1["Z"] = "z";
+})($124cae5f9b200e70$export$3732f170b13d5060 || ($124cae5f9b200e70$export$3732f170b13d5060 = {}));
+const $124cae5f9b200e70$export$5e34703e80cae1b5 = [
+    $124cae5f9b200e70$export$3732f170b13d5060.F,
+    $124cae5f9b200e70$export$3732f170b13d5060.U,
+    $124cae5f9b200e70$export$3732f170b13d5060.R,
+    $124cae5f9b200e70$export$3732f170b13d5060.L,
+    $124cae5f9b200e70$export$3732f170b13d5060.D,
+    $124cae5f9b200e70$export$3732f170b13d5060.B,
+    $124cae5f9b200e70$export$3732f170b13d5060.M,
+    $124cae5f9b200e70$export$3732f170b13d5060.E,
+    $124cae5f9b200e70$export$3732f170b13d5060.S,
+    $124cae5f9b200e70$export$3732f170b13d5060.X,
+    $124cae5f9b200e70$export$3732f170b13d5060.Y,
+    $124cae5f9b200e70$export$3732f170b13d5060.Z, 
+];
+const $124cae5f9b200e70$var$cubeRotations = [
+    $124cae5f9b200e70$export$3732f170b13d5060.X,
+    $124cae5f9b200e70$export$3732f170b13d5060.Y,
+    $124cae5f9b200e70$export$3732f170b13d5060.Z, 
+];
+const $124cae5f9b200e70$var$cubeTurnRegex = /([0-9]+)?([UuFfRrDdLlBbMESxyz])(w)?([2\'])?/g;
+function $124cae5f9b200e70$export$40cd6d717443f0f5(algorithm) {
+    if (!algorithm) return [];
+    let turns = [];
+    let match;
+    while(match = $124cae5f9b200e70$var$cubeTurnRegex.exec(algorithm)){
+        let rawSlices = match[1];
+        let rawFace = match[2];
+        let outerBlockIndicator = match[3];
+        let rawType = match[4] || $124cae5f9b200e70$var$TurnAbbreviation.Clockwise; // Default to clockwise
+        let isLowerCaseMove = rawFace === rawFace.toLowerCase() && $124cae5f9b200e70$var$cubeRotations.indexOf(rawFace) === -1;
+        if (isLowerCaseMove) rawFace = rawFace.toUpperCase();
+        let turn = {
+            unit: $124cae5f9b200e70$var$getMove(rawFace),
+            turnType: $124cae5f9b200e70$var$getTurnType(rawType),
+            slices: isLowerCaseMove ? 2 : $124cae5f9b200e70$var$getSlices(rawSlices, outerBlockIndicator)
+        };
+        turns.push(turn);
+    }
+    return turns;
+}
+function $124cae5f9b200e70$var$getSlices(rawSlices, outerBlockIndicator) {
+    if (outerBlockIndicator && !rawSlices) return 2;
+    else if (!outerBlockIndicator && rawSlices) throw new Error(`Invalid move: Cannot specify num slices if outer block move indicator 'w' is not present`);
+    else if (!outerBlockIndicator && !rawSlices) return 1;
+    else {
+        const intValue = parseInt(rawSlices);
+        if (intValue > 1) return intValue;
+        throw new Error(`Invalid outer block move (${intValue}) must be greater than 1`);
+    }
+}
+function $124cae5f9b200e70$var$getMove(rawFace) {
+    if ($124cae5f9b200e70$export$5e34703e80cae1b5.indexOf(rawFace) < 0) throw new Error(`Invalid move (${rawFace}): Possible turn faces are [U R F L D B M E S x y z]`);
+    else return rawFace;
+}
+function $124cae5f9b200e70$var$getTurnType(rawType) {
+    switch(rawType){
+        case $124cae5f9b200e70$var$TurnAbbreviation.Clockwise:
+            return (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise;
+        case $124cae5f9b200e70$var$TurnAbbreviation.CounterClockwise:
+            return (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
+        case $124cae5f9b200e70$var$TurnAbbreviation.Double:
+            return (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Double;
+        default:
+            throw new Error(`Invalid move modifier (${rawType})`);
+    }
+}
+
+
+class $c7dd1edeefb0d4d3$export$b14c74960ae6f55e {
+    constructor(){
+        this.stickers = new Map();
+        this.faces = new Map();
+        this.turns = new Map();
+    }
+    /**
+     * Adds a face of stickers to the puzzle.
+     *
+     * @param stickers - array of sticker values
+     * @param label - label to reference the face by
+     * @returns object with the faceId and list of sticker ids.
+     *  faceId will be label if that is present. Otherwise it
+     *  will be generated.
+     * @example
+     * ```
+     * const stickers = ['red', 'red', 'red', 'red'];
+     *
+     * // Add the F face
+     * addFace(stickers, 'F')
+     * ```
+     */ addFace(stickers, label) {
+        if (label && this.faces.has(label)) throw `Face ${label} already exists`;
+        else if (!label) label = (this.faces.size + 1).toString();
+        // Add Stickers
+        const stickerIds1 = stickers.reduce((stickerIds, nextSticker)=>{
+            const stickerId = (this.stickers.size + 1).toString();
+            this.stickers.set(stickerId, nextSticker);
+            stickerIds.push(stickerId);
+            return stickerIds;
+        }, []);
+        // Add Face
+        this.faces.set(label, stickerIds1);
+        return {
+            faceId: label,
+            stickerIds: stickerIds1
+        };
+    }
+    /**
+     * Creates a turn definition that tells the simulator
+     * what sticker values to change when turning.
+     *
+     * A change is an array with two sticker ids (ex. ['sticker1', 'sticker2'])
+     * this means that when turning 'sticker1' will go to 'sticker2'.
+     * Or when doing a reverse turn, `sticker2' will go to 'sticker1'
+     *
+     * @param changes - list of turn definitions.
+     * @param label - label to reference the turn by
+     * @returns label of the turn that was created
+     */ addTurn(changes, label) {
+        if (label && this.turns.has(label)) throw `Turn ${label} already exists`;
+        else if (!label) label = (this.turns.size + 1).toString();
+        this.turns.set(label, changes);
+        return label;
+    }
+    /**
+     * Executes a turn on the puzzle
+     *
+     * @param label - label of the turn to execute
+     * @param prime - true to do the turn in reverse
+     */ doTurn(label, reverse = false) {
+        const changes = this.turns.get(label);
+        if (!changes) throw `Unknown turn ${label}`;
+        let movingSticker = reverse ? 1 : 0;
+        let replacedSticker = reverse ? 0 : 1;
+        let cached = {};
+        changes.forEach((change)=>{
+            // Cache value we're replacing
+            cached[change[replacedSticker]] = this.stickers.get(change[replacedSticker]);
+            // Update sticker with new value
+            this.stickers.set(change[replacedSticker], cached[change[movingSticker]] || this.stickers.get(change[movingSticker]));
+        });
+    }
+    /**
+     * checks that every sticker on every face
+     * is the same value
+     */ isSolved() {
+        const faces = this.faces.entries();
+        let entry = faces.next();
+        do {
+            const stickerIds = entry.value[1];
+            let value = this.stickers.get(stickerIds[0]);
+            for (let id of stickerIds){
+                if (value != this.stickers.get(id)) return false;
+            }
+            entry = faces.next();
+        }while (!entry.done);
+        return true;
+    }
+    getValues() {
+        let values = {};
+        this.faces.forEach((stickerIds, key)=>{
+            values[key] = stickerIds.map((id)=>this.stickers.get(id));
+        });
+        return values;
+    }
+    /**
+     * override value of sticker on a face
+     *
+     * @param face - label
+     * @param index - index of sticker to set value of
+     * @param value - value to set the sticker to
+     */ setValue(face, index, value) {
+        if (!this.faces.has(face)) {
+            console.warn(`attempting to set sticker value on invalid face: ${face}`);
+            return;
+        }
+        let faceStickers = this.faces.get(face);
+        let stickerId = faceStickers[index];
+        if (!faceStickers) {
+            console.warn(`attempting to set sticker value for invalid sticker: ${face} ${index}`);
+            return;
+        }
+        this.stickers.set(stickerId, value);
+    }
+    /**
+     * parse and execute a sequence of moves
+     *
+     * @example
+     * ```typescript
+     * // assuming U, R, and F are turn labels
+     * simulator.alg("U R F")
+     * ```
+     *
+     * @param alg - algorithm
+     */ alg(alg) {
+        // Default implementation
+        if (!alg) return;
+        alg.split(" ").forEach((turn)=>this.doTurn(turn));
+    }
+    /**
+     * reverses an algorithm then executes it
+     */ case(alg) {
+    // No default implementation
+    }
+    /**
+     * resets stickers back to solved position. Uses face name
+     * as sticker value by default
+     */ reset() {
+        this.faces.forEach((stickerIds, faceName)=>{
+            stickerIds.forEach((stickerId)=>{
+                this.stickers.set(stickerId, faceName);
+            });
+        });
+    }
+}
+
+
+const $a552dd61b777f7b8$export$aab610c505c06a8f = {
+    value: "#FFFF00"
+};
+const $a552dd61b777f7b8$export$aa201224bb439d47 = {
+    value: "#FF0000"
+};
+const $a552dd61b777f7b8$export$738c3b9a44c87ecc = {
+    value: "#0000FF"
+};
+const $a552dd61b777f7b8$export$29814851e0aa981f = {
+    value: "#FFFFFF"
+};
+const $a552dd61b777f7b8$export$3de5e29ed1757f9b = {
+    value: "#FFA500"
+};
+const $a552dd61b777f7b8$export$48d4b2cd5bc0e88b = {
+    value: "#00FF00"
+};
+const $a552dd61b777f7b8$export$7ffdeca4b2f927a2 = {
+    value: "#800080"
+};
+const $a552dd61b777f7b8$export$7d278ca694634874 = {
+    value: "#808080"
+};
+const $a552dd61b777f7b8$export$1225f83626261b80 = {
+    value: "#00008B"
+};
+const $a552dd61b777f7b8$export$ff076ff0c4d77395 = {
+    value: "#ffffb3"
+};
+const $a552dd61b777f7b8$export$e0ebd895ef030b6d = {
+    value: "#32CD32"
+};
+const $a552dd61b777f7b8$export$d68d0fda4a10dbc2 = {
+    value: "#FF69B4"
+};
+const $a552dd61b777f7b8$export$7a91b0fde7ec420f = {
+    value: "#000000"
+};
+const $a552dd61b777f7b8$export$6597749b34bb1aec = {
+    value: "#404040"
+};
+const $a552dd61b777f7b8$export$f8ea35a42260644 = {
+    value: "#FFFF00",
+    stroke: "#DDDD00"
+};
+const $a552dd61b777f7b8$export$7901c298af2b8d83 = {
+    value: "#FF0000",
+    stroke: "#DD0000"
+};
+const $a552dd61b777f7b8$export$a11c97893961affb = {
+    value: "#0000FF",
+    stroke: "#0000DD"
+};
+const $a552dd61b777f7b8$export$d0c18299ad9e8571 = {
+    value: "#FFFFFF",
+    stroke: "#DDD"
+};
+const $a552dd61b777f7b8$export$36003d2b566c2e7a = {
+    value: "#FFA500",
+    stroke: "#DD8500"
+};
+const $a552dd61b777f7b8$export$ad63947d03e3ccba = {
+    value: "#00FF00",
+    stroke: "#00DD00"
+};
+const $a552dd61b777f7b8$export$4bde46112ba7cd7a = {
+    value: "#800080",
+    stroke: "#5c005c"
+};
+const $a552dd61b777f7b8$export$819b712065175813 = {
+    value: "#808080",
+    stroke: "#6b6b6b"
+};
+const $a552dd61b777f7b8$export$102b4a2dab1cc261 = {
+    value: "#00008B",
+    stroke: "#000075"
+};
+const $a552dd61b777f7b8$export$72f460dd5f01d0e4 = {
+    value: "#ffffb3",
+    stroke: "#e6e6a3"
+};
+const $a552dd61b777f7b8$export$9a752ac04d471666 = {
+    value: "#32CD32",
+    stroke: "#2db32d"
+};
+const $a552dd61b777f7b8$export$7fdcd4061f1d99cb = {
+    value: "#FF69B4",
+    stroke: "#de5b9c"
+};
+
+
+var $ca66abb67f2ac25e$export$6173bdc2540cf84d;
+(function(PIECE_TYPE1) {
+    PIECE_TYPE1[PIECE_TYPE1["CORNER"] = 0] = "CORNER";
+    PIECE_TYPE1[PIECE_TYPE1["EDGE"] = 1] = "EDGE";
+    PIECE_TYPE1[PIECE_TYPE1["MIDDLE"] = 2] = "MIDDLE";
+})($ca66abb67f2ac25e$export$6173bdc2540cf84d || ($ca66abb67f2ac25e$export$6173bdc2540cf84d = {}));
+
+
+class $621efe85613594b3$export$64b5c384219d3699 {
+    constructor(x, y, z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    static fromValues(x, y, z) {
+        return new $621efe85613594b3$export$64b5c384219d3699(x, y, z);
+    }
+    transformMat4(m) {
+        let w = m.values[3] * this.x + m.values[7] * this.y + m.values[11] * this.z + m.values[15];
+        w = w || 1.0;
+        const x = (m.values[0] * this.x + m.values[4] * this.y + m.values[8] * this.z + m.values[12]) / w;
+        const y = (m.values[1] * this.x + m.values[5] * this.y + m.values[9] * this.z + m.values[13]) / w;
+        const z = (m.values[2] * this.x + m.values[6] * this.y + m.values[10] * this.z + m.values[14]) / w;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    multiply(x, y, z) {
+        this.x = this.x * x;
+        this.y = this.y * y;
+        this.z = this.z * z;
+    }
+    rotateX(origin, radians) {
+        // translate point to origin
+        let x = this.x - origin.x;
+        let y = this.y - origin.y;
+        let z = this.z - origin.z;
+        // rotate
+        this.x = x;
+        this.y = y * Math.cos(radians) - z * Math.sin(radians);
+        this.z = y * Math.sin(radians) + z * Math.cos(radians);
+        // translate back
+        this.x += origin.x;
+        this.y += origin.y;
+        this.z += origin.z;
+        return this;
+    }
+    rotateZ(origin, radians) {
+        // translate point to origin
+        let x = this.x - origin.x;
+        let y = this.y - origin.y;
+        let z = this.z - origin.z;
+        // rotate
+        this.x = x * Math.cos(radians) - y * Math.sin(radians);
+        this.y = x * Math.sin(radians) + y * Math.cos(radians);
+        this.z = z;
+        // translate back
+        this.x += origin.x;
+        this.y += origin.y;
+        this.z += origin.z;
+        return this;
+    }
+    clone() {
+        return $621efe85613594b3$export$64b5c384219d3699.fromValues(this.x, this.y, this.z);
+    }
+}
+class $621efe85613594b3$export$c977b3e384af9ae1 {
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+    }
+    static fromValues(x, y) {
+        return new $621efe85613594b3$export$c977b3e384af9ae1(x, y);
+    }
+}
+
+
+const $9b3744130fd33c3e$export$f37ee267a00cc8d1 = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0.92875, -0.24803, 0);
+const $9b3744130fd33c3e$export$55b0a8c193af45de = (0, $a552dd61b777f7b8$export$aab610c505c06a8f);
+const $9b3744130fd33c3e$export$1fc89f64133f4a0c = (0, $a552dd61b777f7b8$export$29814851e0aa981f);
+const $9b3744130fd33c3e$export$cb85c16e1d24099a = (0, $a552dd61b777f7b8$export$aa201224bb439d47);
+const $9b3744130fd33c3e$export$66e6a34bcf8f025 = (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc);
+const $9b3744130fd33c3e$export$14680afe79e23391 = (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b);
+const $9b3744130fd33c3e$export$fd9287afea1ea787 = (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b);
+const $9b3744130fd33c3e$export$e1bf8712b5945cd = {
+    top: $9b3744130fd33c3e$export$55b0a8c193af45de,
+    front: $9b3744130fd33c3e$export$cb85c16e1d24099a,
+    bottom: $9b3744130fd33c3e$export$1fc89f64133f4a0c,
+    left: $9b3744130fd33c3e$export$66e6a34bcf8f025,
+    right: $9b3744130fd33c3e$export$14680afe79e23391,
+    back: $9b3744130fd33c3e$export$fd9287afea1ea787
+};
+const $9b3744130fd33c3e$export$a5aadce9b3884cce = [
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+        colors: [
+            $9b3744130fd33c3e$export$55b0a8c193af45de,
+            $9b3744130fd33c3e$export$cb85c16e1d24099a,
+            $9b3744130fd33c3e$export$66e6a34bcf8f025
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+        colors: [
+            $9b3744130fd33c3e$export$55b0a8c193af45de,
+            $9b3744130fd33c3e$export$66e6a34bcf8f025
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+        colors: [
+            $9b3744130fd33c3e$export$55b0a8c193af45de,
+            $9b3744130fd33c3e$export$66e6a34bcf8f025,
+            $9b3744130fd33c3e$export$fd9287afea1ea787
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+        colors: [
+            $9b3744130fd33c3e$export$55b0a8c193af45de,
+            $9b3744130fd33c3e$export$fd9287afea1ea787
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+        colors: [
+            $9b3744130fd33c3e$export$55b0a8c193af45de,
+            $9b3744130fd33c3e$export$fd9287afea1ea787,
+            $9b3744130fd33c3e$export$14680afe79e23391
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+        colors: [
+            $9b3744130fd33c3e$export$55b0a8c193af45de,
+            $9b3744130fd33c3e$export$14680afe79e23391
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+        colors: [
+            $9b3744130fd33c3e$export$55b0a8c193af45de,
+            $9b3744130fd33c3e$export$14680afe79e23391,
+            $9b3744130fd33c3e$export$cb85c16e1d24099a
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+        colors: [
+            $9b3744130fd33c3e$export$55b0a8c193af45de,
+            $9b3744130fd33c3e$export$cb85c16e1d24099a
+        ]
+    }, 
+];
+const $9b3744130fd33c3e$export$4c6069d7db9ecde2 = [
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+        colors: [
+            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
+            $9b3744130fd33c3e$export$fd9287afea1ea787
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+        colors: [
+            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
+            $9b3744130fd33c3e$export$fd9287afea1ea787,
+            $9b3744130fd33c3e$export$66e6a34bcf8f025
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+        colors: [
+            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
+            $9b3744130fd33c3e$export$66e6a34bcf8f025
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+        colors: [
+            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
+            $9b3744130fd33c3e$export$66e6a34bcf8f025,
+            $9b3744130fd33c3e$export$cb85c16e1d24099a
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+        colors: [
+            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
+            $9b3744130fd33c3e$export$cb85c16e1d24099a
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+        colors: [
+            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
+            $9b3744130fd33c3e$export$cb85c16e1d24099a,
+            $9b3744130fd33c3e$export$14680afe79e23391
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+        colors: [
+            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
+            $9b3744130fd33c3e$export$14680afe79e23391
+        ]
+    },
+    {
+        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+        colors: [
+            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
+            $9b3744130fd33c3e$export$14680afe79e23391,
+            $9b3744130fd33c3e$export$fd9287afea1ea787
+        ]
+    }, 
+];
+
+
+
+const $edb14850c73ace03$var$square1TurnRegex = /((\()?(-?\d)\s*,\s*(-?\d)(\))?)|(\/)/g;
+function $edb14850c73ace03$export$b431853fef50a69d(algorithm) {
+    let turns = [];
+    let match;
+    while(match = $edb14850c73ace03$var$square1TurnRegex.exec(algorithm))if (match[0] === "/") turns.push({
+        slice: true
+    });
+    else turns.push({
+        top: parseInt(match[3]),
+        bottom: parseInt(match[4])
+    });
+    return turns;
+}
+
+
+const $6a2ff1079a5489d4$var$pieceValue = {
+    [(0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER]: 2,
+    [(0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE]: 1
+};
+class $6a2ff1079a5489d4$export$2c536ad444fb73c5 extends (0, $c7dd1edeefb0d4d3$export$b14c74960ae6f55e) {
+    constructor(scheme = (0, $9b3744130fd33c3e$export$e1bf8712b5945cd)){
+        super();
+        this.scheme = scheme;
+        this.topLayer = $6a2ff1079a5489d4$var$solvedTop(this.scheme);
+        this.bottomLayer = $6a2ff1079a5489d4$var$solvedBottom(this.scheme);
+        this.middleRotated = false;
+    }
+    alg(alg) {
+        (0, $edb14850c73ace03$export$b431853fef50a69d)(alg).forEach((move)=>{
+            if ("slice" in move) this.slice();
+            else {
+                this.rotateTop(move.top);
+                this.rotateBottom(move.bottom);
+            }
+        });
+    }
+    case(alg) {
+        (0, $edb14850c73ace03$export$b431853fef50a69d)(alg).reverse().forEach((move)=>{
+            if ("slice" in move) this.slice();
+            else {
+                this.rotateTop(move.top * -1);
+                this.rotateBottom(move.bottom * -1);
+            }
+        });
+    }
+    slice() {
+        let topNum = 0;
+        let bottomNum = 0;
+        let value = 0;
+        for(let i = this.topLayer.length; i > 0 && value < 6; i--){
+            value += $6a2ff1079a5489d4$var$pieceValue[this.topLayer[i - 1].type];
+            topNum++;
+        }
+        if (value != 6) throw "Cannot perform slice move. Top layer misaligned";
+        value = 0;
+        for(let i1 = this.bottomLayer.length; i1 > 0 && value < 6; i1--){
+            value += $6a2ff1079a5489d4$var$pieceValue[this.bottomLayer[i1 - 1].type];
+            bottomNum++;
+        }
+        if (value != 6) throw "Cannot perform slice move. Bottom layer misaligned";
+        const topSlice = this.topLayer.splice(this.topLayer.length - topNum, this.topLayer.length);
+        const bottomSlice = this.bottomLayer.splice(this.bottomLayer.length - bottomNum, this.bottomLayer.length);
+        this.topLayer = this.topLayer.concat(bottomSlice);
+        this.bottomLayer = this.bottomLayer.concat(topSlice);
+        this.middleRotated = !this.middleRotated;
+    }
+    rotateTop(turns) {
+        const originalTurns = turns;
+        while(turns != 0)if (turns < 0) {
+            const piece = this.topLayer.shift();
+            const value = $6a2ff1079a5489d4$var$pieceValue[piece.type];
+            if (Math.abs(turns) < value) throw `Invalid Square1 Move. Cannot turn top layer ${originalTurns} steps`;
+            this.topLayer.push(piece);
+            turns += value;
+        } else {
+            const piece = this.topLayer.pop();
+            const value = $6a2ff1079a5489d4$var$pieceValue[piece.type];
+            if (Math.abs(turns) < value) throw `Invalid Square1 Move. Cannot turn top layer ${originalTurns} steps`;
+            this.topLayer.unshift(piece);
+            turns -= value;
+        }
+    }
+    rotateBottom(turns) {
+        const originalTurns = turns;
+        while(turns != 0)if (turns < 0) {
+            const piece = this.bottomLayer.shift();
+            const value = $6a2ff1079a5489d4$var$pieceValue[piece.type];
+            if (Math.abs(turns) < value) throw `Invalid Square1 Move. Cannot turn top layer ${originalTurns} steps`;
+            this.bottomLayer.push(piece);
+            turns += value;
+        } else {
+            const piece = this.bottomLayer.pop();
+            const value = $6a2ff1079a5489d4$var$pieceValue[piece.type];
+            if (Math.abs(turns) < value) throw `Invalid Square1 Move. Cannot turn top layer ${originalTurns} steps`;
+            this.bottomLayer.unshift(piece);
+            turns -= value;
+        }
+    }
+}
+function $6a2ff1079a5489d4$var$solvedTop(scheme) {
+    return [
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+            colors: [
+                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
+                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a),
+                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025), 
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+            colors: [
+                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
+                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025)
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+            colors: [
+                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
+                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025),
+                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787), 
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+            colors: [
+                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
+                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787)
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+            colors: [
+                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
+                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787),
+                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391), 
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+            colors: [
+                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
+                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391)
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+            colors: [
+                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
+                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391),
+                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a), 
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+            colors: [
+                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
+                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a)
+            ]
+        }, 
+    ];
+}
+function $6a2ff1079a5489d4$var$solvedBottom(scheme) {
+    return [
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+            colors: [
+                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
+                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787)
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+            colors: [
+                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
+                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787),
+                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025), 
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+            colors: [
+                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
+                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025)
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+            colors: [
+                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
+                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025),
+                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a), 
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+            colors: [
+                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
+                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a)
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+            colors: [
+                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
+                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a),
+                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391), 
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
+            colors: [
+                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
+                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391)
+            ]
+        },
+        {
+            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
+            colors: [
+                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
+                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391),
+                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787), 
+            ]
+        }, 
+    ];
+}
+
+
+
+
+const $09452e3a6320fe56$var$skewbTurnRegex = /([LRUB])(\'?)/g;
+const $09452e3a6320fe56$var$DirectionToTurnType = {
+    "": (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise,
+    "'": (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise
+};
+function $09452e3a6320fe56$export$bbb21588e7059e00(algorithm) {
+    let turns = [];
+    let match;
+    while(match = $09452e3a6320fe56$var$skewbTurnRegex.exec(algorithm)){
+        const rawUnit = match[1];
+        const rawDirection = match[2];
+        turns.push({
+            unit: rawUnit,
+            turnType: $09452e3a6320fe56$var$DirectionToTurnType[rawDirection],
+            slices: 1
+        });
+    }
+    return turns;
+}
+
+
+function $047c8aa02737eb97$export$f922ebe57f2c36e8(array, chunkSize) {
+    const newSize = Math.ceil(array.length / chunkSize);
+    return new Array(newSize).fill(null).map((_, index)=>array.slice(index * chunkSize, (index + 1) * chunkSize));
+}
+function $047c8aa02737eb97$export$57295b69bf9c5d15(length, value) {
+    return new Array(length).fill(value);
+}
+
+
+
+class $cdfaf7e439ac29e3$export$b9c7478369a38c76 extends (0, $c7dd1edeefb0d4d3$export$b14c74960ae6f55e) {
+    constructor(){
+        super();
+        const { stickerIds: top  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "top"), "top");
+        const { stickerIds: front  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "front"), "front");
+        const { stickerIds: right  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "right"), "right");
+        const { stickerIds: bottom  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "bottom"), "bottom");
+        const { stickerIds: back  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "back"), "back");
+        const { stickerIds: left  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "left"), "left");
+        // Skewb Notation https://www.worldcubeassociation.org/regulations/#12h
+        this.addTurn([
+            [
+                right[0],
+                back[0]
+            ],
+            [
+                right[2],
+                back[4]
+            ],
+            [
+                right[3],
+                back[1]
+            ],
+            [
+                right[4],
+                back[3]
+            ],
+            [
+                back[0],
+                bottom[0]
+            ],
+            [
+                back[4],
+                bottom[2]
+            ],
+            [
+                back[1],
+                bottom[3]
+            ],
+            [
+                back[3],
+                bottom[4]
+            ],
+            [
+                bottom[0],
+                right[0]
+            ],
+            [
+                bottom[2],
+                right[2]
+            ],
+            [
+                bottom[3],
+                right[3]
+            ],
+            [
+                bottom[4],
+                right[4]
+            ],
+            [
+                front[4],
+                top[2]
+            ],
+            [
+                top[2],
+                left[3]
+            ],
+            [
+                left[3],
+                front[4]
+            ], 
+        ], "R");
+        this.addTurn([
+            [
+                $cdfaf7e439ac29e3$var$center(top),
+                $cdfaf7e439ac29e3$var$center(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topLeft(top),
+                $cdfaf7e439ac29e3$var$topLeft(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topRight(top),
+                $cdfaf7e439ac29e3$var$topRight(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(top),
+                $cdfaf7e439ac29e3$var$bottomLeft(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$center(left),
+                $cdfaf7e439ac29e3$var$center(back)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topLeft(left),
+                $cdfaf7e439ac29e3$var$topRight(back)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topRight(left),
+                $cdfaf7e439ac29e3$var$bottomRight(back)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(left),
+                $cdfaf7e439ac29e3$var$topLeft(back)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$center(back),
+                $cdfaf7e439ac29e3$var$center(top)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topRight(back),
+                $cdfaf7e439ac29e3$var$topLeft(top)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomRight(back),
+                $cdfaf7e439ac29e3$var$topRight(top)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topLeft(back),
+                $cdfaf7e439ac29e3$var$bottomLeft(top)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topRight(right),
+                $cdfaf7e439ac29e3$var$topLeft(front)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topLeft(front),
+                $cdfaf7e439ac29e3$var$bottomLeft(bottom)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(bottom),
+                $cdfaf7e439ac29e3$var$topRight(right)
+            ], 
+        ], "U");
+        this.addTurn([
+            [
+                $cdfaf7e439ac29e3$var$center(left),
+                $cdfaf7e439ac29e3$var$center(front)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(left),
+                $cdfaf7e439ac29e3$var$topLeft(front)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topRight(left),
+                $cdfaf7e439ac29e3$var$bottomRight(front)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomRight(left),
+                $cdfaf7e439ac29e3$var$bottomLeft(front)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$center(front),
+                $cdfaf7e439ac29e3$var$center(bottom)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topLeft(front),
+                $cdfaf7e439ac29e3$var$topRight(bottom)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomRight(front),
+                $cdfaf7e439ac29e3$var$bottomLeft(bottom)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(front),
+                $cdfaf7e439ac29e3$var$topLeft(bottom)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$center(bottom),
+                $cdfaf7e439ac29e3$var$center(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topRight(bottom),
+                $cdfaf7e439ac29e3$var$bottomLeft(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(bottom),
+                $cdfaf7e439ac29e3$var$topRight(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topLeft(bottom),
+                $cdfaf7e439ac29e3$var$bottomRight(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomRight(back),
+                $cdfaf7e439ac29e3$var$bottomLeft(top)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(top),
+                $cdfaf7e439ac29e3$var$bottomLeft(right)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(right),
+                $cdfaf7e439ac29e3$var$bottomRight(back)
+            ], 
+        ], "L");
+        this.addTurn([
+            [
+                $cdfaf7e439ac29e3$var$center(back),
+                $cdfaf7e439ac29e3$var$center(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topRight(back),
+                $cdfaf7e439ac29e3$var$bottomRight(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(back),
+                $cdfaf7e439ac29e3$var$topLeft(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomRight(back),
+                $cdfaf7e439ac29e3$var$bottomLeft(left)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$center(left),
+                $cdfaf7e439ac29e3$var$center(bottom)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomRight(left),
+                $cdfaf7e439ac29e3$var$bottomRight(bottom)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topLeft(left),
+                $cdfaf7e439ac29e3$var$topLeft(bottom)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(left),
+                $cdfaf7e439ac29e3$var$bottomLeft(bottom)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$center(bottom),
+                $cdfaf7e439ac29e3$var$center(back)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomRight(bottom),
+                $cdfaf7e439ac29e3$var$topRight(back)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topLeft(bottom),
+                $cdfaf7e439ac29e3$var$bottomLeft(back)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(bottom),
+                $cdfaf7e439ac29e3$var$bottomRight(back)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$topLeft(top),
+                $cdfaf7e439ac29e3$var$bottomLeft(front)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomLeft(front),
+                $cdfaf7e439ac29e3$var$bottomRight(right)
+            ],
+            [
+                $cdfaf7e439ac29e3$var$bottomRight(right),
+                $cdfaf7e439ac29e3$var$topLeft(top)
+            ], 
+        ], "B");
+    }
+    R(reverse) {
+        this.doTurn("R", reverse);
+    }
+    U(reverse) {
+        this.doTurn("U", reverse);
+    }
+    L(reverse) {
+        this.doTurn("L", reverse);
+    }
+    B(reverse) {
+        this.doTurn("B", reverse);
+    }
+    alg(alg) {
+        if (!alg) return;
+        this.doTurns((0, $09452e3a6320fe56$export$bbb21588e7059e00)(alg));
+    }
+    case(alg) {
+        if (!alg) return;
+        let turns = (0, $09452e3a6320fe56$export$bbb21588e7059e00)(alg).reverse().map((turn)=>Object.assign(Object.assign({}, turn), {
+                turnType: turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise ? (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise : (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise
+            }));
+        this.doTurns(turns);
+    }
+    doTurns(turns) {
+        turns.forEach((turn)=>{
+            let reverse = turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
+            switch(turn.unit){
+                case "R":
+                    this.R(reverse);
+                    break;
+                case "U":
+                    this.U(reverse);
+                    break;
+                case "L":
+                    this.L(reverse);
+                    break;
+                case "B":
+                    this.B(reverse);
+                    break;
+            }
+        });
+    }
+}
+const $cdfaf7e439ac29e3$var$center = (face)=>face[0];
+const $cdfaf7e439ac29e3$var$topLeft = (face)=>face[1];
+const $cdfaf7e439ac29e3$var$topRight = (face)=>face[2];
+const $cdfaf7e439ac29e3$var$bottomLeft = (face)=>face[3];
+const $cdfaf7e439ac29e3$var$bottomRight = (face)=>face[4];
+
+
+
+
+const $40dd552cdb78c76f$var$pyraminxTurnRegex = /([LlRrUuBb])(\'?)/g;
+const $40dd552cdb78c76f$var$DirectionToTurnType = {
+    "": (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise,
+    "'": (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise
+};
+function $40dd552cdb78c76f$export$889bfdf6aad78bd0(algorithm) {
+    let turns = [];
+    let match;
+    while(match = $40dd552cdb78c76f$var$pyraminxTurnRegex.exec(algorithm)){
+        const rawUnit = match[1];
+        const rawDirection = match[2];
+        turns.push({
+            unit: rawUnit,
+            turnType: $40dd552cdb78c76f$var$DirectionToTurnType[rawDirection],
+            slices: 1
+        });
+    }
+    return turns;
+}
+
+
+
+
+class $e8a3bdbf0be390cd$export$d05b816c594f90e8 extends (0, $c7dd1edeefb0d4d3$export$b14c74960ae6f55e) {
+    constructor(){
+        super();
+        const { stickerIds: U  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(9, "top"), "top");
+        const { stickerIds: L  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(9, "left"), "left");
+        const { stickerIds: R  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(9, "right"), "right");
+        const { stickerIds: B  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(9, "back"), "back");
+        // Tip turns
+        this.addTurn([
+            [
+                U[8],
+                R[8]
+            ],
+            [
+                R[8],
+                L[8]
+            ],
+            [
+                L[8],
+                U[8]
+            ], 
+        ], "u");
+        this.addTurn([
+            [
+                L[0],
+                B[8]
+            ],
+            [
+                B[8],
+                U[4]
+            ],
+            [
+                U[4],
+                L[0]
+            ], 
+        ], "l");
+        this.addTurn([
+            [
+                L[4],
+                R[0]
+            ],
+            [
+                R[0],
+                B[4]
+            ],
+            [
+                B[4],
+                L[4]
+            ], 
+        ], "r");
+        this.addTurn([
+            [
+                R[4],
+                U[0]
+            ],
+            [
+                U[0],
+                B[0]
+            ],
+            [
+                B[0],
+                R[4]
+            ], 
+        ], "b");
+        // Full turns
+        this.addTurn([
+            [
+                U[5],
+                R[5]
+            ],
+            [
+                U[6],
+                R[6]
+            ],
+            [
+                U[7],
+                R[7]
+            ],
+            [
+                U[8],
+                R[8]
+            ],
+            [
+                R[5],
+                L[5]
+            ],
+            [
+                R[6],
+                L[6]
+            ],
+            [
+                R[7],
+                L[7]
+            ],
+            [
+                R[8],
+                L[8]
+            ],
+            [
+                L[5],
+                U[5]
+            ],
+            [
+                L[6],
+                U[6]
+            ],
+            [
+                L[7],
+                U[7]
+            ],
+            [
+                L[8],
+                U[8]
+            ], 
+        ], "U");
+        this.addTurn([
+            [
+                L[0],
+                B[8]
+            ],
+            [
+                L[1],
+                B[6]
+            ],
+            [
+                L[2],
+                B[5]
+            ],
+            [
+                L[5],
+                B[7]
+            ],
+            [
+                B[8],
+                U[4]
+            ],
+            [
+                B[6],
+                U[3]
+            ],
+            [
+                B[5],
+                U[7]
+            ],
+            [
+                B[7],
+                U[2]
+            ],
+            [
+                U[4],
+                L[0]
+            ],
+            [
+                U[3],
+                L[1]
+            ],
+            [
+                U[7],
+                L[2]
+            ],
+            [
+                U[2],
+                L[5]
+            ], 
+        ], "L");
+        this.addTurn([
+            [
+                L[2],
+                R[5]
+            ],
+            [
+                L[3],
+                R[1]
+            ],
+            [
+                L[4],
+                R[0]
+            ],
+            [
+                L[7],
+                R[2]
+            ],
+            [
+                R[5],
+                B[2]
+            ],
+            [
+                R[1],
+                B[3]
+            ],
+            [
+                R[0],
+                B[4]
+            ],
+            [
+                R[2],
+                B[7]
+            ],
+            [
+                B[2],
+                L[2]
+            ],
+            [
+                B[3],
+                L[3]
+            ],
+            [
+                B[4],
+                L[4]
+            ],
+            [
+                B[7],
+                L[7]
+            ], 
+        ], "R");
+        this.addTurn([
+            [
+                R[2],
+                U[5]
+            ],
+            [
+                R[3],
+                U[1]
+            ],
+            [
+                R[4],
+                U[0]
+            ],
+            [
+                R[7],
+                U[2]
+            ],
+            [
+                U[5],
+                B[5]
+            ],
+            [
+                U[1],
+                B[1]
+            ],
+            [
+                U[0],
+                B[0]
+            ],
+            [
+                U[2],
+                B[2]
+            ],
+            [
+                B[5],
+                R[2]
+            ],
+            [
+                B[1],
+                R[3]
+            ],
+            [
+                B[0],
+                R[4]
+            ],
+            [
+                B[2],
+                R[7]
+            ], 
+        ], "B");
+    }
+    U(reverse) {
+        this.doTurn("U", reverse);
+    }
+    R(reverse) {
+        this.doTurn("R", reverse);
+    }
+    L(reverse) {
+        this.doTurn("L", reverse);
+    }
+    B(reverse) {
+        this.doTurn("B", reverse);
+    }
+    u(reverse) {
+        this.doTurn("u", reverse);
+    }
+    r(reverse) {
+        this.doTurn("r", reverse);
+    }
+    l(reverse) {
+        this.doTurn("l", reverse);
+    }
+    b(reverse) {
+        this.doTurn("b", reverse);
+    }
+    alg(alg) {
+        if (!alg) return;
+        this.doTurns((0, $40dd552cdb78c76f$export$889bfdf6aad78bd0)(alg));
+    }
+    case(alg) {
+        if (!alg) return;
+        let turns = (0, $40dd552cdb78c76f$export$889bfdf6aad78bd0)(alg).reverse().map((turn)=>Object.assign(Object.assign({}, turn), {
+                turnType: turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise ? (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise : (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise
+            }));
+        this.doTurns(turns);
+    }
+    doTurns(turns) {
+        turns.forEach((turn)=>{
+            let reverse = turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
+            switch(turn.unit){
+                case "R":
+                    this.R(reverse);
+                    break;
+                case "r":
+                    this.r(reverse);
+                    break;
+                case "U":
+                    this.U(reverse);
+                    break;
+                case "u":
+                    this.u(reverse);
+                    break;
+                case "L":
+                    this.L(reverse);
+                    break;
+                case "l":
+                    this.l(reverse);
+                    break;
+                case "B":
+                    this.B(reverse);
+                    break;
+                case "b":
+                    this.b(reverse);
+                    break;
+            }
+        });
+    }
+}
+
+
+
+const $afda28ca3a9b935f$export$b431d11d200ea34 = [
+    // Front
+    "U",
+    "R",
+    "F",
+    "dr",
+    "dl",
+    "L",
+    // Back
+    "d",
+    "br",
+    "BR",
+    "BL",
+    "bl",
+    "b", 
+];
+
+
+
+
+
+const $0fe59fa9c94bcb30$var$megaminxTurnNotation = /([RD])([\+\+|\-\-]+)|([UFRL]|BR|BL)([2-3]?)(\'?)/g;
+var $0fe59fa9c94bcb30$var$PochmannDirections;
+(function(PochmannDirections1) {
+    PochmannDirections1["Clockwise"] = "++";
+    PochmannDirections1["CounterClockwise"] = "--";
+    PochmannDirections1["FaceClockwise"] = "";
+    PochmannDirections1["FaceCounter"] = "'";
+})($0fe59fa9c94bcb30$var$PochmannDirections || ($0fe59fa9c94bcb30$var$PochmannDirections = {}));
+const $0fe59fa9c94bcb30$var$DirectionToTurnType = {
+    [$0fe59fa9c94bcb30$var$PochmannDirections.Clockwise]: (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise,
+    [$0fe59fa9c94bcb30$var$PochmannDirections.CounterClockwise]: (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise,
+    [$0fe59fa9c94bcb30$var$PochmannDirections.FaceClockwise]: (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise,
+    [$0fe59fa9c94bcb30$var$PochmannDirections.FaceCounter]: (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise
+};
+function $0fe59fa9c94bcb30$export$4d3e69443db6a686(algorithm) {
+    if (!algorithm) return [];
+    let turns = [];
+    let match;
+    while(match = $0fe59fa9c94bcb30$var$megaminxTurnNotation.exec(algorithm)){
+        const rawUnit = match[1] ? `${match[1]}xx` : match[3];
+        const rawDirection = match[2] || match[5];
+        const rawNumber = match[4];
+        turns.push({
+            unit: rawUnit,
+            turnType: $0fe59fa9c94bcb30$var$DirectionToTurnType[rawDirection],
+            slices: 1,
+            n: rawNumber ? parseInt(rawNumber) : 1
+        });
+    }
+    return turns;
+}
+
+
+class $2f51a1953a3cf56c$export$af68e8b316be1d11 extends (0, $c7dd1edeefb0d4d3$export$b14c74960ae6f55e) {
+    constructor(){
+        super();
+        (0, $afda28ca3a9b935f$export$b431d11d200ea34).forEach((faceName)=>{
+            this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(11, faceName), faceName);
+        });
+        const U = this.faces.get("U"); // White
+        const R = this.faces.get("R"); // Blue
+        const F = this.faces.get("F"); // Red
+        const dr = this.faces.get("dr"); // Pink
+        const dl = this.faces.get("dl"); // Light Yellow
+        const L = this.faces.get("L"); // Green
+        const d = this.faces.get("d"); // Gray
+        const br = this.faces.get("br"); // Light Green
+        const BR = this.faces.get("BR"); // Yellow
+        const BL = this.faces.get("BL"); // Purple
+        const bl = this.faces.get("bl"); // Dark Blue
+        const b = this.faces.get("b"); // Orange
+        // R
+        this.addTurn([
+            [
+                F[2],
+                U[6]
+            ],
+            [
+                F[1],
+                U[5]
+            ],
+            [
+                F[10],
+                U[4]
+            ],
+            [
+                U[6],
+                BR[10]
+            ],
+            [
+                U[5],
+                BR[9]
+            ],
+            [
+                U[4],
+                BR[8]
+            ],
+            [
+                BR[10],
+                br[8]
+            ],
+            [
+                BR[9],
+                br[7]
+            ],
+            [
+                BR[8],
+                br[6]
+            ],
+            [
+                br[8],
+                dr[2]
+            ],
+            [
+                br[7],
+                dr[1]
+            ],
+            [
+                br[6],
+                dr[10]
+            ],
+            [
+                dr[2],
+                F[2]
+            ],
+            [
+                dr[1],
+                F[1]
+            ],
+            [
+                dr[10],
+                F[10]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(R), 
+        ], "R");
+        // F
+        this.addTurn([
+            [
+                U[2],
+                R[2]
+            ],
+            [
+                U[3],
+                R[3]
+            ],
+            [
+                U[4],
+                R[4]
+            ],
+            [
+                R[2],
+                dr[2]
+            ],
+            [
+                R[3],
+                dr[3]
+            ],
+            [
+                R[4],
+                dr[4]
+            ],
+            [
+                dr[2],
+                dl[2]
+            ],
+            [
+                dr[3],
+                dl[3]
+            ],
+            [
+                dr[4],
+                dl[4]
+            ],
+            [
+                dl[2],
+                L[2]
+            ],
+            [
+                dl[3],
+                L[3]
+            ],
+            [
+                dl[4],
+                L[4]
+            ],
+            [
+                L[2],
+                U[2]
+            ],
+            [
+                L[3],
+                U[3]
+            ],
+            [
+                L[4],
+                U[4]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(F), 
+        ], "F");
+        // U
+        this.addTurn([
+            [
+                F[2],
+                L[4]
+            ],
+            [
+                F[3],
+                L[5]
+            ],
+            [
+                F[4],
+                L[6]
+            ],
+            [
+                L[4],
+                BL[8]
+            ],
+            [
+                L[5],
+                BL[9]
+            ],
+            [
+                L[6],
+                BL[10]
+            ],
+            [
+                BL[8],
+                BR[6]
+            ],
+            [
+                BL[9],
+                BR[7]
+            ],
+            [
+                BL[10],
+                BR[8]
+            ],
+            [
+                BR[6],
+                R[10]
+            ],
+            [
+                BR[7],
+                R[1]
+            ],
+            [
+                BR[8],
+                R[2]
+            ],
+            [
+                R[10],
+                F[2]
+            ],
+            [
+                R[1],
+                F[3]
+            ],
+            [
+                R[2],
+                F[4]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(U), 
+        ], "U");
+        // L
+        this.addTurn([
+            [
+                F[4],
+                dl[4]
+            ],
+            [
+                F[5],
+                dl[5]
+            ],
+            [
+                F[6],
+                dl[6]
+            ],
+            [
+                dl[4],
+                bl[8]
+            ],
+            [
+                dl[5],
+                bl[9]
+            ],
+            [
+                dl[6],
+                bl[10]
+            ],
+            [
+                bl[8],
+                BL[6]
+            ],
+            [
+                bl[9],
+                BL[7]
+            ],
+            [
+                bl[10],
+                BL[8]
+            ],
+            [
+                BL[6],
+                U[10]
+            ],
+            [
+                BL[7],
+                U[1]
+            ],
+            [
+                BL[8],
+                U[2]
+            ],
+            [
+                U[10],
+                F[4]
+            ],
+            [
+                U[1],
+                F[5]
+            ],
+            [
+                U[2],
+                F[6]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(L), 
+        ], "L");
+        // BR
+        this.addTurn([
+            [
+                U[6],
+                BL[10]
+            ],
+            [
+                U[7],
+                BL[1]
+            ],
+            [
+                U[8],
+                BL[2]
+            ],
+            [
+                BL[10],
+                b[8]
+            ],
+            [
+                BL[1],
+                b[9]
+            ],
+            [
+                BL[2],
+                b[10]
+            ],
+            [
+                b[8],
+                br[4]
+            ],
+            [
+                b[9],
+                br[5]
+            ],
+            [
+                b[10],
+                br[6]
+            ],
+            [
+                br[4],
+                R[8]
+            ],
+            [
+                br[5],
+                R[9]
+            ],
+            [
+                br[6],
+                R[10]
+            ],
+            [
+                R[8],
+                U[6]
+            ],
+            [
+                R[9],
+                U[7]
+            ],
+            [
+                R[10],
+                U[8]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(BR), 
+        ], "BR");
+        // BL
+        this.addTurn([
+            [
+                U[8],
+                L[6]
+            ],
+            [
+                U[9],
+                L[7]
+            ],
+            [
+                U[10],
+                L[8]
+            ],
+            [
+                L[6],
+                bl[10]
+            ],
+            [
+                L[7],
+                bl[1]
+            ],
+            [
+                L[8],
+                bl[2]
+            ],
+            [
+                bl[10],
+                b[6]
+            ],
+            [
+                bl[1],
+                b[7]
+            ],
+            [
+                bl[2],
+                b[8]
+            ],
+            [
+                b[6],
+                BR[4]
+            ],
+            [
+                b[7],
+                BR[5]
+            ],
+            [
+                b[8],
+                BR[6]
+            ],
+            [
+                BR[4],
+                U[8]
+            ],
+            [
+                BR[5],
+                U[9]
+            ],
+            [
+                BR[6],
+                U[10]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(BL), 
+        ], "BL");
+        // dr
+        this.addTurn([
+            [
+                F[8],
+                R[4]
+            ],
+            [
+                F[9],
+                R[5]
+            ],
+            [
+                F[10],
+                R[6]
+            ],
+            [
+                R[4],
+                br[8]
+            ],
+            [
+                R[5],
+                br[9]
+            ],
+            [
+                R[6],
+                br[10]
+            ],
+            [
+                br[8],
+                d[6]
+            ],
+            [
+                br[9],
+                d[7]
+            ],
+            [
+                br[10],
+                d[8]
+            ],
+            [
+                d[6],
+                dl[10]
+            ],
+            [
+                d[7],
+                dl[1]
+            ],
+            [
+                d[8],
+                dl[2]
+            ],
+            [
+                dl[10],
+                F[8]
+            ],
+            [
+                dl[1],
+                F[9]
+            ],
+            [
+                dl[2],
+                F[10]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(dr), 
+        ], "dr");
+        // dl
+        this.addTurn([
+            [
+                F[6],
+                dr[4]
+            ],
+            [
+                F[7],
+                dr[5]
+            ],
+            [
+                F[8],
+                dr[6]
+            ],
+            [
+                dr[4],
+                d[8]
+            ],
+            [
+                dr[5],
+                d[9]
+            ],
+            [
+                dr[6],
+                d[10]
+            ],
+            [
+                d[8],
+                bl[6]
+            ],
+            [
+                d[9],
+                bl[7]
+            ],
+            [
+                d[10],
+                bl[8]
+            ],
+            [
+                bl[6],
+                L[10]
+            ],
+            [
+                bl[7],
+                L[1]
+            ],
+            [
+                bl[8],
+                L[2]
+            ],
+            [
+                L[10],
+                F[6]
+            ],
+            [
+                L[1],
+                F[7]
+            ],
+            [
+                L[2],
+                F[8]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(dl), 
+        ], "dl");
+        // d
+        this.addTurn([
+            [
+                br[10],
+                b[2]
+            ],
+            [
+                br[1],
+                b[3]
+            ],
+            [
+                br[2],
+                b[4]
+            ],
+            [
+                b[2],
+                bl[4]
+            ],
+            [
+                b[3],
+                bl[5]
+            ],
+            [
+                b[4],
+                bl[6]
+            ],
+            [
+                bl[4],
+                dl[8]
+            ],
+            [
+                bl[5],
+                dl[9]
+            ],
+            [
+                bl[6],
+                dl[10]
+            ],
+            [
+                dl[8],
+                dr[6]
+            ],
+            [
+                dl[9],
+                dr[7]
+            ],
+            [
+                dl[10],
+                dr[8]
+            ],
+            [
+                dr[6],
+                br[10]
+            ],
+            [
+                dr[7],
+                br[1]
+            ],
+            [
+                dr[8],
+                br[2]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(d), 
+        ], "d");
+        // br
+        this.addTurn([
+            [
+                b[10],
+                d[4]
+            ],
+            [
+                b[1],
+                d[5]
+            ],
+            [
+                b[2],
+                d[6]
+            ],
+            [
+                d[4],
+                dr[8]
+            ],
+            [
+                d[5],
+                dr[9]
+            ],
+            [
+                d[6],
+                dr[10]
+            ],
+            [
+                dr[8],
+                R[6]
+            ],
+            [
+                dr[9],
+                R[7]
+            ],
+            [
+                dr[10],
+                R[8]
+            ],
+            [
+                R[6],
+                BR[10]
+            ],
+            [
+                R[7],
+                BR[1]
+            ],
+            [
+                R[8],
+                BR[2]
+            ],
+            [
+                BR[10],
+                b[10]
+            ],
+            [
+                BR[1],
+                b[1]
+            ],
+            [
+                BR[2],
+                b[2]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(br), 
+        ], "br");
+        // bl
+        this.addTurn([
+            [
+                BL[4],
+                L[8]
+            ],
+            [
+                BL[5],
+                L[9]
+            ],
+            [
+                BL[6],
+                L[10]
+            ],
+            [
+                L[8],
+                dl[6]
+            ],
+            [
+                L[9],
+                dl[7]
+            ],
+            [
+                L[10],
+                dl[8]
+            ],
+            [
+                dl[6],
+                d[10]
+            ],
+            [
+                dl[7],
+                d[1]
+            ],
+            [
+                dl[8],
+                d[2]
+            ],
+            [
+                d[10],
+                b[4]
+            ],
+            [
+                d[1],
+                b[5]
+            ],
+            [
+                d[2],
+                b[6]
+            ],
+            [
+                b[4],
+                BL[4]
+            ],
+            [
+                b[5],
+                BL[5]
+            ],
+            [
+                b[6],
+                BL[6]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(bl), 
+        ], "bl");
+        // b
+        this.addTurn([
+            [
+                br[2],
+                BR[2]
+            ],
+            [
+                br[3],
+                BR[3]
+            ],
+            [
+                br[4],
+                BR[4]
+            ],
+            [
+                BR[2],
+                BL[2]
+            ],
+            [
+                BR[3],
+                BL[3]
+            ],
+            [
+                BR[4],
+                BL[4]
+            ],
+            [
+                BL[2],
+                bl[2]
+            ],
+            [
+                BL[3],
+                bl[3]
+            ],
+            [
+                BL[4],
+                bl[4]
+            ],
+            [
+                bl[2],
+                d[2]
+            ],
+            [
+                bl[3],
+                d[3]
+            ],
+            [
+                bl[4],
+                d[4]
+            ],
+            [
+                d[2],
+                br[2]
+            ],
+            [
+                d[3],
+                br[3]
+            ],
+            [
+                d[4],
+                br[4]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(b), 
+        ], "b");
+        // "Pochmann notation"
+        // D++ / D--
+        this.addTurn([
+            // Top Layer
+            [
+                F[0],
+                R[0]
+            ],
+            [
+                F[1],
+                R[9]
+            ],
+            [
+                F[5],
+                R[3]
+            ],
+            [
+                F[6],
+                R[4]
+            ],
+            [
+                F[7],
+                R[5]
+            ],
+            [
+                F[8],
+                R[6]
+            ],
+            [
+                F[9],
+                R[7]
+            ],
+            [
+                F[10],
+                R[8]
+            ],
+            [
+                R[0],
+                BR[0]
+            ],
+            [
+                R[3],
+                BR[9]
+            ],
+            [
+                R[4],
+                BR[10]
+            ],
+            [
+                R[5],
+                BR[1]
+            ],
+            [
+                R[6],
+                BR[2]
+            ],
+            [
+                R[7],
+                BR[3]
+            ],
+            [
+                R[8],
+                BR[4]
+            ],
+            [
+                R[9],
+                BR[5]
+            ],
+            [
+                BR[0],
+                BL[0]
+            ],
+            [
+                BR[9],
+                BL[1]
+            ],
+            [
+                BR[10],
+                BL[2]
+            ],
+            [
+                BR[1],
+                BL[3]
+            ],
+            [
+                BR[2],
+                BL[4]
+            ],
+            [
+                BR[3],
+                BL[5]
+            ],
+            [
+                BR[4],
+                BL[6]
+            ],
+            [
+                BR[5],
+                BL[7]
+            ],
+            [
+                BL[0],
+                L[0]
+            ],
+            [
+                BL[1],
+                L[7]
+            ],
+            [
+                BL[2],
+                L[8]
+            ],
+            [
+                BL[3],
+                L[9]
+            ],
+            [
+                BL[4],
+                L[10]
+            ],
+            [
+                BL[5],
+                L[1]
+            ],
+            [
+                BL[6],
+                L[2]
+            ],
+            [
+                BL[7],
+                L[3]
+            ],
+            [
+                L[0],
+                F[0]
+            ],
+            [
+                L[7],
+                F[5]
+            ],
+            [
+                L[8],
+                F[6]
+            ],
+            [
+                L[9],
+                F[7]
+            ],
+            [
+                L[10],
+                F[8]
+            ],
+            [
+                L[1],
+                F[9]
+            ],
+            [
+                L[2],
+                F[10]
+            ],
+            [
+                L[3],
+                F[1]
+            ],
+            // Bottom Layer
+            [
+                dr[0],
+                br[0]
+            ],
+            [
+                dr[1],
+                br[5]
+            ],
+            [
+                dr[2],
+                br[6]
+            ],
+            [
+                dr[3],
+                br[7]
+            ],
+            [
+                dr[4],
+                br[8]
+            ],
+            [
+                dr[5],
+                br[9]
+            ],
+            [
+                dr[6],
+                br[10]
+            ],
+            [
+                dr[7],
+                br[1]
+            ],
+            [
+                dr[8],
+                br[2]
+            ],
+            [
+                dr[9],
+                br[3]
+            ],
+            [
+                dr[10],
+                br[4]
+            ],
+            [
+                br[0],
+                b[0]
+            ],
+            [
+                br[1],
+                b[3]
+            ],
+            [
+                br[2],
+                b[4]
+            ],
+            [
+                br[3],
+                b[5]
+            ],
+            [
+                br[4],
+                b[6]
+            ],
+            [
+                br[5],
+                b[7]
+            ],
+            [
+                br[6],
+                b[8]
+            ],
+            [
+                br[7],
+                b[9]
+            ],
+            [
+                br[8],
+                b[10]
+            ],
+            [
+                br[9],
+                b[1]
+            ],
+            [
+                br[10],
+                b[2]
+            ],
+            [
+                b[0],
+                bl[0]
+            ],
+            [
+                b[1],
+                bl[3]
+            ],
+            [
+                b[2],
+                bl[4]
+            ],
+            [
+                b[3],
+                bl[5]
+            ],
+            [
+                b[4],
+                bl[6]
+            ],
+            [
+                b[5],
+                bl[7]
+            ],
+            [
+                b[6],
+                bl[8]
+            ],
+            [
+                b[7],
+                bl[9]
+            ],
+            [
+                b[8],
+                bl[10]
+            ],
+            [
+                b[9],
+                bl[1]
+            ],
+            [
+                b[10],
+                bl[2]
+            ],
+            [
+                bl[0],
+                dl[0]
+            ],
+            [
+                bl[1],
+                dl[5]
+            ],
+            [
+                bl[2],
+                dl[6]
+            ],
+            [
+                bl[3],
+                dl[7]
+            ],
+            [
+                bl[4],
+                dl[8]
+            ],
+            [
+                bl[5],
+                dl[9]
+            ],
+            [
+                bl[6],
+                dl[10]
+            ],
+            [
+                bl[7],
+                dl[1]
+            ],
+            [
+                bl[8],
+                dl[2]
+            ],
+            [
+                bl[9],
+                dl[3]
+            ],
+            [
+                bl[10],
+                dl[4]
+            ],
+            [
+                dl[0],
+                dr[0]
+            ],
+            [
+                dl[1],
+                dr[9]
+            ],
+            [
+                dl[2],
+                dr[10]
+            ],
+            [
+                dl[3],
+                dr[1]
+            ],
+            [
+                dl[4],
+                dr[2]
+            ],
+            [
+                dl[5],
+                dr[3]
+            ],
+            [
+                dl[6],
+                dr[4]
+            ],
+            [
+                dl[7],
+                dr[5]
+            ],
+            [
+                dl[8],
+                dr[6]
+            ],
+            [
+                dl[9],
+                dr[7]
+            ],
+            [
+                dl[10],
+                dr[8]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(d), 
+        ], "D++");
+        // R++ / R--
+        this.addTurn([
+            // Top Layer
+            [
+                F[0],
+                U[0]
+            ],
+            [
+                F[7],
+                U[3]
+            ],
+            [
+                F[8],
+                U[4]
+            ],
+            [
+                F[9],
+                U[5]
+            ],
+            [
+                F[10],
+                U[6]
+            ],
+            [
+                F[1],
+                U[7]
+            ],
+            [
+                F[2],
+                U[8]
+            ],
+            [
+                F[3],
+                U[9]
+            ],
+            [
+                U[0],
+                BL[0]
+            ],
+            [
+                U[3],
+                BL[9]
+            ],
+            [
+                U[4],
+                BL[10]
+            ],
+            [
+                U[5],
+                BL[1]
+            ],
+            [
+                U[6],
+                BL[2]
+            ],
+            [
+                U[7],
+                BL[3]
+            ],
+            [
+                U[8],
+                BL[4]
+            ],
+            [
+                U[9],
+                BL[5]
+            ],
+            [
+                BL[0],
+                bl[0]
+            ],
+            [
+                BL[9],
+                bl[1]
+            ],
+            [
+                BL[10],
+                bl[2]
+            ],
+            [
+                BL[1],
+                bl[3]
+            ],
+            [
+                BL[2],
+                bl[4]
+            ],
+            [
+                BL[3],
+                bl[5]
+            ],
+            [
+                BL[4],
+                bl[6]
+            ],
+            [
+                BL[5],
+                bl[7]
+            ],
+            [
+                bl[0],
+                dl[0]
+            ],
+            [
+                bl[1],
+                dl[7]
+            ],
+            [
+                bl[2],
+                dl[8]
+            ],
+            [
+                bl[3],
+                dl[9]
+            ],
+            [
+                bl[4],
+                dl[10]
+            ],
+            [
+                bl[5],
+                dl[1]
+            ],
+            [
+                bl[6],
+                dl[2]
+            ],
+            [
+                bl[7],
+                dl[3]
+            ],
+            [
+                dl[0],
+                F[0]
+            ],
+            [
+                dl[7],
+                F[7]
+            ],
+            [
+                dl[8],
+                F[8]
+            ],
+            [
+                dl[9],
+                F[9]
+            ],
+            [
+                dl[10],
+                F[10]
+            ],
+            [
+                dl[1],
+                F[1]
+            ],
+            [
+                dl[2],
+                F[2]
+            ],
+            [
+                dl[3],
+                F[3]
+            ],
+            // Bottom Layer
+            [
+                dr[0],
+                R[0]
+            ],
+            [
+                dr[1],
+                R[9]
+            ],
+            [
+                dr[2],
+                R[10]
+            ],
+            [
+                dr[3],
+                R[1]
+            ],
+            [
+                dr[4],
+                R[2]
+            ],
+            [
+                dr[5],
+                R[3]
+            ],
+            [
+                dr[6],
+                R[4]
+            ],
+            [
+                dr[7],
+                R[5]
+            ],
+            [
+                dr[8],
+                R[6]
+            ],
+            [
+                dr[9],
+                R[7]
+            ],
+            [
+                dr[10],
+                R[8]
+            ],
+            [
+                R[0],
+                BR[0]
+            ],
+            [
+                R[1],
+                BR[5]
+            ],
+            [
+                R[2],
+                BR[6]
+            ],
+            [
+                R[3],
+                BR[7]
+            ],
+            [
+                R[4],
+                BR[8]
+            ],
+            [
+                R[5],
+                BR[9]
+            ],
+            [
+                R[6],
+                BR[10]
+            ],
+            [
+                R[7],
+                BR[1]
+            ],
+            [
+                R[8],
+                BR[2]
+            ],
+            [
+                R[9],
+                BR[3]
+            ],
+            [
+                R[10],
+                BR[4]
+            ],
+            [
+                BR[0],
+                b[0]
+            ],
+            [
+                BR[1],
+                b[1]
+            ],
+            [
+                BR[2],
+                b[2]
+            ],
+            [
+                BR[3],
+                b[3]
+            ],
+            [
+                BR[4],
+                b[4]
+            ],
+            [
+                BR[5],
+                b[5]
+            ],
+            [
+                BR[6],
+                b[6]
+            ],
+            [
+                BR[7],
+                b[7]
+            ],
+            [
+                BR[8],
+                b[8]
+            ],
+            [
+                BR[9],
+                b[9]
+            ],
+            [
+                BR[10],
+                b[10]
+            ],
+            [
+                b[0],
+                d[0]
+            ],
+            [
+                b[1],
+                d[5]
+            ],
+            [
+                b[2],
+                d[6]
+            ],
+            [
+                b[3],
+                d[7]
+            ],
+            [
+                b[4],
+                d[8]
+            ],
+            [
+                b[5],
+                d[9]
+            ],
+            [
+                b[6],
+                d[10]
+            ],
+            [
+                b[7],
+                d[1]
+            ],
+            [
+                b[8],
+                d[2]
+            ],
+            [
+                b[9],
+                d[3]
+            ],
+            [
+                b[10],
+                d[4]
+            ],
+            [
+                d[0],
+                dr[0]
+            ],
+            [
+                d[1],
+                dr[5]
+            ],
+            [
+                d[2],
+                dr[6]
+            ],
+            [
+                d[3],
+                dr[7]
+            ],
+            [
+                d[4],
+                dr[8]
+            ],
+            [
+                d[5],
+                dr[9]
+            ],
+            [
+                d[6],
+                dr[10]
+            ],
+            [
+                d[7],
+                dr[1]
+            ],
+            [
+                d[8],
+                dr[2]
+            ],
+            [
+                d[9],
+                dr[3]
+            ],
+            [
+                d[10],
+                dr[4]
+            ],
+            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(br), 
+        ], "R++");
+    }
+    U(reverse) {
+        this.doTurn("U", reverse);
+    }
+    R(reverse) {
+        this.doTurn("R", reverse);
+    }
+    F(reverse) {
+        this.doTurn("F", reverse);
+    }
+    dr(reverse) {
+        this.doTurn("dr", reverse);
+    }
+    dl(reverse) {
+        this.doTurn("dl", reverse);
+    }
+    L(reverse) {
+        this.doTurn("L", reverse);
+    }
+    d(reverse) {
+        this.doTurn("d", reverse);
+    }
+    br(reverse) {
+        this.doTurn("br", reverse);
+    }
+    BR(reverse) {
+        this.doTurn("BR", reverse);
+    }
+    BL(reverse) {
+        this.doTurn("BL", reverse);
+    }
+    bl(reverse) {
+        this.doTurn("bl", reverse);
+    }
+    b(reverse) {
+        this.doTurn("b", reverse);
+    }
+    /**
+     * D++ for Pochmann notation. D-- if reverse = false
+     */ Dxx(reverse) {
+        this.doTurn("D++", reverse);
+    }
+    /**
+     * R++ for Pochmann notation. R-- if reverse = false
+     */ Rxx(reverse) {
+        this.doTurn("R++", reverse);
+    }
+    /**
+     * Parses and executes a megaminx algorithm using WCA standard notation
+     *
+     * @see https://www.stefan-pochmann.info/spocc/other_stuff/tools/scramble_megaminx/)
+     * @see https://www.worldcubeassociation.org/regulations/#12d
+     *
+     * @param alg megaminx algorithm to parse
+     * @example
+     * ```
+     * R-- D++ R++ U'
+     * ```
+     */ alg(alg) {
+        if (!alg) return;
+        // pochmann notation
+        this.doTurns((0, $0fe59fa9c94bcb30$export$4d3e69443db6a686)(alg));
+    }
+    case(alg) {
+        if (!alg) return;
+        let turns = (0, $0fe59fa9c94bcb30$export$4d3e69443db6a686)(alg).reverse().map((turn)=>Object.assign(Object.assign({}, turn), {
+                turnType: turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise ? (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise : (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise
+            }));
+        this.doTurns(turns);
+    }
+    doTurns(turns) {
+        turns.forEach((turn)=>{
+            let reverse = turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
+            let turnFunc;
+            switch(turn.unit){
+                case "Rxx":
+                    turnFunc = this.Rxx.bind(this);
+                    break;
+                case "Dxx":
+                    turnFunc = this.Dxx.bind(this);
+                    break;
+                case "U":
+                    turnFunc = this.U.bind(this);
+                    break;
+                case "R":
+                    turnFunc = this.R.bind(this);
+                    break;
+                case "F":
+                    turnFunc = this.F.bind(this);
+                    break;
+                case "L":
+                    turnFunc = this.L.bind(this);
+                    break;
+                case "BL":
+                    turnFunc = this.BL.bind(this);
+                    break;
+                case "BR":
+                    turnFunc = this.BR.bind(this);
+                    break;
+            }
+            for(let i = turn.n; i > 0; i--)turnFunc(reverse);
+        });
+    }
+}
+/**
+ * Generates turn definitions for rotating a megaminx face clockwise
+ * @param face array of sticker ids
+ */ function $2f51a1953a3cf56c$var$makeFaceTurnDefinitions(face) {
+    return [
+        // Edges
+        [
+            face[1],
+            face[9]
+        ],
+        [
+            face[9],
+            face[7]
+        ],
+        [
+            face[7],
+            face[5]
+        ],
+        [
+            face[5],
+            face[3]
+        ],
+        [
+            face[3],
+            face[1]
+        ],
+        // Corners
+        [
+            face[2],
+            face[10]
+        ],
+        [
+            face[10],
+            face[8]
+        ],
+        [
+            face[8],
+            face[6]
+        ],
+        [
+            face[6],
+            face[4]
+        ],
+        [
+            face[4],
+            face[2]
+        ], 
+    ];
+}
+
+
+
+
+var $3512c0058d02a649$export$c330f3c58d208f27;
+(function(SIMULATOR_FACE1) {
+    SIMULATOR_FACE1["U"] = "U";
+    SIMULATOR_FACE1["R"] = "R";
+    SIMULATOR_FACE1["F"] = "F";
+    SIMULATOR_FACE1["D"] = "D";
+    SIMULATOR_FACE1["L"] = "L";
+    SIMULATOR_FACE1["B"] = "B";
+})($3512c0058d02a649$export$c330f3c58d208f27 || ($3512c0058d02a649$export$c330f3c58d208f27 = {}));
+const $3512c0058d02a649$export$536fbd71b400a4b6 = [
+    $3512c0058d02a649$export$c330f3c58d208f27.U,
+    $3512c0058d02a649$export$c330f3c58d208f27.R,
+    $3512c0058d02a649$export$c330f3c58d208f27.F,
+    $3512c0058d02a649$export$c330f3c58d208f27.D,
+    $3512c0058d02a649$export$c330f3c58d208f27.L,
+    $3512c0058d02a649$export$c330f3c58d208f27.B, 
+];
+var $3512c0058d02a649$export$b8ec17f09eb1440;
+(function(CUBE_AXIS1) {
+    CUBE_AXIS1["X"] = "X";
+    CUBE_AXIS1["Y"] = "Y";
+    CUBE_AXIS1["Z"] = "Z";
+})($3512c0058d02a649$export$b8ec17f09eb1440 || ($3512c0058d02a649$export$b8ec17f09eb1440 = {}));
+const $3512c0058d02a649$export$bbc7c457d672c0a9 = {
+    X: [
+        $3512c0058d02a649$export$c330f3c58d208f27.U,
+        $3512c0058d02a649$export$c330f3c58d208f27.B,
+        $3512c0058d02a649$export$c330f3c58d208f27.D,
+        $3512c0058d02a649$export$c330f3c58d208f27.F
+    ],
+    Y: [
+        $3512c0058d02a649$export$c330f3c58d208f27.L,
+        $3512c0058d02a649$export$c330f3c58d208f27.B,
+        $3512c0058d02a649$export$c330f3c58d208f27.R,
+        $3512c0058d02a649$export$c330f3c58d208f27.F
+    ],
+    Z: [
+        $3512c0058d02a649$export$c330f3c58d208f27.L,
+        $3512c0058d02a649$export$c330f3c58d208f27.U,
+        $3512c0058d02a649$export$c330f3c58d208f27.R,
+        $3512c0058d02a649$export$c330f3c58d208f27.D
+    ]
+};
+const $3512c0058d02a649$export$6770aa440ff8bf63 = {
+    X: {
+        [$3512c0058d02a649$export$c330f3c58d208f27.U]: 0,
+        [$3512c0058d02a649$export$c330f3c58d208f27.B]: 2,
+        [$3512c0058d02a649$export$c330f3c58d208f27.F]: 0,
+        [$3512c0058d02a649$export$c330f3c58d208f27.D]: 0
+    },
+    Y: {
+        [$3512c0058d02a649$export$c330f3c58d208f27.B]: -1,
+        [$3512c0058d02a649$export$c330f3c58d208f27.F]: -1,
+        [$3512c0058d02a649$export$c330f3c58d208f27.L]: -1,
+        [$3512c0058d02a649$export$c330f3c58d208f27.R]: -1
+    },
+    Z: {
+        [$3512c0058d02a649$export$c330f3c58d208f27.U]: -1,
+        [$3512c0058d02a649$export$c330f3c58d208f27.D]: 1,
+        [$3512c0058d02a649$export$c330f3c58d208f27.L]: 2,
+        [$3512c0058d02a649$export$c330f3c58d208f27.R]: 0
+    }
+};
+const $3512c0058d02a649$export$30e27bd18eb96591 = {
+    [$3512c0058d02a649$export$c330f3c58d208f27.U]: false,
+    [$3512c0058d02a649$export$c330f3c58d208f27.R]: false,
+    [$3512c0058d02a649$export$c330f3c58d208f27.F]: false,
+    [$3512c0058d02a649$export$c330f3c58d208f27.D]: true,
+    [$3512c0058d02a649$export$c330f3c58d208f27.L]: true,
+    [$3512c0058d02a649$export$c330f3c58d208f27.B]: true
+};
+
+
+
+
+function $769573e6855c11ce$export$c9fcf1a7df975d78(degrees) {
+    return Math.PI * degrees / 180;
+}
+function $769573e6855c11ce$export$5c9a959bb3fc7749(radius, theta) {
+    const x = radius * Math.cos(theta);
+    const y = radius * Math.sin(theta);
+    return (0, $621efe85613594b3$export$c977b3e384af9ae1).fromValues(x, y);
+}
+function $769573e6855c11ce$export$b38c4fbdaa6dc58e(p1, p2) {
+    return Math.sqrt(Math.pow(p2.y - p1.y, 2) + Math.pow(p2.x - p1.x, 2));
+}
+function $769573e6855c11ce$export$707d248eb4bbe669(length) {
+    return length / (2 * Math.tan(Math.PI / 5));
+}
+function $769573e6855c11ce$export$ca47e7f5b75033b9(length) {
+    return length / (2 * Math.sin(Math.PI / 5));
+}
+function $769573e6855c11ce$export$25da5b6921e25b42(length) {
+    return length / 2 * Math.sqrt(2.5 + 1.1 * Math.sqrt(5));
+}
+function $769573e6855c11ce$export$5ae0742aaf43249b(vertices) {
+    let cx = 0, cy = 0, cz = 0;
+    vertices.forEach((vertex)=>{
+        cx += vertex.x;
+        cy += vertex.y;
+        cz += vertex.z;
+    });
+    cx /= vertices.length;
+    cy /= vertices.length;
+    cz /= vertices.length;
+    return (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(cx, cy, cz);
+}
+function $769573e6855c11ce$export$d02631cccf789723(from, to) {
+    if (from === to) return [
+        from
+    ];
+    const increment = from < to ? 1 : -1;
+    let values = [];
+    for(let current = from; current != to; current += increment)values.push(current);
+    values.push(to);
+    return values;
+}
+
+
+
+
+class $97796b1f3eccc5ed$export$e38eb81901bc8623 extends (0, $c7dd1edeefb0d4d3$export$b14c74960ae6f55e) {
+    constructor(size){
+        super();
+        this.size = size;
+        this.gridSize = size * size;
+        (0, $3512c0058d02a649$export$536fbd71b400a4b6).forEach((faceName)=>{
+            // Create stickers for face
+            this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(this.gridSize, faceName), faceName);
+            const faceChanges = this.makeFaceTurnDefinitions(faceName);
+            // Create rotation for stickers on face only
+            this.addTurn(faceChanges, faceName);
+        });
+        // Create rotations for stickers on each layer
+        // around each turnable axis
+        [
+            (0, $3512c0058d02a649$export$b8ec17f09eb1440).X,
+            (0, $3512c0058d02a649$export$b8ec17f09eb1440).Y,
+            (0, $3512c0058d02a649$export$b8ec17f09eb1440).Z
+        ].forEach((axis)=>{
+            for(let column = 0; column < this.size; column++){
+                let layerChanges = [];
+                (0, $3512c0058d02a649$export$bbc7c457d672c0a9)[axis].forEach((faceName, i)=>{
+                    const nextFaceName = (0, $3512c0058d02a649$export$bbc7c457d672c0a9)[axis][(i + 1) % (0, $3512c0058d02a649$export$bbc7c457d672c0a9)[axis].length];
+                    const nextFace = this.faces.get(nextFaceName);
+                    const currentFace = this.faces.get(faceName);
+                    for(let row = 0; row < this.size; row++){
+                        const stickerIndex = this.size * row + column;
+                        const sticker1 = currentFace[this.axisAlignedSticker(axis, faceName, stickerIndex)];
+                        const sticker2 = nextFace[this.axisAlignedSticker(axis, nextFaceName, stickerIndex)];
+                        layerChanges.push([
+                            sticker1,
+                            sticker2
+                        ]);
+                    }
+                });
+                this.addTurn(layerChanges, `${axis}-${column}`);
+            }
+        });
+    }
+    /**
+     * Makes turn definitions for a face of the cube
+     *
+     * @param faceName the label of the face to make turn definitions
+     * @example returning turn definitions for stickers on a 2x2
+     * ```
+     * addFace(['y', 'y', 'y', 'y'], 'U');
+     * // returns { faceId: 'U', stickerIds: ['1','2','3','4'] }
+     *
+     * makeTurnDefinitions('U');
+     * // returns [
+     * //   ['1','2'],
+     * //   ['2','4'],
+     * //   ['3','1'],
+     * //   ['4','3']
+     * // ]
+     * ```
+     */ makeFaceTurnDefinitions(faceName) {
+        const stickerIds = this.faces.get(faceName);
+        return stickerIds.map((stickerId, i)=>[
+                stickerId,
+                stickerIds[this.clockwiseSticker(i)], 
+            ]);
+    }
+    /**
+     * Given sticker i return the index it will go to
+     * after rotating clockwise
+     *
+     * ex. stickers are stored in an array but represent a grid
+     * so, for a 3x3 sticker index 0 will rotate to 2, 1 to 5, etc...
+     *
+     * ```
+     *  0 | 1 | 2
+     *  ----------
+     *  3 | 4 | 5
+     *  ----------
+     *  6 | 7 | 8
+     * ```
+     */ clockwiseSticker(stickerIndex) {
+        return (stickerIndex + 1) * this.size % (this.gridSize + 1) - 1;
+    }
+    /**
+     * Given sticker i return the index it will go to
+     * after rotating counterclockwise
+     */ counterClockwiseSticker(stickerIndex) {
+        return this.oppositeSticker(this.clockwiseSticker(stickerIndex));
+    }
+    /**
+     * Given sticker i return the index it will go to
+     * after rotating 180 degrees
+     */ oppositeSticker(stickerIndex) {
+        return this.gridSize - (stickerIndex + 1);
+    }
+    axisAlignedSticker(axis, face, stickerIndex) {
+        switch((0, $3512c0058d02a649$export$6770aa440ff8bf63)[axis][face]){
+            case 0:
+                return stickerIndex;
+            case 1:
+                return this.clockwiseSticker(stickerIndex);
+            case 2:
+                return this.oppositeSticker(stickerIndex);
+            case -1:
+                return this.counterClockwiseSticker(stickerIndex);
+            default:
+                throw `Invalid axis face orientation value ${(0, $3512c0058d02a649$export$6770aa440ff8bf63)[axis][face]}`;
+        }
+    }
+    /**
+     * Performs a turn on a given face.
+     *
+     * @param face the face to turn
+     * @param axis axis to perform inner layer turns on
+     * @param reverse true if you want to turn the face counter clockwise
+     * @param from inner layer to start turning from
+     * @param to last inner layer to stop turning
+     * @param to last inner layer to stop turning
+     */ turnFace(face, axis, reverse, from, to) {
+        if (Math.abs(to - from) >= this.size - 1) {
+            console.error(`Invalid number of layers to turn, skipping turn.; face=${face}, layers=${Math.abs(to - from) + 1}`);
+            return;
+        }
+        // Rotate face
+        this.doTurn(face, reverse);
+        // Turn inner layers
+        (0, $769573e6855c11ce$export$d02631cccf789723)(from, to).forEach((layer)=>{
+            this.doTurn(`${axis}-${layer}`, (0, $3512c0058d02a649$export$30e27bd18eb96591)[face] ? !reverse : reverse);
+        });
+    }
+    /**
+     * Performs a U turn
+     * @param reverse true if you want to turn the face counter clockwise (U')
+     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
+     */ U(reverse = false, layers = 1) {
+        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).U, (0, $3512c0058d02a649$export$b8ec17f09eb1440).Y, reverse, this.size - 1, this.size - layers);
+    }
+    /**
+     * Performs an R turn
+     * @param reverse true if you want to turn the face counter clockwise (R')
+     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
+     */ R(reverse = false, layers = 1) {
+        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).R, (0, $3512c0058d02a649$export$b8ec17f09eb1440).X, reverse, this.size - 1, this.size - layers);
+    }
+    /**
+     * Performs an F turn
+     * @param reverse true if you want to turn the face counter clockwise (F')
+     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
+     */ F(reverse = false, layers = 1) {
+        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).F, (0, $3512c0058d02a649$export$b8ec17f09eb1440).Z, reverse, 0, layers - 1);
+    }
+    /**
+     * Performs a D turn
+     * @param reverse true if you want to turn the face counter clockwise (D')
+     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
+     */ D(reverse = false, layers = 1) {
+        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).D, (0, $3512c0058d02a649$export$b8ec17f09eb1440).Y, reverse, 0, layers - 1);
+    }
+    /**
+     * Performs an L turn
+     * @param reverse true if you want to turn the face counter clockwise (L')
+     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
+     */ L(reverse = false, layers = 1) {
+        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).L, (0, $3512c0058d02a649$export$b8ec17f09eb1440).X, reverse, 0, layers - 1);
+    }
+    /**
+     * Performs a B turn
+     * @param reverse true if you want to turn the face counter clockwise (B')
+     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
+     */ B(reverse = false, layers = 1) {
+        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).B, (0, $3512c0058d02a649$export$b8ec17f09eb1440).Z, reverse, this.size - 1, this.size - layers);
+    }
+    /**
+     * Rotates the middle slice in the direction of an L turn
+     * https://ruwix.com/the-rubiks-cube/notation/advanced/
+     *
+     * Will rotate all middle layers inbetween R and L for larger cubes
+     */ M(reverse = false) {
+        for(let layer = 1; layer < this.size - 1; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).X}-${layer}`, !reverse);
+    }
+    /**
+     * Rotates the standing layers in the direction of an F turn
+     * https://ruwix.com/the-rubiks-cube/notation/advanced/
+     *
+     * Will rotate all middle layers inbetween F and B for larger cubes
+     */ S(reverse = false) {
+        for(let layer = 1; layer < this.size - 1; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).Z}-${layer}`, reverse);
+    }
+    /**
+     * Rotates the equitorial layers in the direction of a D turn
+     * https://ruwix.com/the-rubiks-cube/notation/advanced/
+     *
+     * Will rotate all middle layers inbetween U and D for larger cubes
+     */ E(reverse = false) {
+        for(let layer = 1; layer < this.size - 1; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).Y}-${layer}`, !reverse);
+    }
+    /**
+     * rotates the entire cube on R
+     */ X(reverse = false) {
+        this.doTurn("R", reverse);
+        this.doTurn("L", !reverse);
+        for(let layer = 0; layer < this.size; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).X}-${layer}`, reverse);
+    }
+    /**
+     * rotates the entire cube on U
+     */ Y(reverse = false) {
+        this.doTurn("U", reverse);
+        this.doTurn("D", !reverse);
+        for(let layer = 0; layer < this.size; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).Y}-${layer}`, reverse);
+    }
+    /**
+     * rotates the entire cube on F
+     */ Z(reverse = false) {
+        this.doTurn("F", reverse);
+        this.doTurn("B", !reverse);
+        for(let layer = 0; layer < this.size; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).Z}-${layer}`, reverse);
+    }
+    alg(alg) {
+        if (!alg) return;
+        this.doTurns((0, $124cae5f9b200e70$export$40cd6d717443f0f5)(alg));
+    }
+    /**
+     * reverses an algorithm then executes it
+     */ case(alg) {
+        if (!alg) return;
+        let turns = (0, $124cae5f9b200e70$export$40cd6d717443f0f5)(alg).reverse().map((turn)=>{
+            switch(turn.turnType){
+                case (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise:
+                    turn.turnType = (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
+                    break;
+                case (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise:
+                    turn.turnType = (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise;
+                    break;
+                case (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Double:
+                    break;
+            }
+            return turn;
+        });
+        this.doTurns(turns);
+    }
+    doTurns(turns) {
+        turns.forEach((turn)=>{
+            let turnFunc;
+            switch(turn.unit){
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).U:
+                    turnFunc = this.U.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).R:
+                    turnFunc = this.R.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).F:
+                    turnFunc = this.F.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).D:
+                    turnFunc = this.D.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).L:
+                    turnFunc = this.L.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).B:
+                    turnFunc = this.B.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).M:
+                    turnFunc = this.M.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).E:
+                    turnFunc = this.E.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).S:
+                    turnFunc = this.S.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).X:
+                    turnFunc = this.X.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).Y:
+                    turnFunc = this.Y.bind(this);
+                    break;
+                case (0, $124cae5f9b200e70$export$3732f170b13d5060).Z:
+                    turnFunc = this.Z.bind(this);
+                    break;
+                default:
+                    console.warn(`Unsupported cube move`, turn);
+                    break;
+            }
+            const reverse = turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
+            turnFunc(reverse, turn.slices);
+            if (turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Double) turnFunc(reverse, turn.slices);
+        });
+    }
+}
+
+
+
+const $8aa68f315e3e013d$export$b10747473b5ad61e = (()=>{
+    let current = 0;
+    return function() {
+        return current++;
+    };
+})();
+
+
+
+/**
+ * Credit to logic https://github.com/toji/gl-matrix/blob/master/src/mat4.js
+ */ const $4ae27753aa4c892b$var$EPSILON = 0.000001;
+class $4ae27753aa4c892b$export$2ae72fc923e5eb5 {
+    constructor(values){
+        if (Array.isArray(values) && values.length == 16) this.values = values;
+        else this.values = [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+        ];
+    }
+    /**
+     * Returns a 4x4 matrix with the given values
+     */ static fromValues(m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16) {
+        return new $4ae27753aa4c892b$export$2ae72fc923e5eb5([
+            m1,
+            m2,
+            m3,
+            m4,
+            m5,
+            m6,
+            m7,
+            m8,
+            m9,
+            m10,
+            m11,
+            m12,
+            m13,
+            m14,
+            m15,
+            m16, 
+        ]);
+    }
+    static fromQuaternion(q) {
+        let { a: x , b: y , c: z , d: w  } = q;
+        let x2 = x + x;
+        let y2 = y + y;
+        let z2 = z + z;
+        let xx = x * x2;
+        let yx = y * x2;
+        let yy = y * y2;
+        let zx = z * x2;
+        let zy = z * y2;
+        let zz = z * z2;
+        let wx = w * x2;
+        let wy = w * y2;
+        let wz = w * z2;
+        return $4ae27753aa4c892b$export$2ae72fc923e5eb5.fromValues(1 - yy - zz, yx + wz, zx - wy, 0, yx - wz, 1 - xx - zz, zy + wx, 0, zx + wy, zy - wx, 1 - xx - yy, 0, 0, 0, 0, 1);
+    }
+    static fromTranslation(x, y, z) {
+        return $4ae27753aa4c892b$export$2ae72fc923e5eb5.fromValues(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, y, z, 1);
+    }
+    static fromXRotation(radians) {
+        let s = Math.sin(radians);
+        let c = Math.cos(radians);
+        return $4ae27753aa4c892b$export$2ae72fc923e5eb5.fromValues(1, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, 0, 0, 0, 1);
+    }
+    static fromYRotation(radians) {
+        let s = Math.sin(radians);
+        let c = Math.cos(radians);
+        return $4ae27753aa4c892b$export$2ae72fc923e5eb5.fromValues(c, 0, -s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1);
+    }
+    /**
+     * copy values from one matrix to another
+     */ static copy(out, matrix) {
+        out.values[0] = matrix.values[0];
+        out.values[1] = matrix.values[1];
+        out.values[2] = matrix.values[2];
+        out.values[3] = matrix.values[3];
+        out.values[4] = matrix.values[4];
+        out.values[5] = matrix.values[5];
+        out.values[6] = matrix.values[6];
+        out.values[7] = matrix.values[7];
+        out.values[8] = matrix.values[8];
+        out.values[9] = matrix.values[9];
+        out.values[10] = matrix.values[10];
+        out.values[11] = matrix.values[11];
+        out.values[12] = matrix.values[12];
+        out.values[13] = matrix.values[13];
+        out.values[14] = matrix.values[14];
+        out.values[15] = matrix.values[15];
+    }
+    static multiply(out, a, b) {
+        let a00 = a.values[0], a01 = a.values[1], a02 = a.values[2], a03 = a.values[3];
+        let a10 = a.values[4], a11 = a.values[5], a12 = a.values[6], a13 = a.values[7];
+        let a20 = a.values[8], a21 = a.values[9], a22 = a.values[10], a23 = a.values[11];
+        let a30 = a.values[12], a31 = a.values[13], a32 = a.values[14], a33 = a.values[15];
+        // Cache only the current line of the second matrix
+        let b0 = b.values[0], b1 = b.values[1], b2 = b.values[2], b3 = b.values[3];
+        out.values[0] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+        out.values[1] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+        out.values[2] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+        out.values[3] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+        b0 = b.values[4];
+        b1 = b.values[5];
+        b2 = b.values[6];
+        b3 = b.values[7];
+        out.values[4] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+        out.values[5] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+        out.values[6] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+        out.values[7] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+        b0 = b.values[8];
+        b1 = b.values[9];
+        b2 = b.values[10];
+        b3 = b.values[11];
+        out.values[8] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+        out.values[9] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+        out.values[10] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+        out.values[11] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+        b0 = b.values[12];
+        b1 = b.values[13];
+        b2 = b.values[14];
+        b3 = b.values[15];
+        out.values[12] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+        out.values[13] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+        out.values[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+        out.values[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+        return out;
+    }
+    /**
+     * Generates a perspective projection matrix with the given bounds.
+     * The near/far clip planes correspond to a normalized device coordinate Z range of [-1, 1],
+     * which matches WebGL/OpenGL's clip volume.
+     * Passing null/undefined/no value for far will generate infinite projection matrix.
+     *
+     * @param {number} fovy Vertical field of view in radians
+     * @param {number} aspect Aspect ratio. typically viewport width/height
+     * @param {number} near Near bound of the frustum
+     * @param {number} far Far bound of the frustum, can be null or Infinity
+     */ static perspective(fovy, aspect, near, far) {
+        const f = 1.0 / Math.tan(fovy / 2);
+        const values = [
+            f / aspect,
+            0,
+            0,
+            0,
+            0,
+            f,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0
+        ];
+        if (far != null && far !== Infinity) {
+            const nf = 1 / (near - far);
+            values[10] = (far + near) * nf;
+            values[14] = 2 * far * near * nf;
+        } else {
+            values[10] = -1;
+            values[14] = -2 * near;
+        }
+        return new $4ae27753aa4c892b$export$2ae72fc923e5eb5(values);
+    }
+    translate(x, y, z) {
+        this.values[12] = this.values[0] * x + this.values[4] * y + this.values[8] * z + this.values[12];
+        this.values[13] = this.values[1] * x + this.values[5] * y + this.values[9] * z + this.values[13];
+        this.values[14] = this.values[2] * x + this.values[6] * y + this.values[10] * z + this.values[14];
+        this.values[15] = this.values[3] * x + this.values[7] * y + this.values[11] * z + this.values[15];
+    }
+    scale(x, y, z) {
+        this.values[0] = this.values[0] * x;
+        this.values[1] = this.values[1] * x;
+        this.values[2] = this.values[2] * x;
+        this.values[3] = this.values[3] * x;
+        this.values[4] = this.values[4] * y;
+        this.values[5] = this.values[5] * y;
+        this.values[6] = this.values[6] * y;
+        this.values[7] = this.values[7] * y;
+        this.values[8] = this.values[8] * z;
+        this.values[9] = this.values[9] * z;
+        this.values[10] = this.values[10] * z;
+        this.values[11] = this.values[11] * z;
+    }
+    /**
+     * Rotates the matrix by the given angle around the axis (x, y, z)
+     */ rotate(radians, x, y, z) {
+        let len = Math.hypot(x, y, z);
+        if (len < $4ae27753aa4c892b$var$EPSILON) return;
+        len = 1 / len;
+        x *= len;
+        y *= len;
+        z *= len;
+        let s = Math.sin(radians);
+        let c = Math.cos(radians);
+        let t = 1 - c;
+        let a00, a01, a02, a03;
+        let a10, a11, a12, a13;
+        let a20, a21, a22, a23;
+        let b00, b01, b02;
+        let b10, b11, b12;
+        let b20, b21, b22;
+        a00 = this.values[0];
+        a01 = this.values[1];
+        a02 = this.values[2];
+        a03 = this.values[3];
+        a10 = this.values[4];
+        a11 = this.values[5];
+        a12 = this.values[6];
+        a13 = this.values[7];
+        a20 = this.values[8];
+        a21 = this.values[9];
+        a22 = this.values[10];
+        a23 = this.values[11];
+        // Construct the elements of the rotation matrix
+        b00 = x * x * t + c;
+        b01 = y * x * t + z * s;
+        b02 = z * x * t - y * s;
+        b10 = x * y * t - z * s;
+        b11 = y * y * t + c;
+        b12 = z * y * t + x * s;
+        b20 = x * z * t + y * s;
+        b21 = y * z * t - x * s;
+        b22 = z * z * t + c;
+        // Perform rotation-specific matrix multiplication
+        this.values[0] = a00 * b00 + a10 * b01 + a20 * b02;
+        this.values[1] = a01 * b00 + a11 * b01 + a21 * b02;
+        this.values[2] = a02 * b00 + a12 * b01 + a22 * b02;
+        this.values[3] = a03 * b00 + a13 * b01 + a23 * b02;
+        this.values[4] = a00 * b10 + a10 * b11 + a20 * b12;
+        this.values[5] = a01 * b10 + a11 * b11 + a21 * b12;
+        this.values[6] = a02 * b10 + a12 * b11 + a22 * b12;
+        this.values[7] = a03 * b10 + a13 * b11 + a23 * b12;
+        this.values[8] = a00 * b20 + a10 * b21 + a20 * b22;
+        this.values[9] = a01 * b20 + a11 * b21 + a21 * b22;
+        this.values[10] = a02 * b20 + a12 * b21 + a22 * b22;
+        this.values[11] = a03 * b20 + a13 * b21 + a23 * b22;
+    }
+    multiply(b) {
+        $4ae27753aa4c892b$export$2ae72fc923e5eb5.multiply(this, this, b);
+    }
+}
+
+
+class $87867bd021cba182$export$e4dd07dff30cc924 {
+    constructor(){
+        this.uid = (0, $8aa68f315e3e013d$export$b10747473b5ad61e)();
+        this.matrix = new (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5)();
+        this.centroid = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0);
+    }
+    translate(x, y, z) {
+        this.matrix.translate(x, y, z);
+    }
+    rotate(rad, x, y, z) {
+        this.matrix.rotate(rad, x, y, z);
+    }
+    scale(x, y, z) {
+        this.matrix.scale(x, y, z);
+    }
+    setColor(color) {
+        this.color = color;
+    }
+}
+
+
+class $91f47f50fb317cec$export$eb2fcfdbd7ba97d4 extends (0, $87867bd021cba182$export$e4dd07dff30cc924) {
+    constructor(objects = []){
+        super();
+        this.setObjects(objects);
+    }
+    setObjects(objects) {
+        this.objects = objects;
+    }
+    addObject(object) {
+        this.objects.push(object);
+    }
+    setCentroid(vector) {
+        this.centroid = vector;
+    }
+}
+
+
+
+const $854ac96c255d8d1d$export$55533674495ff043 = Math.sqrt(3);
+const $854ac96c255d8d1d$export$c0b538e05e5e54a3 = Math.atan((0, $769573e6855c11ce$export$c9fcf1a7df975d78)(15));
+const $854ac96c255d8d1d$export$39e437b5f63eb270 = (0, $769573e6855c11ce$export$c9fcf1a7df975d78)(30);
+const $854ac96c255d8d1d$export$9e603a757beb2f43 = (0, $769573e6855c11ce$export$c9fcf1a7df975d78)(36);
+const $854ac96c255d8d1d$export$2a5342a5afcad79 = (0, $769573e6855c11ce$export$c9fcf1a7df975d78)(60);
+const $854ac96c255d8d1d$export$a3aa84d936ce2537 = (0, $769573e6855c11ce$export$c9fcf1a7df975d78)(72);
+
+
+
+class $fad1ebfc94109219$export$cacb46a2bffbc820 {
+    constructor(topLayer = (0, $9b3744130fd33c3e$export$a5aadce9b3884cce), bottomLayer = (0, $9b3744130fd33c3e$export$4c6069d7db9ecde2), middleRotated = false, scheme = (0, $9b3744130fd33c3e$export$e1bf8712b5945cd), sideLength = 0.7){
+        this.scheme = scheme;
+        this.sideLength = sideLength;
+        this.halfSide = this.sideLength / 2;
+        this.halfEdgePiece = this.halfSide * (0, $854ac96c255d8d1d$export$c0b538e05e5e54a3);
+        this.layerWidth = this.halfSide - this.halfEdgePiece;
+        this.middleWidth = this.sideLength - 2 * this.layerWidth;
+        this.halfMiddleWidth = this.middleWidth / 2;
+        this.borderLayerWidth = this.sideLength * 0.2;
+        this.outerHalfSide = (sideLength + this.borderLayerWidth) / 2;
+        this.outerHalfEdgePiece = this.outerHalfSide * (0, $854ac96c255d8d1d$export$c0b538e05e5e54a3);
+        this.pieces = this.buildSquare1(topLayer, bottomLayer, middleRotated);
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.pieces);
+    }
+    makeLayer(pieces) {
+        let geometry = [];
+        let angle = Math.PI;
+        pieces.forEach((piece, index)=>{
+            switch(piece.type){
+                case (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER:
+                    const corner = this.square1Corner(piece.colors[0], piece.colors[1], piece.colors[2]);
+                    corner.rotate(angle, 0, 0, 1);
+                    geometry.push(corner);
+                    angle -= (0, $854ac96c255d8d1d$export$2a5342a5afcad79);
+                    break;
+                case (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE:
+                    const edge = this.square1Edge(piece.colors[0], piece.colors[1]);
+                    edge.rotate(angle - (0, $854ac96c255d8d1d$export$2a5342a5afcad79), 0, 0, 1);
+                    geometry.push(edge);
+                    angle -= (0, $854ac96c255d8d1d$export$39e437b5f63eb270);
+                    break;
+            }
+        });
+        return geometry;
+    }
+    /**
+     * Not implemented. Just here for {@link Visualizer}'s sake
+     */ setColors(colors) {}
+}
+
+
+
+
+
+class $26e0610aa22af478$export$aa6504bc3c7c25a1 {
+    /**
+     * @param indices indices of vertices that make up a face
+     * @param vertices vertices of the geometry to calculate centroid from
+     * @param color color of the sticker
+     */ constructor(indices, vertices, color){
+        this.indices = indices;
+        this.color = color;
+        this.uid = (0, $8aa68f315e3e013d$export$b10747473b5ad61e)();
+        if (vertices) this.calculateCentroid(vertices);
+    }
+    /**
+     * recalculate the centroid of the face.
+     */ calculateCentroid(vertices) {
+        this.centroid = (0, $769573e6855c11ce$export$5ae0742aaf43249b)(// Calculate centroid from vertices included in the face
+        vertices.filter((v, i)=>this.indices.includes(i)));
+    }
+}
+
+
+
+
+class $621b987b54afb04b$export$2db6c17465f94a2 extends (0, $87867bd021cba182$export$e4dd07dff30cc924) {
+    constructor(vertices, faces){
+        super();
+        this.vertices = vertices;
+        this.faces = faces;
+        this.centroid = (0, $769573e6855c11ce$export$5ae0742aaf43249b)(this.vertices);
+    }
+}
+
+
+
+
+
+class $f35abbac62e00809$export$65ad724200307558 extends (0, $fad1ebfc94109219$export$cacb46a2bffbc820) {
+    constructor(topLayer = (0, $9b3744130fd33c3e$export$a5aadce9b3884cce), bottomLayer = (0, $9b3744130fd33c3e$export$4c6069d7db9ecde2), middleRotated = false, scheme = (0, $9b3744130fd33c3e$export$e1bf8712b5945cd), sideLength = 0.7){
+        super(topLayer, bottomLayer, middleRotated, scheme, sideLength);
+    }
+    square1Corner(top, side1, side2) {
+        const points = [
+            // Top
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfEdgePiece, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfSide, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, 0),
+            // Sides
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfSide, this.outerHalfEdgePiece, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfSide, this.outerHalfSide, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfEdgePiece, this.outerHalfSide, 0), 
+        ];
+        const faces = [
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                2,
+                3
+            ], points, top),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                2,
+                3,
+                6,
+                5
+            ], points, side1),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                1,
+                2,
+                5,
+                4
+            ], points, side2), 
+        ];
+        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(points, faces);
+    }
+    square1Edge(top, side) {
+        const points = [
+            // Top
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, 0).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfEdgePiece, this.halfSide, 0).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
+            // Side
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfEdgePiece, this.outerHalfSide, 0).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.outerHalfEdgePiece, this.outerHalfSide, 0).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)), 
+        ];
+        const faces = [
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                2
+            ], points, top),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                1,
+                2,
+                4,
+                3
+            ], points, side), 
+        ];
+        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(points, faces);
+    }
+    square1Middle(front, right, back, rotated) {
+        const layerHeight = this.halfSide - this.halfEdgePiece;
+        const middleHeight = this.sideLength - 2 * layerHeight;
+        const halfMiddleHeight = middleHeight / 2;
+        const cornerLength = this.outerHalfSide - this.outerHalfEdgePiece;
+        const vertices = [
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.outerHalfSide, halfMiddleHeight, -0.01),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.outerHalfEdgePiece, halfMiddleHeight, -0.01),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfSide, halfMiddleHeight, -0.01),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.outerHalfSide, -halfMiddleHeight, -0.01),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.outerHalfEdgePiece, -halfMiddleHeight, -0.01),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfSide, -halfMiddleHeight, -0.01),
+            // Points for when middle is rotated
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(2 * this.outerHalfEdgePiece, halfMiddleHeight, -0.01),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(2 * this.outerHalfEdgePiece, -halfMiddleHeight, -0.01),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(2 * cornerLength, halfMiddleHeight, -0.01),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(2 * cornerLength, -halfMiddleHeight, -0.01), 
+        ];
+        // Left
+        const faces = [
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                4,
+                3
+            ], vertices, front)
+        ];
+        // Right
+        if (!rotated) faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+            1,
+            2,
+            5,
+            4
+        ], vertices, front));
+        else {
+            faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                1,
+                6,
+                7,
+                4
+            ], vertices, back));
+            faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                6,
+                8,
+                9,
+                7
+            ], vertices, right));
+        }
+        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(vertices, faces);
+    }
+    buildSquare1(top, bottom, middleRotated) {
+        const layerHeight = this.halfSide - this.halfEdgePiece;
+        const middleHeight = this.sideLength - 2 * layerHeight;
+        const halfMiddleHeight = middleHeight / 2;
+        let pieces = [];
+        const topLayer = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeLayer(top));
+        const bottomLayer = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeLayer(bottom));
+        topLayer.translate(0, this.outerHalfSide + halfMiddleHeight, 0);
+        bottomLayer.translate(0, -(this.outerHalfSide + halfMiddleHeight), 0);
+        bottomLayer.rotate((0, $854ac96c255d8d1d$export$39e437b5f63eb270), 0, 0, 1);
+        pieces = [
+            topLayer,
+            bottomLayer
+        ];
+        const frontColor = this.scheme.front || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).front;
+        const leftColor = this.scheme.left || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).left;
+        const backColor = this.scheme.back || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).back;
+        const m = this.square1Middle(frontColor, leftColor, backColor, middleRotated);
+        this.faces = {
+            top: topLayer,
+            bottom: bottomLayer
+        };
+        pieces.push(m);
+        return pieces;
+    }
+}
+
+
+
+
+
+
+
+
+
+const $69cfc5366d5d5306$var$INNER_FACE_COLOR = {
+    value: "#333",
+    stroke: "#333"
+};
+class $69cfc5366d5d5306$export$8f7198aedf2eb582 extends (0, $fad1ebfc94109219$export$cacb46a2bffbc820) {
+    constructor(topLayer = (0, $9b3744130fd33c3e$export$a5aadce9b3884cce), bottomLayer = (0, $9b3744130fd33c3e$export$4c6069d7db9ecde2), middleRotated = false, scheme = (0, $9b3744130fd33c3e$export$e1bf8712b5945cd), sideLength = 1.25){
+        super(topLayer, bottomLayer, middleRotated, scheme, sideLength);
+    }
+    square1Corner(top, side1, side2) {
+        const points = [
+            // Top
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, this.halfSide),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfEdgePiece, this.halfSide),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfSide, this.halfSide),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, this.halfSide),
+            // Bottom
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, this.halfSide - this.layerWidth),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfEdgePiece, this.halfSide - this.layerWidth),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfSide, this.halfSide - this.layerWidth),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, this.halfSide - this.layerWidth), 
+        ];
+        const faces = [
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                2,
+                3
+            ], points, top),
+            // TODO: the faces commented out here are the underside of the pieces so
+            // they show gray when the cube is scrambled. But they are overlapping sometimes
+            // with outward sticker faces. removing them for now, but it'd be nice to
+            // fix this.
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                4,
+                5,
+                6,
+                7
+            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                5,
+                4
+            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                2,
+                3,
+                7,
+                6
+            ], points, side1),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                1,
+                2,
+                6,
+                5
+            ], points, side2),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                3,
+                7,
+                4
+            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR), 
+        ];
+        const innerCentroid = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide / 2, this.halfSide / 2, this.halfSide / 2);
+        faces[1].centroid = innerCentroid;
+        faces[2].centroid = innerCentroid;
+        faces[5].centroid = innerCentroid;
+        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(points, faces);
+    }
+    square1Edge(top, side) {
+        const points = [
+            // Top
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, this.halfSide).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, this.halfSide).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfEdgePiece, this.halfSide, this.halfSide).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
+            // Bottom
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, this.halfSide - this.layerWidth).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, this.halfSide - this.layerWidth).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfEdgePiece, this.halfSide, this.halfSide - this.layerWidth).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)), 
+        ];
+        const faces = [
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                2
+            ], points, top),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                3,
+                4,
+                5
+            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                1,
+                2,
+                5,
+                4
+            ], points, side),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                4,
+                3
+            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                2,
+                5,
+                3
+            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR), 
+        ];
+        const innerFaceCentroid = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, this.halfSide / 2, this.halfSide / 2).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270));
+        // Override centroid to avoid drawing over outside stickers
+        faces[1].centroid = innerFaceCentroid;
+        faces[3].centroid = innerFaceCentroid;
+        faces[4].centroid = innerFaceCentroid;
+        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(points, faces);
+    }
+    square1Middle(front, side, back) {
+        const vertices = [
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfSide, -this.halfSide, this.halfMiddleWidth),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfSide, this.halfSide, this.halfMiddleWidth),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, this.halfMiddleWidth),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfEdgePiece, -this.halfSide, this.halfMiddleWidth),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfSide, -this.halfSide, -this.halfMiddleWidth),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfSide, this.halfSide, -this.halfMiddleWidth),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, -this.halfMiddleWidth),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfEdgePiece, -this.halfSide, -this.halfMiddleWidth), 
+        ];
+        const faces = [
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                2,
+                3
+            ], vertices, {
+                value: "#333"
+            }),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                4,
+                5,
+                6,
+                7
+            ], vertices, {
+                value: "#333"
+            }),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                5,
+                4
+            ], vertices, side),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                1,
+                2,
+                6,
+                5
+            ], vertices, back),
+            // new Face([2, 3, 7, 6], vertices, { value: "#333" }),
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                3,
+                7,
+                4
+            ], vertices, front), 
+        ];
+        const innerFaceCentroid = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfSide / 2, 0, 0);
+        // Override centroid to avoid drawing over outside stickers
+        faces[0].centroid = innerFaceCentroid;
+        faces[1].centroid = innerFaceCentroid;
+        faces[2].centroid = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-(this.halfSide + this.halfSide * 0.45), 0, 0);
+        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(vertices, faces);
+    }
+    buildSquare1(top, bottom, middleRotated) {
+        const topLayer = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeLayer(top));
+        const bottomLayer = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeLayer(bottom));
+        bottomLayer.rotate(Math.PI, 1, 0, 0);
+        bottomLayer.rotate((0, $854ac96c255d8d1d$export$39e437b5f63eb270), 0, 0, 1);
+        const pieces = [
+            topLayer,
+            bottomLayer
+        ];
+        const frontColor = this.scheme.front || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).front;
+        const leftColor = this.scheme.left || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).left;
+        const backColor = this.scheme.back || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).back;
+        const rightColor = this.scheme.right || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).right;
+        const m1 = this.square1Middle(frontColor, leftColor, backColor);
+        const m2 = this.square1Middle(backColor, rightColor, frontColor);
+        m2.rotate(Math.PI, 0, 0, 1);
+        if (middleRotated) m2.rotate(Math.PI, (0, $9b3744130fd33c3e$export$f37ee267a00cc8d1).x, (0, $9b3744130fd33c3e$export$f37ee267a00cc8d1).y, (0, $9b3744130fd33c3e$export$f37ee267a00cc8d1).z);
+        pieces.push(m1);
+        pieces.push(m2);
+        this.faces = {
+            top: topLayer,
+            bottom: bottomLayer
+        };
+        return pieces;
+    }
+}
+
+
+
+
+
+
+
+class $ab22ce71036e5c6a$export$7ff5ac152ef991b0 extends (0, $621b987b54afb04b$export$2db6c17465f94a2) {
+    constructor(width, height, color){
+        let vertices = [
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(width, 0, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(width, -height, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, -height, 0), 
+        ];
+        let faces = [
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                2,
+                3
+            ], vertices, color)
+        ];
+        super(vertices, faces);
+    }
+}
+
+
+
+
+
+
+class $0769609a0d2fbcad$export$5a465592bfe74b48 extends (0, $621b987b54afb04b$export$2db6c17465f94a2) {
+    constructor(a, b, c, color){
+        let verticies = [
+            a,
+            b,
+            c
+        ];
+        let faces = [
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                2
+            ], verticies, color)
+        ];
+        super(verticies, faces);
+    }
+}
+class $0769609a0d2fbcad$export$2906df35a9cfb655 extends $0769609a0d2fbcad$export$5a465592bfe74b48 {
+    constructor(base, color){
+        let height = base * ((0, $854ac96c255d8d1d$export$55533674495ff043) / 2);
+        super((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(base / 2, height, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(base, 0, 0), color);
+    }
+}
+
+
+
+class $6b11631b09d59b70$export$e3345590c1271270 {
+    constructor(){
+        const cubeWidth = 1;
+        const centerWidth = Math.sqrt(Math.pow(cubeWidth / 2, 2) * 2);
+        const orange = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$3de5e29ed1757f9b), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-cubeWidth, 0, 0)));
+        const green = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(2 * cubeWidth, 0, 0)));
+        const white = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$29814851e0aa981f), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, -cubeWidth, 0)));
+        const red = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$aa201224bb439d47), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(cubeWidth, 0, 0)));
+        const yellow = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$aab610c505c06a8f), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, cubeWidth, 0)));
+        const blue = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$738c3b9a44c87ecc), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0)));
+        this.U = yellow;
+        this.R = red;
+        this.F = blue;
+        this.L = orange;
+        this.B = green;
+        this.D = white;
+        this.faces = {
+            top: this.U,
+            front: this.F,
+            right: this.R,
+            back: this.B,
+            left: this.L,
+            bottom: this.D
+        };
+        this.stickers = [
+            red,
+            yellow,
+            blue,
+            orange,
+            green,
+            white
+        ];
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
+        this.group.translate(-cubeWidth / 4, 0, 0);
+        this.group.scale(0.5, 0.5, 0.5);
+    }
+    makeStickers(color, width, translate) {
+        const center = new (0, $ab22ce71036e5c6a$export$7ff5ac152ef991b0)(width, width, color);
+        center.translate(translate.x, translate.y, translate.z);
+        center.rotate(Math.PI / 4, 0, 0, 1);
+        center.translate(-width / 2, width / 2, 0);
+        const triangles = [];
+        for(let i = 0; i < 4; i++){
+            const triangle = new (0, $0769609a0d2fbcad$export$5a465592bfe74b48)((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-width / 2, width / 2, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, width, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(width / 2, width / 2, 0), color);
+            triangle.translate(translate.x, translate.y, translate.z);
+            triangle.rotate(-Math.PI / 2 * i, 0, 0, 1);
+            triangle.rotate(Math.PI / 4, 0, 0, 1);
+            triangles.push(triangle);
+        }
+        return [
+            center,
+            ...triangles
+        ];
+    }
+    setColors(colors) {
+        let { top: top , right: right , front: front , bottom: bottom , left: left , back: back  } = colors;
+        this.setFaceColors(this.U, top);
+        this.setFaceColors(this.R, right);
+        this.setFaceColors(this.F, front);
+        this.setFaceColors(this.D, bottom);
+        this.setFaceColors(this.L, left);
+        this.setFaceColors(this.B, back);
+    }
+    setFaceColors(faceStickers, colors = []) {
+        faceStickers.objects[0].faces[0].color = colors[0] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        faceStickers.objects[1].faces[0].color = colors[1] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        faceStickers.objects[2].faces[0].color = colors[2] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        faceStickers.objects[3].faces[0].color = colors[4] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f); // Setting 3 -> 4 and 4 -> 3 now because 4 and 3 are stored incorrectly in this class.
+        faceStickers.objects[4].faces[0].color = colors[3] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+    }
+}
+
+
+
+
+
+
+
+class $37e6b69258b7c736$export$20e672f2d64f35af {
+    constructor(){
+        const cubeWidth = 1.25;
+        const centerWidth = Math.sqrt(Math.pow(cubeWidth / 2, 2) * 2);
+        const halfWidth = cubeWidth / 2;
+        const red = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$aa201224bb439d47), centerWidth));
+        const yellow = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$aab610c505c06a8f), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(1, 0, 0)));
+        const blue = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$738c3b9a44c87ecc), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 1, 0)));
+        const orange = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$3de5e29ed1757f9b), centerWidth));
+        const green = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 1, 0)));
+        const white = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$29814851e0aa981f), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(1, 0, 0)));
+        this.U = yellow;
+        this.R = red;
+        this.F = blue;
+        this.L = orange;
+        this.B = green;
+        this.D = white;
+        this.faces = {
+            top: this.U,
+            front: this.F,
+            right: this.R,
+            back: this.B,
+            left: this.L,
+            bottom: this.D
+        };
+        red.translate(0, 0, halfWidth);
+        red.rotate(Math.PI, 1, 0, 0);
+        red.rotate(Math.PI / 2, 0, 0, 1);
+        orange.rotate(-Math.PI / 2, 0, 0, 1);
+        orange.translate(0, 0, -halfWidth);
+        blue.rotate(-Math.PI / 2, 1, 0, 0);
+        blue.translate(-halfWidth, 0, 0);
+        green.translate(halfWidth, 0, 0);
+        green.rotate(Math.PI, 0, 1, 0);
+        green.rotate(-Math.PI / 2, 1, 0, 0);
+        yellow.rotate(Math.PI, 0, 1, 0);
+        yellow.translate(0, halfWidth, 0);
+        white.translate(0, -halfWidth, 0);
+        white.rotate(Math.PI, 1, 0, 0);
+        this.stickers = [
+            red,
+            yellow,
+            blue,
+            orange,
+            green,
+            white
+        ];
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
+    }
+    makeStickers(color, width, axis) {
+        const center = new (0, $ab22ce71036e5c6a$export$7ff5ac152ef991b0)(width, width, color);
+        if (axis) center.rotate(Math.PI / 2, axis.x, axis.y, axis.z);
+        center.rotate(Math.PI / 4, 0, 0, 1);
+        center.translate(-width / 2, width / 2, 0);
+        const triangles = [];
+        for(let i = 0; i < 4; i++){
+            const triangle = new (0, $0769609a0d2fbcad$export$5a465592bfe74b48)((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-width / 2, width / 2, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, width, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(width / 2, width / 2, 0), color);
+            if (axis) triangle.rotate(Math.PI / 2, axis.x, axis.y, axis.z);
+            triangle.rotate(Math.PI / 2 * i, 0, 0, 1);
+            triangle.rotate(Math.PI / 4, 0, 0, 1);
+            triangles.push(triangle);
+        }
+        return [
+            center,
+            ...triangles
+        ];
+    }
+    setColors(colors) {
+        let { top: top , right: right , front: front , bottom: bottom , left: left , back: back  } = colors;
+        this.setFaceColors(this.U, top);
+        this.setFaceColors(this.R, right);
+        this.setFaceColors(this.F, front);
+        this.setFaceColors(this.D, bottom);
+        this.setFaceColors(this.L, left);
+        this.setFaceColors(this.B, back);
+    }
+    setFaceColors(faceStickers, colors = []) {
+        faceStickers.objects[0].faces[0].color = colors[0] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        faceStickers.objects[1].faces[0].color = colors[1] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        faceStickers.objects[2].faces[0].color = colors[2] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        faceStickers.objects[3].faces[0].color = colors[4] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f); // Setting 3 -> 4 and 4 -> 3 now because 4 and 3 are stored incorrectly in this class.
+        faceStickers.objects[4].faces[0].color = colors[3] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+    }
+}
+
+
+
+
+
+
+
+class $d02903eb7c5e7081$export$2740e532fae15f15 extends (0, $621b987b54afb04b$export$2db6c17465f94a2) {
+    constructor(base, size, color){
+        const halfBase = base / 2;
+        const fullHeight = base * ((0, $854ac96c255d8d1d$export$55533674495ff043) / 2);
+        const triangleBase = base / size;
+        const triangleHeight = fullHeight / size;
+        const inradius = fullHeight / 3;
+        let vertices = [];
+        let faces = [];
+        /**
+         * Builds one layer of verticies at a time
+         * for each layer after the first it constructs
+         * faces for the triangles (0,1,4), (1,2,5) etc...
+         *
+         *       9
+         *     7   8
+         *   4   5   6
+         * 0   1   2   3
+         */ let index = 0;
+        for(let layer = 0; layer <= size; layer++)for(let vertex = 0, count = size - layer; vertex <= count; vertex++){
+            const horizontalOffset = -halfBase;
+            const verticalOffset = -inradius;
+            const x = triangleBase * vertex + layer * triangleBase / 2 + horizontalOffset;
+            const y = triangleHeight * layer + verticalOffset;
+            vertices.push((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(x, y, 0));
+            if (layer > 0) {
+                // down triangle
+                if (vertex > 0) faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                    index,
+                    index - 1,
+                    index - count - 2
+                ], null, color));
+                // up triangle
+                faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                    index,
+                    index - count - 2,
+                    index - count - 1
+                ], null, color));
+            }
+            index++;
+        }
+        faces.forEach((face)=>face.calculateCentroid(vertices));
+        super(vertices, faces);
+    }
+}
+
+
+
+
+const $b12b0953e8a23e46$var$DEG_60_RADIANS = 60 * Math.PI / 180;
+class $b12b0953e8a23e46$export$4d37e698849b50f7 {
+    constructor(size, sideLength = 0.925){
+        this.size = size;
+        const fullHeight = sideLength * ((0, $854ac96c255d8d1d$export$55533674495ff043) / 2);
+        const inDiameter = fullHeight / 1.5;
+        const faceSpacing = inDiameter * 0.1;
+        const U = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$aab610c505c06a8f));
+        const R = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b));
+        const L = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc));
+        const B = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$aa201224bb439d47));
+        this.L = L;
+        this.R = R;
+        this.U = U;
+        this.B = B;
+        R.rotate(-$b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
+        R.translate(0, inDiameter + faceSpacing, 0);
+        R.rotate(2 * $b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
+        U.rotate($b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
+        U.translate(0, inDiameter + faceSpacing, 0);
+        U.rotate(-2 * $b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
+        B.rotate(3 * $b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
+        B.translate(0, inDiameter + faceSpacing, 0);
+        B.rotate(-2 * $b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
+        this.faces = {
+            top: this.U,
+            right: this.R,
+            left: this.L,
+            back: this.B
+        };
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)([
+            U,
+            R,
+            L,
+            B
+        ]);
+    }
+    setColors(colors) {
+        let { left: left , right: right , top: top , back: back  } = colors;
+        this.setFaceColors(this.L, left);
+        this.setFaceColors(this.R, right);
+        this.setFaceColors(this.U, top);
+        this.setFaceColors(this.B, back);
+    }
+    setFaceColors(lattice, colors) {
+        lattice.faces.forEach((f, i)=>{
+            if (colors && colors[i]) f.color = colors[i];
+            else f.color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        });
+    }
+}
+
+
+
+
+
+const $0389636ee7b68987$var$ARC_COS_THIRD = Math.acos(1 / 3);
+const $0389636ee7b68987$var$DEG_120_RADIANS = 120 * Math.PI / 180;
+const $0389636ee7b68987$var$SQRT_24 = Math.sqrt(24);
+class $0389636ee7b68987$export$b13f2da466ab891e {
+    constructor(size, sideLength = 1.75){
+        this.size = size;
+        const insphereRadius = sideLength / $0389636ee7b68987$var$SQRT_24;
+        const U = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$aab610c505c06a8f));
+        const R = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b));
+        const L = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc));
+        const B = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$aa201224bb439d47));
+        this.L = L;
+        this.R = R;
+        this.U = U;
+        this.B = B;
+        U.rotate($0389636ee7b68987$var$DEG_120_RADIANS, 0, 0, 1);
+        U.rotate($0389636ee7b68987$var$ARC_COS_THIRD, 1, 0, 0);
+        U.translate(0, 0, insphereRadius);
+        R.rotate($0389636ee7b68987$var$ARC_COS_THIRD, 1, 0, 0);
+        R.translate(0, 0, insphereRadius);
+        L.rotate(-$0389636ee7b68987$var$DEG_120_RADIANS, 0, 0, 1);
+        L.rotate($0389636ee7b68987$var$ARC_COS_THIRD, 1, 0, 0);
+        L.translate(0, 0, insphereRadius);
+        B.rotate(Math.PI, 0, 1, 0);
+        B.translate(0, 0, insphereRadius);
+        this.faces = {
+            top: this.U,
+            right: this.R,
+            left: this.L,
+            back: this.B
+        };
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)([
+            U,
+            L,
+            R,
+            B
+        ]);
+    }
+    setColors(colors) {
+        let { left: left , right: right , top: top , back: back  } = colors;
+        this.setFaceColors(this.L, left);
+        this.setFaceColors(this.R, right);
+        this.setFaceColors(this.U, top);
+        this.setFaceColors(this.B, back);
+    }
+    setFaceColors(lattice, colors) {
+        lattice.faces.forEach((f, i)=>{
+            if (colors && colors[i]) f.color = colors[i];
+            else f.color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        });
+    }
+}
+
+
+
+
+
+
+
+
+class $620e0e2ec86f1c38$export$3bc4526132adddba extends (0, $621b987b54afb04b$export$2db6c17465f94a2) {
+    /**
+     *
+     * @param color
+     * @param layers number of layers
+     * @param length length of entire edge of the outer pentagon
+     */ constructor(color, layers = 2, length = 1.6, layerWidth = 0.4 // TODO: calculate this somehow
+    ){
+        const outRadius = (0, $769573e6855c11ce$export$ca47e7f5b75033b9)(length);
+        const radiusDiff = $620e0e2ec86f1c38$var$layerWidthToRadiusDiff(layerWidth);
+        const centerOutRadius = outRadius - radiusDiff * (layers - 1);
+        const vertices = $620e0e2ec86f1c38$var$faceVerticies(layers, centerOutRadius, radiusDiff, layerWidth);
+        super(vertices, $620e0e2ec86f1c38$var$makeFaces(layers, color, vertices));
+    }
+}
+/**
+ * Given the the distance between two parallel sides of the
+ * dividen pentagon, calculate the difference in pentagon radius
+ */ function $620e0e2ec86f1c38$var$layerWidthToRadiusDiff(width) {
+    const aSquared = width * width;
+    const angleRadians = 71 * Math.PI / 180;
+    // Law of cosines
+    const cSquared = 2 * aSquared - 2 * aSquared * Math.cos(angleRadians);
+    const diff = 2 * Math.sqrt(Math.abs(aSquared - cSquared));
+    return diff;
+}
+/**
+ * creates mapping for indicies in one layer to another
+ * so we can build the geometry for a megaminx face
+ */ function $620e0e2ec86f1c38$var$downMapping(layer) {
+    if (layer < 1) return [];
+    let mapping = [];
+    const layerPoints = 5 + (layer - 1) * 10;
+    let previousPoints = 5 * (layer - 1) * (layer - 1);
+    for(let i = 0; i < layerPoints; i++){
+        mapping.push(i + previousPoints);
+        if (i % (layerPoints / 5) === 0) mapping.push(i + previousPoints);
+    }
+    mapping.push(mapping.shift());
+    mapping.push(mapping.shift());
+    return mapping;
+}
+function $620e0e2ec86f1c38$var$layerVertexNumbers(layer) {
+    let previousPoints = 5 * layer * layer;
+    let vertexNumbers = [];
+    for(let i = 0, layerPoints = 5 + layer * 10; i < layerPoints; i++)vertexNumbers.push(i + previousPoints);
+    return vertexNumbers;
+}
+function $620e0e2ec86f1c38$var$makeFaces(layers, color, vertices) {
+    let faces = [];
+    const firstLayerFace = new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+        0,
+        1,
+        2,
+        3,
+        4
+    ], vertices, color);
+    faces.push(firstLayerFace);
+    let totalPoints = 5;
+    let currentPoint = 5;
+    for(let i = 1; i < layers; i++){
+        const layerPoints = 5 + i * 10;
+        totalPoints += layerPoints;
+        const downMap = $620e0e2ec86f1c38$var$downMapping(i);
+        const prevLayer = $620e0e2ec86f1c38$var$layerVertexNumbers(i - 1);
+        const currentLayer = $620e0e2ec86f1c38$var$layerVertexNumbers(i);
+        while(currentPoint < totalPoints){
+            const currentLayerPoint = currentPoint - (prevLayer[prevLayer.length - 1] + 1);
+            const f1isCorner = currentLayerPoint % (layerPoints / 5) === 0;
+            if (f1isCorner) {
+                currentPoint++;
+                continue;
+            }
+            const f2isCorner = (currentLayerPoint + 1) % (layerPoints / 5) === 0;
+            let f1 = currentPoint;
+            let f2 = currentLayer[(currentLayerPoint + 1) % currentLayer.length];
+            let f3 = f2isCorner ? f2 + 1 : downMap.shift();
+            let f4 = f2isCorner ? downMap.shift() : prevLayer[(prevLayer.indexOf(f3) - 1 + prevLayer.length) % prevLayer.length];
+            currentPoint++;
+            faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                f1,
+                f2,
+                f3,
+                f4
+            ], vertices, color));
+        }
+    }
+    return faces;
+}
+/**
+ * Takes two points and extrapolates points along the line they make
+ *
+ * @param p1 point 1
+ * @param p2 point 2
+ * @param segments how many points to extrapolate from each direction p1 -> p2 and p2 -> p1
+ */ function $620e0e2ec86f1c38$var$segmentPoints(p1, p2, segments, layerWidth) {
+    if (segments === 0) return [
+        (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p1.x, p1.y, 0),
+        (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p2.x, p2.y, 0), 
+    ];
+    const length = (0, $769573e6855c11ce$export$b38c4fbdaa6dc58e)(p1, p2);
+    let points = [];
+    for(let i = segments; i > 0; i--){
+        // extrapolate from p1.v
+        let a = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p1.x + (p2.x - p1.x) / length * layerWidth * i, p1.y + (p2.y - p1.y) / length * layerWidth * i, 0);
+        points.unshift(a);
+        // extrapolate from p2.v
+        let b = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p2.x + (p1.x - p2.x) / length * layerWidth * i, p2.y + (p1.y - p2.y) / length * layerWidth * i, 0);
+        points.push(b);
+    }
+    points.unshift((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p1.x, p1.y, 0));
+    points.push((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p2.x, p2.y, 0));
+    return points;
+}
+function $620e0e2ec86f1c38$var$layerVerticies(layer, radius, layerWidth) {
+    let verticies = [];
+    for(let i = 0; i < 5; i++){
+        const theta = i * (2 * Math.PI) / 5 - Math.PI / 10;
+        const v = (0, $769573e6855c11ce$export$5c9a959bb3fc7749)(radius, theta);
+        if (verticies.length > 0) {
+            const lastPoint = verticies[verticies.length - 1];
+            const points = $620e0e2ec86f1c38$var$segmentPoints((0, $621efe85613594b3$export$c977b3e384af9ae1).fromValues(lastPoint.x, lastPoint.y), v, layer, layerWidth);
+            points.shift(); // Remove the first, otherwise it's duplicated
+            verticies = verticies.concat(points);
+        } else verticies.push((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(v.x, v.y, 0));
+    }
+    // Insert segments for last and first
+    const first = verticies[0];
+    const last = verticies[verticies.length - 1];
+    const points = $620e0e2ec86f1c38$var$segmentPoints((0, $621efe85613594b3$export$c977b3e384af9ae1).fromValues(last.x, last.y), (0, $621efe85613594b3$export$c977b3e384af9ae1).fromValues(first.x, first.y), layer, layerWidth);
+    points.pop();
+    points.shift();
+    verticies = verticies.concat(points);
+    return verticies;
+}
+function $620e0e2ec86f1c38$var$faceVerticies(layers, radius, radiusDiff, layerWidth) {
+    let verticies = [];
+    for(let i = 0; i < layers; i++){
+        const r = radius + radiusDiff * i;
+        verticies = [
+            ...verticies,
+            ...$620e0e2ec86f1c38$var$layerVerticies(i, r, layerWidth)
+        ];
+    }
+    return verticies;
+}
+
+
+
+
+
+const $9f9a0f6d3e178a44$var$DEG_36_RADIANS = 36 * Math.PI / 180;
+const $9f9a0f6d3e178a44$var$DEG_72_RADIANS = 72 * Math.PI / 180;
+/**
+ * for a megaminx with side length 1,
+ * layer widths that look good.
+ */ const $9f9a0f6d3e178a44$var$OPTIMAL_LAYER_WIDTH = {
+    2: 0.3,
+    3: 0.17,
+    4: 0.121
+};
+function $9f9a0f6d3e178a44$var$getLayerWidth(length, layers) {
+    return $9f9a0f6d3e178a44$var$OPTIMAL_LAYER_WIDTH[layers] || length / (layers * 1.9);
+}
+class $9f9a0f6d3e178a44$export$1740bb9cc2dfacc1 {
+    constructor(layers){
+        this.layers = layers;
+        const sideLength = 0.75;
+        const layerWidth = $9f9a0f6d3e178a44$var$getLayerWidth(length, layers);
+        // Left
+        this.U = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$29814851e0aa981f), layers, sideLength, layerWidth);
+        this.F = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aa201224bb439d47), layers, sideLength, layerWidth);
+        this.R = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$738c3b9a44c87ecc), layers, sideLength, layerWidth);
+        this.L = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b), layers, sideLength, layerWidth);
+        this.dl = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$ff076ff0c4d77395), layers, sideLength, layerWidth);
+        this.dr = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$d68d0fda4a10dbc2), layers, sideLength, layerWidth);
+        // Right
+        this.BL = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$7ffdeca4b2f927a2), layers, sideLength, layerWidth);
+        this.BR = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aab610c505c06a8f), layers, sideLength, layerWidth);
+        this.d = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$7d278ca694634874), layers, sideLength, layerWidth);
+        this.bl = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$1225f83626261b80), layers, sideLength, layerWidth);
+        this.br = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$e0ebd895ef030b6d), layers, sideLength, layerWidth);
+        this.b = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$3de5e29ed1757f9b), layers, sideLength, layerWidth);
+        const ind = 2 * (0, $769573e6855c11ce$export$707d248eb4bbe669)(sideLength);
+        // Left
+        this.U.translate(0, ind, 0);
+        this.U.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.R.rotate(-$9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
+        this.R.translate(0, ind, 0);
+        this.R.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.L.rotate($9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
+        this.L.translate(0, ind, 0);
+        this.L.rotate(-5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.dl.rotate(2 * $9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
+        this.dl.translate(0, ind, 0);
+        this.dl.rotate(-5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.dr.rotate(-2 * $9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
+        this.dr.translate(0, ind, 0);
+        this.dr.rotate(-5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        // Right
+        this.b.rotate(Math.PI, 0, 0, 1);
+        this.b.rotate(-2 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.d.rotate(3 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.d.translate(0, ind, 0);
+        this.d.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.br.rotate($9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.br.translate(0, ind, 0);
+        this.br.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.BR.rotate(-$9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.BR.translate(0, ind, 0);
+        this.BR.rotate(-5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.BL.rotate(-3 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.BL.translate(0, ind, 0);
+        this.BL.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.bl.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        this.bl.translate(0, ind, 0);
+        this.bl.rotate(-5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
+        let bottomTransforms = new (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5)();
+        bottomTransforms.rotate(-$9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
+        bottomTransforms.translate(0, 2 * ind, 0);
+        bottomTransforms.rotate(2 * $9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
+        bottomTransforms.translate(0, -ind, 0);
+        [
+            this.d,
+            this.bl,
+            this.BL,
+            this.BR,
+            this.br,
+            this.b
+        ].forEach((face)=>{
+            (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).multiply(face.matrix, bottomTransforms, face.matrix);
+        });
+        this.faces = {
+            U: this.U,
+            F: this.F,
+            R: this.R,
+            dr: this.dr,
+            dl: this.dl,
+            L: this.L,
+            d: this.d,
+            br: this.br,
+            BR: this.BR,
+            BL: this.BL,
+            bl: this.bl,
+            b: this.b
+        };
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)([
+            this.U,
+            this.F,
+            this.L,
+            this.dr,
+            this.dl,
+            this.R,
+            this.d,
+            this.bl,
+            this.BL,
+            this.BR,
+            this.br,
+            this.b, 
+        ]);
+        this.group.scale(0.33, 0.33, 0.33);
+        this.group.translate(-1.75 * sideLength, 0, 0);
+    }
+    setColors(colors) {
+        let { U: U , R: R , F: F , d: d , L: L , b: b , dr: dr , dl: dl , br: br , BR: BR , BL: BL , bl: bl  } = colors;
+        this.setFaceColors(this.U, U);
+        this.setFaceColors(this.R, R);
+        this.setFaceColors(this.F, F);
+        this.setFaceColors(this.d, d);
+        this.setFaceColors(this.L, L);
+        this.setFaceColors(this.b, b);
+        this.setFaceColors(this.dr, dr);
+        this.setFaceColors(this.dl, dl);
+        this.setFaceColors(this.BR, BR);
+        this.setFaceColors(this.BL, BL);
+        this.setFaceColors(this.bl, bl);
+        this.setFaceColors(this.br, br);
+    }
+    oldSetColors(colors) {
+        const n = this.layers;
+        const numStickers = 5 * n * n - 5 * n + 1;
+        let [U, R, F, dr, dl, L, d, br, BR, BL, bl, b] = (0, $047c8aa02737eb97$export$f922ebe57f2c36e8)(colors, numStickers);
+        this.setFaceColors(this.U, U);
+        this.setFaceColors(this.R, R);
+        this.setFaceColors(this.F, F);
+        this.setFaceColors(this.d, d);
+        this.setFaceColors(this.L, L);
+        this.setFaceColors(this.b, b);
+        this.setFaceColors(this.dr, dr);
+        this.setFaceColors(this.dl, dl);
+        this.setFaceColors(this.br, br);
+        this.setFaceColors(this.BR, BR);
+        this.setFaceColors(this.BL, BL);
+        this.setFaceColors(this.bl, bl);
+    }
+    setFaceColors(faceStickers, colors) {
+        faceStickers.faces.forEach((f, i)=>{
+            if (colors && colors[i]) f.color = colors[i];
+            else f.color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        });
+    }
+}
+
+
+
+
+
+
+const $3a9e3c9d3c2b6eb2$var$OPTIMAL_LAYER_WIDTH = {
+    2: 0.3,
+    3: 0.17,
+    4: 0.121
+};
+function $3a9e3c9d3c2b6eb2$var$getLayerWidth(length, layers) {
+    return $3a9e3c9d3c2b6eb2$var$OPTIMAL_LAYER_WIDTH[layers] || length / (layers * 1.9);
+}
+class $3a9e3c9d3c2b6eb2$export$cdb3e392e3d8acd3 {
+    constructor(layers = 2){
+        this.layers = layers;
+        const length = 0.75;
+        const megaminxRadius = (0, $769573e6855c11ce$export$25da5b6921e25b42)(length);
+        const layerWidth = $3a9e3c9d3c2b6eb2$var$getLayerWidth(length, layers);
+        // Front
+        this.U = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$29814851e0aa981f), layers, length, layerWidth);
+        this.F = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aa201224bb439d47), layers, length, layerWidth);
+        this.R = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$738c3b9a44c87ecc), layers, length, layerWidth);
+        this.dr = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$d68d0fda4a10dbc2), layers, length, layerWidth);
+        this.dl = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$ff076ff0c4d77395), layers, length, layerWidth);
+        this.L = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b), layers, length, layerWidth);
+        // Back
+        this.d = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$7d278ca694634874), layers, length, layerWidth);
+        this.br = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$e0ebd895ef030b6d), layers, length, layerWidth);
+        this.BR = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aab610c505c06a8f), layers, length, layerWidth);
+        this.BL = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$7ffdeca4b2f927a2), layers, length, layerWidth);
+        this.bl = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$1225f83626261b80), layers, length, layerWidth);
+        this.b = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$3de5e29ed1757f9b), layers, length, layerWidth);
+        this.F.translate(0, 0, megaminxRadius);
+        this.b.rotate(Math.PI, 0, 0, 1);
+        this.b.rotate(Math.PI, 0, 1, 0);
+        this.b.translate(0, 0, megaminxRadius);
+        this.U.rotate(Math.PI, 0, 0, 1);
+        this.U.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
+        this.U.translate(0, 0, megaminxRadius);
+        this.L.rotate(72 * Math.PI / 180, 0, 0, 1);
+        this.L.rotate(Math.PI, 0, 0, 1);
+        this.L.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
+        this.L.translate(0, 0, megaminxRadius);
+        this.R.rotate(72 * Math.PI / 180, 0, 0, 1);
+        this.R.rotate(Math.PI / 5, 0, 0, 1);
+        this.R.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
+        this.R.translate(0, 0, megaminxRadius);
+        this.dr.rotate(72 * Math.PI / 180, 0, 0, 1);
+        this.dr.rotate(-Math.PI / 5, 0, 0, 1);
+        this.dr.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
+        this.dr.translate(0, 0, megaminxRadius);
+        this.dl.rotate(72 * Math.PI / 180, 0, 0, 1);
+        this.dl.rotate(-3 * Math.PI / 5, 0, 0, 1);
+        this.dl.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
+        this.dl.translate(0, 0, megaminxRadius);
+        this.BL.rotate(Math.PI / 5, 0, 0, 1);
+        this.BL.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
+        this.BL.translate(0, 0, megaminxRadius);
+        this.BR.rotate(-Math.PI / 5, 0, 0, 1);
+        this.BR.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
+        this.BR.translate(0, 0, megaminxRadius);
+        this.bl.rotate(3 * Math.PI / 5, 0, 0, 1);
+        this.bl.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
+        this.bl.translate(0, 0, megaminxRadius);
+        this.d.rotate(5 * Math.PI / 5, 0, 0, 1);
+        this.d.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
+        this.d.translate(0, 0, megaminxRadius);
+        this.br.rotate(7 * Math.PI / 5, 0, 0, 1);
+        this.br.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
+        this.br.translate(0, 0, megaminxRadius);
+        this.stickers = [
+            this.U,
+            this.F,
+            this.R,
+            this.dr,
+            this.dl,
+            this.L,
+            this.d,
+            this.br,
+            this.BR,
+            this.BL,
+            this.bl,
+            this.b, 
+        ];
+        this.faces = {
+            U: this.U,
+            F: this.F,
+            R: this.R,
+            dr: this.dr,
+            dl: this.dl,
+            L: this.L,
+            d: this.d,
+            br: this.br,
+            BR: this.BR,
+            BL: this.BL,
+            bl: this.bl,
+            b: this.b
+        };
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
+    }
+    setColors(colors) {
+        let { U: U , R: R , F: F , d: d , L: L , b: b , dr: dr , dl: dl , br: br , BR: BR , BL: BL , bl: bl  } = colors;
+        this.setFaceColors(this.U, U);
+        this.setFaceColors(this.R, R);
+        this.setFaceColors(this.F, F);
+        this.setFaceColors(this.d, d);
+        this.setFaceColors(this.L, L);
+        this.setFaceColors(this.b, b);
+        this.setFaceColors(this.dr, dr);
+        this.setFaceColors(this.dl, dl);
+        this.setFaceColors(this.BR, BR);
+        this.setFaceColors(this.BL, BL);
+        this.setFaceColors(this.bl, bl);
+        this.setFaceColors(this.br, br);
+    }
+    setFaceColors(faceStickers, colors) {
+        faceStickers.faces.forEach((f, i)=>{
+            if (colors && colors[i]) f.color = colors[i];
+            else f.color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        });
+    }
+}
+
+
+
+
+
+
+
+function $74a47afe49de5952$export$8ba898995dfae3b(length, size, color) {
+    const halfLength = length / 2;
+    const elementWidth = length / size;
+    const halfElementWidth = elementWidth / 2;
+    let stickers = [];
+    for(let i = 0; i < size; i++){
+        let vOffset = -(-halfLength + halfElementWidth + elementWidth * i);
+        stickers = stickers.concat($74a47afe49de5952$export$deaeb1b23a2709a4(length, size, color, vOffset));
+    }
+    return stickers;
+}
+function $74a47afe49de5952$export$deaeb1b23a2709a4(length, size, color, vOffset = 0) {
+    const halfLength = length / 2;
+    const elementWidth = length / size;
+    const halfElementWidth = elementWidth / 2;
+    let stickers = [];
+    for(let i = 0; i < size; i++){
+        let hOffset = -halfLength + halfElementWidth + elementWidth * i;
+        let vertices = [
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-halfElementWidth + hOffset, halfElementWidth + vOffset, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(halfElementWidth + hOffset, halfElementWidth + vOffset, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(halfElementWidth + hOffset, -halfElementWidth + vOffset, 0),
+            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-halfElementWidth + hOffset, -halfElementWidth + vOffset, 0), 
+        ];
+        let faces = [
+            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
+                0,
+                1,
+                2,
+                3
+            ], vertices, color)
+        ];
+        stickers.push(new (0, $621b987b54afb04b$export$2db6c17465f94a2)(vertices, faces));
+    }
+    return stickers;
+}
+
+
+
+
+class $297241875fed3d05$export$702e5ad345915691 {
+    constructor(size, rotationAngle = Math.PI / 4){
+        this.size = size;
+        this.cubeWidth = 1.45;
+        this.halfCubeWidth = this.cubeWidth / 2;
+        this.stickerWidth = this.cubeWidth / size;
+        this.halfStickerWidth = this.stickerWidth / 2;
+        this.cubeWidth = this.stickerWidth * size;
+        this.U = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(this.cubeWidth, this.size, (0, $a552dd61b777f7b8$export$aab610c505c06a8f)));
+        this.R = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$deaeb1b23a2709a4)(this.cubeWidth, this.size, (0, $a552dd61b777f7b8$export$aa201224bb439d47)));
+        this.F = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$deaeb1b23a2709a4)(this.cubeWidth, this.size, (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc)));
+        this.B = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$deaeb1b23a2709a4)(this.cubeWidth, this.size, (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b)));
+        this.L = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$deaeb1b23a2709a4)(this.cubeWidth, this.size, (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b)));
+        const borderOffset = this.halfCubeWidth + this.halfStickerWidth;
+        this.B.translate(0, borderOffset, 0);
+        this.B.rotate(Math.PI, 0, 0, 1);
+        this.F.translate(0, -borderOffset, 0);
+        this.R.translate(borderOffset, 0, 0);
+        this.R.rotate(Math.PI / 2, 0, 0, 1);
+        this.L.translate(-borderOffset, 0, 0);
+        this.L.rotate(-Math.PI / 2, 0, 0, 1);
+        this.rotateBorder(this.F.objects, rotationAngle);
+        this.rotateBorder(this.R.objects, rotationAngle);
+        this.rotateBorder(this.B.objects, rotationAngle);
+        this.rotateBorder(this.L.objects, rotationAngle);
+        this.stickers = [
+            this.U,
+            this.R,
+            this.F,
+            this.B,
+            this.L
+        ];
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
+        this.faces = {
+            U: this.U,
+            R: this.R,
+            F: this.F,
+            L: this.L,
+            B: this.B
+        };
+    }
+    setFaceColors(faceStickers, colors) {
+        faceStickers.objects.forEach((g, i)=>{
+            if (colors && colors[i]) g.faces[0].color = colors[i];
+            else g.faces[0].color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        });
+    }
+    setColors(colors) {
+        let { U: U , R: R , F: F , L: L , B: B  } = colors;
+        this.setFaceColors(this.U, U);
+        this.setFaceColors(this.R, R);
+        this.setFaceColors(this.F, F);
+        this.setFaceColors(this.L, L);
+        this.setFaceColors(this.B, B);
+    }
+    /**
+     * given a row of stickers centered at 0,0,0
+     * rotates each vertex of each sticker around
+     * the top of the sticker.
+     */ rotateBorder(stickers, radians) {
+        stickers.forEach((sticker)=>{
+            sticker.vertices = sticker.vertices.map((vertex)=>{
+                return vertex.rotateX((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, this.halfStickerWidth, 0), radians);
+            });
+            sticker.centroid = (0, $769573e6855c11ce$export$5ae0742aaf43249b)(sticker.vertices);
+        });
+    }
+}
+
+
+
+
+
+class $a6a9c628ca796938$export$319925cb9fcaf5a1 {
+    constructor(size){
+        const cubeWidth = 1;
+        this.size = size;
+        const U = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$aab610c505c06a8f));
+        const R = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$aa201224bb439d47));
+        const F = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc));
+        const D = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$29814851e0aa981f));
+        const L = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b));
+        const B = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b));
+        this.U = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(U);
+        this.U.translate(0, cubeWidth, 0);
+        this.R = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(R);
+        this.R.translate(cubeWidth, 0, 0);
+        this.F = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(F);
+        this.D = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(D);
+        this.D.translate(0, -cubeWidth, 0);
+        this.L = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(L);
+        this.L.translate(-cubeWidth, 0, 0);
+        this.B = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(B);
+        this.B.translate(2 * cubeWidth, 0, 0);
+        this.stickers = [
+            this.U,
+            this.R,
+            this.F,
+            this.D,
+            this.L,
+            this.B
+        ];
+        this.faces = {
+            U: this.U,
+            R: this.R,
+            F: this.F,
+            D: this.D,
+            L: this.L,
+            B: this.B
+        };
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
+        this.group.translate(-cubeWidth / 4, 0, 0);
+        this.group.scale(0.5, 0.5, 0.5);
+    }
+    setFaceColors(faceStickers, colors) {
+        faceStickers.objects.forEach((g, i)=>{
+            if (colors && colors[i]) g.faces[0].color = colors[i];
+            else g.faces[0].color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        });
+    }
+    setColors(colors) {
+        let { U: U , R: R , F: F , D: D , L: L , B: B  } = colors;
+        this.setFaceColors(this.U, U);
+        this.setFaceColors(this.R, R);
+        this.setFaceColors(this.F, F);
+        this.setFaceColors(this.D, D);
+        this.setFaceColors(this.L, L);
+        this.setFaceColors(this.B, B);
+    }
+}
+
+
+
+
+
+class $d70803cf2e627d01$export$310f6ef17ab0638d {
+    constructor(size){
+        this.size = size;
+        const cubeWidth = 1.25;
+        const halfWidth = cubeWidth / 2;
+        this.U = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$aab610c505c06a8f)));
+        this.R = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$aa201224bb439d47)));
+        this.F = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc)));
+        this.D = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$29814851e0aa981f)));
+        this.L = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b)));
+        this.B = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b)));
+        this.U.rotate(-Math.PI / 2, 0, 1, 0);
+        this.U.rotate(-Math.PI / 2, 1, 0, 0);
+        this.U.translate(0, 0, halfWidth);
+        this.R.translate(0, 0, halfWidth);
+        this.F.rotate(-Math.PI / 2, 0, 1, 0);
+        this.F.translate(0, 0, halfWidth);
+        this.D.rotate(-Math.PI / 2, 0, 1, 0);
+        this.D.rotate(Math.PI / 2, 1, 0, 0);
+        this.D.translate(0, 0, halfWidth);
+        this.L.rotate(-Math.PI, 0, 1, 0);
+        this.L.translate(0, 0, halfWidth);
+        this.B.rotate(Math.PI / 2, 0, 1, 0);
+        this.B.translate(0, 0, halfWidth);
+        this.stickers = [
+            this.U,
+            this.R,
+            this.F,
+            this.D,
+            this.L,
+            this.B
+        ];
+        this.faces = {
+            U: this.U,
+            R: this.R,
+            F: this.F,
+            D: this.D,
+            L: this.L,
+            B: this.B
+        };
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
+    }
+    setFaceColors(faceStickers, colors) {
+        faceStickers.objects.forEach((g, i)=>{
+            if (colors && colors[i]) g.faces[0].color = colors[i];
+            else g.faces[0].color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        });
+    }
+    setColors(colors) {
+        let { U: U , R: R , F: F , D: D , L: L , B: B  } = colors;
+        this.setFaceColors(this.U, U);
+        this.setFaceColors(this.R, R);
+        this.setFaceColors(this.F, F);
+        this.setFaceColors(this.D, D);
+        this.setFaceColors(this.L, L);
+        this.setFaceColors(this.B, B);
+    }
+}
+
+
+
+
+
+class $a3f52faa72a35e94$export$21b07c8f274aebd5 extends (0, $87867bd021cba182$export$e4dd07dff30cc924) {
+    constructor(p1, p2){
+        super();
+        this.p1 = p1;
+        this.p2 = p2;
+        this.centroid = (0, $769573e6855c11ce$export$5ae0742aaf43249b)([
+            p1,
+            p2
+        ]);
+    }
+}
+
+
+
+
+function $53113c971984a86b$export$aea013efd02e7164(vertex, transforms) {
+    let v = vertex.clone();
+    transforms.forEach((m, i)=>{
+        v.transformMat4(m);
+    });
+    return v;
+}
+
+
+class $d200f3d5310f459f$export$591c2d18e52a6d30 {
+    constructor(){
+        this.polygons = [];
+        this.arrows = [];
+    }
+    render(scene, camera) {
+        this.polygons = [];
+        scene.objects.forEach((object)=>{
+            this.renderObject3D(object, camera, []);
+        });
+        this.onBeforeRender();
+        this.renderPolygons();
+        this.renderArrows();
+        this.onComplete();
+    }
+    renderPolygons() {
+        this.polygons.sort((a, b)=>{
+            return a.centroid.z - b.centroid.z;
+        });
+        this.polygons.forEach((p)=>this.drawPolygon(p));
+    }
+    renderArrows() {
+        this.arrows.forEach(({ p1: p1 , p2: p2 , uid: uid  })=>{
+            this.drawArrow(p1, p2, uid);
+        });
+    }
+    renderObject3D(object1, camera, transformations) {
+        if (object1 instanceof (0, $621b987b54afb04b$export$2db6c17465f94a2)) this.renderGeometry(object1, camera, transformations);
+        else if (object1 instanceof (0, $a3f52faa72a35e94$export$21b07c8f274aebd5)) this.renderArrow(object1, camera, transformations);
+        else if (object1 instanceof (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)) {
+            let group = object1;
+            // let sorted = this.sortObjects(group.objects, camera, [
+            //   group.matrix,
+            //   ...transformations,
+            // ]);
+            group.objects.forEach((object)=>{
+                this.renderObject3D(object, camera, [
+                    group.matrix,
+                    ...transformations
+                ]);
+            });
+        }
+    }
+    renderGeometry(object, camera, transformations) {
+        // this.sortFaces(object.faces, object, transformations);
+        object.faces.forEach((face)=>{
+            let points = [];
+            face.indices.map((index)=>object.vertices[index]).forEach((vertex)=>{
+                let objectToScreen = [
+                    object.matrix,
+                    ...transformations,
+                    camera.matrix, 
+                ];
+                let screenPoint = (0, $53113c971984a86b$export$aea013efd02e7164)(vertex, objectToScreen);
+                // Need to flip y to look correct on svg viewbox
+                screenPoint.multiply(1, -1, 1);
+                points.push(screenPoint);
+            });
+            this.addPolygon(points, face, object, transformations);
+        });
+    }
+    renderArrow(object, camera, transformations) {
+        let objectToScreen = [
+            object.matrix,
+            ...transformations,
+            camera.matrix
+        ];
+        let p1Screen = (0, $53113c971984a86b$export$aea013efd02e7164)(object.p1, objectToScreen);
+        let p2Screen = (0, $53113c971984a86b$export$aea013efd02e7164)(object.p2, objectToScreen);
+        this.arrows.push({
+            p1: p1Screen,
+            p2: p2Screen,
+            uid: object.uid
+        });
+    }
+    addPolygon(points, face, object, transformations) {
+        this.polygons.push({
+            points: points,
+            face: face,
+            object: object,
+            centroid: (0, $53113c971984a86b$export$aea013efd02e7164)(face.centroid, [
+                object.matrix,
+                ...transformations, 
+            ])
+        });
+    }
+    sortObjects(objects, camera, transformations) {
+        let sorted = [
+            ...objects
+        ];
+        sorted.sort((a, b)=>{
+            let aToWorld = [
+                a.matrix,
+                ...transformations
+            ];
+            let bToWorld = [
+                b.matrix,
+                ...transformations
+            ];
+            let aCentroid = (0, $53113c971984a86b$export$aea013efd02e7164)(a.centroid, aToWorld);
+            let bCentroid = (0, $53113c971984a86b$export$aea013efd02e7164)(b.centroid, bToWorld);
+            // TODO actually use camera, currently only sorting by Z
+            return aCentroid.z - bCentroid.z;
+        });
+        return sorted;
+    }
+}
+
+
+
+function $03cd6fa25491fbdf$export$a7d1cb6337256826(width, height, minx, miny, svgWidth, svgHeight) {
+    const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgElement.setAttributeNS(null, "width", width.toString());
+    svgElement.setAttributeNS(null, "height", height.toString());
+    svgElement.setAttributeNS(null, "viewBox", `${minx} ${miny} ${svgWidth} ${svgHeight}`);
+    svgElement.setAttributeNS(null, "id", "sr-visualizer");
+    return svgElement;
+}
+function $03cd6fa25491fbdf$export$a8b73e67b1fc384f(points, color, strokeWidth) {
+    const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+    $03cd6fa25491fbdf$export$566f38bcb2c6d2ff(polygon, points, color, strokeWidth);
+    return polygon;
+}
+function $03cd6fa25491fbdf$export$eaac66dbd110ddd0(start, end, color, strokeWidth) {
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    let strokeColor = color ? color.value : (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f).value;
+    line.setAttributeNS(null, "x1", start.x.toString());
+    line.setAttributeNS(null, "y1", (-start.y).toString());
+    line.setAttributeNS(null, "x2", end.x.toString());
+    line.setAttributeNS(null, "y2", (-end.y).toString());
+    line.setAttributeNS(null, "stroke", strokeColor);
+    line.setAttributeNS(null, "marker-end", "url(#arrowhead)");
+    if (strokeWidth) line.setAttributeNS(null, "stroke-width", strokeWidth);
+    return line;
+}
+function $03cd6fa25491fbdf$export$566f38bcb2c6d2ff(polygon, points, color, strokeWidth) {
+    const pointsAttribute = $03cd6fa25491fbdf$var$makePointsAttributeValue(points);
+    const colorValue = color ? color.value : "black";
+    const strokeValue = color && color.stroke || "#000000";
+    polygon.setAttributeNS(null, "points", pointsAttribute);
+    polygon.setAttributeNS(null, "fill", colorValue);
+    if (strokeWidth) {
+        polygon.setAttributeNS(null, "stroke", strokeValue);
+        polygon.setAttributeNS(null, "stroke-width", strokeWidth);
+    }
+    polygon.setAttributeNS(null, "stroke-linejoin", "round");
+}
+function $03cd6fa25491fbdf$export$2e99a70e5aad98e8(svg) {
+    while(svg.hasChildNodes())svg.removeChild(svg.lastChild);
+}
+function $03cd6fa25491fbdf$export$b60c6aa84d6c96eb(color) {
+    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    const arrowHeadMarker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
+    arrowHeadMarker.setAttributeNS(null, "id", "arrowhead");
+    arrowHeadMarker.setAttributeNS(null, "markerWidth", "4");
+    arrowHeadMarker.setAttributeNS(null, "markerHeight", "3.5");
+    arrowHeadMarker.setAttributeNS(null, "refX", "3");
+    arrowHeadMarker.setAttributeNS(null, "refY", "1.75");
+    arrowHeadMarker.setAttributeNS(null, "orient", "auto");
+    const arrowHeadPolygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+    arrowHeadPolygon.setAttributeNS(null, "points", "0 0, 4 1.75, 0 3.5");
+    arrowHeadPolygon.setAttributeNS(null, "fill", color.value);
+    defs.appendChild(arrowHeadMarker);
+    arrowHeadMarker.appendChild(arrowHeadPolygon);
+    return defs;
+}
+function $03cd6fa25491fbdf$var$makePointsAttributeValue(points) {
+    return points.reduce((pointString, point)=>{
+        return `${pointString ? pointString + " " : ""}${point.x}, ${point.y}`;
+    }, "");
+}
+
+
+class $b6fdeb59030f2391$export$a263bf3b3314d432 extends (0, $d200f3d5310f459f$export$591c2d18e52a6d30) {
+    /**
+     * Creates an SVG renderer. This will create it's own html `<svg>` element. it's
+     * the user's job to add this element to the page.
+     *
+     * @example
+     * ```
+     * const renderer = new HtmlSvgRenderer(width, height, minx, miny, svgWidth, svgHeight)
+     * document.getElementById('my-element').appendChild(renderer.domElement);
+     * ```
+     *
+     * @param width svg element width in pixels
+     * @param height svg element height in pixels
+     * @param minx min x for the svg element viewbox
+     * @param miny min x for the svg element viewbox
+     * @param svgWidth svg viewbox width
+     * @param svgHeight svg viewbox height
+     */ constructor(width, height, minx, miny, svgWidth, svgHeight, arrowColor){
+        super();
+        this.strokeWidth = "0.035";
+        this.arrowStrokeWidth = "0.03";
+        this.polygons = [];
+        this.lines = [];
+        this.uidToPolygon = {};
+        this.uidToLine = {};
+        this.arrowColor = arrowColor || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        this.domElement = document.createElement("div");
+        this.domElement.className = "svg-renderer";
+        this.svgElement = (0, $03cd6fa25491fbdf$export$a7d1cb6337256826)(width, height, minx, miny, svgWidth, svgHeight);
+        const markers = (0, $03cd6fa25491fbdf$export$b60c6aa84d6c96eb)(this.arrowColor);
+        this.svgElement.appendChild(markers);
+        this.domElement.appendChild(this.svgElement);
+    }
+    onBeforeRender() {}
+    drawPolygon({ points: points , face: face , object: object  }) {
+        if (!this.uidToPolygon[face.uid]) // Create new polygon for a face that hasn't been rendered
+        this.uidToPolygon[face.uid] = (0, $03cd6fa25491fbdf$export$a8b73e67b1fc384f)(points, face.color || object.color, this.strokeWidth);
+        else {
+            // Just update existing polygon element
+            const polygon = this.uidToPolygon[face.uid];
+            (0, $03cd6fa25491fbdf$export$566f38bcb2c6d2ff)(polygon, points, face.color || object.color, this.strokeWidth);
+        }
+        this.svgElement.appendChild(this.uidToPolygon[face.uid]);
+    }
+    drawArrow(p1Screen, p2Screen, uid) {
+        let arrow;
+        if (!this.uidToLine[uid]) {
+            arrow = (0, $03cd6fa25491fbdf$export$eaac66dbd110ddd0)(p1Screen, p2Screen, this.arrowColor, this.arrowStrokeWidth);
+            this.uidToLine[uid] = arrow;
+        } else {
+            arrow = this.uidToLine[uid];
+            arrow.setAttributeNS(null, "x1", p1Screen[0].toString());
+            arrow.setAttributeNS(null, "y1", (-p1Screen[1]).toString());
+            arrow.setAttributeNS(null, "x2", p2Screen[0].toString());
+            arrow.setAttributeNS(null, "y2", (-p2Screen[1]).toString());
+        }
+        this.svgElement.appendChild(this.uidToLine[uid]);
+    }
+    onComplete() {}
+}
+
+
+
+
+class $02ccaf9a8fcca6ac$export$7b9bdc1e44abccbc extends (0, $d200f3d5310f459f$export$591c2d18e52a6d30) {
+    constructor(width, height, lineWidth = 5, arrowColor = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f)){
+        super();
+        this.width = width;
+        this.height = height;
+        this.lineWidth = lineWidth;
+        this.arrowColor = arrowColor;
+        this.domElement = document.createElement("div");
+        this.domElement.className = "canvas-renderer";
+        this.canvasElement = document.createElement("canvas");
+        this.domElement.appendChild(this.canvasElement);
+        this.canvasElement.width = width;
+        this.canvasElement.height = height;
+        this.ctx = this.canvasElement.getContext("2d");
+    }
+    /**
+     * Visualizer point values will be in range (-.9, .9)
+     * Convert these values to canvas points (0, imgSize)
+     * using linear interpolation
+     *
+     * really the camera matrix should be set up properly
+     * so we don't have to do this...
+     */ convertRange(n, range) {
+        return (n - -0.9) / 1.8 * range;
+    }
+    onBeforeRender() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+    }
+    drawPolygon(polygon) {
+        var _a, _b;
+        this.ctx.lineWidth = this.lineWidth;
+        this.ctx.lineJoin = "round";
+        this.ctx.fillStyle = ((_b = (_a = polygon === null || polygon === void 0 ? void 0 : polygon.face) === null || _a === void 0 ? void 0 : _a.color) === null || _b === void 0 ? void 0 : _b.value) || "#000000";
+        this.ctx.strokeStyle = "#000000";
+        this.ctx.moveTo(this.convertRange(polygon.points[0].x, this.width), this.convertRange(polygon.points[0].y, this.height));
+        this.ctx.beginPath();
+        for(let i = 0; i <= polygon.points.length; i++){
+            let point = polygon.points[(i + 1) % polygon.points.length];
+            this.ctx.lineTo(this.convertRange(point.x, this.width), this.convertRange(point.y, this.height));
+        }
+        this.ctx.closePath();
+        this.ctx.fill();
+        this.ctx.stroke();
+    }
+    drawArrow(p1, p2, uid) {
+        const toX = this.convertRange(p2.x, this.width);
+        const toY = this.convertRange(-p2.y, this.height);
+        const fromX = this.convertRange(p1.x, this.width);
+        const fromY = this.convertRange(-p1.y, this.height);
+        const headlen = 20; // length of head in pixels
+        const dx = toX - fromX;
+        const dy = toY - fromY;
+        const angle = Math.atan2(dy, dx);
+        this.ctx.strokeStyle = this.arrowColor.value;
+        this.ctx.beginPath();
+        this.ctx.moveTo(fromX, fromY);
+        this.ctx.lineTo(toX, toY);
+        this.ctx.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
+        this.ctx.moveTo(toX, toY);
+        this.ctx.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
+        this.ctx.stroke();
+    }
+    setLineWidth(lineWidth) {
+        this.lineWidth = lineWidth;
+    }
+    onComplete() {}
+}
+
+
+
+
+class $8829b46f93b3ad40$export$79f141de891a5fed {
+    constructor(){
+        this.matrix = (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).perspective(Math.PI / 2, 1, 0.1, 1000);
+        this.matrix.translate(0, 0, -5);
+        this.matrix.scale(4, 4, 1);
+    }
+}
+
+
+class $28323f62027ce013$export$38af1803e3442a7f {
+    constructor(){
+        this.objects = [];
+    }
+    add(geometry) {
+        this.objects.push(geometry);
+    }
+    clear() {
+        this.objects = [];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+var $91999ea7a2299fe5$export$6eba7df48b4f9fa4;
+(function(VisualizerType1) {
+    VisualizerType1["CUBE"] = "cube";
+    VisualizerType1["CUBE_NET"] = "cube-net";
+    VisualizerType1["CUBE_TOP"] = "cube-top";
+    VisualizerType1["MEGAMINX"] = "megaminx";
+    VisualizerType1["MEGAMINX_NET"] = "megaminx-net";
+    VisualizerType1["MEGAMINX_TOP"] = "megaminx-top";
+    VisualizerType1["PYRAMINX"] = "pyraminx";
+    VisualizerType1["PYRAMINX_NET"] = "pyraminx-net";
+    VisualizerType1["SKEWB"] = "skewb";
+    VisualizerType1["SKEWB_NET"] = "skewb-net";
+    VisualizerType1["SQUARE1"] = "square1";
+    VisualizerType1["SQUARE1_NET"] = "square1-net";
+})($91999ea7a2299fe5$export$6eba7df48b4f9fa4 || ($91999ea7a2299fe5$export$6eba7df48b4f9fa4 = {}));
+
+
+
+
+const $30e930f0b924ba0f$export$30d3ec8a0554e1fb = {
+    size: 3,
+    scheme: {
+        U: (0, $a552dd61b777f7b8$export$aab610c505c06a8f),
+        R: (0, $a552dd61b777f7b8$export$aa201224bb439d47),
+        F: (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc),
+        D: (0, $a552dd61b777f7b8$export$29814851e0aa981f),
+        L: (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b),
+        B: (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b)
+    },
+    rotations: [
+        {
+            x: 0,
+            y: 45,
+            z: 0
+        },
+        {
+            x: 34,
+            y: 0,
+            z: 0
+        }, 
+    ]
+};
+const $30e930f0b924ba0f$export$8aacf2dde66a4bfd = {
+    size: 2,
+    scheme: {
+        U: (0, $a552dd61b777f7b8$export$29814851e0aa981f),
+        F: (0, $a552dd61b777f7b8$export$aa201224bb439d47),
+        R: (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc),
+        dr: (0, $a552dd61b777f7b8$export$d68d0fda4a10dbc2),
+        dl: (0, $a552dd61b777f7b8$export$ff076ff0c4d77395),
+        L: (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b),
+        d: (0, $a552dd61b777f7b8$export$7d278ca694634874),
+        br: (0, $a552dd61b777f7b8$export$e0ebd895ef030b6d),
+        BR: (0, $a552dd61b777f7b8$export$aab610c505c06a8f),
+        BL: (0, $a552dd61b777f7b8$export$7ffdeca4b2f927a2),
+        bl: (0, $a552dd61b777f7b8$export$1225f83626261b80),
+        b: (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b)
+    }
+};
+const $30e930f0b924ba0f$export$baebf346c77e7713 = {
+    size: 3,
+    scheme: {
+        left: (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc),
+        right: (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b),
+        top: (0, $a552dd61b777f7b8$export$aab610c505c06a8f),
+        back: (0, $a552dd61b777f7b8$export$aa201224bb439d47)
+    },
+    rotations: [
+        {
+            x: 0,
+            y: 0,
+            z: 60
+        },
+        {
+            x: -60,
+            y: 0,
+            z: 0
+        }, 
+    ]
+};
+const $30e930f0b924ba0f$export$773020f8d4b0ecb5 = {
+    scheme: {
+        top: (0, $a552dd61b777f7b8$export$aab610c505c06a8f),
+        front: (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc),
+        right: (0, $a552dd61b777f7b8$export$aa201224bb439d47),
+        back: (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b),
+        left: (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b),
+        bottom: (0, $a552dd61b777f7b8$export$29814851e0aa981f)
+    },
+    rotations: [
+        {
+            x: 0,
+            y: 45,
+            z: 0
+        },
+        {
+            x: 34,
+            y: 0,
+            z: 0
+        }, 
+    ]
+};
+const $30e930f0b924ba0f$export$2bb29b0375848c91 = {
+    scheme: (0, $9b3744130fd33c3e$export$e1bf8712b5945cd),
+    rotations: [
+        {
+            x: 0,
+            y: 0,
+            z: -34
+        },
+        {
+            x: -56,
+            y: 0,
+            z: 0
+        }, 
+    ]
+};
+function $30e930f0b924ba0f$export$430a3269e24b912e(type) {
+    switch(type){
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE:
+            return $30e930f0b924ba0f$export$30d3ec8a0554e1fb;
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET:
+            return Object.assign(Object.assign({}, $30e930f0b924ba0f$export$30d3ec8a0554e1fb), {
+                rotations: null
+            });
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP:
+            return Object.assign(Object.assign({}, $30e930f0b924ba0f$export$30d3ec8a0554e1fb), {
+                rotations: null
+            });
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX:
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET:
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP:
+            return $30e930f0b924ba0f$export$8aacf2dde66a4bfd;
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX:
+            return $30e930f0b924ba0f$export$baebf346c77e7713;
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET:
+            return Object.assign(Object.assign({}, $30e930f0b924ba0f$export$baebf346c77e7713), {
+                rotations: null
+            });
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB:
+            return $30e930f0b924ba0f$export$773020f8d4b0ecb5;
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET:
+            return Object.assign(Object.assign({}, $30e930f0b924ba0f$export$773020f8d4b0ecb5), {
+                rotations: null
+            });
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1:
+            return $30e930f0b924ba0f$export$2bb29b0375848c91;
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1_NET:
+            return Object.assign(Object.assign({}, $30e930f0b924ba0f$export$2bb29b0375848c91), {
+                rotations: null
+            });
+        default:
+            throw new Error(`Could not get default options for puzzle ${type}`);
+    }
+}
+
+
+
+
+
+function $eb061d61c60e3d6c$export$3b653dfd563c7b3f(options) {
+    if (options.alg && typeof options.alg !== "string") {
+        console.warn(`Inavlid alg ${options.alg}. alg must be a string`);
+        options.alg = "";
+    }
+    if (options.case && typeof options.case !== "string") {
+        console.warn(`Inavlid case ${options.case}. case must be a string`);
+        options.case = "";
+    }
+    if (options.scheme) {
+        if (typeof options.scheme !== "object" || Array.isArray(options.scheme)) {
+            console.warn(`Invalid scheme ${options.scheme}. scheme must be an object`);
+            options.scheme = {};
+        } else Object.keys(options.scheme).forEach((face)=>{
+            const faceColor = options.scheme[face];
+            if (faceColor == null || typeof faceColor !== "object" || !faceColor.value) {
+                console.warn(`Invalid scheme color ${faceColor}. must be an type IColor`);
+                options.scheme[face] = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+            }
+        });
+    }
+    if (options.mask) {
+        if (typeof options.mask !== "object" || Array.isArray(options.mask)) {
+            console.warn(`Invalid mask ${options.mask}. scheme must be an object`);
+            options.mask = {};
+        } else Object.keys(options.mask).forEach((face)=>{
+            const maskValues = options.mask[face];
+            if (!Array.isArray(maskValues)) {
+                console.warn(`Invalid mask ${maskValues}. must be an array`);
+                options.mask[face] = [];
+            } else {
+                for(let i = 0; i < maskValues.length; i++)if (!Number.isInteger(maskValues[i])) {
+                    console.warn(`Invalid mask value ${maskValues[i]}. must be a number`);
+                    options.mask[face] = [];
+                    break;
+                }
+            }
+        });
+    }
+    if (options.stickerColors) {
+        if (typeof options.stickerColors !== "object" || Array.isArray(options.stickerColors)) {
+            console.warn(`Invalid stickerColors ${options.stickerColors}. stickerColors must be an object`);
+            options.stickerColors = {};
+        } else Object.keys(options.stickerColors).forEach((face)=>{
+            const faceColors = options.stickerColors[face];
+            if (!Array.isArray(faceColors)) {
+                console.warn(`Invalid colors ${faceColors}. must be an array`);
+                options.stickerColors[face] = [];
+            } else {
+                for(let i = 0; i < faceColors.length; i++)if (!$eb061d61c60e3d6c$export$9797b605b6184901(faceColors[i])) {
+                    options.stickerColors[face] = [];
+                    break;
+                }
+            }
+        });
+    }
+    if (options.rotations) {
+        if (!Array.isArray(options.rotations)) {
+            console.warn(`invalid rotations ${options.rotations}, must be an array`);
+            options.rotations = [];
+        } else {
+            for(let i = 0; i < options.rotations.length; i++)if (!$eb061d61c60e3d6c$var$validRotation(options.rotations[i])) {
+                options.rotations = [];
+                break;
+            }
+        }
+    }
+    if (options.scale && !Number.isFinite(options.scale)) {
+        console.warn(`invalid scale ${options.scale}, must be a finite number`);
+        options.scale = 1;
+    }
+    if (options.translation && !$eb061d61c60e3d6c$var$validTranslation(options.translation)) options.translation = {
+        x: 0,
+        y: 0,
+        z: 0
+    };
+    if (options.arrows) {
+        if (!Array.isArray(options.arrows)) {
+            console.warn(`invalid arrows, must be an array`);
+            options.arrows = [];
+        } else {
+            for(let i = 0; i < options.arrows.length; i++)if (!$eb061d61c60e3d6c$var$validArrow(options.arrows[i])) {
+                options.arrows = [];
+                break;
+            }
+        }
+    }
+}
+function $eb061d61c60e3d6c$export$9797b605b6184901(c) {
+    if (typeof c !== "object") {
+        console.warn(`invalid color ${c}, must be type object`);
+        return false;
+    }
+    if (!c.value || typeof c.value !== "string") {
+        console.warn(`invalid color value ${c.value}, must be type string`);
+        return false;
+    }
+    if (c.stroke && typeof c.stroke !== "string") {
+        console.warn(`invalid color stroke ${c.stroke}, must be type string`);
+        return false;
+    }
+    return true;
+}
+function $eb061d61c60e3d6c$var$validRotation(r) {
+    if (!r || typeof r !== "object") {
+        console.warn(`invalid rotation ${r}, must be an object`);
+        return false;
+    }
+    if (r.x && !Number.isFinite(r.x)) {
+        console.warn(`invalid x rotation ${r.x}, must be a number`);
+        return false;
+    }
+    if (r.y && !Number.isFinite(r.y)) {
+        console.warn(`invalid y rotation ${r.y}, must be a number`);
+        return false;
+    }
+    if (r.z && !Number.isFinite(r.z)) {
+        console.warn(`invalid z rotation ${r.z}, must be a number`);
+        return false;
+    }
+    return true;
+}
+function $eb061d61c60e3d6c$var$validTranslation(r) {
+    if (typeof r !== "object" || Array.isArray(r)) {
+        console.warn(`invalid translation ${r}, must be an object`);
+        return false;
+    }
+    if (r.x && !Number.isFinite(r.x)) {
+        console.warn(`invalid x translation ${r.x}, must be a number`);
+        return false;
+    }
+    if (r.y && !Number.isFinite(r.y)) {
+        console.warn(`invalid y translation ${r.y}, must be a number`);
+        return false;
+    }
+    if (r.z && !Number.isFinite(r.z)) {
+        console.warn(`invalid z translation ${r.z}, must be a number`);
+        return false;
+    }
+    return true;
+}
+function $eb061d61c60e3d6c$var$validArrow(a) {
+    if (typeof a !== "object") {
+        console.warn(`invalid arrow ${a}, must be an object`);
+        return false;
+    }
+    if (typeof a.end !== "object" || typeof a.start !== "object") {
+        console.warn(`invalid arrow ${a}, must have start and end`);
+        return false;
+    }
+    if (typeof a.start.face !== "string" || !Number.isInteger(a.start.sticker)) {
+        console.warn(`invalid arrow start ${a.start}`);
+        return false;
+    }
+    if (typeof a.end.face !== "string" || !Number.isInteger(a.end.sticker)) {
+        console.warn(`invalid arrow end ${a.end}`);
+        return false;
+    }
+    return true;
+}
+
+
+
+
+
+
+
+
+
+
+const $1cf201749a692690$var$OPTIMAL_LAYER_WIDTH = {
+    2: 0.3,
+    3: 0.17,
+    4: 0.121
+};
+function $1cf201749a692690$var$getLayerWidth(length, layers) {
+    return $1cf201749a692690$var$OPTIMAL_LAYER_WIDTH[layers] || length / (layers * 1.9);
+}
+class $1cf201749a692690$export$e470815a9331019b {
+    constructor(){
+        this.createFaces();
+        this.removeHiddenStickers();
+    }
+    createFaces() {
+        const layers = 2;
+        const length = 0.75;
+        const layerWidth = $1cf201749a692690$var$getLayerWidth(length, layers);
+        const megaminxRadius = (0, $769573e6855c11ce$export$25da5b6921e25b42)(length);
+        this.U = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$29814851e0aa981f), layers, length, layerWidth);
+        this.F = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aa201224bb439d47), layers, length, layerWidth);
+        this.R = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$738c3b9a44c87ecc), layers, length, layerWidth);
+        this.L = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b), layers, length, layerWidth);
+        this.BR = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aab610c505c06a8f), layers, length, layerWidth);
+        this.BL = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$7ffdeca4b2f927a2), layers, length, layerWidth);
+        this.F.translate(0, 0, megaminxRadius);
+        this.U.rotate(Math.PI, 0, 0, 1);
+        this.U.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
+        this.U.translate(0, 0, megaminxRadius);
+        this.L.rotate(72 * Math.PI / 180, 0, 0, 1);
+        this.L.rotate(Math.PI, 0, 0, 1);
+        this.L.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
+        this.L.translate(0, 0, megaminxRadius);
+        this.R.rotate(72 * Math.PI / 180, 0, 0, 1);
+        this.R.rotate(Math.PI / 5, 0, 0, 1);
+        this.R.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
+        this.R.translate(0, 0, megaminxRadius);
+        this.BL.rotate(Math.PI / 5, 0, 0, 1);
+        this.BL.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
+        this.BL.translate(0, 0, megaminxRadius);
+        this.BR.rotate(-Math.PI / 5, 0, 0, 1);
+        this.BR.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
+        this.BR.translate(0, 0, megaminxRadius);
+        this.faces = {
+            U: this.U,
+            F: this.F,
+            R: this.R,
+            dr: this.BR,
+            dl: this.BL,
+            L: this.L
+        };
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)([
+            this.U,
+            this.F,
+            this.R,
+            this.BR,
+            this.BL,
+            this.L
+        ]);
+        this.group.rotate((0, $769573e6855c11ce$export$c9fcf1a7df975d78)(63), 1, 0, 0);
+    }
+    setColors(colors) {
+        let { U: U , R: R , F: F , L: L , BR: BR , BL: BL  } = colors;
+        this.createFaces();
+        // If length is larger than we expect for
+        // a side of the puzzle, assume we're receiving
+        // colors for the entire face of the puzzle. and
+        // just take out the the colors for visible stickers
+        // if (R.length > 3) {
+        //   R = R.slice(2, 5);
+        //   F = F.slice(2, 5);
+        //   L = L.slice(2, 5);
+        //   BR = BR.slice(2, 5);
+        //   BL = BL.slice(2, 5);
+        // }
+        // this.U.faces[1].color = BLACK;
+        // this.R.faces[1].color = BLACK;
+        // this.F.faces[1].color = BLACK;
+        // this.L.faces[1].color = BLACK;
+        // this.BR.faces[1].color = BLACK;
+        // this.BL.faces[1].color = BLACK;
+        this.setFaceColors(this.U, U);
+        this.setFaceColors(this.R, R);
+        this.setFaceColors(this.F, F);
+        this.setFaceColors(this.L, L);
+        this.setFaceColors(this.BR, BR);
+        this.setFaceColors(this.BL, BL);
+        this.removeHiddenStickers();
+    }
+    setFaceColors(faceStickers, colors) {
+        faceStickers.faces.forEach((f, i)=>{
+            if (colors && colors[i]) f.color = colors[i];
+            else f.color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+        });
+    }
+    /**
+     * hide stickers that aren't in the top layer
+     * so only the top of the megaminx is shown
+     */ removeHiddenStickers() {
+        this.F.faces = this.F.faces.slice(2, 5);
+        this.BL.faces = this.BL.faces.slice(8, 11);
+        this.L.faces = this.L.faces.slice(4, 7);
+        this.R.faces = [
+            this.R.faces[1],
+            this.R.faces[2],
+            this.R.faces[10]
+        ];
+        this.BR.faces = this.BR.faces.slice(6, 9);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Since puzzle geometry doesn't change for any instance of "Visuzlier"
+ * we can cache the geometry generated to avoid generating it on each time
+ * we render a puzzle
+ */ const $2d5e029956976abc$var$geometryCache = {
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1]: {},
+    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1_NET]: {}
+};
+function $2d5e029956976abc$export$a54886ebc2f206ca(type, options) {
+    switch(type){
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE:
+            return $2d5e029956976abc$export$ce223d612b94804b(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET:
+            return $2d5e029956976abc$export$2d79bfcb45a755b7(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP:
+            return $2d5e029956976abc$export$da01d12bd2a96873(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX:
+            return $2d5e029956976abc$export$e86e3ab67725ca28(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET:
+            return $2d5e029956976abc$export$fb9d2b332439f5b1(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP:
+            return $2d5e029956976abc$export$d15f11b50aa190ae(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX:
+            return $2d5e029956976abc$export$2a54f5180f3334c3(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET:
+            return $2d5e029956976abc$export$1419bce623d2254(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB:
+            return $2d5e029956976abc$export$aacba2b20c89cc2d(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET:
+            return $2d5e029956976abc$export$adbac64368d7035(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1:
+            return $2d5e029956976abc$export$f604efa486f7569(options);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1_NET:
+            return $2d5e029956976abc$export$4dfbff0cdc093eac(options);
+    }
+}
+function $2d5e029956976abc$export$32eadc934192bf8c(type, options) {
+    switch(type){
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE:
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET:
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP:
+            return new (0, $97796b1f3eccc5ed$export$e38eb81901bc8623)(options.size);
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX:
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET:
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP:
+            return new (0, $2f51a1953a3cf56c$export$af68e8b316be1d11)();
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX:
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET:
+            return new (0, $e8a3bdbf0be390cd$export$d05b816c594f90e8)();
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB:
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET:
+            return new (0, $cdfaf7e439ac29e3$export$b9c7478369a38c76)();
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1:
+        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1_NET:
+            return $2d5e029956976abc$var$initSquare1Simulator(options);
+    }
+}
+function $2d5e029956976abc$export$ce223d612b94804b(options = {}) {
+    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE][options.size] = new (0, $d70803cf2e627d01$export$310f6ef17ab0638d)(options.size);
+    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE][options.size];
+}
+function $2d5e029956976abc$export$2d79bfcb45a755b7(options = {}) {
+    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET][options.size] = new (0, $a6a9c628ca796938$export$319925cb9fcaf5a1)(options.size);
+    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET][options.size];
+}
+function $2d5e029956976abc$export$da01d12bd2a96873(options = {}) {
+    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP][options.size] = new (0, $297241875fed3d05$export$702e5ad345915691)(options.size);
+    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP][options.size];
+}
+function $2d5e029956976abc$export$e86e3ab67725ca28(options = {}) {
+    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX][options.size] = new (0, $3a9e3c9d3c2b6eb2$export$cdb3e392e3d8acd3)(options.size);
+    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX][options.size];
+}
+function $2d5e029956976abc$export$fb9d2b332439f5b1(options = {}) {
+    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET][options.size] = new (0, $9f9a0f6d3e178a44$export$1740bb9cc2dfacc1)(options.size);
+    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET][options.size];
+}
+function $2d5e029956976abc$export$d15f11b50aa190ae(options = {}) {
+    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP][2]) // megaminx top size not supported, so just cache by size 2
+    $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP][2] = new (0, $1cf201749a692690$export$e470815a9331019b)();
+    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP][2];
+}
+function $2d5e029956976abc$export$2a54f5180f3334c3(options = {}) {
+    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX][options.size] = new (0, $0389636ee7b68987$export$b13f2da466ab891e)(options.size);
+    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX][options.size];
+}
+function $2d5e029956976abc$export$1419bce623d2254(options = {}) {
+    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET][options.size] = new (0, $b12b0953e8a23e46$export$4d37e698849b50f7)(options.size);
+    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET][options.size];
+}
+function $2d5e029956976abc$export$aacba2b20c89cc2d(options = {}) {
+    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB][1]) // Skewb size not supported, so just cache by size 1
+    $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB][1] = new (0, $37e6b69258b7c736$export$20e672f2d64f35af)();
+    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB][1];
+}
+function $2d5e029956976abc$export$adbac64368d7035(options = {}) {
+    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET][1]) // Skewb size not supported, so just cache by size 1
+    $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET][1] = new (0, $6b11631b09d59b70$export$e3345590c1271270)();
+    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET][1];
+}
+function $2d5e029956976abc$export$f604efa486f7569(options = {}) {
+    const simulator = $2d5e029956976abc$var$initSquare1Simulator(options);
+    const geometry = new (0, $69cfc5366d5d5306$export$8f7198aedf2eb582)(simulator.topLayer, simulator.bottomLayer, simulator.middleRotated, options.scheme);
+    return geometry;
+}
+function $2d5e029956976abc$export$4dfbff0cdc093eac(options = {}) {
+    const simulator = $2d5e029956976abc$var$initSquare1Simulator(options);
+    const geometry = new (0, $f35abbac62e00809$export$65ad724200307558)(simulator.topLayer, simulator.bottomLayer, simulator.middleRotated, options.scheme);
+    return geometry;
+}
+function $2d5e029956976abc$var$initSquare1Simulator(options) {
+    const simulator = new (0, $6a2ff1079a5489d4$export$2c536ad444fb73c5)(options.scheme);
+    if (options.case) simulator.case(options.case);
+    else if (options.alg) simulator.alg(options.alg);
+    return simulator;
+}
+
+
+
+class $e2bd02c995c89b46$export$23d6a54f0bbc85a3 {
+    constructor(a, b, c, d){
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+    }
+    static fromEuler(x, y, z) {
+        let halfToRad = Math.PI / 360;
+        x *= halfToRad;
+        z *= halfToRad;
+        y *= halfToRad;
+        let sx = Math.sin(x);
+        let cx = Math.cos(x);
+        let sy = Math.sin(y);
+        let cy = Math.cos(y);
+        let sz = Math.sin(z);
+        let cz = Math.cos(z);
+        let a = sx * cy * cz - cx * sy * sz;
+        let b = cx * sy * cz + sx * cy * sz;
+        let c = cx * cy * sz - sx * sy * cz;
+        let d = cx * cy * cz + sx * sy * sz;
+        return new $e2bd02c995c89b46$export$23d6a54f0bbc85a3(a, b, c, d);
+    }
+}
+
+
+/**
+ * Applies a color scheme to simulator values
+ *
+ * @param faceValues face values from the simulator
+ * @param scheme color scheme to
+ */ function $fb7402156073a837$var$applyColorScheme(faceValues, scheme) {
+    return Object.keys(faceValues).reduce((colors, face)=>{
+        colors[face] = faceValues[face].map((value)=>scheme[value] || (0, $a552dd61b777f7b8$export$6597749b34bb1aec));
+        return colors;
+    }, {});
+}
+function $fb7402156073a837$var$isSquare1(type) {
+    return type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1 || type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1_NET;
+}
+function $fb7402156073a837$var$isPyraminx(type) {
+    return type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX || type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET;
+}
+function $fb7402156073a837$var$isMegaminx(type) {
+    return type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX || type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET || type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP;
+}
+/**
+ * Return true if we can apply simulator colors. Currently
+ * we don't simulate n-layered megaminx/pyraminx.
+ */ function $fb7402156073a837$var$canApplySimulatorColors(type, size) {
+    if ($fb7402156073a837$var$isPyraminx(type)) return size === 3;
+    if ($fb7402156073a837$var$isMegaminx(type)) return size === 2;
+    return true;
+}
+function $fb7402156073a837$var$createArrow(a, puzzle, group) {
+    var _a, _b, _c, _d, _e, _f, _g, _h;
+    // Get the face the arrow is pointing to
+    let startFace = puzzle.faces[a.start.face];
+    let endFace = puzzle.faces[a.end.face];
+    if (!startFace || !endFace) throw new Error(`Invalid arrow definition ${JSON.stringify(a)}`);
+    // Transform from sticker coordinates to group coordinates
+    let startTransformations = [
+        startFace.matrix,
+        puzzle.group.matrix,
+        group.matrix, 
+    ];
+    let endTransformations = [
+        endFace.matrix,
+        puzzle.group.matrix,
+        group.matrix
+    ];
+    let start;
+    let end;
+    // Get the stickers on the face
+    if (startFace instanceof (0, $621b987b54afb04b$export$2db6c17465f94a2) && endFace instanceof (0, $621b987b54afb04b$export$2db6c17465f94a2)) {
+        start = (_a = startFace.faces[a.start.sticker]) === null || _a === void 0 ? void 0 : _a.centroid;
+        end = (_b = endFace.faces[a.end.sticker]) === null || _b === void 0 ? void 0 : _b.centroid;
+    } else {
+        if (puzzle instanceof (0, $69cfc5366d5d5306$export$8f7198aedf2eb582)) {
+            start = (_c = startFace.objects[a.start.sticker]) === null || _c === void 0 ? void 0 : _c.faces[0].centroid;
+            end = (_d = endFace.objects[a.end.sticker]) === null || _d === void 0 ? void 0 : _d.faces[0].centroid;
+        } else {
+            start = (_e = startFace.objects[a.start.sticker]) === null || _e === void 0 ? void 0 : _e.centroid;
+            end = (_f = endFace.objects[a.end.sticker]) === null || _f === void 0 ? void 0 : _f.centroid;
+        }
+        startTransformations.unshift((_g = startFace.objects[a.start.sticker]) === null || _g === void 0 ? void 0 : _g.matrix);
+        endTransformations.unshift((_h = endFace.objects[a.end.sticker]) === null || _h === void 0 ? void 0 : _h.matrix);
+    }
+    if (!start || !end) throw new Error(`Invalid arrow definition ${JSON.stringify(a)}`);
+    let p1 = (0, $53113c971984a86b$export$aea013efd02e7164)(start, startTransformations);
+    let p2 = (0, $53113c971984a86b$export$aea013efd02e7164)(end, endTransformations);
+    return new (0, $a3f52faa72a35e94$export$21b07c8f274aebd5)(p1, p2);
+}
+class $fb7402156073a837$export$5eb306383074849d {
+    constructor(renderer, type, options = {}){
+        this.type = type;
+        this.camera = new (0, $8829b46f93b3ad40$export$79f141de891a5fed)();
+        this.scene = new (0, $28323f62027ce013$export$38af1803e3442a7f)();
+        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)();
+        this.scene.add(this.group);
+        this.renderer = renderer;
+        this.initPuzzleOptions(options);
+        this.puzzleGeometry = (0, $2d5e029956976abc$export$a54886ebc2f206ca)(this.type, this.options);
+        this.simulator = (0, $2d5e029956976abc$export$32eadc934192bf8c)(this.type, this.options);
+        this.buildGroupMatrix();
+        this.applyColors();
+        this.addArrows();
+        this.group.addObject(this.puzzleGeometry.group);
+        this.render();
+    }
+    applyColors() {
+        const hasCustomColors = this.options.stickerColors && !$fb7402156073a837$var$isSquare1(this.type);
+        const canUseSimulator = $fb7402156073a837$var$canApplySimulatorColors(this.type, this.options.size);
+        if (hasCustomColors) this.puzzleGeometry.setColors(this.options.stickerColors);
+        else if (canUseSimulator) this.applySimulatorColors();
+        else {
+            // Apply scheme to puzzle geomety manually, for puzzles
+            // not supported by simulators (megaminx != 2 pyraminx != 3)
+            const faces = this.puzzleGeometry.faces;
+            Object.keys(faces).forEach((face)=>{
+                const stickers = faces[face];
+                const faceColor = this.options.scheme[face];
+                if (stickers instanceof (0, $621b987b54afb04b$export$2db6c17465f94a2)) stickers.faces.forEach((f)=>f.color = faceColor);
+                else if (stickers instanceof (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)) stickers.objects.forEach((o)=>o.color = faceColor);
+            });
+        }
+    }
+    applySimulatorColors() {
+        if (this.options.mask) this.applyMask(this.options);
+        if (this.options.alg || this.options.case) this.applyAlgorithm();
+        const faceValues = this.simulator.getValues();
+        const faceColors = $fb7402156073a837$var$applyColorScheme(faceValues, this.options.scheme);
+        this.puzzleGeometry.setColors(faceColors);
+    }
+    applyAlgorithm() {
+        if ($fb7402156073a837$var$isSquare1(this.type)) // puzzle factory applies algorithm to square 1 when greating the puzzle geometry
+        return;
+        if (this.options.case) this.simulator.case(this.options.case);
+        else if (this.options.alg) this.simulator.alg(this.options.alg);
+    }
+    applyMask(options) {
+        Object.keys(options.mask).forEach((maskedFace)=>{
+            options.mask[maskedFace].forEach((index)=>this.simulator.setValue(maskedFace, index, "mask"));
+        });
+    }
+    /**
+     * build the group matrix for the puzzle. This sets up the
+     * rotation, scale, and translation for the resulting rendered
+     * image.
+     */ buildGroupMatrix() {
+        this.group.matrix = new (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5)();
+        // Rotate the group matrix
+        if (this.options.rotations) this.options.rotations.forEach((rotation)=>{
+            const { x: x = 0 , y: y = 0 , z: z = 0  } = rotation;
+            let rotationMatrix = (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).fromQuaternion((0, $e2bd02c995c89b46$export$23d6a54f0bbc85a3).fromEuler(x, y, z));
+            (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).multiply(this.group.matrix, rotationMatrix, this.group.matrix);
+        });
+        // Scale the group matrix
+        if (this.options.scale) {
+            let scale = this.options.scale;
+            this.group.matrix.scale(scale, scale, scale);
+        }
+        // Translate the group matrix
+        if (this.options.translation) {
+            const { x: x = 0 , y: y = 0 , z: z = 0  } = this.options.translation;
+            let translationMatrix = (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).fromTranslation(x, y, z);
+            (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).multiply(this.group.matrix, translationMatrix, this.group.matrix);
+        }
+    }
+    addArrows() {
+        if (!this.options.arrows) return;
+        this.options.arrows.forEach((arrow)=>{
+            try {
+                this.scene.add($fb7402156073a837$var$createArrow(arrow, this.puzzleGeometry, this.group));
+            } catch (e) {
+                console.error(e);
+                console.warn(`Invalid arrow ${JSON.stringify(arrow)}`);
+            }
+        });
+    }
+    initPuzzleOptions(options) {
+        this.options = Object.assign(Object.assign({}, (0, $30e930f0b924ba0f$export$430a3269e24b912e)(this.type)), options);
+        (0, $eb061d61c60e3d6c$export$3b653dfd563c7b3f)(this.options);
+    }
+    applyOptionsToPuzzle() {
+        this.simulator.reset();
+        this.buildGroupMatrix();
+        this.applyColors();
+        this.addArrows();
+    }
+    setPuzzleOptions(options) {
+        this.initPuzzleOptions(options);
+        // Handle square1 geometry separately, since it
+        // changes, unlike the other puzzles
+        if ($fb7402156073a837$var$isSquare1(this.type)) {
+            this.puzzleGeometry = (0, $2d5e029956976abc$export$a54886ebc2f206ca)(this.type, this.options);
+            this.group.setObjects([
+                this.puzzleGeometry.group
+            ]);
+        }
+        this.applyOptionsToPuzzle();
+    }
+    render() {
+        this.renderer.render(this.scene, this.camera);
+    }
+}
+
+
+
+
+
+
+
+const $179bc5a49dda12b3$var$defaultOptions = {
+    width: 500,
+    height: 500,
+    minx: -0.9,
+    miny: -0.9,
+    svgWidth: 1.8,
+    svgHeight: 1.8,
+    strokeWidth: 0.02,
+    arrowColor: (0, $a552dd61b777f7b8$export$7d278ca694634874),
+    arrowStrokeWidth: 0.03
+};
+function $179bc5a49dda12b3$export$13f4b12aafeba5d6(element, type, options = {}) {
+    return new $179bc5a49dda12b3$export$5df67eceec1fd9b9(element, type, options);
+}
+class $179bc5a49dda12b3$export$5df67eceec1fd9b9 extends (0, $fb7402156073a837$export$5eb306383074849d) {
+    constructor(element, type, options = {}){
+        options = Object.assign(Object.assign({}, $179bc5a49dda12b3$var$defaultOptions), options);
+        if (typeof element === "string") {
+            element = document.querySelector(element);
+            if (element === null) throw new Error(`Could not find visuzlier element by query selector: ${element}`);
+        }
+        const renderer = new (0, $b6fdeb59030f2391$export$a263bf3b3314d432)(options.width, options.height, options.minx, options.miny, options.svgWidth, options.svgHeight, options.arrowColor);
+        renderer.strokeWidth = "" + options.strokeWidth;
+        element.appendChild(renderer.domElement);
+        super(renderer, type, options.puzzle);
+        this.svgOptions = options;
+    }
+    /**
+     * Set the stroke width for the svg elements rendered and re draw the puzzle.
+     *
+     * @param strokeWidth - value to set the stroke width to. It depends on the svg options and puzzle size,
+     *                      but good values are around .01 - .06
+     */ setStrokeWidth(strokeWidth) {
+        this.svgOptions.strokeWidth = strokeWidth;
+        this.renderer.strokeWidth = "" + this.svgOptions.strokeWidth;
+        this.render();
+    }
+    /**
+     * Dynamically update the svg element options
+     *
+     * @param options - options for the svg element that is being rendered to
+     */ setSvgOptions(options) {
+        this.svgOptions = Object.assign(Object.assign({}, $179bc5a49dda12b3$var$defaultOptions), options);
+        $179bc5a49dda12b3$var$validateSvgOptions(this.svgOptions);
+        const renderer = this.renderer;
+        const svgElement = renderer.svgElement;
+        renderer.strokeWidth = "" + this.svgOptions.strokeWidth;
+        renderer.arrowStrokeWidth = "" + this.svgOptions.arrowStrokeWidth;
+        svgElement.setAttributeNS(null, "width", this.svgOptions.width.toString());
+        svgElement.setAttributeNS(null, "height", this.svgOptions.width.toString());
+        svgElement.setAttributeNS(null, "viewBox", `${this.svgOptions.minx} ${this.svgOptions.miny} ${this.svgOptions.svgWidth} ${this.svgOptions.svgHeight}`);
+        this.render();
+    }
+}
+function $179bc5a49dda12b3$var$validateSvgOptions(options) {
+    if (!Number.isInteger(options.width)) {
+        console.warn(`invalid svg width ${options.width}. Must be a whole number`);
+        options.width = $179bc5a49dda12b3$var$defaultOptions.width;
+    }
+    if (!Number.isInteger(options.height)) {
+        console.warn(`invalid svg height ${options.height}. Must be a whole number`);
+        options.width = $179bc5a49dda12b3$var$defaultOptions.height;
+    }
+    if (!Number.isFinite(options.minx)) {
+        console.warn(`invalid svg minx ${options.minx}`);
+        options.minx = $179bc5a49dda12b3$var$defaultOptions.minx;
+    }
+    if (!Number.isFinite(options.miny)) {
+        console.warn(`invalid svg miny ${options.miny}`);
+        options.minx = $179bc5a49dda12b3$var$defaultOptions.miny;
+    }
+    if (!Number.isFinite(options.svgWidth)) {
+        console.warn(`invalid svgWidth ${options.svgWidth}`);
+        options.minx = $179bc5a49dda12b3$var$defaultOptions.svgWidth;
+    }
+    if (!Number.isFinite(options.svgHeight)) {
+        console.warn(`invalid svgHeight ${options.svgHeight}`);
+        options.minx = $179bc5a49dda12b3$var$defaultOptions.svgHeight;
+    }
+    if (!Number.isFinite(options.strokeWidth)) {
+        console.warn(`invalid strokeWidth ${options.strokeWidth}`);
+        options.minx = $179bc5a49dda12b3$var$defaultOptions.strokeWidth;
+    }
+    if (!Number.isFinite(options.arrowStrokeWidth)) {
+        console.warn(`invalid arrowStrokeWidth ${options.arrowStrokeWidth}`);
+        options.minx = $179bc5a49dda12b3$var$defaultOptions.arrowStrokeWidth;
+    }
+    if (options.arrowColor && !(0, $eb061d61c60e3d6c$export$9797b605b6184901)(options.arrowColor)) options.arrowColor = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+}
+
+
+
+
+const $ecf8af2bbd620cb6$var$defaultOptions = {
+    width: 500,
+    height: 500,
+    minx: -0.9,
+    miny: -0.9,
+    svgWidth: 1.8,
+    svgHeight: 1.8,
+    strokeWidth: 0.02,
+    arrowColor: (0, $a552dd61b777f7b8$export$7d278ca694634874),
+    arrowStrokeWidth: 0.03
+};
+function $ecf8af2bbd620cb6$export$1f536085c24cc947(container, type, options = {}) {
+    if (typeof container === "string") {
+        container = document.querySelector(container);
+        if (container === null) throw new Error(`Could not find visuzlier element by query selector: ${container}`);
+    }
+    let element = document.createElement("div");
+    options = Object.assign(Object.assign({}, $ecf8af2bbd620cb6$var$defaultOptions), options);
+    (0, $179bc5a49dda12b3$export$13f4b12aafeba5d6)(element, type, options);
+    setTimeout(()=>{
+        let svgElement = element.querySelector("svg");
+        let targetImage = document.createElement("img");
+        container.appendChild(targetImage);
+        let canvas = document.createElement("canvas");
+        let ctx = canvas.getContext("2d");
+        let loader = new Image();
+        loader.width = canvas.width = targetImage.width = options.width;
+        loader.height = canvas.height = targetImage.height = options.height;
+        loader.onload = function() {
+            ctx.drawImage(loader, 0, 0, loader.width, loader.height);
+            targetImage.src = canvas.toDataURL();
+        };
+        var svgAsXML = new XMLSerializer().serializeToString(svgElement);
+        loader.src = `data:image/svg+xml,${encodeURIComponent(svgAsXML)}`;
+    });
+}
+
+
+
+
+
+const $eaf2995ff9b5c5b5$var$defaultOptions = {
+    width: 500,
+    height: 500,
+    lineWidth: 5,
+    arrowColor: (0, $a552dd61b777f7b8$export$7d278ca694634874)
+};
+function $eaf2995ff9b5c5b5$export$8d01c972ee8b14a9(element, type, options = {}) {
+    return new $eaf2995ff9b5c5b5$export$6a0b871733d37c2(element, type, options);
+}
+class $eaf2995ff9b5c5b5$export$6a0b871733d37c2 extends (0, $fb7402156073a837$export$5eb306383074849d) {
+    constructor(element, type, options){
+        options = Object.assign(Object.assign({}, $eaf2995ff9b5c5b5$var$defaultOptions), options);
+        if (typeof element === "string") {
+            element = document.querySelector(element);
+            if (element === null) throw new Error(`Could not find visuzlier element by query selector: ${element}`);
+        }
+        const renderer = new (0, $02ccaf9a8fcca6ac$export$7b9bdc1e44abccbc)(options.width, options.height, options.lineWidth, options.arrowColor);
+        element.appendChild(renderer.domElement);
+        super(renderer, type, options.puzzle);
+    }
+}
+
+
+
+const $cb698455e8cf1dac$export$622052d5b2a49ca5 = {
+    CUBE_3: {
+        LAST_LAYER: {
+            F: [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            B: [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            R: [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            L: [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            D: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        },
+        F2L: {
+            F: [
+                0,
+                1,
+                2
+            ],
+            B: [
+                0,
+                1,
+                2
+            ],
+            R: [
+                0,
+                1,
+                2
+            ],
+            L: [
+                0,
+                1,
+                2
+            ],
+            U: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        },
+        FIRST_LAYER: {
+            F: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            B: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            R: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            L: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            U: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        },
+        OLL: {
+            R: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            F: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            D: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            L: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            B: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        },
+        CORNERS_LAST_LAYER: {
+            U: [
+                1,
+                3,
+                5,
+                7
+            ],
+            F: [
+                1,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            B: [
+                1,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            R: [
+                1,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            L: [
+                1,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            D: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        },
+        EDGES_LAST_LAYER: {
+            U: [
+                0,
+                2,
+                6,
+                8
+            ],
+            F: [
+                0,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            B: [
+                0,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            R: [
+                0,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            L: [
+                0,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ],
+            D: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        }
+    },
+    MEGA_3: {
+        OLL: {
+            F: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            R: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            L: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            BR: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            BL: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            d: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            b: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            dl: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            dr: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            bl: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            br: [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ]
+        }
+    }
+};
+
+
+
+
+
+
+const $90ea97863349bce3$export$ab9c2d573a6e2267 = {
+    Scene: $28323f62027ce013$export$38af1803e3442a7f,
+    Camera: $8829b46f93b3ad40$export$79f141de891a5fed,
+    HtmlSvgRenderer: $b6fdeb59030f2391$export$a263bf3b3314d432,
+    HtmlCanvasRenderer: $02ccaf9a8fcca6ac$export$7b9bdc1e44abccbc,
+    PolygonRenderer: $d200f3d5310f459f$export$591c2d18e52a6d30
+};
+const $90ea97863349bce3$export$b89c271f50b83709 = {
+    RubiksCube: $d70803cf2e627d01$export$310f6ef17ab0638d,
+    RubiksCubeNet: $a6a9c628ca796938$export$319925cb9fcaf5a1,
+    RubiksCubeTopLayer: $297241875fed3d05$export$702e5ad345915691,
+    Megaminx: $3a9e3c9d3c2b6eb2$export$cdb3e392e3d8acd3,
+    MegaminxNet: $9f9a0f6d3e178a44$export$1740bb9cc2dfacc1,
+    Pyraminx: $0389636ee7b68987$export$b13f2da466ab891e,
+    PyraminxNet: $b12b0953e8a23e46$export$4d37e698849b50f7,
+    Skewb: $37e6b69258b7c736$export$20e672f2d64f35af,
+    SkewbNet: $6b11631b09d59b70$export$e3345590c1271270,
+    Square1: $69cfc5366d5d5306$export$8f7198aedf2eb582,
+    Square1Net: $f35abbac62e00809$export$65ad724200307558
+};
+const $90ea97863349bce3$export$b14c74960ae6f55e = {
+    RubiksCubeSimulator: $97796b1f3eccc5ed$export$e38eb81901bc8623,
+    MegaminxSimulator: $2f51a1953a3cf56c$export$af68e8b316be1d11,
+    PyraminxSimulator: $e8a3bdbf0be390cd$export$d05b816c594f90e8,
+    SkewbSimulator: $cdfaf7e439ac29e3$export$b9c7478369a38c76,
+    Square1Simualtor: $6a2ff1079a5489d4$export$2c536ad444fb73c5
+};
+const $90ea97863349bce3$export$a6d7434b6633f36b = {
+    TurnType: $68fd4c41993b3878$export$b3ef12f1067db51f,
+    parseCubeAlgorithm: (0, $124cae5f9b200e70$export$40cd6d717443f0f5),
+    parseMegaminxAlgorithm: (0, $0fe59fa9c94bcb30$export$4d3e69443db6a686),
+    parsePyraminxAlgorithm: (0, $40dd552cdb78c76f$export$889bfdf6aad78bd0),
+    parseSkewbAlgorithm: (0, $09452e3a6320fe56$export$bbb21588e7059e00),
+    parseSquare1Algorithm: (0, $edb14850c73ace03$export$b431853fef50a69d)
+};
+
+
 const $2bdbbbe37662fb75$var$colorMap = {
     unstarted: "none",
     learning: (0, $d99c51b3a6101237$export$2e2bcd8739ae039)[500],
     learned: (0, $iKTt2.default)[500]
 };
-const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: algRowClick , stepStorage: stepStorage , setStepStorage: setStepStorage , step: step  })=>{
+const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: algRowClick , stepStorage: stepStorage , setStepStorage: setStepStorage  })=>{
     const handleChange = (e)=>{
         setStepStorage({
             ...stepStorage,
@@ -34535,7 +41815,48 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
     };
     const theme = (0, $cb404980a6d8b614$export$2e2bcd8739ae039)();
     const { preferred: preferred , status: status  } = stepStorage.cases[alg.name];
-    const getImage = ()=>`https://cubiclealgdbimagegen.azurewebsites.net/generator?${step.visualCubeParams}&case=${(0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[0])}`;
+    const imgRef = (0, $d4J5n.useCallback)((node)=>{
+        if (node) (0, $ecf8af2bbd620cb6$export$1f536085c24cc947)(node, "cube", {
+            width: 75,
+            height: 75,
+            puzzle: {
+                case: (0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[0]),
+                mask: {
+                    F: [
+                        0,
+                        1,
+                        2
+                    ],
+                    B: [
+                        0,
+                        1,
+                        2
+                    ],
+                    R: [
+                        0,
+                        1,
+                        2
+                    ],
+                    L: [
+                        0,
+                        1,
+                        2
+                    ],
+                    U: [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8
+                    ]
+                }
+            }
+        });
+    }, []);
     return /*#__PURE__*/ (0, $228IU.jsx)((0, $86336a779a56c56e$export$2e2bcd8739ae039), {
         sx: {
             "&:last-child td, &:last-child th": {
@@ -34570,14 +41891,13 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
                         children: alg.name
                     }),
                     /*#__PURE__*/ (0, $228IU.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
-                        component: "img",
                         height: 75,
                         width: 75,
                         sx: {
                             mr: 2,
                             flexShrink: 0
                         },
-                        src: getImage()
+                        ref: imgRef
                     }),
                     /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
                         sx: {
@@ -34683,24 +42003,24 @@ var $228IU = parcelRequire("228IU");
 
 var $iKTt2 = parcelRequire("iKTt2");
 var $5Cz32 = parcelRequire("5Cz32");
-var $7b4d9491b37fa408$export$9a9b59e08de24cef;
 var $7b4d9491b37fa408$export$94132a0e348806d4;
 var $7b4d9491b37fa408$export$1237798dc640739a;
-var $7b4d9491b37fa408$export$d927737047eb3867;
-var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
-var $7b4d9491b37fa408$export$33854e570d464ff0;
 var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
-var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
 var $7b4d9491b37fa408$export$60912654947077e3;
-$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
+var $7b4d9491b37fa408$export$9a9b59e08de24cef;
+var $7b4d9491b37fa408$export$d927737047eb3867;
+var $7b4d9491b37fa408$export$33854e570d464ff0;
+var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
+var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
 $7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
 $7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
-$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
-$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
-$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
 $7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
-$7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
 $7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
+$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
+$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
+$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
+$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
+$7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
 
 
 const $8c09dba8c18700a3$var$colorMap = {
@@ -34887,8 +42207,7 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
                                 alg: alg,
                                 algRowClick: algRowClick,
                                 stepStorage: stepStorage,
-                                setStepStorage: setStepStorage,
-                                step: step
+                                setStepStorage: setStepStorage
                             }, alg.name))
                     })
                 })
@@ -34964,28 +42283,19 @@ const $ab1cd5f3b8d0b6aa$var$App = ()=>/*#__PURE__*/ (0, $228IU.jsx)((0, $414bf34
             ]
         })
     });
-var $5273b7e68c6650c9$exports = {};
-
-$5273b7e68c6650c9$exports = new URL((parcelRequire("aKzDW")).resolve("gEiMW"), import.meta.url).toString();
-
-
 var $9766102c6225d9c4$exports = {};
 
 $9766102c6225d9c4$exports = new URL((parcelRequire("aKzDW")).resolve("68BlW"), import.meta.url).toString();
 
 
-if ("serviceWorker" in navigator) {
-    console.log(new URL($5273b7e68c6650c9$exports));
-    navigator.serviceWorker.register($9766102c6225d9c4$exports).then((registration)=>{
-        console.log("SW Registered");
-        console.log(registration);
-    }).catch((e)=>{
-        console.error(e);
-    });
-}
+if ("serviceWorker" in navigator) navigator.serviceWorker.register($9766102c6225d9c4$exports).then((_registration)=>{
+// No Op
+}).catch((e)=>{
+    console.error(e);
+});
 (0, (/*@__PURE__*/$parcel$interopDefault($66G66))).render(/*#__PURE__*/ (0, $228IU.jsx)((0, $d4J5n.StrictMode), {
     children: /*#__PURE__*/ (0, $228IU.jsx)($ab1cd5f3b8d0b6aa$var$App, {})
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.999ee6b9.js.map
+//# sourceMappingURL=index.bd9d5d05.js.map
