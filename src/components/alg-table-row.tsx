@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import {
   Box,
   TableCell,
@@ -8,10 +9,11 @@ import {
   Typography,
 } from "@mui/material";
 import { Alg } from "./alg";
-import { IStepStorage, Status, IAlg, IBaseStep } from "../puzzles";
+import { IStepStorage, Status, IAlg } from "../puzzles";
 import { expandTriggers } from "../triggers";
 import { useTheme } from "@mui/material/styles";
 import { yellow, green } from "@mui/material/colors";
+import { PNG, Type } from "sr-puzzlegen";
 
 const colorMap = {
   unstarted: "none",
@@ -24,13 +26,11 @@ export const AlgTableRow = ({
   algRowClick,
   stepStorage,
   setStepStorage,
-  step,
 }: {
   alg: IAlg;
   algRowClick: Function;
   stepStorage: IStepStorage;
   setStepStorage: Function;
-  step: IBaseStep;
 }) => {
   const handleChange = (e: SelectChangeEvent) => {
     setStepStorage({
@@ -49,10 +49,24 @@ export const AlgTableRow = ({
 
   const { preferred, status } = stepStorage.cases[alg.name];
 
-  const getImage = () =>
-    `https://cubiclealgdbimagegen.azurewebsites.net/generator?${
-      step.visualCubeParams
-    }&case=${expandTriggers(alg.solutions[0])}`;
+  const imgRef = useCallback((node) => {
+    if (node) {
+      PNG(node, "cube" as Type, {
+        width: 75,
+        height: 75,
+        puzzle: {
+          case: expandTriggers(alg.solutions[0]),
+          mask: {
+            F: [0, 1, 2],
+            B: [0, 1, 2],
+            R: [0, 1, 2],
+            L: [0, 1, 2],
+            U: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+          },
+        },
+      });
+    }
+  }, []);
 
   return (
     <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
@@ -80,11 +94,10 @@ export const AlgTableRow = ({
             {alg.name}
           </Typography>
           <Box
-            component="img"
             height={75}
             width={75}
             sx={{ mr: 2, flexShrink: 0 }}
-            src={getImage()}
+            ref={imgRef}
           />
           <Box
             sx={{

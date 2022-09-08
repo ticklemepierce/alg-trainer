@@ -4034,6 +4034,11 @@ source-map@^0.6.0, source-map@^0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
+sr-puzzlegen@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/sr-puzzlegen/-/sr-puzzlegen-1.0.4.tgz#fff1ea5b9371131424deef423558c77771925d4b"
+  integrity sha512-n4UckgdOfdpOhHNL3bNXyogOSs2FDm/bwd1bYtf5ohmQejr0Qf6t6aF9zqEvzAHjbsjFUn31blcIP7DlasXsjQ==
+
 stable@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"

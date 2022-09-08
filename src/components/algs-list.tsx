@@ -180,7 +180,6 @@ export const AlgsList = () => {
                   algRowClick={algRowClick}
                   stepStorage={stepStorage}
                   setStepStorage={setStepStorage}
-                  step={step}
                 />
               ))}
           </TableBody>
