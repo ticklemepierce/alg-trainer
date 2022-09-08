@@ -14,7 +14,7 @@ const $4f9c246b12bbbba5$var$manifest = [
     "manifest.webmanifest",
     "icon-128.608654eb.png",
     "icon-512.34208778.png",
-    "index.93634017.js",
+    "index.51b59015.js",
     "puzzle-geometry.db2a4a3f.js",
     "index.25347b38.css",
     "index.04ff6efc.js",
@@ -23,7 +23,7 @@ const $4f9c246b12bbbba5$var$manifest = [
     "puzzles-dynamic-3x3x3-NB2PEZTV.372c3936.js",
     "puzzles-dynamic-unofficial-MGVOFUDR.98e1c48f.js"
 ];
-const $4f9c246b12bbbba5$var$version = "b30d2896";
+const $4f9c246b12bbbba5$var$version = "ba33d20f";
 (0, $4550420cc206d4d6$export$c208e1278d7beb2)($4f9c246b12bbbba5$var$manifest, $4f9c246b12bbbba5$var$version);
 
 var $a7d01911011f21fa$exports = {};
@@ -31,6 +31,7 @@ var $a7d01911011f21fa$exports = {};
 async function $a7d01911011f21fa$var$install() {
     const cache = await caches.open((0, $4550420cc206d4d6$export$83d89fbfd8236492));
     await cache.addAll((0, $4550420cc206d4d6$export$e538f94cc8cf4db8));
+    await cache.add("f2l.json");
 }
 addEventListener("install", (e)=>e.waitUntil($a7d01911011f21fa$var$install()));
 async function $a7d01911011f21fa$var$activate() {
