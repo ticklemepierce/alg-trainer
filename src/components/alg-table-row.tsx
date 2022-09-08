@@ -13,7 +13,7 @@ import { IStepStorage, Status, IAlg } from "../puzzles";
 import { expandTriggers } from "../triggers";
 import { useTheme } from "@mui/material/styles";
 import { yellow, green } from "@mui/material/colors";
-import { PNG, Type } from "sr-puzzlegen";
+import { SVG, Type } from "sr-puzzlegen";
 
 const colorMap = {
   unstarted: "none",
@@ -51,7 +51,7 @@ export const AlgTableRow = ({
 
   const imgRef = useCallback((node) => {
     if (node) {
-      PNG(node, "cube" as Type, {
+      SVG(node, "cube" as Type, {
         width: 75,
         height: 75,
         puzzle: {

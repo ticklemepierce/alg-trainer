@@ -12,6 +12,7 @@
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.1",
+    "@parcel/service-worker": "^2.7.0",
     "@types/node": "^8.5.1",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
