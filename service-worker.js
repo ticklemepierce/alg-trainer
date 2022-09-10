@@ -1,5 +1,5 @@
 (() => {
-var $4f9c246b12bbbba5$exports = {};
+var $e4050f3526fdd4b6$exports = {};
 let $4550420cc206d4d6$export$e538f94cc8cf4db8 = [];
 let $4550420cc206d4d6$export$83d89fbfd8236492 = "";
 function $4550420cc206d4d6$export$c208e1278d7beb2(m, v) {
@@ -8,14 +8,15 @@ function $4550420cc206d4d6$export$c208e1278d7beb2(m, v) {
 }
 
 
-const $4f9c246b12bbbba5$var$manifest = [
+const $e4050f3526fdd4b6$var$manifest = [
     "index.html",
     "icon-192.1195e135.png",
     "manifest.webmanifest",
     "icon-128.608654eb.png",
     "icon-512.34208778.png",
-    "index.51b59015.js",
+    "index.86ab2151.js",
     "puzzle-geometry.db2a4a3f.js",
+    "icon-128.4fddcaaa.png",
     "index.25347b38.css",
     "index.04ff6efc.js",
     "twisty-dynamic-3d-UJR5FP6R.c10267fc.js",
@@ -23,8 +24,8 @@ const $4f9c246b12bbbba5$var$manifest = [
     "puzzles-dynamic-3x3x3-NB2PEZTV.372c3936.js",
     "puzzles-dynamic-unofficial-MGVOFUDR.98e1c48f.js"
 ];
-const $4f9c246b12bbbba5$var$version = "ba33d20f";
-(0, $4550420cc206d4d6$export$c208e1278d7beb2)($4f9c246b12bbbba5$var$manifest, $4f9c246b12bbbba5$var$version);
+const $e4050f3526fdd4b6$var$version = "8a34a347";
+(0, $4550420cc206d4d6$export$c208e1278d7beb2)($e4050f3526fdd4b6$var$manifest, $e4050f3526fdd4b6$var$version);
 
 var $a7d01911011f21fa$exports = {};
 
