@@ -14,7 +14,7 @@ const $e4050f3526fdd4b6$var$manifest = [
     "manifest.webmanifest",
     "icon-128.608654eb.png",
     "icon-512.34208778.png",
-    "index.5574999c.js",
+    "index.c6f946e6.js",
     "puzzle-geometry.db2a4a3f.js",
     "icon-128.4fddcaaa.png",
     "index.25347b38.css",
@@ -24,7 +24,7 @@ const $e4050f3526fdd4b6$var$manifest = [
     "puzzles-dynamic-3x3x3-NB2PEZTV.372c3936.js",
     "puzzles-dynamic-unofficial-MGVOFUDR.98e1c48f.js"
 ];
-const $e4050f3526fdd4b6$var$version = "c036d48e";
+const $e4050f3526fdd4b6$var$version = "09010041";
 (0, $4550420cc206d4d6$export$c208e1278d7beb2)($e4050f3526fdd4b6$var$manifest, $e4050f3526fdd4b6$var$version);
 
 var $a7d01911011f21fa$exports = {};
@@ -40,6 +40,11 @@ async function $a7d01911011f21fa$var$activate() {
     await Promise.all(keys.map((key)=>key !== (0, $4550420cc206d4d6$export$83d89fbfd8236492) && caches.delete(key)));
 }
 addEventListener("activate", (e)=>e.waitUntil($a7d01911011f21fa$var$activate()));
+self.addEventListener("fetch", (e)=>{
+    e.respondWith(caches.match(e.request).then((response)=>{
+        return response || fetch(e.request);
+    }));
+});
 
 })();
 //# sourceMappingURL=service-worker.js.map
