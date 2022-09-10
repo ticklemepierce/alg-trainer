@@ -7,6 +7,7 @@ import { AlgsPage } from "./pages/algs";
 import { Trainer } from "./components/trainer";
 import { AlgsList } from "./components/algs-list";
 import { HashRouter, Routes, Route } from "react-router-dom";
+import { NavBar } from "./components/nav-bar";
 
 import { Puzzles, Step, ISubStep, isSubStep } from "./puzzles";
 
@@ -34,12 +35,15 @@ const createPuzzleRoutes = (puzzle: ISubStep) => (
 );
 
 const App = () => (
-  <HashRouter>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      {Puzzles.map((puzzle) => createPuzzleRoutes(puzzle))}
-    </Routes>
-  </HashRouter>
+  <>
+    <HashRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {Puzzles.map((puzzle) => createPuzzleRoutes(puzzle))}
+      </Routes>
+    </HashRouter>
+  </>
 );
 
 if ("serviceWorker" in navigator) {
