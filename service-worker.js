@@ -12,3 +12,11 @@ async function activate() {
   await Promise.all(keys.map((key) => key !== version && caches.delete(key)));
 }
 addEventListener("activate", (e) => e.waitUntil(activate()));
+
+self.addEventListener("fetch", (e) => {
+  e.respondWith(
+    caches.match(e.request).then((response) => {
+      return response || fetch(e.request);
+    })
+  );
+});
