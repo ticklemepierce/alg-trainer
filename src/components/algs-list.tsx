@@ -85,6 +85,7 @@ export const AlgsList = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        m: 1,
       }}
     >
       <Box

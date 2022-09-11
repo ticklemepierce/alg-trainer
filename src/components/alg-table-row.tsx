@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import {
   Box,
   TableCell,
@@ -7,13 +7,14 @@ import {
   Select,
   SelectChangeEvent,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { Alg } from "./alg";
 import { IStepStorage, Status, IAlg } from "../puzzles";
 import { expandTriggers } from "../triggers";
 import { useTheme } from "@mui/material/styles";
 import { yellow, green } from "@mui/material/colors";
-import { SVG, Type } from "sr-puzzlegen";
+import { SVG, Visualizer, Type } from "sr-puzzlegen";
 
 const colorMap = {
   unstarted: "none",
@@ -48,32 +49,48 @@ export const AlgTableRow = ({
   const theme = useTheme();
 
   const { preferred, status } = stepStorage.cases[alg.name];
+  const [svg, setSvg] = useState<Visualizer | null>(null);
+
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const imgRef = useCallback((node) => {
-    if (node) {
-      SVG(node, "cube" as Type, {
-        width: 75,
-        height: 75,
-        puzzle: {
-          case: expandTriggers(alg.solutions[0]),
-          mask: {
-            F: [0, 1, 2],
-            B: [0, 1, 2],
-            R: [0, 1, 2],
-            L: [0, 1, 2],
-            U: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+    if (node && !svg) {
+      setSvg(
+        SVG(node, "cube" as Type, {
+          width: 75,
+          height: 75,
+          puzzle: {
+            case: expandTriggers(alg.solutions[0]),
+            mask: {
+              F: [0, 1, 2],
+              B: [0, 1, 2],
+              R: [0, 1, 2],
+              L: [0, 1, 2],
+              U: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+            },
           },
-        },
-      });
+        })
+      );
     }
   }, []);
+
+  const tableProps: any = {
+    component: "th",
+    scope: "row",
+  };
+
+  if (!isSmallScreen) {
+    tableProps.onClick = () => algRowClick(alg);
+  }
 
   return (
     <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
       <TableCell
-        component="th"
-        scope="row"
-        sx={{ backgroundColor: colorMap[status] }}
+        {...tableProps}
+        sx={{
+          backgroundColor: colorMap[status],
+          "&:hover": { cursor: "pointer" },
+        }}
       >
         <Box
           sx={{
@@ -110,14 +127,13 @@ export const AlgTableRow = ({
             }}
           >
             <Box
-              onClick={() => algRowClick(alg)}
               sx={{
                 height: "100%",
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
-                "&:hover": { cursor: "pointer" },
                 [theme.breakpoints.down("sm")]: {
+                  mb: 2,
                   width: "100%",
                 },
               }}
@@ -125,8 +141,10 @@ export const AlgTableRow = ({
               <Alg alg={alg.solutions[preferred]} />
             </Box>
             <FormControl
+              onClick={(e) => e.stopPropagation()}
               size="small"
               sx={{
+                my: 0,
                 flexShrink: 0,
                 [theme.breakpoints.down("sm")]: {
                   margin: "auto",
@@ -140,6 +158,7 @@ export const AlgTableRow = ({
                 inputProps={{ "aria-label": "Without label" }}
                 native
                 sx={{
+                  my: 0,
                   alignSelf: "end",
                   ml: 2,
                   flexShrink: 0,
@@ -147,7 +166,6 @@ export const AlgTableRow = ({
                     "& .MuiNativeSelect-select": {
                       padding: "5px 14px",
                     },
-                    mt: 1,
                     ml: 0,
                   },
                 }}

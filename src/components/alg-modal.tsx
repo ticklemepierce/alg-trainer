@@ -27,8 +27,8 @@ export const AlgModal = ({
   const [player, setPlayer] = useState<TwistyPlayer>();
 
   const twistyPlayerRef = useCallback((node) => {
-    if (node) {
-      const player = new TwistyPlayer({
+    if (node && !player) {
+      const twistyPlayer = new TwistyPlayer({
         puzzle: "3x3x3",
         alg: alg.solutions[0],
         hintFacelets: "none",
@@ -40,11 +40,11 @@ export const AlgModal = ({
       });
 
       // TODO ask lucas if there is a better way for this
-      player.style.maxWidth = "100%";
+      twistyPlayer.style.maxWidth = "100%";
 
-      node.appendChild(player);
+      node.appendChild(twistyPlayer);
 
-      setPlayer(player);
+      setPlayer(twistyPlayer);
     }
   }, []);
 
