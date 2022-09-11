@@ -13379,7 +13379,7 @@ module.exports = import("./" + (parcelRequire("aKzDW")).resolve("eXwSi")).then((
 
 var $743c2887b8294a80$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.c6f946e6.js","eXwSi":"puzzle-geometry.db2a4a3f.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.22381bae.js","eXwSi":"puzzle-geometry.db2a4a3f.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -13893,6 +13893,7 @@ $parcel$export($c02ff5a208fd40b7$exports, "TableCell", () => $688079f9c20238ed$e
 $parcel$export($c02ff5a208fd40b7$exports, "TableContainer", () => $0e00319323b2de2e$export$2e2bcd8739ae039);
 $parcel$export($c02ff5a208fd40b7$exports, "TableRow", () => $86336a779a56c56e$export$2e2bcd8739ae039);
 $parcel$export($c02ff5a208fd40b7$exports, "Typography", () => $bebdf3a72854fb13$export$2e2bcd8739ae039);
+$parcel$export($c02ff5a208fd40b7$exports, "useMediaQuery", () => $c0e7915ae4d187ed$export$2e2bcd8739ae039);
 
 
 
@@ -22553,6 +22554,105 @@ var $86336a779a56c56e$export$2e2bcd8739ae039 = $86336a779a56c56e$var$TableRow;
 
 
 
+
+
+
+var $d4J5n = parcelRequire("d4J5n");
+
+var $eFKMF = parcelRequire("eFKMF");
+var $j6Ulv = parcelRequire("j6Ulv");
+
+/**
+ * @deprecated Not used internally. Use `MediaQueryListEvent` from lib.dom.d.ts instead.
+ */ function $c0e7915ae4d187ed$var$useMediaQueryOld(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr) {
+    const supportMatchMedia = typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
+    const [match, setMatch] = $d4J5n.useState(()=>{
+        if (noSsr && supportMatchMedia) return matchMedia(query).matches;
+        if (ssrMatchMedia) return ssrMatchMedia(query).matches;
+         // Once the component is mounted, we rely on the
+        // event listeners to return the correct matches value.
+        return defaultMatches;
+    });
+    (0, $17f02a3f44f0601a$export$2e2bcd8739ae039)(()=>{
+        let active = true;
+        if (!supportMatchMedia) return undefined;
+        const queryList = matchMedia(query);
+        const updateMatch = ()=>{
+            // Workaround Safari wrong implementation of matchMedia
+            // TODO can we remove it?
+            // https://github.com/mui/material-ui/pull/17315#issuecomment-528286677
+            if (active) setMatch(queryList.matches);
+        };
+        updateMatch(); // TODO: Use `addEventListener` once support for Safari < 14 is dropped
+        queryList.addListener(updateMatch);
+        return ()=>{
+            active = false;
+            queryList.removeListener(updateMatch);
+        };
+    }, [
+        query,
+        matchMedia,
+        supportMatchMedia
+    ]);
+    return match;
+} // eslint-disable-next-line no-useless-concat -- Workaround for https://github.com/webpack/webpack/issues/14814
+const $c0e7915ae4d187ed$var$maybeReactUseSyncExternalStore = $d4J5n.useSyncExternalStore;
+function $c0e7915ae4d187ed$var$useMediaQueryNew(query, defaultMatches, matchMedia, ssrMatchMedia) {
+    const getDefaultSnapshot = $d4J5n.useCallback(()=>defaultMatches, [
+        defaultMatches
+    ]);
+    const getServerSnapshot = $d4J5n.useMemo(()=>{
+        if (ssrMatchMedia !== null) {
+            const { matches: matches  } = ssrMatchMedia(query);
+            return ()=>matches;
+        }
+        return getDefaultSnapshot;
+    }, [
+        getDefaultSnapshot,
+        query,
+        ssrMatchMedia
+    ]);
+    const [getSnapshot, subscribe] = $d4J5n.useMemo(()=>{
+        if (matchMedia === null) return [
+            getDefaultSnapshot,
+            ()=>()=>{}
+        ];
+        const mediaQueryList = matchMedia(query);
+        return [
+            ()=>mediaQueryList.matches,
+            (notify)=>{
+                // TODO: Use `addEventListener` once support for Safari < 14 is dropped
+                mediaQueryList.addListener(notify);
+                return ()=>{
+                    mediaQueryList.removeListener(notify);
+                };
+            }
+        ];
+    }, [
+        getDefaultSnapshot,
+        matchMedia,
+        query
+    ]);
+    const match = $c0e7915ae4d187ed$var$maybeReactUseSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+    return match;
+}
+function $c0e7915ae4d187ed$export$2e2bcd8739ae039(queryInput, options = {}) {
+    const theme = (0, $eFKMF.default)(); // Wait for jsdom to support the match media feature.
+    // All the browsers MUI support have this built-in.
+    // This defensive check is here for simplicity.
+    // Most of the time, the match media logic isn't central to people tests.
+    const supportMatchMedia = typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
+    const { defaultMatches: defaultMatches = false , matchMedia: matchMedia = supportMatchMedia ? window.matchMedia : null , ssrMatchMedia: ssrMatchMedia = null , noSsr: noSsr  } = (0, $j6Ulv.default)({
+        name: "MuiUseMediaQuery",
+        props: options,
+        theme: theme
+    });
+    let query = typeof queryInput === "function" ? queryInput(theme) : queryInput;
+    query = query.replace(/^@media( ?)/m, ""); // TODO: Drop `useMediaQueryOld` and use  `use-sync-external-store` shim in `useMediaQueryNew` once the package is stable
+    const useMediaQueryImplementation = $c0e7915ae4d187ed$var$maybeReactUseSyncExternalStore !== undefined ? $c0e7915ae4d187ed$var$useMediaQueryNew : $c0e7915ae4d187ed$var$useMediaQueryOld;
+    const match = useMediaQueryImplementation(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr);
+    return match;
+}
 
 
 
@@ -34422,10 +34522,10 @@ $7f96fd5d73b99479$exports.default = $7f96fd5d73b99479$var$_default;
 
 
 const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ alg: alg , handleClose: handleClose , stepStorage: stepStorage , setStepStorage: setStepStorage  })=>{
-    const [player1, setPlayer] = (0, $d4J5n.useState)();
+    const [player, setPlayer] = (0, $d4J5n.useState)();
     const twistyPlayerRef = (0, $d4J5n.useCallback)((node)=>{
-        if (node) {
-            const player = new (0, $8e08190ac5cfc1c3$export$d03687cb83cd55dc)({
+        if (node && !player) {
+            const twistyPlayer = new (0, $8e08190ac5cfc1c3$export$d03687cb83cd55dc)({
                 puzzle: "3x3x3",
                 alg: alg.solutions[0],
                 hintFacelets: "none",
@@ -34436,15 +34536,15 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ alg: alg , handleClose: han
                 experimentalDragInput: "none"
             });
             // TODO ask lucas if there is a better way for this
-            player.style.maxWidth = "100%";
-            node.appendChild(player);
-            setPlayer(player);
+            twistyPlayer.style.maxWidth = "100%";
+            node.appendChild(twistyPlayer);
+            setPlayer(twistyPlayer);
         }
     }, []);
     const handleClick = (preferred)=>{
-        if (player1) {
-            player1.alg = new (0, $kQo6d.Alg)((0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[preferred]));
-            player1.play();
+        if (player) {
+            player.alg = new (0, $kQo6d.Alg)((0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[preferred]));
+            player.play();
         }
         setStepStorage({
             ...stepStorage,
@@ -41961,8 +42061,10 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
     };
     const theme = (0, $cb404980a6d8b614$export$2e2bcd8739ae039)();
     const { preferred: preferred , status: status  } = stepStorage.cases[alg.name];
+    const [svg, setSvg] = (0, $d4J5n.useState)(null);
+    const isSmallScreen = (0, $c0e7915ae4d187ed$export$2e2bcd8739ae039)(theme.breakpoints.down("sm"));
     const imgRef = (0, $d4J5n.useCallback)((node)=>{
-        if (node) (0, $179bc5a49dda12b3$export$13f4b12aafeba5d6)(node, "cube", {
+        if (node && !svg) setSvg((0, $179bc5a49dda12b3$export$13f4b12aafeba5d6)(node, "cube", {
             width: 75,
             height: 75,
             puzzle: {
@@ -42001,8 +42103,13 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
                     ]
                 }
             }
-        });
+        }));
     }, []);
+    const tableProps = {
+        component: "th",
+        scope: "row"
+    };
+    if (!isSmallScreen) tableProps.onClick = ()=>algRowClick(alg);
     return /*#__PURE__*/ (0, $228IU.jsx)((0, $86336a779a56c56e$export$2e2bcd8739ae039), {
         sx: {
             "&:last-child td, &:last-child th": {
@@ -42010,10 +42117,12 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
             }
         },
         children: /*#__PURE__*/ (0, $228IU.jsx)((0, $688079f9c20238ed$export$2e2bcd8739ae039), {
-            component: "th",
-            scope: "row",
+            ...tableProps,
             sx: {
-                backgroundColor: $2bdbbbe37662fb75$var$colorMap[status]
+                backgroundColor: $2bdbbbe37662fb75$var$colorMap[status],
+                "&:hover": {
+                    cursor: "pointer"
+                }
             },
             children: /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
                 sx: {
@@ -42056,16 +42165,13 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
                         },
                         children: [
                             /*#__PURE__*/ (0, $228IU.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
-                                onClick: ()=>algRowClick(alg),
                                 sx: {
                                     height: "100%",
                                     display: "inline-flex",
                                     alignItems: "center",
                                     justifyContent: "center",
-                                    "&:hover": {
-                                        cursor: "pointer"
-                                    },
                                     [theme.breakpoints.down("sm")]: {
+                                        mb: 2,
                                         width: "100%"
                                     }
                                 },
@@ -42074,8 +42180,10 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
                                 })
                             }),
                             /*#__PURE__*/ (0, $228IU.jsx)((0, $0f8f482c0984ea7e$export$2e2bcd8739ae039), {
+                                onClick: (e)=>e.stopPropagation(),
                                 size: "small",
                                 sx: {
+                                    my: 0,
                                     flexShrink: 0,
                                     [theme.breakpoints.down("sm")]: {
                                         margin: "auto"
@@ -42090,6 +42198,7 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
                                     },
                                     native: true,
                                     sx: {
+                                        my: 0,
                                         alignSelf: "end",
                                         ml: 2,
                                         flexShrink: 0,
@@ -42097,7 +42206,6 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
                                             "& .MuiNativeSelect-select": {
                                                 padding: "5px 14px"
                                             },
-                                            mt: 1,
                                             ml: 0
                                         }
                                     },
@@ -42149,24 +42257,24 @@ var $228IU = parcelRequire("228IU");
 
 var $iKTt2 = parcelRequire("iKTt2");
 var $5Cz32 = parcelRequire("5Cz32");
-var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
-var $7b4d9491b37fa408$export$1237798dc640739a;
+var $7b4d9491b37fa408$export$60912654947077e3;
+var $7b4d9491b37fa408$export$94132a0e348806d4;
+var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
+var $7b4d9491b37fa408$export$d927737047eb3867;
 var $7b4d9491b37fa408$export$33854e570d464ff0;
 var $7b4d9491b37fa408$export$9a9b59e08de24cef;
-var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
-var $7b4d9491b37fa408$export$94132a0e348806d4;
 var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
-var $7b4d9491b37fa408$export$d927737047eb3867;
-var $7b4d9491b37fa408$export$60912654947077e3;
-$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
-$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
+var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
+var $7b4d9491b37fa408$export$1237798dc640739a;
+$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
+$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
+$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
+$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
 $7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
 $7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
-$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
-$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
 $7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
-$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
-$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
+$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
+$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
 
 
 const $8c09dba8c18700a3$var$colorMap = {
@@ -42272,7 +42380,8 @@ const $9c351d13f78dd181$export$13a4682fabb779db = ()=>{
         sx: {
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center"
+            justifyContent: "center",
+            m: 1
         },
         children: [
             /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
@@ -44119,4 +44228,4 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register($9766102c6225
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.c6f946e6.js.map
+//# sourceMappingURL=index.22381bae.js.map
