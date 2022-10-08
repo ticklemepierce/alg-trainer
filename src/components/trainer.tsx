@@ -1,14 +1,12 @@
 import { useState, useMemo, KeyboardEvent } from "react";
 import { IAlgsListContext, IStepStorage, IAlg } from "../puzzles";
-import { Box, Button, Typography, IconButton } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import randomItem from "random-item";
 import shuffle from "lodash.shuffle";
 import useKeypress from "../hooks/useKeypress";
 import { useOutletContext } from "react-router-dom";
 import { useLocalStorage } from "usehooks-ts";
 import { expandTriggers } from "../triggers";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useNavigate } from "react-router-dom";
 
 // TODO add timer
 // TODO add ability to change status of case from trainer
@@ -110,25 +108,8 @@ export const Trainer = () => {
     setHint(preferredSolution.slice(0, newHintLength).join(" "));
   };
 
-  const navigate = useNavigate();
-  function handleClick() {
-    navigate("..");
-  }
-
   return (
     <>
-      <IconButton
-        aria-label="close"
-        onClick={handleClick}
-        sx={{
-          position: "fixed",
-          left: 8,
-          top: 8,
-          color: (theme) => theme.palette.grey[700],
-        }}
-      >
-        <ArrowBackIcon />
-      </IconButton>
       <Box
         display="flex"
         justifyContent="center"

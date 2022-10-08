@@ -1,39 +1,63 @@
 import { execSync } from "child_process";
-import { Alg } from 'cubing/alg';
-import { writeFileSync, readFileSync } from 'fs';
+import { Alg } from "cubing/alg";
+import { writeFileSync, readFileSync } from "fs";
+
+const input = process.argv[2];
+const fileName = input.endsWith(".json") ? input : `${input}.json`;
+
+const data = readFileSync(`cases/${fileName}`, { encoding: "utf8", flag: "r" });
+
+const { setup, cases, tws, moves, doubleMovesNotEqual } = JSON.parse(data);
 
 const isAlg = (input) => /^[RUFBLD' 2]+$/.test(input);
 
-const algs = {};
+const output = [];
 
-const antisune = new Alg("R U R' U R U2 R'");
+// TODO make optional
+const setupAlg = new Alg(setup);
 
-const data = readFileSync('cases/f2l.json', {encoding:'utf8', flag:'r'});
-const cases = JSON.parse(data);
+cases.forEach((_case) => {
+  const alg = _case.display;
 
-
-cases.forEach((alg) => {
   console.log(alg);
-  algs[alg] = [];
+
+  const entry = {
+    ..._case,
+    setups: [],
+  };
 
   const inverse = new Alg(alg).invert();
 
-  const scrambleAlg = antisune.concat(inverse).toString().replaceAll("2'", '2');
+  let scrambleAlg = setupAlg.concat(inverse).toString();
 
-  const data = execSync(`twsearch --moves R,U,F,B,L,D --scramblealg \"${scrambleAlg}\" --mindepth 7 -c 75 tws-files/3x3x3.tws`).toString(); 
-  
+  if (!doubleMovesNotEqual) {
+    scrambleAlg = scrambleAlg.replaceAll("2'", "2");
+  }
+
+  const data = execSync(
+    `twsearch --nowrite --moves ${moves} --scramblealg \"${scrambleAlg}\" --mindepth 7 -c 75 tws-files/${tws}`
+  ).toString();
+
   const strippedData = data.replace(/(\r\n|\r)/gm, "\n");
-  const lines = strippedData.split('\n');
+  const lines = strippedData.split("\n");
   lines.forEach((line, idx) => {
     const trimmedLine = line.trim();
-    if (lines[idx - 1] === 'Solving') {
+    if (lines[idx - 1] === "Solving") {
       return;
     }
-    if (isAlg(trimmedLine) && !trimmedLine.endsWith(inverse.toString()) && !trimmedLine.startsWith(alg)) {
-      const invertedSolution = new Alg(line).invert().toString().replaceAll("2'", '2');
-      algs[alg].push(invertedSolution);
+    if (
+      isAlg(trimmedLine) &&
+      !trimmedLine.endsWith(inverse.toString()) &&
+      !trimmedLine.startsWith(alg)
+    ) {
+      let invertedSolution = new Alg(line).invert().toString();
+      if (!doubleMovesNotEqual) {
+        invertedSolution = invertedSolution.replaceAll("2'", "2");
+      }
+      entry.setups.push(invertedSolution);
     }
   });
+  output.push(entry);
 });
 
-writeFileSync('setups/f2l.json', JSON.stringify(algs, null, 4));
+writeFileSync(`static/${fileName}`, JSON.stringify(output, null, 2));

@@ -1,14 +1,29 @@
+import { PuzzleID } from "cubing/dist/types/twisty";
+
+export interface Image {
+  type: "cube" | "megaminx" | "megaminx-top";
+  options: any;
+}
 export interface ISubStep {
   displayName: string;
   steps: Step[];
-  visualCubeParams: string;
+  image: Image;
   slug: string;
+}
+
+export interface Puzzle {
+  displayName: string;
+  steps: Step[];
+  image: Image;
+  slug: string;
+  twisty: PuzzleID;
 }
 
 export interface IBaseStep {
   displayName: string;
-  visualCubeParams: string;
+  image: Image;
   slug: string;
+  cases: string;
   filters: {
     [key: string]: string;
   };
@@ -25,16 +40,33 @@ export type IAlg = {
   solutions: string[];
 };
 
-export const Puzzles: ISubStep[] = [
+// TODO split up the madness
+export const Puzzles: Puzzle[] = [
   {
     displayName: "3x3x3",
     slug: "/333",
-    visualCubeParams: "&puzzle=3",
+    image: {
+      type: "cube",
+      options: {},
+    },
+    twisty: "3x3x3",
     steps: [
       {
         displayName: "F2L",
-        visualCubeParams: "&puzzle=3&stage=f2l",
+        image: {
+          type: "cube",
+          options: {
+            mask: {
+              F: [0, 1, 2],
+              B: [0, 1, 2],
+              R: [0, 1, 2],
+              L: [0, 1, 2],
+              U: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+            },
+          },
+        },
         slug: "f2l",
+        cases: "333-f2l",
         filters: {
           cornerInSlot: "Corner in slot",
           edgeInSlot: "Edge in slot",
@@ -44,27 +76,66 @@ export const Puzzles: ISubStep[] = [
       },
       {
         displayName: "OLL",
-        visualCubeParams: "&puzzle=3&stage=oll",
+        image: {
+          type: "cube",
+          options: {
+            mask: {
+              R: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+              F: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+              D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+              L: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+              B: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+            },
+          },
+        },
         slug: "oll",
         steps: [
           {
             displayName: "All",
-            visualCubeParams: "&puzzle=3&stage=oll",
+            image: {
+              type: "cube",
+              options: {
+                mask: {
+                  R: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                  F: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                  D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                  L: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                  B: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                },
+              },
+            },
             slug: "all",
+            cases: "333-oll",
             filters: {},
           },
           {
             displayName: "Dots",
-            visualCubeParams: "&puzzle=3&stage=oll",
+            image: {
+              type: "cube",
+              options: {},
+            },
             slug: "dots",
+            cases: "333-oll",
             filters: {},
           },
         ],
       },
       {
         displayName: "PLL",
-        visualCubeParams: "&puzzle=3&stage=pll",
+        image: {
+          type: "cube",
+          options: {
+            mask: {
+              F: [3, 4, 5, 6, 7, 8],
+              B: [3, 4, 5, 6, 7, 8],
+              R: [3, 4, 5, 6, 7, 8],
+              L: [3, 4, 5, 6, 7, 8],
+              D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+            },
+          },
+        },
         slug: "pll",
+        cases: "333-pll",
         filters: {},
       },
     ],
@@ -72,20 +143,122 @@ export const Puzzles: ISubStep[] = [
   {
     displayName: "4x4x4",
     slug: "/444",
-    visualCubeParams: "&puzzle=4",
+    image: {
+      type: "cube",
+      options: {
+        size: 4,
+      },
+    },
+    twisty: "4x4x4",
     steps: [
       {
         displayName: "F3L",
-        visualCubeParams: "&puzzle=4",
+        image: {
+          type: "cube",
+          options: {
+            size: 4,
+          },
+        },
         slug: "f3l",
+        cases: "444-f3l",
         filters: {},
       },
       {
         displayName: "cross edges",
-        visualCubeParams:
-          "&puzzle=4&fd=nnnnnnnnnnnnndnnnnnnnrrnnrrnnnnnnfnnnnnnnnnnnfnntddtdttddttdtddt",
+        image: {
+          type: "cube",
+          options: {
+            size: 4,
+          },
+        },
         slug: "cross_edges",
+        cases: "444-hoya-cross-edges",
         filters: {},
+      },
+    ],
+  },
+  {
+    displayName: "Megaminx",
+    slug: "/megaminx",
+    image: {
+      type: "megaminx",
+      options: {},
+    },
+    twisty: "megaminx",
+    steps: [
+      {
+        displayName: "2-step OLL",
+        image: {
+          type: "megaminx",
+          options: {},
+        },
+        slug: "2-step-oll",
+        steps: [
+          {
+            displayName: "Edge Orientation",
+            image: {
+              type: "megaminx",
+              options: {},
+            },
+            slug: "eo",
+            cases: "mega-oll-eo",
+            filters: {},
+          },
+          {
+            displayName: "Corner Orientation",
+            image: {
+              type: "megaminx",
+              options: {},
+            },
+            slug: "co",
+            cases: "mega-oll-co",
+            filters: {},
+          },
+        ],
+      },
+      {
+        displayName: "2-step PLL",
+        image: {
+          type: "megaminx",
+          options: {
+            mask: {
+              F: [0, 1, 5, 6, 7, 8, 9, 10],
+              R: [0, 3, 4, 5, 6, 7, 8, 9],
+              L: [0, 1, 2, 3, 7, 8, 9, 10],
+              BR: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              BL: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              d: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              b: [0, 1, 2, 4, 5, 6, 7, 8, 9, 10],
+              dl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              dr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              bl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              br: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            },
+          },
+        },
+        slug: "2-step-pll",
+        steps: [
+          {
+            displayName: "Edge Permutation",
+            image: {
+              type: "megaminx-top",
+              options: {},
+            },
+            slug: "ep",
+            cases: "mega-pll-ep",
+            filters: {},
+          },
+          {
+            displayName: "Corner Permutation",
+            image: {
+              type: "megaminx",
+              options: {},
+            },
+            slug: "cp",
+            cases: "mega-pll-cp",
+            filters: {},
+          },
+        ],
       },
     ],
   },

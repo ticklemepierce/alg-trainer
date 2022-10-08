@@ -23,6 +23,10 @@ const pages = [
     display: "4x4x4",
     link: "444",
   },
+  {
+    display: "Megaminx",
+    link: "megaminx",
+  },
 ];
 
 export const NavBar = () => {

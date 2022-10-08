@@ -1,0 +1,63 @@
+{
+  "setup": "R' BR' R BR R' F' R BR' R' BR F R",
+  "tws": "megaminx.tws",
+  "doubleMovesNotEqual": true,
+  "moves": "R,U,F,BR,BL,L,D",
+  "cases": [
+    {
+      "name": "EP 1",
+      "display": "R2 U2' R2' U' R2 U2' R2'",
+      "filters": {
+        "edgePermutation": true,
+        "edgeOrientation": false,
+        "cornerPermutation": false,
+        "cornerOrientation": false
+      },
+      "solutions": ["R2 U2' R2' U' R2 U2' R2'"]
+    },
+    {
+      "name": "EP 2",
+      "display": "R2 U2 R2' U R2 U2 R2'",
+      "filters": {
+        "edgePermutation": true,
+        "edgeOrientation": false,
+        "cornerPermutation": false,
+        "cornerOrientation": false
+      },
+      "solutions": ["R2 U2 R2' U R2 U2 R2'"]
+    },
+    {
+      "name": "EP 3",
+      "display": "R U R' F' R U R' U' R' F R2 U' R'",
+      "filters": {
+        "edgePermutation": true,
+        "edgeOrientation": false,
+        "cornerPermutation": false,
+        "cornerOrientation": false
+      },
+      "solutions": ["R U R' F' R U R' U' R' F R2 U' R'"]
+    },
+    {
+      "name": "EP 4",
+      "display": "R U R' U R' U' R2 U' R' U R' U R U2'",
+      "filters": {
+        "edgePermutation": true,
+        "edgeOrientation": false,
+        "cornerPermutation": false,
+        "cornerOrientation": false
+      },
+      "solutions": ["R U R' U R' U' R2 U' R' U R' U R U2'"]
+    },
+    {
+      "name": "EP 5",
+      "display": "L R U2 L' U R' L U' R U2 L' U2 R'",
+      "filters": {
+        "edgePermutation": true,
+        "edgeOrientation": false,
+        "cornerPermutation": false,
+        "cornerOrientation": false
+      },
+      "solutions": ["L R U2 L' U R' L U' R U2 L' U2 R'"]
+    }
+  ]
+}

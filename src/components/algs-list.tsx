@@ -20,6 +20,7 @@ import { MultiProgress } from "./multiprogress";
 
 export const AlgsList = () => {
   const { algs, step } = useOutletContext<IAlgsListContext>();
+
   const [stepStorage, setStepStorage] = useLocalStorage<IStepStorage>(
     step.slug,
     {
@@ -181,6 +182,7 @@ export const AlgsList = () => {
                   algRowClick={algRowClick}
                   stepStorage={stepStorage}
                   setStepStorage={setStepStorage}
+                  step={step}
                 />
               ))}
           </TableBody>

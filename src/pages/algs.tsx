@@ -1,10 +1,12 @@
 import { CircularProgress } from "@mui/material";
 import useFetch from "react-fetch-hook";
 import { Outlet } from "react-router-dom";
-import { IAlg, Step } from "../puzzles";
+import { usePuzzle } from "../components/puzzle";
+import { IAlg, IBaseStep } from "../puzzles";
 
-export const AlgsPage = ({ step }: { step: Step }) => {
-  const { isLoading, data } = useFetch<IAlg[]>(`${step.slug}.json`);
+export const AlgsPage = ({ step }: { step: IBaseStep }) => {
+  const { isLoading, data } = useFetch<IAlg[]>(`${step.cases}.json`);
+  const { puzzle } = usePuzzle();
 
   if (isLoading) {
     return (
@@ -18,5 +20,7 @@ export const AlgsPage = ({ step }: { step: Step }) => {
       />
     );
   }
-  return <Outlet context={{ step, algs: data }} />;
+
+  // TODO hoist to regular context and change this to set
+  return <Outlet context={{ step, algs: data, puzzle }} />;
 };

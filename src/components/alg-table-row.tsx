@@ -10,7 +10,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { Alg } from "./alg";
-import { IStepStorage, Status, IAlg } from "../puzzles";
+import { IStepStorage, Status, IAlg, IBaseStep } from "../puzzles";
 import { expandTriggers } from "../triggers";
 import { useTheme } from "@mui/material/styles";
 import { yellow, green } from "@mui/material/colors";
@@ -27,11 +27,13 @@ export const AlgTableRow = ({
   algRowClick,
   stepStorage,
   setStepStorage,
+  step,
 }: {
   alg: IAlg;
   algRowClick: Function;
   stepStorage: IStepStorage;
   setStepStorage: Function;
+  step: IBaseStep;
 }) => {
   const handleChange = (e: SelectChangeEvent) => {
     setStepStorage({
@@ -56,18 +58,12 @@ export const AlgTableRow = ({
   const imgRef = useCallback((node) => {
     if (node && !svg) {
       setSvg(
-        SVG(node, "cube" as Type, {
-          width: 75,
-          height: 75,
+        SVG(node, step.image.type as Type, {
+          width: 120,
+          height: 120,
           puzzle: {
             case: expandTriggers(alg.solutions[0]),
-            mask: {
-              F: [0, 1, 2],
-              B: [0, 1, 2],
-              R: [0, 1, 2],
-              L: [0, 1, 2],
-              U: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-            },
+            ...step.image.options,
           },
         })
       );
@@ -111,8 +107,8 @@ export const AlgTableRow = ({
             {alg.name}
           </Typography>
           <Box
-            height={75}
-            width={75}
+            height={120}
+            width={120}
             sx={{ mr: 2, flexShrink: 0 }}
             ref={imgRef}
           />

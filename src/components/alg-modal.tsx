@@ -11,6 +11,7 @@ import { Alg } from "cubing/alg";
 import { AlgRow } from "./alg-row";
 import CloseIcon from "@mui/icons-material/Close";
 import { IStepStorage, IAlg } from "../puzzles";
+import { usePuzzle } from "./puzzle";
 import { expandTriggers } from "../triggers";
 
 export const AlgModal = ({
@@ -25,11 +26,12 @@ export const AlgModal = ({
   setStepStorage: Function;
 }) => {
   const [player, setPlayer] = useState<TwistyPlayer>();
+  const { puzzle } = usePuzzle();
 
   const twistyPlayerRef = useCallback((node) => {
     if (node && !player) {
       const twistyPlayer = new TwistyPlayer({
-        puzzle: "3x3x3",
+        puzzle: puzzle!.twisty,
         alg: alg.solutions[0],
         hintFacelets: "none",
         background: "none",
@@ -39,7 +41,6 @@ export const AlgModal = ({
         experimentalDragInput: "none",
       });
 
-      // TODO ask lucas if there is a better way for this
       twistyPlayer.style.maxWidth = "100%";
 
       node.appendChild(twistyPlayer);
