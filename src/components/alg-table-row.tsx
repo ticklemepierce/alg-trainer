@@ -11,10 +11,10 @@ import {
 } from "@mui/material";
 import { Alg } from "./alg";
 import { IStepStorage, Status, IAlg, IBaseStep } from "../puzzles";
-import { expandTriggers } from "../triggers";
 import { useTheme } from "@mui/material/styles";
 import { yellow, green } from "@mui/material/colors";
 import { SVG, Visualizer, Type } from "sr-puzzlegen";
+import merge from "lodash.merge";
 
 const colorMap = {
   unstarted: "none",
@@ -57,14 +57,12 @@ export const AlgTableRow = ({
 
   const imgRef = useCallback((node) => {
     if (node && !svg) {
+      console.log(merge(alg.image, step.image));
       setSvg(
         SVG(node, step.image.type as Type, {
+          ...merge(alg.image, step.image),
           width: 120,
           height: 120,
-          puzzle: {
-            case: expandTriggers(alg.solutions[0]),
-            ...step.image.options,
-          },
         })
       );
     }
@@ -128,6 +126,7 @@ export const AlgTableRow = ({
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
+                maxWidth: "250px",
                 [theme.breakpoints.down("sm")]: {
                   mb: 2,
                   width: "100%",

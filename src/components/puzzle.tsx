@@ -1,9 +1,9 @@
 import { Outlet, useOutletContext } from "react-router-dom";
-import { Puzzle } from "../puzzles";
+import { IPuzzle } from "../puzzles";
 
-type ContextType = { puzzle: Puzzle | null };
+type ContextType = { puzzle: IPuzzle | null };
 
-export const PuzzleRoute = ({ puzzle }: { puzzle: Puzzle }) => {
+export const PuzzleRoute = ({ puzzle }: { puzzle: IPuzzle }) => {
   return <Outlet context={{ puzzle }} />;
 };
 

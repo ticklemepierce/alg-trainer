@@ -9,7 +9,7 @@ import { AlgsList } from "./components/algs-list";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { NavBar } from "./components/nav-bar";
 
-import { Puzzles, Step, Puzzle, isSubStep } from "./puzzles";
+import { Puzzles, Step, IPuzzle, isSubStep } from "./puzzles";
 import { PuzzleRoute } from "./components/puzzle";
 
 const createStepRoutes = (step: Step) => (
@@ -28,7 +28,7 @@ const createStepRoutes = (step: Step) => (
   </Route>
 );
 
-const createPuzzleRoutes = (puzzle: Puzzle) => (
+const createPuzzleRoutes = (puzzle: IPuzzle) => (
   <Route
     path={`${puzzle.slug}`}
     key={puzzle.slug}

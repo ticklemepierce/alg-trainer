@@ -2,7 +2,7 @@ import { PuzzleID } from "cubing/dist/types/twisty";
 
 export interface Image {
   type: "cube" | "megaminx" | "megaminx-top";
-  options: any;
+  puzzle: any;
 }
 export interface ISubStep {
   displayName: string;
@@ -11,7 +11,7 @@ export interface ISubStep {
   slug: string;
 }
 
-export interface Puzzle {
+export interface IPuzzle {
   displayName: string;
   steps: Step[];
   image: Image;
@@ -37,17 +37,18 @@ export type IAlg = {
   filters: {
     [key: string]: boolean;
   };
+  image: Image;
   solutions: string[];
 };
 
 // TODO split up the madness
-export const Puzzles: Puzzle[] = [
+export const Puzzles: IPuzzle[] = [
   {
     displayName: "3x3x3",
     slug: "/333",
     image: {
       type: "cube",
-      options: {},
+      puzzle: {},
     },
     twisty: "3x3x3",
     steps: [
@@ -55,7 +56,7 @@ export const Puzzles: Puzzle[] = [
         displayName: "F2L",
         image: {
           type: "cube",
-          options: {
+          puzzle: {
             mask: {
               F: [0, 1, 2],
               B: [0, 1, 2],
@@ -78,7 +79,7 @@ export const Puzzles: Puzzle[] = [
         displayName: "OLL",
         image: {
           type: "cube",
-          options: {
+          puzzle: {
             mask: {
               R: [0, 1, 2, 3, 4, 5, 6, 7, 8],
               F: [0, 1, 2, 3, 4, 5, 6, 7, 8],
@@ -94,7 +95,7 @@ export const Puzzles: Puzzle[] = [
             displayName: "All",
             image: {
               type: "cube",
-              options: {
+              puzzle: {
                 mask: {
                   R: [0, 1, 2, 3, 4, 5, 6, 7, 8],
                   F: [0, 1, 2, 3, 4, 5, 6, 7, 8],
@@ -112,7 +113,7 @@ export const Puzzles: Puzzle[] = [
             displayName: "Dots",
             image: {
               type: "cube",
-              options: {},
+              puzzle: {},
             },
             slug: "dots",
             cases: "333-oll",
@@ -124,7 +125,7 @@ export const Puzzles: Puzzle[] = [
         displayName: "PLL",
         image: {
           type: "cube",
-          options: {
+          puzzle: {
             mask: {
               F: [3, 4, 5, 6, 7, 8],
               B: [3, 4, 5, 6, 7, 8],
@@ -145,7 +146,7 @@ export const Puzzles: Puzzle[] = [
     slug: "/444",
     image: {
       type: "cube",
-      options: {
+      puzzle: {
         size: 4,
       },
     },
@@ -155,7 +156,7 @@ export const Puzzles: Puzzle[] = [
         displayName: "F3L",
         image: {
           type: "cube",
-          options: {
+          puzzle: {
             size: 4,
           },
         },
@@ -167,7 +168,7 @@ export const Puzzles: Puzzle[] = [
         displayName: "cross edges",
         image: {
           type: "cube",
-          options: {
+          puzzle: {
             size: 4,
           },
         },
@@ -182,7 +183,7 @@ export const Puzzles: Puzzle[] = [
     slug: "/megaminx",
     image: {
       type: "megaminx",
-      options: {},
+      puzzle: {},
     },
     twisty: "megaminx",
     steps: [
@@ -190,7 +191,7 @@ export const Puzzles: Puzzle[] = [
         displayName: "2-step OLL",
         image: {
           type: "megaminx",
-          options: {},
+          puzzle: {},
         },
         slug: "2-step-oll",
         steps: [
@@ -198,7 +199,7 @@ export const Puzzles: Puzzle[] = [
             displayName: "Edge Orientation",
             image: {
               type: "megaminx",
-              options: {},
+              puzzle: {},
             },
             slug: "eo",
             cases: "mega-oll-eo",
@@ -208,7 +209,7 @@ export const Puzzles: Puzzle[] = [
             displayName: "Corner Orientation",
             image: {
               type: "megaminx",
-              options: {},
+              puzzle: {},
             },
             slug: "co",
             cases: "mega-oll-co",
@@ -220,7 +221,7 @@ export const Puzzles: Puzzle[] = [
         displayName: "2-step PLL",
         image: {
           type: "megaminx",
-          options: {
+          puzzle: {
             mask: {
               F: [0, 1, 5, 6, 7, 8, 9, 10],
               R: [0, 3, 4, 5, 6, 7, 8, 9],
@@ -242,7 +243,7 @@ export const Puzzles: Puzzle[] = [
             displayName: "Edge Permutation",
             image: {
               type: "megaminx-top",
-              options: {},
+              puzzle: {},
             },
             slug: "ep",
             cases: "mega-pll-ep",
@@ -252,7 +253,7 @@ export const Puzzles: Puzzle[] = [
             displayName: "Corner Permutation",
             image: {
               type: "megaminx",
-              options: {},
+              puzzle: {},
             },
             slug: "cp",
             cases: "mega-pll-cp",

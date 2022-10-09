@@ -17,7 +17,7 @@ export const StepCard = ({ step }: { step: Step }) => {
         SVG(node, step.image.type as Type, {
           width: 200,
           height: 200,
-          puzzle: step.image.options,
+          puzzle: step.image.puzzle,
         })
       );
     }
