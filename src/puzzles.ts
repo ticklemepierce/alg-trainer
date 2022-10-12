@@ -1,5 +1,83 @@
 import { PuzzleID } from "cubing/dist/types/twisty";
 
+// TODO fix scheme?
+const megaminxYellowUpScheme = {
+  U: {
+    value: "#FFFF00",
+  },
+  F: {
+    value: "#00FF00",
+  },
+  R: {
+    value: "#FFA500",
+  },
+  dr: {
+    value: "#FF69B4",
+  },
+  dl: {
+    value: "#ffffb3",
+  },
+  L: {
+    value: "#0000FF",
+  },
+  d: {
+    value: "#808080",
+  },
+  br: {
+    value: "#FF0000",
+  },
+  BR: {
+    value: "#808080",
+  },
+  BL: {
+    value: "#800080",
+  },
+  bl: {
+    value: "#32CD32",
+  },
+  b: {
+    value: "#FFA500",
+  },
+};
+const megaminxGreyUpScheme = {
+  U: {
+    value: "#808080",
+  },
+  F: {
+    value: "#FFA500",
+  },
+  R: {
+    value: "#32CD32",
+  },
+  dr: {
+    value: "#FF69B4",
+  },
+  dl: {
+    value: "#ffffb3",
+  },
+  L: {
+    value: "#4ecdf8",
+  },
+  d: {
+    value: "#808080",
+  },
+  br: {
+    value: "#FF0000",
+  },
+  BR: {
+    value: "#FF69B4",
+  },
+  BL: {
+    value: "#FFFDD0",
+  },
+  bl: {
+    value: "#32CD32",
+  },
+  b: {
+    value: "#FFA500",
+  },
+};
+
 export interface Image {
   type: "cube" | "megaminx" | "megaminx-top";
   puzzle: any;
@@ -141,43 +219,43 @@ export const Puzzles: IPuzzle[] = [
       },
     ],
   },
-  {
-    displayName: "4x4x4",
-    slug: "/444",
-    image: {
-      type: "cube",
-      puzzle: {
-        size: 4,
-      },
-    },
-    twisty: "4x4x4",
-    steps: [
-      {
-        displayName: "F3L",
-        image: {
-          type: "cube",
-          puzzle: {
-            size: 4,
-          },
-        },
-        slug: "f3l",
-        cases: "444-f3l",
-        filters: {},
-      },
-      {
-        displayName: "cross edges",
-        image: {
-          type: "cube",
-          puzzle: {
-            size: 4,
-          },
-        },
-        slug: "cross_edges",
-        cases: "444-hoya-cross-edges",
-        filters: {},
-      },
-    ],
-  },
+  // {
+  //   displayName: "4x4x4",
+  //   slug: "/444",
+  //   image: {
+  //     type: "cube",
+  //     puzzle: {
+  //       size: 4,
+  //     },
+  //   },
+  //   twisty: "4x4x4",
+  //   steps: [
+  //     {
+  //       displayName: "F3L",
+  //       image: {
+  //         type: "cube",
+  //         puzzle: {
+  //           size: 4,
+  //         },
+  //       },
+  //       slug: "f3l",
+  //       cases: "444-f3l",
+  //       filters: {},
+  //     },
+  //     {
+  //       displayName: "cross edges",
+  //       image: {
+  //         type: "cube",
+  //         puzzle: {
+  //           size: 4,
+  //         },
+  //       },
+  //       slug: "cross_edges",
+  //       cases: "444-hoya-cross-edges",
+  //       filters: {},
+  //     },
+  //   ],
+  // },
   {
     displayName: "Megaminx",
     slug: "/megaminx",
@@ -188,18 +266,51 @@ export const Puzzles: IPuzzle[] = [
     twisty: "megaminx",
     steps: [
       {
-        displayName: "2-step OLL",
+        displayName: "2-look OLL",
         image: {
-          type: "megaminx",
-          puzzle: {},
+          type: "megaminx-top",
+          puzzle: {
+            case: "F U R U' R' F' R' U2' R U R' U R",
+            mask: {
+              F: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              R: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              L: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              BR: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              BL: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              d: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              b: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              dl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              dr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              bl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              br: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            },
+            scheme: megaminxYellowUpScheme,
+          },
         },
-        slug: "2-step-oll",
+        slug: "2-look-oll",
         steps: [
           {
             displayName: "Edge Orientation",
             image: {
-              type: "megaminx",
-              puzzle: {},
+              type: "megaminx-top",
+              puzzle: {
+                case: "F R U R' U' F'",
+                mask: {
+                  U: [2, 4, 6, 8, 10],
+                  F: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  R: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  L: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  BR: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  BL: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  d: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  b: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  dl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  dr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  bl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  br: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                },
+                scheme: megaminxYellowUpScheme,
+              },
             },
             slug: "eo",
             cases: "mega-oll-eo",
@@ -208,8 +319,24 @@ export const Puzzles: IPuzzle[] = [
           {
             displayName: "Corner Orientation",
             image: {
-              type: "megaminx",
-              puzzle: {},
+              type: "megaminx-top",
+              puzzle: {
+                case: "R U2 R' U' R U' R'",
+                mask: {
+                  F: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  R: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  L: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  BR: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  BL: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  d: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  b: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  dl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  dr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  bl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  br: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                },
+                scheme: megaminxYellowUpScheme,
+              },
             },
             slug: "co",
             cases: "mega-oll-co",
@@ -218,16 +345,17 @@ export const Puzzles: IPuzzle[] = [
         ],
       },
       {
-        displayName: "2-step PLL",
+        displayName: "2-look PLL",
         image: {
-          type: "megaminx",
+          type: "megaminx-top",
           puzzle: {
+            case: "F R U R' F U R' U' F' U R2 U2' R' F'",
             mask: {
               F: [0, 1, 5, 6, 7, 8, 9, 10],
               R: [0, 3, 4, 5, 6, 7, 8, 9],
               L: [0, 1, 2, 3, 7, 8, 9, 10],
-              BR: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-              BL: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+              BR: [0, 1, 2, 3, 4, 5, 9, 10],
+              BL: [0, 1, 2, 3, 4, 5, 6, 7],
               d: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
               b: [0, 1, 2, 4, 5, 6, 7, 8, 9, 10],
               dl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -235,15 +363,32 @@ export const Puzzles: IPuzzle[] = [
               bl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
               br: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
             },
+            scheme: megaminxGreyUpScheme,
           },
         },
-        slug: "2-step-pll",
+        slug: "2-look-pll",
         steps: [
           {
             displayName: "Edge Permutation",
             image: {
               type: "megaminx-top",
-              puzzle: {},
+              puzzle: {
+                case: "F' R' F U F' R F U R' U2 R U' R' U' R U2 R' U R",
+                mask: {
+                  F: [0, 1, 5, 6, 7, 8, 9, 10],
+                  R: [0, 3, 4, 5, 6, 7, 8, 9],
+                  L: [0, 1, 2, 3, 7, 8, 9, 10],
+                  BR: [0, 1, 2, 3, 4, 5, 9, 10],
+                  BL: [0, 1, 2, 3, 4, 5, 6, 7],
+                  d: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  b: [0, 1, 2, 4, 5, 6, 7, 8, 9, 10],
+                  dl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  dr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  bl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  br: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                },
+                scheme: megaminxGreyUpScheme,
+              },
             },
             slug: "ep",
             cases: "mega-pll-ep",
@@ -252,8 +397,24 @@ export const Puzzles: IPuzzle[] = [
           {
             displayName: "Corner Permutation",
             image: {
-              type: "megaminx",
-              puzzle: {},
+              type: "megaminx-top",
+              puzzle: {
+                case: "R' F' R U R U' R2' F R U R' F' R F U'",
+                mask: {
+                  F: [0, 1, 5, 6, 7, 8, 9, 10],
+                  R: [0, 3, 4, 5, 6, 7, 8, 9],
+                  L: [0, 1, 2, 3, 7, 8, 9, 10],
+                  BR: [0, 1, 2, 3, 4, 5, 9, 10],
+                  BL: [0, 1, 2, 3, 4, 5, 6, 7],
+                  d: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  b: [0, 1, 2, 4, 5, 6, 7, 8, 9, 10],
+                  dl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  dr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  bl: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                  br: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                },
+                scheme: megaminxGreyUpScheme,
+              },
             },
             slug: "cp",
             cases: "mega-pll-cp",

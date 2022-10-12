@@ -1,0 +1,40 @@
+{
+  "tws": "megaminx.tws",
+  "doubleMovesNotEqual": true,
+  "moves": "R,U,F,BR,BL,L,D",
+  "cases": [
+    {
+      "name": "EO 1",
+      "display": "F U R U' R' F'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "F U R U' R' F'"
+        }
+      },
+      "solutions": ["F [[inversesexy]] F'"]
+    },
+    {
+      "name": "EO 2",
+      "display": "F R U R' U' F'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "F R U R' U' F'"
+        }
+      },
+      "solutions": ["F [[sexy]] F'"]
+    },
+    {
+      "name": "EO 3",
+      "display": "F R U2 R2' F R F' U2' F'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "F R U2 R2' F R F' U2' F'"
+        }
+      },
+      "solutions": ["F R U2 R2' F R F' U2' F'"]
+    }
+  ]
+}

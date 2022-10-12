@@ -19,10 +19,10 @@ const pages = [
     display: "3x3x3",
     link: "333",
   },
-  {
-    display: "4x4x4",
-    link: "444",
-  },
+  // {
+  //   display: "4x4x4",
+  //   link: "444",
+  // },
   {
     display: "Megaminx",
     link: "megaminx",

@@ -1,0 +1,263 @@
+{
+  "tws": "megaminx.tws",
+  "doubleMovesNotEqual": true,
+  "moves": "R,U,F,BR,BL,L,D",
+  "cases": [
+    {
+      "name": "CO 1",
+      "display": "R U R' U R U R' U2' R U' R'",
+      "filters": {
+        "twoCorners": true,
+        "threeCorners": false,
+        "fourCorners": false,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U R' U R U R' U2' R U' R'"
+        }
+      },
+      "solutions": ["R U R' U R U R' U2' R U' R'"]
+    },
+    {
+      "name": "CO 2",
+      "display": "F R U2 R' U' R U' R' F'",
+      "filters": {
+        "twoCorners": true,
+        "threeCorners": false,
+        "fourCorners": false,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "F R U2 R' U' R U' R' F'"
+        }
+      },
+      "solutions": ["F R U2 R' U' R U' R' F'"]
+    },
+    {
+      "name": "CO 3",
+      "display": "R U2 R' U R U2 R'",
+      "filters": {
+        "twoCorners": true,
+        "threeCorners": false,
+        "fourCorners": false,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U2 R' U R U2 R'"
+        }
+      },
+      "solutions": ["R U2 R' U R U2 R'"]
+    },
+    {
+      "name": "CO 4",
+      "display": "R U R' U' R' F R U R U' R' F'",
+      "filters": {
+        "twoCorners": true,
+        "threeCorners": false,
+        "fourCorners": false,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U R' U' R' F R U R U' R' F'"
+        }
+      },
+      "solutions": ["R U R' U' R' F R U R U' R' F'"]
+    },
+    {
+      "name": "CO 5",
+      "display": "R U R' U R U2' R'",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": true,
+        "fourCorners": false,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U R' U R U2' R'"
+        }
+      },
+      "solutions": ["R U R' U R U2' R'"]
+    },
+    {
+      "name": "CO 6",
+      "display": "R' U' R U' R' U2 R",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": true,
+        "fourCorners": false,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R' U' R U' R' U2 R"
+        }
+      },
+      "solutions": ["R' U' R U' R' U2 R"]
+    },
+    {
+      "name": "CO 7",
+      "display": "R U2 R' U' R U' R'",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": true,
+        "fourCorners": false,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U2 R' U' R U' R'"
+        }
+      },
+      "solutions": ["R U2 R' U' R U' R'"]
+    },
+    {
+      "name": "CO 8",
+      "display": "R U R' U2 R U2 R'",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": true,
+        "fourCorners": false,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U R' U2 R U2 R'"
+        }
+      },
+      "solutions": ["R U R' U2 R U2 R'"]
+    },
+    {
+      "name": "CO 9",
+      "display": "R U2 R' U' R U R' U' R U' R'",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": false,
+        "fourCorners": true,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U2 R' U' R U R' U' R U' R'"
+        }
+      },
+      "solutions": ["L R U2 L' U R' L U' R U2 L' U2 R'"]
+    },
+    {
+      "name": "CO 10",
+      "display": "R U R' U R U' R' U R U2' R'",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": false,
+        "fourCorners": true,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U R' U R U' R' U R U2' R'"
+        }
+      },
+      "solutions": ["R U R' U R U' R' U R U2' R'"]
+    },
+    {
+      "name": "CO 11",
+      "display": "R U R' U R U R' U' R U2' R'",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": false,
+        "fourCorners": true,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U R' U R U R' U' R U2' R'"
+        }
+      },
+      "solutions": ["R U R' U R U R' U' R U2' R'"]
+    },
+    {
+      "name": "CO 12",
+      "display": "R U2 R' U' R U' R2' U' R U' R' U2 R",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": false,
+        "fourCorners": true,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U2 R' U' R U' R2' U' R U' R' U2 R"
+        }
+      },
+      "solutions": ["R U2 R' U' R U' R2' U' R U' R' U2 R"]
+    },
+    {
+      "name": "CO 13",
+      "display": "R U2 R2' U' R2 U' R2' U2 R",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": false,
+        "fourCorners": true,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U2 R2' U' R2 U' R2' U2 R"
+        }
+      },
+      "solutions": ["R U2 R2' U' R2 U' R2' U2 R"]
+    },
+    {
+      "name": "CO 14",
+      "display": "R' U2' R2 U R2' U R2 U2' R'",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": false,
+        "fourCorners": false,
+        "fiveCorners": true
+      },
+      "image": {
+        "puzzle": {
+          "case": "R' U2' R2 U R2' U R2 U2' R'"
+        }
+      },
+      "solutions": ["R' U2' R2 U R2' U R2 U2' R'"]
+    },
+    {
+      "name": "CO 15",
+      "display": "R U R' U2 R U2' R' U R U2' R'",
+      "filters": {
+        "twoCorners": false,
+        "threeCorners": false,
+        "fourCorners": false,
+        "fiveCorners": true
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U R' U2 R U2' R' U R U2' R'"
+        }
+      },
+      "solutions": ["R U R' U2 R U2' R' U R U2' R'"]
+    },
+    {
+      "name": "CO 16",
+      "display": "R U2 R' U' R U2 R' U2' R U' R'",
+      "filters": {
+        "twoCorners": true,
+        "threeCorners": false,
+        "fourCorners": false,
+        "fiveCorners": false
+      },
+      "image": {
+        "puzzle": {
+          "case": "R U2 R' U' R U2 R' U2' R U' R'"
+        }
+      },
+      "solutions": ["R U2 R' U' R U2 R' U2' R U' R'"]
+    }
+  ]
+}
