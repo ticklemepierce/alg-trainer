@@ -128,10 +128,10 @@
     {
       "name": "CP 11",
       "filters": {},
-      "display": "R2 U2 R2' U' R2 U' R2' F' U' F U' F' U2 F",
+      "display": "R2 U2 R2' U' R2 U' R2' F2' U' F2 U' F2' U2 F2",
       "image": {
         "puzzle": {
-          "case": "(R2 U2 R2' U' R2 U' R2') y' (R2' U' R2 U' R2' U2 R2)"
+          "case": "R2 U2 R2' U' R2 U' R2' F2' U' F2 U' F2' U2 F2"
         }
       },
       "solutions": ["(R2 U2 R2' U' R2 U' R2') y' (R2' U' R2 U' R2' U2 R2)"]

@@ -80,6 +80,7 @@ const megaminxGreyUpScheme = {
 
 export interface Image {
   type: "cube" | "megaminx" | "megaminx-top";
+  arrowColor?: any;
   puzzle: any;
 }
 export interface ISubStep {
@@ -203,6 +204,9 @@ export const Puzzles: IPuzzle[] = [
         displayName: "PLL",
         image: {
           type: "cube",
+          arrowColor: {
+            value: "#FFFFFF",
+          },
           puzzle: {
             mask: {
               F: [3, 4, 5, 6, 7, 8],
@@ -371,6 +375,9 @@ export const Puzzles: IPuzzle[] = [
           {
             displayName: "Edge Permutation",
             image: {
+              arrowColor: {
+                value: "#FFFFFF",
+              },
               type: "megaminx-top",
               puzzle: {
                 case: "F' R' F U F' R F U R' U2 R U' R' U' R U2 R' U R",

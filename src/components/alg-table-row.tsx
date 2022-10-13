@@ -57,10 +57,13 @@ export const AlgTableRow = ({
 
   const imgRef = useCallback((node) => {
     if (node && !svg) {
-      console.log(merge(alg.image, step.image));
+      const stepImageCopy = JSON.parse(JSON.stringify(step.image));
+      delete stepImageCopy.puzzle.case;
+      delete stepImageCopy.puzzle.alg;
+
       setSvg(
-        SVG(node, step.image.type as Type, {
-          ...merge(alg.image, step.image),
+        SVG(node, stepImageCopy.type as Type, {
+          ...merge({}, stepImageCopy, alg.image),
           width: 120,
           height: 120,
         })
