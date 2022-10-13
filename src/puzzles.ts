@@ -154,73 +154,73 @@ export const Puzzles: IPuzzle[] = [
           bothInSlot: "Both pieces in slot",
         },
       },
-      {
-        displayName: "OLL",
-        image: {
-          type: "cube",
-          puzzle: {
-            mask: {
-              R: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-              F: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-              D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-              L: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-              B: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-            },
-          },
-        },
-        slug: "oll",
-        steps: [
-          {
-            displayName: "All",
-            image: {
-              type: "cube",
-              puzzle: {
-                mask: {
-                  R: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-                  F: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-                  D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-                  L: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-                  B: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-                },
-              },
-            },
-            slug: "all",
-            cases: "333-oll",
-            filters: {},
-          },
-          {
-            displayName: "Dots",
-            image: {
-              type: "cube",
-              puzzle: {},
-            },
-            slug: "dots",
-            cases: "333-oll",
-            filters: {},
-          },
-        ],
-      },
-      {
-        displayName: "PLL",
-        image: {
-          type: "cube",
-          arrowColor: {
-            value: "#FFFFFF",
-          },
-          puzzle: {
-            mask: {
-              F: [3, 4, 5, 6, 7, 8],
-              B: [3, 4, 5, 6, 7, 8],
-              R: [3, 4, 5, 6, 7, 8],
-              L: [3, 4, 5, 6, 7, 8],
-              D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
-            },
-          },
-        },
-        slug: "pll",
-        cases: "333-pll",
-        filters: {},
-      },
+      // {
+      //   displayName: "OLL",
+      //   image: {
+      //     type: "cube",
+      //     puzzle: {
+      //       mask: {
+      //         R: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //         F: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //         D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //         L: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //         B: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //       },
+      //     },
+      //   },
+      //   slug: "oll",
+      //   steps: [
+      //     {
+      //       displayName: "All",
+      //       image: {
+      //         type: "cube",
+      //         puzzle: {
+      //           mask: {
+      //             R: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //             F: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //             D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //             L: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //             B: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //           },
+      //         },
+      //       },
+      //       slug: "all",
+      //       cases: "333-oll",
+      //       filters: {},
+      //     },
+      //     {
+      //       displayName: "Dots",
+      //       image: {
+      //         type: "cube",
+      //         puzzle: {},
+      //       },
+      //       slug: "dots",
+      //       cases: "333-oll",
+      //       filters: {},
+      //     },
+      //   ],
+      // },
+      // {
+      //   displayName: "PLL",
+      //   image: {
+      //     type: "cube",
+      //     arrowColor: {
+      //       value: "#FFFFFF",
+      //     },
+      //     puzzle: {
+      //       mask: {
+      //         F: [3, 4, 5, 6, 7, 8],
+      //         B: [3, 4, 5, 6, 7, 8],
+      //         R: [3, 4, 5, 6, 7, 8],
+      //         L: [3, 4, 5, 6, 7, 8],
+      //         D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //       },
+      //     },
+      //   },
+      //   slug: "pll",
+      //   cases: "333-pll",
+      //   filters: {},
+      // },
     ],
   },
   // {
