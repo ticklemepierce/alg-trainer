@@ -66,14 +66,14 @@ export const AlgsList = () => {
   const closeOptionsModal = () => setOptionsDialogOpen(false);
   const openOptionsModal = () => setOptionsDialogOpen(true);
 
-  const percentLearned = algs.reduce((acc, curr) => {
+  const numberLearned = algs.reduce((acc, curr) => {
     if (stepStorage.cases[curr.name].status === "learned") {
       acc++;
     }
     return acc;
   }, 0);
 
-  const percentLearning = algs.reduce((acc, curr) => {
+  const numberLearning = algs.reduce((acc, curr) => {
     if (stepStorage.cases[curr.name].status === "learning") {
       acc++;
     }
@@ -122,16 +122,16 @@ export const AlgsList = () => {
           <TuneIcon fontSize="large" color="action" />
         </IconButton>
       </Box>
-      {(percentLearned > 0 || percentLearning > 0) && (
+      {(numberLearned > 0 || numberLearning > 0) && (
         <MultiProgress
           data={[
             {
               name: "learned",
-              value: percentLearned,
+              value: (100 * numberLearned) / algs.length,
             },
             {
               name: "learning",
-              value: percentLearning,
+              value: (100 * numberLearning) / algs.length,
             },
           ]}
         />

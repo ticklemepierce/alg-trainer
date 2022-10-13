@@ -51,7 +51,7 @@ export const MultiProgress = ({ data }: IMultiProgress) => {
             </Typography>
             <Typography className={classes.label}>
               {`${item.name[0].toUpperCase()}${item.name.slice(1)}`}:{" "}
-              {item.value}%
+              {Math.round(item.value)}%
             </Typography>
           </div>
         ))}
