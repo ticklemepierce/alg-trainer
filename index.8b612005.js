@@ -14869,7 +14869,7 @@ module.exports = merge;
 
 var $743c2887b8294a80$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.b5fb8878.js","eXwSi":"puzzle-geometry.db2a4a3f.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.8b612005.js","eXwSi":"puzzle-geometry.db2a4a3f.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -35725,6 +35725,9 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                 displayName: "PLL",
                 image: {
                     type: "cube",
+                    arrowColor: {
+                        value: "#FFFFFF"
+                    },
                     puzzle: {
                         mask: {
                             F: [
@@ -36449,6 +36452,9 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                     {
                         displayName: "Edge Permutation",
                         image: {
+                            arrowColor: {
+                                value: "#FFFFFF"
+                            },
                             type: "megaminx-top",
                             puzzle: {
                                 case: "F' R' F U F' R F U R' U2 R U' R' U' R U2 R' U R",
@@ -47197,9 +47203,11 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
     const isSmallScreen = (0, $c0e7915ae4d187ed$export$2e2bcd8739ae039)(theme.breakpoints.down("sm"));
     const imgRef = (0, $d4J5n.useCallback)((node)=>{
         if (node && !svg) {
-            console.log((0, (/*@__PURE__*/$parcel$interopDefault($3eSN5)))(alg.image, step.image));
-            setSvg((0, $179bc5a49dda12b3$export$13f4b12aafeba5d6)(node, step.image.type, {
-                ...(0, (/*@__PURE__*/$parcel$interopDefault($3eSN5)))(alg.image, step.image),
+            const stepImageCopy = JSON.parse(JSON.stringify(step.image));
+            delete stepImageCopy.puzzle.case;
+            delete stepImageCopy.puzzle.alg;
+            setSvg((0, $179bc5a49dda12b3$export$13f4b12aafeba5d6)(node, stepImageCopy.type, {
+                ...(0, (/*@__PURE__*/$parcel$interopDefault($3eSN5)))({}, stepImageCopy, alg.image),
                 width: 120,
                 height: 120
             }));
@@ -47358,24 +47366,24 @@ var $228IU = parcelRequire("228IU");
 
 var $iKTt2 = parcelRequire("iKTt2");
 var $5Cz32 = parcelRequire("5Cz32");
-var $7b4d9491b37fa408$export$d927737047eb3867;
-var $7b4d9491b37fa408$export$94132a0e348806d4;
 var $7b4d9491b37fa408$export$33854e570d464ff0;
-var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
-var $7b4d9491b37fa408$export$1237798dc640739a;
-var $7b4d9491b37fa408$export$60912654947077e3;
-var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
 var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
+var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
+var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
+var $7b4d9491b37fa408$export$94132a0e348806d4;
+var $7b4d9491b37fa408$export$60912654947077e3;
+var $7b4d9491b37fa408$export$1237798dc640739a;
 var $7b4d9491b37fa408$export$9a9b59e08de24cef;
-$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
-$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
+var $7b4d9491b37fa408$export$d927737047eb3867;
 $7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
-$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
-$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
-$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
-$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
 $7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
+$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
+$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
+$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
+$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
+$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
 $7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
+$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
 
 
 const $8c09dba8c18700a3$var$colorMap = {
@@ -49336,4 +49344,4 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register($9766102c6225
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.b5fb8878.js.map
+//# sourceMappingURL=index.8b612005.js.map
