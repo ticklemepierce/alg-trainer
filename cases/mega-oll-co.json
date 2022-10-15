@@ -145,7 +145,7 @@
           "case": "R U2 R' U' R U R' U' R U' R'"
         }
       },
-      "solutions": ["L R U2 L' U R' L U' R U2 L' U2 R'"]
+      "solutions": ["R U2 R' U' R U R' U' R U' R'"]
     },
     {
       "name": "CO 10",
