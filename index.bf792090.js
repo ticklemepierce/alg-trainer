@@ -14869,7 +14869,7 @@ module.exports = merge;
 
 var $743c2887b8294a80$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.8a16d55e.js","eXwSi":"puzzle-geometry.db2a4a3f.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.bf792090.js","eXwSi":"puzzle-geometry.db2a4a3f.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -47161,24 +47161,24 @@ var $228IU = parcelRequire("228IU");
 
 var $iKTt2 = parcelRequire("iKTt2");
 var $5Cz32 = parcelRequire("5Cz32");
+var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
 var $7b4d9491b37fa408$export$94132a0e348806d4;
 var $7b4d9491b37fa408$export$9a9b59e08de24cef;
-var $7b4d9491b37fa408$export$d927737047eb3867;
-var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
-var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
-var $7b4d9491b37fa408$export$1237798dc640739a;
-var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
-var $7b4d9491b37fa408$export$33854e570d464ff0;
 var $7b4d9491b37fa408$export$60912654947077e3;
+var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
+var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
+var $7b4d9491b37fa408$export$33854e570d464ff0;
+var $7b4d9491b37fa408$export$1237798dc640739a;
+var $7b4d9491b37fa408$export$d927737047eb3867;
+$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
 $7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
 $7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
-$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
-$7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
-$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
-$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
-$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
-$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
 $7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
+$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
+$7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
+$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
+$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
+$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
 
 
 const $8c09dba8c18700a3$var$colorMap = {
@@ -49139,4 +49139,4 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register($9766102c6225
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.8a16d55e.js.map
+//# sourceMappingURL=index.bf792090.js.map
