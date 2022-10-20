@@ -7,6 +7,7 @@ import useKeypress from "../hooks/useKeypress";
 import { useOutletContext } from "react-router-dom";
 import { useLocalStorage } from "usehooks-ts";
 import { expandTriggers } from "../triggers";
+import { Alg } from "cubing/alg";
 
 // TODO add timer
 // TODO add ability to change status of case from trainer
@@ -92,10 +93,27 @@ export const Trainer = () => {
     nextCase();
   };
 
+  const randomIntUpTo = (max: number) => {
+    return Math.floor(Math.random() * (max + 1));
+  };
+
+  const randomAUF = () => randomIntUpTo(step.quantumMoveOrder - 1);
+
+  const createSetup = (setup: string) => {
+    return new Alg(`${setup} U${randomAUF()}`).experimentalSimplify({
+      cancel: true,
+      puzzleLoader: {
+        puzzleSpecificSimplifyOptions: {
+          quantumMoveOrder: () => step.quantumMoveOrder,
+        },
+      },
+    });
+  };
+
   const currentSetup = useMemo(
     () =>
       currentCase
-        ? randomItem(currentCase.setups)
+        ? createSetup(randomItem(currentCase.setups)).toString()
         : "No cases found that match your current filters.",
     [currentCase]
   );

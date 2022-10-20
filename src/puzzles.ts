@@ -83,25 +83,23 @@ export interface Image {
   arrowColor?: any;
   puzzle: any;
 }
-export interface ISubStep {
+
+export interface IStep {
   displayName: string;
-  steps: Step[];
   image: Image;
   slug: string;
+  quantumMoveOrder: number;
 }
 
-export interface IPuzzle {
-  displayName: string;
+export interface ISubStep extends IStep {
   steps: Step[];
-  image: Image;
-  slug: string;
+}
+
+export interface IPuzzle extends ISubStep {
   twisty: PuzzleID;
 }
 
-export interface IBaseStep {
-  displayName: string;
-  image: Image;
-  slug: string;
+export interface IBaseStep extends IStep {
   cases: string;
   filters: {
     [key: string]: string;
@@ -130,6 +128,7 @@ export const Puzzles: IPuzzle[] = [
       puzzle: {},
     },
     twisty: "3x3x3",
+    quantumMoveOrder: 4,
     steps: [
       {
         displayName: "F2L",
@@ -147,6 +146,7 @@ export const Puzzles: IPuzzle[] = [
         },
         slug: "f2l",
         cases: "333-f2l",
+        quantumMoveOrder: 4,
         filters: {
           cornerInSlot: "Corner in slot",
           edgeInSlot: "Edge in slot",
@@ -268,6 +268,7 @@ export const Puzzles: IPuzzle[] = [
       puzzle: {},
     },
     twisty: "megaminx",
+    quantumMoveOrder: 5,
     steps: [
       {
         displayName: "2-look OLL",
@@ -292,6 +293,7 @@ export const Puzzles: IPuzzle[] = [
           },
         },
         slug: "2-look-oll",
+        quantumMoveOrder: 5,
         steps: [
           {
             displayName: "Edge Orientation",
@@ -318,6 +320,7 @@ export const Puzzles: IPuzzle[] = [
             },
             slug: "eo",
             cases: "mega-oll-eo",
+            quantumMoveOrder: 5,
             filters: {},
           },
           {
@@ -344,6 +347,7 @@ export const Puzzles: IPuzzle[] = [
             },
             slug: "co",
             cases: "mega-oll-co",
+            quantumMoveOrder: 5,
             filters: {},
           },
         ],
@@ -371,6 +375,7 @@ export const Puzzles: IPuzzle[] = [
           },
         },
         slug: "2-look-pll",
+        quantumMoveOrder: 5,
         steps: [
           {
             displayName: "Edge Permutation",
@@ -399,6 +404,7 @@ export const Puzzles: IPuzzle[] = [
             },
             slug: "ep",
             cases: "mega-pll-ep",
+            quantumMoveOrder: 5,
             filters: {},
           },
           {
@@ -425,6 +431,7 @@ export const Puzzles: IPuzzle[] = [
             },
             slug: "cp",
             cases: "mega-pll-cp",
+            quantumMoveOrder: 5,
             filters: {},
           },
         ],
