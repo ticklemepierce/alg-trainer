@@ -14,42 +14,22 @@ typeof globalThis !== 'undefined'
 var parcelRequire = $parcel$global["parcelRequire31c8"];
 parcelRequire.register("bYa3M", function(module, exports) {
 
-$parcel$export(module.exports, "EXPERIMENTAL_PUZZLE_BASE_SHAPES", () => (parcelRequire("dykhF")).PUZZLE_BASE_SHAPES);
-$parcel$export(module.exports, "EXPERIMENTAL_PUZZLE_CUT_TYPES", () => (parcelRequire("dykhF")).PUZZLE_CUT_TYPES);
-$parcel$export(module.exports, "ExperimentalPGNotation", () => (parcelRequire("dykhF")).PGNotation);
-$parcel$export(module.exports, "PuzzleGeometry", () => (parcelRequire("dykhF")).PuzzleGeometry);
-$parcel$export(module.exports, "Quat", () => (parcelRequire("dykhF")).Quat);
-$parcel$export(module.exports, "getPG3DNamedPuzzles", () => (parcelRequire("dykhF")).getPG3DNamedPuzzles);
-$parcel$export(module.exports, "getPuzzleDescriptionString", () => (parcelRequire("dykhF")).getPuzzleDescriptionString);
-$parcel$export(module.exports, "getPuzzleGeometryByDesc", () => (parcelRequire("dykhF")).getPuzzleGeometryByDesc);
-$parcel$export(module.exports, "getPuzzleGeometryByName", () => (parcelRequire("dykhF")).getPuzzleGeometryByName);
-$parcel$export(module.exports, "parseOptions", () => (parcelRequire("dykhF")).parseOptions);
-$parcel$export(module.exports, "parsePuzzleDescription", () => (parcelRequire("dykhF")).parsePuzzleDescription);
-$parcel$export(module.exports, "schreierSims", () => (parcelRequire("dykhF")).schreierSims);
+$parcel$export(module.exports, "parseOptions", () => $8b6d1a029267225c$export$49fe41a914eb071d);
+$parcel$export(module.exports, "parsePuzzleDescription", () => $8b6d1a029267225c$export$f4bd658db3408711);
+$parcel$export(module.exports, "Quat", () => $8b6d1a029267225c$export$5edfe12bb88684c8);
+$parcel$export(module.exports, "schreierSims", () => $8b6d1a029267225c$export$f17eb225ad7d7738);
+$parcel$export(module.exports, "getPG3DNamedPuzzles", () => $8b6d1a029267225c$export$6d6c096d5214295b);
+$parcel$export(module.exports, "getPuzzleDescriptionString", () => $8b6d1a029267225c$export$1f9f297c0a9a9cd1);
+$parcel$export(module.exports, "EXPERIMENTAL_PUZZLE_BASE_SHAPES", () => $8b6d1a029267225c$export$e19ec2c480155271);
+$parcel$export(module.exports, "EXPERIMENTAL_PUZZLE_CUT_TYPES", () => $8b6d1a029267225c$export$411162ee52ec3fbf);
+$parcel$export(module.exports, "getPuzzleGeometryByDesc", () => $8b6d1a029267225c$export$898ad9435742d552);
+$parcel$export(module.exports, "PuzzleGeometry", () => $8b6d1a029267225c$export$b89c271f50b83709);
+$parcel$export(module.exports, "getPuzzleGeometryByName", () => $8b6d1a029267225c$export$37497081d872df9);
+$parcel$export(module.exports, "ExperimentalPGNotation", () => $8b6d1a029267225c$export$f852f67da918687b);
 
-var $dykhF = parcelRequire("dykhF");
-parcelRequire("kQo6d");
-parcelRequire("hJBlP");
-
-});
-parcelRequire.register("dykhF", function(module, exports) {
-
-$parcel$export(module.exports, "parseOptions", () => $9dde2f4b0392cf9f$export$49fe41a914eb071d);
-$parcel$export(module.exports, "parsePuzzleDescription", () => $9dde2f4b0392cf9f$export$f4bd658db3408711);
-$parcel$export(module.exports, "Quat", () => $9dde2f4b0392cf9f$export$5edfe12bb88684c8);
-$parcel$export(module.exports, "schreierSims", () => $9dde2f4b0392cf9f$export$f17eb225ad7d7738);
-$parcel$export(module.exports, "getPG3DNamedPuzzles", () => $9dde2f4b0392cf9f$export$6d6c096d5214295b);
-$parcel$export(module.exports, "getPuzzleDescriptionString", () => $9dde2f4b0392cf9f$export$1f9f297c0a9a9cd1);
-$parcel$export(module.exports, "PUZZLE_BASE_SHAPES", () => $9dde2f4b0392cf9f$export$8965e19b0a540c90);
-$parcel$export(module.exports, "PUZZLE_CUT_TYPES", () => $9dde2f4b0392cf9f$export$f137e9f8b0977b41);
-$parcel$export(module.exports, "getPuzzleGeometryByDesc", () => $9dde2f4b0392cf9f$export$898ad9435742d552);
-$parcel$export(module.exports, "PuzzleGeometry", () => $9dde2f4b0392cf9f$export$b89c271f50b83709);
-$parcel$export(module.exports, "getPuzzleGeometryByName", () => $9dde2f4b0392cf9f$export$37497081d872df9);
-$parcel$export(module.exports, "PGNotation", () => $9dde2f4b0392cf9f$export$32c5b60afe204e84);
-
-var $kQo6d = parcelRequire("kQo6d");
+var $j3ukw = parcelRequire("j3ukw");
 // src/cubing/puzzle-geometry/FaceNameSwizzler.ts
-var $9dde2f4b0392cf9f$var$FaceNameSwizzler = class {
+var $8b6d1a029267225c$var$FaceNameSwizzler = class {
     constructor(facenames, gripnames_arg){
         this.facenames = facenames;
         this.prefixFree = true;
@@ -72,7 +52,7 @@ var $9dde2f4b0392cf9f$var$FaceNameSwizzler = class {
             if (currentMatch >= 0) {
                 r.push(currentMatch);
                 at += this.facenames[currentMatch].length;
-            } else throw new Error("Could not split " + s + " into face names.");
+            } else throw new Error(`Could not split ${s} into face names.`);
         }
         return r;
     }
@@ -123,7 +103,7 @@ var $9dde2f4b0392cf9f$var$FaceNameSwizzler = class {
     }
 };
 // src/cubing/puzzle-geometry/notation-mapping/NullMapper.ts
-var $9dde2f4b0392cf9f$var$NullMapper = class {
+var $8b6d1a029267225c$var$NullMapper = class {
     notationToInternal(move) {
         return move;
     }
@@ -132,13 +112,13 @@ var $9dde2f4b0392cf9f$var$NullMapper = class {
     }
 };
 // src/cubing/puzzle-geometry/notation-mapping/FTONotationMapper.ts
-var $9dde2f4b0392cf9f$var$FTONotationMapper = class {
+var $8b6d1a029267225c$var$FTONotationMapper = class {
     constructor(child, sw){
         this.child = child;
         this.sw = sw;
     }
     notationToInternal(move) {
-        if (move.family === "T" && move.innerLayer === void 0 && move.outerLayer === void 0) return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("FLRv", move.innerLayer, move.outerLayer), move.amount);
+        if (move.family === "T" && move.innerLayer === void 0 && move.outerLayer === void 0) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("FLRv", move.innerLayer, move.outerLayer), move.amount);
         else {
             const r = this.child.notationToInternal(move);
             return r;
@@ -147,12 +127,12 @@ var $9dde2f4b0392cf9f$var$FTONotationMapper = class {
     notationToExternal(move) {
         let fam = move.family;
         if (fam.length > 0 && fam[fam.length - 1] === "v") fam = fam.substring(0, fam.length - 1);
-        if (this.sw.spinmatch(fam, "FLUR")) return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("T", move.innerLayer, move.outerLayer), move.amount);
+        if (this.sw.spinmatch(fam, "FLUR")) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("T", move.innerLayer, move.outerLayer), move.amount);
         return this.child.notationToExternal(move);
     }
 };
 // src/cubing/puzzle-geometry/notation-mapping/FaceRenamingMapper.ts
-var $9dde2f4b0392cf9f$var$FaceRenamingMapper = class {
+var $8b6d1a029267225c$var$FaceRenamingMapper = class {
     constructor(internalNames, externalNames){
         this.internalNames = internalNames;
         this.externalNames = externalNames;
@@ -177,7 +157,7 @@ var $9dde2f4b0392cf9f$var$FaceRenamingMapper = class {
         const grip = move.family;
         const ngrip = this.convertString(grip, a, b);
         if (grip === ngrip) return move;
-        else return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)(ngrip, move.innerLayer, move.outerLayer), move.amount);
+        else return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(ngrip, move.innerLayer, move.outerLayer), move.amount);
     }
     notationToInternal(move) {
         const r = this.convert(move, this.externalNames, this.internalNames);
@@ -188,72 +168,72 @@ var $9dde2f4b0392cf9f$var$FaceRenamingMapper = class {
     }
 };
 // src/cubing/puzzle-geometry/notation-mapping/MegaminxScramblingNotationMapper.ts
-var $9dde2f4b0392cf9f$var$MegaminxScramblingNotationMapper = class {
+var $8b6d1a029267225c$var$MegaminxScramblingNotationMapper = class {
     constructor(child){
         this.child = child;
     }
     notationToInternal(move) {
         if (move.innerLayer === void 0 && move.outerLayer === void 0) {
             if (Math.abs(move.amount) === 1) {
-                if (move.family === "R++") return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("L", 3, 2), -2 * move.amount);
-                else if (move.family === "R--") return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("L", 3, 2), 2 * move.amount);
-                else if (move.family === "D++") return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("U", 3, 2), -2 * move.amount);
-                else if (move.family === "D--") return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("U", 3, 2), 2 * move.amount);
-                if (move.family === "R_PLUSPLUS_") return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("L", 3, 2), -2 * move.amount);
-                else if (move.family === "D_PLUSPLUS_") return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("U", 3, 2), -2 * move.amount);
+                if (move.family === "R++") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("L", 3, 2), -2 * move.amount);
+                else if (move.family === "R--") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("L", 3, 2), 2 * move.amount);
+                else if (move.family === "D++") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("U", 3, 2), -2 * move.amount);
+                else if (move.family === "D--") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("U", 3, 2), 2 * move.amount);
+                if (move.family === "R_PLUSPLUS_") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("L", 3, 2), -2 * move.amount);
+                else if (move.family === "D_PLUSPLUS_") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("U", 3, 2), -2 * move.amount);
             }
-            if (move.family === "y") return new (0, $kQo6d.Move)("Uv", move.amount);
-            if (move.family === "x" && Math.abs(move.amount) === 2) return new (0, $kQo6d.Move)("ERv", move.amount / 2);
+            if (move.family === "y") return new (0, $j3ukw.Move)("Uv", move.amount);
+            if (move.family === "x" && Math.abs(move.amount) === 2) return new (0, $j3ukw.Move)("ERv", move.amount / 2);
         }
         return this.child.notationToInternal(move);
     }
     notationToExternal(move) {
-        if (move.family === "ERv" && Math.abs(move.amount) === 1) return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("x", move.innerLayer, move.outerLayer), move.amount * 2);
-        if (move.family === "ILv" && Math.abs(move.amount) === 1) return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("x", move.innerLayer, move.outerLayer), -move.amount * 2);
-        if (move.family === "Uv") return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("y", move.innerLayer, move.outerLayer), move.amount);
-        if (move.family === "Dv") return new (0, $kQo6d.Move)("y", -move.amount);
+        if (move.family === "ERv" && Math.abs(move.amount) === 1) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("x", move.innerLayer, move.outerLayer), move.amount * 2);
+        if (move.family === "ILv" && Math.abs(move.amount) === 1) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("x", move.innerLayer, move.outerLayer), -move.amount * 2);
+        if (move.family === "Uv") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("y", move.innerLayer, move.outerLayer), move.amount);
+        if (move.family === "Dv") return new (0, $j3ukw.Move)("y", -move.amount);
         return this.child.notationToExternal(move);
     }
 };
 // src/cubing/puzzle-geometry/notation-mapping/NxNxNCubeMapper.ts
-var $9dde2f4b0392cf9f$var$NxNxNCubeMapper = class {
+var $8b6d1a029267225c$var$NxNxNCubeMapper = class {
     constructor(slices){
         this.slices = slices;
     }
     notationToInternal(move) {
         const grip = move.family;
-        if (!move.innerLayer && !move.outerLayer) {
-            if (grip === "x") move = new (0, $kQo6d.Move)("Rv", move.amount);
-            else if (grip === "y") move = new (0, $kQo6d.Move)("Uv", move.amount);
-            else if (grip === "z") move = new (0, $kQo6d.Move)("Fv", move.amount);
+        if (!(move.innerLayer || move.outerLayer)) {
+            if (grip === "x") move = new (0, $j3ukw.Move)("Rv", move.amount);
+            else if (grip === "y") move = new (0, $j3ukw.Move)("Uv", move.amount);
+            else if (grip === "z") move = new (0, $j3ukw.Move)("Fv", move.amount);
             if ((this.slices & 1) === 1) {
-                if (grip === "E") move = new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("D", (this.slices + 1) / 2), move.amount);
-                else if (grip === "M") move = new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("L", (this.slices + 1) / 2), move.amount);
-                else if (grip === "S") move = new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("F", (this.slices + 1) / 2), move.amount);
+                if (grip === "E") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("D", (this.slices + 1) / 2), move.amount);
+                else if (grip === "M") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("L", (this.slices + 1) / 2), move.amount);
+                else if (grip === "S") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("F", (this.slices + 1) / 2), move.amount);
             }
             if (this.slices > 2) {
-                if (grip === "e") move = new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("D", this.slices - 1, 2), move.amount);
-                else if (grip === "m") move = new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("L", this.slices - 1, 2), move.amount);
-                else if (grip === "s") move = new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)("F", this.slices - 1, 2), move.amount);
+                if (grip === "e") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("D", this.slices - 1, 2), move.amount);
+                else if (grip === "m") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("L", this.slices - 1, 2), move.amount);
+                else if (grip === "s") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("F", this.slices - 1, 2), move.amount);
             }
         }
         return move;
     }
     notationToExternal(move) {
         const grip = move.family;
-        if (!move.innerLayer && !move.outerLayer) {
-            if (grip === "Rv") return new (0, $kQo6d.Move)("x", move.amount);
-            else if (grip === "Uv") return new (0, $kQo6d.Move)("y", move.amount);
-            else if (grip === "Fv") return new (0, $kQo6d.Move)("z", move.amount);
-            else if (grip === "Lv") return new (0, $kQo6d.Move)("x", -move.amount);
-            else if (grip === "Dv") return new (0, $kQo6d.Move)("y", -move.amount);
-            else if (grip === "Bv") return new (0, $kQo6d.Move)("z", -move.amount);
+        if (!(move.innerLayer || move.outerLayer)) {
+            if (grip === "Rv") return new (0, $j3ukw.Move)("x", move.amount);
+            else if (grip === "Uv") return new (0, $j3ukw.Move)("y", move.amount);
+            else if (grip === "Fv") return new (0, $j3ukw.Move)("z", move.amount);
+            else if (grip === "Lv") return new (0, $j3ukw.Move)("x", -move.amount);
+            else if (grip === "Dv") return new (0, $j3ukw.Move)("y", -move.amount);
+            else if (grip === "Bv") return new (0, $j3ukw.Move)("z", -move.amount);
         }
         return move;
     }
 };
 // src/cubing/puzzle-geometry/notation-mapping/PyraminxNotationMapper.ts
-var $9dde2f4b0392cf9f$var$pyraminxFamilyMap = {
+var $8b6d1a029267225c$var$pyraminxFamilyMap = {
     U: "frl",
     L: "fld",
     R: "fdr",
@@ -271,7 +251,7 @@ var $9dde2f4b0392cf9f$var$pyraminxFamilyMap = {
     BL: "L",
     BR: "R"
 };
-var $9dde2f4b0392cf9f$var$tetraminxFamilyMap = {
+var $8b6d1a029267225c$var$tetraminxFamilyMap = {
     U: "FRL",
     L: "FLD",
     R: "FDR",
@@ -293,50 +273,50 @@ var $9dde2f4b0392cf9f$var$tetraminxFamilyMap = {
     bl: "l",
     br: "r"
 };
-var $9dde2f4b0392cf9f$var$pyraminxFamilyMapWCA = {
+var $8b6d1a029267225c$var$pyraminxFamilyMapWCA = {
     U: "FRL",
     L: "FLD",
     R: "FDR",
     B: "DLR"
 };
-var $9dde2f4b0392cf9f$var$pyraminxExternalQuantumY = new (0, $kQo6d.QuantumMove)("y");
-var $9dde2f4b0392cf9f$var$pyraminxInternalQuantumY = new (0, $kQo6d.QuantumMove)("Dv");
-var $9dde2f4b0392cf9f$var$PyraminxNotationMapper = class {
+var $8b6d1a029267225c$var$pyraminxExternalQuantumY = new (0, $j3ukw.QuantumMove)("y");
+var $8b6d1a029267225c$var$pyraminxInternalQuantumY = new (0, $j3ukw.QuantumMove)("Dv");
+var $8b6d1a029267225c$var$PyraminxNotationMapper = class {
     constructor(child){
         this.child = child;
         this.wcaHack = false;
-        this.map = $9dde2f4b0392cf9f$var$pyraminxFamilyMap;
+        this.map = $8b6d1a029267225c$var$pyraminxFamilyMap;
     }
     notationToInternal(move) {
         if (this.wcaHack && move.innerLayer === 2 && move.outerLayer === null) {
-            const newFamilyWCA = $9dde2f4b0392cf9f$var$pyraminxFamilyMapWCA[move.family];
-            if (newFamilyWCA) return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)(newFamilyWCA, move.innerLayer, move.outerLayer), move.amount);
+            const newFamilyWCA = $8b6d1a029267225c$var$pyraminxFamilyMapWCA[move.family];
+            if (newFamilyWCA) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(newFamilyWCA, move.innerLayer, move.outerLayer), move.amount);
         }
         const newFamily = this.map[move.family];
-        if (newFamily) return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)(newFamily, move.innerLayer, move.outerLayer), move.amount);
-        else if ($9dde2f4b0392cf9f$var$pyraminxExternalQuantumY.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$pyraminxInternalQuantumY, -move.amount);
+        if (newFamily) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(newFamily, move.innerLayer, move.outerLayer), move.amount);
+        else if ($8b6d1a029267225c$var$pyraminxExternalQuantumY.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$pyraminxInternalQuantumY, -move.amount);
         else return null;
     }
     notationToExternal(move) {
-        if (this.wcaHack && move.innerLayer === 2 && move.outerLayer === null) for (const [external, internal] of Object.entries($9dde2f4b0392cf9f$var$pyraminxFamilyMapWCA)){
-            if (this.child.spinmatch(move.family, internal)) return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)(external, move.innerLayer, move.outerLayer), move.amount);
+        if (this.wcaHack && move.innerLayer === 2 && move.outerLayer === null) for (const [external, internal] of Object.entries($8b6d1a029267225c$var$pyraminxFamilyMapWCA)){
+            if (this.child.spinmatch(move.family, internal)) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(external, move.innerLayer, move.outerLayer), move.amount);
         }
         for (const [external1, internal1] of Object.entries(this.map)){
-            if (this.child.spinmatch(move.family, internal1)) return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)(external1, move.innerLayer, move.outerLayer), move.amount);
+            if (this.child.spinmatch(move.family, internal1)) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(external1, move.innerLayer, move.outerLayer), move.amount);
         }
-        if ($9dde2f4b0392cf9f$var$pyraminxInternalQuantumY.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$pyraminxExternalQuantumY, -move.amount);
+        if ($8b6d1a029267225c$var$pyraminxInternalQuantumY.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$pyraminxExternalQuantumY, -move.amount);
         else return null;
     }
 };
-var $9dde2f4b0392cf9f$var$TetraminxNotationMapper = class extends $9dde2f4b0392cf9f$var$PyraminxNotationMapper {
+var $8b6d1a029267225c$var$TetraminxNotationMapper = class extends $8b6d1a029267225c$var$PyraminxNotationMapper {
     constructor(child){
         super(child);
         this.wcaHack = true;
-        this.map = $9dde2f4b0392cf9f$var$tetraminxFamilyMap;
+        this.map = $8b6d1a029267225c$var$tetraminxFamilyMap;
     }
 };
 // src/cubing/puzzle-geometry/notation-mapping/SkewbNotationMapper.ts
-var $9dde2f4b0392cf9f$var$skewbFamilyMap = {
+var $8b6d1a029267225c$var$skewbFamilyMap = {
     U: "UBL",
     UL: "ULF",
     F: "UFR",
@@ -354,43 +334,43 @@ var $9dde2f4b0392cf9f$var$skewbFamilyMap = {
     Lv: "DLFv",
     Rv: "DRBv"
 };
-var $9dde2f4b0392cf9f$var$skewbExternalQuantumX = new (0, $kQo6d.QuantumMove)("x");
-var $9dde2f4b0392cf9f$var$skewbInternalQuantumX = new (0, $kQo6d.QuantumMove)("Rv");
-var $9dde2f4b0392cf9f$var$skewbInternalQuantumXPrime = new (0, $kQo6d.QuantumMove)("Lv");
-var $9dde2f4b0392cf9f$var$skewbExternalQuantumY = new (0, $kQo6d.QuantumMove)("y");
-var $9dde2f4b0392cf9f$var$skewbInternalQuantumY = new (0, $kQo6d.QuantumMove)("Uv");
-var $9dde2f4b0392cf9f$var$skewbInternalQuantumYPrime = new (0, $kQo6d.QuantumMove)("Dv");
-var $9dde2f4b0392cf9f$var$skewbExternalQuantumZ = new (0, $kQo6d.QuantumMove)("z");
-var $9dde2f4b0392cf9f$var$skewbInternalQuantumZ = new (0, $kQo6d.QuantumMove)("Fv");
-var $9dde2f4b0392cf9f$var$skewbInternalQuantumZPrime = new (0, $kQo6d.QuantumMove)("Bv");
-var $9dde2f4b0392cf9f$var$SkewbNotationMapper = class {
+var $8b6d1a029267225c$var$skewbExternalQuantumX = new (0, $j3ukw.QuantumMove)("x");
+var $8b6d1a029267225c$var$skewbInternalQuantumX = new (0, $j3ukw.QuantumMove)("Rv");
+var $8b6d1a029267225c$var$skewbInternalQuantumXPrime = new (0, $j3ukw.QuantumMove)("Lv");
+var $8b6d1a029267225c$var$skewbExternalQuantumY = new (0, $j3ukw.QuantumMove)("y");
+var $8b6d1a029267225c$var$skewbInternalQuantumY = new (0, $j3ukw.QuantumMove)("Uv");
+var $8b6d1a029267225c$var$skewbInternalQuantumYPrime = new (0, $j3ukw.QuantumMove)("Dv");
+var $8b6d1a029267225c$var$skewbExternalQuantumZ = new (0, $j3ukw.QuantumMove)("z");
+var $8b6d1a029267225c$var$skewbInternalQuantumZ = new (0, $j3ukw.QuantumMove)("Fv");
+var $8b6d1a029267225c$var$skewbInternalQuantumZPrime = new (0, $j3ukw.QuantumMove)("Bv");
+var $8b6d1a029267225c$var$SkewbNotationMapper = class {
     constructor(child){
         this.child = child;
     }
     notationToInternal(move) {
         if (move.innerLayer || move.outerLayer) return null;
-        const newFamily = $9dde2f4b0392cf9f$var$skewbFamilyMap[move.family];
-        if (newFamily) return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)(newFamily, move.outerLayer, move.innerLayer), move.amount);
-        if ($9dde2f4b0392cf9f$var$skewbExternalQuantumX.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$skewbInternalQuantumX, move.amount);
-        if ($9dde2f4b0392cf9f$var$skewbExternalQuantumY.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$skewbInternalQuantumY, move.amount);
-        if ($9dde2f4b0392cf9f$var$skewbExternalQuantumZ.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$skewbInternalQuantumZ, move.amount);
+        const newFamily = $8b6d1a029267225c$var$skewbFamilyMap[move.family];
+        if (newFamily) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(newFamily, move.outerLayer, move.innerLayer), move.amount);
+        if ($8b6d1a029267225c$var$skewbExternalQuantumX.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbInternalQuantumX, move.amount);
+        if ($8b6d1a029267225c$var$skewbExternalQuantumY.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbInternalQuantumY, move.amount);
+        if ($8b6d1a029267225c$var$skewbExternalQuantumZ.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbInternalQuantumZ, move.amount);
         return null;
     }
     notationToExternal(move) {
-        for (const [external, internal] of Object.entries($9dde2f4b0392cf9f$var$skewbFamilyMap)){
-            if (this.child.spinmatchv(move.family, internal)) return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)(external, move.innerLayer, move.outerLayer), move.amount);
+        for (const [external, internal] of Object.entries($8b6d1a029267225c$var$skewbFamilyMap)){
+            if (this.child.spinmatchv(move.family, internal)) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(external, move.innerLayer, move.outerLayer), move.amount);
         }
-        if ($9dde2f4b0392cf9f$var$skewbInternalQuantumX.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$skewbExternalQuantumX, move.amount);
-        if ($9dde2f4b0392cf9f$var$skewbInternalQuantumXPrime.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$skewbExternalQuantumX, -move.amount);
-        if ($9dde2f4b0392cf9f$var$skewbInternalQuantumY.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$skewbExternalQuantumY, move.amount);
-        if ($9dde2f4b0392cf9f$var$skewbInternalQuantumYPrime.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$skewbExternalQuantumY, -move.amount);
-        if ($9dde2f4b0392cf9f$var$skewbInternalQuantumZ.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$skewbExternalQuantumZ, move.amount);
-        if ($9dde2f4b0392cf9f$var$skewbInternalQuantumZPrime.isIdentical(move.quantum)) return new (0, $kQo6d.Move)($9dde2f4b0392cf9f$var$skewbExternalQuantumZ, -move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumX.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumX, move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumXPrime.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumX, -move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumY.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumY, move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumYPrime.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumY, -move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumZ.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumZ, move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumZPrime.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumZ, -move.amount);
         return null;
     }
 };
 // src/cubing/puzzle-geometry/Options.ts
-function $9dde2f4b0392cf9f$export$49fe41a914eb071d(argv) {
+function $8b6d1a029267225c$export$49fe41a914eb071d(argv) {
     let argp = 0;
     const options = {};
     while(argp < argv.length && argv[argp][0] === "-"){
@@ -418,15 +398,15 @@ function $9dde2f4b0392cf9f$export$49fe41a914eb071d(argv) {
         else if (option === "--puzzleorientation") {
             options.puzzleOrientation = JSON.parse(argv[argp]);
             argp++;
-        } else throw new Error("Bad option: " + option);
+        } else throw new Error(`Bad option: ${option}`);
     }
-    const puzzleDescription = $9dde2f4b0392cf9f$export$f4bd658db3408711(argv.slice(argp).join(" "));
+    const puzzleDescription = $8b6d1a029267225c$export$f4bd658db3408711(argv.slice(argp).join(" "));
     return {
         puzzleDescription: puzzleDescription,
         options: options
     };
 }
-var $9dde2f4b0392cf9f$var$PuzzleGeometryFullOptions = class {
+var $8b6d1a029267225c$var$PuzzleGeometryFullOptions = class {
     constructor(options = {}){
         this.verbosity = 0;
         this.allMoves = false;
@@ -451,36 +431,36 @@ var $9dde2f4b0392cf9f$var$PuzzleGeometryFullOptions = class {
     }
 };
 // src/cubing/puzzle-geometry/Perm.ts
-var $9dde2f4b0392cf9f$var$zeroCache = [];
-var $9dde2f4b0392cf9f$var$iotaCache = [];
-function $9dde2f4b0392cf9f$var$zeros(n) {
-    if (!$9dde2f4b0392cf9f$var$zeroCache[n]) {
+var $8b6d1a029267225c$var$zeroCache = [];
+var $8b6d1a029267225c$var$iotaCache = [];
+function $8b6d1a029267225c$var$zeros(n) {
+    if (!$8b6d1a029267225c$var$zeroCache[n]) {
         const c = Array(n);
         for(let i = 0; i < n; i++)c[i] = 0;
-        $9dde2f4b0392cf9f$var$zeroCache[n] = c;
+        $8b6d1a029267225c$var$zeroCache[n] = c;
     }
-    return $9dde2f4b0392cf9f$var$zeroCache[n];
+    return $8b6d1a029267225c$var$zeroCache[n];
 }
-function $9dde2f4b0392cf9f$var$iota(n) {
-    if (!$9dde2f4b0392cf9f$var$iotaCache[n]) {
+function $8b6d1a029267225c$var$iota(n) {
+    if (!$8b6d1a029267225c$var$iotaCache[n]) {
         const c = Array(n);
         for(let i = 0; i < n; i++)c[i] = i;
-        $9dde2f4b0392cf9f$var$iotaCache[n] = c;
+        $8b6d1a029267225c$var$iotaCache[n] = c;
     }
-    return $9dde2f4b0392cf9f$var$iotaCache[n];
+    return $8b6d1a029267225c$var$iotaCache[n];
 }
-function $9dde2f4b0392cf9f$var$identity(n) {
-    return new $9dde2f4b0392cf9f$var$Perm($9dde2f4b0392cf9f$var$iota(n));
+function $8b6d1a029267225c$var$identity(n) {
+    return new $8b6d1a029267225c$var$Perm($8b6d1a029267225c$var$iota(n));
 }
-function $9dde2f4b0392cf9f$var$factorial(a) {
-    let r = 1n;
+function $8b6d1a029267225c$var$factorial(a) {
+    let r = BigInt(1);
     while(a > 1){
         r *= BigInt(a);
         a--;
     }
     return r;
 }
-function $9dde2f4b0392cf9f$var$gcd(a, b) {
+function $8b6d1a029267225c$var$gcd(a, b) {
     if (a > b) {
         const t = a;
         a = b;
@@ -493,31 +473,31 @@ function $9dde2f4b0392cf9f$var$gcd(a, b) {
     }
     return b;
 }
-function $9dde2f4b0392cf9f$var$lcm(a, b) {
-    return a / $9dde2f4b0392cf9f$var$gcd(a, b) * b;
+function $8b6d1a029267225c$var$lcm(a, b) {
+    return a / $8b6d1a029267225c$var$gcd(a, b) * b;
 }
-var $9dde2f4b0392cf9f$var$Perm = class {
+var $8b6d1a029267225c$var$Perm = class {
     constructor(a){
         this.n = a.length;
         this.p = a;
     }
     toString() {
-        return "Perm[" + this.p.join(" ") + "]";
+        return `Perm[${this.p.join(" ")}]`;
     }
     mul(p2) {
         const c = Array(this.n);
         for(let i = 0; i < this.n; i++)c[i] = p2.p[this.p[i]];
-        return new $9dde2f4b0392cf9f$var$Perm(c);
+        return new $8b6d1a029267225c$var$Perm(c);
     }
     rmul(p2) {
         const c = Array(this.n);
         for(let i = 0; i < this.n; i++)c[i] = this.p[p2.p[i]];
-        return new $9dde2f4b0392cf9f$var$Perm(c);
+        return new $8b6d1a029267225c$var$Perm(c);
     }
     inv() {
         const c = Array(this.n);
         for(let i = 0; i < this.n; i++)c[this.p[i]] = i;
-        return new $9dde2f4b0392cf9f$var$Perm(c);
+        return new $8b6d1a029267225c$var$Perm(c);
     }
     compareTo(p2) {
         for(let i = 0; i < this.n; i++){
@@ -535,7 +515,7 @@ var $9dde2f4b0392cf9f$var$Perm = class {
                 incyc.push(1 + j);
                 seen[j] = true;
             }
-            cyc.push("(" + incyc.join(",") + ")");
+            cyc.push(`(${incyc.join(",")})`);
         }
         return cyc.join("");
     }
@@ -549,29 +529,29 @@ var $9dde2f4b0392cf9f$var$Perm = class {
                 cs++;
                 seen[j] = true;
             }
-            r = $9dde2f4b0392cf9f$var$lcm(r, cs);
+            r = $8b6d1a029267225c$var$lcm(r, cs);
         }
         return r;
     }
 };
 // src/cubing/puzzle-geometry/PermOriSet.ts
-var $9dde2f4b0392cf9f$var$PGOrbitDef = class {
+var $8b6d1a029267225c$var$PGOrbitDef = class {
     constructor(size, mod){
         this.size = size;
         this.mod = mod;
     }
     reassemblySize() {
-        return $9dde2f4b0392cf9f$var$factorial(this.size) * BigInt(this.mod) ** BigInt(this.size);
+        return $8b6d1a029267225c$var$factorial(this.size) * BigInt(this.mod) ** BigInt(this.size);
     }
 };
-var $9dde2f4b0392cf9f$var$lastGlobalDefinitionCounter = 0;
-function $9dde2f4b0392cf9f$var$externalName(mapper, moveString) {
-    const mv = (0, $kQo6d.Move).fromString(moveString);
+var $8b6d1a029267225c$var$lastGlobalDefinitionCounter = 0;
+function $8b6d1a029267225c$var$externalName(mapper, moveString) {
+    const mv = (0, $j3ukw.Move).fromString(moveString);
     const mv2 = mapper.notationToExternal(mv);
     if (mv2 === null || mv === mv2) return moveString;
     return mv2.toString();
 }
-var $9dde2f4b0392cf9f$var$PGOrbitsDef = class {
+var $8b6d1a029267225c$var$PGOrbitsDef = class {
     constructor(orbitnames, orbitdefs, solved, movenames, moveops, isRotation, forcenames){
         this.orbitnames = orbitnames;
         this.orbitdefs = orbitdefs;
@@ -599,17 +579,17 @@ var $9dde2f4b0392cf9f$var$PGOrbitsDef = class {
             if (this.isRotation[i1]) continue;
             let mvname = this.movenames[i1];
             if (!this.forcenames[i1]) {
-                mvname = $9dde2f4b0392cf9f$var$externalName(mapper, mvname);
+                mvname = $8b6d1a029267225c$var$externalName(mapper, mvname);
                 if (mvname[mvname.length - 1] === "'") mvname = mvname.substring(0, mvname.length - 1);
             }
             const pd = this.moveops[i1].orbits[s];
-            for(let j = 0; j < n; j++)if (pd.perm[j] != j || pd.ori[j] != 0) m[j].push(mvname);
+            for(let j = 0; j < n; j++)if (pd.perm[j] !== j || pd.ori[j] !== 0) m[j].push(mvname);
         }
-        for(let j = 0; j < n; j++)r.push("# " + (j + 1) + " " + m[j].join(" "));
+        for(let j = 0; j < n; j++)r.push(`# ${j + 1} ${m[j].join(" ")}`);
     }
-    toKsolve(name, mapper = new $9dde2f4b0392cf9f$var$NullMapper()) {
+    toKsolve(name, mapper = new $8b6d1a029267225c$var$NullMapper()) {
         const result = [];
-        result.push("Name " + name);
+        result.push(`Name ${name}`);
         result.push("");
         for(let i = 0; i < this.orbitnames.length; i++){
             result.push(`Set ${this.orbitnames[i]} ${this.orbitdefs[i].size} ${this.orbitdefs[i].mod}`);
@@ -622,13 +602,13 @@ var $9dde2f4b0392cf9f$var$PGOrbitsDef = class {
         for(let i3 = 0; i3 < this.movenames.length; i3++){
             result.push("");
             let name2 = this.movenames[i3];
-            if (!this.forcenames[i3]) name2 = $9dde2f4b0392cf9f$var$externalName(mapper, this.movenames[i3]);
+            if (!this.forcenames[i3]) name2 = $8b6d1a029267225c$var$externalName(mapper, this.movenames[i3]);
             let doinv = false;
             if (name2[name2.length - 1] === "'") {
                 doinv = true;
                 name2 = name2.substring(0, name2.length - 1);
             }
-            result.push("Move " + name2);
+            result.push(`Move ${name2}`);
             for(let j = 0; j < this.orbitnames.length; j++)if (doinv) this.moveops[i3].orbits[j].inv().appendDefinition(result, this.orbitnames[j], true);
             else this.moveops[i3].orbits[j].appendDefinition(result, this.orbitnames[j], true);
             result.push("End");
@@ -652,7 +632,7 @@ var $9dde2f4b0392cf9f$var$PGOrbitsDef = class {
         const moves = {};
         if (includemoves) for(let i4 = 0; i4 < this.movenames.length; i4++)moves[this.movenames[i4]] = this.transformToKTransformationData(this.moveops[i4]);
         return {
-            name: `PG3D #${++$9dde2f4b0392cf9f$var$lastGlobalDefinitionCounter}`,
+            name: `PG3D #${++$8b6d1a029267225c$var$lastGlobalDefinitionCounter}`,
             orbits: orbits,
             startStateData: start,
             moves: moves
@@ -667,7 +647,7 @@ var $9dde2f4b0392cf9f$var$PGOrbitsDef = class {
         for(let i = 0; i < this.orbitdefs.length; i++){
             const om = this.orbitdefs[i].mod;
             const n = this.orbitdefs[i].size;
-            const du = new $9dde2f4b0392cf9f$var$DisjointUnion(n);
+            const du = new $8b6d1a029267225c$var$DisjointUnion(n);
             const changed = new Array(this.orbitdefs[i].size);
             for(let k = 0; k < n; k++)changed[k] = false;
             for(let j = 0; j < this.moveops.length; j++)if (!this.isRotation[j]) {
@@ -679,7 +659,7 @@ var $9dde2f4b0392cf9f$var$PGOrbitsDef = class {
             let keepori = true;
             if (om > 1) {
                 keepori = false;
-                const duo = new $9dde2f4b0392cf9f$var$DisjointUnion(this.orbitdefs[i].size * om);
+                const duo = new $8b6d1a029267225c$var$DisjointUnion(this.orbitdefs[i].size * om);
                 for(let j = 0; j < this.moveops.length; j++)for(let k = 0; k < n; k++){
                     if (this.moveops[j].orbits[i].perm[k] !== k || this.moveops[j].orbits[i].ori[k] !== 0) for(let o = 0; o < om; o++)duo.union(k * om + o, this.moveops[j].orbits[i].perm[k] * om + (o + this.moveops[j].orbits[i].ori[k]) % om);
                 }
@@ -712,17 +692,17 @@ var $9dde2f4b0392cf9f$var$PGOrbitsDef = class {
                 if (multiple) neworbitnames.push(`${this.orbitnames[i]}_p${j3}`);
                 else neworbitnames.push(this.orbitnames[i]);
                 if (keepori) {
-                    neworbitdefs.push(new $9dde2f4b0392cf9f$var$PGOrbitDef(nv, this.orbitdefs[i].mod));
+                    neworbitdefs.push(new $8b6d1a029267225c$var$PGOrbitDef(nv, this.orbitdefs[i].mod));
                     newsolved.push(this.solved.orbits[i].remapVS(no, nv));
                     for(let k = 0; k < this.moveops.length; k++)newmoveops[k].push(this.moveops[k].orbits[i].remap(no, on, nv));
                 } else {
-                    neworbitdefs.push(new $9dde2f4b0392cf9f$var$PGOrbitDef(nv, 1));
+                    neworbitdefs.push(new $8b6d1a029267225c$var$PGOrbitDef(nv, 1));
                     newsolved.push(this.solved.orbits[i].remapVS(no, nv).killOri());
                     for(let k = 0; k < this.moveops.length; k++)newmoveops[k].push(this.moveops[k].orbits[i].remap(no, on, nv).killOri());
                 }
             }
         }
-        return new $9dde2f4b0392cf9f$var$PGOrbitsDef(neworbitnames, neworbitdefs, new $9dde2f4b0392cf9f$var$VisibleState(newsolved), this.movenames, newmoveops.map((_)=>new $9dde2f4b0392cf9f$var$PGTransform(_)), this.isRotation, this.forcenames);
+        return new $8b6d1a029267225c$var$PGOrbitsDef(neworbitnames, neworbitdefs, new $8b6d1a029267225c$var$VisibleState(newsolved), this.movenames, newmoveops.map((_)=>new $8b6d1a029267225c$var$PGTransform(_)), this.isRotation, this.forcenames);
     }
     scramble(n) {
         this.solved = this.solved.mul(this.getScrambleTransformation(n));
@@ -750,33 +730,33 @@ var $9dde2f4b0392cf9f$var$PGOrbitsDef = class {
         return s;
     }
     reassemblySize() {
-        let n = 1n;
+        let n = BigInt(1);
         for(let i = 0; i < this.orbitdefs.length; i++)n *= this.orbitdefs[i].reassemblySize();
         return n;
     }
 };
-var $9dde2f4b0392cf9f$var$_PGOrbit = class {
+var $8b6d1a029267225c$var$_PGOrbit = class {
     constructor(perm, ori, orimod){
         this.perm = perm;
         this.ori = ori;
         this.orimod = orimod;
     }
     static e(n, mod) {
-        return new $9dde2f4b0392cf9f$var$_PGOrbit($9dde2f4b0392cf9f$var$iota(n), $9dde2f4b0392cf9f$var$zeros(n), mod);
+        return new $8b6d1a029267225c$var$_PGOrbit($8b6d1a029267225c$var$iota(n), $8b6d1a029267225c$var$zeros(n), mod);
     }
     mul(b) {
         const n = this.perm.length;
         const newPerm = new Array(n);
         if (this.orimod === 1) {
             for(let i = 0; i < n; i++)newPerm[i] = this.perm[b.perm[i]];
-            return new $9dde2f4b0392cf9f$var$_PGOrbit(newPerm, this.ori, this.orimod);
+            return new $8b6d1a029267225c$var$_PGOrbit(newPerm, this.ori, this.orimod);
         } else {
             const newOri = new Array(n);
             for(let i = 0; i < n; i++){
                 newPerm[i] = this.perm[b.perm[i]];
                 newOri[i] = (this.ori[b.perm[i]] + b.ori[i]) % this.orimod;
             }
-            return new $9dde2f4b0392cf9f$var$_PGOrbit(newPerm, newOri, this.orimod);
+            return new $8b6d1a029267225c$var$_PGOrbit(newPerm, newOri, this.orimod);
         }
     }
     inv() {
@@ -787,7 +767,7 @@ var $9dde2f4b0392cf9f$var$_PGOrbit = class {
             newPerm[this.perm[i]] = i;
             newOri[this.perm[i]] = (this.orimod - this.ori[i]) % this.orimod;
         }
-        return new $9dde2f4b0392cf9f$var$_PGOrbit(newPerm, newOri, this.orimod);
+        return new $8b6d1a029267225c$var$_PGOrbit(newPerm, newOri, this.orimod);
     }
     equal(b) {
         const n = this.perm.length;
@@ -804,11 +784,11 @@ var $9dde2f4b0392cf9f$var$_PGOrbit = class {
     }
     toPerm() {
         const o = this.orimod;
-        if (o === 1) return new $9dde2f4b0392cf9f$var$Perm(this.perm);
+        if (o === 1) return new $8b6d1a029267225c$var$Perm(this.perm);
         const n = this.perm.length;
         const newPerm = new Array(n * o);
         for(let i = 0; i < n; i++)for(let j = 0; j < o; j++)newPerm[i * o + j] = o * this.perm[i] + (this.ori[i] + j) % o;
-        return new $9dde2f4b0392cf9f$var$Perm(newPerm);
+        return new $8b6d1a029267225c$var$Perm(newPerm);
     }
     identicalPieces() {
         const done = [];
@@ -832,7 +812,7 @@ var $9dde2f4b0392cf9f$var$_PGOrbit = class {
     }
     isIdentity() {
         const n = this.perm.length;
-        if (this.perm === $9dde2f4b0392cf9f$var$iota(n) && this.ori === $9dde2f4b0392cf9f$var$zeros(n)) return true;
+        if (this.perm === $8b6d1a029267225c$var$iota(n) && this.ori === $8b6d1a029267225c$var$zeros(n)) return true;
         for(let i = 0; i < n; i++){
             if (this.perm[i] !== i || this.ori[i] !== 0) return false;
         }
@@ -840,7 +820,7 @@ var $9dde2f4b0392cf9f$var$_PGOrbit = class {
     }
     zeroOris() {
         const n = this.perm.length;
-        if (this.ori === $9dde2f4b0392cf9f$var$zeros(n)) return true;
+        if (this.ori === $8b6d1a029267225c$var$zeros(n)) return true;
         for(let i = 0; i < n; i++){
             if (this.ori[i] !== 0) return false;
         }
@@ -853,7 +833,7 @@ var $9dde2f4b0392cf9f$var$_PGOrbit = class {
             newPerm[i] = on[this.perm[no[i]]];
             newOri[i] = this.ori[no[i]];
         }
-        return new $9dde2f4b0392cf9f$var$_PGOrbit(newPerm, newOri, this.orimod);
+        return new $8b6d1a029267225c$var$_PGOrbit(newPerm, newOri, this.orimod);
     }
     remapVS(no, nv) {
         const newPerm = new Array(nv);
@@ -866,7 +846,7 @@ var $9dde2f4b0392cf9f$var$_PGOrbit = class {
             newPerm[i] = reassign[ov];
             newOri[i] = this.ori[no[i]];
         }
-        return new $9dde2f4b0392cf9f$var$_PGOrbit(newPerm, newOri, this.orimod);
+        return new $8b6d1a029267225c$var$_PGOrbit(newPerm, newOri, this.orimod);
     }
     appendDefinition(result, name, useVS, concise = true) {
         if (concise && this.isIdentity()) return;
@@ -883,20 +863,20 @@ var $9dde2f4b0392cf9f$var$_PGOrbit = class {
     toKPuzzle() {
         const n = this.perm.length;
         if (this.isIdentity()) {
-            if (!$9dde2f4b0392cf9f$var$_PGOrbit.kcache[n]) $9dde2f4b0392cf9f$var$_PGOrbit.kcache[n] = {
-                permutation: $9dde2f4b0392cf9f$var$iota(n),
-                orientation: $9dde2f4b0392cf9f$var$zeros(n)
+            if (!$8b6d1a029267225c$var$_PGOrbit.kcache[n]) $8b6d1a029267225c$var$_PGOrbit.kcache[n] = {
+                permutation: $8b6d1a029267225c$var$iota(n),
+                orientation: $8b6d1a029267225c$var$zeros(n)
             };
-            return $9dde2f4b0392cf9f$var$_PGOrbit.kcache[n];
+            return $8b6d1a029267225c$var$_PGOrbit.kcache[n];
         } else return {
             permutation: this.perm,
             orientation: this.ori
         };
     }
 };
-var $9dde2f4b0392cf9f$var$PGOrbit = $9dde2f4b0392cf9f$var$_PGOrbit;
-$9dde2f4b0392cf9f$var$PGOrbit.kcache = [];
-var $9dde2f4b0392cf9f$var$PGTransformBase = class {
+var $8b6d1a029267225c$var$PGOrbit = $8b6d1a029267225c$var$_PGOrbit;
+$8b6d1a029267225c$var$PGOrbit.kcache = [];
+var $8b6d1a029267225c$var$PGTransformBase = class {
     constructor(orbits){
         this.orbits = orbits;
     }
@@ -934,7 +914,7 @@ var $9dde2f4b0392cf9f$var$PGTransformBase = class {
             for(let j = 0; j < p.n; j++)newPerm[n + j] = n + p.p[j];
             n += p.n;
         }
-        return new $9dde2f4b0392cf9f$var$Perm(newPerm);
+        return new $8b6d1a029267225c$var$Perm(newPerm);
     }
     identicalPieces() {
         const r = [];
@@ -949,16 +929,16 @@ var $9dde2f4b0392cf9f$var$PGTransformBase = class {
     }
     order() {
         let r = 1;
-        for (const orbit of this.orbits)r = $9dde2f4b0392cf9f$var$lcm(r, orbit.order());
+        for (const orbit of this.orbits)r = $8b6d1a029267225c$var$lcm(r, orbit.order());
         return r;
     }
 };
-var $9dde2f4b0392cf9f$var$PGTransform = class extends $9dde2f4b0392cf9f$var$PGTransformBase {
+var $8b6d1a029267225c$var$PGTransform = class extends $8b6d1a029267225c$var$PGTransformBase {
     constructor(orbits){
         super(orbits);
     }
     mul(b) {
-        return new $9dde2f4b0392cf9f$var$PGTransform(this.internalMul(b));
+        return new $8b6d1a029267225c$var$PGTransform(this.internalMul(b));
     }
     mulScalar(n) {
         if (n === 0) return this.e();
@@ -982,21 +962,21 @@ var $9dde2f4b0392cf9f$var$PGTransform = class extends $9dde2f4b0392cf9f$var$PGTr
         return r;
     }
     inv() {
-        return new $9dde2f4b0392cf9f$var$PGTransform(this.internalInv());
+        return new $8b6d1a029267225c$var$PGTransform(this.internalInv());
     }
     e() {
-        return new $9dde2f4b0392cf9f$var$PGTransform(this.orbits.map((_)=>$9dde2f4b0392cf9f$var$PGOrbit.e(_.perm.length, _.orimod)));
+        return new $8b6d1a029267225c$var$PGTransform(this.orbits.map((_)=>$8b6d1a029267225c$var$PGOrbit.e(_.perm.length, _.orimod)));
     }
 };
-var $9dde2f4b0392cf9f$var$VisibleState = class extends $9dde2f4b0392cf9f$var$PGTransformBase {
+var $8b6d1a029267225c$var$VisibleState = class extends $8b6d1a029267225c$var$PGTransformBase {
     constructor(orbits){
         super(orbits);
     }
     mul(b) {
-        return new $9dde2f4b0392cf9f$var$VisibleState(this.internalMul(b));
+        return new $8b6d1a029267225c$var$VisibleState(this.internalMul(b));
     }
 };
-var $9dde2f4b0392cf9f$var$DisjointUnion = class {
+var $8b6d1a029267225c$var$DisjointUnion = class {
     constructor(n){
         this.n = n;
         this.heads = new Array(n);
@@ -1016,7 +996,7 @@ var $9dde2f4b0392cf9f$var$DisjointUnion = class {
         else if (ah > bh) this.heads[ah] = bh;
     }
 };
-function $9dde2f4b0392cf9f$var$showcanon(g, disp) {
+function $8b6d1a029267225c$var$showcanon(g, disp) {
     const n = g.moveops.length;
     if (n > 30) throw new Error("Canon info too big for bitmask");
     const orders = [];
@@ -1054,7 +1034,7 @@ function $9dde2f4b0392cf9f$var$showcanon(g, disp) {
     }
 }
 // src/cubing/puzzle-geometry/PGPuzzles.ts
-var $9dde2f4b0392cf9f$var$PGPuzzles = {
+var $8b6d1a029267225c$var$PGPuzzles = {
     "2x2x2": "c f 0",
     "3x3x3": "c f 0.333333333333333",
     "4x4x4": "c f 0.5 f 0",
@@ -1070,47 +1050,47 @@ var $9dde2f4b0392cf9f$var$PGPuzzles = {
     "20x20x20": "c f 0 f .1 f .2 f .3 f .4 f .5 f .6 f .7 f .8 f .9",
     "30x30x30": "c f 0 f .066667 f .133333 f .2 f .266667 f .333333 f .4 f .466667 f .533333 f .6 f .666667 f .733333 f .8 f .866667 f .933333",
     "40x40x40": "c f 0 f .05 f .1 f .15 f .2 f .25 f .3 f .35 f .4 f .45 f .5 f .55 f .6 f .65 f .7 f .75 f .8 f .85 f .9 f .95",
-    "skewb": "c v 0",
+    skewb: "c v 0",
     "master skewb": "c v 0.275",
     "professor skewb": "c v 0 v 0.38",
     "compy cube": "c v 0.915641442663986",
-    "helicopter": "c e 0.707106781186547",
+    helicopter: "c e 0.707106781186547",
     "curvy copter": "c e 0.83",
-    "dino": "c v 0.577350269189626",
+    dino: "c v 0.577350269189626",
     "little chop": "c e 0",
-    "pyramorphix": "t e 0",
-    "mastermorphix": "t e 0.346184634065199",
-    "pyraminx": "t v 0.333333333333333 v 1.66666666666667",
-    "tetraminx": "t v 0.333333333333333",
+    pyramorphix: "t e 0",
+    mastermorphix: "t e 0.346184634065199",
+    pyraminx: "t v 0.333333333333333 v 1.66666666666667",
+    tetraminx: "t v 0.333333333333333",
     "master pyraminx": "t v 0 v 1 v 2",
     "master tetraminx": "t v 0 v 1",
     "professor pyraminx": "t v -0.2 v 0.6 v 1.4 v 2.2",
     "professor tetraminx": "t v -0.2 v 0.6 v 1.4",
     "Jing pyraminx": "t f 0",
     "master pyramorphix": "t e 0.866025403784437",
-    "megaminx": "d f 0.7",
-    "gigaminx": "d f 0.64 f 0.82",
-    "teraminx": "d f 0.64 f 0.76 f 0.88",
-    "petaminx": "d f 0.64 f 0.73 f 0.82 f 0.91",
-    "examinx": "d f 0.64 f 0.712 f 0.784 f 0.856 f 0.928",
-    "zetaminx": "d f 0.64 f 0.7 f 0.76 f 0.82 f 0.88 f 0.94",
-    "yottaminx": "d f 0.64 f 0.6914 f 0.7429 f 0.7943 f 0.8457 f 0.8971 f 0.9486",
-    "pentultimate": "d f 0",
+    megaminx: "d f 0.7",
+    gigaminx: "d f 0.64 f 0.82",
+    teraminx: "d f 0.64 f 0.76 f 0.88",
+    petaminx: "d f 0.64 f 0.73 f 0.82 f 0.91",
+    examinx: "d f 0.64 f 0.712 f 0.784 f 0.856 f 0.928",
+    zetaminx: "d f 0.64 f 0.7 f 0.76 f 0.82 f 0.88 f 0.94",
+    yottaminx: "d f 0.64 f 0.6914 f 0.7429 f 0.7943 f 0.8457 f 0.8971 f 0.9486",
+    pentultimate: "d f 0",
     "master pentultimate": "d f 0.1",
     "elite pentultimate": "d f 0 f 0.145905",
-    "starminx": "d v 0.937962370425399",
+    starminx: "d v 0.937962370425399",
     "starminx 2": "d f 0.23606797749979",
     "pyraminx crystal": "d f 0.447213595499989",
-    "chopasaurus": "d v 0",
+    chopasaurus: "d v 0",
     "big chop": "d e 0",
     "skewb diamond": "o f 0",
-    "FTO": "o f 0.333333333333333",
+    FTO: "o f 0.333333333333333",
     "master FTO": "o f 0.5 f 0",
     "Christopher's jewel": "o v 0.577350269189626",
-    "octastar": "o e 0",
+    octastar: "o e 0",
     "Trajber's octahedron": "o v 0.433012701892219",
     "radio chop": "i f 0",
-    "icosamate": "i v 0",
+    icosamate: "i v 0",
     "icosahedron 2": "i v 0.18759247376021",
     "icosahedron 3": "i v 0.18759247376021 e 0",
     "icosahedron static faces": "i v 0.84",
@@ -1124,13 +1104,13 @@ var $9dde2f4b0392cf9f$var$PGPuzzles = {
     "starminx combo": "d f 0.23606797749979 v 0.937962370425399"
 };
 // src/cubing/puzzle-geometry/Quat.ts
-var $9dde2f4b0392cf9f$var$eps = 1e-9;
-function $9dde2f4b0392cf9f$var$centermassface(face) {
-    let s = new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, 0, 0, 0);
+var $8b6d1a029267225c$var$eps = 1e-9;
+function $8b6d1a029267225c$var$centermassface(face) {
+    let s = new $8b6d1a029267225c$export$5edfe12bb88684c8(0, 0, 0, 0);
     for(let i = 0; i < face.length; i++)s = s.sum(face[i]);
     return s.smul(1 / face.length);
 }
-function $9dde2f4b0392cf9f$var$solvethreeplanes(p1, p2, p3, planes) {
+function $8b6d1a029267225c$var$solvethreeplanes(p1, p2, p3, planes) {
     const p = planes[p1].intersect3(planes[p2], planes[p3]);
     if (!p) return p;
     for(let i = 0; i < planes.length; i++)if (i !== p1 && i !== p2 && i !== p3) {
@@ -1139,7 +1119,7 @@ function $9dde2f4b0392cf9f$var$solvethreeplanes(p1, p2, p3, planes) {
     }
     return p;
 }
-var $9dde2f4b0392cf9f$export$5edfe12bb88684c8 = class {
+var $8b6d1a029267225c$export$5edfe12bb88684c8 = class {
     constructor(a, b, c, d){
         this.a = a;
         this.b = b;
@@ -1147,7 +1127,7 @@ var $9dde2f4b0392cf9f$export$5edfe12bb88684c8 = class {
         this.d = d;
     }
     mul(q) {
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(this.a * q.a - this.b * q.b - this.c * q.c - this.d * q.d, this.a * q.b + this.b * q.a + this.c * q.d - this.d * q.c, this.a * q.c - this.b * q.d + this.c * q.a + this.d * q.b, this.a * q.d + this.b * q.c - this.c * q.b + this.d * q.a);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(this.a * q.a - this.b * q.b - this.c * q.c - this.d * q.d, this.a * q.b + this.b * q.a + this.c * q.d - this.d * q.c, this.a * q.c - this.b * q.d + this.c * q.a + this.d * q.b, this.a * q.d + this.b * q.c - this.c * q.b + this.d * q.a);
     }
     toString() {
         return `Q[${this.a},${this.b},${this.c},${this.d}]`;
@@ -1159,42 +1139,42 @@ var $9dde2f4b0392cf9f$export$5edfe12bb88684c8 = class {
         return Math.hypot(this.a, this.b, this.c, this.d);
     }
     cross(q) {
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, this.c * q.d - this.d * q.c, this.d * q.b - this.b * q.d, this.b * q.c - this.c * q.b);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(0, this.c * q.d - this.d * q.c, this.d * q.b - this.b * q.d, this.b * q.c - this.c * q.b);
     }
     dot(q) {
         return this.b * q.b + this.c * q.c + this.d * q.d;
     }
     normalize() {
         const d = Math.sqrt(this.dot(this));
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(this.a / d, this.b / d, this.c / d, this.d / d);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(this.a / d, this.b / d, this.c / d, this.d / d);
     }
     makenormal() {
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, this.b, this.c, this.d).normalize();
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(0, this.b, this.c, this.d).normalize();
     }
     normalizeplane() {
         const d = Math.hypot(this.b, this.c, this.d);
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(this.a / d, this.b / d, this.c / d, this.d / d);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(this.a / d, this.b / d, this.c / d, this.d / d);
     }
     smul(m) {
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(this.a * m, this.b * m, this.c * m, this.d * m);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(this.a * m, this.b * m, this.c * m, this.d * m);
     }
     sum(q) {
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(this.a + q.a, this.b + q.b, this.c + q.c, this.d + q.d);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(this.a + q.a, this.b + q.b, this.c + q.c, this.d + q.d);
     }
     sub(q) {
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(this.a - q.a, this.b - q.b, this.c - q.c, this.d - q.d);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(this.a - q.a, this.b - q.b, this.c - q.c, this.d - q.d);
     }
     angle() {
         return 2 * Math.acos(this.a);
     }
     invrot() {
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(this.a, -this.b, -this.c, -this.d);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(this.a, -this.b, -this.c, -this.d);
     }
     det3x3(a00, a01, a02, a10, a11, a12, a20, a21, a22) {
         return a00 * (a11 * a22 - a12 * a21) + a01 * (a12 * a20 - a10 * a22) + a02 * (a10 * a21 - a11 * a20);
     }
     rotateplane(q) {
-        const t = q.mul(new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, this.b, this.c, this.d)).mul(q.invrot());
+        const t = q.mul(new $8b6d1a029267225c$export$5edfe12bb88684c8(0, this.b, this.c, this.d)).mul(q.invrot());
         t.a = this.a;
         return t;
     }
@@ -1202,16 +1182,16 @@ var $9dde2f4b0392cf9f$export$5edfe12bb88684c8 = class {
         const ab = Math.abs(this.b);
         const ac = Math.abs(this.c);
         const ad = Math.abs(this.d);
-        if (ab < ac && ab < ad) return this.cross(new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, 1, 0, 0)).normalize();
-        else if (ac < ab && ac < ad) return this.cross(new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, 0, 1, 0)).normalize();
-        else return this.cross(new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, 0, 0, 1)).normalize();
+        if (ab < ac && ab < ad) return this.cross(new $8b6d1a029267225c$export$5edfe12bb88684c8(0, 1, 0, 0)).normalize();
+        else if (ac < ab && ac < ad) return this.cross(new $8b6d1a029267225c$export$5edfe12bb88684c8(0, 0, 1, 0)).normalize();
+        else return this.cross(new $8b6d1a029267225c$export$5edfe12bb88684c8(0, 0, 0, 1)).normalize();
     }
     pointrotation(b) {
         const a = this.normalize();
         b = b.normalize();
-        if (a.sub(b).len() < $9dde2f4b0392cf9f$var$eps) return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(1, 0, 0, 0);
+        if (a.sub(b).len() < $8b6d1a029267225c$var$eps) return new $8b6d1a029267225c$export$5edfe12bb88684c8(1, 0, 0, 0);
         let h = a.sum(b);
-        if (h.len() < $9dde2f4b0392cf9f$var$eps) h = h.orthogonal();
+        if (h.len() < $8b6d1a029267225c$var$eps) h = h.orthogonal();
         else h = h.normalize();
         const r = a.cross(h);
         r.a = a.dot(h);
@@ -1228,12 +1208,12 @@ var $9dde2f4b0392cf9f$export$5edfe12bb88684c8 = class {
     }
     intersect3(p2, p3) {
         const det = this.det3x3(this.b, this.c, this.d, p2.b, p2.c, p2.d, p3.b, p3.c, p3.d);
-        if (Math.abs(det) < $9dde2f4b0392cf9f$var$eps) return false;
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, this.det3x3(this.a, this.c, this.d, p2.a, p2.c, p2.d, p3.a, p3.c, p3.d) / det, this.det3x3(this.b, this.a, this.d, p2.b, p2.a, p2.d, p3.b, p3.a, p3.d) / det, this.det3x3(this.b, this.c, this.a, p2.b, p2.c, p2.a, p3.b, p3.c, p3.a) / det);
+        if (Math.abs(det) < $8b6d1a029267225c$var$eps) return false;
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(0, this.det3x3(this.a, this.c, this.d, p2.a, p2.c, p2.d, p3.a, p3.c, p3.d) / det, this.det3x3(this.b, this.a, this.d, p2.b, p2.a, p2.d, p3.b, p3.a, p3.d) / det, this.det3x3(this.b, this.c, this.a, p2.b, p2.c, p2.a, p3.b, p3.c, p3.a) / det);
     }
     side(x) {
-        if (x > $9dde2f4b0392cf9f$var$eps) return 1;
-        if (x < -$9dde2f4b0392cf9f$var$eps) return -1;
+        if (x > $8b6d1a029267225c$var$eps) return 1;
+        if (x < -$8b6d1a029267225c$var$eps) return -1;
         return 0;
     }
     cutface(face) {
@@ -1285,28 +1265,28 @@ var $9dde2f4b0392cf9f$export$5edfe12bb88684c8 = class {
     sameplane(p) {
         const a = this.normalize();
         const b = p.normalize();
-        return a.dist(b) < $9dde2f4b0392cf9f$var$eps || a.dist(b.smul(-1)) < $9dde2f4b0392cf9f$var$eps;
+        return a.dist(b) < $8b6d1a029267225c$var$eps || a.dist(b.smul(-1)) < $8b6d1a029267225c$var$eps;
     }
     makecut(r) {
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(r, this.b, this.c, this.d);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(r, this.b, this.c, this.d);
     }
 };
 // src/cubing/puzzle-geometry/PlatonicGenerator.ts
-var $9dde2f4b0392cf9f$var$eps2 = 1e-9;
-function $9dde2f4b0392cf9f$var$cube() {
+var $8b6d1a029267225c$var$eps2 = 1e-9;
+function $8b6d1a029267225c$var$cube() {
     const s5 = Math.sqrt(0.5);
     return [
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(s5, s5, 0, 0),
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(s5, 0, s5, 0)
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(s5, s5, 0, 0),
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(s5, 0, s5, 0)
     ];
 }
-function $9dde2f4b0392cf9f$var$tetrahedron() {
+function $8b6d1a029267225c$var$tetrahedron() {
     return [
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0.5, 0.5, 0.5, 0.5),
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0.5, 0.5, 0.5, -0.5)
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(0.5, 0.5, 0.5, 0.5),
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(0.5, 0.5, 0.5, -0.5)
     ];
 }
-function $9dde2f4b0392cf9f$var$dodecahedron() {
+function $8b6d1a029267225c$var$dodecahedron() {
     const d36 = 2 * Math.PI / 10;
     let dx = 0.5 + 0.3 * Math.sqrt(5);
     let dy = 0.5 + 0.1 * Math.sqrt(5);
@@ -1314,11 +1294,11 @@ function $9dde2f4b0392cf9f$var$dodecahedron() {
     dx /= dd;
     dy /= dd;
     return [
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(Math.cos(d36), dx * Math.sin(d36), dy * Math.sin(d36), 0),
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0.5, 0.5, 0.5, 0.5)
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(Math.cos(d36), dx * Math.sin(d36), dy * Math.sin(d36), 0),
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(0.5, 0.5, 0.5, 0.5)
     ];
 }
-function $9dde2f4b0392cf9f$var$icosahedron() {
+function $8b6d1a029267225c$var$icosahedron() {
     let dx = 1 / 6 + Math.sqrt(5) / 6;
     let dy = 2 / 3 + Math.sqrt(5) / 3;
     const dd = Math.sqrt(dx * dx + dy * dy);
@@ -1326,26 +1306,26 @@ function $9dde2f4b0392cf9f$var$icosahedron() {
     dy /= dd;
     const ang = 2 * Math.PI / 6;
     return [
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(Math.cos(ang), dx * Math.sin(ang), dy * Math.sin(ang), 0),
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(Math.cos(ang), -dx * Math.sin(ang), dy * Math.sin(ang), 0)
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(Math.cos(ang), dx * Math.sin(ang), dy * Math.sin(ang), 0),
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(Math.cos(ang), -dx * Math.sin(ang), dy * Math.sin(ang), 0)
     ];
 }
-function $9dde2f4b0392cf9f$var$octahedron() {
+function $8b6d1a029267225c$var$octahedron() {
     const s5 = Math.sqrt(0.5);
     return [
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0.5, 0.5, 0.5, 0.5),
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(s5, 0, 0, s5)
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(0.5, 0.5, 0.5, 0.5),
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(s5, 0, 0, s5)
     ];
 }
-function $9dde2f4b0392cf9f$var$closure(g) {
+function $8b6d1a029267225c$var$closure(g) {
     const q = [
-        new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(1, 0, 0, 0)
+        new $8b6d1a029267225c$export$5edfe12bb88684c8(1, 0, 0, 0)
     ];
     for(let i = 0; i < q.length; i++)for(let j = 0; j < g.length; j++){
         const ns = g[j].mul(q[i]);
         const negns = ns.smul(-1);
         let wasseen = false;
-        for(let k = 0; k < q.length; k++)if (ns.dist(q[k]) < $9dde2f4b0392cf9f$var$eps2 || negns.dist(q[k]) < $9dde2f4b0392cf9f$var$eps2) {
+        for(let k = 0; k < q.length; k++)if (ns.dist(q[k]) < $8b6d1a029267225c$var$eps2 || negns.dist(q[k]) < $8b6d1a029267225c$var$eps2) {
             wasseen = true;
             break;
         }
@@ -1353,13 +1333,13 @@ function $9dde2f4b0392cf9f$var$closure(g) {
     }
     return q;
 }
-function $9dde2f4b0392cf9f$var$uniqueplanes(p, g) {
+function $8b6d1a029267225c$var$uniqueplanes(p, g) {
     const planes = [];
     const planerot = [];
     for(let i = 0; i < g.length; i++){
         const p2 = p.rotateplane(g[i]);
         let wasseen = false;
-        for(let j = 0; j < planes.length; j++)if (p2.dist(planes[j]) < $9dde2f4b0392cf9f$var$eps2) {
+        for(let j = 0; j < planes.length; j++)if (p2.dist(planes[j]) < $8b6d1a029267225c$var$eps2) {
             wasseen = true;
             break;
         }
@@ -1370,13 +1350,13 @@ function $9dde2f4b0392cf9f$var$uniqueplanes(p, g) {
     }
     return planerot;
 }
-function $9dde2f4b0392cf9f$var$getface(planes) {
+function $8b6d1a029267225c$var$getface(planes) {
     const face = [];
     for(let i = 1; i < planes.length; i++)for(let j = i + 1; j < planes.length; j++){
-        const p = $9dde2f4b0392cf9f$var$solvethreeplanes(0, i, j, planes);
+        const p = $8b6d1a029267225c$var$solvethreeplanes(0, i, j, planes);
         if (p) {
             let wasseen = false;
-            for(let k = 0; k < face.length; k++)if (p.dist(face[k]) < $9dde2f4b0392cf9f$var$eps2) {
+            for(let k = 0; k < face.length; k++)if (p.dist(face[k]) < $8b6d1a029267225c$var$eps2) {
                 wasseen = true;
                 break;
             }
@@ -1399,24 +1379,24 @@ function $9dde2f4b0392cf9f$var$getface(planes) {
     return face;
 }
 // src/cubing/puzzle-geometry/SchreierSims.ts
-var $9dde2f4b0392cf9f$var$FactoredNumber = class {
+var $8b6d1a029267225c$var$FactoredNumber = class {
     constructor(){
         this.mult = [];
     }
     multiply(n) {
         for(let f = 2; f * f <= n; f++)while(n % f === 0){
-            if (this.mult[f] !== void 0) this.mult[f]++;
+            if (void 0 !== this.mult[f]) this.mult[f]++;
             else this.mult[f] = 1;
             n /= f;
         }
         if (n > 1) {
-            if (this.mult[n] !== void 0) this.mult[n]++;
+            if (void 0 !== this.mult[n]) this.mult[n]++;
             else this.mult[n] = 1;
         }
     }
     toString() {
         let r = "";
-        for(let i = 0; i < this.mult.length; i++)if (this.mult[i] !== void 0) {
+        for(let i = 0; i < this.mult.length; i++)if (void 0 !== this.mult[i]) {
             if (r !== "") r += "*";
             r += i;
             if (this.mult[i] > 1) r += `^${this.mult[i]}`;
@@ -1424,9 +1404,9 @@ var $9dde2f4b0392cf9f$var$FactoredNumber = class {
         return r;
     }
 };
-function $9dde2f4b0392cf9f$export$f17eb225ad7d7738(g, disp) {
+function $8b6d1a029267225c$export$f17eb225ad7d7738(g, disp) {
     const n = g[0].p.length;
-    const e = $9dde2f4b0392cf9f$var$identity(n);
+    const e = $8b6d1a029267225c$var$identity(n);
     let sgs = [];
     let sgsi = [];
     let sgslen = [];
@@ -1476,14 +1456,14 @@ function $9dde2f4b0392cf9f$export$f17eb225ad7d7738(g, disp) {
             sgslen[i][i] = 0;
         }
         let none = 0;
-        let sz = 1n;
+        let sz = BigInt(1);
         for(let i8 = 0; i8 < g.length; i8++){
             knutha(n - 1, g[i8], 1);
-            sz = 1n;
+            sz = BigInt(1);
             let tks = 0;
             let sollen = 0;
             const avgs = [];
-            const mults = new $9dde2f4b0392cf9f$var$FactoredNumber();
+            const mults = new $8b6d1a029267225c$var$FactoredNumber();
             for(let j = 0; j < n; j++){
                 let cnt = 0;
                 let lensum = 0;
@@ -1506,11 +1486,11 @@ function $9dde2f4b0392cf9f$export$f17eb225ad7d7738(g, disp) {
     return getsgs();
 }
 // src/cubing/puzzle-geometry/PuzzleGeometry.ts
-function $9dde2f4b0392cf9f$var$tstart(s) {
+function $8b6d1a029267225c$var$tstart(s) {
     return s;
 }
-function $9dde2f4b0392cf9f$var$tend(_) {}
-var $9dde2f4b0392cf9f$var$Face = class {
+function $8b6d1a029267225c$var$tend(_) {}
+var $8b6d1a029267225c$var$Face = class {
     constructor(q){
         this.coords = new Array(q.length * 3);
         for(let i = 0; i < q.length; i++){
@@ -1521,7 +1501,7 @@ var $9dde2f4b0392cf9f$var$Face = class {
         this.length = q.length;
     }
     get(off) {
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, this.coords[3 * off], this.coords[3 * off + 1], this.coords[3 * off + 2]);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(0, this.coords[3 * off], this.coords[3 * off + 1], this.coords[3 * off + 2]);
     }
     centermass() {
         let sx = 0;
@@ -1532,21 +1512,21 @@ var $9dde2f4b0392cf9f$var$Face = class {
             sy += this.coords[3 * i + 1];
             sz += this.coords[3 * i + 2];
         }
-        return new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, sx / this.length, sy / this.length, sz / this.length);
+        return new $8b6d1a029267225c$export$5edfe12bb88684c8(0, sx / this.length, sy / this.length, sz / this.length);
     }
     rotate(q) {
         const a = [];
         for(let i = 0; i < this.length; i++)a.push(this.get(i).rotatepoint(q));
-        return new $9dde2f4b0392cf9f$var$Face(a);
+        return new $8b6d1a029267225c$var$Face(a);
     }
     rotateforward() {
         const a = [];
         for(let i = 1; i < this.length; i++)a.push(this.get(i));
         a.push(this.get(0));
-        return new $9dde2f4b0392cf9f$var$Face(a);
+        return new $8b6d1a029267225c$var$Face(a);
     }
 };
-var $9dde2f4b0392cf9f$var$FaceTree = class {
+var $8b6d1a029267225c$var$FaceTree = class {
     constructor(face, left, right){
         this.face = face;
         this.left = left;
@@ -1556,8 +1536,8 @@ var $9dde2f4b0392cf9f$var$FaceTree = class {
         const t = q.cutface(this.face);
         if (t !== null) {
             if (this.left === void 0) {
-                this.left = new $9dde2f4b0392cf9f$var$FaceTree(t[0]);
-                this.right = new $9dde2f4b0392cf9f$var$FaceTree(t[1]);
+                this.left = new $8b6d1a029267225c$var$FaceTree(t[0]);
+                this.right = new $8b6d1a029267225c$var$FaceTree(t[1]);
             } else {
                 this.left = this.left?.split(q);
                 this.right = this.right?.split(q);
@@ -1566,7 +1546,7 @@ var $9dde2f4b0392cf9f$var$FaceTree = class {
         return this;
     }
     collect(arr, leftfirst) {
-        if (this.left === void 0) arr.push(new $9dde2f4b0392cf9f$var$Face(this.face));
+        if (this.left === void 0) arr.push(new $8b6d1a029267225c$var$Face(this.face));
         else if (leftfirst) {
             this.left?.collect(arr, false);
             this.right?.collect(arr, true);
@@ -1577,15 +1557,15 @@ var $9dde2f4b0392cf9f$var$FaceTree = class {
         return arr;
     }
 };
-function $9dde2f4b0392cf9f$var$expandfaces(rots, faces) {
+function $8b6d1a029267225c$var$expandfaces(rots, faces) {
     const nfaces = [];
     for (const rot of rots)for (const face of faces)nfaces.push(face.rotate(rot));
     return nfaces;
 }
-var $9dde2f4b0392cf9f$var$eps3 = 1e-9;
-var $9dde2f4b0392cf9f$var$copyright = "PuzzleGeometry 0.1 Copyright 2018 Tomas Rokicki.";
-var $9dde2f4b0392cf9f$var$permissivieMoveParsing = false;
-function $9dde2f4b0392cf9f$var$defaultnets() {
+var $8b6d1a029267225c$var$eps3 = 1e-9;
+var $8b6d1a029267225c$var$copyright = "PuzzleGeometry 0.1 Copyright 2018 Tomas Rokicki.";
+var $8b6d1a029267225c$var$permissivieMoveParsing = false;
+function $8b6d1a029267225c$var$defaultnets() {
     return {
         4: [
             [
@@ -1743,7 +1723,7 @@ function $9dde2f4b0392cf9f$var$defaultnets() {
         ]
     };
 }
-function $9dde2f4b0392cf9f$var$defaultcolors() {
+function $8b6d1a029267225c$var$defaultcolors() {
     return {
         4: {
             F: "#00ff00",
@@ -1807,7 +1787,7 @@ function $9dde2f4b0392cf9f$var$defaultcolors() {
         }
     };
 }
-var $9dde2f4b0392cf9f$var$orientationDefaults = {
+var $8b6d1a029267225c$var$orientationDefaults = {
     4: {
         v: [
             "DFR",
@@ -2039,7 +2019,7 @@ var $9dde2f4b0392cf9f$var$orientationDefaults = {
         ]
     }
 };
-function $9dde2f4b0392cf9f$var$defaultOrientations() {
+function $8b6d1a029267225c$var$defaultOrientations() {
     return {
         4: [
             [
@@ -2133,31 +2113,31 @@ function $9dde2f4b0392cf9f$var$defaultOrientations() {
         ]
     };
 }
-function $9dde2f4b0392cf9f$var$findelement(a, p) {
+function $8b6d1a029267225c$var$findelement(a, p) {
     for(let i = 0; i < a.length; i++){
-        if (a[i][0].dist(p) < $9dde2f4b0392cf9f$var$eps3) return i;
+        if (a[i][0].dist(p) < $8b6d1a029267225c$var$eps3) return i;
     }
     throw new Error("Element not found");
 }
-function $9dde2f4b0392cf9f$export$6d6c096d5214295b() {
-    return $9dde2f4b0392cf9f$var$PGPuzzles;
+function $8b6d1a029267225c$export$6d6c096d5214295b() {
+    return $8b6d1a029267225c$var$PGPuzzles;
 }
-function $9dde2f4b0392cf9f$export$1f9f297c0a9a9cd1(puzzleName) {
-    return $9dde2f4b0392cf9f$var$PGPuzzles[puzzleName];
+function $8b6d1a029267225c$export$1f9f297c0a9a9cd1(puzzleName) {
+    return $8b6d1a029267225c$var$PGPuzzles[puzzleName];
 }
-var $9dde2f4b0392cf9f$export$8965e19b0a540c90 = [
+var $8b6d1a029267225c$export$e19ec2c480155271 = [
     "c",
     "t",
     "o",
     "d",
     "i"
 ];
-var $9dde2f4b0392cf9f$export$f137e9f8b0977b41 = [
+var $8b6d1a029267225c$export$411162ee52ec3fbf = [
     "f",
     "v",
     "e"
 ];
-function $9dde2f4b0392cf9f$export$f4bd658db3408711(s) {
+function $8b6d1a029267225c$export$f4bd658db3408711(s) {
     const a = s.split(/ /).filter(Boolean);
     if (a.length % 2 === 0) return null;
     const shape = a[0];
@@ -2175,20 +2155,20 @@ function $9dde2f4b0392cf9f$export$f4bd658db3408711(s) {
         cuts: cuts
     };
 }
-function $9dde2f4b0392cf9f$export$898ad9435742d552(desc, options = {}) {
-    const parsed = $9dde2f4b0392cf9f$export$f4bd658db3408711(desc);
+function $8b6d1a029267225c$export$898ad9435742d552(desc, options = {}) {
+    const parsed = $8b6d1a029267225c$export$f4bd658db3408711(desc);
     if (parsed === null) throw new Error("Could not parse the puzzle description");
-    const pg = new $9dde2f4b0392cf9f$export$b89c271f50b83709(parsed, Object.assign({}, {
+    const pg = new $8b6d1a029267225c$export$b89c271f50b83709(parsed, Object.assign({}, {
         allMoves: true
     }, options));
     pg.allstickers();
     pg.genperms();
     return pg;
 }
-function $9dde2f4b0392cf9f$export$37497081d872df9(puzzleName, options) {
-    return $9dde2f4b0392cf9f$export$898ad9435742d552($9dde2f4b0392cf9f$var$PGPuzzles[puzzleName], options);
+function $8b6d1a029267225c$export$37497081d872df9(puzzleName, options) {
+    return $8b6d1a029267225c$export$898ad9435742d552($8b6d1a029267225c$var$PGPuzzles[puzzleName], options);
 }
-function $9dde2f4b0392cf9f$var$getmovename(geo, bits, slices) {
+function $8b6d1a029267225c$var$getmovename(geo, bits, slices) {
     let inverted = false;
     if (slices - bits[1] < bits[0]) {
         geo = [
@@ -2205,7 +2185,7 @@ function $9dde2f4b0392cf9f$var$getmovename(geo, bits, slices) {
     }
     let movenameFamily = geo[0];
     let movenamePrefix = "";
-    if (bits[0] === 0 && bits[1] === slices) movenameFamily = movenameFamily + "v";
+    if (bits[0] === 0 && bits[1] === slices) movenameFamily = `${movenameFamily}v`;
     else if (bits[0] === bits[1]) {
         if (bits[1] > 0) movenamePrefix = String(bits[1] + 1);
     } else if (bits[0] === 0) {
@@ -2217,7 +2197,7 @@ function $9dde2f4b0392cf9f$var$getmovename(geo, bits, slices) {
         inverted
     ];
 }
-function $9dde2f4b0392cf9f$var$splitByFaceNames(s, facenames) {
+function $8b6d1a029267225c$var$splitByFaceNames(s, facenames) {
     const r = [];
     let at = 0;
     while(at < s.length){
@@ -2227,29 +2207,29 @@ function $9dde2f4b0392cf9f$var$splitByFaceNames(s, facenames) {
         if (currentMatch !== "") {
             r.push(currentMatch);
             at += currentMatch.length;
-        } else throw new Error("Could not split " + s + " into face names.");
+        } else throw new Error(`Could not split ${s} into face names.`);
     }
     return r;
 }
-function $9dde2f4b0392cf9f$var$toCoords(q, maxdist) {
+function $8b6d1a029267225c$var$toCoords(q, maxdist) {
     return [
         q.b / maxdist,
         -q.c / maxdist,
         q.d / maxdist
     ];
 }
-function $9dde2f4b0392cf9f$var$toFaceCoords(q, maxdist) {
+function $8b6d1a029267225c$var$toFaceCoords(q, maxdist) {
     const r = [];
     const n = q.length;
     for(let i = 0; i < n; i++){
-        const pt = $9dde2f4b0392cf9f$var$toCoords(q.get(n - i - 1), maxdist);
+        const pt = $8b6d1a029267225c$var$toCoords(q.get(n - i - 1), maxdist);
         r[3 * i] = pt[0];
         r[3 * i + 1] = pt[1];
         r[3 * i + 2] = pt[2];
     }
     return r;
 }
-var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
+var $8b6d1a029267225c$export$b89c271f50b83709 = class {
     constructor(puzzleDescription, options){
         this.puzzleDescription = puzzleDescription;
         this.cmovesbyslice = [];
@@ -2258,14 +2238,14 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         this.fixedCubie = -1;
         this.net = [];
         this.colors = [];
-        this.notationMapper = new $9dde2f4b0392cf9f$var$NullMapper();
+        this.notationMapper = new $8b6d1a029267225c$var$NullMapper();
         this.addNotationMapper = "";
         this.setReidOrder = false;
-        const t1 = $9dde2f4b0392cf9f$var$tstart("genperms");
-        this.options = new $9dde2f4b0392cf9f$var$PuzzleGeometryFullOptions(options);
+        const t1 = $8b6d1a029267225c$var$tstart("genperms");
+        this.options = new $8b6d1a029267225c$var$PuzzleGeometryFullOptions(options);
         if (this.options.verbosity > 0) console.log(this.header("# "));
         this.create(puzzleDescription);
-        $9dde2f4b0392cf9f$var$tend(t1);
+        $8b6d1a029267225c$var$tend(t1);
     }
     create(puzzleDescription) {
         const { shape: shape , cuts: cuts  } = puzzleDescription;
@@ -2276,45 +2256,45 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         let g = null;
         switch(shape){
             case "c":
-                g = $9dde2f4b0392cf9f$var$cube();
+                g = $8b6d1a029267225c$var$cube();
                 break;
             case "o":
-                g = $9dde2f4b0392cf9f$var$octahedron();
+                g = $8b6d1a029267225c$var$octahedron();
                 break;
             case "i":
-                g = $9dde2f4b0392cf9f$var$icosahedron();
+                g = $8b6d1a029267225c$var$icosahedron();
                 break;
             case "t":
-                g = $9dde2f4b0392cf9f$var$tetrahedron();
+                g = $8b6d1a029267225c$var$tetrahedron();
                 break;
             case "d":
-                g = $9dde2f4b0392cf9f$var$dodecahedron();
+                g = $8b6d1a029267225c$var$dodecahedron();
                 break;
             default:
-                throw new Error("Bad shape argument: " + shape);
+                throw new Error(`Bad shape argument: ${shape}`);
         }
-        this.rotations = $9dde2f4b0392cf9f$var$closure(g);
-        if (this.options.verbosity) console.log("# Rotations: " + this.rotations.length);
+        this.rotations = $8b6d1a029267225c$var$closure(g);
+        if (this.options.verbosity) console.log(`# Rotations: ${this.rotations.length}`);
         const baseplane = g[0];
-        this.baseplanerot = $9dde2f4b0392cf9f$var$uniqueplanes(baseplane, this.rotations);
+        this.baseplanerot = $8b6d1a029267225c$var$uniqueplanes(baseplane, this.rotations);
         const baseplanes = this.baseplanerot.map((_)=>baseplane.rotateplane(_));
         this.baseplanes = baseplanes;
         this.baseFaceCount = baseplanes.length;
-        const net = $9dde2f4b0392cf9f$var$defaultnets()[baseplanes.length];
+        const net = $8b6d1a029267225c$var$defaultnets()[baseplanes.length];
         this.net = net;
-        this.colors = $9dde2f4b0392cf9f$var$defaultcolors()[baseplanes.length];
-        if (this.options.verbosity > 0) console.log("# Base planes: " + baseplanes.length);
-        const baseface = $9dde2f4b0392cf9f$var$getface(baseplanes);
-        const zero = new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, 0, 0, 0);
-        if (this.options.verbosity > 0) console.log("# Face vertices: " + baseface.length);
+        this.colors = $8b6d1a029267225c$var$defaultcolors()[baseplanes.length];
+        if (this.options.verbosity > 0) console.log(`# Base planes: ${baseplanes.length}`);
+        const baseface = $8b6d1a029267225c$var$getface(baseplanes);
+        const zero = new $8b6d1a029267225c$export$5edfe12bb88684c8(0, 0, 0, 0);
+        if (this.options.verbosity > 0) console.log(`# Face vertices: ${baseface.length}`);
         const facenormal = baseplanes[0].makenormal();
         const edgenormal = baseface[0].sum(baseface[1]).makenormal();
         const vertexnormal = baseface[0].makenormal();
-        const boundary = new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(1, facenormal.b, facenormal.c, facenormal.d);
-        if (this.options.verbosity > 0) console.log("# Boundary is " + boundary);
-        const planerot = $9dde2f4b0392cf9f$var$uniqueplanes(boundary, this.rotations);
+        const boundary = new $8b6d1a029267225c$export$5edfe12bb88684c8(1, facenormal.b, facenormal.c, facenormal.d);
+        if (this.options.verbosity > 0) console.log(`# Boundary is ${boundary}`);
+        const planerot = $8b6d1a029267225c$var$uniqueplanes(boundary, this.rotations);
         const planes = planerot.map((_)=>boundary.rotateplane(_));
-        const firstface = $9dde2f4b0392cf9f$var$getface(planes);
+        const firstface = $8b6d1a029267225c$var$getface(planes);
         this.edgedistance = firstface[0].sum(firstface[1]).smul(0.5).dist(zero);
         this.vertexdistance = firstface[0].dist(zero);
         const cutplanes = [];
@@ -2342,7 +2322,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                     sawedge = true;
                     break;
                 default:
-                    throw new Error("Bad cut argument: " + cut.cutType);
+                    throw new Error(`Bad cut argument: ${cut.cutType}`);
             }
             cutplanes.push(normal.makecut(cut.distance));
             intersects.push(cut.distance < distance);
@@ -2355,7 +2335,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         this.basefaces = [];
         for (const baseplanerot of this.baseplanerot){
             const face = baseplanerot.rotateface(firstface);
-            this.basefaces.push(new $9dde2f4b0392cf9f$var$Face(face));
+            this.basefaces.push(new $8b6d1a029267225c$var$Face(face));
         }
         const facenames = [];
         const faceplanes = [];
@@ -2363,7 +2343,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         const edgenames = [];
         const edgesperface = firstface.length;
         function searchaddelement(a, p, name) {
-            for (const el of a)if (el[0].dist(p) < $9dde2f4b0392cf9f$var$eps3) {
+            for (const el of a)if (el[0].dist(p) < $8b6d1a029267225c$var$eps3) {
                 el.push(name);
                 return;
             }
@@ -2387,7 +2367,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             for(let j = 0; j < face.length; j++){
                 const jj = (j + 1) % face.length;
                 const midpoint = face[j].sum(face[jj]).smul(0.5);
-                const el = edgenames[$9dde2f4b0392cf9f$var$findelement(edgenames, midpoint)];
+                const el = edgenames[$8b6d1a029267225c$var$findelement(edgenames, midpoint)];
                 if (i9 === el[1]) facelist.push(el[2]);
                 else if (i9 === el[2]) facelist.push(el[1]);
                 else throw new Error("Could not find edge");
@@ -2443,8 +2423,8 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 const midpoint = face[j].sum(face[jj]).smul(0.5);
                 const jjj = (j + 2) % face.length;
                 const midpoint2 = face[jj].sum(face[jjj]).smul(0.5);
-                const e1 = $9dde2f4b0392cf9f$var$findelement(edgenames, midpoint);
-                const e2 = $9dde2f4b0392cf9f$var$findelement(edgenames, midpoint2);
+                const e1 = $8b6d1a029267225c$var$findelement(edgenames, midpoint);
+                const e2 = $8b6d1a029267225c$var$findelement(edgenames, midpoint2);
                 searchaddelement(vertexnames, face[jj], [
                     facename,
                     e2,
@@ -2452,9 +2432,9 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 ]);
             }
         }
-        this.swizzler = new $9dde2f4b0392cf9f$var$FaceNameSwizzler(facenames.map((_)=>_[1]));
+        this.swizzler = new $8b6d1a029267225c$var$FaceNameSwizzler(facenames.map((_)=>_[1]));
         const sep = this.swizzler.prefixFree ? "" : "_";
-        const oridata = $9dde2f4b0392cf9f$var$orientationDefaults[this.baseFaceCount];
+        const oridata = $8b6d1a029267225c$var$orientationDefaults[this.baseFaceCount];
         const markedface = [];
         for(let i12 = 0; i12 < this.baseFaceCount; i12++)markedface[1 << i12] = i12;
         {
@@ -2484,13 +2464,13 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             }
         }
         for(let i13 = 0; i13 < edgenames.length; i13++){
-            if (edgenames[i13].length !== 3) throw new Error("Bad length in edge names " + edgenames[i13]);
+            if (edgenames[i13].length !== 3) throw new Error(`Bad length in edge names ${edgenames[i13]}`);
             const f1 = edgenames[i13][1];
             const f2 = edgenames[i13][2];
             let c1 = faceindextoname[f1];
             const c2 = faceindextoname[f2];
             const bits = 1 << f1 | 1 << f2;
-            if (markedface[bits] == f1) c1 = c1 + sep + c2;
+            if (markedface[bits] === f1) c1 = c1 + sep + c2;
             else c1 = c2 + sep + c1;
             edgenames[i13] = [
                 edgenames[i13][0],
@@ -2521,9 +2501,9 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         }
         this.markedface = markedface;
         if (this.options.verbosity > 1) {
-            console.log("# Face names: " + facenames.map((_)=>_[1]).join(" "));
-            console.log("# Edge names: " + edgenames.map((_)=>_[1]).join(" "));
-            console.log("# Vertex names: " + vertexnames.map((_)=>_[1]).join(" "));
+            console.log(`# Face names: ${facenames.map((_)=>_[1]).join(" ")}`);
+            console.log(`# Edge names: ${edgenames.map((_)=>_[1]).join(" ")}`);
+            console.log(`# Vertex names: ${vertexnames.map((_)=>_[1]).join(" ")}`);
         }
         const geonormals = [];
         for (const faceplane of faceplanes)geonormals.push([
@@ -2548,7 +2528,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         this.geonormals = geonormals;
         const geonormalnames = geonormals.map((_)=>_[1]);
         this.swizzler.setGripNames(geonormalnames);
-        if (this.options.verbosity > 0) console.log("# Distances: face 1 edge " + this.edgedistance + " vertex " + this.vertexdistance);
+        if (this.options.verbosity > 0) console.log(`# Distances: face ${1} edge ${this.edgedistance} vertex ${this.vertexdistance}`);
         for(let c = 0; c < cutplanes.length; c++)for (const rotation of this.rotations){
             const q = cutplanes[c].rotateplane(rotation);
             let wasseen = false;
@@ -2561,7 +2541,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 if (intersects[c]) this.moveplanes2.push(q);
             }
         }
-        let ft = new $9dde2f4b0392cf9f$var$FaceTree(firstface);
+        let ft = new $8b6d1a029267225c$var$FaceTree(firstface);
         const tar = this.moveplanes2.slice();
         let rval = 31;
         for(let i15 = 0; i15 < tar.length; i15++){
@@ -2572,13 +2552,13 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         }
         const faces = ft.collect([], true);
         this.faces = faces;
-        if (this.options.verbosity > 0) console.log("# Faces is now " + faces.length);
+        if (this.options.verbosity > 0) console.log(`# Faces is now ${faces.length}`);
         this.stickersperface = faces.length;
         const simplerot = [];
-        const cm = $9dde2f4b0392cf9f$var$centermassface(firstface);
+        const cm = $8b6d1a029267225c$var$centermassface(firstface);
         for (const rotation1 of this.rotations){
             const f = rotation1.rotateface(firstface);
-            if (cm.dist($9dde2f4b0392cf9f$var$centermassface(f)) < $9dde2f4b0392cf9f$var$eps3) simplerot.push(rotation1);
+            if (cm.dist($8b6d1a029267225c$var$centermassface(f)) < $8b6d1a029267225c$var$eps3) simplerot.push(rotation1);
         }
         const finished = new Array(faces.length);
         const sortme = [];
@@ -2599,9 +2579,9 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                     const f2 = faces[i].rotate(rot);
                     const cm2 = f2.centermass();
                     for(let kk = ii + 1; kk < faces.length; kk++){
-                        if (sortme[kk][0] - sortme[ii][0] > $9dde2f4b0392cf9f$var$eps3) break;
+                        if (sortme[kk][0] - sortme[ii][0] > $8b6d1a029267225c$var$eps3) break;
                         const k = sortme[kk][2];
-                        if (!finished[k] && cm2.dist(sortme[kk][1]) < $9dde2f4b0392cf9f$var$eps3) {
+                        if (!finished[k] && cm2.dist(sortme[kk][1]) < $8b6d1a029267225c$var$eps3) {
                             finished[k] = true;
                             faces[k] = f2;
                             break;
@@ -2616,7 +2596,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             const t = face.get(j).dist(face.get(k));
             if (t < this.shortedge) this.shortedge = t;
         }
-        if (this.options.verbosity > 0) console.log("# Short edge is " + this.shortedge);
+        if (this.options.verbosity > 0) console.log(`# Short edge is ${this.shortedge}`);
         if (shape === "c" && sawface && !sawedge && !sawvertex) {
             this.addNotationMapper = "NxNxNCubeMapper";
             this.setReidOrder = true;
@@ -2624,7 +2604,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         if (shape === "c" && sawvertex && !sawface && !sawedge) this.addNotationMapper = "SkewbMapper";
         if (shape === "t" && (sawvertex || sawface) && !sawedge) this.addNotationMapper = "PyraminxOrTetraminxMapper";
         if (shape === "o" && sawface) {
-            this.notationMapper = new $9dde2f4b0392cf9f$var$FaceRenamingMapper(this.swizzler, new $9dde2f4b0392cf9f$var$FaceNameSwizzler([
+            this.notationMapper = new $8b6d1a029267225c$var$FaceRenamingMapper(this.swizzler, new $8b6d1a029267225c$var$FaceNameSwizzler([
                 "F",
                 "D",
                 "L",
@@ -2634,11 +2614,11 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 "BR",
                 "B"
             ]));
-            if (!sawedge && !sawvertex) this.addNotationMapper = "FTOMapper";
+            if (!(sawedge || sawvertex)) this.addNotationMapper = "FTOMapper";
         }
         if (shape === "d" && sawface) {
             this.addNotationMapper = "MegaminxMapper";
-            this.notationMapper = new $9dde2f4b0392cf9f$var$FaceRenamingMapper(this.swizzler, new $9dde2f4b0392cf9f$var$FaceNameSwizzler([
+            this.notationMapper = new $8b6d1a029267225c$var$FaceRenamingMapper(this.swizzler, new $8b6d1a029267225c$var$FaceNameSwizzler([
                 "U",
                 "F",
                 "L",
@@ -2692,7 +2672,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         if (arr.length === 1) return arr[0];
         for(let i = 0; i + 1 < arr.length; i++){
             const face2 = this.facelisthash.get(key)[i];
-            if (Math.abs(cm.dist(this.facecentermass[face2])) < $9dde2f4b0392cf9f$var$eps3) return face2;
+            if (Math.abs(cm.dist(this.facecentermass[face2])) < $8b6d1a029267225c$var$eps3) return face2;
         }
         return arr[arr.length - 1];
     }
@@ -2711,7 +2691,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         const sinr = delta.c;
         const x1 = x0.smul(cosr).sub(y0.smul(sinr)).smul(len);
         const y1 = y0.smul(cosr).sum(x0.smul(sinr)).smul(len);
-        const off = new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, targvec[0].b - x1.dot(face[edgen]), targvec[0].c - y1.dot(face[edgen]), 0);
+        const off = new $8b6d1a029267225c$export$5edfe12bb88684c8(0, targvec[0].b - x1.dot(face[edgen]), targvec[0].c - y1.dot(face[edgen]), 0);
         return [
             x1,
             y1,
@@ -2719,9 +2699,9 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         ];
     }
     allstickers() {
-        const t1 = $9dde2f4b0392cf9f$var$tstart("allstickers");
-        this.faces = $9dde2f4b0392cf9f$var$expandfaces(this.baseplanerot, this.faces);
-        if (this.options.verbosity > 0) console.log("# Total stickers is now " + this.faces.length);
+        const t1 = $8b6d1a029267225c$var$tstart("allstickers");
+        this.faces = $8b6d1a029267225c$var$expandfaces(this.baseplanerot, this.faces);
+        if (this.options.verbosity > 0) console.log(`# Total stickers is now ${this.faces.length}`);
         this.facecentermass = new Array(this.faces.length);
         for(let i = 0; i < this.faces.length; i++)this.facecentermass[i] = this.faces[i].centermass();
         const moveplanesets = [];
@@ -2745,18 +2725,18 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         for(let i17 = 0; i17 < moveplanesets.length; i17++){
             const q = moveplanesets[i17].map((_)=>_.normalizeplane());
             const goodnormal = moveplanenormals[i17];
-            for(let j = 0; j < q.length; j++)if (q[j].makenormal().dist(goodnormal) > $9dde2f4b0392cf9f$var$eps3) q[j] = q[j].smul(-1);
+            for(let j = 0; j < q.length; j++)if (q[j].makenormal().dist(goodnormal) > $8b6d1a029267225c$var$eps3) q[j] = q[j].smul(-1);
             q.sort((a, b)=>a.a - b.a);
             moveplanesets[i17] = q;
         }
         this.moveplanesets = moveplanesets;
         this.moveplanenormals = moveplanenormals;
         const sizes = moveplanesets.map((_)=>_.length);
-        if (this.options.verbosity > 0) console.log("# Move plane sets: " + sizes);
+        if (this.options.verbosity > 0) console.log(`# Move plane sets: ${sizes}`);
         const moverotations = [];
         for(let i18 = 0; i18 < moveplanesets.length; i18++)moverotations.push([]);
         for (const q2 of this.rotations){
-            if (Math.abs(Math.abs(q2.a) - 1) < $9dde2f4b0392cf9f$var$eps3) continue;
+            if (Math.abs(Math.abs(q2.a) - 1) < $8b6d1a029267225c$var$eps3) continue;
             const qnormal = q2.makenormal();
             for(let j = 0; j < moveplanesets.length; j++)if (qnormal.sameplane(moveplanenormals[j])) {
                 moverotations[j].push(q2);
@@ -2767,7 +2747,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         for(let i19 = 0; i19 < moverotations.length; i19++){
             const r = moverotations[i19];
             const goodnormal = r[0].makenormal();
-            for(let j = 0; j < r.length; j++)if (goodnormal.dist(r[j].makenormal()) > $9dde2f4b0392cf9f$var$eps3) r[j] = r[j].smul(-1);
+            for(let j = 0; j < r.length; j++)if (goodnormal.dist(r[j].makenormal()) > $8b6d1a029267225c$var$eps3) r[j] = r[j].smul(-1);
             r.sort((a, b)=>a.angle() - b.angle());
             if (moverotations[i19][0].dot(moveplanenormals[i19]) < 0) r.reverse();
         }
@@ -2781,13 +2761,13 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             let pos = null;
             for (const geonormal of this.geonormals){
                 const d = p0.dot(geonormal[0]);
-                if (Math.abs(d - 1) < $9dde2f4b0392cf9f$var$eps3) {
+                if (Math.abs(d - 1) < $8b6d1a029267225c$var$eps3) {
                     pos = [
                         geonormal[1],
                         geonormal[2]
                     ];
                     gtype = geonormal[2];
-                } else if (Math.abs(d + 1) < $9dde2f4b0392cf9f$var$eps3) {
+                } else if (Math.abs(d + 1) < $8b6d1a029267225c$var$eps3) {
                     neg = [
                         geonormal[1],
                         geonormal[2]
@@ -2804,28 +2784,28 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 1 + moveplanesets[i20].length
             ]);
             if (this.addNotationMapper === "NxNxNCubeMapper" && gtype === "f") {
-                this.notationMapper = new $9dde2f4b0392cf9f$var$NxNxNCubeMapper(1 + moveplanesets[i20].length);
+                this.notationMapper = new $8b6d1a029267225c$var$NxNxNCubeMapper(1 + moveplanesets[i20].length);
                 this.addNotationMapper = "";
             }
             if (this.addNotationMapper === "SkewbMapper" && moveplanesets[0].length === 1) {
-                this.notationMapper = new $9dde2f4b0392cf9f$var$SkewbNotationMapper(this.swizzler);
+                this.notationMapper = new $8b6d1a029267225c$var$SkewbNotationMapper(this.swizzler);
                 this.addNotationMapper = "";
             }
             if (this.addNotationMapper === "PyraminxOrTetraminxMapper") {
                 if (moveplanesets[0].length === 2 && moveplanesets[0][0].a === 0.333333333333333 && moveplanesets[0][1].a === 1.66666666666667) {
-                    this.notationMapper = new $9dde2f4b0392cf9f$var$PyraminxNotationMapper(this.swizzler);
+                    this.notationMapper = new $8b6d1a029267225c$var$PyraminxNotationMapper(this.swizzler);
                     this.addNotationMapper = "";
                 } else {
-                    this.notationMapper = new $9dde2f4b0392cf9f$var$TetraminxNotationMapper(this.swizzler);
+                    this.notationMapper = new $8b6d1a029267225c$var$TetraminxNotationMapper(this.swizzler);
                     this.addNotationMapper = "";
                 }
             }
             if (this.addNotationMapper === "MegaminxMapper" && gtype === "f") {
-                if (1 + moveplanesets[i20].length === 3) this.notationMapper = new $9dde2f4b0392cf9f$var$MegaminxScramblingNotationMapper(this.notationMapper);
+                if (1 + moveplanesets[i20].length === 3) this.notationMapper = new $8b6d1a029267225c$var$MegaminxScramblingNotationMapper(this.notationMapper);
                 this.addNotationMapper = "";
             }
             if (this.addNotationMapper === "FTOMapper" && gtype === "f") {
-                if (1 + moveplanesets[i20].length === 3) this.notationMapper = new $9dde2f4b0392cf9f$var$FTONotationMapper(this.notationMapper, this.swizzler);
+                if (1 + moveplanesets[i20].length === 3) this.notationMapper = new $8b6d1a029267225c$var$FTONotationMapper(this.notationMapper, this.swizzler);
                 this.addNotationMapper = "";
             }
         }
@@ -2844,7 +2824,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 if (arr.length === this.baseFaceCount) {
                     if (this.options.verbosity > 0) console.log("# Splitting core.");
                     for(let suff = 0; suff < arr.length; suff++){
-                        const s2 = s + " " + suff;
+                        const s2 = `${s} ${suff}`;
                         facelisthash.set(s2, [
                             arr[suff]
                         ]);
@@ -2853,7 +2833,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             }
         }
         this.facelisthash = facelisthash;
-        if (this.options.verbosity > 0) console.log("# Cubies: " + facelisthash.size);
+        if (this.options.verbosity > 0) console.log(`# Cubies: ${facelisthash.size}`);
         const cubies = [];
         const facetocubie = [];
         const facetoord = [];
@@ -2861,7 +2841,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             if (facelist.length === this.baseFaceCount) continue;
             if (facelist.length > 1) {
                 const cm = facelist.map((_)=>faces[_].centermass());
-                const cmall = $9dde2f4b0392cf9f$var$centermassface(cm);
+                const cmall = $8b6d1a029267225c$var$centermassface(cm);
                 for(let looplimit = 0; facelist.length > 2; looplimit++){
                     let changed = false;
                     for(let i = 0; i < facelist.length; i++){
@@ -3028,10 +3008,10 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 this.fixedCubie = i;
                 break;
             }
-            if (this.fixedCubie < 0) throw new Error("Could not find a cubie of type " + this.options.fixedPieceType + " to fix.");
+            if (this.fixedCubie < 0) throw new Error(`Could not find a cubie of type ${this.options.fixedPieceType} to fix.`);
         }
-        if (this.options.verbosity > 0) console.log("# Cubie orbit sizes " + cubieords);
-        $9dde2f4b0392cf9f$var$tend(t1);
+        if (this.options.verbosity > 0) console.log(`# Cubie orbit sizes ${cubieords}`);
+        $8b6d1a029267225c$var$tend(t1);
     }
     unswizzle(mv) {
         const newmv = this.notationMapper.notationToInternal(mv);
@@ -3043,7 +3023,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
     stringToBlockMove(mv) {
         const re = RegExp("^(([0-9]+)-)?([0-9]+)?([^0-9]+)([0-9]+'?)?$");
         const p = mv.match(re);
-        if (p === null) throw new Error("Bad move passed " + mv);
+        if (p === null) throw new Error(`Bad move passed ${mv}`);
         const grip = p[4];
         let loslice = void 0;
         let hislice = void 0;
@@ -3056,14 +3036,14 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         let amount = 1;
         if (p[5] !== void 0) {
             amountstr = p[5];
-            if (amountstr[0] === "'") amountstr = "-" + amountstr.substring(1);
+            if (amountstr[0] === "'") amountstr = `-${amountstr.substring(1)}`;
             amount = parseInt(amountstr, 10);
         }
-        return new (0, $kQo6d.Move)(new (0, $kQo6d.QuantumMove)(grip, hislice, loslice), amount);
+        return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(grip, hislice, loslice), amount);
     }
     parseMove(move) {
         const bm = this.notationMapper.notationToInternal(move);
-        if (bm === null) throw new Error("Bad move " + move.family);
+        if (bm === null) throw new Error(`Bad move ${move.family}`);
         move = bm;
         let grip = move.family;
         let fullrotation = false;
@@ -3093,7 +3073,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         let loslice = 1;
         let hislice = 1;
         if (grip.toUpperCase() !== grip) hislice = 2;
-        if (geo === void 0) throw new Error("Bad grip in move " + move.family);
+        if (geo === void 0) throw new Error(`Bad grip in move ${move.family}`);
         if (move.outerLayer !== void 0) loslice = move.outerLayer;
         if (move.innerLayer !== void 0) {
             if (move.outerLayer === void 0) {
@@ -3108,8 +3088,8 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             loslice = 0;
             hislice = this.moveplanesets[msi].length;
         }
-        if (loslice < 0 || loslice > this.moveplanesets[msi].length || hislice < 0 || hislice > this.moveplanesets[msi].length) throw new Error("Bad slice spec " + loslice + " " + hislice + " vs " + this.moveplanesets[msi].length);
-        if (!$9dde2f4b0392cf9f$var$permissivieMoveParsing && loslice === 0 && hislice === this.moveplanesets[msi].length && !fullrotation) throw new Error("! full puzzle rotations must be specified with v suffix.");
+        if (loslice < 0 || loslice > this.moveplanesets[msi].length || hislice < 0 || hislice > this.moveplanesets[msi].length) throw new Error(`Bad slice spec ${loslice} ${hislice} vs ${this.moveplanesets[msi].length}`);
+        if (!$8b6d1a029267225c$var$permissivieMoveParsing && loslice === 0 && hislice === this.moveplanesets[msi].length && !fullrotation) throw new Error("! full puzzle rotations must be specified with v suffix.");
         return [
             void 0,
             msi,
@@ -3125,7 +3105,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         return r;
     }
     genperms() {
-        const t1 = $9dde2f4b0392cf9f$var$tstart("genperms");
+        const t1 = $8b6d1a029267225c$var$tstart("genperms");
         if (this.cmovesbyslice.length > 0) return;
         const cmovesbyslice = [];
         if (this.options.orientCenters) {
@@ -3133,7 +3113,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 const kk = this.cubies[k][0];
                 const i = this.getfaceindex(kk);
                 const center = this.basefaces[i].centermass();
-                if (center.dist(this.facecentermass[kk]) < $9dde2f4b0392cf9f$var$eps3) {
+                if (center.dist(this.facecentermass[kk]) < $8b6d1a029267225c$var$eps3) {
                     const bits = 1 << i | 1 << this.baseFaceCount;
                     const towards = this.markedface[bits];
                     const normal = this.baseplanes[towards].makenormal();
@@ -3148,11 +3128,11 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                         }
                     }
                     const hii2 = (hii + 1) % this.faces[kk].length;
-                    if (Math.abs(normal.dot(this.faces[kk].get(hii2).sub(center)) - hiv) < $9dde2f4b0392cf9f$var$eps3) hii = hii2;
-                    if (hii != 0) {
+                    if (Math.abs(normal.dot(this.faces[kk].get(hii2).sub(center)) - hiv) < $8b6d1a029267225c$var$eps3) hii = hii2;
+                    if (hii !== 0) {
                         const qs = [];
                         for(let ii = 0; ii < this.faces[kk].length; ii++)qs.push(this.faces[kk].get((ii + hii) % this.faces[kk].length));
-                        this.faces[kk] = new $9dde2f4b0392cf9f$var$Face(qs);
+                        this.faces[kk] = new $8b6d1a029267225c$var$Face(qs);
                     }
                     const o = this.basefaces[i].length;
                     for(let m = 1; m < o; m++)this.cubies[k].push(this.cubies[k][m - 1]);
@@ -3198,18 +3178,18 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 for(;;){
                     slicenum[fi2] = -1;
                     const cm2 = cm.rotatepoint(this.moverotations[k][0]);
-                    if (cm2.dist(ocm) < $9dde2f4b0392cf9f$var$eps3) break;
+                    if (cm2.dist(ocm) < $8b6d1a029267225c$var$eps3) break;
                     fi2 = this.findface(cm2);
                     b.push(this.facetocubie[fi2], this.facetoord[fi2]);
                     cm = cm2;
                 }
                 if (b.length > 2 && this.options.orientCenters && (this.cubies[b[0]].length === 1 || this.duplicatedCubies[b[0]] > 1)) {
-                    if (this.facecentermass[i23].dist(this.basefaces[this.getfaceindex(i23)].centermass()) < $9dde2f4b0392cf9f$var$eps3) {
+                    if (this.facecentermass[i23].dist(this.basefaces[this.getfaceindex(i23)].centermass()) < $8b6d1a029267225c$var$eps3) {
                         let face1 = this.faces[this.cubies[b[0]][0]];
                         for(let ii = 0; ii < b.length; ii += 2){
                             const face0 = this.faces[this.cubies[b[ii]][0]];
                             let o = -1;
-                            for(let jj = 0; jj < face1.length; jj++)if (face0.get(jj).dist(face1.get(0)) < $9dde2f4b0392cf9f$var$eps3) {
+                            for(let jj = 0; jj < face1.length; jj++)if (face0.get(jj).dist(face1.get(0)) < $8b6d1a029267225c$var$eps3) {
                                 o = jj;
                                 break;
                             }
@@ -3242,7 +3222,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         }
         this.facelisthash.clear();
         this.facecentermass = [];
-        $9dde2f4b0392cf9f$var$tend(t1);
+        $8b6d1a029267225c$var$tend(t1);
     }
     getboundarygeometry() {
         return {
@@ -3354,28 +3334,28 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         return this.skipbyori(fi);
     }
     header(comment) {
-        return comment + $9dde2f4b0392cf9f$var$copyright + "\n" + comment + "\n";
+        return comment + $8b6d1a029267225c$var$copyright + "\n" + comment + "\n";
     }
     writegap() {
         const os = this.getOrbitsDef(false);
         const r = [];
         const mvs = [];
         for(let i = 0; i < os.moveops.length; i++){
-            let movename = "M_" + $9dde2f4b0392cf9f$var$externalName(this.notationMapper, os.movenames[i]);
+            let movename = `M_${$8b6d1a029267225c$var$externalName(this.notationMapper, os.movenames[i])}`;
             let doinv = false;
             if (movename[movename.length - 1] === "'") {
                 movename = movename.substring(0, movename.length - 1);
                 doinv = true;
             }
             mvs.push(movename);
-            if (doinv) r.push(movename + ":=" + os.moveops[i].toPerm().inv().toGap() + ";");
-            else r.push(movename + ":=" + os.moveops[i].toPerm().toGap() + ";");
+            if (doinv) r.push(`${movename}:=${os.moveops[i].toPerm().inv().toGap()};`);
+            else r.push(`${movename}:=${os.moveops[i].toPerm().toGap()};`);
         }
         r.push("Gen:=[");
         r.push(mvs.join(","));
         r.push("];");
         const ip = os.solved.identicalPieces();
-        r.push("ip:=[" + ip.map((_)=>"[" + _.map((__)=>__ + 1).join(",") + "]").join(",") + "];");
+        r.push(`ip:=[${ip.map((_)=>`[${_.map((__)=>__ + 1).join(",")}]`).join(",")}];`);
         r.push("# Size(Group(Gen));");
         r.push("# Size(Stabilizer(Group(Gen), ip, OnTuplesSets));");
         r.push("");
@@ -3397,8 +3377,8 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         const perms = [];
         const oris = [];
         for (const len of this.cubieords){
-            perms.push($9dde2f4b0392cf9f$var$iota(len));
-            oris.push($9dde2f4b0392cf9f$var$zeros(len));
+            perms.push($8b6d1a029267225c$var$iota(len));
+            oris.push($8b6d1a029267225c$var$zeros(len));
         }
         for(let m = moverange[0]; m <= moverange[1]; m++){
             const slicecmoves = axiscmoves[m];
@@ -3412,7 +3392,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                     inc = mperm.length - 2;
                     oinc = mperm.length - 1;
                 }
-                if (perms[setnum] === $9dde2f4b0392cf9f$var$iota(this.cubieords[setnum])) {
+                if (perms[setnum] === $8b6d1a029267225c$var$iota(this.cubieords[setnum])) {
                     perms[setnum] = perms[setnum].slice();
                     if (this.orbitoris[setnum] > 1 && !this.options.fixedOrientation) oris[setnum] = oris[setnum].slice();
                 }
@@ -3422,21 +3402,21 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 }
             }
         }
-        let lastId = new $9dde2f4b0392cf9f$var$PGOrbit($9dde2f4b0392cf9f$var$iota(24), $9dde2f4b0392cf9f$var$zeros(24), 1);
+        let lastId = new $8b6d1a029267225c$var$PGOrbit($8b6d1a029267225c$var$iota(24), $8b6d1a029267225c$var$zeros(24), 1);
         for(let ii = 0; ii < this.cubiesetnames.length; ii++){
             if (setmoves && !setmoves[ii]) continue;
             if (this.orbitoris[ii] === 1 || this.options.fixedOrientation) {
-                if (perms[ii] === $9dde2f4b0392cf9f$var$iota(lastId.perm.length)) {
-                    if (perms[ii] !== lastId.perm) lastId = new $9dde2f4b0392cf9f$var$PGOrbit(perms[ii], oris[ii], 1);
+                if (perms[ii] === $8b6d1a029267225c$var$iota(lastId.perm.length)) {
+                    if (perms[ii] !== lastId.perm) lastId = new $8b6d1a029267225c$var$PGOrbit(perms[ii], oris[ii], 1);
                     moveorbits.push(lastId);
-                } else moveorbits.push(new $9dde2f4b0392cf9f$var$PGOrbit(perms[ii], oris[ii], 1));
+                } else moveorbits.push(new $8b6d1a029267225c$var$PGOrbit(perms[ii], oris[ii], 1));
             } else {
                 const no = new Array(oris[ii].length);
                 for(let jj = 0; jj < perms[ii].length; jj++)no[jj] = oris[ii][perms[ii][jj]];
-                moveorbits.push(new $9dde2f4b0392cf9f$var$PGOrbit(perms[ii], no, this.orbitoris[ii]));
+                moveorbits.push(new $8b6d1a029267225c$var$PGOrbit(perms[ii], no, this.orbitoris[ii]));
             }
         }
-        let mv = new $9dde2f4b0392cf9f$var$PGTransform(moveorbits);
+        let mv = new $8b6d1a029267225c$var$PGTransform(moveorbits);
         if (amount !== 1) mv = mv.mulScalar(amount);
         return mv;
     }
@@ -3479,7 +3459,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             for(let i = 0; i < moveset.length; i += 2)if (moveset[i][0] === 0 && moveset[i][1] === slices) sawone = true;
             hasrotation[k1] = sawone;
         }
-        if (this.options.moveList && this.options.addRotations) {
+        if (this.options.addRotations && (this.options.moveList || this.options.fixedPieceType !== null)) {
             for(let i = 0; i < this.moverotations.length; i++)addrot[i] = 0;
             for(let k = 0; k < this.moveplanesets.length; k++){
                 if (hasrotation[k]) {
@@ -3494,10 +3474,10 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                         let found = -1;
                         let neg = false;
                         for(let j = 0; j < this.moveplanenormals.length; j++){
-                            if (nn.dist(this.moveplanenormals[j]) < $9dde2f4b0392cf9f$var$eps3) {
+                            if (nn.dist(this.moveplanenormals[j]) < $8b6d1a029267225c$var$eps3) {
                                 found = j;
                                 break;
-                            } else if (nn.dist(this.moveplanenormals[j].smul(-1)) < $9dde2f4b0392cf9f$var$eps3) {
+                            } else if (nn.dist(this.moveplanenormals[j].smul(-1)) < $8b6d1a029267225c$var$eps3) {
                                 found = j;
                                 neg = true;
                                 break;
@@ -3551,7 +3531,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 continue;
             }
             setnames.push(this.cubiesetnames[i24]);
-            setdefs.push(new $9dde2f4b0392cf9f$var$PGOrbitDef(this.cubieords[i24], this.options.fixedOrientation ? 1 : this.orbitoris[i24]));
+            setdefs.push(new $8b6d1a029267225c$var$PGOrbitDef(this.cubieords[i24], this.options.fixedOrientation ? 1 : this.orbitoris[i24]));
         }
         const solved = [];
         for(let i25 = 0; i25 < this.cubiesetnames.length; i25++){
@@ -3567,7 +3547,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 }
                 o.push(0);
             }
-            solved.push(new $9dde2f4b0392cf9f$var$PGOrbit(p, o, this.options.fixedOrientation ? 1 : this.orbitoris[i25]));
+            solved.push(new $8b6d1a029267225c$var$PGOrbit(p, o, this.options.fixedOrientation ? 1 : this.orbitoris[i25]));
         }
         const movenames = [];
         const forcenames = [];
@@ -3602,7 +3582,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                     movenames.push(nameoverride);
                     forcenames.push(true);
                 } else {
-                    const mna = $9dde2f4b0392cf9f$var$getmovename(movesetgeo, movebits, slices);
+                    const mna = $8b6d1a029267225c$var$getmovename(movesetgeo, movebits, slices);
                     inverted = mna[1];
                     const movename = mna[0];
                     if (moveset[i + 1] === 1) movenames.push(movename);
@@ -3614,7 +3594,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 moves.push(mv);
             }
         }
-        let r = new $9dde2f4b0392cf9f$var$PGOrbitsDef(setnames, setdefs, new $9dde2f4b0392cf9f$var$VisibleState(solved), movenames, moves, isrots, forcenames);
+        let r = new $8b6d1a029267225c$var$PGOrbitsDef(setnames, setdefs, new $8b6d1a029267225c$var$VisibleState(solved), movenames, moves, isrots, forcenames);
         if (this.options.optimizeOrbits) r = r.optimize();
         if (this.options.scrambleAmount !== 0) r.scramble(this.options.scrambleAmount);
         return r;
@@ -3627,18 +3607,18 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         return this.getOrbitsDef(false).moveops.map((_)=>_.toPerm());
     }
     showcanon(disp) {
-        $9dde2f4b0392cf9f$var$showcanon(this.getOrbitsDef(false), disp);
+        $8b6d1a029267225c$var$showcanon(this.getOrbitsDef(false), disp);
     }
     getsolved() {
         const r = [];
         for(let i = 0; i < this.baseFaceCount; i++)for(let j = 0; j < this.stickersperface; j++)r.push(i);
-        return new $9dde2f4b0392cf9f$var$Perm(r);
+        return new $8b6d1a029267225c$var$Perm(r);
     }
     getOrientationRotation(desiredRotation) {
         const [feature1name, [x1, y1, z1]] = desiredRotation[0];
-        const direction1 = new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, x1, -y1, z1);
+        const direction1 = new $8b6d1a029267225c$export$5edfe12bb88684c8(0, x1, -y1, z1);
         const [feature2name, [x2, y2, z2]] = desiredRotation[1];
-        const direction2 = new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, x2, -y2, z2);
+        const direction2 = new $8b6d1a029267225c$export$5edfe12bb88684c8(0, x2, -y2, z2);
         let feature1 = null;
         let feature2 = null;
         const feature1geoname = this.swizzler.unswizzle(feature1name);
@@ -3647,8 +3627,8 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             if (feature1geoname === gn[1]) feature1 = gn[0];
             if (feature2geoname === gn[1]) feature2 = gn[0];
         }
-        if (!feature1) throw new Error("Could not find feature " + feature1name);
-        if (!feature2) throw new Error("Could not find feature " + feature2name);
+        if (!feature1) throw new Error(`Could not find feature ${feature1name}`);
+        if (!feature2) throw new Error(`Could not find feature ${feature2name}`);
         const r1 = feature1.pointrotation(direction1);
         const feature2rot = feature2.rotatepoint(r1);
         const r2 = feature2rot.unproject(direction1).pointrotation(direction2.unproject(direction1));
@@ -3659,7 +3639,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         let orientationDescription = null;
         if (this.options.puzzleOrientation) orientationDescription = this.options.puzzleOrientation;
         else if (this.options.puzzleOrientations) orientationDescription = this.options.puzzleOrientations[basefacecount];
-        if (!orientationDescription) orientationDescription = $9dde2f4b0392cf9f$var$defaultOrientations()[basefacecount];
+        if (!orientationDescription) orientationDescription = $8b6d1a029267225c$var$defaultOrientations()[basefacecount];
         if (!orientationDescription) throw new Error("No default orientation?");
         return this.getOrientationRotation(orientationDescription);
     }
@@ -3745,8 +3725,8 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         edges2[net[0][0]] = initv;
         extendedges(edges2[net[0][0]], polyn);
         geos[this.facenames[0][1]] = this.project2d(0, 0, [
-            new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, initv[0][0], initv[0][1], 0),
-            new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, initv[1][0], initv[1][1], 0)
+            new $8b6d1a029267225c$export$5edfe12bb88684c8(0, initv[0][0], initv[0][1], 0),
+            new $8b6d1a029267225c$export$5edfe12bb88684c8(0, initv[1][0], initv[1][1], 0)
         ]);
         const connectat = [];
         connectat[0] = 0;
@@ -3758,7 +3738,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 gfi = j;
                 break;
             }
-            if (gfi < 0) throw new Error("Could not find first face name " + f0);
+            if (gfi < 0) throw new Error(`Could not find first face name ${f0}`);
             const thisface = bg.facenames[gfi][0];
             for(let j10 = 1; j10 < neti1.length; j10++){
                 const f1 = neti1[j10];
@@ -3770,9 +3750,9 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 extendedges(edges2[f1], polyn);
                 const caf0 = connectat[gfi];
                 const mp = thisface[(caf0 + j10) % polyn].sum(thisface[(caf0 + j10 + polyn - 1) % polyn]).smul(0.5);
-                const epi = $9dde2f4b0392cf9f$var$findelement(bg.edgenames, mp);
+                const epi = $8b6d1a029267225c$var$findelement(bg.edgenames, mp);
                 const edgename = bg.edgenames[epi][1];
-                const el = $9dde2f4b0392cf9f$var$splitByFaceNames(edgename, this.facenames);
+                const el = $8b6d1a029267225c$var$splitByFaceNames(edgename, this.facenames);
                 const gf1 = el[f0 === el[0] ? 1 : 0];
                 let gf1i = -1;
                 for(let k = 0; k < bg.facenames.length; k++)if (gf1 === bg.facenames[k][1]) {
@@ -3783,13 +3763,13 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 const otherface = bg.facenames[gf1i][0];
                 for(let k5 = 0; k5 < otherface.length; k5++){
                     const mp2 = otherface[k5].sum(otherface[(k5 + 1) % polyn]).smul(0.5);
-                    if (mp2.dist(mp) <= $9dde2f4b0392cf9f$var$eps3) {
+                    if (mp2.dist(mp) <= $8b6d1a029267225c$var$eps3) {
                         const p1 = edges2[f0][(j10 + polyn - 1) % polyn];
                         const p2 = edges2[f0][j10 % polyn];
                         connectat[gf1i] = k5;
                         geos[gf1] = this.project2d(gf1i, k5, [
-                            new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, p2[0], p2[1], 0),
-                            new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, p1[0], p1[1], 0)
+                            new $8b6d1a029267225c$export$5edfe12bb88684c8(0, p2[0], p2[1], 0),
+                            new $8b6d1a029267225c$export$5edfe12bb88684c8(0, p1[0], p1[1], 0)
                         ]);
                         break;
                     }
@@ -3829,7 +3809,8 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
     generatesvg(w = 800, h = 500, trim = 10, threed = false) {
         const mappt2d = this.generate2dmapping(w, h, trim, threed);
         function drawedges(id, pts, color) {
-            return '<polygon id="' + id + '" class="sticker" style="fill: ' + color + '" points="' + pts.map((p)=>p[0] + " " + p[1]).join(" ") + '"/>\n';
+            return `<polygon id="${id}" class="sticker" style="fill: ${color}" points="${pts.map((p)=>`${p[0]} ${p[1]}`).join(" ")}"/>
+`;
         }
         const pos = this.getsolved();
         const colormap = [];
@@ -3845,7 +3826,8 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         const svg = [];
         for(let j = 0; j < this.baseFaceCount; j++){
             svg.push("<g>");
-            svg.push("<title>" + this.facenames[j][1] + "</title>\n");
+            svg.push(`<title>${this.facenames[j][1]}</title>
+`);
             for(let ii = 0; ii < this.stickersperface; ii++){
                 const i = j * this.stickersperface + ii;
                 const cubie = this.facetocubie[i];
@@ -3853,16 +3835,18 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 const cubiesetnum = this.cubiesetnums[cubie];
                 const cubieord = this.cubieordnums[cubie];
                 const color = this.graybyori(cubie) ? "#808080" : colormap[pos.p[i]];
-                let id = this.cubiesetnames[cubiesetnum] + "-l" + cubieord + "-o" + cubieori;
+                let id = `${this.cubiesetnames[cubiesetnum]}-l${cubieord}-o${cubieori}`;
                 svg.push(drawedges(id, facegeo[i], color));
                 if (this.duplicatedFaces[i]) for(let jj = 1; jj < this.duplicatedFaces[i]; jj++){
-                    id = this.cubiesetnames[cubiesetnum] + "-l" + cubieord + "-o" + jj;
+                    id = `${this.cubiesetnames[cubiesetnum]}-l${cubieord}-o${jj}`;
                     svg.push(drawedges(id, facegeo[i], color));
                 }
             }
             svg.push("</g>");
         }
-        const html = '<svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 500">\n<style type="text/css"><![CDATA[.sticker { stroke: #000000; stroke-width: 1px; }]]></style>\n' + svg.join("") + "</svg>";
+        const html = `<svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 500">
+<style type="text/css"><![CDATA[.sticker { stroke: #000000; stroke-width: 1px; }]]></style>
+${svg.join("")}</svg>`;
         return html;
     }
     get3d(options) {
@@ -3874,7 +3858,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             const coords = this.basefaces[i].rotate(rot);
             const name = this.facenames[i][1];
             faces.push({
-                coords: $9dde2f4b0392cf9f$var$toFaceCoords(coords, maxdist),
+                coords: $8b6d1a029267225c$var$toFaceCoords(coords, maxdist),
                 name: name
             });
         }
@@ -3888,7 +3872,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             if (options?.stickerColors) color = options.stickerColors[i30];
             const coords = this.faces[i30].rotate(rot);
             stickers.push({
-                coords: $9dde2f4b0392cf9f$var$toFaceCoords(coords, maxdist),
+                coords: $8b6d1a029267225c$var$toFaceCoords(coords, maxdist),
                 color: color,
                 orbit: this.cubiesetnames[cubiesetnum],
                 ord: cubieord,
@@ -3901,7 +3885,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
                 for(let jj = 1; jj < this.duplicatedFaces[i30]; jj++){
                     for(let k = 0; k < rotdist; k++)fcoords = fcoords.rotateforward();
                     stickers.push({
-                        coords: $9dde2f4b0392cf9f$var$toFaceCoords(fcoords, maxdist),
+                        coords: $8b6d1a029267225c$var$toFaceCoords(fcoords, maxdist),
                         color: color,
                         orbit: this.cubiesetnames[cubiesetnum],
                         ord: cubieord,
@@ -3918,13 +3902,13 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
             const order = this.movesetorders[i31];
             for (const gn of this.geonormals)if (msg[0] === gn[1] && msg[1] === gn[2]) {
                 grips.push({
-                    coordinates: $9dde2f4b0392cf9f$var$toCoords(gn[0].rotatepoint(rot), 1),
-                    quantumMove: new (0, $kQo6d.Move)(msg[0]),
+                    coordinates: $8b6d1a029267225c$var$toCoords(gn[0].rotatepoint(rot), 1),
+                    quantumMove: new (0, $j3ukw.Move)(msg[0]),
                     order: order
                 });
                 grips.push({
-                    coordinates: $9dde2f4b0392cf9f$var$toCoords(gn[0].rotatepoint(rot).smul(-1), 1),
-                    quantumMove: new (0, $kQo6d.Move)(msg[2]),
+                    coordinates: $8b6d1a029267225c$var$toCoords(gn[0].rotatepoint(rot).smul(-1), 1),
+                    quantumMove: new (0, $j3ukw.Move)(msg[2]),
                     order: order
                 });
             }
@@ -3933,7 +3917,7 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         const g = (function() {
             const irot = rot.invrot();
             return function(facenum, coords) {
-                let q = new $9dde2f4b0392cf9f$export$5edfe12bb88684c8(0, coords[0] * maxdist, -coords[1] * maxdist, coords[2] * maxdist);
+                let q = new $8b6d1a029267225c$export$5edfe12bb88684c8(0, coords[0] * maxdist, -coords[1] * maxdist, coords[2] * maxdist);
                 q = q.rotatepoint(irot);
                 const x = twodmapper(facenum, q);
                 x[0] /= 2880;
@@ -3956,8 +3940,8 @@ var $9dde2f4b0392cf9f$export$b89c271f50b83709 = class {
         const rot = this.getInitial3DRotation();
         const grip = this.swizzler.unswizzle(geoname);
         for (const gn of this.geonormals)if (grip === gn[1]) {
-            const r = $9dde2f4b0392cf9f$var$toCoords(gn[0].rotatepoint(rot), 1);
-            if (Math.abs(r[0]) < $9dde2f4b0392cf9f$var$eps3 && Math.abs(r[2]) < $9dde2f4b0392cf9f$var$eps3) {
+            const r = $8b6d1a029267225c$var$toCoords(gn[0].rotatepoint(rot), 1);
+            if (Math.abs(r[0]) < $8b6d1a029267225c$var$eps3 && Math.abs(r[2]) < $8b6d1a029267225c$var$eps3) {
                 r[0] = 0;
                 r[2] = 1e-6;
             }
@@ -3981,12 +3965,12 @@ Vertex distance ${this.vertexdistance}`;
         const os = this.getOrbitsDef(false);
         const as = os.reassemblySize();
         tw(`Reassembly size is ${as}`);
-        const ss = $9dde2f4b0392cf9f$export$f17eb225ad7d7738(this.getMovesAsPerms(), tw);
+        const ss = $8b6d1a029267225c$export$f17eb225ad7d7738(this.getMovesAsPerms(), tw);
         const r = as / ss;
         tw(`Ratio is ${r}`);
     }
 };
-var $9dde2f4b0392cf9f$export$32c5b60afe204e84 = class {
+var $8b6d1a029267225c$export$f852f67da918687b = class {
     constructor(pg, od){
         this.pg = pg;
         this.orbitNames = od.orbitnames;
@@ -4010,7 +3994,7 @@ var $9dde2f4b0392cf9f$export$32c5b60afe204e84 = class {
             ];
         }
         const pgmv = this.pg.getMoveFromBits(bits, mv[5], !mv[4], this.pg.cmovesbyslice[mv[1]], void 0, this.pg.movesetorders[mv[1]]);
-        const r = $9dde2f4b0392cf9f$var$PGOrbitsDef.transformToKTransformationData(this.orbitNames, pgmv);
+        const r = $8b6d1a029267225c$var$PGOrbitsDef.transformToKTransformationData(this.orbitNames, pgmv);
         return r;
     }
 };
@@ -4018,5 +4002,4 @@ var $9dde2f4b0392cf9f$export$32c5b60afe204e84 = class {
 });
 
 
-
-//# sourceMappingURL=puzzle-geometry.db2a4a3f.js.map
+//# sourceMappingURL=puzzle-geometry.4baeac1b.js.map

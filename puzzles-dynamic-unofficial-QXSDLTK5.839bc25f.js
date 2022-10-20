@@ -12,15 +12,14 @@ typeof globalThis !== 'undefined'
   ? global
   : {};
 var parcelRequire = $parcel$global["parcelRequire31c8"];
-parcelRequire.register("cLQ7S", function(module, exports) {
+parcelRequire.register("arHwE", function(module, exports) {
 
-$parcel$export(module.exports, "ftoSVG", () => $94c24efa7c08766c$export$bb9511d172319010);
-$parcel$export(module.exports, "kilominxSVG", () => $94c24efa7c08766c$export$54216596352dc609);
-$parcel$export(module.exports, "rediCubeJSON", () => $94c24efa7c08766c$export$832cf9f947a0c8fd);
-$parcel$export(module.exports, "rediCubeSVG", () => $94c24efa7c08766c$export$6cf8a063d58acf57);
-parcelRequire("hJBlP");
+$parcel$export(module.exports, "ftoSVG", () => $79ae3048fc45f6fa$export$bb9511d172319010);
+$parcel$export(module.exports, "kilominxSVG", () => $79ae3048fc45f6fa$export$54216596352dc609);
+$parcel$export(module.exports, "rediCubeJSON", () => $79ae3048fc45f6fa$export$832cf9f947a0c8fd);
+$parcel$export(module.exports, "rediCubeSVG", () => $79ae3048fc45f6fa$export$6cf8a063d58acf57);
 // src/cubing/puzzles/implementations/dynamic/unofficial/fto.kpuzzle.svg.ts
-var $94c24efa7c08766c$export$bb9511d172319010 = `<?xml version="1.0" encoding="UTF-8"?>
+var $79ae3048fc45f6fa$export$bb9511d172319010 = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="2368px" height="1216px" viewBox="0 0 2368 1216" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>fto</title>
     <g id="fto" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round">
@@ -116,7 +115,7 @@ var $94c24efa7c08766c$export$bb9511d172319010 = `<?xml version="1.0" encoding="U
 </svg>
 `;
 // src/cubing/puzzles/implementations/dynamic/unofficial/kilominx.kpuzzle.svg.ts
-var $94c24efa7c08766c$export$54216596352dc609 = `<svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 500">
+var $79ae3048fc45f6fa$export$54216596352dc609 = `<svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 500">
 <style type="text/css"><![CDATA[.sticker { stroke: #000000; stroke-width: 1px; }]]></style>
 <g><title>U</title>
 <polygon id="CORNERS-l0-o0" class="sticker" style="fill: #ffffff" points="247.941 89.861 283.500 115.696 269.918 157.499 212.382 138.805"/>
@@ -193,7 +192,7 @@ var $94c24efa7c08766c$export$54216596352dc609 = `<svg id="svg" xmlns="http://www
 </g></svg>
 `;
 // src/cubing/puzzles/implementations/dynamic/unofficial/redi_cube.kpuzzle.json.ts
-var $94c24efa7c08766c$export$832cf9f947a0c8fd = {
+var $79ae3048fc45f6fa$export$832cf9f947a0c8fd = {
     name: "redi_cube",
     orbits: {
         EDGES: {
@@ -435,7 +434,7 @@ var $94c24efa7c08766c$export$832cf9f947a0c8fd = {
     }
 };
 // src/cubing/puzzles/implementations/dynamic/unofficial/redi_cube.kpuzzle.svg.ts
-var $94c24efa7c08766c$export$6cf8a063d58acf57 = `<?xml version="1.0" encoding="UTF-8"?>
+var $79ae3048fc45f6fa$export$6cf8a063d58acf57 = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="546px" height="418px" viewBox="-20 -20 546 418" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>redi-cube</title>
 <g istroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -592,4 +591,4 @@ var $94c24efa7c08766c$export$6cf8a063d58acf57 = `<?xml version="1.0" encoding="U
 });
 
 
-//# sourceMappingURL=puzzles-dynamic-unofficial-MGVOFUDR.98e1c48f.js.map
+//# sourceMappingURL=puzzles-dynamic-unofficial-QXSDLTK5.839bc25f.js.map

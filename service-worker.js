@@ -1,5 +1,5 @@
 (() => {
-var $e4050f3526fdd4b6$exports = {};
+var $d9653d1b16929200$exports = {};
 let $4550420cc206d4d6$export$e538f94cc8cf4db8 = [];
 let $4550420cc206d4d6$export$83d89fbfd8236492 = "";
 function $4550420cc206d4d6$export$c208e1278d7beb2(m, v) {
@@ -8,24 +8,25 @@ function $4550420cc206d4d6$export$c208e1278d7beb2(m, v) {
 }
 
 
-const $e4050f3526fdd4b6$var$manifest = [
+const $d9653d1b16929200$var$manifest = [
     "index.html",
     "icon-192.1195e135.png",
     "manifest.webmanifest",
     "icon-128.608654eb.png",
     "icon-512.34208778.png",
-    "index.bf792090.js",
-    "puzzle-geometry.db2a4a3f.js",
+    "index.e1ef0526.js",
+    "puzzle-geometry.4baeac1b.js",
     "icon-128.4fddcaaa.png",
     "index.25347b38.css",
-    "index.04ff6efc.js",
-    "twisty-dynamic-3d-UJR5FP6R.c10267fc.js",
-    "puzzles-dynamic-side-events-HOXBZYWI.1477501b.js",
-    "puzzles-dynamic-3x3x3-NB2PEZTV.372c3936.js",
-    "puzzles-dynamic-unofficial-MGVOFUDR.98e1c48f.js"
+    "index.7d58d814.js",
+    "twisty-dynamic-3d-OAYMJ6OD.ee665ff2.js",
+    "puzzles-dynamic-side-events-HMUBMHA5.33a29500.js",
+    "puzzles-dynamic-3x3x3-ZKMODX2P.1715739c.js",
+    "puzzles-dynamic-unofficial-QXSDLTK5.839bc25f.js",
+    "puzzles-dynamic-4x4x4-DT42HVIY.5fc06a73.js"
 ];
-const $e4050f3526fdd4b6$var$version = "baa77f8b";
-(0, $4550420cc206d4d6$export$c208e1278d7beb2)($e4050f3526fdd4b6$var$manifest, $e4050f3526fdd4b6$var$version);
+const $d9653d1b16929200$var$version = "290c8eb4";
+(0, $4550420cc206d4d6$export$c208e1278d7beb2)($d9653d1b16929200$var$manifest, $d9653d1b16929200$var$version);
 
 var $a7d01911011f21fa$exports = {};
 

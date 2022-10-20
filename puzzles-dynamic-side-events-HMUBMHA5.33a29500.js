@@ -12,18 +12,17 @@ typeof globalThis !== 'undefined'
   ? global
   : {};
 var parcelRequire = $parcel$global["parcelRequire31c8"];
-parcelRequire.register("5xeEv", function(module, exports) {
+parcelRequire.register("dfuIF", function(module, exports) {
 
-$parcel$export(module.exports, "cube2x2x2JSON", () => $407b66749c7d6bb1$export$428611d6d9f2afa8);
-$parcel$export(module.exports, "cube2x2x2SVG", () => $407b66749c7d6bb1$export$d5d5138ff3843158);
-$parcel$export(module.exports, "clockJSON", () => $407b66749c7d6bb1$export$fcac39d9381aea12);
-$parcel$export(module.exports, "clockSVG", () => $407b66749c7d6bb1$export$a08cfe48d9b22bab);
-$parcel$export(module.exports, "pyraminxSVG", () => $407b66749c7d6bb1$export$ea7149c81fcecd7c);
-$parcel$export(module.exports, "sq1HyperOrbitJSON", () => $407b66749c7d6bb1$export$5adf1e316c8ad3ed);
-$parcel$export(module.exports, "sq1HyperOrbitSVG", () => $407b66749c7d6bb1$export$d1544b4db1e1c1a5);
-parcelRequire("hJBlP");
+$parcel$export(module.exports, "cube2x2x2JSON", () => $9a54815384d853d3$export$428611d6d9f2afa8);
+$parcel$export(module.exports, "cube2x2x2SVG", () => $9a54815384d853d3$export$d5d5138ff3843158);
+$parcel$export(module.exports, "clockJSON", () => $9a54815384d853d3$export$fcac39d9381aea12);
+$parcel$export(module.exports, "clockSVG", () => $9a54815384d853d3$export$a08cfe48d9b22bab);
+$parcel$export(module.exports, "pyraminxSVG", () => $9a54815384d853d3$export$ea7149c81fcecd7c);
+$parcel$export(module.exports, "sq1HyperOrbitJSON", () => $9a54815384d853d3$export$5adf1e316c8ad3ed);
+$parcel$export(module.exports, "sq1HyperOrbitSVG", () => $9a54815384d853d3$export$d1544b4db1e1c1a5);
 // src/cubing/puzzles/implementations/dynamic/side-events/2x2x2.kpuzzle.json.ts
-var $407b66749c7d6bb1$export$428611d6d9f2afa8 = {
+var $9a54815384d853d3$export$428611d6d9f2afa8 = {
     name: "2x2x2",
     orbits: {
         CORNERS: {
@@ -274,10 +273,10 @@ var $407b66749c7d6bb1$export$428611d6d9f2afa8 = {
         }
     }
 };
-$407b66749c7d6bb1$export$428611d6d9f2afa8.moves["Rv"] = $407b66749c7d6bb1$export$428611d6d9f2afa8.moves["x"];
-$407b66749c7d6bb1$export$428611d6d9f2afa8.moves["Uv"] = $407b66749c7d6bb1$export$428611d6d9f2afa8.moves["y"];
-$407b66749c7d6bb1$export$428611d6d9f2afa8.moves["Fv"] = $407b66749c7d6bb1$export$428611d6d9f2afa8.moves["z"];
-$407b66749c7d6bb1$export$428611d6d9f2afa8.moves["Lv"] = {
+$9a54815384d853d3$export$428611d6d9f2afa8.moves["Rv"] = $9a54815384d853d3$export$428611d6d9f2afa8.moves["x"];
+$9a54815384d853d3$export$428611d6d9f2afa8.moves["Uv"] = $9a54815384d853d3$export$428611d6d9f2afa8.moves["y"];
+$9a54815384d853d3$export$428611d6d9f2afa8.moves["Fv"] = $9a54815384d853d3$export$428611d6d9f2afa8.moves["z"];
+$9a54815384d853d3$export$428611d6d9f2afa8.moves["Lv"] = {
     CORNERS: {
         permutation: [
             1,
@@ -301,7 +300,7 @@ $407b66749c7d6bb1$export$428611d6d9f2afa8.moves["Lv"] = {
         ]
     }
 };
-$407b66749c7d6bb1$export$428611d6d9f2afa8.moves["Dv"] = {
+$9a54815384d853d3$export$428611d6d9f2afa8.moves["Dv"] = {
     CORNERS: {
         permutation: [
             3,
@@ -325,7 +324,7 @@ $407b66749c7d6bb1$export$428611d6d9f2afa8.moves["Dv"] = {
         ]
     }
 };
-$407b66749c7d6bb1$export$428611d6d9f2afa8.moves["Bv"] = {
+$9a54815384d853d3$export$428611d6d9f2afa8.moves["Bv"] = {
     CORNERS: {
         permutation: [
             4,
@@ -350,7 +349,7 @@ $407b66749c7d6bb1$export$428611d6d9f2afa8.moves["Bv"] = {
     }
 };
 // src/cubing/puzzles/implementations/dynamic/side-events/2x2x2.kpuzzle.svg.ts
-var $407b66749c7d6bb1$export$d5d5138ff3843158 = `<?xml version="1.0" encoding="UTF-8"?>
+var $9a54815384d853d3$export$d5d5138ff3843158 = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
        "http://www.w3.org/TR/2001/REC-SVG-20050904/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 520 394" preserveAspectRatio="xMidYMid meet">
@@ -396,8 +395,8 @@ var $407b66749c7d6bb1$export$d5d5138ff3843158 = `<?xml version="1.0" encoding="U
 
 </svg>`;
 // src/cubing/puzzles/implementations/dynamic/side-events/clock.kpuzzle.json.ts
-var $407b66749c7d6bb1$export$fcac39d9381aea12 = {
-    name: "Clock",
+var $9a54815384d853d3$export$fcac39d9381aea12 = {
+    name: "clock",
     orbits: {
         DIALS: {
             numPieces: 18,
@@ -1826,7 +1825,7 @@ var $407b66749c7d6bb1$export$fcac39d9381aea12 = {
     }
 };
 // src/cubing/puzzles/implementations/dynamic/side-events/clock.kpuzzle.svg.ts
-var $407b66749c7d6bb1$export$a08cfe48d9b22bab = `<?xml version="1.0" encoding="UTF-8"?>
+var $9a54815384d853d3$export$a08cfe48d9b22bab = `<?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 480 240" preserveAspectRatio="xMidYMid meet">
   <title>clock</title>
   <defs>
@@ -2196,7 +2195,7 @@ var $407b66749c7d6bb1$export$a08cfe48d9b22bab = `<?xml version="1.0" encoding="U
   </g>
 </svg>`;
 // src/cubing/puzzles/implementations/dynamic/side-events/pyraminx.kpuzzle.svg.ts
-var $407b66749c7d6bb1$export$ea7149c81fcecd7c = `<?xml version="1.0" encoding="UTF-8"?>
+var $9a54815384d853d3$export$ea7149c81fcecd7c = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
        "http://www.w3.org/TR/2001/REC-SVG-20050904/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-20 -20 546 480" preserveAspectRatio="xMidYMid meet">
@@ -2285,7 +2284,7 @@ var $407b66749c7d6bb1$export$ea7149c81fcecd7c = `<?xml version="1.0" encoding="U
 
 </svg>`;
 // src/cubing/puzzles/implementations/dynamic/side-events/sq1-hyperorbit.kpuzzle.json.ts
-var $407b66749c7d6bb1$export$5adf1e316c8ad3ed = {
+var $9a54815384d853d3$export$5adf1e316c8ad3ed = {
     name: "Square-1",
     orbits: {
         WEDGES: {
@@ -2565,7 +2564,7 @@ var $407b66749c7d6bb1$export$5adf1e316c8ad3ed = {
     }
 };
 // src/cubing/puzzles/implementations/dynamic/side-events/sq1-hyperorbit.kpuzzle.svg.ts
-var $407b66749c7d6bb1$export$d1544b4db1e1c1a5 = `<?xml version="1.0" encoding="UTF-8"?>
+var $9a54815384d853d3$export$d1544b4db1e1c1a5 = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="360px" height="552px" viewBox="0 0 360 552" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
     <title>sq1-fancy</title>
@@ -2864,4 +2863,4 @@ var $407b66749c7d6bb1$export$d1544b4db1e1c1a5 = `<?xml version="1.0" encoding="U
 });
 
 
-//# sourceMappingURL=puzzles-dynamic-side-events-HOXBZYWI.1477501b.js.map
+//# sourceMappingURL=puzzles-dynamic-side-events-HMUBMHA5.33a29500.js.map

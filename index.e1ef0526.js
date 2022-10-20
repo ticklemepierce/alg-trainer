@@ -14867,9 +14867,9 @@ module.exports = merge;
 
 });
 
-var $743c2887b8294a80$exports = {};
+var $4f814df9f9385468$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.bf792090.js","eXwSi":"puzzle-geometry.db2a4a3f.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","bJecT":"index.04ff6efc.js"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.e1ef0526.js","eXwSi":"puzzle-geometry.4baeac1b.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","3E2W9":"index.7d58d814.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -35525,6 +35525,7 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
             puzzle: {}
         },
         twisty: "3x3x3",
+        quantumMoveOrder: 4,
         steps: [
             {
                 displayName: "F2L",
@@ -35568,6 +35569,7 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                 },
                 slug: "f2l",
                 cases: "333-f2l",
+                quantumMoveOrder: 4,
                 filters: {
                     cornerInSlot: "Corner in slot",
                     edgeInSlot: "Edge in slot",
@@ -35622,6 +35624,7 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
             puzzle: {}
         },
         twisty: "megaminx",
+        quantumMoveOrder: 5,
         steps: [
             {
                 displayName: "2-look OLL",
@@ -35778,6 +35781,7 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                     }
                 },
                 slug: "2-look-oll",
+                quantumMoveOrder: 5,
                 steps: [
                     {
                         displayName: "Edge Orientation",
@@ -35942,6 +35946,7 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                         },
                         slug: "eo",
                         cases: "mega-oll-eo",
+                        quantumMoveOrder: 5,
                         filters: {}
                     },
                     {
@@ -36100,6 +36105,7 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                         },
                         slug: "co",
                         cases: "mega-oll-co",
+                        quantumMoveOrder: 5,
                         filters: {}
                     }, 
                 ]
@@ -36243,6 +36249,7 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                     }
                 },
                 slug: "2-look-pll",
+                quantumMoveOrder: 5,
                 steps: [
                     {
                         displayName: "Edge Permutation",
@@ -36387,6 +36394,7 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                         },
                         slug: "ep",
                         cases: "mega-pll-ep",
+                        quantumMoveOrder: 5,
                         filters: {}
                     },
                     {
@@ -36529,6 +36537,7 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                         },
                         slug: "cp",
                         cases: "mega-pll-cp",
+                        quantumMoveOrder: 5,
                         filters: {}
                     }, 
                 ]
@@ -38759,6 +38768,11 @@ const $b1410301c6957cc6$export$79ed9616e69ab1ba = /\[\[(.+?)\]\]/g;
 const $b1410301c6957cc6$export$cc64fe338ae13d0f = (alg)=>alg.replace($b1410301c6957cc6$export$79ed9616e69ab1ba, (_brackets, match)=>$b1410301c6957cc6$export$d98315f3131b26fb.find((trigger)=>trigger.key === match).alg);
 
 
+
+var $j3ukw = parcelRequire("j3ukw");
+
+
+var $j3ukw = parcelRequire("j3ukw");
 const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
     const { algs: algs , step: step  } = (0, $5b1ea468d903474a$export$4138103a3ae699cc)();
     const [stepStorage] = (0, $9517aa852f99e8b1$export$2e2bcd8739ae039)(step.slug, {
@@ -38812,7 +38826,21 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
         e.preventDefault();
         nextCase();
     };
-    const currentSetup = (0, $d4J5n.useMemo)(()=>currentCase ? (0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(currentCase.setups) : "No cases found that match your current filters.", [
+    const randomIntUpTo = (max)=>{
+        return Math.floor(Math.random() * (max + 1));
+    };
+    const randomAUF = ()=>randomIntUpTo(step.quantumMoveOrder - 1);
+    const createSetup = (setup)=>{
+        return new (0, $j3ukw.Alg)(`${setup} U${randomAUF()}`).experimentalSimplify({
+            cancel: true,
+            puzzleLoader: {
+                puzzleSpecificSimplifyOptions: {
+                    quantumMoveOrder: ()=>step.quantumMoveOrder
+                }
+            }
+        });
+    };
+    const currentSetup = (0, $d4J5n.useMemo)(()=>currentCase ? createSetup((0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(currentCase.setups)).toString() : "No cases found that match your current filters.", [
         currentCase
     ]);
     (0, $d325342d90344c14$export$2e2bcd8739ae039)(" ", handleSpace, [
@@ -38894,19 +38922,19 @@ var $228IU = parcelRequire("228IU");
 var $d4J5n = parcelRequire("d4J5n");
 
 
-var $8JBxj = parcelRequire("8JBxj");
-parcelRequire("2Ju49");
+var $9IDdS = parcelRequire("9IDdS");
+parcelRequire("8NQJK");
 
-var $kQo6d = parcelRequire("kQo6d");
+var $j3ukw = parcelRequire("j3ukw");
 // src/cubing/notation/CountMoves.ts
-var $0305d85fc2c30b4d$var$CountMoves = class extends (0, $kQo6d.TraversalUp) {
+var $ce7d5deeec50f6ba$var$CountMoves = class extends (0, $j3ukw.TraversalUp) {
     constructor(metric){
         super();
         this.metric = metric;
     }
     traverseAlg(alg) {
         let r = 0;
-        for (const unit of alg.units())r += this.traverseUnit(unit);
+        for (const algNode of alg.childAlgNodes())r += this.traverseAlgNode(algNode);
         return r;
     }
     traverseGrouping(grouping) {
@@ -38932,33 +38960,33 @@ var $0305d85fc2c30b4d$var$CountMoves = class extends (0, $kQo6d.TraversalUp) {
         return 0;
     }
 };
-function $0305d85fc2c30b4d$var$isCharUppercase(c) {
+function $ce7d5deeec50f6ba$var$isCharUppercase(c) {
     return "A" <= c && c <= "Z";
 }
-function $0305d85fc2c30b4d$var$baseMetric(move) {
+function $ce7d5deeec50f6ba$var$baseMetric(move) {
     const fam = move.family;
-    if ($0305d85fc2c30b4d$var$isCharUppercase(fam[0]) && fam[fam.length - 1] === "v" || fam === "x" || fam === "y" || fam === "z" || fam === "T") return 0;
+    if ($ce7d5deeec50f6ba$var$isCharUppercase(fam[0]) && fam[fam.length - 1] === "v" || fam === "x" || fam === "y" || fam === "z" || fam === "T") return 0;
     else return 1;
 }
-function $0305d85fc2c30b4d$var$etmMetric(_move) {
+function $ce7d5deeec50f6ba$var$etmMetric(_move) {
     return 1;
 }
-function $0305d85fc2c30b4d$var$quantumMetric(move) {
+function $ce7d5deeec50f6ba$var$quantumMetric(move) {
     const fam = move.family;
-    if ($0305d85fc2c30b4d$var$isCharUppercase(fam[0]) && fam[fam.length - 1] === "v" || fam === "x" || fam === "y" || fam === "z" || fam === "T") return 0;
+    if ($ce7d5deeec50f6ba$var$isCharUppercase(fam[0]) && fam[fam.length - 1] === "v" || fam === "x" || fam === "y" || fam === "z" || fam === "T") return 0;
     else return Math.abs(move.amount);
 }
-var $0305d85fc2c30b4d$var$countMovesInstance = new $0305d85fc2c30b4d$var$CountMoves($0305d85fc2c30b4d$var$baseMetric);
-var $0305d85fc2c30b4d$export$3bb9ec80d65f79cf = $0305d85fc2c30b4d$var$countMovesInstance.traverseAlg.bind($0305d85fc2c30b4d$var$countMovesInstance);
-var $0305d85fc2c30b4d$var$countMovesETMInstance = new $0305d85fc2c30b4d$var$CountMoves($0305d85fc2c30b4d$var$etmMetric);
-var $0305d85fc2c30b4d$export$6990ae67f1cd4a6c = $0305d85fc2c30b4d$var$countMovesInstance.traverseAlg.bind($0305d85fc2c30b4d$var$countMovesETMInstance);
-var $0305d85fc2c30b4d$var$countQuantumMovesInstance = new $0305d85fc2c30b4d$var$CountMoves($0305d85fc2c30b4d$var$quantumMetric);
-var $0305d85fc2c30b4d$export$5ea07e609cc3aa95 = $0305d85fc2c30b4d$var$countQuantumMovesInstance.traverseAlg.bind($0305d85fc2c30b4d$var$countQuantumMovesInstance);
+var $ce7d5deeec50f6ba$var$countMovesInstance = new $ce7d5deeec50f6ba$var$CountMoves($ce7d5deeec50f6ba$var$baseMetric);
+var $ce7d5deeec50f6ba$export$3bb9ec80d65f79cf = $ce7d5deeec50f6ba$var$countMovesInstance.traverseAlg.bind($ce7d5deeec50f6ba$var$countMovesInstance);
+var $ce7d5deeec50f6ba$var$countMovesETMInstance = new $ce7d5deeec50f6ba$var$CountMoves($ce7d5deeec50f6ba$var$etmMetric);
+var $ce7d5deeec50f6ba$export$6990ae67f1cd4a6c = $ce7d5deeec50f6ba$var$countMovesInstance.traverseAlg.bind($ce7d5deeec50f6ba$var$countMovesETMInstance);
+var $ce7d5deeec50f6ba$var$countQuantumMovesInstance = new $ce7d5deeec50f6ba$var$CountMoves($ce7d5deeec50f6ba$var$quantumMetric);
+var $ce7d5deeec50f6ba$export$5ea07e609cc3aa95 = $ce7d5deeec50f6ba$var$countQuantumMovesInstance.traverseAlg.bind($ce7d5deeec50f6ba$var$countQuantumMovesInstance);
 // src/cubing/notation/CountAnimatedLeaves.ts
-var $0305d85fc2c30b4d$var$CountAnimatedLeaves = class extends (0, $kQo6d.TraversalUp) {
+var $ce7d5deeec50f6ba$var$CountAnimatedLeaves = class extends (0, $j3ukw.TraversalUp) {
     traverseAlg(alg) {
         let total = 0;
-        for (const part of alg.units())total += this.traverseUnit(part);
+        for (const part of alg.childAlgNodes())total += this.traverseAlgNode(part);
         return total;
     }
     traverseGrouping(grouping) {
@@ -38983,43 +39011,17 @@ var $0305d85fc2c30b4d$var$CountAnimatedLeaves = class extends (0, $kQo6d.Travers
         return 0;
     }
 };
-var $0305d85fc2c30b4d$var$countAnimatedLeavesInstance = new $0305d85fc2c30b4d$var$CountAnimatedLeaves();
-var $0305d85fc2c30b4d$export$d5ea806fd922b359 = $0305d85fc2c30b4d$var$countAnimatedLeavesInstance.traverseAlg.bind($0305d85fc2c30b4d$var$countAnimatedLeavesInstance);
+var $ce7d5deeec50f6ba$var$countAnimatedLeavesInstance = new $ce7d5deeec50f6ba$var$CountAnimatedLeaves();
+var $ce7d5deeec50f6ba$export$d5ea806fd922b359 = $ce7d5deeec50f6ba$var$countAnimatedLeavesInstance.traverseAlg.bind($ce7d5deeec50f6ba$var$countAnimatedLeavesInstance);
 
 
 
-var $d2uOu = parcelRequire("d2uOu");
+var $ch5j6 = parcelRequire("ch5j6");
 
-var $8IKgU = parcelRequire("8IKgU");
-parcelRequire("kl6cX");
+var $jZEJE = parcelRequire("jZEJE");
+parcelRequire("c3OhB");
 
-var $kQo6d = parcelRequire("kQo6d");
-
-var $hJBlP = parcelRequire("hJBlP");
-// src/cubing/twisty/controllers/RenderScheduler.ts
-var $8e08190ac5cfc1c3$var$RenderScheduler = class {
-    constructor(callback){
-        this.callback = callback;
-        this.animFrameID = null;
-        this.animFrame = this.animFrameWrapper.bind(this);
-    }
-    requestIsPending() {
-        return !!this.animFrameID;
-    }
-    requestAnimFrame() {
-        if (!this.animFrameID) this.animFrameID = requestAnimationFrame(this.animFrame);
-    }
-    cancelAnimFrame() {
-        if (this.animFrameID) {
-            cancelAnimationFrame(this.animFrameID);
-            this.animFrameID = 0;
-        }
-    }
-    animFrameWrapper(timestamp) {
-        this.animFrameID = 0;
-        this.callback(timestamp);
-    }
-};
+var $j3ukw = parcelRequire("j3ukw");
 // src/cubing/twisty/controllers/AnimationTypes.ts
 function $8e08190ac5cfc1c3$var$directionScalar(direction) {
     return direction;
@@ -39053,7 +39055,7 @@ var $8e08190ac5cfc1c3$var$CatchUpHelper = class {
         this.model = model;
         this.catchingUp = false;
         this.pendingFrame = false;
-        this.scheduler = new $8e08190ac5cfc1c3$var$RenderScheduler(this.animFrame.bind(this));
+        this.scheduler = new (0, $9IDdS.RenderScheduler)(this.animFrame.bind(this));
         this.catchUpMs = 500;
         this.lastTimestamp = 0;
     }
@@ -39092,18 +39094,16 @@ var $8e08190ac5cfc1c3$var$CatchUpHelper = class {
         })());
     }
 };
-var $8e08190ac5cfc1c3$var$_effectiveTimestampMilliseconds, $8e08190ac5cfc1c3$var$effectiveTimestampMilliseconds_fn, $8e08190ac5cfc1c3$var$_animFrameEffectiveTimestampStaleDropper;
 var $8e08190ac5cfc1c3$var$TwistyAnimationController = class {
     constructor(model, delegate){
         this.delegate = delegate;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_effectiveTimestampMilliseconds);
         this.playing = false;
         this.direction = 1 /* Forwards */ ;
         this.lastDatestamp = 0;
-        this.scheduler = new $8e08190ac5cfc1c3$var$RenderScheduler(this.animFrame.bind(this));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_animFrameEffectiveTimestampStaleDropper, new (0, $8JBxj.StaleDropper)());
+        this.scheduler = new (0, $9IDdS.RenderScheduler)(this.animFrame.bind(this));
+        this.#animFrameEffectiveTimestampStaleDropper = new (0, $9IDdS.StaleDropper)();
         this.model = model;
-        this.lastTimestampPromise = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_effectiveTimestampMilliseconds, $8e08190ac5cfc1c3$var$effectiveTimestampMilliseconds_fn).call(this);
+        this.lastTimestampPromise = this.#effectiveTimestampMilliseconds();
         this.model.playingInfo.addFreshListener(this.onPlayingProp.bind(this));
         this.catchUpHelper = new $8e08190ac5cfc1c3$var$CatchUpHelper(this.model);
         this.model.catchUpMove.addFreshListener(this.onCatchUpMoveProp.bind(this));
@@ -39115,6 +39115,9 @@ var $8e08190ac5cfc1c3$var$TwistyAnimationController = class {
         const catchingUp = catchUpMove.move !== null;
         if (catchingUp !== this.catchUpHelper.catchingUp) catchingUp ? this.catchUpHelper.start() : this.catchUpHelper.stop();
         this.scheduler.requestAnimFrame();
+    }
+    async #effectiveTimestampMilliseconds() {
+        return (await this.model.detailedTimelineInfo.get()).timestamp;
     }
     jumpToStart(options) {
         this.model.timestampRequest.set("start");
@@ -39151,7 +39154,7 @@ var $8e08190ac5cfc1c3$var$TwistyAnimationController = class {
         });
         this.playing = true;
         this.lastDatestamp = performance.now();
-        this.lastTimestampPromise = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_effectiveTimestampMilliseconds, $8e08190ac5cfc1c3$var$effectiveTimestampMilliseconds_fn).call(this);
+        this.lastTimestampPromise = this.#effectiveTimestampMilliseconds();
         this.scheduler.requestAnimFrame();
     }
     pause() {
@@ -39162,10 +39165,11 @@ var $8e08190ac5cfc1c3$var$TwistyAnimationController = class {
             untilBoundary: "entire-timeline" /* EntireTimeline */ 
         });
     }
+    #animFrameEffectiveTimestampStaleDropper;
     async animFrame(frameDatestamp) {
         if (this.playing) this.scheduler.requestAnimFrame();
         const lastDatestamp = this.lastDatestamp;
-        const freshenerResult = await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_animFrameEffectiveTimestampStaleDropper).queue(Promise.all([
+        const freshenerResult = await this.#animFrameEffectiveTimestampStaleDropper.queue(Promise.all([
             this.model.playingInfo.get(),
             this.lastTimestampPromise,
             this.model.timeRange.get(),
@@ -39212,11 +39216,6 @@ var $8e08190ac5cfc1c3$var$TwistyAnimationController = class {
         this.model.timestampRequest.set(newSmartTimestampRequest ?? newTimestamp);
     }
 };
-$8e08190ac5cfc1c3$var$_effectiveTimestampMilliseconds = new WeakSet();
-$8e08190ac5cfc1c3$var$effectiveTimestampMilliseconds_fn = async function() {
-    return (await this.model.detailedTimelineInfo.get()).timestamp;
-};
-$8e08190ac5cfc1c3$var$_animFrameEffectiveTimestampStaleDropper = new WeakMap();
 // src/cubing/twisty/controllers/TwistyPlayerController.ts
 var $8e08190ac5cfc1c3$var$TwistyPlayerController = class {
     constructor(model, delegate){
@@ -39243,75 +39242,15 @@ var $8e08190ac5cfc1c3$var$TwistyPlayerController = class {
 // src/cubing/twisty/model/props/viewer/ControlPanelProp.ts
 var $8e08190ac5cfc1c3$var$controlsLocations = {
     "bottom-row": true,
-    "none": true
+    none: true
 };
-var $8e08190ac5cfc1c3$var$ControlPanelProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$ControlPanelProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "auto";
     }
 };
-// src/cubing/twisty/views/node-custom-element-shims.ts
-var $8e08190ac5cfc1c3$var$HTMLElementStub = class {
-};
-var $8e08190ac5cfc1c3$var$HTMLElementShim;
-if (globalThis.HTMLElement) $8e08190ac5cfc1c3$var$HTMLElementShim = HTMLElement;
-else $8e08190ac5cfc1c3$var$HTMLElementShim = $8e08190ac5cfc1c3$var$HTMLElementStub;
-var $8e08190ac5cfc1c3$var$CustomElementsStub = class {
-    define() {}
-};
-var $8e08190ac5cfc1c3$var$customElementsShim;
-if (globalThis.customElements) $8e08190ac5cfc1c3$var$customElementsShim = customElements;
-else $8e08190ac5cfc1c3$var$customElementsShim = new $8e08190ac5cfc1c3$var$CustomElementsStub();
-// src/cubing/twisty/views/ManagedCustomElement.ts
-var $8e08190ac5cfc1c3$var$CSSSource = class {
-    constructor(sourceText){
-        this.sourceText = sourceText;
-    }
-    getAsString() {
-        return this.sourceText;
-    }
-};
-var $8e08190ac5cfc1c3$var$_cssSourceMap;
-var $8e08190ac5cfc1c3$var$ManagedCustomElement = class extends $8e08190ac5cfc1c3$var$HTMLElementShim {
-    constructor(options){
-        super();
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cssSourceMap, /* @__PURE__ */ new Map());
-        this.shadow = this.attachShadow({
-            mode: options?.mode ?? "closed"
-        });
-        this.contentWrapper = document.createElement("div");
-        this.contentWrapper.classList.add("wrapper");
-        this.shadow.appendChild(this.contentWrapper);
-    }
-    addCSS(cssSource) {
-        const existing = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssSourceMap).get(cssSource);
-        if (existing) return existing;
-        const cssElem = document.createElement("style");
-        cssElem.textContent = cssSource.getAsString();
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssSourceMap).set(cssSource, cssElem);
-        this.shadow.appendChild(cssElem);
-        return cssElem;
-    }
-    removeCSS(cssSource) {
-        const cssElem = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssSourceMap).get(cssSource);
-        if (!cssElem) return;
-        this.shadow.removeChild(cssElem);
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssSourceMap).delete(cssSource);
-    }
-    addElement(element) {
-        return this.contentWrapper.appendChild(element);
-    }
-    prependElement(element) {
-        this.contentWrapper.prepend(element);
-    }
-    removeElement(element) {
-        return this.contentWrapper.removeChild(element);
-    }
-};
-$8e08190ac5cfc1c3$var$_cssSourceMap = new WeakMap();
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-managed-custom-element", $8e08190ac5cfc1c3$var$ManagedCustomElement);
 // src/cubing/twisty/views/TwistyViewerWrapper.css.ts
-var $8e08190ac5cfc1c3$var$twistyViewerWrapperCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+var $8e08190ac5cfc1c3$var$twistyViewerWrapperCSS = new (0, $9IDdS.CSSSource)(`
 :host {
   width: 384px;
   height: 256px;
@@ -39350,82 +39289,49 @@ var $8e08190ac5cfc1c3$var$twistyViewerWrapperCSS = new $8e08190ac5cfc1c3$var$CSS
   grid-column: 2 / 3;
 }
 `);
-// src/cubing/twisty/views/2D/Twisty2DPuzzle.css.ts
-var $8e08190ac5cfc1c3$var$twisty2DSVGCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
-:host {
-  width: 384px;
-  height: 256px;
-  display: grid;
-}
-
-.wrapper {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  overflow: hidden;
-}
-
-.svg-wrapper,
-twisty-2d-svg,
-svg {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  min-height: 0;
-}
-
-svg {
-  animation: fade-in 0.25s ease-in;
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-`);
 // src/cubing/twisty/views/2D/KPuzzleSVGWrapper.ts
 var $8e08190ac5cfc1c3$var$xmlns = "http://www.w3.org/2000/svg";
 var $8e08190ac5cfc1c3$var$svgCounter = 0;
 function $8e08190ac5cfc1c3$var$nextSVGID() {
     $8e08190ac5cfc1c3$var$svgCounter += 1;
-    return "svg" + $8e08190ac5cfc1c3$var$svgCounter.toString();
+    return `svg${$8e08190ac5cfc1c3$var$svgCounter.toString()}`;
 }
 var $8e08190ac5cfc1c3$var$colorMaps = {
     dim: {
-        "white": "#dddddd",
-        "orange": "#884400",
-        "limegreen": "#008800",
-        "red": "#660000",
+        white: "#dddddd",
+        orange: "#884400",
+        limegreen: "#008800",
+        red: "#660000",
         "rgb(34, 102, 255)": "#000088",
-        "yellow": "#888800"
+        yellow: "#888800"
     },
     oriented: {
-        "white": "#44ddcc",
-        "orange": "#44ddcc",
-        "limegreen": "#44ddcc",
-        "red": "#44ddcc",
+        white: "#44ddcc",
+        orange: "#44ddcc",
+        limegreen: "#44ddcc",
+        red: "#44ddcc",
         "rgb(34, 102, 255)": "#44ddcc",
-        "yellow": "#44ddcc"
+        yellow: "#44ddcc"
     },
     ignored: {
-        "white": "#444444",
-        "orange": "#444444",
-        "limegreen": "#444444",
-        "red": "#444444",
+        white: "#444444",
+        orange: "#444444",
+        limegreen: "#444444",
+        red: "#444444",
         "rgb(34, 102, 255)": "#444444",
-        "yellow": "#444444"
+        yellow: "#444444"
     },
     invisible: {
-        "white": "#00000000",
-        "orange": "#00000000",
-        "limegreen": "#00000000",
-        "red": "#00000000",
+        white: "#00000000",
+        orange: "#00000000",
+        limegreen: "#00000000",
+        red: "#00000000",
         "rgb(34, 102, 255)": "#00000000",
-        "yellow": "#00000000"
+        yellow: "#00000000"
     }
 };
 var $8e08190ac5cfc1c3$export$1c51709df4cf438 = class {
-    constructor(kpuzzle, svgSource, experimentalAppearance){
+    constructor(kpuzzle, svgSource, experimentalStickeringMask){
         this.kpuzzle = kpuzzle;
         this.originalColors = {};
         this.gradients = {};
@@ -39448,17 +39354,17 @@ var $8e08190ac5cfc1c3$export$1c51709df4cf438 = class {
                 const id = this.elementID(orbitName, idx, orientation);
                 const elem = this.elementByID(id);
                 let originalColor = elem.style.fill;
-                if (experimentalAppearance) (()=>{
-                    const a = experimentalAppearance.orbits;
+                if (experimentalStickeringMask) (()=>{
+                    const a = experimentalStickeringMask.orbits;
                     if (!a) return;
-                    const orbitAppearance = a[orbitName];
-                    if (!orbitAppearance) return;
-                    const pieceAppearance = orbitAppearance.pieces[idx];
-                    if (!pieceAppearance) return;
-                    const faceletAppearance = pieceAppearance.facelets[orientation];
-                    if (!faceletAppearance) return;
-                    const appearance = typeof faceletAppearance === "string" ? faceletAppearance : faceletAppearance?.appearance;
-                    const colorMap = $8e08190ac5cfc1c3$var$colorMaps[appearance];
+                    const orbitStickeringMask = a[orbitName];
+                    if (!orbitStickeringMask) return;
+                    const pieceStickeringMask = orbitStickeringMask.pieces[idx];
+                    if (!pieceStickeringMask) return;
+                    const faceletStickeringMasks = pieceStickeringMask.facelets[orientation];
+                    if (!faceletStickeringMasks) return;
+                    const stickeringMask = typeof faceletStickeringMasks === "string" ? faceletStickeringMasks : faceletStickeringMasks?.mask;
+                    const colorMap = $8e08190ac5cfc1c3$var$colorMaps[stickeringMask];
                     if (colorMap) originalColor = colorMap[originalColor];
                 })();
                 else originalColor = elem.style.fill;
@@ -39501,10 +39407,10 @@ var $8e08190ac5cfc1c3$export$1c51709df4cf438 = class {
                 if (singleColor) {
                     this.gradients[id].children[0].setAttribute("stop-color", this.originalColors[fromCur]);
                     this.gradients[id].children[1].setAttribute("stop-color", this.originalColors[fromCur]);
-                    this.gradients[id].children[1].setAttribute("offset", `100%`);
-                    this.gradients[id].children[2].setAttribute("offset", `100%`);
-                    this.gradients[id].children[3].setAttribute("offset", `100%`);
-                    this.gradients[id].children[4].setAttribute("offset", `100%`);
+                    this.gradients[id].children[1].setAttribute("offset", "100%");
+                    this.gradients[id].children[2].setAttribute("offset", "100%");
+                    this.gradients[id].children[3].setAttribute("offset", "100%");
+                    this.gradients[id].children[4].setAttribute("offset", "100%");
                 }
             }
         }
@@ -39512,7 +39418,7 @@ var $8e08190ac5cfc1c3$export$1c51709df4cf438 = class {
     newGradient(id, originalColor) {
         const grad = document.createElementNS($8e08190ac5cfc1c3$var$xmlns, "radialGradient");
         grad.setAttribute("id", `grad-${this.svgID}-${id}`);
-        grad.setAttribute("r", `70.7107%`);
+        grad.setAttribute("r", "70.7107%");
         const stopDefs = [
             {
                 offset: 0,
@@ -39549,15 +39455,47 @@ var $8e08190ac5cfc1c3$export$1c51709df4cf438 = class {
         return grad;
     }
     elementID(orbitName, idx, orientation) {
-        return orbitName + "-l" + idx + "-o" + orientation;
+        return `${orbitName}-l${idx}-o${orientation}`;
     }
     elementByID(id) {
-        return this.wrapperElement.querySelector("#" + id);
+        return this.wrapperElement.querySelector(`#${id}`);
     }
 };
+// src/cubing/twisty/views/2D/Twisty2DPuzzle.css.ts
+var $8e08190ac5cfc1c3$var$twisty2DSVGCSS = new (0, $9IDdS.CSSSource)(`
+:host {
+  width: 384px;
+  height: 256px;
+  display: grid;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+}
+
+.svg-wrapper,
+twisty-2d-svg,
+svg {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  min-height: 0;
+}
+
+svg {
+  animation: fade-in 0.25s ease-in;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+`);
 // src/cubing/twisty/views/2D/Twisty2DPuzzle.ts
-var $8e08190ac5cfc1c3$var$_cachedPosition, $8e08190ac5cfc1c3$var$_freshListenerManager;
-var $8e08190ac5cfc1c3$var$Twisty2DPuzzle = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+var $8e08190ac5cfc1c3$var$Twisty2DPuzzle = class extends (0, $9IDdS.ManagedCustomElement) {
     constructor(model, kpuzzle, svgSource, options, puzzleLoader){
         super();
         this.model = model;
@@ -39565,19 +39503,21 @@ var $8e08190ac5cfc1c3$var$Twisty2DPuzzle = class extends $8e08190ac5cfc1c3$var$M
         this.svgSource = svgSource;
         this.options = options;
         this.puzzleLoader = puzzleLoader;
-        this.scheduler = new $8e08190ac5cfc1c3$var$RenderScheduler(this.render.bind(this));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedPosition, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_freshListenerManager, new (0, $8JBxj.FreshListenerManager)());
+        this.scheduler = new (0, $9IDdS.RenderScheduler)(this.render.bind(this));
+        this.#cachedPosition = null;
+        this.#freshListenerManager = new (0, $9IDdS.FreshListenerManager)();
         this.addCSS($8e08190ac5cfc1c3$var$twisty2DSVGCSS);
         this.resetSVG();
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager).addListener(this.model.puzzleID, (puzzleID)=>{
+        this.#freshListenerManager.addListener(this.model.puzzleID, (puzzleID)=>{
             if (puzzleLoader?.id !== puzzleID) this.disconnect();
         });
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager).addListener(this.model.legacyPosition, this.onPositionChange.bind(this));
-        if (this.options?.experimentalStickering) this.experimentalSetStickering(this.options.experimentalStickering);
+        this.#freshListenerManager.addListener(this.model.legacyPosition, this.onPositionChange.bind(this));
+        if (this.options?.experimentalStickeringMask) this.experimentalSetStickeringMask(this.options.experimentalStickeringMask);
     }
+    #cachedPosition;
+    #freshListenerManager;
     disconnect() {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager).disconnect();
+        this.#freshListenerManager.disconnect();
     }
     onPositionChange(position) {
         try {
@@ -39589,7 +39529,7 @@ var $8e08190ac5cfc1c3$var$Twisty2DPuzzle = class extends $8e08190ac5cfc1c3$var$M
                 this.svgWrapper.draw(position.state, newState, position.movesInProgress[0].fraction);
             } else {
                 this.svgWrapper.draw(position.state);
-                (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedPosition, position);
+                this.#cachedPosition = position;
             }
         } catch (e) {
             console.warn("Bad position (this doesn't necessarily mean something is wrong). Pre-emptively disconnecting:", this.puzzleLoader?.id, e);
@@ -39599,141 +39539,123 @@ var $8e08190ac5cfc1c3$var$Twisty2DPuzzle = class extends $8e08190ac5cfc1c3$var$M
     scheduleRender() {
         this.scheduler.requestAnimFrame();
     }
-    experimentalSetStickering(stickering) {
-        (async ()=>{
-            if (!this.puzzleLoader?.appearance) return;
-            const appearance = await this.puzzleLoader.appearance(stickering);
-            this.resetSVG(appearance);
-        })();
+    experimentalSetStickeringMask(stickeringMask) {
+        this.resetSVG(stickeringMask);
     }
-    resetSVG(appearance) {
+    resetSVG(stickeringMask) {
         if (this.svgWrapper) this.removeElement(this.svgWrapper.wrapperElement);
         if (!this.kpuzzle) return;
-        this.svgWrapper = new $8e08190ac5cfc1c3$export$1c51709df4cf438(this.kpuzzle, this.svgSource, appearance);
+        this.svgWrapper = new $8e08190ac5cfc1c3$export$1c51709df4cf438(this.kpuzzle, this.svgSource, stickeringMask);
         this.addElement(this.svgWrapper.wrapperElement);
-        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedPosition)) this.onPositionChange((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedPosition));
+        if (this.#cachedPosition) this.onPositionChange(this.#cachedPosition);
     }
     render() {}
 };
-$8e08190ac5cfc1c3$var$_cachedPosition = new WeakMap();
-$8e08190ac5cfc1c3$var$_freshListenerManager = new WeakMap();
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-2d-puzzle", $8e08190ac5cfc1c3$var$Twisty2DPuzzle);
+(0, $9IDdS.customElementsShim).define("twisty-2d-puzzle", $8e08190ac5cfc1c3$var$Twisty2DPuzzle);
 // src/cubing/twisty/views/2D/Twisty2DPuzzleWrapper.ts
-var $8e08190ac5cfc1c3$var$_freshListenerManager2, $8e08190ac5cfc1c3$var$_cachedTwisty2DPuzzle;
 var $8e08190ac5cfc1c3$var$Twisty2DPuzzleWrapper = class {
     constructor(model, schedulable, puzzleLoader, effectiveVisualization){
         this.model = model;
         this.schedulable = schedulable;
         this.puzzleLoader = puzzleLoader;
         this.effectiveVisualization = effectiveVisualization;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_freshListenerManager2, new (0, $8JBxj.FreshListenerManager)());
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedTwisty2DPuzzle, null);
         this.twisty2DPuzzle();
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager2).addListener(this.model.twistySceneModel.stickering, async (stickering)=>{
-            (await this.twisty2DPuzzle()).experimentalSetStickering(stickering);
+        this.#freshListenerManager.addListener(this.model.twistySceneModel.stickeringMask, async (stickeringMask)=>{
+            (await this.twisty2DPuzzle()).experimentalSetStickeringMask(stickeringMask);
         });
     }
+    #freshListenerManager = new (0, $9IDdS.FreshListenerManager)();
     disconnect() {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager2).disconnect();
+        this.#freshListenerManager.disconnect();
     }
     scheduleRender() {}
+    #cachedTwisty2DPuzzle = null;
     async twisty2DPuzzle() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedTwisty2DPuzzle) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedTwisty2DPuzzle, (async ()=>{
+        return this.#cachedTwisty2DPuzzle ?? (this.#cachedTwisty2DPuzzle = (async ()=>{
             const svgPromise = this.effectiveVisualization === "experimental-2D-LL" ? this.puzzleLoader.llSVG() : this.puzzleLoader.svg();
             return new $8e08190ac5cfc1c3$var$Twisty2DPuzzle(this.model, await this.puzzleLoader.kpuzzle(), await svgPromise, {}, this.puzzleLoader);
         })());
     }
 };
-$8e08190ac5cfc1c3$var$_freshListenerManager2 = new WeakMap();
-$8e08190ac5cfc1c3$var$_cachedTwisty2DPuzzle = new WeakMap();
 // src/cubing/twisty/views/2D/Twisty2DSceneWrapper.ts
-var $8e08190ac5cfc1c3$var$_freshListenerManager3, $8e08190ac5cfc1c3$var$_cachedScene, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper;
-var $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+var $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper = class extends (0, $9IDdS.ManagedCustomElement) {
     constructor(model, effectiveVisualization){
         super();
         this.model = model;
         this.effectiveVisualization = effectiveVisualization;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_freshListenerManager3, new (0, $8JBxj.FreshListenerManager)());
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedScene, void 0);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper, null);
     }
+    #freshListenerManager = new (0, $9IDdS.FreshListenerManager)();
     disconnect() {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager3).disconnect();
+        this.#freshListenerManager.disconnect();
     }
     async connectedCallback() {
         this.addCSS($8e08190ac5cfc1c3$var$twistyViewerWrapperCSS);
-        if (this.model) (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager3).addListener(this.model.twistyPlayerModel.puzzleLoader, this.onPuzzleLoader.bind(this));
+        if (this.model) this.#freshListenerManager.addListener(this.model.twistyPlayerModel.puzzleLoader, this.onPuzzleLoader.bind(this));
     }
+    #cachedScene;
     async scene() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedScene) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedScene, (async ()=>new (await (0, $8JBxj.THREEJS)).Scene())());
+        return this.#cachedScene ?? (this.#cachedScene = (async ()=>new (await (0, $9IDdS.THREEJS)).Scene())());
     }
     scheduleRender() {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper)?.scheduleRender();
+        this.#currentTwisty2DPuzzleWrapper?.scheduleRender();
     }
+    #currentTwisty2DPuzzleWrapper = null;
     currentTwisty2DPuzzleWrapper() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper);
+        return this.#currentTwisty2DPuzzleWrapper;
     }
     async setCurrentTwisty2DPuzzleWrapper(twisty2DPuzzleWrapper) {
-        const old = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper);
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper, twisty2DPuzzleWrapper);
+        const old = this.#currentTwisty2DPuzzleWrapper;
+        this.#currentTwisty2DPuzzleWrapper = twisty2DPuzzleWrapper;
         old?.disconnect();
         const twisty2DPuzzlePromise = twisty2DPuzzleWrapper.twisty2DPuzzle();
         this.contentWrapper.textContent = "";
         this.addElement(await twisty2DPuzzlePromise);
     }
     async onPuzzleLoader(puzzleLoader) {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper)?.disconnect();
+        this.#currentTwisty2DPuzzleWrapper?.disconnect();
         const twisty2DPuzzleWrapper = new $8e08190ac5cfc1c3$var$Twisty2DPuzzleWrapper(this.model.twistyPlayerModel, this, puzzleLoader, this.effectiveVisualization);
         this.setCurrentTwisty2DPuzzleWrapper(twisty2DPuzzleWrapper);
     }
 };
-$8e08190ac5cfc1c3$var$_freshListenerManager3 = new WeakMap();
-$8e08190ac5cfc1c3$var$_cachedScene = new WeakMap();
-$8e08190ac5cfc1c3$var$_currentTwisty2DPuzzleWrapper = new WeakMap();
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-2d-scene-wrapper", $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper);
+(0, $9IDdS.customElementsShim).define("twisty-2d-scene-wrapper", $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper);
 // src/cubing/twisty/views/ClassListManager.ts
-var $8e08190ac5cfc1c3$var$_currentClassName;
 var $8e08190ac5cfc1c3$var$ClassListManager = class {
     constructor(elem, prefix, validSuffixes){
         this.elem = elem;
         this.prefix = prefix;
         this.validSuffixes = validSuffixes;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_currentClassName, null);
     }
+    #currentClassName = null;
     clearValue() {
-        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentClassName)) this.elem.contentWrapper.classList.remove((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentClassName));
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_currentClassName, null);
+        if (this.#currentClassName) this.elem.contentWrapper.classList.remove(this.#currentClassName);
+        this.#currentClassName = null;
     }
     setValue(suffix) {
         if (!this.validSuffixes.includes(suffix)) throw new Error(`Invalid suffix: ${suffix}`);
         const newClassName = `${this.prefix}${suffix}`;
-        const changed = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentClassName) !== newClassName;
+        const changed = this.#currentClassName !== newClassName;
         if (changed) {
             this.clearValue();
             this.elem.contentWrapper.classList.add(newClassName);
-            (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_currentClassName, newClassName);
+            this.#currentClassName = newClassName;
         }
         return changed;
     }
 };
-$8e08190ac5cfc1c3$var$_currentClassName = new WeakMap();
 // src/cubing/twisty/views/InitialValueTracker.ts
-var $8e08190ac5cfc1c3$var$_resolve;
 var $8e08190ac5cfc1c3$var$InitialValueTracker = class {
     constructor(){
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_resolve, void 0);
         this.promise = new Promise((resolve, reject)=>{
-            (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_resolve, resolve);
+            this.#resolve = resolve;
             this.reject = reject;
         });
     }
+    #resolve;
     handleNewValue(t) {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_resolve).call(this, t);
+        this.#resolve(t);
     }
 };
-$8e08190ac5cfc1c3$var$_resolve = new WeakMap();
 // src/cubing/twisty/views/3D/Twisty3DPuzzleWrapper.ts
-var $8e08190ac5cfc1c3$var$_freshListenerManager4, $8e08190ac5cfc1c3$var$_cachedTwisty3DPuzzle;
 var $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper = class extends EventTarget {
     constructor(model, schedulable, puzzleLoader, visualizationStrategy){
         super();
@@ -39741,13 +39663,11 @@ var $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper = class extends EventTarget {
         this.schedulable = schedulable;
         this.puzzleLoader = puzzleLoader;
         this.visualizationStrategy = visualizationStrategy;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4, new (0, $8JBxj.FreshListenerManager)());
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedTwisty3DPuzzle, null);
         this.twisty3DPuzzle();
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addListener(this.model.puzzleLoader, (puzzleLoader2)=>{
+        this.#freshListenerManager.addListener(this.model.puzzleLoader, (puzzleLoader2)=>{
             if (this.puzzleLoader.id !== puzzleLoader2.id) this.disconnect();
         });
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addListener(this.model.legacyPosition, async (position)=>{
+        this.#freshListenerManager.addListener(this.model.legacyPosition, async (position)=>{
             try {
                 (await this.twisty3DPuzzle()).onPositionChange(position);
                 this.scheduleRender();
@@ -39755,62 +39675,56 @@ var $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper = class extends EventTarget {
                 this.disconnect();
             }
         });
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addListener(this.model.twistySceneModel.hintFacelet, async (hintFaceletStyle)=>{
+        this.#freshListenerManager.addListener(this.model.twistySceneModel.hintFacelet, async (hintFaceletStyle)=>{
             (await this.twisty3DPuzzle()).experimentalUpdateOptions({
                 hintFacelets: hintFaceletStyle === "auto" ? "floating" : hintFaceletStyle
             });
             this.scheduleRender();
         });
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addListener(this.model.twistySceneModel.foundationDisplay, async (foundationDisplay)=>{
+        this.#freshListenerManager.addListener(this.model.twistySceneModel.foundationDisplay, async (foundationDisplay)=>{
             (await this.twisty3DPuzzle()).experimentalUpdateOptions({
                 showFoundation: foundationDisplay !== "none"
             });
             this.scheduleRender();
         });
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addListener(this.model.twistySceneModel.stickering, async (stickering)=>{
-            if ("setStickering" in await this.twisty3DPuzzle()) {
-                (await this.twisty3DPuzzle()).setStickering(stickering);
-                this.scheduleRender();
-            } else if ("appearance" in this.puzzleLoader) {
-                const [twisty3D, appearancePromise] = await Promise.all([
-                    this.twisty3DPuzzle(),
-                    this.puzzleLoader.appearance(stickering ?? "full")
-                ]);
-                twisty3D.experimentalSetAppearance(appearancePromise);
-                this.scheduleRender();
-            }
+        this.#freshListenerManager.addListener(this.model.twistySceneModel.stickeringMask, async (stickeringMask)=>{
+            const twisty3D = await this.twisty3DPuzzle();
+            twisty3D.setStickeringMask(stickeringMask);
+            this.scheduleRender();
         });
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).addMultiListener3([
-            this.model.twistySceneModel.stickering,
+        this.#freshListenerManager.addMultiListener3([
+            this.model.twistySceneModel.stickeringMask,
             this.model.twistySceneModel.foundationStickerSprite,
             this.model.twistySceneModel.hintStickerSprite
         ], async (inputs)=>{
             if ("experimentalUpdateTexture" in await this.twisty3DPuzzle()) {
-                (await this.twisty3DPuzzle()).experimentalUpdateTexture(inputs[0] === "picture", inputs[1], inputs[2]);
+                (await this.twisty3DPuzzle()).experimentalUpdateTexture(inputs[0].specialBehaviour === "picture", inputs[1], inputs[2]);
                 this.scheduleRender();
             }
         });
     }
+    #freshListenerManager = new (0, $9IDdS.FreshListenerManager)();
     disconnect() {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager4).disconnect();
+        this.#freshListenerManager.disconnect();
     }
     scheduleRender() {
         this.schedulable.scheduleRender();
         this.dispatchEvent(new CustomEvent("render-scheduled"));
     }
+    #cachedTwisty3DPuzzle = null;
     async twisty3DPuzzle() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedTwisty3DPuzzle) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedTwisty3DPuzzle, (async ()=>{
-            const proxyPromise = (0, $8JBxj.proxy3D)();
+        return this.#cachedTwisty3DPuzzle ?? (this.#cachedTwisty3DPuzzle = (async ()=>{
+            const proxyPromise = (0, $9IDdS.proxy3D)();
             if (this.puzzleLoader.id === "3x3x3" && this.visualizationStrategy === "Cube3D") {
-                const [foundationSprite, hintSprite, experimentalStickering] = await Promise.all([
+                const [foundationSprite, hintSprite, experimentalStickeringMask] = await Promise.all([
                     this.model.twistySceneModel.foundationStickerSprite.get(),
                     this.model.twistySceneModel.hintStickerSprite.get(),
-                    this.model.twistySceneModel.stickering.get()
+                    this.model.twistySceneModel.stickeringMask.get()
                 ]);
-                return (await proxyPromise).cube3DShim({
+                return (await proxyPromise).cube3DShim(()=>this.schedulable.scheduleRender(), {
                     foundationSprite: foundationSprite,
                     hintSprite: hintSprite,
-                    experimentalStickering: experimentalStickering
+                    experimentalStickeringMask: experimentalStickeringMask
                 });
             } else {
                 const [hintFacelets, foundationSprite, hintSprite] = await Promise.all([
@@ -39818,7 +39732,7 @@ var $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper = class extends EventTarget {
                     this.model.twistySceneModel.foundationStickerSprite.get(),
                     this.model.twistySceneModel.hintStickerSprite.get()
                 ]);
-                const pg3d = (await proxyPromise).pg3dShim(this.puzzleLoader, hintFacelets === "auto" ? "floating" : hintFacelets);
+                const pg3d = (await proxyPromise).pg3dShim(()=>this.schedulable.scheduleRender(), this.puzzleLoader, hintFacelets === "auto" ? "floating" : hintFacelets);
                 pg3d.then((p)=>p.experimentalUpdateTexture(true, foundationSprite ?? void 0, hintSprite ?? void 0));
                 return pg3d;
             }
@@ -39831,702 +39745,75 @@ var $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper = class extends EventTarget {
             return;
         }
         const targets = puzzle.experimentalGetControlTargets();
-        const [raycaster] = await Promise.all([
-            raycasterPromise
+        const [raycaster, movePressCancelOptions] = await Promise.all([
+            raycasterPromise,
+            this.model.twistySceneModel.movePressCancelOptions.get()
         ]);
         const intersects = raycaster.intersectObjects(targets);
         if (intersects.length > 0) {
             const closestMove = puzzle.getClosestMoveToAxis(intersects[0].point, transformations);
             if (closestMove) this.model.experimentalAddMove(closestMove.move, {
-                coalesce: true,
-                mod: closestMove.order
+                cancel: movePressCancelOptions
             });
             else console.info("Skipping move!");
         }
     }
 };
-$8e08190ac5cfc1c3$var$_freshListenerManager4 = new WeakMap();
-$8e08190ac5cfc1c3$var$_cachedTwisty3DPuzzle = new WeakMap();
-// src/cubing/vendor/three/examples/jsm/libs/stats.modified.module.ts
-var $8e08190ac5cfc1c3$var$performance2 = globalThis.performance;
-var $8e08190ac5cfc1c3$var$Stats = class {
-    constructor(){
-        this.mode = 0;
-        this.dom = document.createElement("div");
-        this.beginTime = ($8e08190ac5cfc1c3$var$performance2 || Date).now();
-        this.prevTime = this.beginTime;
-        this.frames = 0;
-        this.fpsPanel = this.addPanel(new $8e08190ac5cfc1c3$var$StatsPanel("FPS", "#0ff", "#002"));
-        this.msPanel = this.addPanel(new $8e08190ac5cfc1c3$var$StatsPanel("MS", "#0f0", "#020"));
-        this.memPanel = $8e08190ac5cfc1c3$var$performance2?.memory ? this.addPanel(new $8e08190ac5cfc1c3$var$StatsPanel("MB", "#f08", "#201")) : null;
-        this.REVISION = 16;
-        this.dom.style.cssText = "position:fixed;top:0;left:0;cursor:pointer;opacity:0.9;z-index:10000";
-        this.dom.addEventListener("click", (event)=>{
-            event.preventDefault();
-            this.showPanel(++this.mode % this.dom.children.length);
-        }, false);
-        this.showPanel(0);
-    }
-    addPanel(panel) {
-        this.dom.appendChild(panel.dom);
-        return panel;
-    }
-    showPanel(id) {
-        for(let i = 0; i < this.dom.children.length; i++)this.dom.children[i].style.display = i === id ? "block" : "none";
-        this.mode = id;
-    }
-    begin() {
-        this.beginTime = ($8e08190ac5cfc1c3$var$performance2 || Date).now();
-    }
-    end() {
-        this.frames++;
-        const time = ($8e08190ac5cfc1c3$var$performance2 || Date).now();
-        this.msPanel.update(time - this.beginTime, 200);
-        if (time >= this.prevTime + 1e3) {
-            this.fpsPanel.update(this.frames * 1e3 / (time - this.prevTime), 100);
-            this.prevTime = time;
-            this.frames = 0;
-            if (this.memPanel) {
-                const memory = $8e08190ac5cfc1c3$var$performance2.memory;
-                this.memPanel.update(memory.usedJSHeapSize / 1048576, memory.jsHeapSizeLimit / 1048576);
-            }
-        }
-        return time;
-    }
-    update() {
-        this.beginTime = this.end();
-    }
-};
-var $8e08190ac5cfc1c3$var$PR = Math.round(globalThis?.window?.devicePixelRatio ?? 1);
-var $8e08190ac5cfc1c3$var$WIDTH = 80 * $8e08190ac5cfc1c3$var$PR;
-var $8e08190ac5cfc1c3$var$HEIGHT = 48 * $8e08190ac5cfc1c3$var$PR;
-var $8e08190ac5cfc1c3$var$TEXT_X = 3 * $8e08190ac5cfc1c3$var$PR;
-var $8e08190ac5cfc1c3$var$TEXT_Y = 2 * $8e08190ac5cfc1c3$var$PR;
-var $8e08190ac5cfc1c3$var$GRAPH_X = 3 * $8e08190ac5cfc1c3$var$PR;
-var $8e08190ac5cfc1c3$var$GRAPH_Y = 15 * $8e08190ac5cfc1c3$var$PR;
-var $8e08190ac5cfc1c3$var$GRAPH_WIDTH = 74 * $8e08190ac5cfc1c3$var$PR;
-var $8e08190ac5cfc1c3$var$GRAPH_HEIGHT = 30 * $8e08190ac5cfc1c3$var$PR;
-var $8e08190ac5cfc1c3$var$StatsPanel = class {
-    constructor(name, fg, bg){
-        this.name = name;
-        this.fg = fg;
-        this.bg = bg;
-        this.min = Infinity;
-        this.max = 0;
-        this.dom = document.createElement("canvas");
-        this.context = this.dom.getContext("2d");
-        this.dom.width = $8e08190ac5cfc1c3$var$WIDTH;
-        this.dom.height = $8e08190ac5cfc1c3$var$HEIGHT;
-        this.dom.style.cssText = "width:80px;height:48px";
-        this.context.font = `bold ${9 * $8e08190ac5cfc1c3$var$PR}px Helvetica,Arial,sans-serif`;
-        this.context.textBaseline = "top";
-        this.context.fillStyle = bg;
-        this.context.fillRect(0, 0, $8e08190ac5cfc1c3$var$WIDTH, $8e08190ac5cfc1c3$var$HEIGHT);
-        this.context.fillStyle = fg;
-        this.context.fillText(name, $8e08190ac5cfc1c3$var$TEXT_X, $8e08190ac5cfc1c3$var$TEXT_Y);
-        this.context.fillRect($8e08190ac5cfc1c3$var$GRAPH_X, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$GRAPH_WIDTH, $8e08190ac5cfc1c3$var$GRAPH_HEIGHT);
-        this.context.fillStyle = bg;
-        this.context.globalAlpha = 0.9;
-        this.context.fillRect($8e08190ac5cfc1c3$var$GRAPH_X, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$GRAPH_WIDTH, $8e08190ac5cfc1c3$var$GRAPH_HEIGHT);
-    }
-    update(value, maxValue) {
-        this.min = Math.min(this.min, value);
-        this.max = Math.max(this.max, value);
-        this.context.fillStyle = this.bg;
-        this.context.globalAlpha = 1;
-        this.context.fillRect(0, 0, $8e08190ac5cfc1c3$var$WIDTH, $8e08190ac5cfc1c3$var$GRAPH_Y);
-        this.context.fillStyle = this.fg;
-        this.context.fillText(Math.round(value) + " " + this.name + " (" + Math.round(this.min) + "-" + Math.round(this.max) + ")", $8e08190ac5cfc1c3$var$TEXT_X, $8e08190ac5cfc1c3$var$TEXT_Y);
-        this.context.drawImage(this.dom, $8e08190ac5cfc1c3$var$GRAPH_X + $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$GRAPH_WIDTH - $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_HEIGHT, $8e08190ac5cfc1c3$var$GRAPH_X, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$GRAPH_WIDTH - $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_HEIGHT);
-        this.context.fillRect($8e08190ac5cfc1c3$var$GRAPH_X + $8e08190ac5cfc1c3$var$GRAPH_WIDTH - $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_HEIGHT);
-        this.context.fillStyle = this.bg;
-        this.context.globalAlpha = 0.9;
-        this.context.fillRect($8e08190ac5cfc1c3$var$GRAPH_X + $8e08190ac5cfc1c3$var$GRAPH_WIDTH - $8e08190ac5cfc1c3$var$PR, $8e08190ac5cfc1c3$var$GRAPH_Y, $8e08190ac5cfc1c3$var$PR, Math.round((1 - value / maxValue) * $8e08190ac5cfc1c3$var$GRAPH_HEIGHT));
-    }
-};
-// src/cubing/twisty/views/canvas.ts
-var $8e08190ac5cfc1c3$var$globalPixelRatioOverride = null;
-function $8e08190ac5cfc1c3$var$pixelRatio() {
-    return $8e08190ac5cfc1c3$var$globalPixelRatioOverride ?? (devicePixelRatio || 1);
-}
-// src/cubing/twisty/views/3D/Twisty3DVantage.css.ts
-var $8e08190ac5cfc1c3$var$twisty3DVantageCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
-:host {
-  width: 384px;
-  height: 256px;
-  display: grid;
-}
-
-.wrapper {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  overflow: hidden;
-  place-content: center;
-  contain: strict;
-}
-
-.loading {
-  width: 4em;
-  height: 4em;
-  border-radius: 2.5em;
-  border: 0.5em solid rgba(0, 0, 0, 0);
-  border-top: 0.5em solid rgba(0, 0, 0, 0.7);
-  border-right: 0.5em solid rgba(0, 0, 0, 0.7);
-  animation: fade-in-delayed 4s, rotate 1s linear infinite;
-}
-
-@keyframes fade-in-delayed {
-  0% { opacity: 0; }
-  25% {opacity: 0; }
-  100% { opacity: 1; }
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* TODO: This is due to stats hack. Replace with \`canvas\`. */
-.wrapper > canvas {
-  max-width: 100%;
-  max-height: 100%;
-  animation: fade-in 0.25s ease-in;
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.wrapper.invisible {
-  opacity: 0;
-}
-
-.wrapper.drag-input-enabled > canvas {
-  cursor: grab;
-}
-
-.wrapper.drag-input-enabled > canvas:active {
-  cursor: grabbing;
-}
-`);
-// src/cubing/twisty/views/3D/DragTracker.ts
-var $8e08190ac5cfc1c3$var$MOVEMENT_EPSILON = 0.1;
-var $8e08190ac5cfc1c3$var$_dragInfoMap, $8e08190ac5cfc1c3$var$_targetListeners, $8e08190ac5cfc1c3$var$_lazyListenersRegistered, $8e08190ac5cfc1c3$var$_registerLazyListeners, $8e08190ac5cfc1c3$var$registerLazyListeners_fn, $8e08190ac5cfc1c3$var$_clear, $8e08190ac5cfc1c3$var$clear_fn, $8e08190ac5cfc1c3$var$_trackDrag, $8e08190ac5cfc1c3$var$trackDrag_fn;
-var $8e08190ac5cfc1c3$var$DragTracker = class extends EventTarget {
-    constructor(target){
-        super();
-        this.target = target;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_registerLazyListeners);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_clear);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_trackDrag);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_dragInfoMap, /* @__PURE__ */ new Map());
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_targetListeners, /* @__PURE__ */ new Map());
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_lazyListenersRegistered, false);
-    }
-    start() {
-        this.addTargetListener("pointerdown", this.onPointerDown.bind(this));
-        this.addTargetListener("contextmenu", (e)=>{
-            e.preventDefault();
-        });
-        this.addTargetListener("touchmove", (e)=>e.preventDefault());
-        this.addTargetListener("dblclick", (e)=>e.preventDefault());
-    }
-    stop() {
-        for (const [eventType, listener] of (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_targetListeners).entries())this.target.removeEventListener(eventType, listener);
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_targetListeners).clear();
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_lazyListenersRegistered, false);
-    }
-    addTargetListener(eventType, listener) {
-        if (!(0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_targetListeners).has(eventType)) {
-            this.target.addEventListener(eventType, listener);
-            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_targetListeners).set(eventType, listener);
-        }
-    }
-    onPointerDown(e) {
-        (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_registerLazyListeners, $8e08190ac5cfc1c3$var$registerLazyListeners_fn).call(this);
-        const newDragInfo = {
-            attachedInfo: {},
-            hasMoved: false,
-            lastClientX: e.clientX,
-            lastClientY: e.clientY,
-            lastTimeStamp: e.timeStamp
-        };
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_dragInfoMap).set(e.pointerId, newDragInfo);
-        this.target.setPointerCapture(e.pointerId);
-    }
-    onPointerMove(e) {
-        const movementInfo = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_trackDrag, $8e08190ac5cfc1c3$var$trackDrag_fn).call(this, e).movementInfo;
-        if (movementInfo) {
-            e.preventDefault();
-            this.dispatchEvent(new CustomEvent("move", {
-                detail: movementInfo
-            }));
-        }
-    }
-    onPointerUp(e) {
-        const trackDragResult = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_trackDrag, $8e08190ac5cfc1c3$var$trackDrag_fn).call(this, e);
-        const existing = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_dragInfoMap).get(e.pointerId);
-        (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_clear, $8e08190ac5cfc1c3$var$clear_fn).call(this, e);
-        this.target.releasePointerCapture(e.pointerId);
-        let event;
-        if (trackDragResult.hasMoved) event = new CustomEvent("up", {
-            detail: {
-                attachedInfo: existing.attachedInfo
-            }
-        });
-        else {
-            const { altKey: altKey , ctrlKey: ctrlKey , metaKey: metaKey , shiftKey: shiftKey  } = e;
-            event = new CustomEvent("press", {
-                detail: {
-                    normalizedX: e.offsetX / this.target.offsetWidth * 2 - 1,
-                    normalizedY: 1 - e.offsetY / this.target.offsetHeight * 2,
-                    rightClick: !!(e.button & 2),
-                    keys: {
-                        altKey: altKey,
-                        ctrlOrMetaKey: ctrlKey || metaKey,
-                        shiftKey: shiftKey
-                    }
-                }
-            });
-        }
-        this.dispatchEvent(event);
-    }
-};
-$8e08190ac5cfc1c3$var$_dragInfoMap = new WeakMap();
-$8e08190ac5cfc1c3$var$_targetListeners = new WeakMap();
-$8e08190ac5cfc1c3$var$_lazyListenersRegistered = new WeakMap();
-$8e08190ac5cfc1c3$var$_registerLazyListeners = new WeakSet();
-$8e08190ac5cfc1c3$var$registerLazyListeners_fn = function() {
-    if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_lazyListenersRegistered)) return;
-    this.addTargetListener("pointermove", this.onPointerMove.bind(this));
-    this.addTargetListener("pointerup", this.onPointerUp.bind(this));
-    (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_lazyListenersRegistered, true);
-};
-$8e08190ac5cfc1c3$var$_clear = new WeakSet();
-$8e08190ac5cfc1c3$var$clear_fn = function(e) {
-    (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_dragInfoMap).delete(e.pointerId);
-};
-$8e08190ac5cfc1c3$var$_trackDrag = new WeakSet();
-$8e08190ac5cfc1c3$var$trackDrag_fn = function(e) {
-    const existing = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_dragInfoMap).get(e.pointerId);
-    if (!existing) return {
-        movementInfo: null,
-        hasMoved: false
-    };
-    let movementInfo;
-    if ((e.movementX ?? 0) !== 0 || (e.movementY ?? 0) !== 0) movementInfo = {
-        attachedInfo: existing.attachedInfo,
-        movementX: e.movementX,
-        movementY: e.movementY,
-        elapsedMs: e.timeStamp - existing.lastTimeStamp
-    };
-    else movementInfo = {
-        attachedInfo: existing.attachedInfo,
-        movementX: e.clientX - existing.lastClientX,
-        movementY: e.clientY - existing.lastClientY,
-        elapsedMs: e.timeStamp - existing.lastTimeStamp
-    };
-    existing.lastClientX = e.clientX;
-    existing.lastClientY = e.clientY;
-    existing.lastTimeStamp = e.timeStamp;
-    if (Math.abs(movementInfo.movementX) < $8e08190ac5cfc1c3$var$MOVEMENT_EPSILON && Math.abs(movementInfo.movementY) < $8e08190ac5cfc1c3$var$MOVEMENT_EPSILON) return {
-        movementInfo: null,
-        hasMoved: existing.hasMoved
-    };
-    else {
-        existing.hasMoved = true;
-        return {
-            movementInfo: movementInfo,
-            hasMoved: existing.hasMoved
-        };
-    }
-};
-// src/cubing/twisty/views/3D/RendererPool.ts
-var $8e08190ac5cfc1c3$var$renderers = [];
-async function $8e08190ac5cfc1c3$var$renderPooled(width, height, canvas, scene, camera) {
-    if (width === 0 || height === 0) return;
-    if ($8e08190ac5cfc1c3$var$renderers.length === 0) $8e08190ac5cfc1c3$var$renderers.push($8e08190ac5cfc1c3$var$newRenderer());
-    const renderer = await $8e08190ac5cfc1c3$var$renderers[0];
-    renderer.setSize(width, height);
-    renderer.render(scene, camera);
-    const context = canvas.getContext("2d");
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(renderer.domElement, 0, 0);
-}
-async function $8e08190ac5cfc1c3$var$newRenderer() {
-    const rendererConstructor = (await (0, $8JBxj.THREEJS)).WebGLRenderer;
-    const renderer = new rendererConstructor({
-        antialias: true,
-        alpha: true
-    });
-    renderer.setPixelRatio($8e08190ac5cfc1c3$var$pixelRatio());
-    return renderer;
-}
-// src/cubing/twisty/views/3D/TwistyOrbitControls.ts
-var $8e08190ac5cfc1c3$var$INERTIA_DEFAULT = true;
-var $8e08190ac5cfc1c3$var$INERTIA_DURATION_MS = 500;
-var $8e08190ac5cfc1c3$var$INERTIA_TIMEOUT_MS = 50;
-var $8e08190ac5cfc1c3$var$VERTICAL_MOVEMENT_BASE_SCALE = 0.75;
-function $8e08190ac5cfc1c3$var$momentumScale(progress) {
-    return (Math.exp(1 - progress) - (1 - progress)) / (1 - Math.E) + 1;
-}
-var $8e08190ac5cfc1c3$var$Inertia = class {
-    constructor(startTimestamp, momentumX, momentumY, callback){
-        this.startTimestamp = startTimestamp;
-        this.momentumX = momentumX;
-        this.momentumY = momentumY;
-        this.callback = callback;
-        this.scheduler = new $8e08190ac5cfc1c3$var$RenderScheduler(this.render.bind(this));
-        this.scheduler.requestAnimFrame();
-        this.lastTimestamp = startTimestamp;
-    }
-    render(now) {
-        const progressBefore = (this.lastTimestamp - this.startTimestamp) / $8e08190ac5cfc1c3$var$INERTIA_DURATION_MS;
-        const progressAfter = Math.min(1, (now - this.startTimestamp) / $8e08190ac5cfc1c3$var$INERTIA_DURATION_MS);
-        if (progressBefore === 0 && progressAfter > $8e08190ac5cfc1c3$var$INERTIA_TIMEOUT_MS / $8e08190ac5cfc1c3$var$INERTIA_DURATION_MS) return;
-        const delta = $8e08190ac5cfc1c3$var$momentumScale(progressAfter) - $8e08190ac5cfc1c3$var$momentumScale(progressBefore);
-        this.callback(this.momentumX * delta * 1e3, this.momentumY * delta * 1e3);
-        if (progressAfter < 1) this.scheduler.requestAnimFrame();
-        this.lastTimestamp = now;
-    }
-};
-var $8e08190ac5cfc1c3$var$TwistyOrbitControls = class {
-    constructor(model, mirror, canvas, dragTracker){
-        this.model = model;
-        this.mirror = mirror;
-        this.canvas = canvas;
-        this.dragTracker = dragTracker;
-        this.experimentalInertia = $8e08190ac5cfc1c3$var$INERTIA_DEFAULT;
-        this.onMovementBound = this.onMovement.bind(this);
-        this.experimentalHasBeenMoved = false;
-        this.dragTracker.addEventListener("move", this.onMove.bind(this));
-        this.dragTracker.addEventListener("up", this.onUp.bind(this));
-    }
-    temperMovement(f) {
-        return Math.sign(f) * Math.log(Math.abs(f * 10) + 1) / 6;
-    }
-    onMove(e) {
-        var _a;
-        (_a = e.detail).attachedInfo ?? (_a.attachedInfo = {});
-        const { temperedX: temperedX , temperedY: temperedY  } = this.onMovement(e.detail.movementX, e.detail.movementY);
-        const attachedInfo = e.detail.attachedInfo;
-        attachedInfo.lastTemperedX = temperedX * 10;
-        attachedInfo.lastTemperedY = temperedY * 10;
-        attachedInfo.timestamp = e.timeStamp;
-    }
-    onMovement(movementX, movementY) {
-        const scale = this.mirror ? -1 : 1;
-        const minDim = Math.min(this.canvas.offsetWidth, this.canvas.offsetHeight);
-        const temperedX = this.temperMovement(movementX / minDim);
-        const temperedY = this.temperMovement(movementY / minDim * $8e08190ac5cfc1c3$var$VERTICAL_MOVEMENT_BASE_SCALE);
-        this.model.twistySceneModel.orbitCoordinatesRequest.set((async ()=>{
-            const prevCoords = await this.model.twistySceneModel.orbitCoordinates.get();
-            const newCoords = {
-                latitude: prevCoords.latitude + 2 * temperedY * (0, $8JBxj.DEGREES_PER_RADIAN) * scale,
-                longitude: prevCoords.longitude - 2 * temperedX * (0, $8JBxj.DEGREES_PER_RADIAN)
-            };
-            return newCoords;
-        })());
-        return {
-            temperedX: temperedX,
-            temperedY: temperedY
-        };
-    }
-    onUp(e) {
-        e.preventDefault();
-        if ("lastTemperedX" in e.detail.attachedInfo && "lastTemperedY" in e.detail.attachedInfo && "timestamp" in e.detail.attachedInfo && e.timeStamp - e.detail.attachedInfo.timestamp < 60) new $8e08190ac5cfc1c3$var$Inertia(e.timeStamp, e.detail.attachedInfo.lastTemperedX, e.detail.attachedInfo.lastTemperedY, this.onMovementBound);
-    }
-};
-// src/cubing/twisty/views/3D/Twisty3DVantage.ts
-var $8e08190ac5cfc1c3$var$SHOW_STATS = false;
-function $8e08190ac5cfc1c3$export$59dccf90a0533576(enable) {
-    $8e08190ac5cfc1c3$var$SHOW_STATS = enable;
-}
-async function $8e08190ac5cfc1c3$var$setCameraFromOrbitCoordinates(camera, orbitCoordinates, backView = false) {
-    const spherical = new (await (0, $8JBxj.THREEJS)).Spherical(orbitCoordinates.distance, (90 - (backView ? -1 : 1) * orbitCoordinates.latitude) / (0, $8JBxj.DEGREES_PER_RADIAN), ((backView ? 180 : 0) + orbitCoordinates.longitude) / (0, $8JBxj.DEGREES_PER_RADIAN));
-    spherical.makeSafe();
-    camera.position.setFromSpherical(spherical);
-    camera.lookAt(0, 0, 0);
-}
-var $8e08190ac5cfc1c3$var$shareAllNewRenderers = null;
-function $8e08190ac5cfc1c3$export$955446f1e1efd77e(share) {
-    $8e08190ac5cfc1c3$var$shareAllNewRenderers = share;
-}
-var $8e08190ac5cfc1c3$var$dedicatedRenderersSoFar = 0;
-var $8e08190ac5cfc1c3$var$DEFAULT_MAX_DEDICATED_RENDERERS = 2;
-function $8e08190ac5cfc1c3$var$shareRenderer() {
-    if ($8e08190ac5cfc1c3$var$shareAllNewRenderers !== null) {
-        if (!$8e08190ac5cfc1c3$var$shareAllNewRenderers) $8e08190ac5cfc1c3$var$dedicatedRenderersSoFar++;
-        return $8e08190ac5cfc1c3$var$shareAllNewRenderers;
-    }
-    if ($8e08190ac5cfc1c3$var$dedicatedRenderersSoFar < $8e08190ac5cfc1c3$var$DEFAULT_MAX_DEDICATED_RENDERERS) {
-        $8e08190ac5cfc1c3$var$dedicatedRenderersSoFar++;
-        return false;
-    } else return true;
-}
-var $8e08190ac5cfc1c3$var$_setupBasicPresses, $8e08190ac5cfc1c3$var$setupBasicPresses_fn, $8e08190ac5cfc1c3$var$_onResizeStaleDropper, $8e08190ac5cfc1c3$var$_width, $8e08190ac5cfc1c3$var$_height, $8e08190ac5cfc1c3$var$_onResize, $8e08190ac5cfc1c3$var$onResize_fn, $8e08190ac5cfc1c3$var$_cachedRenderer, $8e08190ac5cfc1c3$var$_cachedCanvas, $8e08190ac5cfc1c3$var$_cachedDragTracker, $8e08190ac5cfc1c3$var$_dragTracker, $8e08190ac5cfc1c3$var$dragTracker_fn, $8e08190ac5cfc1c3$var$_cachedCamera, $8e08190ac5cfc1c3$var$_cachedOrbitControls, $8e08190ac5cfc1c3$var$_disconnectionFunctions, $8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback, $8e08190ac5cfc1c3$var$_scheduler;
-var $8e08190ac5cfc1c3$var$Twisty3DVantage = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
-    constructor(model, scene, options){
-        super();
-        this.model = model;
-        this.options = options;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_setupBasicPresses);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_onResize);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_dragTracker);
-        this.scene = null;
-        this.stats = null;
-        this.rendererIsShared = $8e08190ac5cfc1c3$var$shareRenderer();
-        this.loadingElement = null;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_onResizeStaleDropper, new (0, $8JBxj.StaleDropper)());
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_width, 0);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_height, 0);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedRenderer, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedCanvas, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedDragTracker, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedCamera, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedOrbitControls, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_disconnectionFunctions, []);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_scheduler, new $8e08190ac5cfc1c3$var$RenderScheduler(this.render.bind(this)));
-        this.scene = scene ?? null;
-        this.loadingElement = this.addElement(document.createElement("div"));
-        this.loadingElement.classList.add("loading");
-        if ($8e08190ac5cfc1c3$var$SHOW_STATS) {
-            this.stats = new $8e08190ac5cfc1c3$var$Stats();
-            this.stats.dom.style.position = "absolute";
-            this.contentWrapper.appendChild(this.stats.dom);
-        }
-    }
-    async connectedCallback() {
-        this.addCSS($8e08190ac5cfc1c3$var$twisty3DVantageCSS);
-        this.addElement((await this.canvasInfo()).canvas);
-        (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_onResize, $8e08190ac5cfc1c3$var$onResize_fn).call(this);
-        const observer = new ResizeObserver((0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_onResize, $8e08190ac5cfc1c3$var$onResize_fn).bind(this));
-        observer.observe(this.contentWrapper);
-        this.orbitControls();
-        (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_setupBasicPresses, $8e08190ac5cfc1c3$var$setupBasicPresses_fn).call(this);
-        this.scheduleRender();
-    }
-    async clearCanvas() {
-        if (this.rendererIsShared) {
-            const canvasInfo = await this.canvasInfo();
-            canvasInfo.context.clearRect(0, 0, canvasInfo.canvas.width, canvasInfo.canvas.height);
-        } else {
-            const renderer = await this.renderer();
-            const context = renderer.getContext();
-            context.clear(context.COLOR_BUFFER_BIT);
-        }
-    }
-    async renderer() {
-        if (this.rendererIsShared) throw new Error("renderer expected to be shared.");
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedRenderer) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedRenderer, $8e08190ac5cfc1c3$var$newRenderer());
-    }
-    async canvasInfo() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedCanvas) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedCanvas, (async ()=>{
-            let canvas;
-            if (this.rendererIsShared) canvas = this.addElement(document.createElement("canvas"));
-            else {
-                const renderer = await this.renderer();
-                canvas = this.addElement(renderer.domElement);
-            }
-            this.loadingElement?.remove();
-            const context = canvas.getContext("2d");
-            return {
-                canvas: canvas,
-                context: context
-            };
-        })());
-    }
-    async camera() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedCamera) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedCamera, (async ()=>{
-            const camera = new (await (0, $8JBxj.THREEJS)).PerspectiveCamera(20, 1, 0.1, 20);
-            camera.position.copy(new (await (0, $8JBxj.THREEJS)).Vector3(2, 4, 4).multiplyScalar(this.options?.backView ? -1 : 1));
-            camera.lookAt(0, 0, 0);
-            return camera;
-        })());
-    }
-    async orbitControls() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedOrbitControls) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedOrbitControls, (async ()=>{
-            const orbitControls = new $8e08190ac5cfc1c3$var$TwistyOrbitControls(this.model, !!this.options?.backView, (await this.canvasInfo()).canvas, await (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_dragTracker, $8e08190ac5cfc1c3$var$dragTracker_fn).call(this));
-            if (this.model) this.addListener(this.model.twistySceneModel.orbitCoordinates, async (orbitCoordinates)=>{
-                const camera = await this.camera();
-                $8e08190ac5cfc1c3$var$setCameraFromOrbitCoordinates(camera, orbitCoordinates, this.options?.backView);
-                this.scheduleRender();
-            });
-            return orbitControls;
-        })());
-    }
-    addListener(prop, listener) {
-        prop.addFreshListener(listener);
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_disconnectionFunctions).push(()=>{
-            prop.removeFreshListener(listener);
-        });
-    }
-    disconnect() {
-        for (const fn of (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_disconnectionFunctions))fn();
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_disconnectionFunctions, []);
-    }
-    experimentalNextRenderFinishedCallback(callback) {
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback, callback);
-    }
-    async render() {
-        var _a;
-        if (!this.scene) throw new Error("Attempted to render without a scene");
-        this.stats?.begin();
-        const [scene, camera, canvas] = await Promise.all([
-            this.scene.scene(),
-            this.camera(),
-            this.canvasInfo()
-        ]);
-        if (this.rendererIsShared) $8e08190ac5cfc1c3$var$renderPooled((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_width), (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_height), canvas.canvas, scene, camera);
-        else (await this.renderer()).render(scene, camera);
-        this.stats?.end();
-        (_a = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback)) == null || _a.call(this);
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback, null);
-    }
-    scheduleRender() {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_scheduler).requestAnimFrame();
-    }
-};
-$8e08190ac5cfc1c3$var$_setupBasicPresses = new WeakSet();
-$8e08190ac5cfc1c3$var$setupBasicPresses_fn = async function() {
-    const dragTracker = await (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_dragTracker, $8e08190ac5cfc1c3$var$dragTracker_fn).call(this);
-    dragTracker.addEventListener("press", async (e)=>{
-        const movePressInput = await this.model.twistySceneModel.movePressInput.get();
-        if (movePressInput !== "basic") return;
-        this.dispatchEvent(new CustomEvent("press", {
-            detail: {
-                pressInfo: e.detail,
-                cameraPromise: this.camera()
-            }
-        }));
-    });
-};
-$8e08190ac5cfc1c3$var$_onResizeStaleDropper = new WeakMap();
-$8e08190ac5cfc1c3$var$_width = new WeakMap();
-$8e08190ac5cfc1c3$var$_height = new WeakMap();
-$8e08190ac5cfc1c3$var$_onResize = new WeakSet();
-$8e08190ac5cfc1c3$var$onResize_fn = async function() {
-    const camera = await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_onResizeStaleDropper).queue(this.camera());
-    const w = this.contentWrapper.clientWidth;
-    const h = this.contentWrapper.clientHeight;
-    (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_width, w);
-    (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_height, h);
-    const off = 0;
-    let yoff = 0;
-    let excess = 0;
-    if (h > w) {
-        excess = h - w;
-        yoff = -Math.floor(0.5 * excess);
-    }
-    camera.aspect = w / h;
-    camera.setViewOffset(w, h - excess, off, yoff, w, h);
-    camera.updateProjectionMatrix();
-    this.clearCanvas();
-    if (this.rendererIsShared) {
-        const canvasInfo = await this.canvasInfo();
-        canvasInfo.canvas.width = w * $8e08190ac5cfc1c3$var$pixelRatio();
-        canvasInfo.canvas.height = h * $8e08190ac5cfc1c3$var$pixelRatio();
-        canvasInfo.canvas.style.width = w.toString();
-        canvasInfo.canvas.style.height = h.toString();
-    } else {
-        const renderer = await this.renderer();
-        renderer.setSize(w, h, true);
-    }
-    this.scheduleRender();
-};
-$8e08190ac5cfc1c3$var$_cachedRenderer = new WeakMap();
-$8e08190ac5cfc1c3$var$_cachedCanvas = new WeakMap();
-$8e08190ac5cfc1c3$var$_cachedDragTracker = new WeakMap();
-$8e08190ac5cfc1c3$var$_dragTracker = new WeakSet();
-$8e08190ac5cfc1c3$var$dragTracker_fn = async function() {
-    return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedDragTracker) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedDragTracker, (async ()=>{
-        const dragTracker = new $8e08190ac5cfc1c3$var$DragTracker((await this.canvasInfo()).canvas);
-        this.model?.twistySceneModel.dragInput.addFreshListener((dragInputMode)=>{
-            let dragInputEnabled = false;
-            switch(dragInputMode){
-                case "auto":
-                    dragTracker.start();
-                    dragInputEnabled = true;
-                    break;
-                case "none":
-                    dragTracker.stop();
-                    break;
-            }
-            this.contentWrapper.classList.toggle("drag-input-enabled", dragInputEnabled);
-        });
-        return dragTracker;
-    })());
-};
-$8e08190ac5cfc1c3$var$_cachedCamera = new WeakMap();
-$8e08190ac5cfc1c3$var$_cachedOrbitControls = new WeakMap();
-$8e08190ac5cfc1c3$var$_disconnectionFunctions = new WeakMap();
-$8e08190ac5cfc1c3$var$_experimentalNextRenderFinishedCallback = new WeakMap();
-$8e08190ac5cfc1c3$var$_scheduler = new WeakMap();
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-3d-vantage", $8e08190ac5cfc1c3$var$Twisty3DVantage);
 // src/cubing/twisty/views/3D/Twisty3DSceneWrapper.ts
-var $8e08190ac5cfc1c3$var$_backViewClassListManager, $8e08190ac5cfc1c3$var$_freshListenerManager5, $8e08190ac5cfc1c3$var$_backViewVantage, $8e08190ac5cfc1c3$var$_cachedScene2, $8e08190ac5cfc1c3$var$_vantages, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper, $8e08190ac5cfc1c3$var$_initialWrapperTracker, $8e08190ac5cfc1c3$var$_twisty3DStaleDropper;
-var $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+var $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper = class extends (0, $9IDdS.ManagedCustomElement) {
     constructor(model){
         super();
         this.model = model;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_backViewClassListManager, new $8e08190ac5cfc1c3$var$ClassListManager(this, "back-view-", [
-            "auto",
-            "none",
-            "side-by-side",
-            "top-right"
-        ]));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_freshListenerManager5, new (0, $8JBxj.FreshListenerManager)());
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_backViewVantage, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cachedScene2, void 0);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_vantages, /* @__PURE__ */ new Set());
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_initialWrapperTracker, new $8e08190ac5cfc1c3$var$InitialValueTracker());
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_twisty3DStaleDropper, new (0, $8JBxj.StaleDropper)());
     }
+    #backViewClassListManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "back-view-", [
+        "auto",
+        "none",
+        "side-by-side",
+        "top-right"
+    ]);
+    #freshListenerManager = new (0, $9IDdS.FreshListenerManager)();
     disconnect() {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager5).disconnect();
+        this.#freshListenerManager.disconnect();
     }
     async connectedCallback() {
         this.addCSS($8e08190ac5cfc1c3$var$twistyViewerWrapperCSS);
-        const vantage = new $8e08190ac5cfc1c3$var$Twisty3DVantage(this.model, this);
+        const vantage = new (0, $9IDdS.Twisty3DVantage)(this.model, this);
         this.addVantage(vantage);
         if (this.model) {
-            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager5).addMultiListener([
+            this.#freshListenerManager.addMultiListener([
                 this.model.puzzleLoader,
                 this.model.visualizationStrategy
             ], this.onPuzzle.bind(this));
-            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_freshListenerManager5).addListener(this.model.backView, this.onBackView.bind(this));
+            this.#freshListenerManager.addListener(this.model.backView, this.onBackView.bind(this));
         }
         this.scheduleRender();
     }
+    #backViewVantage = null;
     setBackView(backView) {
         const shouldHaveBackView = [
             "side-by-side",
             "top-right"
         ].includes(backView);
-        const hasBackView = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_backViewVantage) !== null;
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_backViewClassListManager).setValue(backView);
+        const hasBackView = this.#backViewVantage !== null;
+        this.#backViewClassListManager.setValue(backView);
         if (shouldHaveBackView) {
             if (!hasBackView) {
-                (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_backViewVantage, new $8e08190ac5cfc1c3$var$Twisty3DVantage(this.model, this, {
+                this.#backViewVantage = new (0, $9IDdS.Twisty3DVantage)(this.model, this, {
                     backView: true
-                }));
-                this.addVantage((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_backViewVantage));
+                });
+                this.addVantage(this.#backViewVantage);
                 this.scheduleRender();
             }
-        } else if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_backViewVantage)) {
-            this.removeVantage((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_backViewVantage));
-            (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_backViewVantage, null);
+        } else if (this.#backViewVantage) {
+            this.removeVantage(this.#backViewVantage);
+            this.#backViewVantage = null;
         }
     }
     onBackView(backView) {
         this.setBackView(backView);
     }
     async onPress(e) {
-        const twisty3DPuzzleWrapper = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper);
+        const twisty3DPuzzleWrapper = this.#currentTwisty3DPuzzleWrapper;
         if (!twisty3DPuzzleWrapper) {
             console.info("no wrapper; skipping scene wrapper press!");
             return;
@@ -40534,10 +39821,10 @@ var $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper = class extends $8e08190ac5cfc1c3
         const raycasterPromise = (async ()=>{
             const [camera, three] = await Promise.all([
                 e.detail.cameraPromise,
-                (0, $8JBxj.THREEJS)
+                (0, $9IDdS.THREEJS)
             ]);
             const raycaster = new three.Raycaster();
-            const mouse = new (await (0, $8JBxj.THREEJS)).Vector2(e.detail.pressInfo.normalizedX, e.detail.pressInfo.normalizedY);
+            const mouse = new (await (0, $9IDdS.THREEJS)).Vector2(e.detail.pressInfo.normalizedX, e.detail.pressInfo.normalizedY);
             raycaster.setFromCamera(mouse, camera);
             return raycaster;
         })();
@@ -40546,61 +39833,58 @@ var $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper = class extends $8e08190ac5cfc1c3
             depth: e.detail.pressInfo.keys.ctrlOrMetaKey ? "rotation" : e.detail.pressInfo.keys.shiftKey ? "secondSlice" : "none"
         });
     }
+    #cachedScene;
     async scene() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cachedScene2) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cachedScene2, (async ()=>new (await (0, $8JBxj.THREEJS)).Scene())());
+        return this.#cachedScene ?? (this.#cachedScene = (async ()=>new (await (0, $9IDdS.THREEJS)).Scene())());
     }
+    #vantages = /* @__PURE__ */ new Set();
     addVantage(vantage) {
         vantage.addEventListener("press", this.onPress.bind(this));
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_vantages).add(vantage);
+        this.#vantages.add(vantage);
         this.contentWrapper.appendChild(vantage);
     }
     removeVantage(vantage) {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_vantages).delete(vantage);
+        this.#vantages.delete(vantage);
         vantage.remove();
         vantage.disconnect();
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper)?.disconnect();
+        this.#currentTwisty3DPuzzleWrapper?.disconnect();
     }
     experimentalVantages() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_vantages).values();
+        return this.#vantages.values();
     }
     scheduleRender() {
-        for (const vantage of (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_vantages))vantage.scheduleRender();
+        for (const vantage of this.#vantages)vantage.scheduleRender();
     }
+    #currentTwisty3DPuzzleWrapper = null;
     async setCurrentTwisty3DPuzzleWrapper(scene, twisty3DPuzzleWrapper) {
-        const old = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper);
+        const old = this.#currentTwisty3DPuzzleWrapper;
         try {
-            (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper, twisty3DPuzzleWrapper);
+            this.#currentTwisty3DPuzzleWrapper = twisty3DPuzzleWrapper;
             old?.disconnect();
             scene.add(await twisty3DPuzzleWrapper.twisty3DPuzzle());
         } finally{
             if (old) scene.remove(await old.twisty3DPuzzle());
         }
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_initialWrapperTracker).handleNewValue(twisty3DPuzzleWrapper);
+        this.#initialWrapperTracker.handleNewValue(twisty3DPuzzleWrapper);
     }
+    #initialWrapperTracker = new $8e08190ac5cfc1c3$var$InitialValueTracker();
     async experimentalTwisty3DPuzzleWrapper() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper) || (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_initialWrapperTracker).promise;
+        return this.#currentTwisty3DPuzzleWrapper || this.#initialWrapperTracker.promise;
     }
+    #twisty3DStaleDropper = new (0, $9IDdS.StaleDropper)();
     async onPuzzle(inputs) {
         if (inputs[1] === "2D") return;
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper)?.disconnect();
-        const [scene, twisty3DPuzzleWrapper] = await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twisty3DStaleDropper).queue(Promise.all([
+        this.#currentTwisty3DPuzzleWrapper?.disconnect();
+        const [scene, twisty3DPuzzleWrapper] = await this.#twisty3DStaleDropper.queue(Promise.all([
             this.scene(),
             new $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper(this.model, this, inputs[0], inputs[1])
         ]));
         this.setCurrentTwisty3DPuzzleWrapper(scene, twisty3DPuzzleWrapper);
     }
 };
-$8e08190ac5cfc1c3$var$_backViewClassListManager = new WeakMap();
-$8e08190ac5cfc1c3$var$_freshListenerManager5 = new WeakMap();
-$8e08190ac5cfc1c3$var$_backViewVantage = new WeakMap();
-$8e08190ac5cfc1c3$var$_cachedScene2 = new WeakMap();
-$8e08190ac5cfc1c3$var$_vantages = new WeakMap();
-$8e08190ac5cfc1c3$var$_currentTwisty3DPuzzleWrapper = new WeakMap();
-$8e08190ac5cfc1c3$var$_initialWrapperTracker = new WeakMap();
-$8e08190ac5cfc1c3$var$_twisty3DStaleDropper = new WeakMap();
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-3d-scene-wrapper", $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper);
+(0, $9IDdS.customElementsShim).define("twisty-3d-scene-wrapper", $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper);
 // src/cubing/twisty/views/control-panel/TwistyButtons.css.ts
-var $8e08190ac5cfc1c3$var$buttonGridCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+var $8e08190ac5cfc1c3$var$buttonGridCSS = new (0, $9IDdS.CSSSource)(`
 :host {
   width: 384px;
   height: 24px;
@@ -40630,7 +39914,7 @@ var $8e08190ac5cfc1c3$var$buttonGridCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
   height: inherit;
 }
 `);
-var $8e08190ac5cfc1c3$var$buttonCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+var $8e08190ac5cfc1c3$var$buttonCSS = new (0, $9IDdS.CSSSource)(`
 :host:not([hidden]) {
   display: grid;
 }
@@ -40747,10 +40031,10 @@ var $8e08190ac5cfc1c3$var$buttonIcons = [
     "exit-fullscreen",
     "twizzle-tw"
 ];
-var $8e08190ac5cfc1c3$var$ButtonAppearanceProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$ButtonAppearanceProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         const buttonAppearances = {
-            "fullscreen": {
+            fullscreen: {
                 enabled: $8e08190ac5cfc1c3$var$fullscreenEnabled,
                 icon: document.fullscreenElement === null ? "enter-fullscreen" : "exit-fullscreen",
                 title: "Enter fullscreen"
@@ -40792,7 +40076,7 @@ var $8e08190ac5cfc1c3$var$ButtonAppearanceProp = class extends (0, $8JBxj.Twisty
 };
 // src/cubing/twisty/views/control-panel/TwistyButtons.ts
 var $8e08190ac5cfc1c3$var$buttonCommands = {
-    "fullscreen": true,
+    fullscreen: true,
     "jump-to-start": true,
     "play-step-backwards": true,
     "play-pause": true,
@@ -40800,14 +40084,12 @@ var $8e08190ac5cfc1c3$var$buttonCommands = {
     "jump-to-end": true,
     "twizzle-link": true
 };
-var $8e08190ac5cfc1c3$var$_onCommand, $8e08190ac5cfc1c3$var$onCommand_fn;
-var $8e08190ac5cfc1c3$var$TwistyButtons = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+var $8e08190ac5cfc1c3$var$TwistyButtons = class extends (0, $9IDdS.ManagedCustomElement) {
     constructor(model, controller, fullscreenElement){
         super();
         this.model = model;
         this.controller = controller;
         this.fullscreenElement = fullscreenElement;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_onCommand);
         this.buttons = null;
     }
     connectedCallback() {
@@ -40816,11 +40098,48 @@ var $8e08190ac5cfc1c3$var$TwistyButtons = class extends $8e08190ac5cfc1c3$var$Ma
         for(const command in $8e08190ac5cfc1c3$var$buttonCommands){
             const button = new $8e08190ac5cfc1c3$var$TwistyButton();
             buttons[command] = button;
-            button.htmlButton.addEventListener("click", ()=>(0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_onCommand, $8e08190ac5cfc1c3$var$onCommand_fn).call(this, command));
+            button.htmlButton.addEventListener("click", ()=>this.#onCommand(command));
             this.addElement(button);
         }
         this.buttons = buttons;
         this.model?.buttonAppearance.addFreshListener(this.update.bind(this));
+    }
+     #onCommand(command1) {
+        switch(command1){
+            case "fullscreen":
+                this.onFullscreenButton();
+                break;
+            case "jump-to-start":
+                this.controller?.jumpToStart({
+                    flash: true
+                });
+                break;
+            case "play-step-backwards":
+                this.controller?.animationController.play({
+                    direction: -1 /* Backwards */ ,
+                    untilBoundary: "move" /* Move */ 
+                });
+                break;
+            case "play-pause":
+                this.controller?.togglePlay();
+                break;
+            case "play-step":
+                this.controller?.animationController.play({
+                    direction: 1 /* Forwards */ ,
+                    untilBoundary: "move" /* Move */ 
+                });
+                break;
+            case "jump-to-end":
+                this.controller?.jumpToEnd({
+                    flash: true
+                });
+                break;
+            case "twizzle-link":
+                this.controller?.visitTwizzleLink();
+                break;
+            default:
+                throw new Error("Missing command");
+        }
     }
     async onFullscreenButton() {
         if (!this.fullscreenElement) throw new Error("Attempted to go fullscreen without an element.");
@@ -40848,64 +40167,25 @@ var $8e08190ac5cfc1c3$var$TwistyButtons = class extends $8e08190ac5cfc1c3$var$Ma
         }
     }
 };
-$8e08190ac5cfc1c3$var$_onCommand = new WeakSet();
-$8e08190ac5cfc1c3$var$onCommand_fn = function(command) {
-    switch(command){
-        case "fullscreen":
-            this.onFullscreenButton();
-            break;
-        case "jump-to-start":
-            this.controller?.jumpToStart({
-                flash: true
-            });
-            break;
-        case "play-step-backwards":
-            this.controller?.animationController.play({
-                direction: -1 /* Backwards */ ,
-                untilBoundary: "move" /* Move */ 
-            });
-            break;
-        case "play-pause":
-            this.controller?.togglePlay();
-            break;
-        case "play-step":
-            this.controller?.animationController.play({
-                direction: 1 /* Forwards */ ,
-                untilBoundary: "move" /* Move */ 
-            });
-            break;
-        case "jump-to-end":
-            this.controller?.jumpToEnd({
-                flash: true
-            });
-            break;
-        case "twizzle-link":
-            this.controller?.visitTwizzleLink();
-            break;
-        default:
-            throw new Error("Missing command");
-    }
-};
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-buttons", $8e08190ac5cfc1c3$var$TwistyButtons);
-var $8e08190ac5cfc1c3$var$_iconManager;
-var $8e08190ac5cfc1c3$var$TwistyButton = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+(0, $9IDdS.customElementsShim).define("twisty-buttons", $8e08190ac5cfc1c3$var$TwistyButtons);
+var $8e08190ac5cfc1c3$var$TwistyButton = class extends (0, $9IDdS.ManagedCustomElement) {
     constructor(){
         super(...arguments);
         this.htmlButton = document.createElement("button");
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_iconManager, new $8e08190ac5cfc1c3$var$ClassListManager(this, "svg-", $8e08190ac5cfc1c3$var$buttonIcons));
+        this.#iconManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "svg-", $8e08190ac5cfc1c3$var$buttonIcons);
     }
     connectedCallback() {
         this.addCSS($8e08190ac5cfc1c3$var$buttonCSS);
         this.addElement(this.htmlButton);
     }
+    #iconManager;
     setIcon(iconName) {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_iconManager).setValue(iconName);
+        this.#iconManager.setValue(iconName);
     }
 };
-$8e08190ac5cfc1c3$var$_iconManager = new WeakMap();
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-button", $8e08190ac5cfc1c3$var$TwistyButton);
+(0, $9IDdS.customElementsShim).define("twisty-button", $8e08190ac5cfc1c3$var$TwistyButton);
 // src/cubing/twisty/views/control-panel/TwistyScrubber.css.ts
-var $8e08190ac5cfc1c3$var$twistyScrubberCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+var $8e08190ac5cfc1c3$var$twistyScrubberCSS = new (0, $9IDdS.CSSSource)(`
 :host {
   width: 384px;
   height: 16px;
@@ -40949,12 +40229,11 @@ var $8e08190ac5cfc1c3$var$lastVal = 0;
 var $8e08190ac5cfc1c3$var$lastPreval = 0;
 var $8e08190ac5cfc1c3$var$scaling = false;
 var $8e08190ac5cfc1c3$var$currentClickNum = 0;
-var $8e08190ac5cfc1c3$var$_inputElem;
-var $8e08190ac5cfc1c3$var$TwistyScrubber = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
-    constructor(model){
+var $8e08190ac5cfc1c3$var$TwistyScrubber = class extends (0, $9IDdS.ManagedCustomElement) {
+    constructor(model, controller){
         super();
         this.model = model;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_inputElem, null);
+        this.controller = controller;
     }
     async onDetailedTimelineInfo(detailedTimelineInfo) {
         const inputElem = await this.inputElem();
@@ -40967,13 +40246,15 @@ var $8e08190ac5cfc1c3$var$TwistyScrubber = class extends $8e08190ac5cfc1c3$var$M
         this.addCSS($8e08190ac5cfc1c3$var$twistyScrubberCSS);
         this.addElement(await this.inputElem());
     }
+    #inputElem = null;
     async inputElem() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_inputElem) ?? (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_inputElem, (async ()=>{
+        return this.#inputElem ?? (this.#inputElem = (async ()=>{
             const elem = document.createElement("input");
             elem.type = "range";
             elem.disabled = true;
             this.model?.detailedTimelineInfo.addFreshListener(this.onDetailedTimelineInfo.bind(this));
             elem.addEventListener("input", this.onInput.bind(this));
+            elem.addEventListener("keydown", this.onKeypress.bind(this));
             return elem;
         })());
     }
@@ -40986,6 +40267,22 @@ var $8e08190ac5cfc1c3$var$TwistyScrubber = class extends $8e08190ac5cfc1c3$var$M
             playing: false
         });
         this.model?.timestampRequest.set(value);
+    }
+    onKeypress(e) {
+        switch(e.key){
+            case "ArrowLeft":
+            case "ArrowRight":
+                this.controller?.animationController.play({
+                    direction: e.key === "ArrowLeft" ? -1 /* Backwards */  : 1 /* Forwards */ ,
+                    untilBoundary: "move" /* Move */ 
+                });
+                e.preventDefault();
+                break;
+            case " ":
+                this.controller?.togglePlay();
+                e.preventDefault();
+                break;
+        }
     }
     async slowDown(e, inputElem) {
         if (!$8e08190ac5cfc1c3$var$SLOW_DOWN_SCRUBBING) return;
@@ -41013,34 +40310,33 @@ var $8e08190ac5cfc1c3$var$TwistyScrubber = class extends $8e08190ac5cfc1c3$var$M
         }
     }
 };
-$8e08190ac5cfc1c3$var$_inputElem = new WeakMap();
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-scrubber", $8e08190ac5cfc1c3$var$TwistyScrubber);
+(0, $9IDdS.customElementsShim).define("twisty-scrubber", $8e08190ac5cfc1c3$var$TwistyScrubber);
 // src/cubing/twisty/views/screenshot.ts
 var $8e08190ac5cfc1c3$var$cachedCamera = null;
 async function $8e08190ac5cfc1c3$var$screenshot(model, options) {
+    const [{ PerspectiveCamera: PerspectiveCamera , Scene: Scene  }, puzzleLoader, visualizationStrategy, _stickering, _stickeringMaskRequest, _legacyPosition, orbitCoordinates] = await Promise.all([
+        (0, $9IDdS.THREEJS),
+        await model.puzzleLoader.get(),
+        await model.visualizationStrategy.get(),
+        await model.twistySceneModel.stickeringRequest.get(),
+        await model.twistySceneModel.stickeringMaskRequest.get(),
+        await model.legacyPosition.get(),
+        await model.twistySceneModel.orbitCoordinates.get()
+    ]);
     const width = options?.width ?? 2048;
     const height = options?.height ?? 2048;
     const aspectRatio = width / height;
     const camera = $8e08190ac5cfc1c3$var$cachedCamera ?? ($8e08190ac5cfc1c3$var$cachedCamera = await (async ()=>{
-        return new (await (0, $8JBxj.THREEJS)).PerspectiveCamera(20, aspectRatio, 0.1, 20);
+        return new PerspectiveCamera(20, aspectRatio, 0.1, 20);
     })());
-    const scene = new (await (0, $8JBxj.THREEJS)).Scene();
+    const scene = new Scene();
     const twisty3DWrapper = new $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper(model, {
         scheduleRender: ()=>{}
-    }, await model.puzzleLoader.get(), await model.visualizationStrategy.get());
-    await model.twistySceneModel.stickering.get();
-    await new Promise((resolve)=>setTimeout(resolve, 1e3));
-    await model.legacyPosition.get();
+    }, puzzleLoader, visualizationStrategy);
     scene.add(await twisty3DWrapper.twisty3DPuzzle());
-    const orbitCoordinates = await model.twistySceneModel.orbitCoordinates.get();
-    await $8e08190ac5cfc1c3$var$setCameraFromOrbitCoordinates(camera, orbitCoordinates);
-    const renderer = new (await (0, $8JBxj.THREEJS)).WebGLRenderer({
-        antialias: true,
-        alpha: true
-    });
-    renderer.setSize(width, height);
-    renderer.render(scene, camera);
-    const dataURL = renderer.domElement.toDataURL();
+    await (0, $9IDdS.setCameraFromOrbitCoordinates)(camera, orbitCoordinates);
+    const rendererCanvas = await (0, $9IDdS.rawRenderPooled)(width, height, scene, camera);
+    const dataURL = rendererCanvas.toDataURL();
     const defaultFilename = await $8e08190ac5cfc1c3$var$getDefaultFilename(model);
     return {
         dataURL: dataURL,
@@ -41054,7 +40350,7 @@ async function $8e08190ac5cfc1c3$var$getDefaultFilename(model) {
         model.puzzleID.get(),
         model.alg.get()
     ]);
-    return `[${puzzleID}]${algWithIssues.alg.experimentalNumUnits() === 0 ? "" : " " + algWithIssues.alg.toString()}`;
+    return `[${puzzleID}]${algWithIssues.alg.experimentalNumChildAlgNodes() === 0 ? "" : ` ${algWithIssues.alg.toString()}`}`;
 }
 function $8e08190ac5cfc1c3$var$downloadURL(url, name, extension = "png") {
     const a = document.createElement("a");
@@ -41063,7 +40359,7 @@ function $8e08190ac5cfc1c3$var$downloadURL(url, name, extension = "png") {
     a.click();
 }
 // src/cubing/twisty/views/TwistyPlayer.css.ts
-var $8e08190ac5cfc1c3$var$twistyPlayerCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+var $8e08190ac5cfc1c3$var$twistyPlayerCSS = new (0, $9IDdS.CSSSource)(`
 :host {
   width: 384px;
   height: 256px;
@@ -41134,13 +40430,13 @@ twisty-scrubber {
 }
 `);
 // src/cubing/twisty/model/props/general/ArbitraryStringProp.ts
-var $8e08190ac5cfc1c3$var$ArbitraryStringProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$ArbitraryStringProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return null;
     }
 };
 // src/cubing/twisty/model/props/general/URLProp.ts
-var $8e08190ac5cfc1c3$var$URLProp = class extends (0, $8JBxj.TwistyPropSource) {
+var $8e08190ac5cfc1c3$var$URLProp = class extends (0, $9IDdS.TwistyPropSource) {
     getDefaultValue() {
         return null;
     }
@@ -41170,9 +40466,9 @@ var $8e08190ac5cfc1c3$var$AlgIssues = class {
 };
 function $8e08190ac5cfc1c3$var$algWithIssuesFromString(s) {
     try {
-        const alg = (0, $kQo6d.Alg).fromString(s);
+        const alg = (0, $j3ukw.Alg).fromString(s);
         const warnings = [];
-        if (alg.toString() !== s) warnings.push(`Alg is non-canonical!`);
+        if (alg.toString() !== s) warnings.push("Alg is non-canonical!");
         return {
             alg: alg,
             issues: new $8e08190ac5cfc1c3$var$AlgIssues({
@@ -41181,7 +40477,7 @@ function $8e08190ac5cfc1c3$var$algWithIssuesFromString(s) {
         };
     } catch (e) {
         return {
-            alg: new (0, $kQo6d.Alg)(),
+            alg: new (0, $j3ukw.Alg)(),
             issues: new $8e08190ac5cfc1c3$var$AlgIssues({
                 errors: [
                     `Malformed alg: ${e.toString()}`
@@ -41193,10 +40489,10 @@ function $8e08190ac5cfc1c3$var$algWithIssuesFromString(s) {
 function $8e08190ac5cfc1c3$var$algWithIssuesEquals(a1, a2) {
     return a1.alg.isIdentical(a2.alg) && $8e08190ac5cfc1c3$var$arrayEquals(a1.issues.warnings, a2.issues.warnings) && $8e08190ac5cfc1c3$var$arrayEquals(a1.issues.errors, a2.issues.errors);
 }
-var $8e08190ac5cfc1c3$var$AlgProp = class extends (0, $8JBxj.TwistyPropSource) {
+var $8e08190ac5cfc1c3$var$AlgProp = class extends (0, $9IDdS.TwistyPropSource) {
     getDefaultValue() {
         return {
-            alg: new (0, $kQo6d.Alg)(),
+            alg: new (0, $j3ukw.Alg)(),
             issues: new $8e08190ac5cfc1c3$var$AlgIssues()
         };
     }
@@ -41212,13 +40508,13 @@ var $8e08190ac5cfc1c3$var$AlgProp = class extends (0, $8JBxj.TwistyPropSource) {
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/AlgTransformationProp.ts
-var $8e08190ac5cfc1c3$var$AlgTransformationProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$AlgTransformationProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(input) {
         return input.kpuzzle.algToTransformation(input.setupAlg.alg);
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/AnchorTransformationProp.ts
-var $8e08190ac5cfc1c3$var$AnchorTransformationProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$AnchorTransformationProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         if (inputs.setupTransformation) return inputs.setupTransformation;
         switch(inputs.setupAnchor){
@@ -41236,7 +40532,7 @@ var $8e08190ac5cfc1c3$var$AnchorTransformationProp = class extends (0, $8JBxj.Tw
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/CatchUpMoveProp.ts
-var $8e08190ac5cfc1c3$var$CatchUpMoveProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$CatchUpMoveProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return {
             move: null,
@@ -41248,7 +40544,7 @@ var $8e08190ac5cfc1c3$var$CatchUpMoveProp = class extends (0, $8JBxj.SimpleTwist
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/CurrentLeavesSimplified.ts
-var $8e08190ac5cfc1c3$var$CurrentLeavesSimplifiedProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$CurrentLeavesSimplifiedProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         return {
             stateIndex: inputs.currentMoveInfo.stateIndex,
@@ -41261,7 +40557,7 @@ var $8e08190ac5cfc1c3$var$CurrentLeavesSimplifiedProp = class extends (0, $8JBxj
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/CurrentMoveInfoProp.ts
-var $8e08190ac5cfc1c3$var$CurrentMoveInfoProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$CurrentMoveInfoProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         function addCatchUpMove(currentMoveInfo) {
             if (inputs.detailedTimelineInfo.atEnd && inputs.catchUpMove.move !== null) currentMoveInfo.currentMoves.push({
@@ -41286,7 +40582,7 @@ var $8e08190ac5cfc1c3$var$CurrentMoveInfoProp = class extends (0, $8JBxj.TwistyP
                 earliestEnd: Infinity
             };
             if (inputs.indexer.numAnimatedLeaves() > 0) {
-                const move = inputs.indexer.getAnimLeaf(idx)?.as((0, $kQo6d.Move));
+                const move = inputs.indexer.getAnimLeaf(idx)?.as((0, $j3ukw.Move));
                 if (!move) return addCatchUpMove(currentMoveInfo);
                 const start = inputs.indexer.indexToMoveStartTimestamp(idx);
                 const duration = inputs.indexer.moveDuration(idx);
@@ -41312,7 +40608,7 @@ var $8e08190ac5cfc1c3$var$CurrentMoveInfoProp = class extends (0, $8JBxj.TwistyP
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/CurrentStateProp.ts
-var $8e08190ac5cfc1c3$var$CurrentStateProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$CurrentStateProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         let transformation = inputs.indexer.transformationAtIndex(inputs.currentLeavesSimplified.stateIndex);
         transformation = inputs.anchoredStart.applyTransformation(transformation);
@@ -41334,14 +40630,14 @@ function $8e08190ac5cfc1c3$var$defaultDurationForAmount(amount) {
             return 2e3;
     }
 }
-var $8e08190ac5cfc1c3$var$AlgDuration = class extends (0, $kQo6d.TraversalUp) {
+var $8e08190ac5cfc1c3$var$AlgDuration = class extends (0, $j3ukw.TraversalUp) {
     constructor(durationForAmount = $8e08190ac5cfc1c3$var$defaultDurationForAmount){
         super();
         this.durationForAmount = durationForAmount;
     }
     traverseAlg(alg) {
         let total = 0;
-        for (const unit of alg.units())total += this.traverseUnit(unit);
+        for (const algNode of alg.childAlgNodes())total += this.traverseAlgNode(algNode);
         return total;
     }
     traverseGrouping(grouping) {
@@ -41371,13 +40667,13 @@ var $8e08190ac5cfc1c3$export$f1f512573dac63bc = class {
     constructor(kpuzzle, alg){
         this.kpuzzle = kpuzzle;
         this.durationFn = new $8e08190ac5cfc1c3$var$AlgDuration($8e08190ac5cfc1c3$var$defaultDurationForAmount);
-        this.moves = new (0, $kQo6d.Alg)(alg.experimentalExpand());
+        this.moves = new (0, $j3ukw.Alg)(alg.experimentalExpand());
     }
     getAnimLeaf(index) {
-        return Array.from(this.moves.units())[index];
+        return Array.from(this.moves.childAlgNodes())[index];
     }
     indexToMoveStartTimestamp(index) {
-        const alg = new (0, $kQo6d.Alg)(Array.from(this.moves.units()).slice(0, index));
+        const alg = new (0, $j3ukw.Alg)(Array.from(this.moves.childAlgNodes()).slice(0, index));
         return this.durationFn.traverseAlg(alg);
     }
     timestampToIndex(timestamp) {
@@ -41394,14 +40690,14 @@ var $8e08190ac5cfc1c3$export$f1f512573dac63bc = class {
     }
     transformationAtIndex(index) {
         let state = this.kpuzzle.identityTransformation();
-        for (const move of Array.from(this.moves.units()).slice(0, index))state = state.applyMove(move);
+        for (const move of Array.from(this.moves.childAlgNodes()).slice(0, index))state = state.applyMove(move);
         return state;
     }
     algDuration() {
         return this.durationFn.traverseAlg(this.moves);
     }
     numAnimatedLeaves() {
-        return (0, $0305d85fc2c30b4d$export$d5ea806fd922b359)(this.moves);
+        return (0, $ce7d5deeec50f6ba$export$d5ea806fd922b359)(this.moves);
     }
     moveDuration(index) {
         return this.durationFn.traverseMove(this.getAnimLeaf(index));
@@ -41425,18 +40721,18 @@ var $8e08190ac5cfc1c3$var$axisLookup = {
 function $8e08190ac5cfc1c3$var$isSameAxis(move1, move2) {
     return $8e08190ac5cfc1c3$var$axisLookup[move1.family[0].toLowerCase()] === $8e08190ac5cfc1c3$var$axisLookup[move2.family[0].toLowerCase()];
 }
-var $8e08190ac5cfc1c3$var$LocalSimulMoves = class extends (0, $kQo6d.TraversalUp) {
+var $8e08190ac5cfc1c3$var$LocalSimulMoves = class extends (0, $j3ukw.TraversalUp) {
     traverseAlg(alg) {
         const processed = [];
-        for (const nestedUnit of alg.units())processed.push(this.traverseUnit(nestedUnit));
+        for (const childAlgNode of alg.childAlgNodes())processed.push(this.traverseAlgNode(childAlgNode));
         return Array.prototype.concat(...processed);
     }
     traverseGroupingOnce(alg) {
         if (alg.experimentalIsEmpty()) return [];
-        for (const unit of alg.units()){
-            if (!unit.is((0, $kQo6d.Move))) return this.traverseAlg(alg);
+        for (const algNode of alg.childAlgNodes()){
+            if (!algNode.is((0, $j3ukw.Move))) return this.traverseAlg(alg);
         }
-        const moves = Array.from(alg.units());
+        const moves = Array.from(alg.childAlgNodes());
         let maxSimulDur = $8e08190ac5cfc1c3$var$defaultDurationForAmount(moves[0].amount);
         for(let i = 0; i < moves.length - 1; i++){
             for(let j = 1; j < moves.length; j++){
@@ -41446,7 +40742,7 @@ var $8e08190ac5cfc1c3$var$LocalSimulMoves = class extends (0, $kQo6d.TraversalUp
         }
         const localMovesWithRange = moves.map((blockMove)=>{
             return {
-                animLeafUnit: blockMove,
+                animLeafAlgNode: blockMove,
                 msUntilNext: 0,
                 duration: maxSimulDur
             };
@@ -41464,7 +40760,7 @@ var $8e08190ac5cfc1c3$var$LocalSimulMoves = class extends (0, $kQo6d.TraversalUp
         const duration = $8e08190ac5cfc1c3$var$defaultDurationForAmount(move.amount);
         return [
             {
-                animLeafUnit: move,
+                animLeafAlgNode: move,
                 msUntilNext: duration,
                 duration: duration
             }
@@ -41496,7 +40792,7 @@ var $8e08190ac5cfc1c3$var$LocalSimulMoves = class extends (0, $kQo6d.TraversalUp
         const duration = $8e08190ac5cfc1c3$var$defaultDurationForAmount(1);
         return [
             {
-                animLeafUnit: pause,
+                animLeafAlgNode: pause,
                 msUntilNext: duration,
                 duration: duration
             }
@@ -41515,7 +40811,7 @@ function $8e08190ac5cfc1c3$var$simulMoves(a) {
     let timestamp = 0;
     const l = $8e08190ac5cfc1c3$var$localSimulMoves(a).map((localSimulMove)=>{
         const leafWithRange = {
-            animLeaf: localSimulMove.animLeafUnit,
+            animLeaf: localSimulMove.animLeafAlgNode,
             start: timestamp,
             end: timestamp + localSimulMove.duration
         };
@@ -41528,196 +40824,196 @@ function $8e08190ac5cfc1c3$var$simulMoves(a) {
 var $8e08190ac5cfc1c3$var$demos = {
     "y' y' U' E D R2 r2 F2 B2 U E D' R2 L2' z2 S2 U U D D S2 F2' B2": [
         {
-            animLeaf: new (0, $kQo6d.Move)("y", -1),
+            animLeaf: new (0, $j3ukw.Move)("y", -1),
             start: 0,
             end: 1e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("y", -1),
+            animLeaf: new (0, $j3ukw.Move)("y", -1),
             start: 1e3,
             end: 2e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("U", -1),
+            animLeaf: new (0, $j3ukw.Move)("U", -1),
             start: 1e3,
             end: 1600
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("E", 1),
+            animLeaf: new (0, $j3ukw.Move)("E", 1),
             start: 1200,
             end: 1800
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("D"),
+            animLeaf: new (0, $j3ukw.Move)("D"),
             start: 1400,
             end: 2e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("R", 2),
+            animLeaf: new (0, $j3ukw.Move)("R", 2),
             start: 2e3,
             end: 3500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("r", 2),
+            animLeaf: new (0, $j3ukw.Move)("r", 2),
             start: 2e3,
             end: 3500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("F", 2),
+            animLeaf: new (0, $j3ukw.Move)("F", 2),
             start: 3500,
             end: 4200
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("B", 2),
+            animLeaf: new (0, $j3ukw.Move)("B", 2),
             start: 3800,
             end: 4500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("U", 1),
+            animLeaf: new (0, $j3ukw.Move)("U", 1),
             start: 4500,
             end: 5500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("E", 1),
+            animLeaf: new (0, $j3ukw.Move)("E", 1),
             start: 4500,
             end: 5500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("D", -1),
+            animLeaf: new (0, $j3ukw.Move)("D", -1),
             start: 4500,
             end: 5500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("R", 2),
+            animLeaf: new (0, $j3ukw.Move)("R", 2),
             start: 5500,
             end: 6500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("L", -2),
+            animLeaf: new (0, $j3ukw.Move)("L", -2),
             start: 5500,
             end: 6500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("z", 2),
+            animLeaf: new (0, $j3ukw.Move)("z", 2),
             start: 5500,
             end: 6500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("S", 2),
+            animLeaf: new (0, $j3ukw.Move)("S", 2),
             start: 6500,
             end: 7500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("U"),
+            animLeaf: new (0, $j3ukw.Move)("U"),
             start: 7500,
             end: 8e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("D"),
+            animLeaf: new (0, $j3ukw.Move)("D"),
             start: 7750,
             end: 8250
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("U"),
+            animLeaf: new (0, $j3ukw.Move)("U"),
             start: 8e3,
             end: 8500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("D"),
+            animLeaf: new (0, $j3ukw.Move)("D"),
             start: 8250,
             end: 8750
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("S", 2),
+            animLeaf: new (0, $j3ukw.Move)("S", 2),
             start: 8750,
             end: 9250
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("F", -2),
+            animLeaf: new (0, $j3ukw.Move)("F", -2),
             start: 8750,
             end: 1e4
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("B", 2),
+            animLeaf: new (0, $j3ukw.Move)("B", 2),
             start: 8750,
             end: 1e4
         }
     ],
     "M' R' U' D' M R": [
         {
-            animLeaf: new (0, $kQo6d.Move)("M", -1),
+            animLeaf: new (0, $j3ukw.Move)("M", -1),
             start: 0,
             end: 1e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("R", -1),
+            animLeaf: new (0, $j3ukw.Move)("R", -1),
             start: 0,
             end: 1e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("U", -1),
+            animLeaf: new (0, $j3ukw.Move)("U", -1),
             start: 1e3,
             end: 2e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("D", -1),
+            animLeaf: new (0, $j3ukw.Move)("D", -1),
             start: 1e3,
             end: 2e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("M"),
+            animLeaf: new (0, $j3ukw.Move)("M"),
             start: 2e3,
             end: 3e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("R"),
+            animLeaf: new (0, $j3ukw.Move)("R"),
             start: 2e3,
             end: 3e3
         }
     ],
     "U' E' r E r2' E r U E": [
         {
-            animLeaf: new (0, $kQo6d.Move)("U", -1),
+            animLeaf: new (0, $j3ukw.Move)("U", -1),
             start: 0,
             end: 1e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("E", -1),
+            animLeaf: new (0, $j3ukw.Move)("E", -1),
             start: 0,
             end: 1e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("r"),
+            animLeaf: new (0, $j3ukw.Move)("r"),
             start: 1e3,
             end: 2500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("E"),
+            animLeaf: new (0, $j3ukw.Move)("E"),
             start: 2500,
             end: 3500
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("r", -2),
+            animLeaf: new (0, $j3ukw.Move)("r", -2),
             start: 3500,
             end: 5e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("E"),
+            animLeaf: new (0, $j3ukw.Move)("E"),
             start: 5e3,
             end: 6e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("r"),
+            animLeaf: new (0, $j3ukw.Move)("r"),
             start: 6e3,
             end: 7e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("U"),
+            animLeaf: new (0, $j3ukw.Move)("U"),
             start: 7e3,
             end: 8e3
         },
         {
-            animLeaf: new (0, $kQo6d.Move)("E"),
+            animLeaf: new (0, $j3ukw.Move)("E"),
             start: 7e3,
             end: 8e3
         }
@@ -41750,7 +41046,7 @@ var $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer = class {
         const currentMoveInfo = this.currentMoveInfo(timestamp);
         let state = startState ?? this.kpuzzle.identityTransformation().toKState();
         for (const leafWithRange of this.animLeaves.slice(0, currentMoveInfo.stateIndex)){
-            const move = leafWithRange.animLeaf.as((0, $kQo6d.Move));
+            const move = leafWithRange.animLeaf.as((0, $j3ukw.Move));
             if (move !== null) state = state.applyMove(move);
         }
         return {
@@ -41775,7 +41071,7 @@ var $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer = class {
             if (leafWithRange1.end <= windowEarliestTimestamp) stateIndex++;
             else if (leafWithRange1.start > timestamp) break;
             else {
-                const move = leafWithRange1.animLeaf.as((0, $kQo6d.Move));
+                const move = leafWithRange1.animLeaf.as((0, $j3ukw.Move));
                 if (move !== null) {
                     let fraction = (timestamp - leafWithRange1.start) / (leafWithRange1.end - leafWithRange1.start);
                     let moveFinished = false;
@@ -41820,7 +41116,7 @@ var $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer = class {
         let state = startState ?? this.kpuzzle.startState();
         for(let i = 0; i < this.animLeaves.length && i < index; i++){
             const leafWithRange = this.animLeaves[i];
-            const move = leafWithRange.animLeaf.as((0, $kQo6d.Move));
+            const move = leafWithRange.animLeaf.as((0, $j3ukw.Move));
             if (move !== null) state = state.applyMove(move);
         }
         return state;
@@ -41828,7 +41124,7 @@ var $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer = class {
     transformationAtIndex(index) {
         let transformation = this.kpuzzle.identityTransformation();
         for (const leafWithRange of this.animLeaves.slice(0, index)){
-            const move = leafWithRange.animLeaf.as((0, $kQo6d.Move));
+            const move = leafWithRange.animLeaf.as((0, $j3ukw.Move));
             if (move !== null) transformation = transformation.applyMove(move);
         }
         return transformation;
@@ -41847,7 +41143,7 @@ var $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer = class {
     }
 };
 // src/cubing/twisty/controllers/indexer/tree/AlgWalker.ts
-var $8e08190ac5cfc1c3$var$AlgPartDecoration = class {
+var $8e08190ac5cfc1c3$var$AlgWalkterDecoration = class {
     constructor(moveCount, duration, forward, backward, children = []){
         this.moveCount = moveCount;
         this.duration = duration;
@@ -41856,29 +41152,29 @@ var $8e08190ac5cfc1c3$var$AlgPartDecoration = class {
         this.children = children;
     }
 };
-var $8e08190ac5cfc1c3$var$DecoratorConstructor = class extends (0, $kQo6d.TraversalUp) {
+var $8e08190ac5cfc1c3$var$DecoratorConstructor = class extends (0, $j3ukw.TraversalUp) {
     constructor(kpuzzle){
         super();
         this.kpuzzle = kpuzzle;
         this.durationFn = new $8e08190ac5cfc1c3$var$AlgDuration($8e08190ac5cfc1c3$var$defaultDurationForAmount);
         this.cache = {};
         this.identity = kpuzzle.identityTransformation();
-        this.dummyLeaf = new $8e08190ac5cfc1c3$var$AlgPartDecoration(0, 0, this.identity, this.identity, []);
+        this.dummyLeaf = new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(0, 0, this.identity, this.identity, []);
     }
     traverseAlg(alg) {
         let moveCount = 0;
         let duration = 0;
         let transformation = this.identity;
         const child = [];
-        for (const unit of alg.units()){
-            const apd = this.traverseUnit(unit);
+        for (const algNode of alg.childAlgNodes()){
+            const apd = this.traverseAlgNode(algNode);
             moveCount += apd.moveCount;
             duration += apd.duration;
             if (transformation === this.identity) transformation = apd.forward;
             else transformation = transformation.applyTransformation(apd.forward);
             child.push(apd);
         }
-        return new $8e08190ac5cfc1c3$var$AlgPartDecoration(moveCount, duration, transformation, transformation.invert(), child);
+        return new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(moveCount, duration, transformation, transformation.invert(), child);
     }
     traverseGrouping(grouping) {
         const dec = this.traverseAlg(grouping.alg);
@@ -41888,12 +41184,12 @@ var $8e08190ac5cfc1c3$var$DecoratorConstructor = class extends (0, $kQo6d.Traver
     }
     traverseMove(move) {
         const key = move.toString();
-        let r = this.cache[key];
-        if (r) return r;
+        let r2 = this.cache[key];
+        if (r2) return r2;
         const transformation = this.kpuzzle.moveToTransformation(move);
-        r = new $8e08190ac5cfc1c3$var$AlgPartDecoration(1, this.durationFn.traverseUnit(move), transformation, transformation.invert());
-        this.cache[key] = r;
-        return r;
+        r2 = new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(1, this.durationFn.traverseAlgNode(move), transformation, transformation.invert());
+        this.cache[key] = r2;
+        return r2;
     }
     traverseCommutator(commutator) {
         const decA = this.traverseAlg(commutator.A);
@@ -41901,7 +41197,7 @@ var $8e08190ac5cfc1c3$var$DecoratorConstructor = class extends (0, $kQo6d.Traver
         const AB = decA.forward.applyTransformation(decB.forward);
         const ApBp = decA.backward.applyTransformation(decB.backward);
         const ABApBp = AB.applyTransformation(ApBp);
-        const dec = new $8e08190ac5cfc1c3$var$AlgPartDecoration(2 * (decA.moveCount + decB.moveCount), 2 * (decA.duration + decB.duration), ABApBp, ABApBp.invert(), [
+        const dec = new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(2 * (decA.moveCount + decB.moveCount), 2 * (decA.duration + decB.duration), ABApBp, ABApBp.invert(), [
             decA,
             decB
         ]);
@@ -41916,7 +41212,7 @@ var $8e08190ac5cfc1c3$var$DecoratorConstructor = class extends (0, $kQo6d.Traver
         const decB = this.traverseAlg(conjugate.B);
         const AB = decA.forward.applyTransformation(decB.forward);
         const ABAp = AB.applyTransformation(decA.backward);
-        const dec = new $8e08190ac5cfc1c3$var$AlgPartDecoration(2 * decA.moveCount + decB.moveCount, 2 * decA.duration + decB.duration, ABAp, ABAp.invert(), [
+        const dec = new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(2 * decA.moveCount + decB.moveCount, 2 * decA.duration + decB.duration, ABAp, ABAp.invert(), [
             decA,
             decB
         ]);
@@ -41928,7 +41224,7 @@ var $8e08190ac5cfc1c3$var$DecoratorConstructor = class extends (0, $kQo6d.Traver
     }
     traversePause(pause) {
         if (pause.experimentalNISSGrouping) return this.dummyLeaf;
-        return new $8e08190ac5cfc1c3$var$AlgPartDecoration(1, this.durationFn.traverseUnit(pause), this.identity, this.identity);
+        return new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(1, this.durationFn.traverseAlgNode(pause), this.identity, this.identity);
     }
     traverseNewline(_newline) {
         return this.dummyLeaf;
@@ -41939,7 +41235,7 @@ var $8e08190ac5cfc1c3$var$DecoratorConstructor = class extends (0, $kQo6d.Traver
     mult(apd, n, child) {
         const absn = Math.abs(n);
         const st = apd.forward.selfMultiply(n);
-        return new $8e08190ac5cfc1c3$var$AlgPartDecoration(apd.moveCount * absn, apd.duration * absn, st, st.invert(), child);
+        return new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(apd.moveCount * absn, apd.duration * absn, st, st.invert(), child);
     }
 };
 var $8e08190ac5cfc1c3$var$WalkerDown = class {
@@ -41948,11 +41244,11 @@ var $8e08190ac5cfc1c3$var$WalkerDown = class {
         this.back = back;
     }
 };
-var $8e08190ac5cfc1c3$var$AlgWalker = class extends (0, $kQo6d.TraversalDownUp) {
-    constructor(kpuzzle, algOrUnit, apd){
+var $8e08190ac5cfc1c3$var$AlgWalker = class extends (0, $j3ukw.TraversalDownUp) {
+    constructor(kpuzzle, algOrAlgNode, apd){
         super();
         this.kpuzzle = kpuzzle;
-        this.algOrUnit = algOrUnit;
+        this.algOrAlgNode = algOrAlgNode;
         this.apd = apd;
         this.i = -1;
         this.dur = -1;
@@ -41981,14 +41277,14 @@ var $8e08190ac5cfc1c3$var$AlgWalker = class extends (0, $kQo6d.TraversalDownUp) 
         this.moveDuration = 0;
         this.back = false;
         this.st = this.kpuzzle.identityTransformation();
-        const r = this.algOrUnit.is((0, $kQo6d.Alg)) ? this.traverseAlg(this.algOrUnit, this.root) : this.traverseUnit(this.algOrUnit, this.root);
-        return r;
+        const r2 = this.algOrAlgNode.is((0, $j3ukw.Alg)) ? this.traverseAlg(this.algOrAlgNode, this.root) : this.traverseAlgNode(this.algOrAlgNode, this.root);
+        return r2;
     }
     traverseAlg(alg, wd) {
         if (!this.firstcheck(wd)) return false;
-        let i = wd.back ? alg.experimentalNumUnits() - 1 : 0;
-        for (const unit of (0, $kQo6d.directedGenerator)(alg.units(), wd.back ? -1 /* Backwards */  : 1 /* Forwards */ )){
-            if (this.traverseUnit(unit, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[i], wd.back))) return true;
+        let i = wd.back ? alg.experimentalNumChildAlgNodes() - 1 : 0;
+        for (const algNode of (0, $j3ukw.directedGenerator)(alg.childAlgNodes(), wd.back ? -1 /* Backwards */  : 1 /* Forwards */ )){
+            if (this.traverseAlgNode(algNode, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[i], wd.back))) return true;
             i += wd.back ? -1 : 1;
         }
         return false;
@@ -42060,35 +41356,35 @@ var $8e08190ac5cfc1c3$var$AlgWalker = class extends (0, $kQo6d.TraversalDownUp) 
 // src/cubing/twisty/controllers/indexer/tree/chunkAlgs.ts
 var $8e08190ac5cfc1c3$var$MIN_CHUNKING_THRESHOLD = 16;
 function $8e08190ac5cfc1c3$var$chunkifyAlg(alg, chunkMaxLength) {
-    const mainAlgBuilder = new (0, $kQo6d.AlgBuilder)();
-    const chunkAlgBuilder = new (0, $kQo6d.AlgBuilder)();
-    for (const unit of alg.units()){
-        chunkAlgBuilder.push(unit);
-        if (chunkAlgBuilder.experimentalNumUnits() >= chunkMaxLength) {
-            mainAlgBuilder.push(new (0, $kQo6d.Grouping)(chunkAlgBuilder.toAlg()));
+    const mainAlgBuilder = new (0, $j3ukw.AlgBuilder)();
+    const chunkAlgBuilder = new (0, $j3ukw.AlgBuilder)();
+    for (const algNode of alg.childAlgNodes()){
+        chunkAlgBuilder.push(algNode);
+        if (chunkAlgBuilder.experimentalNumAlgNodes() >= chunkMaxLength) {
+            mainAlgBuilder.push(new (0, $j3ukw.Grouping)(chunkAlgBuilder.toAlg()));
             chunkAlgBuilder.reset();
         }
     }
-    mainAlgBuilder.push(new (0, $kQo6d.Grouping)(chunkAlgBuilder.toAlg()));
+    mainAlgBuilder.push(new (0, $j3ukw.Grouping)(chunkAlgBuilder.toAlg()));
     return mainAlgBuilder.toAlg();
 }
-var $8e08190ac5cfc1c3$var$ChunkAlgs = class extends (0, $kQo6d.TraversalUp) {
+var $8e08190ac5cfc1c3$var$ChunkAlgs = class extends (0, $j3ukw.TraversalUp) {
     traverseAlg(alg) {
-        const algLength = alg.experimentalNumUnits();
+        const algLength = alg.experimentalNumChildAlgNodes();
         if (algLength < $8e08190ac5cfc1c3$var$MIN_CHUNKING_THRESHOLD) return alg;
         return $8e08190ac5cfc1c3$var$chunkifyAlg(alg, Math.ceil(Math.sqrt(algLength)));
     }
     traverseGrouping(grouping) {
-        return new (0, $kQo6d.Grouping)(this.traverseAlg(grouping.alg), grouping.amount);
+        return new (0, $j3ukw.Grouping)(this.traverseAlg(grouping.alg), grouping.amount);
     }
     traverseMove(move) {
         return move;
     }
     traverseCommutator(commutator) {
-        return new (0, $kQo6d.Conjugate)(this.traverseAlg(commutator.A), this.traverseAlg(commutator.B));
+        return new (0, $j3ukw.Conjugate)(this.traverseAlg(commutator.A), this.traverseAlg(commutator.B));
     }
     traverseConjugate(conjugate) {
-        return new (0, $kQo6d.Conjugate)(this.traverseAlg(conjugate.A), this.traverseAlg(conjugate.B));
+        return new (0, $j3ukw.Conjugate)(this.traverseAlg(conjugate.A), this.traverseAlg(conjugate.B));
     }
     traversePause(pause) {
         return pause;
@@ -42152,11 +41448,11 @@ var $8e08190ac5cfc1c3$export$ff289a905dec21cb = class {
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/IndexerConstructorProp.ts
-var $8e08190ac5cfc1c3$var$IndexerConstructorProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$IndexerConstructorProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         switch(inputs.indexerConstructorRequest){
             case "auto":
-                if ((0, $0305d85fc2c30b4d$export$3bb9ec80d65f79cf)(inputs.alg.alg) < 100 && inputs.puzzle === "3x3x3" && inputs.visualizationStrategy === "Cube3D") return $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer;
+                if ((0, $ce7d5deeec50f6ba$export$3bb9ec80d65f79cf)(inputs.alg.alg) < 100 && inputs.puzzle === "3x3x3" && inputs.visualizationStrategy === "Cube3D") return $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer;
                 else return $8e08190ac5cfc1c3$export$ff289a905dec21cb;
             case "tree":
                 return $8e08190ac5cfc1c3$export$ff289a905dec21cb;
@@ -42170,19 +41466,19 @@ var $8e08190ac5cfc1c3$var$IndexerConstructorProp = class extends (0, $8JBxj.Twis
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/IndexerConstructorRequestProp.ts
-var $8e08190ac5cfc1c3$var$IndexerConstructorRequestProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$IndexerConstructorRequestProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "auto";
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/IndexerProp.ts
-var $8e08190ac5cfc1c3$var$IndexerProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$IndexerProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(input) {
         return new input.indexerConstructor(input.kpuzzle, input.algWithIssues.alg);
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/LegacyPositionProp.ts
-var $8e08190ac5cfc1c3$var$LegacyPositionProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$LegacyPositionProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         return {
             state: inputs.state,
@@ -42191,22 +41487,22 @@ var $8e08190ac5cfc1c3$var$LegacyPositionProp = class extends (0, $8JBxj.TwistyPr
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/NaiveMoveCountProp.ts
-var $8e08190ac5cfc1c3$var$NaiveMoveCountProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$NaiveMoveCountProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         if (inputs.alg.issues.errors.length > 0) return null;
-        return (0, $0305d85fc2c30b4d$export$3bb9ec80d65f79cf)(inputs.alg.alg);
+        return (0, $ce7d5deeec50f6ba$export$3bb9ec80d65f79cf)(inputs.alg.alg);
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/PuzzleAlgProp.ts
 var $8e08190ac5cfc1c3$var$validate = true;
-var $8e08190ac5cfc1c3$var$PuzzleAlgProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$PuzzleAlgProp = class extends (0, $9IDdS.TwistyPropDerived) {
     async derive(inputs) {
         try {
             if ($8e08190ac5cfc1c3$var$validate) inputs.kpuzzle.algToTransformation(inputs.algWithIssues.alg);
             return inputs.algWithIssues;
         } catch (e) {
             return {
-                alg: new (0, $kQo6d.Alg)(),
+                alg: new (0, $j3ukw.Alg)(),
                 issues: new $8e08190ac5cfc1c3$var$AlgIssues({
                     errors: [
                         `Invalid alg for puzzle: ${e.toString()}`
@@ -42217,46 +41513,46 @@ var $8e08190ac5cfc1c3$var$PuzzleAlgProp = class extends (0, $8JBxj.TwistyPropDer
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/SetupAnchorProp.ts
-var $8e08190ac5cfc1c3$var$SetupAnchorProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$SetupAnchorProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "start";
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/SetupTransformationProp.ts
-var $8e08190ac5cfc1c3$var$SetupTransformationProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$SetupTransformationProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return null;
     }
 };
 // src/cubing/twisty/model/props/puzzle/structure/KPuzzleProp.ts
-var $8e08190ac5cfc1c3$var$KPuzzleProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$KPuzzleProp = class extends (0, $9IDdS.TwistyPropDerived) {
     async derive(inputs) {
         return inputs.puzzleLoader.kpuzzle();
     }
 };
 // src/cubing/twisty/model/props/puzzle/structure/PuzzleDescriptionProp.ts
-var $8e08190ac5cfc1c3$var$PGPuzzleDescriptionStringProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$PGPuzzleDescriptionStringProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
-        return 0, $8JBxj.NO_VALUE;
+        return 0, $9IDdS.NO_VALUE;
     }
 };
 // src/cubing/twisty/model/props/puzzle/structure/PuzzleIDProp.ts
-var $8e08190ac5cfc1c3$var$PuzzleIDProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$PuzzleIDProp = class extends (0, $9IDdS.TwistyPropDerived) {
     async derive(inputs) {
         return inputs.puzzleLoader.id;
     }
 };
 // src/cubing/twisty/model/props/puzzle/structure/PuzzleIDRequestProp.ts
-var $8e08190ac5cfc1c3$var$PuzzleIDRequestProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$PuzzleIDRequestProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
-        return 0, $8JBxj.NO_VALUE;
+        return 0, $9IDdS.NO_VALUE;
     }
 };
 // src/cubing/twisty/model/props/puzzle/structure/PuzzleLoaderProp.ts
-var $8e08190ac5cfc1c3$var$PuzzleLoaderProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$PuzzleLoaderProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
-        if (inputs.puzzleIDRequest && inputs.puzzleIDRequest !== (0, $8JBxj.NO_VALUE)) {
-            const puzzleLoader = (0, $d2uOu.puzzles)[inputs.puzzleIDRequest];
+        if (inputs.puzzleIDRequest && inputs.puzzleIDRequest !== (0, $9IDdS.NO_VALUE)) {
+            const puzzleLoader = (0, $ch5j6.puzzles)[inputs.puzzleIDRequest];
             if (!puzzleLoader) this.userVisibleErrorTracker.set({
                 errors: [
                     `Invalid puzzle ID: ${inputs.puzzleIDRequest}`
@@ -42264,12 +41560,12 @@ var $8e08190ac5cfc1c3$var$PuzzleLoaderProp = class extends (0, $8JBxj.TwistyProp
             });
             return puzzleLoader;
         }
-        if (inputs.puzzleDescriptionRequest && inputs.puzzleDescriptionRequest !== (0, $8JBxj.NO_VALUE)) return (0, $8IKgU.customPGPuzzleLoader)(inputs.puzzleDescriptionRequest);
-        return 0, $d2uOu.cube3x3x3;
+        if (inputs.puzzleDescriptionRequest && inputs.puzzleDescriptionRequest !== (0, $9IDdS.NO_VALUE)) return (0, $jZEJE.customPGPuzzleLoader)(inputs.puzzleDescriptionRequest);
+        return 0, $ch5j6.cube3x3x3;
     }
 };
 // src/cubing/twisty/model/props/timeline/CoarseTimelineInfoProp.ts
-var $8e08190ac5cfc1c3$var$CoarseTimelineInfoProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$CoarseTimelineInfoProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         return {
             playing: inputs.playingInfo.playing,
@@ -42282,14 +41578,9 @@ var $8e08190ac5cfc1c3$var$CoarseTimelineInfoProp = class extends (0, $8JBxj.Twis
     }
 };
 // src/cubing/twisty/model/props/timeline/DetailedTimelineInfoProp.ts
-var $8e08190ac5cfc1c3$var$_requestedTimestampToMilliseconds, $8e08190ac5cfc1c3$var$requestedTimestampToMilliseconds_fn;
-var $8e08190ac5cfc1c3$var$DetailedTimelineInfoProp = class extends (0, $8JBxj.TwistyPropDerived) {
-    constructor(){
-        super(...arguments);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_requestedTimestampToMilliseconds);
-    }
+var $8e08190ac5cfc1c3$var$DetailedTimelineInfoProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
-        let timestamp = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_requestedTimestampToMilliseconds, $8e08190ac5cfc1c3$var$requestedTimestampToMilliseconds_fn).call(this, inputs);
+        let timestamp = this.#requestedTimestampToMilliseconds(inputs);
         let atStart = false;
         let atEnd = false;
         if (timestamp >= inputs.timeRange.end) {
@@ -42307,27 +41598,26 @@ var $8e08190ac5cfc1c3$var$DetailedTimelineInfoProp = class extends (0, $8JBxj.Tw
             atEnd: atEnd
         };
     }
+     #requestedTimestampToMilliseconds(inputs) {
+        switch(inputs.timestampRequest){
+            case "start":
+                return inputs.timeRange.start;
+            case "end":
+                return inputs.timeRange.end;
+            case "anchor":
+                return inputs.setupAnchor === "start" ? inputs.timeRange.start : inputs.timeRange.end;
+            case "opposite-anchor":
+                return inputs.setupAnchor === "start" ? inputs.timeRange.end : inputs.timeRange.start;
+            default:
+                return inputs.timestampRequest;
+        }
+    }
     canReuse(v1, v2) {
         return v1.timestamp === v2.timestamp && v1.timeRange.start === v2.timeRange.start && v1.timeRange.end === v2.timeRange.end && v1.atStart === v2.atStart && v1.atEnd === v2.atEnd;
     }
 };
-$8e08190ac5cfc1c3$var$_requestedTimestampToMilliseconds = new WeakSet();
-$8e08190ac5cfc1c3$var$requestedTimestampToMilliseconds_fn = function(inputs) {
-    switch(inputs.timestampRequest){
-        case "start":
-            return inputs.timeRange.start;
-        case "end":
-            return inputs.timeRange.end;
-        case "anchor":
-            return inputs.setupAnchor === "start" ? inputs.timeRange.start : inputs.timeRange.end;
-        case "opposite-anchor":
-            return inputs.setupAnchor === "start" ? inputs.timeRange.end : inputs.timeRange.start;
-        default:
-            return inputs.timestampRequest;
-    }
-};
 // src/cubing/twisty/model/props/timeline/PlayingInfoProp.ts
-var $8e08190ac5cfc1c3$var$PlayingInfoProp = class extends (0, $8JBxj.TwistyPropSource) {
+var $8e08190ac5cfc1c3$var$PlayingInfoProp = class extends (0, $9IDdS.TwistyPropSource) {
     async getDefaultValue() {
         return {
             direction: 1 /* Forwards */ ,
@@ -42347,7 +41637,7 @@ var $8e08190ac5cfc1c3$var$PlayingInfoProp = class extends (0, $8JBxj.TwistyPropS
     }
 };
 // src/cubing/twisty/model/props/timeline/TempoScaleProp.ts
-var $8e08190ac5cfc1c3$var$TempoScaleProp = class extends (0, $8JBxj.TwistyPropSource) {
+var $8e08190ac5cfc1c3$var$TempoScaleProp = class extends (0, $9IDdS.TwistyPropSource) {
     getDefaultValue() {
         return 1;
     }
@@ -42357,12 +41647,12 @@ var $8e08190ac5cfc1c3$var$TempoScaleProp = class extends (0, $8JBxj.TwistyPropSo
 };
 // src/cubing/twisty/model/props/timeline/TimestampRequestProp.ts
 var $8e08190ac5cfc1c3$var$smartTimestamps = {
-    "start": true,
-    "end": true,
-    "anchor": true,
+    start: true,
+    end: true,
+    anchor: true,
     "opposite-anchor": true
 };
-var $8e08190ac5cfc1c3$var$TimestampRequestProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$TimestampRequestProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "opposite-anchor";
     }
@@ -42378,17 +41668,17 @@ var $8e08190ac5cfc1c3$var$TimestampRequestProp = class extends (0, $8JBxj.Simple
 };
 // src/cubing/twisty/model/props/viewer/BackViewProp.ts
 var $8e08190ac5cfc1c3$export$9052cca4b8cc895f = {
-    "none": true,
+    none: true,
     "side-by-side": true,
     "top-right": true
 };
-var $8e08190ac5cfc1c3$var$BackViewProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$BackViewProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "auto";
     }
 };
 // src/cubing/twisty/model/props/viewer/TimeRangeProp.ts
-var $8e08190ac5cfc1c3$var$TimeRangeProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$TimeRangeProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         return {
             start: 0,
@@ -42397,19 +41687,19 @@ var $8e08190ac5cfc1c3$var$TimeRangeProp = class extends (0, $8JBxj.TwistyPropDer
     }
 };
 // src/cubing/twisty/model/props/viewer/ViewerLinkProp.ts
-var $8e08190ac5cfc1c3$var$ViewerLinkProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$ViewerLinkProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "auto";
     }
 };
 // src/cubing/twisty/model/props/viewer/VisualizationProp.ts
-var $8e08190ac5cfc1c3$var$VisualizationFormatProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$VisualizationFormatProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "auto";
     }
 };
 // src/cubing/twisty/model/props/viewer/VisualizationStrategyProp.ts
-var $8e08190ac5cfc1c3$var$VisualizationStrategyProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$VisualizationStrategyProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         switch(inputs.puzzleID){
             case "clock":
@@ -42431,7 +41721,8 @@ var $8e08190ac5cfc1c3$var$VisualizationStrategyProp = class extends (0, $8JBxj.T
                     case "3D":
                         return "PG3D";
                     case "experimental-2D-LL":
-                        return "2D";
+                        if (inputs.puzzleID === "4x4x4") return "experimental-2D-LL";
+                        else return "2D";
                     default:
                         return inputs.visualizationRequest;
                 }
@@ -42439,7 +41730,7 @@ var $8e08190ac5cfc1c3$var$VisualizationStrategyProp = class extends (0, $8JBxj.T
     }
 };
 // src/cubing/twisty/model/props/puzzle/display/FoundationDisplayProp.ts
-var $8e08190ac5cfc1c3$var$FoundationDisplayProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$FoundationDisplayProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "auto";
     }
@@ -42447,9 +41738,9 @@ var $8e08190ac5cfc1c3$var$FoundationDisplayProp = class extends (0, $8JBxj.Simpl
 // src/cubing/twisty/model/props/puzzle/display/SpriteProp.ts
 var $8e08190ac5cfc1c3$var$cachedLoader = null;
 async function $8e08190ac5cfc1c3$var$loader() {
-    return $8e08190ac5cfc1c3$var$cachedLoader ?? ($8e08190ac5cfc1c3$var$cachedLoader = new (await (0, $8JBxj.THREEJS)).TextureLoader());
+    return $8e08190ac5cfc1c3$var$cachedLoader ?? ($8e08190ac5cfc1c3$var$cachedLoader = new (await (0, $9IDdS.THREEJS)).TextureLoader());
 }
-var $8e08190ac5cfc1c3$var$SpriteProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$SpriteProp = class extends (0, $9IDdS.TwistyPropDerived) {
     async derive(inputs) {
         const { spriteURL: textureURL  } = inputs;
         if (textureURL === null) return null;
@@ -42466,33 +41757,116 @@ var $8e08190ac5cfc1c3$var$SpriteProp = class extends (0, $8JBxj.TwistyPropDerive
         });
     }
 };
-// src/cubing/twisty/model/props/puzzle/display/StickeringProp.ts
-var $8e08190ac5cfc1c3$var$StickeringProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+// src/cubing/twisty/model/props/puzzle/display/StickeringMaskProp.ts
+var $8e08190ac5cfc1c3$var$r = {
+    facelets: [
+        "regular",
+        "regular",
+        "regular",
+        "regular",
+        "regular"
+    ]
+};
+async function $8e08190ac5cfc1c3$var$fullStickeringMask(puzzleLoader) {
+    const { definition: definition  } = await puzzleLoader.kpuzzle();
+    const fullStickeringMask2 = {
+        orbits: {}
+    };
+    for (const [orbitName, orbitDef] of Object.entries(definition.orbits))fullStickeringMask2.orbits[orbitName] = {
+        pieces: new Array(orbitDef.numPieces).fill($8e08190ac5cfc1c3$var$r)
+    };
+    return fullStickeringMask2;
+}
+var $8e08190ac5cfc1c3$var$StickeringMaskProp = class extends (0, $9IDdS.TwistyPropDerived) {
     getDefaultValue() {
-        return "full";
+        return {
+            orbits: {}
+        };
+    }
+    async derive(inputs) {
+        if (inputs.stickeringMaskRequest) return inputs.stickeringMaskRequest;
+        if (inputs.stickeringRequest === "picture") return {
+            specialBehaviour: "picture",
+            orbits: {}
+        };
+        return inputs.puzzleLoader.stickeringMask?.(inputs.stickeringRequest ?? "full") ?? $8e08190ac5cfc1c3$var$fullStickeringMask(inputs.puzzleLoader);
+    }
+};
+// src/cubing/twisty/model/props/puzzle/display/parseSerializedStickeringMask.ts
+var $8e08190ac5cfc1c3$var$charMap = {
+    "-": "Regular" /* Regular */ ,
+    D: "Dim" /* Dim */ ,
+    I: "Ignored" /* Ignored */ ,
+    X: "Invisible" /* Invisible */ ,
+    O: "IgnoreNonPrimary" /* IgnoreNonPrimary */ ,
+    P: "PermuteNonPrimary" /* PermuteNonPrimary */ ,
+    o: "Ignoriented" /* Ignoriented */ ,
+    "?": "OrientationWithoutPermutation" /* OrientationWithoutPermutation */ ,
+    "@": "Regular" /* Regular */ 
+};
+function $8e08190ac5cfc1c3$var$parseSerializedStickeringMask(serializedStickeringMask) {
+    const stickeringMask = {
+        orbits: {}
+    };
+    const serializedOrbits = serializedStickeringMask.split(",");
+    for (const serializedOrbit of serializedOrbits){
+        const [orbitName, serializedOrbitPieces, ...rest] = serializedOrbit.split(":");
+        if (rest.length > 0) throw new Error(`Invalid serialized orbit stickering mask (too many colons): \`${serializedOrbit}\``);
+        const pieces = [];
+        stickeringMask.orbits[orbitName] = {
+            pieces: pieces
+        };
+        for (const char of serializedOrbitPieces){
+            const pieceStickering = $8e08190ac5cfc1c3$var$charMap[char];
+            pieces.push((0, $jZEJE.getPieceStickeringMask)(pieceStickering));
+        }
+    }
+    return stickeringMask;
+}
+// src/cubing/twisty/model/props/puzzle/display/StickeringMaskRequestProp.ts
+var $8e08190ac5cfc1c3$var$StickeringMaskRequestProp = class extends (0, $9IDdS.TwistyPropSource) {
+    getDefaultValue() {
+        return null;
+    }
+    derive(input) {
+        if (input === null) return null;
+        else if (typeof input === "string") return $8e08190ac5cfc1c3$var$parseSerializedStickeringMask(input);
+        else return input;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/display/StickeringRequestProp.ts
+var $8e08190ac5cfc1c3$var$StickeringRequestProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return null;
     }
 };
 // src/cubing/twisty/model/props/puzzle/state/DragInputProp.ts
-var $8e08190ac5cfc1c3$var$DragInputProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$DragInputProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "auto";
     }
 };
+// src/cubing/twisty/model/props/puzzle/state/MovePressCancelOptions.ts
+var $8e08190ac5cfc1c3$var$MovePressCancelOptions = class extends (0, $9IDdS.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return {};
+    }
+};
 // src/cubing/twisty/model/props/puzzle/state/MovePressInputProp.ts
-var $8e08190ac5cfc1c3$var$MovePressInputProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$MovePressInputProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "auto";
     }
 };
 // src/cubing/twisty/model/props/viewer/BackgroundProp.ts
-var $8e08190ac5cfc1c3$var$BackgroundProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$BackgroundProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "auto";
     }
 };
 // src/cubing/twisty/model/props/viewer/LatitudeLimit.ts
 var $8e08190ac5cfc1c3$var$DEFAULT_LATITUDE_LIMIT = 35;
-var $8e08190ac5cfc1c3$var$LatitudeLimitProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$LatitudeLimitProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return $8e08190ac5cfc1c3$var$DEFAULT_LATITUDE_LIMIT;
     }
@@ -42501,7 +41875,7 @@ var $8e08190ac5cfc1c3$var$LatitudeLimitProp = class extends (0, $8JBxj.SimpleTwi
 function $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(c1, c2) {
     return c1.latitude === c2.latitude && c1.longitude === c2.longitude && c1.distance === c2.distance;
 }
-var $8e08190ac5cfc1c3$var$OrbitCoordinatesRequestProp = class extends (0, $8JBxj.TwistyPropSource) {
+var $8e08190ac5cfc1c3$var$OrbitCoordinatesRequestProp = class extends (0, $9IDdS.TwistyPropSource) {
     getDefaultValue() {
         return "auto";
     }
@@ -42520,7 +41894,7 @@ var $8e08190ac5cfc1c3$var$OrbitCoordinatesRequestProp = class extends (0, $8JBxj
     }
 };
 // src/cubing/twisty/model/props/viewer/OrbitCoordinatesProp.ts
-var $8e08190ac5cfc1c3$var$OrbitCoordinatesProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$OrbitCoordinatesProp = class extends (0, $9IDdS.TwistyPropDerived) {
     canReuseValue(v1, v2) {
         return $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(v1, v2);
     }
@@ -42554,7 +41928,7 @@ var $8e08190ac5cfc1c3$var$cubePG3DCameraOrbitCoordinates = {
     distance: 6.25
 };
 var $8e08190ac5cfc1c3$var$megaminxCameraOrbitCoordinates = {
-    latitude: Math.atan(0.5) * (0, $8JBxj.DEGREES_PER_RADIAN),
+    latitude: Math.atan(0.5) * (0, $9IDdS.DEGREES_PER_RADIAN),
     longitude: 0,
     distance: 6.7
 };
@@ -42588,12 +41962,14 @@ var $8e08190ac5cfc1c3$var$TwistySceneModel = class {
         this.dragInput = new $8e08190ac5cfc1c3$var$DragInputProp();
         this.foundationDisplay = new $8e08190ac5cfc1c3$var$FoundationDisplayProp();
         this.foundationStickerSpriteURL = new $8e08190ac5cfc1c3$var$URLProp();
-        this.hintFacelet = new (0, $8JBxj.HintFaceletProp)();
+        this.hintFacelet = new (0, $9IDdS.HintFaceletProp)();
         this.hintStickerSpriteURL = new $8e08190ac5cfc1c3$var$URLProp();
         this.latitudeLimit = new $8e08190ac5cfc1c3$var$LatitudeLimitProp();
         this.movePressInput = new $8e08190ac5cfc1c3$var$MovePressInputProp();
+        this.movePressCancelOptions = new $8e08190ac5cfc1c3$var$MovePressCancelOptions();
         this.orbitCoordinatesRequest = new $8e08190ac5cfc1c3$var$OrbitCoordinatesRequestProp();
-        this.stickering = new $8e08190ac5cfc1c3$var$StickeringProp();
+        this.stickeringMaskRequest = new $8e08190ac5cfc1c3$var$StickeringMaskRequestProp();
+        this.stickeringRequest = new $8e08190ac5cfc1c3$var$StickeringRequestProp();
         this.foundationStickerSprite = new $8e08190ac5cfc1c3$var$SpriteProp({
             spriteURL: this.foundationStickerSpriteURL
         });
@@ -42606,13 +41982,18 @@ var $8e08190ac5cfc1c3$var$TwistySceneModel = class {
             puzzleID: twistyPlayerModel.puzzleID,
             strategy: twistyPlayerModel.visualizationStrategy
         });
+        this.stickeringMask = new $8e08190ac5cfc1c3$var$StickeringMaskProp({
+            stickeringMaskRequest: this.stickeringMaskRequest,
+            stickeringRequest: this.stickeringRequest,
+            puzzleLoader: twistyPlayerModel.puzzleLoader
+        });
     }
 };
 // src/cubing/twisty/model/UserVisibleErrorTracker.ts
 var $8e08190ac5cfc1c3$var$EMPTY_ERRORS = {
     errors: []
 };
-var $8e08190ac5cfc1c3$var$UserVisibleErrorTracker = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$UserVisibleErrorTracker = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return $8e08190ac5cfc1c3$var$EMPTY_ERRORS;
     }
@@ -42727,51 +42108,77 @@ var $8e08190ac5cfc1c3$var$TwistyPlayerModel = class {
         this.twistySceneModel = new $8e08190ac5cfc1c3$var$TwistySceneModel(this);
     }
     async twizzleLink() {
-        const [viewerLink, puzzleID, puzzleDescription, alg, setup, anchor, experimentalStickering] = await Promise.all([
+        const [viewerLink, puzzleID, puzzleDescription, alg, setup, anchor, experimentalStickeringRequest] = await Promise.all([
             this.viewerLink.get(),
             this.puzzleID.get(),
             this.puzzleDescriptionRequest.get(),
             this.alg.get(),
             this.setupAlg.get(),
             this.setupAnchor.get(),
-            this.twistySceneModel.stickering.get()
+            this.twistySceneModel.stickeringRequest.get()
         ]);
         const isExplorer = viewerLink === "experimental-twizzle-explorer";
         const url = new URL(`https://alpha.twizzle.net/${isExplorer ? "explore" : "edit"}/`);
         if (!alg.alg.experimentalIsEmpty()) url.searchParams.set("alg", alg.alg.toString());
         if (!setup.alg.experimentalIsEmpty()) url.searchParams.set("setup-alg", setup.alg.toString());
         if (anchor !== "start") url.searchParams.set("setup-anchor", anchor);
-        if (experimentalStickering !== "full") url.searchParams.set("experimental-stickering", experimentalStickering);
-        if (isExplorer && puzzleDescription !== (0, $8JBxj.NO_VALUE)) url.searchParams.set("puzzle-description", puzzleDescription);
+        if (experimentalStickeringRequest !== "full" && experimentalStickeringRequest !== null) url.searchParams.set("experimental-stickering", experimentalStickeringRequest);
+        if (isExplorer && puzzleDescription !== (0, $9IDdS.NO_VALUE)) url.searchParams.set("puzzle-description", puzzleDescription);
         else if (puzzleID !== "3x3x3") url.searchParams.set("puzzle", puzzleID);
         return url.toString();
     }
-    experimentalAddMove(flexibleMove, options = {}) {
-        const move = typeof flexibleMove === "string" ? new (0, $kQo6d.Move)(flexibleMove) : flexibleMove;
-        (async ()=>{
+    experimentalAddAlgLeaf(algLeaf, options) {
+        const maybeMove = algLeaf.as((0, $j3ukw.Move));
+        if (maybeMove) this.experimentalAddMove(maybeMove, options);
+        else this.alg.set((async ()=>{
             const alg = (await this.alg.get()).alg;
-            const newAlg = (0, $kQo6d.experimentalAppendMove)(alg, move, {
-                coalesce: options?.coalesce,
-                mod: options?.mod
+            const newAlg = alg.concat(new (0, $j3ukw.Alg)([
+                algLeaf
+            ]));
+            this.timestampRequest.set("end");
+            return newAlg;
+        })());
+    }
+    experimentalAddMove(flexibleMove, options) {
+        const move = typeof flexibleMove === "string" ? new (0, $j3ukw.Move)(flexibleMove) : flexibleMove;
+        this.alg.set((async ()=>{
+            const [{ alg: alg  }, puzzleLoader] = await Promise.all([
+                this.alg.get(),
+                this.puzzleLoader.get()
+            ]);
+            const newAlg = (0, $j3ukw.experimentalAppendMove)(alg, move, {
+                ...options,
+                puzzleLoader: puzzleLoader
             });
-            this.alg.set(newAlg);
             this.timestampRequest.set("end");
             this.catchUpMove.set({
                 move: move,
                 amount: 0
             });
-        })();
+            return newAlg;
+        })());
     }
-    get playingInfoProp() {
-        console.warn("Using deprecated prop: `playingInfoProp`. Please switch to: `playingInfo`");
-        return this.playingInfo;
+    experimentalRemoveFinalChild() {
+        this.alg.set((async ()=>{
+            const alg = (await this.alg.get()).alg;
+            const children = Array.from(alg.childAlgNodes());
+            const [finalChild] = children.splice(-1);
+            if (!finalChild) return alg;
+            this.timestampRequest.set("end");
+            const finalChildMove = finalChild.as((0, $j3ukw.Move));
+            if (finalChildMove) this.catchUpMove.set({
+                move: finalChildMove.invert(),
+                amount: 0
+            });
+            return new (0, $j3ukw.Alg)(children);
+        })());
     }
 };
 // src/cubing/twisty/views/TwistyPlayerSettable.ts
 function $8e08190ac5cfc1c3$var$err(propName) {
     return new Error(`Cannot get \`.${propName}\` directly from a \`TwistyPlayer\`.`);
 }
-var $8e08190ac5cfc1c3$var$TwistyPlayerSettable = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+var $8e08190ac5cfc1c3$var$TwistyPlayerSettable = class extends (0, $9IDdS.ManagedCustomElement) {
     constructor(){
         super(...arguments);
         this.experimentalModel = new $8e08190ac5cfc1c3$var$TwistyPlayerModel();
@@ -42820,10 +42227,16 @@ var $8e08190ac5cfc1c3$var$TwistyPlayerSettable = class extends $8e08190ac5cfc1c3
         throw $8e08190ac5cfc1c3$var$err("hintFacelets");
     }
     set experimentalStickering(stickering) {
-        this.experimentalModel.twistySceneModel.stickering.set(stickering);
+        this.experimentalModel.twistySceneModel.stickeringRequest.set(stickering);
     }
     get experimentalStickering() {
-        throw $8e08190ac5cfc1c3$var$err("stickering");
+        throw $8e08190ac5cfc1c3$var$err("experimentalStickering");
+    }
+    set experimentalStickeringMaskOrbits(stickeringMask) {
+        this.experimentalModel.twistySceneModel.stickeringMaskRequest.set(stickeringMask);
+    }
+    get experimentalStickeringMaskOrbits() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalStickeringMaskOrbits");
     }
     set backView(backView) {
         this.experimentalModel.backView.set(backView);
@@ -42878,6 +42291,12 @@ var $8e08190ac5cfc1c3$var$TwistyPlayerSettable = class extends $8e08190ac5cfc1c3
     }
     get experimentalMovePressInput() {
         throw $8e08190ac5cfc1c3$var$err("experimentalMovePressInput");
+    }
+    set experimentalMovePressCancelOptions(movePressCancelOptions) {
+        this.experimentalModel.twistySceneModel.movePressCancelOptions.set(movePressCancelOptions);
+    }
+    get experimentalMovePressCancelOptions() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalMovePressCancelOptions");
     }
     set cameraLatitude(latitude) {
         this.experimentalModel.twistySceneModel.orbitCoordinatesRequest.set({
@@ -42960,15 +42379,16 @@ var $8e08190ac5cfc1c3$var$ExperimentalGetters = class {
 // src/cubing/twisty/views/TwistyPlayer.ts
 var $8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX = "data-";
 var $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap = {
-    "alg": "alg",
+    alg: "alg",
     "experimental-setup-alg": "experimentalSetupAlg",
     "experimental-setup-anchor": "experimentalSetupAnchor",
-    "puzzle": "puzzle",
+    puzzle: "puzzle",
     "experimental-puzzle-description": "experimentalPuzzleDescription",
-    "visualization": "visualization",
+    visualization: "visualization",
     "hint-facelets": "hintFacelets",
     "experimental-stickering": "experimentalStickering",
-    "background": "background",
+    "experimental-stickering-mask-orbits": "experimentalStickeringMaskOrbits",
+    background: "background",
     "control-panel": "controlPanel",
     "back-view": "backView",
     "viewer-link": "viewerLink",
@@ -42989,44 +42409,49 @@ var $8e08190ac5cfc1c3$var$configKeys = Object.fromEntries(Object.values($8e08190
         s,
         true
     ]));
-var $8e08190ac5cfc1c3$var$_controlsManager, $8e08190ac5cfc1c3$var$_visualizationWrapperElem, $8e08190ac5cfc1c3$var$_errorElem, $8e08190ac5cfc1c3$var$_alreadyConnected, $8e08190ac5cfc1c3$var$_flashLevel, $8e08190ac5cfc1c3$var$_visualizationWrapper, $8e08190ac5cfc1c3$var$_initial3DVisualizationWrapper, $8e08190ac5cfc1c3$var$_visualizationStrategy, $8e08190ac5cfc1c3$var$_setVisualizationWrapper, $8e08190ac5cfc1c3$var$setVisualizationWrapper_fn;
+var $8e08190ac5cfc1c3$var$propOnly = {
+    experimentalMovePressCancelOptions: true
+};
 var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$var$TwistyPlayerSettable {
     constructor(config = {}){
         super();
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_setVisualizationWrapper);
         this.controller = new $8e08190ac5cfc1c3$var$TwistyPlayerController(this.experimentalModel, this);
         this.experimentalCanvasClickCallback = ()=>{};
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_controlsManager, new $8e08190ac5cfc1c3$var$ClassListManager(this, "controls-", [
+        this.#controlsManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "controls-", [
             "auto"
-        ].concat(Object.keys($8e08190ac5cfc1c3$var$controlsLocations))));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_visualizationWrapperElem, document.createElement("div"));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_errorElem, document.createElement("div"));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_alreadyConnected, false);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_flashLevel, "auto");
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_initial3DVisualizationWrapper, new $8e08190ac5cfc1c3$var$InitialValueTracker());
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_visualizationStrategy, null);
+        ].concat(Object.keys($8e08190ac5cfc1c3$var$controlsLocations)));
+        this.#visualizationWrapperElem = document.createElement("div");
+        this.#errorElem = document.createElement("div");
+        this.#alreadyConnected = false;
+        this.#flashLevel = "auto";
+        this.#visualizationWrapper = null;
+        this.#initial3DVisualizationWrapper = new $8e08190ac5cfc1c3$var$InitialValueTracker();
+        this.#visualizationStrategy = null;
         for (const [propName, value] of Object.entries(config)){
-            if (!$8e08190ac5cfc1c3$var$configKeys[propName]) {
+            if (!($8e08190ac5cfc1c3$var$configKeys[propName] || $8e08190ac5cfc1c3$var$propOnly[propName])) {
                 console.warn(`Invalid config passed to TwistyPlayer: ${propName}`);
                 break;
             }
             this[propName] = value;
         }
     }
+    #controlsManager;
+    #visualizationWrapperElem;
+    #errorElem;
+    #alreadyConnected;
     async connectedCallback() {
-        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_alreadyConnected)) return;
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_alreadyConnected, true);
+        if (this.#alreadyConnected) return;
+        this.#alreadyConnected = true;
         this.addCSS($8e08190ac5cfc1c3$var$twistyPlayerCSS);
-        this.addElement((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapperElem)).classList.add("visualization-wrapper");
-        this.addElement((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_errorElem)).classList.add("error-elem");
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_errorElem).textContent = "Error";
+        this.addElement(this.#visualizationWrapperElem).classList.add("visualization-wrapper");
+        this.addElement(this.#errorElem).classList.add("error-elem");
+        this.#errorElem.textContent = "Error";
         this.experimentalModel.userVisibleErrorTracker.addFreshListener((userVisibleError)=>{
             const errorString = userVisibleError.errors[0] ?? null;
             this.contentWrapper.classList.toggle("error", !!errorString);
-            if (errorString) (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_errorElem).textContent = errorString;
+            if (errorString) this.#errorElem.textContent = errorString;
         });
-        const scrubber = new $8e08190ac5cfc1c3$var$TwistyScrubber(this.experimentalModel);
+        const scrubber = new $8e08190ac5cfc1c3$var$TwistyScrubber(this.experimentalModel, this.controller);
         this.contentWrapper.appendChild(scrubber);
         this.buttons = new $8e08190ac5cfc1c3$var$TwistyButtons(this.experimentalModel, this.controller, this);
         this.contentWrapper.appendChild(this.buttons);
@@ -43034,16 +42459,17 @@ var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$
             this.contentWrapper.classList.toggle("checkered", backgroundTheme !== "none");
         });
         this.experimentalModel.controlPanel.addFreshListener((controlPanel)=>{
-            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_controlsManager).setValue(controlPanel);
+            this.#controlsManager.setValue(controlPanel);
         });
-        this.experimentalModel.visualizationStrategy.addFreshListener((0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_setVisualizationWrapper, $8e08190ac5cfc1c3$var$setVisualizationWrapper_fn).bind(this));
+        this.experimentalModel.visualizationStrategy.addFreshListener(this.#setVisualizationWrapper.bind(this));
         this.experimentalModel.puzzleID.addFreshListener(this.flash.bind(this));
     }
+    #flashLevel;
     experimentalSetFlashLevel(newLevel) {
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_flashLevel, newLevel);
+        this.#flashLevel = newLevel;
     }
     flash() {
-        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_flashLevel) === "auto") (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper)?.animate([
+        if (this.#flashLevel === "auto") this.#visualizationWrapper?.animate([
             {
                 opacity: 0.25
             },
@@ -43055,9 +42481,35 @@ var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$
             easing: "ease-out"
         });
     }
+    #visualizationWrapper;
+    #initial3DVisualizationWrapper;
+    #visualizationStrategy;
+     #setVisualizationWrapper(strategy) {
+        if (strategy !== this.#visualizationStrategy) {
+            this.#visualizationWrapper?.remove();
+            this.#visualizationWrapper?.disconnect();
+            let newWrapper;
+            switch(strategy){
+                case "2D":
+                case "experimental-2D-LL":
+                    newWrapper = new $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper(this.experimentalModel.twistySceneModel, strategy);
+                    break;
+                case "Cube3D":
+                case "PG3D":
+                    newWrapper = new $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper(this.experimentalModel);
+                    this.#initial3DVisualizationWrapper.handleNewValue(newWrapper);
+                    break;
+                default:
+                    throw new Error("Invalid visualization");
+            }
+            this.#visualizationWrapperElem.appendChild(newWrapper);
+            this.#visualizationWrapper = newWrapper;
+            this.#visualizationStrategy = strategy;
+        }
+    }
     async experimentalCurrentVantages() {
         this.connectedCallback();
-        const wrapper = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper);
+        const wrapper = this.#visualizationWrapper;
         if (wrapper instanceof $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper) return wrapper.experimentalVantages();
         return [];
     }
@@ -43069,7 +42521,7 @@ var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$
     }
     async experimentalCurrentThreeJSPuzzleObject(puzzleChangeCallback) {
         this.connectedCallback();
-        const sceneWrapper = await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_initial3DVisualizationWrapper).promise;
+        const sceneWrapper = await this.#initial3DVisualizationWrapper.promise;
         const puzzleWrapper = await sceneWrapper.experimentalTwisty3DPuzzleWrapper();
         const twisty3DPuzzlePromise = puzzleWrapper.twisty3DPuzzle();
         const safeToCallback = (async ()=>{
@@ -43077,7 +42529,7 @@ var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$
             await new Promise((resolve)=>setTimeout(resolve, 0));
         })();
         if (puzzleChangeCallback) {
-            const scheduler = new $8e08190ac5cfc1c3$var$RenderScheduler(async ()=>{});
+            const scheduler = new (0, $9IDdS.RenderScheduler)(async ()=>{});
             puzzleWrapper.addEventListener("render-scheduled", async ()=>{
                 if (!scheduler.requestIsPending()) {
                     scheduler.requestAnimFrame();
@@ -43103,16 +42555,22 @@ var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$
     togglePlay(play) {
         this.controller.togglePlay(play);
     }
-    experimentalAddMove(flexibleMove, options = {}) {
+    experimentalAddMove(flexibleMove, options) {
         this.experimentalModel.experimentalAddMove(flexibleMove, options);
+    }
+    experimentalAddAlgLeaf(algLeaf, options) {
+        this.experimentalModel.experimentalAddAlgLeaf(algLeaf, options);
     }
     static get observedAttributes() {
         const observed = [];
         for (const key of Object.keys($8e08190ac5cfc1c3$var$twistyPlayerAttributeMap))observed.push(key, $8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX + key);
         return observed;
     }
+    experimentalRemoveFinalChild() {
+        this.experimentalModel.experimentalRemoveFinalChild();
+    }
     attributeChangedCallback(attributeName, _oldValue, newValue) {
-        if (attributeName.startsWith("data-")) attributeName = attributeName.slice(5);
+        if (attributeName.startsWith($8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX)) attributeName = attributeName.slice($8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX.length);
         const setterName = $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap[attributeName];
         if (!setterName) return;
         this[setterName] = newValue;
@@ -43125,7 +42583,7 @@ var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$
             "2D",
             "experimental-2D-LL"
         ].includes(await this.experimentalModel.visualizationStrategy.get())) {
-            const wrapper2D = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper);
+            const wrapper2D = this.#visualizationWrapper;
             const twisty2DPuzzle = await wrapper2D.currentTwisty2DPuzzleWrapper().twisty2DPuzzle();
             const str = new XMLSerializer().serializeToString(twisty2DPuzzle.svgWrapper.svgElement);
             const url = URL.createObjectURL(new Blob([
@@ -43135,41 +42593,9 @@ var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$
         } else await (await $8e08190ac5cfc1c3$var$screenshot(this.experimentalModel)).download(filename);
     }
 };
-$8e08190ac5cfc1c3$var$_controlsManager = new WeakMap();
-$8e08190ac5cfc1c3$var$_visualizationWrapperElem = new WeakMap();
-$8e08190ac5cfc1c3$var$_errorElem = new WeakMap();
-$8e08190ac5cfc1c3$var$_alreadyConnected = new WeakMap();
-$8e08190ac5cfc1c3$var$_flashLevel = new WeakMap();
-$8e08190ac5cfc1c3$var$_visualizationWrapper = new WeakMap();
-$8e08190ac5cfc1c3$var$_initial3DVisualizationWrapper = new WeakMap();
-$8e08190ac5cfc1c3$var$_visualizationStrategy = new WeakMap();
-$8e08190ac5cfc1c3$var$_setVisualizationWrapper = new WeakSet();
-$8e08190ac5cfc1c3$var$setVisualizationWrapper_fn = function(strategy) {
-    if (strategy !== (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationStrategy)) {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper)?.remove();
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper)?.disconnect();
-        let newWrapper;
-        switch(strategy){
-            case "2D":
-            case "experimental-2D-LL":
-                newWrapper = new $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper(this.experimentalModel.twistySceneModel, strategy);
-                break;
-            case "Cube3D":
-            case "PG3D":
-                newWrapper = new $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper(this.experimentalModel);
-                (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_initial3DVisualizationWrapper).handleNewValue(newWrapper);
-                break;
-            default:
-                throw new Error("Invalid visualization");
-        }
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapperElem).appendChild(newWrapper);
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_visualizationWrapper, newWrapper);
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_visualizationStrategy, strategy);
-    }
-};
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-player", $8e08190ac5cfc1c3$export$d03687cb83cd55dc);
+(0, $9IDdS.customElementsShim).define("twisty-player", $8e08190ac5cfc1c3$export$d03687cb83cd55dc);
 // src/cubing/twisty/views/TwistyAlgViewer.css.ts
-var $8e08190ac5cfc1c3$var$twistyAlgViewerCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+var $8e08190ac5cfc1c3$var$twistyAlgViewerCSS = new (0, $9IDdS.CSSSource)(`
 :host {
   display: inline;
 }
@@ -43198,12 +42624,12 @@ twisty-alg-leaf-elem.twisty-alg-comment {
 `);
 // src/cubing/twisty/views/TwistyAlgViewer.ts
 var $8e08190ac5cfc1c3$var$DEFAULT_OFFSET_MS = 250;
-var $8e08190ac5cfc1c3$var$TwistyAlgLeafElem = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
-    constructor(className, text, dataDown, algOrUnit, offsetIntoMove, clickable){
+var $8e08190ac5cfc1c3$var$TwistyAlgLeafElem = class extends (0, $9IDdS.ManagedCustomElement) {
+    constructor(className, text, dataDown, algOrAlgNode, offsetIntoMove, clickable){
         super({
             mode: "open"
         });
-        this.algOrUnit = algOrUnit;
+        this.algOrAlgNode = algOrAlgNode;
         this.classList.add(className);
         this.addCSS($8e08190ac5cfc1c3$var$twistyAlgViewerCSS);
         if (clickable) {
@@ -43223,11 +42649,11 @@ var $8e08190ac5cfc1c3$var$TwistyAlgLeafElem = class extends $8e08190ac5cfc1c3$va
         this.contentWrapper.classList.toggle("current-move", current);
     }
 };
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-alg-leaf-elem", $8e08190ac5cfc1c3$var$TwistyAlgLeafElem);
-var $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem = class extends $8e08190ac5cfc1c3$var$HTMLElementShim {
-    constructor(className, algOrUnit){
+(0, $9IDdS.customElementsShim).define("twisty-alg-leaf-elem", $8e08190ac5cfc1c3$var$TwistyAlgLeafElem);
+var $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem = class extends (0, $9IDdS.HTMLElementShim) {
+    constructor(className, algOrAlgNode){
         super();
-        this.algOrUnit = algOrUnit;
+        this.algOrAlgNode = algOrAlgNode;
         this.queue = [];
         this.classList.add(className);
     }
@@ -43246,7 +42672,7 @@ var $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem = class extends $8e08190ac5cfc1c3
         return [];
     }
 };
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-alg-wrapper-elem", $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem);
+(0, $9IDdS.customElementsShim).define("twisty-alg-wrapper-elem", $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem);
 function $8e08190ac5cfc1c3$var$oppositeDirection(direction) {
     return direction === 1 /* Forwards */  ? -1 /* Backwards */  : 1 /* Forwards */ ;
 }
@@ -43259,21 +42685,21 @@ function $8e08190ac5cfc1c3$var$maybeReverseList(l, direction) {
     copy.reverse();
     return copy;
 }
-var $8e08190ac5cfc1c3$var$AlgToDOMTree = class extends (0, $kQo6d.TraversalDownUp) {
+var $8e08190ac5cfc1c3$var$AlgToDOMTree = class extends (0, $j3ukw.TraversalDownUp) {
     traverseAlg(alg, dataDown) {
         let moveCount = 0;
         const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-alg", alg);
         let first = true;
-        for (const unit of (0, $kQo6d.direct)(alg.units(), dataDown.direction)){
+        for (const algNode of (0, $j3ukw.direct)(alg.childAlgNodes(), dataDown.direction)){
             if (!first) element.addString(" ");
             first = false;
-            if (unit.as((0, $kQo6d.Pause))?.experimentalNISSGrouping) element.addString("^(");
-            if (!unit.as((0, $kQo6d.Grouping))?.experimentalNISSPlaceholder) moveCount += element.addElem(this.traverseUnit(unit, {
+            if (algNode.as((0, $j3ukw.Pause))?.experimentalNISSGrouping) element.addString("^(");
+            if (!algNode.as((0, $j3ukw.Grouping))?.experimentalNISSPlaceholder) moveCount += element.addElem(this.traverseAlgNode(algNode, {
                 earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
                 twistyAlgViewer: dataDown.twistyAlgViewer,
                 direction: dataDown.direction
             }));
-            if (unit.as((0, $kQo6d.Pause))?.experimentalNISSGrouping) element.addString(")");
+            if (algNode.as((0, $j3ukw.Pause))?.experimentalNISSGrouping) element.addString(")");
         }
         element.flushQueue(dataDown.direction);
         return {
@@ -43302,7 +42728,7 @@ var $8e08190ac5cfc1c3$var$AlgToDOMTree = class extends (0, $kQo6d.TraversalDownU
             twistyAlgViewer: dataDown.twistyAlgViewer,
             direction: direction
         }));
-        element.addString(")" + grouping.experimentalRepetitionSuffix);
+        element.addString(`)${grouping.experimentalRepetitionSuffix}`);
         element.flushQueue();
         return {
             moveCount: moveCount * Math.abs(grouping.amount),
@@ -43410,35 +42836,61 @@ var $8e08190ac5cfc1c3$var$MoveHighlighter = class {
         this.currentElem = newElem;
     }
 };
-var $8e08190ac5cfc1c3$var$_domTree, $8e08190ac5cfc1c3$var$_twistyPlayer, $8e08190ac5cfc1c3$var$_setTwistyPlayer, $8e08190ac5cfc1c3$var$setTwistyPlayer_fn;
-var $8e08190ac5cfc1c3$export$e0a62567c31d067 = class extends $8e08190ac5cfc1c3$var$HTMLElementShim {
+var $8e08190ac5cfc1c3$export$e0a62567c31d067 = class extends (0, $9IDdS.HTMLElementShim) {
     constructor(options){
         super();
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_setTwistyPlayer);
         this.highlighter = new $8e08190ac5cfc1c3$var$MoveHighlighter();
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_domTree, void 0);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_twistyPlayer, null);
+        this.#twistyPlayer = null;
         this.lastClickTimestamp = null;
         if (options?.twistyPlayer) this.twistyPlayer = options?.twistyPlayer;
     }
+    #domTree;
+    #twistyPlayer;
     connectedCallback() {}
     setAlg(alg) {
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_domTree, $8e08190ac5cfc1c3$var$algToDOMTree(alg, {
+        this.#domTree = $8e08190ac5cfc1c3$var$algToDOMTree(alg, {
             earliestMoveIndex: 0,
             twistyAlgViewer: this,
             direction: 1 /* Forwards */ 
-        }).element);
+        }).element;
         this.textContent = "";
-        this.appendChild((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_domTree));
+        this.appendChild(this.#domTree);
     }
     get twistyPlayer() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer);
+        return this.#twistyPlayer;
     }
     set twistyPlayer(twistyPlayer) {
-        (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_setTwistyPlayer, $8e08190ac5cfc1c3$var$setTwistyPlayer_fn).call(this, twistyPlayer);
+        this.#setTwistyPlayer(twistyPlayer);
+    }
+    async #setTwistyPlayer(twistyPlayer1) {
+        if (this.#twistyPlayer) {
+            console.warn("twisty-player reassignment is not supported");
+            return;
+        }
+        if (twistyPlayer1 === null) throw new Error("clearing twistyPlayer is not supported");
+        this.#twistyPlayer = twistyPlayer1;
+        this.#twistyPlayer.experimentalModel.alg.addFreshListener((algWithIssues)=>{
+            this.setAlg(algWithIssues.alg);
+        });
+        const sourceAlg = (await this.#twistyPlayer.experimentalModel.alg.get()).alg;
+        const parsedAlg = "startCharIndex" in sourceAlg ? sourceAlg : (0, $j3ukw.Alg).fromString(sourceAlg.toString());
+        this.setAlg(parsedAlg);
+        twistyPlayer1.experimentalModel.currentMoveInfo.addFreshListener((currentMoveInfo)=>{
+            let moveInfo = currentMoveInfo.currentMoves[0];
+            moveInfo ?? (moveInfo = currentMoveInfo.movesStarting[0]);
+            moveInfo ?? (moveInfo = currentMoveInfo.movesFinishing[0]);
+            if (!moveInfo) this.highlighter.set(null);
+            else {
+                const mainCurrentMove = moveInfo.move;
+                this.highlighter.set(mainCurrentMove);
+            }
+        });
+        twistyPlayer1.experimentalModel.detailedTimelineInfo.addFreshListener((detailedTimelineInfo)=>{
+            if (detailedTimelineInfo.timestamp !== this.lastClickTimestamp) this.lastClickTimestamp = null;
+        });
     }
     async jumpToIndex(index, offsetIntoMove) {
-        const twistyPlayer = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer);
+        const twistyPlayer = this.#twistyPlayer;
         if (twistyPlayer) {
             twistyPlayer.pause();
             const timestampPromise = (async ()=>{
@@ -43474,51 +42926,21 @@ var $8e08190ac5cfc1c3$export$e0a62567c31d067 = class extends $8e08190ac5cfc1c3$v
         ];
     }
 };
-$8e08190ac5cfc1c3$var$_domTree = new WeakMap();
-$8e08190ac5cfc1c3$var$_twistyPlayer = new WeakMap();
-$8e08190ac5cfc1c3$var$_setTwistyPlayer = new WeakSet();
-$8e08190ac5cfc1c3$var$setTwistyPlayer_fn = async function(twistyPlayer) {
-    if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer)) {
-        console.warn("twisty-player reassignment is not supported");
-        return;
-    }
-    if (twistyPlayer === null) throw new Error("clearing twistyPlayer is not supported");
-    (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer, twistyPlayer);
-    (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer).experimentalModel.alg.addFreshListener((algWithIssues)=>{
-        this.setAlg(algWithIssues.alg);
-    });
-    const sourceAlg = (await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer).experimentalModel.alg.get()).alg;
-    const parsedAlg = "startCharIndex" in sourceAlg ? sourceAlg : (0, $kQo6d.Alg).fromString(sourceAlg.toString());
-    this.setAlg(parsedAlg);
-    twistyPlayer.experimentalModel.currentMoveInfo.addFreshListener((currentMoveInfo)=>{
-        let moveInfo = currentMoveInfo.currentMoves[0];
-        moveInfo ?? (moveInfo = currentMoveInfo.movesStarting[0]);
-        moveInfo ?? (moveInfo = currentMoveInfo.movesFinishing[0]);
-        if (!moveInfo) this.highlighter.set(null);
-        else {
-            const mainCurrentMove = moveInfo.move;
-            this.highlighter.set(mainCurrentMove);
-        }
-    });
-    twistyPlayer.experimentalModel.detailedTimelineInfo.addFreshListener((detailedTimelineInfo)=>{
-        if (detailedTimelineInfo.timestamp !== this.lastClickTimestamp) this.lastClickTimestamp = null;
-    });
-};
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-alg-viewer", $8e08190ac5cfc1c3$export$e0a62567c31d067);
+(0, $9IDdS.customElementsShim).define("twisty-alg-viewer", $8e08190ac5cfc1c3$export$e0a62567c31d067);
 // src/cubing/twisty/views/TwistyAlgEditor/LeafTokens.ts
-var $8e08190ac5cfc1c3$var$LeafTokens = class extends (0, $kQo6d.TraversalDownUp) {
+var $8e08190ac5cfc1c3$var$LeafTokens = class extends (0, $j3ukw.TraversalDownUp) {
     traverseAlg(alg, dataDown) {
-        const unitArrays = [];
+        const algNodeArrays = [];
         let numMovesInside = 0;
-        for (const unit of alg.units()){
-            const dataUp = this.traverseUnit(unit, {
+        for (const algNode of alg.childAlgNodes()){
+            const dataUp = this.traverseAlgNode(algNode, {
                 numMovesSofar: dataDown.numMovesSofar + numMovesInside
             });
-            unitArrays.push(dataUp.tokens);
+            algNodeArrays.push(dataUp.tokens);
             numMovesInside += dataUp.numLeavesInside;
         }
         return {
-            tokens: Array.prototype.concat(...unitArrays),
+            tokens: Array.prototype.concat(...algNodeArrays),
             numLeavesInside: numMovesInside
         };
     }
@@ -43587,17 +43009,17 @@ var $8e08190ac5cfc1c3$var$LeafTokens = class extends (0, $kQo6d.TraversalDownUp)
 var $8e08190ac5cfc1c3$var$leafTokensInstance = new $8e08190ac5cfc1c3$var$LeafTokens();
 var $8e08190ac5cfc1c3$var$leafTokens = $8e08190ac5cfc1c3$var$leafTokensInstance.traverseAlg.bind($8e08190ac5cfc1c3$var$leafTokensInstance);
 // src/cubing/twisty/views/TwistyAlgEditor/model.ts
-var $8e08190ac5cfc1c3$var$TwistyAlgEditorValueProp = class extends (0, $8JBxj.SimpleTwistyPropSource) {
+var $8e08190ac5cfc1c3$var$TwistyAlgEditorValueProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
     getDefaultValue() {
         return "";
     }
 };
-var $8e08190ac5cfc1c3$var$AlgEditorAlgWithIssuesProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$AlgEditorAlgWithIssuesProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(input) {
         return $8e08190ac5cfc1c3$var$algWithIssuesFromString(input.value);
     }
 };
-var $8e08190ac5cfc1c3$var$TwistyAlgEditorSelectionProp = class extends (0, $8JBxj.TwistyPropSource) {
+var $8e08190ac5cfc1c3$var$TwistyAlgEditorSelectionProp = class extends (0, $9IDdS.TwistyPropSource) {
     getDefaultValue() {
         return {
             selectionStart: 0,
@@ -43616,19 +43038,19 @@ var $8e08190ac5cfc1c3$var$TwistyAlgEditorSelectionProp = class extends (0, $8JBx
         };
     }
 };
-var $8e08190ac5cfc1c3$var$TargetCharProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$TargetCharProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         return inputs.selectionInfo.endChangedMostRecently ? inputs.selectionInfo.selectionEnd : inputs.selectionInfo.selectionStart;
     }
 };
-var $8e08190ac5cfc1c3$var$LeafTokensProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$LeafTokensProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         return $8e08190ac5cfc1c3$var$leafTokens(inputs.algWithIssues.alg, {
             numMovesSofar: 0
         }).tokens;
     }
 };
-var $8e08190ac5cfc1c3$var$LeafToHighlightProp = class extends (0, $8JBxj.TwistyPropDerived) {
+var $8e08190ac5cfc1c3$var$LeafToHighlightProp = class extends (0, $9IDdS.TwistyPropDerived) {
     derive(inputs) {
         function withWhere(leafInfo) {
             if (leafInfo === null) return null;
@@ -43672,7 +43094,7 @@ var $8e08190ac5cfc1c3$var$TwistyAlgEditorModel = class {
     }
 };
 // src/cubing/twisty/views/TwistyAlgEditor/TwistyAlgEditor.css.ts
-var $8e08190ac5cfc1c3$var$twistyAlgEditorCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+var $8e08190ac5cfc1c3$var$twistyAlgEditorCSS = new (0, $9IDdS.CSSSource)(`
 :host {
   width: 384px;
   display: grid;
@@ -43746,74 +43168,83 @@ textarea {
 var $8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER = "for-twisty-player";
 var $8e08190ac5cfc1c3$var$ATTRIBUTE_PLACEHOLDER = "placeholder";
 var $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP = "twisty-player-prop";
-var $8e08190ac5cfc1c3$var$_textarea, $8e08190ac5cfc1c3$var$_carbonCopy, $8e08190ac5cfc1c3$var$_carbonCopyPrefix, $8e08190ac5cfc1c3$var$_carbonCopyHighlight, $8e08190ac5cfc1c3$var$_carbonCopySuffix, $8e08190ac5cfc1c3$var$_textareaClassListValidForPuzzleManager, $8e08190ac5cfc1c3$var$_twistyPlayer2, $8e08190ac5cfc1c3$var$_twistyPlayerProp, $8e08190ac5cfc1c3$var$_algProp, $8e08190ac5cfc1c3$var$algProp_get, $8e08190ac5cfc1c3$var$_onInputHasFired, $8e08190ac5cfc1c3$var$_padSuffix, $8e08190ac5cfc1c3$var$padSuffix_fn, $8e08190ac5cfc1c3$var$_highlightedLeaf;
-var $8e08190ac5cfc1c3$export$ca185a52cf2c5e67 = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+var $8e08190ac5cfc1c3$export$ca185a52cf2c5e67 = class extends (0, $9IDdS.ManagedCustomElement) {
     constructor(options){
         super();
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_algProp);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_padSuffix);
         this.model = new $8e08190ac5cfc1c3$var$TwistyAlgEditorModel();
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_textarea, document.createElement("textarea"));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_carbonCopy, document.createElement("div"));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_carbonCopyPrefix, document.createElement("span"));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight, document.createElement("span"));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_carbonCopySuffix, document.createElement("span"));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_textareaClassListValidForPuzzleManager, new $8e08190ac5cfc1c3$var$ClassListManager(this, "valid-for-puzzle-", [
+        this.#textarea = document.createElement("textarea");
+        this.#carbonCopy = document.createElement("div");
+        this.#carbonCopyPrefix = document.createElement("span");
+        this.#carbonCopyHighlight = document.createElement("span");
+        this.#carbonCopySuffix = document.createElement("span");
+        this.#textareaClassListValidForPuzzleManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "valid-for-puzzle-", [
             "none",
             "warning",
             "error"
-        ]));
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2, null);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp, void 0);
+        ]);
+        this.#twistyPlayer = null;
         this.debugNeverRequestTimestamp = false;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_onInputHasFired, false);
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_highlightedLeaf, null);
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopy).classList.add("carbon-copy");
-        this.addElement((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopy));
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).rows = 1;
-        this.addElement((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea));
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyPrefix).classList.add("prefix");
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopy).appendChild((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyPrefix));
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight).classList.add("highlight");
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopy).appendChild((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight));
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopySuffix).classList.add("suffix");
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopy).appendChild((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopySuffix));
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).placeholder = "Alg";
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).setAttribute("spellcheck", "false");
+        this.#onInputHasFired = false;
+        this.#highlightedLeaf = null;
+        this.#carbonCopy.classList.add("carbon-copy");
+        this.addElement(this.#carbonCopy);
+        this.#textarea.rows = 1;
+        this.addElement(this.#textarea);
+        this.#carbonCopyPrefix.classList.add("prefix");
+        this.#carbonCopy.appendChild(this.#carbonCopyPrefix);
+        this.#carbonCopyHighlight.classList.add("highlight");
+        this.#carbonCopy.appendChild(this.#carbonCopyHighlight);
+        this.#carbonCopySuffix.classList.add("suffix");
+        this.#carbonCopy.appendChild(this.#carbonCopySuffix);
+        this.#textarea.placeholder = "Alg";
+        this.#textarea.setAttribute("spellcheck", "false");
         this.addCSS($8e08190ac5cfc1c3$var$twistyAlgEditorCSS);
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).addEventListener("input", ()=>{
-            (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_onInputHasFired, true);
+        this.#textarea.addEventListener("input", ()=>{
+            this.#onInputHasFired = true;
             this.onInput();
         });
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).addEventListener("blur", ()=>this.onBlur());
+        this.#textarea.addEventListener("blur", ()=>this.onBlur());
         document.addEventListener("selectionchange", ()=>this.onSelectionChange());
         if (options?.twistyPlayer) this.twistyPlayer = options.twistyPlayer;
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp, options?.twistyPlayerProp ?? "alg");
+        this.#twistyPlayerProp = options?.twistyPlayerProp ?? "alg";
         if (options?.twistyPlayerProp === "alg") this.model.leafToHighlight.addFreshListener((highlightInfo)=>{
             if (highlightInfo) this.highlightLeaf(highlightInfo.leafInfo.leaf);
         });
     }
+    #textarea;
+    #carbonCopy;
+    #carbonCopyPrefix;
+    #carbonCopyHighlight;
+    #carbonCopySuffix;
+    #textareaClassListValidForPuzzleManager;
+    #twistyPlayer;
+    #twistyPlayerProp;
+    get #algProp() {
+        if (this.#twistyPlayer === null) return null;
+        else return this.#twistyPlayer.experimentalModel[this.#twistyPlayerProp];
+    }
     set algString(s) {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value = s;
+        this.#textarea.value = s;
         this.onInput();
     }
     get algString() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value;
+        return this.#textarea.value;
     }
     set placeholder(placeholderText) {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).placeholder = placeholderText;
+        this.#textarea.placeholder = placeholderText;
     }
+    #onInputHasFired;
     onInput() {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight).hidden = true;
+        this.#carbonCopyHighlight.hidden = true;
         this.highlightLeaf(null);
-        const endTrimmed = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value.trimEnd();
+        const endTrimmed = this.#textarea.value.trimEnd();
         this.model.valueProp.set(endTrimmed);
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_algProp, $8e08190ac5cfc1c3$var$algProp_get)?.set(endTrimmed);
+        this.#algProp?.set(endTrimmed);
     }
     async onSelectionChange() {
-        if (document.activeElement !== this || this.shadow.activeElement !== (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea)) return;
-        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp) !== "alg") return;
-        const { selectionStart: selectionStart , selectionEnd: selectionEnd  } = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea);
+        if (document.activeElement !== this || this.shadow.activeElement !== this.#textarea) return;
+        if (this.#twistyPlayerProp !== "alg") return;
+        const { selectionStart: selectionStart , selectionEnd: selectionEnd  } = this.#textarea;
         this.model.selectionProp.set({
             selectionStart: selectionStart,
             selectionEnd: selectionEnd
@@ -43821,42 +43252,46 @@ var $8e08190ac5cfc1c3$export$ca185a52cf2c5e67 = class extends $8e08190ac5cfc1c3$
     }
     async onBlur() {}
     setAlgIssueClassForPuzzle(issues) {
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textareaClassListValidForPuzzleManager).setValue(issues);
+        this.#textareaClassListValidForPuzzleManager.setValue(issues);
     }
+     #padSuffix(s) {
+        return s.endsWith("\n") ? `${s} ` : s;
+    }
+    #highlightedLeaf;
     highlightLeaf(leaf) {
-        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp) !== "alg") return;
+        if (this.#twistyPlayerProp !== "alg") return;
         if (leaf === null) {
-            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyPrefix).textContent = "";
-            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight).textContent = "";
-            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopySuffix).textContent = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_padSuffix, $8e08190ac5cfc1c3$var$padSuffix_fn).call(this, (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value);
+            this.#carbonCopyPrefix.textContent = "";
+            this.#carbonCopyHighlight.textContent = "";
+            this.#carbonCopySuffix.textContent = this.#padSuffix(this.#textarea.value);
             return;
         }
-        if (leaf === (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_highlightedLeaf)) return;
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_highlightedLeaf, leaf);
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyPrefix).textContent = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value.slice(0, leaf.startCharIndex);
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight).textContent = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value.slice(leaf.startCharIndex, leaf.endCharIndex);
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopySuffix).textContent = (0, $hJBlP.__privateMethod)(this, $8e08190ac5cfc1c3$var$_padSuffix, $8e08190ac5cfc1c3$var$padSuffix_fn).call(this, (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_textarea).value.slice(leaf.endCharIndex));
-        (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_carbonCopyHighlight).hidden = false;
+        if (leaf === this.#highlightedLeaf) return;
+        this.#highlightedLeaf = leaf;
+        this.#carbonCopyPrefix.textContent = this.#textarea.value.slice(0, leaf.startCharIndex);
+        this.#carbonCopyHighlight.textContent = this.#textarea.value.slice(leaf.startCharIndex, leaf.endCharIndex);
+        this.#carbonCopySuffix.textContent = this.#padSuffix(this.#textarea.value.slice(leaf.endCharIndex));
+        this.#carbonCopyHighlight.hidden = false;
     }
     get twistyPlayer() {
-        return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2);
+        return this.#twistyPlayer;
     }
     set twistyPlayer(twistyPlayer) {
-        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2)) {
+        if (this.#twistyPlayer) {
             console.warn("twisty-player reassignment/clearing is not supported");
             return;
         }
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2, twistyPlayer);
+        this.#twistyPlayer = twistyPlayer;
         if (!twistyPlayer) return;
         (async ()=>{
-            this.algString = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_algProp, $8e08190ac5cfc1c3$var$algProp_get) ? (await (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_algProp, $8e08190ac5cfc1c3$var$algProp_get).get()).alg.toString() : "";
+            this.algString = this.#algProp ? (await this.#algProp.get()).alg.toString() : "";
         })();
-        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp) === "alg") {
-            (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2)?.experimentalModel.puzzleAlg.addFreshListener((algWithIssues)=>{
+        if (this.#twistyPlayerProp === "alg") {
+            this.#twistyPlayer?.experimentalModel.puzzleAlg.addFreshListener((algWithIssues)=>{
                 if (algWithIssues.issues.errors.length === 0) {
                     this.setAlgIssueClassForPuzzle(algWithIssues.issues.warnings.length === 0 ? "none" : "warning");
                     const newAlg = algWithIssues.alg;
-                    const oldAlg = (0, $kQo6d.Alg).fromString(this.algString);
+                    const oldAlg = (0, $j3ukw.Alg).fromString(this.algString);
                     if (!newAlg.isIdentical(oldAlg)) {
                         this.algString = newAlg.toString();
                         this.onInput();
@@ -43869,7 +43304,7 @@ var $8e08190ac5cfc1c3$export$ca185a52cf2c5e67 = class extends $8e08190ac5cfc1c3$
                     await twistyPlayer.experimentalModel.indexer.get(),
                     await twistyPlayer.experimentalModel.timestampRequest.get()
                 ]);
-                if (timestampRequest === "opposite-anchor" && !(0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_onInputHasFired)) return;
+                if (timestampRequest === "opposite-anchor" && !this.#onInputHasFired) return;
                 const moveStartTimestamp = indexer.indexToMoveStartTimestamp(highlightInfo.leafInfo.idx);
                 const duration = indexer.moveDuration(highlightInfo.leafInfo.idx);
                 let newTimestamp;
@@ -43918,11 +43353,11 @@ var $8e08190ac5cfc1c3$export$ca185a52cf2c5e67 = class extends $8e08190ac5cfc1c3$
                 this.placeholder = newValue;
                 return;
             case $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP:
-                if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2)) {
+                if (this.#twistyPlayer) {
                     console.log("cannot set prop");
                     throw new Error("cannot set prop after twisty player");
                 }
-                (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp, newValue);
+                this.#twistyPlayerProp = newValue;
                 return;
         }
     }
@@ -43934,28 +43369,9 @@ var $8e08190ac5cfc1c3$export$ca185a52cf2c5e67 = class extends $8e08190ac5cfc1c3$
         ];
     }
 };
-$8e08190ac5cfc1c3$var$_textarea = new WeakMap();
-$8e08190ac5cfc1c3$var$_carbonCopy = new WeakMap();
-$8e08190ac5cfc1c3$var$_carbonCopyPrefix = new WeakMap();
-$8e08190ac5cfc1c3$var$_carbonCopyHighlight = new WeakMap();
-$8e08190ac5cfc1c3$var$_carbonCopySuffix = new WeakMap();
-$8e08190ac5cfc1c3$var$_textareaClassListValidForPuzzleManager = new WeakMap();
-$8e08190ac5cfc1c3$var$_twistyPlayer2 = new WeakMap();
-$8e08190ac5cfc1c3$var$_twistyPlayerProp = new WeakMap();
-$8e08190ac5cfc1c3$var$_algProp = new WeakSet();
-$8e08190ac5cfc1c3$var$algProp_get = function() {
-    if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2) === null) return null;
-    else return (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayer2).experimentalModel[(0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_twistyPlayerProp)];
-};
-$8e08190ac5cfc1c3$var$_onInputHasFired = new WeakMap();
-$8e08190ac5cfc1c3$var$_padSuffix = new WeakSet();
-$8e08190ac5cfc1c3$var$padSuffix_fn = function(s) {
-    return s.endsWith("\n") ? s + " " : s;
-};
-$8e08190ac5cfc1c3$var$_highlightedLeaf = new WeakMap();
-$8e08190ac5cfc1c3$var$customElementsShim.define("twisty-alg-editor", $8e08190ac5cfc1c3$export$ca185a52cf2c5e67);
+(0, $9IDdS.customElementsShim).define("twisty-alg-editor", $8e08190ac5cfc1c3$export$ca185a52cf2c5e67);
 // src/cubing/twisty/views/twizzle/TwizzleLink.css.ts
-var $8e08190ac5cfc1c3$var$twizzleLinkCSS = new $8e08190ac5cfc1c3$var$CSSSource(`
+var $8e08190ac5cfc1c3$var$twizzleLinkCSS = new (0, $9IDdS.CSSSource)(`
 .wrapper {
   background: rgb(255, 245, 235);
   display: grid;
@@ -43990,65 +43406,17 @@ twisty-player + .heading {
 }
 `);
 // src/cubing/twisty/views/twizzle/url-params.ts
-function $8e08190ac5cfc1c3$var$updateURL(url) {
-    window.history.replaceState("", "", url.toString());
-}
-var $8e08190ac5cfc1c3$var$_prefix;
-var $8e08190ac5cfc1c3$var$URLParamUpdater = class {
-    constructor(model, options){
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_prefix, void 0);
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_prefix, options?.prefix ?? "");
-        this.listenToAlgProp(model.alg, "alg");
-        this.listenToAlgProp(model.setupAlg, "setup-alg");
-        this.listenToStringSourceProp(model.twistySceneModel.stickering, "stickering");
-        this.listenToStringSourceProp(model.setupAnchor, "setup-anchor");
-        this.listenToStringOrNullProp(model.title, "title");
-        this.listenToStringOrNoValueProp(model.puzzleIDRequest, "puzzle", (0, $8JBxj.NO_VALUE));
-        this.listenToStringOrNoValueProp(model.puzzleDescriptionRequest, "puzzle-description", (0, $8JBxj.NO_VALUE));
-    }
-    setURLParam(unprefixedKey, value, defaultString) {
-        const prefixedKey = (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_prefix) + unprefixedKey;
-        const url = new URL(location.href);
-        if (value === defaultString) url.searchParams.delete(prefixedKey);
-        else url.searchParams.set(prefixedKey, value);
-        $8e08190ac5cfc1c3$var$updateURL(url);
-    }
-    async listenToStringSourceProp(prop, key, defaultString) {
-        const actualDefaultString = defaultString ?? await prop.getDefaultValue();
-        prop.addFreshListener((s)=>{
-            this.setURLParam(key, s, actualDefaultString);
-        });
-    }
-    async listenToStringOrNullProp(prop, key, defaultString = "") {
-        prop.addFreshListener((s)=>{
-            this.setURLParam(key, s ?? defaultString, defaultString);
-        });
-    }
-    async listenToStringOrNoValueProp(prop, key, defaultString) {
-        prop.addFreshListener((s)=>{
-            if (s === (0, $8JBxj.NO_VALUE)) s = defaultString;
-            if (s === (0, $8JBxj.NO_VALUE)) this.setURLParam(key, "", "");
-            else this.setURLParam(key, s, "");
-        });
-    }
-    listenToAlgProp(prop, key) {
-        prop.addFreshListener((algWithIssues)=>{
-            this.setURLParam(key, algWithIssues.alg.toString(), "");
-        });
-    }
-};
-$8e08190ac5cfc1c3$var$_prefix = new WeakMap();
 function $8e08190ac5cfc1c3$var$getConfigFromURL(prefix = "", url = location.href) {
     const paramMapping = {
-        "alg": "alg",
+        alg: "alg",
         "setup-alg": "experimental-setup-alg",
         "setup-anchor": "experimental-setup-anchor",
-        "puzzle": "puzzle",
-        "stickering": "experimental-stickering",
+        puzzle: "puzzle",
+        stickering: "experimental-stickering",
         "puzzle-description": "experimental-puzzle-description",
-        "title": "experimental-title",
+        title: "experimental-title",
         "video-url": "experimental-video-url",
-        "competition": "experimental-competition-id"
+        competition: "experimental-competition-id"
     };
     const params = new URL(url).searchParams;
     const config = {};
@@ -44061,17 +43429,15 @@ function $8e08190ac5cfc1c3$var$getConfigFromURL(prefix = "", url = location.href
     }
     return config;
 }
-// src/cubing/twisty/views/twizzle/TwizzleLink.ts
-var $8e08190ac5cfc1c3$var$_cssElem;
 
-var $8e08190ac5cfc1c3$export$6b2b3b705349e8be = class extends $8e08190ac5cfc1c3$var$ManagedCustomElement {
+// src/cubing/twisty/views/twizzle/TwizzleLink.ts
+var $8e08190ac5cfc1c3$export$6b2b3b705349e8be = class extends (0, $9IDdS.ManagedCustomElement) {
     constructor(){
         super({
             mode: "open"
         });
         this.twistyPlayer = null;
         this.a = null;
-        (0, $hJBlP.__privateAdd)(this, $8e08190ac5cfc1c3$var$_cssElem, void 0);
     }
     fallback() {
         this.contentWrapper.textContent = "";
@@ -44081,10 +43447,11 @@ var $8e08190ac5cfc1c3$export$6b2b3b705349e8be = class extends $8e08190ac5cfc1c3$
             span.title = "Could not show a player for link";
             this.addElement(this.a);
         }
-        if ((0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssElem)) (0, $hJBlP.__privateGet)(this, $8e08190ac5cfc1c3$var$_cssElem).remove();
+        if (this.#cssElem) this.#cssElem.remove();
     }
+    #cssElem;
     async connectedCallback() {
-        (0, $hJBlP.__privateSet)(this, $8e08190ac5cfc1c3$var$_cssElem, this.addCSS($8e08190ac5cfc1c3$var$twizzleLinkCSS));
+        this.#cssElem = this.addCSS($8e08190ac5cfc1c3$var$twizzleLinkCSS);
         this.a = this.querySelector("a");
         if (!this.a) return;
         const config = $8e08190ac5cfc1c3$var$getConfigFromURL("", this.a.href);
@@ -44099,7 +43466,7 @@ var $8e08190ac5cfc1c3$export$6b2b3b705349e8be = class extends $8e08190ac5cfc1c3$
             "/explore/"
         ].includes(pathname)) {
             const isExplorer = pathname === "/explore/";
-            if (config.puzzle && !(config.puzzle in (0, $d2uOu.puzzles))) {
+            if (config.puzzle && !(config.puzzle in (0, $ch5j6.puzzles))) {
                 const puzzleDescription = (await (parcelRequire("ak7Jm"))).getPuzzleDescriptionString(config.puzzle);
                 delete config.puzzle;
                 config.experimentalPuzzleDescription = puzzleDescription;
@@ -44113,7 +43480,7 @@ var $8e08190ac5cfc1c3$export$6b2b3b705349e8be = class extends $8e08190ac5cfc1c3$
                 this.addHeading("Setup");
                 const setupAlgDiv = this.addElement(document.createElement("div"));
                 setupAlgDiv.classList.add("setup-alg");
-                setupAlgDiv.textContent = new (0, $kQo6d.Alg)(config.experimentalSetupAlg).toString();
+                setupAlgDiv.textContent = new (0, $j3ukw.Alg)(config.experimentalSetupAlg).toString();
             }
             this.addHeading("Moves");
             const twistyAlgViewer = this.addElement(new $8e08190ac5cfc1c3$export$e0a62567c31d067({
@@ -44129,16 +43496,11 @@ var $8e08190ac5cfc1c3$export$6b2b3b705349e8be = class extends $8e08190ac5cfc1c3$
         return headingDiv;
     }
 };
-$8e08190ac5cfc1c3$var$_cssElem = new WeakMap();
-$8e08190ac5cfc1c3$var$customElementsShim.define("twizzle-link", $8e08190ac5cfc1c3$export$6b2b3b705349e8be);
+(0, $9IDdS.customElementsShim).define("twizzle-link", $8e08190ac5cfc1c3$export$6b2b3b705349e8be);
 
 
 
-var $kQo6d = parcelRequire("kQo6d");
-parcelRequire("hJBlP");
-
-
-var $kQo6d = parcelRequire("kQo6d");
+var $j3ukw = parcelRequire("j3ukw");
 
 var $228IU = parcelRequire("228IU");
 
@@ -46752,7 +46114,7 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ alg: alg , handleClose: han
     }, []);
     const handleClick = (preferred)=>{
         if (player) {
-            player.alg = new (0, $kQo6d.Alg)((0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[preferred]));
+            player.alg = new (0, $j3ukw.Alg)((0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[preferred]));
             player.play();
         }
         setStepStorage({
@@ -47161,24 +46523,24 @@ var $228IU = parcelRequire("228IU");
 
 var $iKTt2 = parcelRequire("iKTt2");
 var $5Cz32 = parcelRequire("5Cz32");
-var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
-var $7b4d9491b37fa408$export$94132a0e348806d4;
-var $7b4d9491b37fa408$export$9a9b59e08de24cef;
-var $7b4d9491b37fa408$export$60912654947077e3;
 var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
 var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
-var $7b4d9491b37fa408$export$33854e570d464ff0;
+var $7b4d9491b37fa408$export$9a9b59e08de24cef;
 var $7b4d9491b37fa408$export$1237798dc640739a;
+var $7b4d9491b37fa408$export$60912654947077e3;
 var $7b4d9491b37fa408$export$d927737047eb3867;
-$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
-$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
-$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
-$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
+var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
+var $7b4d9491b37fa408$export$94132a0e348806d4;
+var $7b4d9491b37fa408$export$33854e570d464ff0;
 $7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
 $7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
-$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
+$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
 $7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
+$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
 $7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
+$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
+$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
+$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
 
 
 const $8c09dba8c18700a3$var$colorMap = {
@@ -49139,4 +48501,4 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register($9766102c6225
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.bf792090.js.map
+//# sourceMappingURL=index.e1ef0526.js.map

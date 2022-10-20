@@ -12,13 +12,12 @@ typeof globalThis !== 'undefined'
   ? global
   : {};
 var parcelRequire = $parcel$global["parcelRequire31c8"];
-parcelRequire.register("2i5EB", function(module, exports) {
+parcelRequire.register("d0UjD", function(module, exports) {
 
-$parcel$export(module.exports, "cube3x3x3SVG", () => $1ab1a5f50d4c26e7$export$9ff988fcbbd8ca49);
-$parcel$export(module.exports, "cube3x3x3LLSVG", () => $1ab1a5f50d4c26e7$export$50dbb4cced01278f);
-parcelRequire("hJBlP");
+$parcel$export(module.exports, "cube3x3x3SVG", () => $9796f58dd569aec1$export$9ff988fcbbd8ca49);
+$parcel$export(module.exports, "cube3x3x3LLSVG", () => $9796f58dd569aec1$export$50dbb4cced01278f);
 // src/cubing/puzzles/implementations/dynamic/3x3x3/3x3x3.kpuzzle.svg.ts
-var $1ab1a5f50d4c26e7$export$9ff988fcbbd8ca49 = `<?xml version="1.0" encoding="UTF-8"?>
+var $9796f58dd569aec1$export$9ff988fcbbd8ca49 = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
        "http://www.w3.org/TR/2001/REC-SVG-20050904/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 518 392" preserveAspectRatio="xMidYMid meet">
@@ -147,7 +146,7 @@ var $1ab1a5f50d4c26e7$export$9ff988fcbbd8ca49 = `<?xml version="1.0" encoding="U
 
 </svg>`;
 // src/cubing/puzzles/implementations/dynamic/3x3x3/3x3x3-ll.kpuzzle.svg.ts
-var $1ab1a5f50d4c26e7$export$50dbb4cced01278f = `<?xml version="1.0" encoding="UTF-8"?>
+var $9796f58dd569aec1$export$50dbb4cced01278f = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="288px" height="288px" viewBox="-16 -16 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>3x3x3 LL</title>
   <defs>
@@ -259,4 +258,4 @@ var $1ab1a5f50d4c26e7$export$50dbb4cced01278f = `<?xml version="1.0" encoding="U
 });
 
 
-//# sourceMappingURL=puzzles-dynamic-3x3x3-NB2PEZTV.372c3936.js.map
+//# sourceMappingURL=puzzles-dynamic-3x3x3-ZKMODX2P.1715739c.js.map
