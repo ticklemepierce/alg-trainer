@@ -14869,7 +14869,7 @@ module.exports = merge;
 
 var $4f814df9f9385468$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.e1ef0526.js","eXwSi":"puzzle-geometry.4baeac1b.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","3E2W9":"index.7d58d814.js"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.185b128a.js","eXwSi":"puzzle-geometry.4baeac1b.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","3E2W9":"index.7d58d814.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -46099,7 +46099,7 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ alg: alg , handleClose: han
         if (node && !player) {
             const twistyPlayer = new (0, $8e08190ac5cfc1c3$export$d03687cb83cd55dc)({
                 puzzle: puzzle.twisty,
-                alg: alg.solutions[0],
+                alg: new (0, $j3ukw.Alg)((0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[0])),
                 hintFacelets: "none",
                 background: "none",
                 experimentalSetupAnchor: "end",
@@ -46523,24 +46523,24 @@ var $228IU = parcelRequire("228IU");
 
 var $iKTt2 = parcelRequire("iKTt2");
 var $5Cz32 = parcelRequire("5Cz32");
+var $7b4d9491b37fa408$export$60912654947077e3;
+var $7b4d9491b37fa408$export$33854e570d464ff0;
+var $7b4d9491b37fa408$export$d927737047eb3867;
 var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
 var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
-var $7b4d9491b37fa408$export$9a9b59e08de24cef;
-var $7b4d9491b37fa408$export$1237798dc640739a;
-var $7b4d9491b37fa408$export$60912654947077e3;
-var $7b4d9491b37fa408$export$d927737047eb3867;
 var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
 var $7b4d9491b37fa408$export$94132a0e348806d4;
-var $7b4d9491b37fa408$export$33854e570d464ff0;
+var $7b4d9491b37fa408$export$9a9b59e08de24cef;
+var $7b4d9491b37fa408$export$1237798dc640739a;
+$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
+$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
+$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
 $7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
 $7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
-$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
-$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
-$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
-$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
 $7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
 $7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
-$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
+$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
+$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
 
 
 const $8c09dba8c18700a3$var$colorMap = {
@@ -48501,4 +48501,4 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register($9766102c6225
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.e1ef0526.js.map
+//# sourceMappingURL=index.185b128a.js.map

@@ -14,7 +14,7 @@ const $d9653d1b16929200$var$manifest = [
     "manifest.webmanifest",
     "icon-128.608654eb.png",
     "icon-512.34208778.png",
-    "index.e1ef0526.js",
+    "index.185b128a.js",
     "puzzle-geometry.4baeac1b.js",
     "icon-128.4fddcaaa.png",
     "index.25347b38.css",
@@ -25,7 +25,7 @@ const $d9653d1b16929200$var$manifest = [
     "puzzles-dynamic-unofficial-QXSDLTK5.839bc25f.js",
     "puzzles-dynamic-4x4x4-DT42HVIY.5fc06a73.js"
 ];
-const $d9653d1b16929200$var$version = "290c8eb4";
+const $d9653d1b16929200$var$version = "eef20bc1";
 (0, $4550420cc206d4d6$export$c208e1278d7beb2)($d9653d1b16929200$var$manifest, $d9653d1b16929200$var$version);
 
 var $a7d01911011f21fa$exports = {};
