@@ -32,7 +32,7 @@ export const AlgModal = ({
     if (node && !player) {
       const twistyPlayer = new TwistyPlayer({
         puzzle: puzzle!.twisty,
-        alg: alg.solutions[0],
+        alg: new Alg(expandTriggers(alg.solutions[0])),
         hintFacelets: "none",
         background: "none",
         experimentalSetupAnchor: "end",
