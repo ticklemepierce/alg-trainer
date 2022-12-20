@@ -1,11 +1,37 @@
-# /Users/piercetickle/.nvm/versions/node/v16.13.0/bin/node /Users/piercetickle/Developer/Personal/cubing.js/dist/bin/puzzle-geometry-bin.js --moves U,F,R,D,B,L,u,f,r,d,b,l --ksolve --rotations 3x3x3
+# /Users/piercetickle/.nvm/versions/node/v16.13.0/bin/node /Users/piercetickle/Developer/Personal/cubing.js/dist/bin/puzzle-geometry-bin.js --moves R,U,F,L,B,D,r,u,f,l,b,d,M,S,E --ksolve 3x3x3
 # PuzzleGeometry 0.1 Copyright 2018 Tomas Rokicki.
 #
 Name PuzzleGeometryPuzzle
 
 Set CORNERS 8 3
+# 1 F f U u R r
+# 2 B b U u R r
+# 3 B b U u L l
+# 4 F f U u L l
+# 5 F f D d R r
+# 6 F f D d L l
+# 7 B b D d L l
+# 8 B b D d R r
 Set EDGES 12 2
+# 1 F f U u r l M
+# 2 f b S U u R r
+# 3 B b U u r l M
+# 4 f b S U u L l
+# 5 F f D d r l M
+# 6 f b S D d R r
+# 7 B b D d r l M
+# 8 f b S D d L l
+# 9 F f u d E R r
+# 10 F f u d E L l
+# 11 B b u d E R r
+# 12 B b u d E L l
 Set CENTERS 6 1
+# 1 f b S r l M
+# 2 f b S u d E
+# 3 u d E r l M
+# 4 f b S u d E
+# 5 u d E r l M
+# 6 f b S r l M
 
 Solved
 CORNERS
@@ -56,13 +82,10 @@ CENTERS
 4 1 3 6 5 2
 End
 
-Move z
-CORNERS
-4 3 7 6 1 5 8 2
-2 1 2 1 1 2 1 2
+Move S
 EDGES
-10 4 12 8 9 2 11 6 1 5 3 7
-1 1 1 1 1 1 1 1 1 1 1 1
+1 4 3 8 5 2 7 6 9 10 11 12
+0 1 0 1 0 1 0 1 0 0 0 0
 CENTERS
 2 6 3 1 5 4
 End
@@ -101,14 +124,12 @@ CENTERS
 1 5 2 3 4 6
 End
 
-Move y
-CORNERS
-2 3 4 1 8 5 6 7
+Move E
 EDGES
-2 3 4 1 6 7 8 5 11 9 12 10
+1 2 3 4 5 6 7 8 10 12 9 11
 0 0 0 0 0 0 0 0 1 1 1 1
 CENTERS
-1 3 4 5 2 6
+1 5 2 3 4 6
 End
 
 Move R
@@ -149,121 +170,10 @@ CENTERS
 5 2 1 4 6 3
 End
 
-Move x
-CORNERS
-5 1 4 6 8 7 3 2
-1 2 1 2 2 1 2 1
+Move M
 EDGES
-5 9 1 10 7 11 3 12 6 8 2 4
+3 2 7 4 1 6 5 8 9 10 11 12
 1 0 1 0 1 0 1 0 0 0 0 0
 CENTERS
-3 2 6 4 1 5
-End
-
-Move DRFv
-CORNERS
-6 4 3 7 5 8 2 1
-2 1 2 1 1 2 1 2
-EDGES
-8 10 4 12 6 9 2 11 5 7 1 3
-0 1 0 1 0 1 0 1 1 1 1 1
-CENTERS
-2 5 6 3 1 4
-End
-
-Move DFLv
-CORNERS
-3 2 8 7 4 6 5 1
-1 2 1 2 2 1 2 1
-EDGES
-12 3 11 7 10 1 9 5 4 8 2 6
-1 1 1 1 1 1 1 1 0 0 0 0
-CENTERS
-5 6 2 1 4 3
-End
-
-Move DBRv
-CORNERS
-6 5 1 4 7 3 2 8
-1 2 1 2 2 1 2 1
-EDGES
-10 5 9 1 12 7 11 3 8 4 6 2
-1 1 1 1 1 1 1 1 0 0 0 0
-CENTERS
-3 1 2 6 4 5
-End
-
-Move DLBv
-CORNERS
-1 5 8 2 4 3 7 6
-2 1 2 1 1 2 1 2
-EDGES
-2 9 6 11 4 10 8 12 1 3 5 7
-0 1 0 1 0 1 0 1 1 1 1 1
-CENTERS
-4 5 1 3 6 2
-End
-
-Move DFv
-CORNERS
-7 3 2 8 6 5 1 4
-1 2 1 2 2 1 2 1
-EDGES
-7 12 3 11 5 10 1 9 8 6 4 2
-1 0 1 0 1 0 1 0 0 0 0 0
-CENTERS
-5 4 6 2 1 3
-End
-
-Move FLv
-CORNERS
-7 8 5 6 3 4 1 2
-EDGES
-8 7 6 5 4 3 2 1 12 10 11 9
-0 0 0 0 0 0 0 0 1 1 1 1
-CENTERS
-6 3 2 5 4 1
-End
-
-Move DBv
-CORNERS
-4 6 5 1 3 2 8 7
-1 2 1 2 2 1 2 1
-EDGES
-1 10 5 9 3 12 7 11 4 2 8 6
-1 0 1 0 1 0 1 0 0 0 0 0
-CENTERS
-3 4 1 2 6 5
-End
-
-Move DLv
-CORNERS
-2 1 5 8 3 7 6 4
-2 1 2 1 1 2 1 2
-EDGES
-11 2 9 6 12 4 10 8 3 7 1 5
-1 1 1 1 1 1 1 1 1 1 1 1
-CENTERS
-4 6 5 1 3 2
-End
-
-Move BLv
-CORNERS
-5 6 7 8 1 2 3 4
-EDGES
-6 5 8 7 2 1 4 3 9 11 10 12
-0 0 0 0 0 0 0 0 1 1 1 1
-CENTERS
-6 5 4 3 2 1
-End
-
-Move ULv
-CORNERS
-7 6 4 3 8 2 1 5
-2 1 2 1 1 2 1 2
-EDGES
-12 8 10 4 11 6 9 2 7 3 5 1
-1 1 1 1 1 1 1 1 1 1 1 1
-CENTERS
-2 1 5 6 3 4
+5 2 1 4 6 3
 End

@@ -16,6 +16,10 @@ import { Link } from "react-router-dom";
 
 const pages = [
   {
+    display: "2x2x2",
+    link: "222",
+  },
+  {
     display: "3x3x3",
     link: "333",
   },

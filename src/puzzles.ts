@@ -79,7 +79,7 @@ const megaminxGreyUpScheme = {
 };
 
 export interface Image {
-  type: "cube" | "megaminx" | "megaminx-top";
+  type: "cube" | "megaminx" | "megaminx-top" | "cube-top";
   arrowColor?: any;
   puzzle: any;
 }
@@ -120,6 +120,33 @@ export type IAlg = {
 
 // TODO split up the madness
 export const Puzzles: IPuzzle[] = [
+  {
+    displayName: "2x2x2",
+    slug: "/222",
+    image: {
+      type: "cube",
+      puzzle: {
+        size: "2",
+      },
+    },
+    twisty: "2x2x2",
+    quantumMoveOrder: 4,
+    steps: [
+      {
+        displayName: "CLL",
+        image: {
+          type: "cube-top",
+          puzzle: {
+            size: "2",
+          },
+        },
+        slug: "cll",
+        cases: "cll",
+        quantumMoveOrder: 4,
+        filters: {},
+      },
+    ],
+  },
   {
     displayName: "3x3x3",
     slug: "/333",
@@ -200,6 +227,82 @@ export const Puzzles: IPuzzle[] = [
       //     },
       //   ],
       // },
+      // {
+      //   displayName: "PLL",
+      //   image: {
+      //     type: "cube",
+      //     arrowColor: {
+      //       value: "#FFFFFF",
+      //     },
+      //     puzzle: {
+      //       mask: {
+      //         F: [3, 4, 5, 6, 7, 8],
+      //         B: [3, 4, 5, 6, 7, 8],
+      //         R: [3, 4, 5, 6, 7, 8],
+      //         L: [3, 4, 5, 6, 7, 8],
+      //         D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //       },
+      //     },
+      //   },
+      //   slug: "pll",
+      //   cases: "333-pll",
+      //   filters: {},
+      // },
+    ],
+  },
+  {
+    displayName: "3x3x3 OH",
+    slug: "/333oh",
+    image: {
+      type: "cube",
+      puzzle: {},
+    },
+    twisty: "3x3x3",
+    quantumMoveOrder: 4,
+    steps: [
+      // {
+      //   displayName: "F2L",
+      //   image: {
+      //     type: "cube",
+      //     puzzle: {
+      //       mask: {
+      //         F: [0, 1, 2],
+      //         B: [0, 1, 2],
+      //         R: [0, 1, 2],
+      //         L: [0, 1, 2],
+      //         U: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      //       },
+      //     },
+      //   },
+      //   slug: "f2l",
+      //   cases: "333-f2l",
+      //   quantumMoveOrder: 4,
+      //   filters: {
+      //     cornerInSlot: "Corner in slot",
+      //     edgeInSlot: "Edge in slot",
+      //     incorrectlyConnected: "Incorrectly connected",
+      //     bothInSlot: "Both pieces in slot",
+      //   },
+      // },
+      {
+        displayName: "OLL",
+        image: {
+          type: "cube",
+          puzzle: {
+            mask: {
+              R: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+              F: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+              D: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+              L: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+              B: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+            },
+          },
+        },
+        slug: "oll",
+        quantumMoveOrder: 4,
+        cases: "oh-oll",
+        filters: {},
+      },
       // {
       //   displayName: "PLL",
       //   image: {
