@@ -14869,7 +14869,7 @@ module.exports = merge;
 
 var $4f814df9f9385468$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.628e9bc9.js","eXwSi":"puzzle-geometry.4baeac1b.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","3E2W9":"index.7d58d814.js"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.b44da51f.js","eXwSi":"puzzle-geometry.4baeac1b.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","3E2W9":"index.7d58d814.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -46468,6 +46468,23 @@ var $iKTt2 = parcelRequire("iKTt2");
 
 
 var $3eSN5 = parcelRequire("3eSN5");
+var $55ec55a0502c8118$exports = {};
+"use strict";
+
+Object.defineProperty($55ec55a0502c8118$exports, "__esModule", {
+    value: true
+});
+$55ec55a0502c8118$exports.default = void 0;
+
+var $55ec55a0502c8118$var$_createSvgIcon = $69f4ded615f6c2c8$exports((parcelRequire("33Ex0")));
+
+var $228IU = parcelRequire("228IU");
+var $55ec55a0502c8118$var$_default = (0, $55ec55a0502c8118$var$_createSvgIcon.default)(/*#__PURE__*/ (0, $228IU.jsx)("path", {
+    d: "M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+}), "Edit");
+$55ec55a0502c8118$exports.default = $55ec55a0502c8118$var$_default;
+
+
 const $2bdbbbe37662fb75$var$colorMap = {
     unstarted: "none",
     learning: (0, $d99c51b3a6101237$export$2e2bcd8739ae039)[500],
@@ -46488,20 +46505,26 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
     };
     const theme = (0, $cb404980a6d8b614$export$2e2bcd8739ae039)();
     const { preferred: preferred , status: status  } = stepStorage.cases[alg.name];
-    const [svg, setSvg] = (0, $d4J5n.useState)(null);
     const isSmallScreen = (0, $c0e7915ae4d187ed$export$2e2bcd8739ae039)(theme.breakpoints.down("sm"));
-    const imgRef = (0, $d4J5n.useCallback)((node)=>{
-        if (node && !svg) {
+    const imgDimension = (0, $d4J5n.useMemo)(()=>isSmallScreen ? 75 : 120, [
+        isSmallScreen
+    ]);
+    const imgRef = (0, $d4J5n.useRef)(null);
+    const setRef = (0, $d4J5n.useCallback)((node)=>{
+        if (node) {
             const stepImageCopy = JSON.parse(JSON.stringify(step.image));
             delete stepImageCopy.puzzle.case;
             delete stepImageCopy.puzzle.alg;
-            setSvg((0, $179bc5a49dda12b3$export$13f4b12aafeba5d6)(node, stepImageCopy.type, {
+            while(node.firstChild)node.removeChild(node.firstChild);
+            imgRef.current = (0, $179bc5a49dda12b3$export$13f4b12aafeba5d6)(node, stepImageCopy.type, {
                 ...(0, (/*@__PURE__*/$parcel$interopDefault($3eSN5)))({}, stepImageCopy, alg.image),
-                width: 120,
-                height: 120
-            }));
+                width: imgDimension,
+                height: imgDimension
+            });
         }
-    }, []);
+    }, [
+        imgDimension
+    ]);
     const tableProps = {
         component: "th",
         scope: "row"
@@ -46532,24 +46555,31 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
                     }
                 },
                 children: [
+                    isSmallScreen && /*#__PURE__*/ (0, $228IU.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
+                        paddingRight: 2,
+                        children: /*#__PURE__*/ (0, $228IU.jsx)((0, (/*@__PURE__*/$parcel$interopDefault($55ec55a0502c8118$exports))), {
+                            onClick: ()=>algRowClick(alg)
+                        })
+                    }),
                     /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
                         variant: "inherit",
                         component: "span",
                         sx: {
                             mr: 2,
                             flexShrink: 0,
-                            width: "65px"
+                            width: isSmallScreen ? "40px" : "65px",
+                            fontSize: isSmallScreen ? "20px" : "24px"
                         },
                         children: alg.name
                     }),
                     /*#__PURE__*/ (0, $228IU.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
-                        height: 120,
-                        width: 120,
+                        height: imgDimension,
+                        width: imgDimension,
                         sx: {
                             mr: 2,
                             flexShrink: 0
                         },
-                        ref: imgRef
+                        ref: setRef
                     }),
                     /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
                         sx: {
@@ -46655,24 +46685,24 @@ var $228IU = parcelRequire("228IU");
 
 var $iKTt2 = parcelRequire("iKTt2");
 var $5Cz32 = parcelRequire("5Cz32");
-var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
 var $7b4d9491b37fa408$export$60912654947077e3;
+var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
+var $7b4d9491b37fa408$export$94132a0e348806d4;
+var $7b4d9491b37fa408$export$33854e570d464ff0;
+var $7b4d9491b37fa408$export$d927737047eb3867;
+var $7b4d9491b37fa408$export$1237798dc640739a;
+var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
 var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
 var $7b4d9491b37fa408$export$9a9b59e08de24cef;
-var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
-var $7b4d9491b37fa408$export$d927737047eb3867;
-var $7b4d9491b37fa408$export$33854e570d464ff0;
-var $7b4d9491b37fa408$export$94132a0e348806d4;
-var $7b4d9491b37fa408$export$1237798dc640739a;
-$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
 $7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
+$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
+$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
+$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
+$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
+$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
+$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
 $7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
 $7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
-$7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
-$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
-$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
-$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
-$7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
 
 
 const $8c09dba8c18700a3$var$colorMap = {
@@ -48637,4 +48667,4 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register($9766102c6225
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.628e9bc9.js.map
+//# sourceMappingURL=index.b44da51f.js.map
