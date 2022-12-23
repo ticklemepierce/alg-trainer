@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useMemo, useRef } from "react";
 import {
   Box,
   TableCell,
@@ -15,6 +15,7 @@ import { useTheme } from "@mui/material/styles";
 import { yellow, green } from "@mui/material/colors";
 import { SVG, Visualizer, Type } from "sr-puzzlegen";
 import merge from "lodash.merge";
+import EditIcon from "@mui/icons-material/Edit";
 
 const colorMap = {
   unstarted: "none",
@@ -51,25 +52,36 @@ export const AlgTableRow = ({
   const theme = useTheme();
 
   const { preferred, status } = stepStorage.cases[alg.name];
-  const [svg, setSvg] = useState<Visualizer | null>(null);
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const imgRef = useCallback((node) => {
-    if (node && !svg) {
-      const stepImageCopy = JSON.parse(JSON.stringify(step.image));
-      delete stepImageCopy.puzzle.case;
-      delete stepImageCopy.puzzle.alg;
+  const imgDimension = useMemo(
+    () => (isSmallScreen ? 75 : 120),
+    [isSmallScreen]
+  );
 
-      setSvg(
-        SVG(node, stepImageCopy.type as Type, {
+  const imgRef = useRef<Visualizer | null>(null);
+
+  const setRef = useCallback(
+    (node) => {
+      if (node) {
+        const stepImageCopy = JSON.parse(JSON.stringify(step.image));
+        delete stepImageCopy.puzzle.case;
+        delete stepImageCopy.puzzle.alg;
+
+        while (node.firstChild) {
+          node.removeChild(node.firstChild);
+        }
+
+        imgRef.current = SVG(node, stepImageCopy.type as Type, {
           ...merge({}, stepImageCopy, alg.image),
-          width: 120,
-          height: 120,
-        })
-      );
-    }
-  }, []);
+          width: imgDimension,
+          height: imgDimension,
+        });
+      }
+    },
+    [imgDimension]
+  );
 
   const tableProps: any = {
     component: "th",
@@ -100,18 +112,28 @@ export const AlgTableRow = ({
             },
           }}
         >
+          {isSmallScreen && (
+            <Box paddingRight={2}>
+              <EditIcon onClick={() => algRowClick(alg)} />
+            </Box>
+          )}
           <Typography
             variant="inherit"
             component="span"
-            sx={{ mr: 2, flexShrink: 0, width: "65px" }}
+            sx={{
+              mr: 2,
+              flexShrink: 0,
+              width: isSmallScreen ? "40px" : "65px",
+              fontSize: isSmallScreen ? "20px" : "24px",
+            }}
           >
             {alg.name}
           </Typography>
           <Box
-            height={120}
-            width={120}
+            height={imgDimension}
+            width={imgDimension}
             sx={{ mr: 2, flexShrink: 0 }}
-            ref={imgRef}
+            ref={setRef}
           />
           <Box
             sx={{
