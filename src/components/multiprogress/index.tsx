@@ -22,16 +22,21 @@ export const MultiProgress = ({ data }: IMultiProgress) => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.bars}>
-        {data.map((item, i) => (
-          <div
-            className={classes.bar}
-            style={{
-              backgroundColor: colorMap[item.name],
-              width: item.value + "%",
-            }}
-            key={i}
-          />
-        ))}
+        {data.map((item, i) => {
+          if (item.value === 0) {
+            return;
+          }
+          return (
+            <div
+              className={classes.bar}
+              style={{
+                backgroundColor: colorMap[item.name],
+                width: item.value + "%",
+              }}
+              key={i}
+            />
+          );
+        })}
         <div
           className={classes.bar}
           style={{

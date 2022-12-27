@@ -1,4 +1,4 @@
-import { useState, useMemo, KeyboardEvent } from "react";
+import { useState, KeyboardEvent } from "react";
 import { IAlgsListContext, IStepStorage, IAlg } from "../puzzles";
 import { Box, Button, Typography } from "@mui/material";
 import randomItem from "random-item";
@@ -52,50 +52,8 @@ export const Trainer = () => {
     );
 
   const [order, setOrder] = useState<IAlg[]>(shuffle(filterAlgs()));
-  const [index, setIndex] = useState<number>(0);
 
-  const [hint, setHint] = useState<string>("");
-
-  const isLast = useMemo(() => index >= order.length - 1, [index]);
-  const isFirst = useMemo(() => index === 0, [index]);
-
-  const currentCase = useMemo(() => order[index], [index]);
-
-  const preferredSolution = useMemo(
-    () =>
-      currentCase &&
-      expandTriggers(
-        currentCase.solutions[stepStorage.cases[currentCase.name]!.preferred]
-      ).split(" "),
-    [currentCase]
-  );
-
-  const previousCase = () => {
-    setHint("");
-
-    setIndex((index) => index - 1);
-  };
-
-  const nextCase = () => {
-    setHint("");
-
-    if (isLast) {
-      alert("starting over!!");
-      setOrder(shuffle(filterAlgs()));
-      setIndex(0);
-    } else {
-      setIndex((index) => index + 1);
-    }
-  };
-
-  const handleSpace = (e: KeyboardEvent) => {
-    e.preventDefault();
-    nextCase();
-  };
-
-  const randomIntUpTo = (max: number) => {
-    return Math.floor(Math.random() * (max + 1));
-  };
+  const randomIntUpTo = (max: number) => Math.floor(Math.random() * (max + 1));
 
   const randomAUF = () => randomIntUpTo(step.quantumMoveOrder - 1);
 
@@ -110,68 +68,106 @@ export const Trainer = () => {
     });
   };
 
-  const currentSetup = useMemo(
-    () =>
-      currentCase
-        ? createSetup(randomItem(currentCase.setups)).toString()
-        : "No cases found that match your current filters.",
-    [currentCase]
-  );
+  const getRandomCase = (newIndex: number) => {
+    const _case: IAlg = order[newIndex];
+    return {
+      setup: createSetup(randomItem(_case.setups)).toString(),
+      preferredSolution: expandTriggers(
+        _case.solutions[stepStorage.cases[_case.name]!.preferred]
+      ).split(" "),
+    };
+  };
 
-  useKeypress(" ", handleSpace, [isLast]);
+  const setCase = (index: number) => {
+    setState({
+      index,
+      ...getRandomCase(index),
+    });
+  };
+
+  const [state, setState] = useState<{
+    index: number;
+    setup: string;
+    preferredSolution: string[];
+  }>({
+    index: 0,
+    ...getRandomCase(0),
+  });
+
+  const [hint, setHint] = useState<string>("");
+
+  const previousCase = () => {
+    setHint("");
+
+    setCase(state.index - 1);
+  };
+
+  const nextCase = () => {
+    setHint("");
+    if (state.index >= order.length - 1) {
+      alert("starting over!!");
+      setOrder(shuffle(filterAlgs()));
+      setCase(0);
+    } else {
+      setCase(state.index + 1);
+    }
+  };
+
+  const handleSpace = (e: KeyboardEvent) => {
+    e.preventDefault();
+    nextCase();
+  };
+
+  useKeypress(" ", handleSpace, [state]);
 
   const updateHint = () => {
     const newHintLength = hint.length > 0 ? hint.split(" ").length + 1 : 1;
 
-    setHint(preferredSolution.slice(0, newHintLength).join(" "));
+    setHint(state.preferredSolution.slice(0, newHintLength).join(" "));
   };
 
   return (
     <>
       <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-        minHeight="95vh"
-        maxWidth="95vw"
-        textAlign="center"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          width: "88vw",
+          textAlign: "center",
+          position: "fixed",
+          height: "100%",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
       >
         <Typography component="h1" variant="h3">
-          {currentSetup}
+          {state.setup}
         </Typography>
-        {currentCase && (
-          <>
-            <Button
-              variant="contained"
-              sx={{ mt: 3 }}
-              size="large"
-              onClick={nextCase}
-            >
-              {isLast ? "Start over" : "Next case"}
-            </Button>
-            <Button
-              variant="text"
-              sx={{ mt: 2 }}
-              size="large"
-              onClick={updateHint}
-            >
-              Hint
-            </Button>
-            <Typography component="h5" variant="h5">
-              {hint}
-            </Typography>
-            {!isFirst && (
-              <Button
-                variant="text"
-                sx={{ mt: 3, position: "fixed", bottom: 50 }}
-                size="small"
-                onClick={previousCase}
-              >
-                Previous case
-              </Button>
-            )}
-          </>
+        <Button
+          variant="contained"
+          sx={{ mt: 3 }}
+          size="large"
+          onClick={nextCase}
+        >
+          {state.index >= order.length - 1 ? "Start over" : "Next case"}
+        </Button>
+        <Button variant="text" sx={{ mt: 2 }} size="large" onClick={updateHint}>
+          Hint
+        </Button>
+        <Typography component="h5" variant="h5">
+          {hint}
+        </Typography>
+        {state.index !== 0 && (
+          <Button
+            variant="text"
+            sx={{ mt: 3, position: "fixed", bottom: 85 }}
+            size="small"
+            onClick={previousCase}
+          >
+            Previous case
+          </Button>
         )}
       </Box>
     </>
