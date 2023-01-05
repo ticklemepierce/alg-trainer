@@ -12,11 +12,20 @@ const inputData = readFileSync(`cases/${fileName}`, {
   flag: "r",
 });
 
-const { setup, cases, tws, moves, doubleMovesNotEqual } = JSON.parse(inputData);
+const { setup, cases, tws, moves, doubleMovesNotEqual, randomizeAuf } =
+  JSON.parse(inputData);
 
 const isAlg = (input) => /^[RUFBLD' 2]+$/.test(input);
 
 const output = [];
+
+const normalize = (alg) => {
+  alg = alg.toString();
+  if (alg.startsWith("U")) {
+    alg = alg.substring(alg.indexOf(" ") + 1);
+  }
+  return invertAlg(alg);
+};
 
 let setupAlg;
 if (setup) {
@@ -39,14 +48,23 @@ cases.forEach((_case, idx) => {
     ? setupAlg.concat(inverse).toString()
     : inverse.toString();
 
+  // TODO replace with quantum moves
   if (!doubleMovesNotEqual) {
     scrambleAlg = scrambleAlg.replaceAll("2'", "2");
   }
 
   algs.push(scrambleAlg);
 
+  if (randomizeAuf) {
+    algs.push(new Alg("U").concat(scrambleAlg));
+    algs.push(new Alg("U'").concat(scrambleAlg));
+    algs.push(new Alg("U2").concat(scrambleAlg));
+  }
+
   output.push(entry);
 });
+
+const c = randomizeAuf ? 20 : 75;
 
 const data = execSync(
   `twsearch --nowrite --moves ${moves} -s -c 75 --randomstart tws-files/${tws}`,
@@ -80,13 +98,15 @@ while (currLinesIdx < lines.length) {
     continue;
   }
 
+  const currAlg = algs[currAlgsIdx];
+
   if (line !== "Solving") {
-    if (
-      !line.endsWith(invertAlg(algs[currAlgsIdx])) &&
-      !line.startsWith(algs[currAlgsIdx])
-    ) {
+    if (!line.endsWith(invertAlg(currAlg)) && !line.startsWith(currAlg)) {
       const invertedSolution = invertAlg(line);
-      output[currOutputIdx].setups.push(invertedSolution);
+      const currOutput = output.find(
+        (alg) => alg.display === normalize(currAlg)
+      );
+      currOutput.setups.push(invertedSolution);
     }
   } else {
     currAlgsIdx++;
@@ -99,3 +119,6 @@ while (currLinesIdx < lines.length) {
 }
 
 writeFileSync(`static/${fileName}`, JSON.stringify(output, null, 2));
+
+// TODO regenerate scrambles with random AUF
+// TODO update cases files with new image format

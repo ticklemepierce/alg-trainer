@@ -9,9 +9,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U R' U R U R' U2' R U' R'"
-      }
+      "alg": "R U R' U R U R' U2' R U' R'"
     },
     "solutions": ["R U R' U R U R' U2' R U' R'"],
     "setups": [
@@ -101,9 +99,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "F R U2 R' U' R U' R' F'"
-      }
+      "alg": "F R U2 R' U' R U' R' F'"
     },
     "solutions": ["F R U2 R' U' R U' R' F'"],
     "setups": [
@@ -190,9 +186,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U2 R' U R U2 R'"
-      }
+      "alg": "R U2 R' U R U2 R'"
     },
     "solutions": ["R U2 R' U R U2 R'"],
     "setups": [
@@ -280,9 +274,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U R' U' R' F R U R U' R' F'"
-      }
+      "alg": "R U R' U' R' F R U R U' R' F'"
     },
     "solutions": ["R U R' U' R' F R U R U' R' F'"],
     "setups": [
@@ -328,9 +320,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U R' U R U2' R'"
-      }
+      "alg": "R U R' U R U2' R'"
     },
     "solutions": ["R U R' U R U2' R'"],
     "setups": [
@@ -423,9 +413,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R' U' R U' R' U2 R"
-      }
+      "alg": "R' U' R U' R' U2 R"
     },
     "solutions": ["R' U' R U' R' U2 R"],
     "setups": [
@@ -515,9 +503,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U2 R' U' R U' R'"
-      }
+      "alg": "R U2 R' U' R U' R'"
     },
     "solutions": ["R U2 R' U' R U' R'"],
     "setups": [
@@ -606,9 +592,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U R' U2 R U2 R'"
-      }
+      "alg": "R U R' U2 R U2 R'"
     },
     "solutions": ["R U R' U2 R U2 R'"],
     "setups": [
@@ -700,9 +684,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U2 R' U' R U R' U' R U' R'"
-      }
+      "alg": "R U2 R' U' R U R' U' R U' R'"
     },
     "solutions": ["R U2 R' U' R U R' U' R U' R'"],
     "setups": [
@@ -788,9 +770,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U R' U R U' R' U R U2' R'"
-      }
+      "alg": "R U R' U R U' R' U R U2' R'"
     },
     "solutions": ["R U R' U R U' R' U R U2' R'"],
     "setups": [
@@ -881,9 +861,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U R' U R U R' U' R U2' R'"
-      }
+      "alg": "R U R' U R U R' U' R U2' R'"
     },
     "solutions": ["R U R' U R U R' U' R U2' R'"],
     "setups": [
@@ -974,9 +952,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U2 R' U' R U' R2' U' R U' R' U2 R"
-      }
+      "alg": "R U2 R' U' R U' R2' U' R U' R' U2 R"
     },
     "solutions": ["R U2 R' U' R U' R2' U' R U' R' U2 R"],
     "setups": [
@@ -1059,9 +1035,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U2 R2' U' R2 U' R2' U2 R"
-      }
+      "alg": "R U2 R2' U' R2 U' R2' U2 R"
     },
     "solutions": ["R U2 R2' U' R2 U' R2' U2 R"],
     "setups": [
@@ -1154,9 +1128,7 @@
       "fiveCorners": true
     },
     "image": {
-      "puzzle": {
-        "case": "R' U2' R2 U R2' U R2 U2' R'"
-      }
+      "alg": "R' U2' R2 U R2' U R2 U2' R'"
     },
     "solutions": ["R' U2' R2 U R2' U R2 U2' R'"],
     "setups": [
@@ -1245,9 +1217,7 @@
       "fiveCorners": true
     },
     "image": {
-      "puzzle": {
-        "case": "R U R' U2 R U2' R' U R U2' R'"
-      }
+      "alg": "R U R' U2 R U2' R' U R U2' R'"
     },
     "solutions": ["R U R' U2 R U2' R' U R U2' R'"],
     "setups": [
@@ -1337,9 +1307,7 @@
       "fiveCorners": false
     },
     "image": {
-      "puzzle": {
-        "case": "R U2 R' U' R U2 R' U2' R U' R'"
-      }
+      "alg": "R U2 R' U' R U2 R' U2' R U' R'"
     },
     "solutions": ["R U2 R' U' R U2 R' U2' R U' R'"],
     "setups": [

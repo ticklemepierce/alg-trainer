@@ -9,23 +9,7 @@
       "cornerOrientation": false
     },
     "image": {
-      "puzzle": {
-        "alg": "R U2 R' U R' U' R2 U' R' U R' U R U2' R U' R'",
-        "arrows": [
-          {
-            "start": { "face": "U", "sticker": 1 },
-            "end": { "face": "U", "sticker": 9 }
-          },
-          {
-            "start": { "face": "U", "sticker": 9 },
-            "end": { "face": "U", "sticker": 5 }
-          },
-          {
-            "start": { "face": "U", "sticker": 5 },
-            "end": { "face": "U", "sticker": 1 }
-          }
-        ]
-      }
+      "alg": "R U2 R' U R' U' R2 U' R' U R' U R U2' R U' R'"
     },
     "solutions": ["R2 U2' R2' U' R2 U2' R2'"],
     "setups": [
@@ -116,23 +100,7 @@
       "cornerOrientation": false
     },
     "image": {
-      "puzzle": {
-        "alg": "R U R' U2 R' U' R U' R U R2' U R U' R U2' R'",
-        "arrows": [
-          {
-            "end": { "face": "U", "sticker": 1 },
-            "start": { "face": "U", "sticker": 9 }
-          },
-          {
-            "end": { "face": "U", "sticker": 9 },
-            "start": { "face": "U", "sticker": 5 }
-          },
-          {
-            "end": { "face": "U", "sticker": 5 },
-            "start": { "face": "U", "sticker": 1 }
-          }
-        ]
-      }
+      "alg": "R U R' U2 R' U' R U' R U R2' U R U' R U2' R'"
     },
     "solutions": ["R2 U2 R2' U R2 U2 R2'"],
     "setups": [
@@ -225,23 +193,7 @@
       "cornerOrientation": false
     },
     "image": {
-      "puzzle": {
-        "alg": "R U R' U R' U' R2 U' R' U R' U R U2'",
-        "arrows": [
-          {
-            "end": { "face": "U", "sticker": 7 },
-            "start": { "face": "U", "sticker": 9 }
-          },
-          {
-            "end": { "face": "U", "sticker": 9 },
-            "start": { "face": "U", "sticker": 5 }
-          },
-          {
-            "end": { "face": "U", "sticker": 5 },
-            "start": { "face": "U", "sticker": 7 }
-          }
-        ]
-      }
+      "alg": "R U R' U R' U' R2 U' R' U R' U R U2'"
     },
     "solutions": ["R U R' F' R U R' U' R' F R2 U' R'"],
     "setups": [
@@ -332,23 +284,7 @@
       "cornerOrientation": false
     },
     "image": {
-      "puzzle": {
-        "alg": "U2 R' U' R U' R U R2' U R U' R U' R'",
-        "arrows": [
-          {
-            "start": { "face": "U", "sticker": 7 },
-            "end": { "face": "U", "sticker": 9 }
-          },
-          {
-            "start": { "face": "U", "sticker": 9 },
-            "end": { "face": "U", "sticker": 5 }
-          },
-          {
-            "start": { "face": "U", "sticker": 5 },
-            "end": { "face": "U", "sticker": 7 }
-          }
-        ]
-      }
+      "alg": "U2 R' U' R U' R U R2' U R U' R U' R'"
     },
     "solutions": ["R U R' U R' U' R2 U' R' U R' U R U2'"],
     "setups": [
@@ -439,27 +375,7 @@
       "cornerOrientation": false
     },
     "image": {
-      "puzzle": {
-        "alg": "R' U2' R' U' R F R' F' U R F' U' F U2' R",
-        "arrows": [
-          {
-            "start": { "face": "U", "sticker": 9 },
-            "end": { "face": "U", "sticker": 7 }
-          },
-          {
-            "start": { "face": "U", "sticker": 7 },
-            "end": { "face": "U", "sticker": 9 }
-          },
-          {
-            "start": { "face": "U", "sticker": 1 },
-            "end": { "face": "U", "sticker": 5 }
-          },
-          {
-            "start": { "face": "U", "sticker": 5 },
-            "end": { "face": "U", "sticker": 1 }
-          }
-        ]
-      }
+      "alg": "R' U2' R' U' R F R' F' U R F' U' F U2' R"
     },
     "solutions": ["L R U2 L' U R' L U' R U2 L' U2 R'"],
     "setups": [

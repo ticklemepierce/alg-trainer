@@ -1,4 +1,4 @@
-import { useCallback, useState, useMemo, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import {
   Box,
   TableCell,
@@ -13,8 +13,7 @@ import { Alg } from "./alg";
 import { IStepStorage, Status, IAlg, IBaseStep } from "../puzzles";
 import { useTheme } from "@mui/material/styles";
 import { yellow, green } from "@mui/material/colors";
-import { SVG, Visualizer, Type } from "sr-puzzlegen";
-import merge from "lodash.merge";
+import { TwistyPlayer } from "cubing/twisty";
 import EditIcon from "@mui/icons-material/Edit";
 
 const colorMap = {
@@ -60,24 +59,35 @@ export const AlgTableRow = ({
     [isSmallScreen]
   );
 
-  const imgRef = useRef<Visualizer | null>(null);
+  const twistyPlayerRef = useRef<any>(null);
 
   const setRef = useCallback(
     (node) => {
       if (node) {
-        const stepImageCopy = JSON.parse(JSON.stringify(step.image));
-        delete stepImageCopy.puzzle.case;
-        delete stepImageCopy.puzzle.alg;
-
         while (node.firstChild) {
           node.removeChild(node.firstChild);
         }
 
-        imgRef.current = SVG(node, stepImageCopy.type as Type, {
-          ...merge({}, stepImageCopy, alg.image),
-          width: imgDimension,
-          height: imgDimension,
+        const image = {
+          ...step.image,
+          ...alg.image,
+        };
+
+        const twistyPlayer = new TwistyPlayer({
+          ...image,
+          hintFacelets: "none",
+          background: "none",
+          experimentalSetupAnchor: "end",
+          controlPanel: "none",
+          experimentalDragInput: "none",
         });
+
+        twistyPlayer.style.width = imgDimension + "px";
+        twistyPlayer.style.height = imgDimension + "px";
+
+        node.appendChild(twistyPlayer);
+
+        twistyPlayerRef.current = twistyPlayer;
       }
     },
     [imgDimension]

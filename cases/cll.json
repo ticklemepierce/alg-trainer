@@ -1,6 +1,7 @@
 {
   "tws": "2x2x2.tws",
   "moves": "R,U,F",
+  "randomizeAuf": true,
   "cases": [
     {
       "name": "AS1",
