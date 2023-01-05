@@ -27,7 +27,7 @@ $parcel$export(module.exports, "PuzzleGeometry", () => $8b6d1a029267225c$export$
 $parcel$export(module.exports, "getPuzzleGeometryByName", () => $8b6d1a029267225c$export$37497081d872df9);
 $parcel$export(module.exports, "ExperimentalPGNotation", () => $8b6d1a029267225c$export$f852f67da918687b);
 
-var $j3ukw = parcelRequire("j3ukw");
+var $OIFGm = parcelRequire("OIFGm");
 // src/cubing/puzzle-geometry/FaceNameSwizzler.ts
 var $8b6d1a029267225c$var$FaceNameSwizzler = class {
     constructor(facenames, gripnames_arg){
@@ -118,7 +118,7 @@ var $8b6d1a029267225c$var$FTONotationMapper = class {
         this.sw = sw;
     }
     notationToInternal(move) {
-        if (move.family === "T" && move.innerLayer === void 0 && move.outerLayer === void 0) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("FLRv", move.innerLayer, move.outerLayer), move.amount);
+        if (move.family === "T" && move.innerLayer === void 0 && move.outerLayer === void 0) return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("FLRv", move.innerLayer, move.outerLayer), move.amount);
         else {
             const r = this.child.notationToInternal(move);
             return r;
@@ -127,7 +127,7 @@ var $8b6d1a029267225c$var$FTONotationMapper = class {
     notationToExternal(move) {
         let fam = move.family;
         if (fam.length > 0 && fam[fam.length - 1] === "v") fam = fam.substring(0, fam.length - 1);
-        if (this.sw.spinmatch(fam, "FLUR")) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("T", move.innerLayer, move.outerLayer), move.amount);
+        if (this.sw.spinmatch(fam, "FLUR")) return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("T", move.innerLayer, move.outerLayer), move.amount);
         return this.child.notationToExternal(move);
     }
 };
@@ -157,7 +157,7 @@ var $8b6d1a029267225c$var$FaceRenamingMapper = class {
         const grip = move.family;
         const ngrip = this.convertString(grip, a, b);
         if (grip === ngrip) return move;
-        else return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(ngrip, move.innerLayer, move.outerLayer), move.amount);
+        else return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)(ngrip, move.innerLayer, move.outerLayer), move.amount);
     }
     notationToInternal(move) {
         const r = this.convert(move, this.externalNames, this.internalNames);
@@ -175,23 +175,23 @@ var $8b6d1a029267225c$var$MegaminxScramblingNotationMapper = class {
     notationToInternal(move) {
         if (move.innerLayer === void 0 && move.outerLayer === void 0) {
             if (Math.abs(move.amount) === 1) {
-                if (move.family === "R++") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("L", 3, 2), -2 * move.amount);
-                else if (move.family === "R--") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("L", 3, 2), 2 * move.amount);
-                else if (move.family === "D++") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("U", 3, 2), -2 * move.amount);
-                else if (move.family === "D--") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("U", 3, 2), 2 * move.amount);
-                if (move.family === "R_PLUSPLUS_") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("L", 3, 2), -2 * move.amount);
-                else if (move.family === "D_PLUSPLUS_") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("U", 3, 2), -2 * move.amount);
+                if (move.family === "R++") return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("L", 3, 2), -2 * move.amount);
+                else if (move.family === "R--") return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("L", 3, 2), 2 * move.amount);
+                else if (move.family === "D++") return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("U", 3, 2), -2 * move.amount);
+                else if (move.family === "D--") return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("U", 3, 2), 2 * move.amount);
+                if (move.family === "R_PLUSPLUS_") return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("L", 3, 2), -2 * move.amount);
+                else if (move.family === "D_PLUSPLUS_") return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("U", 3, 2), -2 * move.amount);
             }
-            if (move.family === "y") return new (0, $j3ukw.Move)("Uv", move.amount);
-            if (move.family === "x" && Math.abs(move.amount) === 2) return new (0, $j3ukw.Move)("ERv", move.amount / 2);
+            if (move.family === "y") return new (0, $OIFGm.Move)("Uv", move.amount);
+            if (move.family === "x" && Math.abs(move.amount) === 2) return new (0, $OIFGm.Move)("ERv", move.amount / 2);
         }
         return this.child.notationToInternal(move);
     }
     notationToExternal(move) {
-        if (move.family === "ERv" && Math.abs(move.amount) === 1) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("x", move.innerLayer, move.outerLayer), move.amount * 2);
-        if (move.family === "ILv" && Math.abs(move.amount) === 1) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("x", move.innerLayer, move.outerLayer), -move.amount * 2);
-        if (move.family === "Uv") return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("y", move.innerLayer, move.outerLayer), move.amount);
-        if (move.family === "Dv") return new (0, $j3ukw.Move)("y", -move.amount);
+        if (move.family === "ERv" && Math.abs(move.amount) === 1) return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("x", move.innerLayer, move.outerLayer), move.amount * 2);
+        if (move.family === "ILv" && Math.abs(move.amount) === 1) return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("x", move.innerLayer, move.outerLayer), -move.amount * 2);
+        if (move.family === "Uv") return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("y", move.innerLayer, move.outerLayer), move.amount);
+        if (move.family === "Dv") return new (0, $OIFGm.Move)("y", -move.amount);
         return this.child.notationToExternal(move);
     }
 };
@@ -203,18 +203,18 @@ var $8b6d1a029267225c$var$NxNxNCubeMapper = class {
     notationToInternal(move) {
         const grip = move.family;
         if (!(move.innerLayer || move.outerLayer)) {
-            if (grip === "x") move = new (0, $j3ukw.Move)("Rv", move.amount);
-            else if (grip === "y") move = new (0, $j3ukw.Move)("Uv", move.amount);
-            else if (grip === "z") move = new (0, $j3ukw.Move)("Fv", move.amount);
+            if (grip === "x") move = new (0, $OIFGm.Move)("Rv", move.amount);
+            else if (grip === "y") move = new (0, $OIFGm.Move)("Uv", move.amount);
+            else if (grip === "z") move = new (0, $OIFGm.Move)("Fv", move.amount);
             if ((this.slices & 1) === 1) {
-                if (grip === "E") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("D", (this.slices + 1) / 2), move.amount);
-                else if (grip === "M") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("L", (this.slices + 1) / 2), move.amount);
-                else if (grip === "S") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("F", (this.slices + 1) / 2), move.amount);
+                if (grip === "E") move = new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("D", (this.slices + 1) / 2), move.amount);
+                else if (grip === "M") move = new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("L", (this.slices + 1) / 2), move.amount);
+                else if (grip === "S") move = new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("F", (this.slices + 1) / 2), move.amount);
             }
             if (this.slices > 2) {
-                if (grip === "e") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("D", this.slices - 1, 2), move.amount);
-                else if (grip === "m") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("L", this.slices - 1, 2), move.amount);
-                else if (grip === "s") move = new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)("F", this.slices - 1, 2), move.amount);
+                if (grip === "e") move = new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("D", this.slices - 1, 2), move.amount);
+                else if (grip === "m") move = new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("L", this.slices - 1, 2), move.amount);
+                else if (grip === "s") move = new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)("F", this.slices - 1, 2), move.amount);
             }
         }
         return move;
@@ -222,12 +222,12 @@ var $8b6d1a029267225c$var$NxNxNCubeMapper = class {
     notationToExternal(move) {
         const grip = move.family;
         if (!(move.innerLayer || move.outerLayer)) {
-            if (grip === "Rv") return new (0, $j3ukw.Move)("x", move.amount);
-            else if (grip === "Uv") return new (0, $j3ukw.Move)("y", move.amount);
-            else if (grip === "Fv") return new (0, $j3ukw.Move)("z", move.amount);
-            else if (grip === "Lv") return new (0, $j3ukw.Move)("x", -move.amount);
-            else if (grip === "Dv") return new (0, $j3ukw.Move)("y", -move.amount);
-            else if (grip === "Bv") return new (0, $j3ukw.Move)("z", -move.amount);
+            if (grip === "Rv") return new (0, $OIFGm.Move)("x", move.amount);
+            else if (grip === "Uv") return new (0, $OIFGm.Move)("y", move.amount);
+            else if (grip === "Fv") return new (0, $OIFGm.Move)("z", move.amount);
+            else if (grip === "Lv") return new (0, $OIFGm.Move)("x", -move.amount);
+            else if (grip === "Dv") return new (0, $OIFGm.Move)("y", -move.amount);
+            else if (grip === "Bv") return new (0, $OIFGm.Move)("z", -move.amount);
         }
         return move;
     }
@@ -279,8 +279,8 @@ var $8b6d1a029267225c$var$pyraminxFamilyMapWCA = {
     R: "FDR",
     B: "DLR"
 };
-var $8b6d1a029267225c$var$pyraminxExternalQuantumY = new (0, $j3ukw.QuantumMove)("y");
-var $8b6d1a029267225c$var$pyraminxInternalQuantumY = new (0, $j3ukw.QuantumMove)("Dv");
+var $8b6d1a029267225c$var$pyraminxExternalQuantumY = new (0, $OIFGm.QuantumMove)("y");
+var $8b6d1a029267225c$var$pyraminxInternalQuantumY = new (0, $OIFGm.QuantumMove)("Dv");
 var $8b6d1a029267225c$var$PyraminxNotationMapper = class {
     constructor(child){
         this.child = child;
@@ -290,21 +290,21 @@ var $8b6d1a029267225c$var$PyraminxNotationMapper = class {
     notationToInternal(move) {
         if (this.wcaHack && move.innerLayer === 2 && move.outerLayer === null) {
             const newFamilyWCA = $8b6d1a029267225c$var$pyraminxFamilyMapWCA[move.family];
-            if (newFamilyWCA) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(newFamilyWCA, move.innerLayer, move.outerLayer), move.amount);
+            if (newFamilyWCA) return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)(newFamilyWCA, move.innerLayer, move.outerLayer), move.amount);
         }
         const newFamily = this.map[move.family];
-        if (newFamily) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(newFamily, move.innerLayer, move.outerLayer), move.amount);
-        else if ($8b6d1a029267225c$var$pyraminxExternalQuantumY.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$pyraminxInternalQuantumY, -move.amount);
+        if (newFamily) return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)(newFamily, move.innerLayer, move.outerLayer), move.amount);
+        else if ($8b6d1a029267225c$var$pyraminxExternalQuantumY.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$pyraminxInternalQuantumY, -move.amount);
         else return null;
     }
     notationToExternal(move) {
         if (this.wcaHack && move.innerLayer === 2 && move.outerLayer === null) for (const [external, internal] of Object.entries($8b6d1a029267225c$var$pyraminxFamilyMapWCA)){
-            if (this.child.spinmatch(move.family, internal)) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(external, move.innerLayer, move.outerLayer), move.amount);
+            if (this.child.spinmatch(move.family, internal)) return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)(external, move.innerLayer, move.outerLayer), move.amount);
         }
         for (const [external1, internal1] of Object.entries(this.map)){
-            if (this.child.spinmatch(move.family, internal1)) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(external1, move.innerLayer, move.outerLayer), move.amount);
+            if (this.child.spinmatch(move.family, internal1)) return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)(external1, move.innerLayer, move.outerLayer), move.amount);
         }
-        if ($8b6d1a029267225c$var$pyraminxInternalQuantumY.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$pyraminxExternalQuantumY, -move.amount);
+        if ($8b6d1a029267225c$var$pyraminxInternalQuantumY.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$pyraminxExternalQuantumY, -move.amount);
         else return null;
     }
 };
@@ -334,15 +334,15 @@ var $8b6d1a029267225c$var$skewbFamilyMap = {
     Lv: "DLFv",
     Rv: "DRBv"
 };
-var $8b6d1a029267225c$var$skewbExternalQuantumX = new (0, $j3ukw.QuantumMove)("x");
-var $8b6d1a029267225c$var$skewbInternalQuantumX = new (0, $j3ukw.QuantumMove)("Rv");
-var $8b6d1a029267225c$var$skewbInternalQuantumXPrime = new (0, $j3ukw.QuantumMove)("Lv");
-var $8b6d1a029267225c$var$skewbExternalQuantumY = new (0, $j3ukw.QuantumMove)("y");
-var $8b6d1a029267225c$var$skewbInternalQuantumY = new (0, $j3ukw.QuantumMove)("Uv");
-var $8b6d1a029267225c$var$skewbInternalQuantumYPrime = new (0, $j3ukw.QuantumMove)("Dv");
-var $8b6d1a029267225c$var$skewbExternalQuantumZ = new (0, $j3ukw.QuantumMove)("z");
-var $8b6d1a029267225c$var$skewbInternalQuantumZ = new (0, $j3ukw.QuantumMove)("Fv");
-var $8b6d1a029267225c$var$skewbInternalQuantumZPrime = new (0, $j3ukw.QuantumMove)("Bv");
+var $8b6d1a029267225c$var$skewbExternalQuantumX = new (0, $OIFGm.QuantumMove)("x");
+var $8b6d1a029267225c$var$skewbInternalQuantumX = new (0, $OIFGm.QuantumMove)("Rv");
+var $8b6d1a029267225c$var$skewbInternalQuantumXPrime = new (0, $OIFGm.QuantumMove)("Lv");
+var $8b6d1a029267225c$var$skewbExternalQuantumY = new (0, $OIFGm.QuantumMove)("y");
+var $8b6d1a029267225c$var$skewbInternalQuantumY = new (0, $OIFGm.QuantumMove)("Uv");
+var $8b6d1a029267225c$var$skewbInternalQuantumYPrime = new (0, $OIFGm.QuantumMove)("Dv");
+var $8b6d1a029267225c$var$skewbExternalQuantumZ = new (0, $OIFGm.QuantumMove)("z");
+var $8b6d1a029267225c$var$skewbInternalQuantumZ = new (0, $OIFGm.QuantumMove)("Fv");
+var $8b6d1a029267225c$var$skewbInternalQuantumZPrime = new (0, $OIFGm.QuantumMove)("Bv");
 var $8b6d1a029267225c$var$SkewbNotationMapper = class {
     constructor(child){
         this.child = child;
@@ -350,22 +350,22 @@ var $8b6d1a029267225c$var$SkewbNotationMapper = class {
     notationToInternal(move) {
         if (move.innerLayer || move.outerLayer) return null;
         const newFamily = $8b6d1a029267225c$var$skewbFamilyMap[move.family];
-        if (newFamily) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(newFamily, move.outerLayer, move.innerLayer), move.amount);
-        if ($8b6d1a029267225c$var$skewbExternalQuantumX.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbInternalQuantumX, move.amount);
-        if ($8b6d1a029267225c$var$skewbExternalQuantumY.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbInternalQuantumY, move.amount);
-        if ($8b6d1a029267225c$var$skewbExternalQuantumZ.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbInternalQuantumZ, move.amount);
+        if (newFamily) return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)(newFamily, move.outerLayer, move.innerLayer), move.amount);
+        if ($8b6d1a029267225c$var$skewbExternalQuantumX.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$skewbInternalQuantumX, move.amount);
+        if ($8b6d1a029267225c$var$skewbExternalQuantumY.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$skewbInternalQuantumY, move.amount);
+        if ($8b6d1a029267225c$var$skewbExternalQuantumZ.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$skewbInternalQuantumZ, move.amount);
         return null;
     }
     notationToExternal(move) {
         for (const [external, internal] of Object.entries($8b6d1a029267225c$var$skewbFamilyMap)){
-            if (this.child.spinmatchv(move.family, internal)) return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(external, move.innerLayer, move.outerLayer), move.amount);
+            if (this.child.spinmatchv(move.family, internal)) return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)(external, move.innerLayer, move.outerLayer), move.amount);
         }
-        if ($8b6d1a029267225c$var$skewbInternalQuantumX.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumX, move.amount);
-        if ($8b6d1a029267225c$var$skewbInternalQuantumXPrime.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumX, -move.amount);
-        if ($8b6d1a029267225c$var$skewbInternalQuantumY.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumY, move.amount);
-        if ($8b6d1a029267225c$var$skewbInternalQuantumYPrime.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumY, -move.amount);
-        if ($8b6d1a029267225c$var$skewbInternalQuantumZ.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumZ, move.amount);
-        if ($8b6d1a029267225c$var$skewbInternalQuantumZPrime.isIdentical(move.quantum)) return new (0, $j3ukw.Move)($8b6d1a029267225c$var$skewbExternalQuantumZ, -move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumX.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$skewbExternalQuantumX, move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumXPrime.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$skewbExternalQuantumX, -move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumY.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$skewbExternalQuantumY, move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumYPrime.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$skewbExternalQuantumY, -move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumZ.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$skewbExternalQuantumZ, move.amount);
+        if ($8b6d1a029267225c$var$skewbInternalQuantumZPrime.isIdentical(move.quantum)) return new (0, $OIFGm.Move)($8b6d1a029267225c$var$skewbExternalQuantumZ, -move.amount);
         return null;
     }
 };
@@ -546,7 +546,7 @@ var $8b6d1a029267225c$var$PGOrbitDef = class {
 };
 var $8b6d1a029267225c$var$lastGlobalDefinitionCounter = 0;
 function $8b6d1a029267225c$var$externalName(mapper, moveString) {
-    const mv = (0, $j3ukw.Move).fromString(moveString);
+    const mv = (0, $OIFGm.Move).fromString(moveString);
     const mv2 = mapper.notationToExternal(mv);
     if (mv2 === null || mv === mv2) return moveString;
     return mv2.toString();
@@ -3039,7 +3039,7 @@ var $8b6d1a029267225c$export$b89c271f50b83709 = class {
             if (amountstr[0] === "'") amountstr = `-${amountstr.substring(1)}`;
             amount = parseInt(amountstr, 10);
         }
-        return new (0, $j3ukw.Move)(new (0, $j3ukw.QuantumMove)(grip, hislice, loslice), amount);
+        return new (0, $OIFGm.Move)(new (0, $OIFGm.QuantumMove)(grip, hislice, loslice), amount);
     }
     parseMove(move) {
         const bm = this.notationMapper.notationToInternal(move);
@@ -3903,12 +3903,12 @@ ${svg.join("")}</svg>`;
             for (const gn of this.geonormals)if (msg[0] === gn[1] && msg[1] === gn[2]) {
                 grips.push({
                     coordinates: $8b6d1a029267225c$var$toCoords(gn[0].rotatepoint(rot), 1),
-                    quantumMove: new (0, $j3ukw.Move)(msg[0]),
+                    quantumMove: new (0, $OIFGm.Move)(msg[0]),
                     order: order
                 });
                 grips.push({
                     coordinates: $8b6d1a029267225c$var$toCoords(gn[0].rotatepoint(rot).smul(-1), 1),
-                    quantumMove: new (0, $j3ukw.Move)(msg[2]),
+                    quantumMove: new (0, $OIFGm.Move)(msg[2]),
                     order: order
                 });
             }
@@ -4002,4 +4002,4 @@ var $8b6d1a029267225c$export$f852f67da918687b = class {
 });
 
 
-//# sourceMappingURL=puzzle-geometry.4baeac1b.js.map
+//# sourceMappingURL=puzzle-geometry.6a169758.js.map

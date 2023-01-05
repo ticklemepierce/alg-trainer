@@ -4,9 +4,8 @@
     "display": "R U2 R2 F R F' U2 R' F R F'",
     "filters": {},
     "image": {
-      "puzzle": {
-        "case": "R U2 R2 F R F' U2 R' F R F'"
-      }
+      "alg": "R U2 R2 F R F' U2 R' F R F'",
+      "visualization": "experimental-2D-LL"
     },
     "solutions": [
       "R U2 R2 F R F' U2 R' F R F'",
@@ -96,9 +95,8 @@
     "display": "F R U R' U' S R U R' U' f'",
     "filters": {},
     "image": {
-      "puzzle": {
-        "case": "F R U R' U' S R U R' U' f'"
-      }
+      "alg": "F R U R' U' S R U R' U' f'",
+      "visualization": "experimental-2D-LL"
     },
     "solutions": [
       "y r U r' U2 R U2 R' U2 r U' r'",
@@ -189,9 +187,8 @@
     "display": "r' R2 U R' U r U2 r' U R' r",
     "filters": {},
     "image": {
-      "puzzle": {
-        "case": "r' R2 U R' U r U2 r' U R' r"
-      }
+      "alg": "r' R2 U R' U r U2 r' U R' r",
+      "visualization": "experimental-2D-LL"
     },
     "solutions": [
       "r' R2 U R' U r U2 r' U R' r",
@@ -281,9 +278,8 @@
     "display": "r' R U' r U2 r' U' R U' R2 r",
     "filters": {},
     "image": {
-      "puzzle": {
-        "case": "r' R U' r U2 r' U' R U' R2 r"
-      }
+      "alg": "r' R U' r U2 r' U' R U' R2 r",
+      "visualization": "experimental-2D-LL"
     },
     "solutions": [
       "r' R U' r U2 r' U' R U' R2 r",
@@ -374,9 +370,8 @@
     "display": "r' U2 R U R' U r",
     "filters": {},
     "image": {
-      "puzzle": {
-        "case": "r' U2 R U R' U r"
-      }
+      "alg": "r' U2 R U R' U r",
+      "visualization": "experimental-2D-LL"
     },
     "solutions": ["r' U2 R U R' U r", "y2 l' U2 L U L' U l"],
     "setups": [
@@ -464,9 +459,8 @@
     "display": "r U2 R' U' R U' r'",
     "filters": {},
     "image": {
-      "puzzle": {
-        "case": "r U2 R' U' R U' r'"
-      }
+      "alg": "r U2 R' U' R U' r'",
+      "visualization": "experimental-2D-LL"
     },
     "solutions": ["r U2 R' U' R U' r'"],
     "setups": [
@@ -553,9 +547,8 @@
     "display": "r U R' U R U2 r'",
     "filters": {},
     "image": {
-      "puzzle": {
-        "case": "r U R' U R U2 r'"
-      }
+      "alg": "r U R' U R U2 r'",
+      "visualization": "experimental-2D-LL"
     },
     "solutions": ["r U R' U R U2 r'"],
     "setups": [
@@ -641,9 +634,8 @@
     "display": "r' U' R U' R' U2 r",
     "filters": {},
     "image": {
-      "puzzle": {
-        "case": "r' U' R U' R' U2 r"
-      }
+      "alg": "r' U' R U' R' U2 r",
+      "visualization": "experimental-2D-LL"
     },
     "solutions": ["r' U' R U' R' U2 r", "y2 l' U' L U' L' U2 l"],
     "setups": [
@@ -730,9 +722,8 @@
     "display": "R U R' U' R' F R2 U R' U' F'",
     "filters": {},
     "image": {
-      "puzzle": {
-        "case": "R U R' U' R' F R2 U R' U' F'"
-      }
+      "alg": "R U R' U' R' F R2 U R' U' F'",
+      "visualization": "experimental-2D-LL"
     },
     "solutions": [
       "R U R' U' R' F R2 U R' U' F'",
@@ -821,9 +812,8 @@
     "display": "r U R' U R U' R' U' r' R U R U' R'",
     "filters": {},
     "image": {
-      "puzzle": {
-        "case": "r U R' U R U' R' U' r' R U R U' R'"
-      }
+      "alg": "r U R' U R U' R' U' r' R U R U' R'",
+      "visualization": "experimental-2D-LL"
     },
     "solutions": [
       "r U R' U R U' R' U' r' R U R U' R'",

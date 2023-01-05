@@ -13377,1499 +13377,9 @@ var $d9b4f2a629faf236$export$2e2bcd8739ae039 = (0, $38i2Y.default);
 
 
 
-parcelRequire.register("3eSN5", function(module, exports) {
-/**
- * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash modularize exports="npm" -o ./`
- * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
- * Released under MIT license <https://lodash.com/license>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- */ /** Used as the size to enable large array optimizations. */ var LARGE_ARRAY_SIZE = 200;
-/** Used to stand-in for `undefined` hash values. */ var HASH_UNDEFINED = "__lodash_hash_undefined__";
-/** Used to detect hot functions by number of calls within a span of milliseconds. */ var HOT_COUNT = 800, HOT_SPAN = 16;
-/** Used as references for various `Number` constants. */ var MAX_SAFE_INTEGER = 9007199254740991;
-/** `Object#toString` result references. */ var argsTag = "[object Arguments]", arrayTag = "[object Array]", asyncTag = "[object AsyncFunction]", boolTag = "[object Boolean]", dateTag = "[object Date]", errorTag = "[object Error]", funcTag = "[object Function]", genTag = "[object GeneratorFunction]", mapTag = "[object Map]", numberTag = "[object Number]", nullTag = "[object Null]", objectTag = "[object Object]", proxyTag = "[object Proxy]", regexpTag = "[object RegExp]", setTag = "[object Set]", stringTag = "[object String]", undefinedTag = "[object Undefined]", weakMapTag = "[object WeakMap]";
-var arrayBufferTag = "[object ArrayBuffer]", dataViewTag = "[object DataView]", float32Tag = "[object Float32Array]", float64Tag = "[object Float64Array]", int8Tag = "[object Int8Array]", int16Tag = "[object Int16Array]", int32Tag = "[object Int32Array]", uint8Tag = "[object Uint8Array]", uint8ClampedTag = "[object Uint8ClampedArray]", uint16Tag = "[object Uint16Array]", uint32Tag = "[object Uint32Array]";
-/**
- * Used to match `RegExp`
- * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
- */ var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-/** Used to detect host constructors (Safari). */ var reIsHostCtor = /^\[object .+?Constructor\]$/;
-/** Used to detect unsigned integer values. */ var reIsUint = /^(?:0|[1-9]\d*)$/;
-/** Used to identify `toStringTag` values of typed arrays. */ var typedArrayTags = {};
-typedArrayTags[float32Tag] = typedArrayTags[float64Tag] = typedArrayTags[int8Tag] = typedArrayTags[int16Tag] = typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] = typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] = typedArrayTags[uint32Tag] = true;
-typedArrayTags[argsTag] = typedArrayTags[arrayTag] = typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] = typedArrayTags[dataViewTag] = typedArrayTags[dateTag] = typedArrayTags[errorTag] = typedArrayTags[funcTag] = typedArrayTags[mapTag] = typedArrayTags[numberTag] = typedArrayTags[objectTag] = typedArrayTags[regexpTag] = typedArrayTags[setTag] = typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
-/** Detect free variable `global` from Node.js. */ var freeGlobal = typeof $parcel$global == "object" && $parcel$global && $parcel$global.Object === Object && $parcel$global;
-/** Detect free variable `self`. */ var freeSelf = typeof self == "object" && self && self.Object === Object && self;
-/** Used as a reference to the global object. */ var root = freeGlobal || freeSelf || Function("return this")();
-/** Detect free variable `exports`. */ var freeExports = exports && !exports.nodeType && exports;
-/** Detect free variable `module`. */ var freeModule = freeExports && true && module && !module.nodeType && module;
-/** Detect the popular CommonJS extension `module.exports`. */ var moduleExports = freeModule && freeModule.exports === freeExports;
-/** Detect free variable `process` from Node.js. */ var freeProcess = moduleExports && freeGlobal.process;
-/** Used to access faster Node.js helpers. */ var nodeUtil = function() {
-    try {
-        // Use `util.types` for Node.js 10+.
-        var types = freeModule && freeModule.require && freeModule.require("util").types;
-        if (types) return types;
-        // Legacy `process.binding('util')` for Node.js < 10.
-        return freeProcess && freeProcess.binding && freeProcess.binding("util");
-    } catch (e) {}
-}();
-/* Node.js helper references. */ var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
-/**
- * A faster alternative to `Function#apply`, this function invokes `func`
- * with the `this` binding of `thisArg` and the arguments of `args`.
- *
- * @private
- * @param {Function} func The function to invoke.
- * @param {*} thisArg The `this` binding of `func`.
- * @param {Array} args The arguments to invoke `func` with.
- * @returns {*} Returns the result of `func`.
- */ function apply(func, thisArg, args) {
-    switch(args.length){
-        case 0:
-            return func.call(thisArg);
-        case 1:
-            return func.call(thisArg, args[0]);
-        case 2:
-            return func.call(thisArg, args[0], args[1]);
-        case 3:
-            return func.call(thisArg, args[0], args[1], args[2]);
-    }
-    return func.apply(thisArg, args);
-}
-/**
- * The base implementation of `_.times` without support for iteratee shorthands
- * or max array length checks.
- *
- * @private
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- */ function baseTimes(n, iteratee) {
-    var index = -1, result = Array(n);
-    while(++index < n)result[index] = iteratee(index);
-    return result;
-}
-/**
- * The base implementation of `_.unary` without support for storing metadata.
- *
- * @private
- * @param {Function} func The function to cap arguments for.
- * @returns {Function} Returns the new capped function.
- */ function baseUnary(func) {
-    return function(value) {
-        return func(value);
-    };
-}
-/**
- * Gets the value at `key` of `object`.
- *
- * @private
- * @param {Object} [object] The object to query.
- * @param {string} key The key of the property to get.
- * @returns {*} Returns the property value.
- */ function getValue(object, key) {
-    return object == null ? undefined : object[key];
-}
-/**
- * Creates a unary function that invokes `func` with its argument transformed.
- *
- * @private
- * @param {Function} func The function to wrap.
- * @param {Function} transform The argument transform.
- * @returns {Function} Returns the new function.
- */ function overArg(func, transform) {
-    return function(arg) {
-        return func(transform(arg));
-    };
-}
-/** Used for built-in method references. */ var arrayProto = Array.prototype, funcProto = Function.prototype, objectProto = Object.prototype;
-/** Used to detect overreaching core-js shims. */ var coreJsData = root["__core-js_shared__"];
-/** Used to resolve the decompiled source of functions. */ var funcToString = funcProto.toString;
-/** Used to check objects for own properties. */ var hasOwnProperty = objectProto.hasOwnProperty;
-/** Used to detect methods masquerading as native. */ var maskSrcKey = function() {
-    var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || "");
-    return uid ? "Symbol(src)_1." + uid : "";
-}();
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */ var nativeObjectToString = objectProto.toString;
-/** Used to infer the `Object` constructor. */ var objectCtorString = funcToString.call(Object);
-/** Used to detect if a method is native. */ var reIsNative = RegExp("^" + funcToString.call(hasOwnProperty).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$");
-/** Built-in value references. */ var Buffer = moduleExports ? root.Buffer : undefined, Symbol = root.Symbol, Uint8Array = root.Uint8Array, allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined, getPrototype = overArg(Object.getPrototypeOf, Object), objectCreate = Object.create, propertyIsEnumerable = objectProto.propertyIsEnumerable, splice = arrayProto.splice, symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-var defineProperty = function() {
-    try {
-        var func = getNative(Object, "defineProperty");
-        func({}, "", {});
-        return func;
-    } catch (e) {}
-}();
-/* Built-in method references for those with the same name as other `lodash` methods. */ var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined, nativeMax = Math.max, nativeNow = Date.now;
-/* Built-in method references that are verified to be native. */ var Map = getNative(root, "Map"), nativeCreate = getNative(Object, "create");
-/**
- * The base implementation of `_.create` without support for assigning
- * properties to the created object.
- *
- * @private
- * @param {Object} proto The object to inherit from.
- * @returns {Object} Returns the new object.
- */ var baseCreate = function() {
-    function object() {}
-    return function(proto) {
-        if (!isObject(proto)) return {};
-        if (objectCreate) return objectCreate(proto);
-        object.prototype = proto;
-        var result = new object;
-        object.prototype = undefined;
-        return result;
-    };
-}();
-/**
- * Creates a hash object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */ function Hash(entries) {
-    var index = -1, length = entries == null ? 0 : entries.length;
-    this.clear();
-    while(++index < length){
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
-}
-/**
- * Removes all key-value entries from the hash.
- *
- * @private
- * @name clear
- * @memberOf Hash
- */ function hashClear() {
-    this.__data__ = nativeCreate ? nativeCreate(null) : {};
-    this.size = 0;
-}
-/**
- * Removes `key` and its value from the hash.
- *
- * @private
- * @name delete
- * @memberOf Hash
- * @param {Object} hash The hash to modify.
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */ function hashDelete(key) {
-    var result = this.has(key) && delete this.__data__[key];
-    this.size -= result ? 1 : 0;
-    return result;
-}
-/**
- * Gets the hash value for `key`.
- *
- * @private
- * @name get
- * @memberOf Hash
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */ function hashGet(key) {
-    var data = this.__data__;
-    if (nativeCreate) {
-        var result = data[key];
-        return result === HASH_UNDEFINED ? undefined : result;
-    }
-    return hasOwnProperty.call(data, key) ? data[key] : undefined;
-}
-/**
- * Checks if a hash value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Hash
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */ function hashHas(key) {
-    var data = this.__data__;
-    return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
-}
-/**
- * Sets the hash `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Hash
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the hash instance.
- */ function hashSet(key, value) {
-    var data = this.__data__;
-    this.size += this.has(key) ? 0 : 1;
-    data[key] = nativeCreate && value === undefined ? HASH_UNDEFINED : value;
-    return this;
-}
-// Add methods to `Hash`.
-Hash.prototype.clear = hashClear;
-Hash.prototype["delete"] = hashDelete;
-Hash.prototype.get = hashGet;
-Hash.prototype.has = hashHas;
-Hash.prototype.set = hashSet;
-/**
- * Creates an list cache object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */ function ListCache(entries) {
-    var index = -1, length = entries == null ? 0 : entries.length;
-    this.clear();
-    while(++index < length){
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
-}
-/**
- * Removes all key-value entries from the list cache.
- *
- * @private
- * @name clear
- * @memberOf ListCache
- */ function listCacheClear() {
-    this.__data__ = [];
-    this.size = 0;
-}
-/**
- * Removes `key` and its value from the list cache.
- *
- * @private
- * @name delete
- * @memberOf ListCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */ function listCacheDelete(key) {
-    var data = this.__data__, index = assocIndexOf(data, key);
-    if (index < 0) return false;
-    var lastIndex = data.length - 1;
-    if (index == lastIndex) data.pop();
-    else splice.call(data, index, 1);
-    --this.size;
-    return true;
-}
-/**
- * Gets the list cache value for `key`.
- *
- * @private
- * @name get
- * @memberOf ListCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */ function listCacheGet(key) {
-    var data = this.__data__, index = assocIndexOf(data, key);
-    return index < 0 ? undefined : data[index][1];
-}
-/**
- * Checks if a list cache value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf ListCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */ function listCacheHas(key) {
-    return assocIndexOf(this.__data__, key) > -1;
-}
-/**
- * Sets the list cache `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf ListCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the list cache instance.
- */ function listCacheSet(key, value) {
-    var data = this.__data__, index = assocIndexOf(data, key);
-    if (index < 0) {
-        ++this.size;
-        data.push([
-            key,
-            value
-        ]);
-    } else data[index][1] = value;
-    return this;
-}
-// Add methods to `ListCache`.
-ListCache.prototype.clear = listCacheClear;
-ListCache.prototype["delete"] = listCacheDelete;
-ListCache.prototype.get = listCacheGet;
-ListCache.prototype.has = listCacheHas;
-ListCache.prototype.set = listCacheSet;
-/**
- * Creates a map cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */ function MapCache(entries) {
-    var index = -1, length = entries == null ? 0 : entries.length;
-    this.clear();
-    while(++index < length){
-        var entry = entries[index];
-        this.set(entry[0], entry[1]);
-    }
-}
-/**
- * Removes all key-value entries from the map.
- *
- * @private
- * @name clear
- * @memberOf MapCache
- */ function mapCacheClear() {
-    this.size = 0;
-    this.__data__ = {
-        "hash": new Hash,
-        "map": new (Map || ListCache),
-        "string": new Hash
-    };
-}
-/**
- * Removes `key` and its value from the map.
- *
- * @private
- * @name delete
- * @memberOf MapCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */ function mapCacheDelete(key) {
-    var result = getMapData(this, key)["delete"](key);
-    this.size -= result ? 1 : 0;
-    return result;
-}
-/**
- * Gets the map value for `key`.
- *
- * @private
- * @name get
- * @memberOf MapCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */ function mapCacheGet(key) {
-    return getMapData(this, key).get(key);
-}
-/**
- * Checks if a map value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf MapCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */ function mapCacheHas(key) {
-    return getMapData(this, key).has(key);
-}
-/**
- * Sets the map `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf MapCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the map cache instance.
- */ function mapCacheSet(key, value) {
-    var data = getMapData(this, key), size = data.size;
-    data.set(key, value);
-    this.size += data.size == size ? 0 : 1;
-    return this;
-}
-// Add methods to `MapCache`.
-MapCache.prototype.clear = mapCacheClear;
-MapCache.prototype["delete"] = mapCacheDelete;
-MapCache.prototype.get = mapCacheGet;
-MapCache.prototype.has = mapCacheHas;
-MapCache.prototype.set = mapCacheSet;
-/**
- * Creates a stack cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */ function Stack(entries) {
-    var data = this.__data__ = new ListCache(entries);
-    this.size = data.size;
-}
-/**
- * Removes all key-value entries from the stack.
- *
- * @private
- * @name clear
- * @memberOf Stack
- */ function stackClear() {
-    this.__data__ = new ListCache;
-    this.size = 0;
-}
-/**
- * Removes `key` and its value from the stack.
- *
- * @private
- * @name delete
- * @memberOf Stack
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */ function stackDelete(key) {
-    var data = this.__data__, result = data["delete"](key);
-    this.size = data.size;
-    return result;
-}
-/**
- * Gets the stack value for `key`.
- *
- * @private
- * @name get
- * @memberOf Stack
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */ function stackGet(key) {
-    return this.__data__.get(key);
-}
-/**
- * Checks if a stack value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Stack
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */ function stackHas(key) {
-    return this.__data__.has(key);
-}
-/**
- * Sets the stack `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Stack
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the stack cache instance.
- */ function stackSet(key, value) {
-    var data = this.__data__;
-    if (data instanceof ListCache) {
-        var pairs = data.__data__;
-        if (!Map || pairs.length < LARGE_ARRAY_SIZE - 1) {
-            pairs.push([
-                key,
-                value
-            ]);
-            this.size = ++data.size;
-            return this;
-        }
-        data = this.__data__ = new MapCache(pairs);
-    }
-    data.set(key, value);
-    this.size = data.size;
-    return this;
-}
-// Add methods to `Stack`.
-Stack.prototype.clear = stackClear;
-Stack.prototype["delete"] = stackDelete;
-Stack.prototype.get = stackGet;
-Stack.prototype.has = stackHas;
-Stack.prototype.set = stackSet;
-/**
- * Creates an array of the enumerable property names of the array-like `value`.
- *
- * @private
- * @param {*} value The value to query.
- * @param {boolean} inherited Specify returning inherited property names.
- * @returns {Array} Returns the array of property names.
- */ function arrayLikeKeys(value, inherited) {
-    var isArr = isArray(value), isArg = !isArr && isArguments(value), isBuff = !isArr && !isArg && isBuffer(value), isType = !isArr && !isArg && !isBuff && isTypedArray(value), skipIndexes = isArr || isArg || isBuff || isType, result = skipIndexes ? baseTimes(value.length, String) : [], length = result.length;
-    for(var key in value)if ((inherited || hasOwnProperty.call(value, key)) && !(skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
-    (key == "length" || isBuff && (key == "offset" || key == "parent") || isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || // Skip index properties.
-    isIndex(key, length)))) result.push(key);
-    return result;
-}
-/**
- * This function is like `assignValue` except that it doesn't assign
- * `undefined` values.
- *
- * @private
- * @param {Object} object The object to modify.
- * @param {string} key The key of the property to assign.
- * @param {*} value The value to assign.
- */ function assignMergeValue(object, key, value) {
-    if (value !== undefined && !eq(object[key], value) || value === undefined && !(key in object)) baseAssignValue(object, key, value);
-}
-/**
- * Assigns `value` to `key` of `object` if the existing value is not equivalent
- * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * for equality comparisons.
- *
- * @private
- * @param {Object} object The object to modify.
- * @param {string} key The key of the property to assign.
- * @param {*} value The value to assign.
- */ function assignValue(object, key, value) {
-    var objValue = object[key];
-    if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) || value === undefined && !(key in object)) baseAssignValue(object, key, value);
-}
-/**
- * Gets the index at which the `key` is found in `array` of key-value pairs.
- *
- * @private
- * @param {Array} array The array to inspect.
- * @param {*} key The key to search for.
- * @returns {number} Returns the index of the matched value, else `-1`.
- */ function assocIndexOf(array, key) {
-    var length = array.length;
-    while(length--){
-        if (eq(array[length][0], key)) return length;
-    }
-    return -1;
-}
-/**
- * The base implementation of `assignValue` and `assignMergeValue` without
- * value checks.
- *
- * @private
- * @param {Object} object The object to modify.
- * @param {string} key The key of the property to assign.
- * @param {*} value The value to assign.
- */ function baseAssignValue(object, key, value) {
-    if (key == "__proto__" && defineProperty) defineProperty(object, key, {
-        "configurable": true,
-        "enumerable": true,
-        "value": value,
-        "writable": true
-    });
-    else object[key] = value;
-}
-/**
- * The base implementation of `baseForOwn` which iterates over `object`
- * properties returned by `keysFunc` and invokes `iteratee` for each property.
- * Iteratee functions may exit iteration early by explicitly returning `false`.
- *
- * @private
- * @param {Object} object The object to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @param {Function} keysFunc The function to get the keys of `object`.
- * @returns {Object} Returns `object`.
- */ var baseFor = createBaseFor();
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */ function baseGetTag(value) {
-    if (value == null) return value === undefined ? undefinedTag : nullTag;
-    return symToStringTag && symToStringTag in Object(value) ? getRawTag(value) : objectToString(value);
-}
-/**
- * The base implementation of `_.isArguments`.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- */ function baseIsArguments(value) {
-    return isObjectLike(value) && baseGetTag(value) == argsTag;
-}
-/**
- * The base implementation of `_.isNative` without bad shim checks.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a native function,
- *  else `false`.
- */ function baseIsNative(value) {
-    if (!isObject(value) || isMasked(value)) return false;
-    var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
-    return pattern.test(toSource(value));
-}
-/**
- * The base implementation of `_.isTypedArray` without Node.js optimizations.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- */ function baseIsTypedArray(value) {
-    return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[baseGetTag(value)];
-}
-/**
- * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- */ function baseKeysIn(object) {
-    if (!isObject(object)) return nativeKeysIn(object);
-    var isProto = isPrototype(object), result = [];
-    for(var key in object)if (!(key == "constructor" && (isProto || !hasOwnProperty.call(object, key)))) result.push(key);
-    return result;
-}
-/**
- * The base implementation of `_.merge` without support for multiple sources.
- *
- * @private
- * @param {Object} object The destination object.
- * @param {Object} source The source object.
- * @param {number} srcIndex The index of `source`.
- * @param {Function} [customizer] The function to customize merged values.
- * @param {Object} [stack] Tracks traversed source values and their merged
- *  counterparts.
- */ function baseMerge(object, source, srcIndex, customizer, stack) {
-    if (object === source) return;
-    baseFor(source, function(srcValue, key) {
-        stack || (stack = new Stack);
-        if (isObject(srcValue)) baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
-        else {
-            var newValue = customizer ? customizer(safeGet(object, key), srcValue, key + "", object, source, stack) : undefined;
-            if (newValue === undefined) newValue = srcValue;
-            assignMergeValue(object, key, newValue);
-        }
-    }, keysIn);
-}
-/**
- * A specialized version of `baseMerge` for arrays and objects which performs
- * deep merges and tracks traversed objects enabling objects with circular
- * references to be merged.
- *
- * @private
- * @param {Object} object The destination object.
- * @param {Object} source The source object.
- * @param {string} key The key of the value to merge.
- * @param {number} srcIndex The index of `source`.
- * @param {Function} mergeFunc The function to merge values.
- * @param {Function} [customizer] The function to customize assigned values.
- * @param {Object} [stack] Tracks traversed source values and their merged
- *  counterparts.
- */ function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {
-    var objValue = safeGet(object, key), srcValue = safeGet(source, key), stacked = stack.get(srcValue);
-    if (stacked) {
-        assignMergeValue(object, key, stacked);
-        return;
-    }
-    var newValue = customizer ? customizer(objValue, srcValue, key + "", object, source, stack) : undefined;
-    var isCommon = newValue === undefined;
-    if (isCommon) {
-        var isArr = isArray(srcValue), isBuff = !isArr && isBuffer(srcValue), isTyped = !isArr && !isBuff && isTypedArray(srcValue);
-        newValue = srcValue;
-        if (isArr || isBuff || isTyped) {
-            if (isArray(objValue)) newValue = objValue;
-            else if (isArrayLikeObject(objValue)) newValue = copyArray(objValue);
-            else if (isBuff) {
-                isCommon = false;
-                newValue = cloneBuffer(srcValue, true);
-            } else if (isTyped) {
-                isCommon = false;
-                newValue = cloneTypedArray(srcValue, true);
-            } else newValue = [];
-        } else if (isPlainObject(srcValue) || isArguments(srcValue)) {
-            newValue = objValue;
-            if (isArguments(objValue)) newValue = toPlainObject(objValue);
-            else if (!isObject(objValue) || isFunction(objValue)) newValue = initCloneObject(srcValue);
-        } else isCommon = false;
-    }
-    if (isCommon) {
-        // Recursively merge objects and arrays (susceptible to call stack limits).
-        stack.set(srcValue, newValue);
-        mergeFunc(newValue, srcValue, srcIndex, customizer, stack);
-        stack["delete"](srcValue);
-    }
-    assignMergeValue(object, key, newValue);
-}
-/**
- * The base implementation of `_.rest` which doesn't validate or coerce arguments.
- *
- * @private
- * @param {Function} func The function to apply a rest parameter to.
- * @param {number} [start=func.length-1] The start position of the rest parameter.
- * @returns {Function} Returns the new function.
- */ function baseRest(func, start) {
-    return setToString(overRest(func, start, identity), func + "");
-}
-/**
- * The base implementation of `setToString` without support for hot loop shorting.
- *
- * @private
- * @param {Function} func The function to modify.
- * @param {Function} string The `toString` result.
- * @returns {Function} Returns `func`.
- */ var baseSetToString = !defineProperty ? identity : function(func, string) {
-    return defineProperty(func, "toString", {
-        "configurable": true,
-        "enumerable": false,
-        "value": constant(string),
-        "writable": true
-    });
-};
-/**
- * Creates a clone of  `buffer`.
- *
- * @private
- * @param {Buffer} buffer The buffer to clone.
- * @param {boolean} [isDeep] Specify a deep clone.
- * @returns {Buffer} Returns the cloned buffer.
- */ function cloneBuffer(buffer, isDeep) {
-    if (isDeep) return buffer.slice();
-    var length = buffer.length, result = allocUnsafe ? allocUnsafe(length) : new buffer.constructor(length);
-    buffer.copy(result);
-    return result;
-}
-/**
- * Creates a clone of `arrayBuffer`.
- *
- * @private
- * @param {ArrayBuffer} arrayBuffer The array buffer to clone.
- * @returns {ArrayBuffer} Returns the cloned array buffer.
- */ function cloneArrayBuffer(arrayBuffer) {
-    var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
-    new Uint8Array(result).set(new Uint8Array(arrayBuffer));
-    return result;
-}
-/**
- * Creates a clone of `typedArray`.
- *
- * @private
- * @param {Object} typedArray The typed array to clone.
- * @param {boolean} [isDeep] Specify a deep clone.
- * @returns {Object} Returns the cloned typed array.
- */ function cloneTypedArray(typedArray, isDeep) {
-    var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
-    return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
-}
-/**
- * Copies the values of `source` to `array`.
- *
- * @private
- * @param {Array} source The array to copy values from.
- * @param {Array} [array=[]] The array to copy values to.
- * @returns {Array} Returns `array`.
- */ function copyArray(source, array) {
-    var index = -1, length = source.length;
-    array || (array = Array(length));
-    while(++index < length)array[index] = source[index];
-    return array;
-}
-/**
- * Copies properties of `source` to `object`.
- *
- * @private
- * @param {Object} source The object to copy properties from.
- * @param {Array} props The property identifiers to copy.
- * @param {Object} [object={}] The object to copy properties to.
- * @param {Function} [customizer] The function to customize copied values.
- * @returns {Object} Returns `object`.
- */ function copyObject(source, props, object, customizer) {
-    var isNew = !object;
-    object || (object = {});
-    var index = -1, length = props.length;
-    while(++index < length){
-        var key = props[index];
-        var newValue = customizer ? customizer(object[key], source[key], key, object, source) : undefined;
-        if (newValue === undefined) newValue = source[key];
-        if (isNew) baseAssignValue(object, key, newValue);
-        else assignValue(object, key, newValue);
-    }
-    return object;
-}
-/**
- * Creates a function like `_.assign`.
- *
- * @private
- * @param {Function} assigner The function to assign values.
- * @returns {Function} Returns the new assigner function.
- */ function createAssigner(assigner) {
-    return baseRest(function(object, sources) {
-        var index = -1, length = sources.length, customizer = length > 1 ? sources[length - 1] : undefined, guard = length > 2 ? sources[2] : undefined;
-        customizer = assigner.length > 3 && typeof customizer == "function" ? (length--, customizer) : undefined;
-        if (guard && isIterateeCall(sources[0], sources[1], guard)) {
-            customizer = length < 3 ? undefined : customizer;
-            length = 1;
-        }
-        object = Object(object);
-        while(++index < length){
-            var source = sources[index];
-            if (source) assigner(object, source, index, customizer);
-        }
-        return object;
-    });
-}
-/**
- * Creates a base function for methods like `_.forIn` and `_.forOwn`.
- *
- * @private
- * @param {boolean} [fromRight] Specify iterating from right to left.
- * @returns {Function} Returns the new base function.
- */ function createBaseFor(fromRight) {
-    return function(object, iteratee, keysFunc) {
-        var index = -1, iterable = Object(object), props = keysFunc(object), length = props.length;
-        while(length--){
-            var key = props[fromRight ? length : ++index];
-            if (iteratee(iterable[key], key, iterable) === false) break;
-        }
-        return object;
-    };
-}
-/**
- * Gets the data for `map`.
- *
- * @private
- * @param {Object} map The map to query.
- * @param {string} key The reference key.
- * @returns {*} Returns the map data.
- */ function getMapData(map, key) {
-    var data = map.__data__;
-    return isKeyable(key) ? data[typeof key == "string" ? "string" : "hash"] : data.map;
-}
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */ function getNative(object, key) {
-    var value = getValue(object, key);
-    return baseIsNative(value) ? value : undefined;
-}
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */ function getRawTag(value) {
-    var isOwn = hasOwnProperty.call(value, symToStringTag), tag = value[symToStringTag];
-    try {
-        value[symToStringTag] = undefined;
-        var unmasked = true;
-    } catch (e) {}
-    var result = nativeObjectToString.call(value);
-    if (unmasked) {
-        if (isOwn) value[symToStringTag] = tag;
-        else delete value[symToStringTag];
-    }
-    return result;
-}
-/**
- * Initializes an object clone.
- *
- * @private
- * @param {Object} object The object to clone.
- * @returns {Object} Returns the initialized clone.
- */ function initCloneObject(object) {
-    return typeof object.constructor == "function" && !isPrototype(object) ? baseCreate(getPrototype(object)) : {};
-}
-/**
- * Checks if `value` is a valid array-like index.
- *
- * @private
- * @param {*} value The value to check.
- * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
- * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
- */ function isIndex(value, length) {
-    var type = typeof value;
-    length = length == null ? MAX_SAFE_INTEGER : length;
-    return !!length && (type == "number" || type != "symbol" && reIsUint.test(value)) && value > -1 && value % 1 == 0 && value < length;
-}
-/**
- * Checks if the given arguments are from an iteratee call.
- *
- * @private
- * @param {*} value The potential iteratee value argument.
- * @param {*} index The potential iteratee index or key argument.
- * @param {*} object The potential iteratee object argument.
- * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
- *  else `false`.
- */ function isIterateeCall(value, index, object) {
-    if (!isObject(object)) return false;
-    var type = typeof index;
-    if (type == "number" ? isArrayLike(object) && isIndex(index, object.length) : type == "string" && index in object) return eq(object[index], value);
-    return false;
-}
-/**
- * Checks if `value` is suitable for use as unique object key.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
- */ function isKeyable(value) {
-    var type = typeof value;
-    return type == "string" || type == "number" || type == "symbol" || type == "boolean" ? value !== "__proto__" : value === null;
-}
-/**
- * Checks if `func` has its source masked.
- *
- * @private
- * @param {Function} func The function to check.
- * @returns {boolean} Returns `true` if `func` is masked, else `false`.
- */ function isMasked(func) {
-    return !!maskSrcKey && maskSrcKey in func;
-}
-/**
- * Checks if `value` is likely a prototype object.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
- */ function isPrototype(value) {
-    var Ctor = value && value.constructor, proto = typeof Ctor == "function" && Ctor.prototype || objectProto;
-    return value === proto;
-}
-/**
- * This function is like
- * [`Object.keys`](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
- * except that it includes inherited enumerable properties.
- *
- * @private
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- */ function nativeKeysIn(object) {
-    var result = [];
-    if (object != null) for(var key in Object(object))result.push(key);
-    return result;
-}
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */ function objectToString(value) {
-    return nativeObjectToString.call(value);
-}
-/**
- * A specialized version of `baseRest` which transforms the rest array.
- *
- * @private
- * @param {Function} func The function to apply a rest parameter to.
- * @param {number} [start=func.length-1] The start position of the rest parameter.
- * @param {Function} transform The rest array transform.
- * @returns {Function} Returns the new function.
- */ function overRest(func, start, transform) {
-    start = nativeMax(start === undefined ? func.length - 1 : start, 0);
-    return function() {
-        var args = arguments, index = -1, length = nativeMax(args.length - start, 0), array = Array(length);
-        while(++index < length)array[index] = args[start + index];
-        index = -1;
-        var otherArgs = Array(start + 1);
-        while(++index < start)otherArgs[index] = args[index];
-        otherArgs[start] = transform(array);
-        return apply(func, this, otherArgs);
-    };
-}
-/**
- * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the property to get.
- * @returns {*} Returns the property value.
- */ function safeGet(object, key) {
-    if (key === "constructor" && typeof object[key] === "function") return;
-    if (key == "__proto__") return;
-    return object[key];
-}
-/**
- * Sets the `toString` method of `func` to return `string`.
- *
- * @private
- * @param {Function} func The function to modify.
- * @param {Function} string The `toString` result.
- * @returns {Function} Returns `func`.
- */ var setToString = shortOut(baseSetToString);
-/**
- * Creates a function that'll short out and invoke `identity` instead
- * of `func` when it's called `HOT_COUNT` or more times in `HOT_SPAN`
- * milliseconds.
- *
- * @private
- * @param {Function} func The function to restrict.
- * @returns {Function} Returns the new shortable function.
- */ function shortOut(func) {
-    var count = 0, lastCalled = 0;
-    return function() {
-        var stamp = nativeNow(), remaining = HOT_SPAN - (stamp - lastCalled);
-        lastCalled = stamp;
-        if (remaining > 0) {
-            if (++count >= HOT_COUNT) return arguments[0];
-        } else count = 0;
-        return func.apply(undefined, arguments);
-    };
-}
-/**
- * Converts `func` to its source code.
- *
- * @private
- * @param {Function} func The function to convert.
- * @returns {string} Returns the source code.
- */ function toSource(func) {
-    if (func != null) {
-        try {
-            return funcToString.call(func);
-        } catch (e) {}
-        try {
-            return func + "";
-        } catch (e1) {}
-    }
-    return "";
-}
-/**
- * Performs a
- * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * comparison between two values to determine if they are equivalent.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.eq(object, object);
- * // => true
- *
- * _.eq(object, other);
- * // => false
- *
- * _.eq('a', 'a');
- * // => true
- *
- * _.eq('a', Object('a'));
- * // => false
- *
- * _.eq(NaN, NaN);
- * // => true
- */ function eq(value, other) {
-    return value === other || value !== value && other !== other;
-}
-/**
- * Checks if `value` is likely an `arguments` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- *  else `false`.
- * @example
- *
- * _.isArguments(function() { return arguments; }());
- * // => true
- *
- * _.isArguments([1, 2, 3]);
- * // => false
- */ var isArguments = baseIsArguments(function() {
-    return arguments;
-}()) ? baseIsArguments : function(value) {
-    return isObjectLike(value) && hasOwnProperty.call(value, "callee") && !propertyIsEnumerable.call(value, "callee");
-};
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */ var isArray = Array.isArray;
-/**
- * Checks if `value` is array-like. A value is considered array-like if it's
- * not a function and has a `value.length` that's an integer greater than or
- * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
- * @example
- *
- * _.isArrayLike([1, 2, 3]);
- * // => true
- *
- * _.isArrayLike(document.body.children);
- * // => true
- *
- * _.isArrayLike('abc');
- * // => true
- *
- * _.isArrayLike(_.noop);
- * // => false
- */ function isArrayLike(value) {
-    return value != null && isLength(value.length) && !isFunction(value);
-}
-/**
- * This method is like `_.isArrayLike` except that it also checks if `value`
- * is an object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array-like object,
- *  else `false`.
- * @example
- *
- * _.isArrayLikeObject([1, 2, 3]);
- * // => true
- *
- * _.isArrayLikeObject(document.body.children);
- * // => true
- *
- * _.isArrayLikeObject('abc');
- * // => false
- *
- * _.isArrayLikeObject(_.noop);
- * // => false
- */ function isArrayLikeObject(value) {
-    return isObjectLike(value) && isArrayLike(value);
-}
-/**
- * Checks if `value` is a buffer.
- *
- * @static
- * @memberOf _
- * @since 4.3.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
- * @example
- *
- * _.isBuffer(new Buffer(2));
- * // => true
- *
- * _.isBuffer(new Uint8Array(2));
- * // => false
- */ var isBuffer = nativeIsBuffer || stubFalse;
-/**
- * Checks if `value` is classified as a `Function` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a function, else `false`.
- * @example
- *
- * _.isFunction(_);
- * // => true
- *
- * _.isFunction(/abc/);
- * // => false
- */ function isFunction(value) {
-    if (!isObject(value)) return false;
-    // The use of `Object#toString` avoids issues with the `typeof` operator
-    // in Safari 9 which returns 'object' for typed arrays and other constructors.
-    var tag = baseGetTag(value);
-    return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
-}
-/**
- * Checks if `value` is a valid array-like length.
- *
- * **Note:** This method is loosely based on
- * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
- * @example
- *
- * _.isLength(3);
- * // => true
- *
- * _.isLength(Number.MIN_VALUE);
- * // => false
- *
- * _.isLength(Infinity);
- * // => false
- *
- * _.isLength('3');
- * // => false
- */ function isLength(value) {
-    return typeof value == "number" && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-}
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */ function isObject(value) {
-    var type = typeof value;
-    return value != null && (type == "object" || type == "function");
-}
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */ function isObjectLike(value) {
-    return value != null && typeof value == "object";
-}
-/**
- * Checks if `value` is a plain object, that is, an object created by the
- * `Object` constructor or one with a `[[Prototype]]` of `null`.
- *
- * @static
- * @memberOf _
- * @since 0.8.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- * }
- *
- * _.isPlainObject(new Foo);
- * // => false
- *
- * _.isPlainObject([1, 2, 3]);
- * // => false
- *
- * _.isPlainObject({ 'x': 0, 'y': 0 });
- * // => true
- *
- * _.isPlainObject(Object.create(null));
- * // => true
- */ function isPlainObject(value) {
-    if (!isObjectLike(value) || baseGetTag(value) != objectTag) return false;
-    var proto = getPrototype(value);
-    if (proto === null) return true;
-    var Ctor = hasOwnProperty.call(proto, "constructor") && proto.constructor;
-    return typeof Ctor == "function" && Ctor instanceof Ctor && funcToString.call(Ctor) == objectCtorString;
-}
-/**
- * Checks if `value` is classified as a typed array.
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
- * @example
- *
- * _.isTypedArray(new Uint8Array);
- * // => true
- *
- * _.isTypedArray([]);
- * // => false
- */ var isTypedArray = nodeIsTypedArray ? baseUnary(nodeIsTypedArray) : baseIsTypedArray;
-/**
- * Converts `value` to a plain object flattening inherited enumerable string
- * keyed properties of `value` to own properties of the plain object.
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {Object} Returns the converted plain object.
- * @example
- *
- * function Foo() {
- *   this.b = 2;
- * }
- *
- * Foo.prototype.c = 3;
- *
- * _.assign({ 'a': 1 }, new Foo);
- * // => { 'a': 1, 'b': 2 }
- *
- * _.assign({ 'a': 1 }, _.toPlainObject(new Foo));
- * // => { 'a': 1, 'b': 2, 'c': 3 }
- */ function toPlainObject(value) {
-    return copyObject(value, keysIn(value));
-}
-/**
- * Creates an array of the own and inherited enumerable property names of `object`.
- *
- * **Note:** Non-object values are coerced to objects.
- *
- * @static
- * @memberOf _
- * @since 3.0.0
- * @category Object
- * @param {Object} object The object to query.
- * @returns {Array} Returns the array of property names.
- * @example
- *
- * function Foo() {
- *   this.a = 1;
- *   this.b = 2;
- * }
- *
- * Foo.prototype.c = 3;
- *
- * _.keysIn(new Foo);
- * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
- */ function keysIn(object) {
-    return isArrayLike(object) ? arrayLikeKeys(object, true) : baseKeysIn(object);
-}
-/**
- * This method is like `_.assign` except that it recursively merges own and
- * inherited enumerable string keyed properties of source objects into the
- * destination object. Source properties that resolve to `undefined` are
- * skipped if a destination value exists. Array and plain object properties
- * are merged recursively. Other objects and value types are overridden by
- * assignment. Source objects are applied from left to right. Subsequent
- * sources overwrite property assignments of previous sources.
- *
- * **Note:** This method mutates `object`.
- *
- * @static
- * @memberOf _
- * @since 0.5.0
- * @category Object
- * @param {Object} object The destination object.
- * @param {...Object} [sources] The source objects.
- * @returns {Object} Returns `object`.
- * @example
- *
- * var object = {
- *   'a': [{ 'b': 2 }, { 'd': 4 }]
- * };
- *
- * var other = {
- *   'a': [{ 'c': 3 }, { 'e': 5 }]
- * };
- *
- * _.merge(object, other);
- * // => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
- */ var merge = createAssigner(function(object, source, srcIndex) {
-    baseMerge(object, source, srcIndex);
-});
-/**
- * Creates a function that returns `value`.
- *
- * @static
- * @memberOf _
- * @since 2.4.0
- * @category Util
- * @param {*} value The value to return from the new function.
- * @returns {Function} Returns the new constant function.
- * @example
- *
- * var objects = _.times(2, _.constant({ 'a': 1 }));
- *
- * console.log(objects);
- * // => [{ 'a': 1 }, { 'a': 1 }]
- *
- * console.log(objects[0] === objects[1]);
- * // => true
- */ function constant(value) {
-    return function() {
-        return value;
-    };
-}
-/**
- * This method returns the first argument it receives.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Util
- * @param {*} value Any value.
- * @returns {*} Returns `value`.
- * @example
- *
- * var object = { 'a': 1 };
- *
- * console.log(_.identity(object) === object);
- * // => true
- */ function identity(value) {
-    return value;
-}
-/**
- * This method returns `false`.
- *
- * @static
- * @memberOf _
- * @since 4.13.0
- * @category Util
- * @returns {boolean} Returns `false`.
- * @example
- *
- * _.times(2, _.stubFalse);
- * // => [false, false]
- */ function stubFalse() {
-    return false;
-}
-module.exports = merge;
+var $a808e2bc080ab480$exports = {};
 
-});
-
-var $4f814df9f9385468$exports = {};
-
-(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.b44da51f.js","eXwSi":"puzzle-geometry.4baeac1b.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","3E2W9":"index.7d58d814.js"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"cXnya":"index.71881e6c.js","eXwSi":"puzzle-geometry.6a169758.js","7lsF0":"icon-128.4fddcaaa.png","68BlW":"service-worker.js","2bhfe":"index.25347b38.css","1eRHv":"index.72ea0aa3.js"}'));
 
 
 var $228IU = parcelRequire("228IU");
@@ -28112,7292 +26622,4846 @@ function $7b9bbaa53cb01344$var$warning(cond, message) {
 } //#endregion
 
 
-var $68fd4c41993b3878$export$b3ef12f1067db51f;
-(function(TurnType1) {
-    TurnType1[TurnType1["Clockwise"] = 0] = "Clockwise";
-    TurnType1[TurnType1["CounterClockwise"] = 1] = "CounterClockwise";
-    TurnType1[TurnType1["Double"] = 2] = "Double";
-})($68fd4c41993b3878$export$b3ef12f1067db51f || ($68fd4c41993b3878$export$b3ef12f1067db51f = {}));
 
+var $62nUG = parcelRequire("62nUG");
 
-
-var $124cae5f9b200e70$var$TurnAbbreviation;
-(function(TurnAbbreviation1) {
-    TurnAbbreviation1["Clockwise"] = "";
-    TurnAbbreviation1["CounterClockwise"] = "'";
-    TurnAbbreviation1["Double"] = "2";
-})($124cae5f9b200e70$var$TurnAbbreviation || ($124cae5f9b200e70$var$TurnAbbreviation = {}));
-var $124cae5f9b200e70$export$3732f170b13d5060;
-(function(CubeAlgorithmUnit1) {
-    CubeAlgorithmUnit1["F"] = "F";
-    CubeAlgorithmUnit1["U"] = "U";
-    CubeAlgorithmUnit1["R"] = "R";
-    CubeAlgorithmUnit1["L"] = "L";
-    CubeAlgorithmUnit1["D"] = "D";
-    CubeAlgorithmUnit1["B"] = "B";
-    CubeAlgorithmUnit1["M"] = "M";
-    CubeAlgorithmUnit1["E"] = "E";
-    CubeAlgorithmUnit1["S"] = "S";
-    CubeAlgorithmUnit1["X"] = "x";
-    CubeAlgorithmUnit1["Y"] = "y";
-    CubeAlgorithmUnit1["Z"] = "z";
-})($124cae5f9b200e70$export$3732f170b13d5060 || ($124cae5f9b200e70$export$3732f170b13d5060 = {}));
-const $124cae5f9b200e70$export$5e34703e80cae1b5 = [
-    $124cae5f9b200e70$export$3732f170b13d5060.F,
-    $124cae5f9b200e70$export$3732f170b13d5060.U,
-    $124cae5f9b200e70$export$3732f170b13d5060.R,
-    $124cae5f9b200e70$export$3732f170b13d5060.L,
-    $124cae5f9b200e70$export$3732f170b13d5060.D,
-    $124cae5f9b200e70$export$3732f170b13d5060.B,
-    $124cae5f9b200e70$export$3732f170b13d5060.M,
-    $124cae5f9b200e70$export$3732f170b13d5060.E,
-    $124cae5f9b200e70$export$3732f170b13d5060.S,
-    $124cae5f9b200e70$export$3732f170b13d5060.X,
-    $124cae5f9b200e70$export$3732f170b13d5060.Y,
-    $124cae5f9b200e70$export$3732f170b13d5060.Z, 
-];
-const $124cae5f9b200e70$var$cubeRotations = [
-    $124cae5f9b200e70$export$3732f170b13d5060.X,
-    $124cae5f9b200e70$export$3732f170b13d5060.Y,
-    $124cae5f9b200e70$export$3732f170b13d5060.Z, 
-];
-const $124cae5f9b200e70$var$cubeTurnRegex = /([0-9]+)?([UuFfRrDdLlBbMESxyz])(w)?([2\'])?/g;
-function $124cae5f9b200e70$export$40cd6d717443f0f5(algorithm) {
-    if (!algorithm) return [];
-    let turns = [];
-    let match;
-    while(match = $124cae5f9b200e70$var$cubeTurnRegex.exec(algorithm)){
-        let rawSlices = match[1];
-        let rawFace = match[2];
-        let outerBlockIndicator = match[3];
-        let rawType = match[4] || $124cae5f9b200e70$var$TurnAbbreviation.Clockwise; // Default to clockwise
-        let isLowerCaseMove = rawFace === rawFace.toLowerCase() && $124cae5f9b200e70$var$cubeRotations.indexOf(rawFace) === -1;
-        if (isLowerCaseMove) rawFace = rawFace.toUpperCase();
-        let turn = {
-            unit: $124cae5f9b200e70$var$getMove(rawFace),
-            turnType: $124cae5f9b200e70$var$getTurnType(rawType),
-            slices: isLowerCaseMove ? 2 : $124cae5f9b200e70$var$getSlices(rawSlices, outerBlockIndicator)
-        };
-        turns.push(turn);
+var $OIFGm = parcelRequire("OIFGm");
+// src/cubing/notation/CountMoves.ts
+var $1f99a2124d8d6b11$var$CountMoves = class extends (0, $OIFGm.TraversalUp) {
+    constructor(metric){
+        super();
+        this.metric = metric;
     }
-    return turns;
+    traverseAlg(alg) {
+        let r = 0;
+        for (const algNode of alg.childAlgNodes())r += this.traverseAlgNode(algNode);
+        return r;
+    }
+    traverseGrouping(grouping) {
+        const alg = grouping.alg;
+        return this.traverseAlg(alg) * Math.abs(grouping.amount);
+    }
+    traverseMove(move) {
+        return this.metric(move);
+    }
+    traverseCommutator(commutator) {
+        return 2 * (this.traverseAlg(commutator.A) + this.traverseAlg(commutator.B));
+    }
+    traverseConjugate(conjugate) {
+        return 2 * this.traverseAlg(conjugate.A) + this.traverseAlg(conjugate.B);
+    }
+    traversePause(_pause) {
+        return 0;
+    }
+    traverseNewline(_newLine) {
+        return 0;
+    }
+    traverseLineComment(_comment) {
+        return 0;
+    }
+};
+function $1f99a2124d8d6b11$var$isCharUppercase(c) {
+    return "A" <= c && c <= "Z";
 }
-function $124cae5f9b200e70$var$getSlices(rawSlices, outerBlockIndicator) {
-    if (outerBlockIndicator && !rawSlices) return 2;
-    else if (!outerBlockIndicator && rawSlices) throw new Error(`Invalid move: Cannot specify num slices if outer block move indicator 'w' is not present`);
-    else if (!outerBlockIndicator && !rawSlices) return 1;
-    else {
-        const intValue = parseInt(rawSlices);
-        if (intValue > 1) return intValue;
-        throw new Error(`Invalid outer block move (${intValue}) must be greater than 1`);
+function $1f99a2124d8d6b11$var$baseMetric(move) {
+    const fam = move.family;
+    if ($1f99a2124d8d6b11$var$isCharUppercase(fam[0]) && fam[fam.length - 1] === "v" || fam === "x" || fam === "y" || fam === "z" || fam === "T") return 0;
+    else return 1;
+}
+function $1f99a2124d8d6b11$var$etmMetric(_move) {
+    return 1;
+}
+function $1f99a2124d8d6b11$var$quantumMetric(move) {
+    const fam = move.family;
+    if ($1f99a2124d8d6b11$var$isCharUppercase(fam[0]) && fam[fam.length - 1] === "v" || fam === "x" || fam === "y" || fam === "z" || fam === "T") return 0;
+    else return Math.abs(move.amount);
+}
+var $1f99a2124d8d6b11$export$3bb9ec80d65f79cf = (0, $OIFGm.functionFromTraversal)($1f99a2124d8d6b11$var$CountMoves, [
+    $1f99a2124d8d6b11$var$baseMetric
+]);
+var $1f99a2124d8d6b11$export$6990ae67f1cd4a6c = (0, $OIFGm.functionFromTraversal)($1f99a2124d8d6b11$var$CountMoves, [
+    $1f99a2124d8d6b11$var$etmMetric
+]);
+var $1f99a2124d8d6b11$export$5ea07e609cc3aa95 = (0, $OIFGm.functionFromTraversal)($1f99a2124d8d6b11$var$CountMoves, [
+    $1f99a2124d8d6b11$var$quantumMetric
+]);
+// src/cubing/notation/CountAnimatedLeaves.ts
+var $1f99a2124d8d6b11$var$CountAnimatedLeaves = class extends (0, $OIFGm.TraversalUp) {
+    traverseAlg(alg) {
+        let total = 0;
+        for (const part of alg.childAlgNodes())total += this.traverseAlgNode(part);
+        return total;
     }
-}
-function $124cae5f9b200e70$var$getMove(rawFace) {
-    if ($124cae5f9b200e70$export$5e34703e80cae1b5.indexOf(rawFace) < 0) throw new Error(`Invalid move (${rawFace}): Possible turn faces are [U R F L D B M E S x y z]`);
-    else return rawFace;
-}
-function $124cae5f9b200e70$var$getTurnType(rawType) {
-    switch(rawType){
-        case $124cae5f9b200e70$var$TurnAbbreviation.Clockwise:
-            return (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise;
-        case $124cae5f9b200e70$var$TurnAbbreviation.CounterClockwise:
-            return (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
-        case $124cae5f9b200e70$var$TurnAbbreviation.Double:
-            return (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Double;
-        default:
-            throw new Error(`Invalid move modifier (${rawType})`);
+    traverseGrouping(grouping) {
+        return this.traverseAlg(grouping.alg) * Math.abs(grouping.amount);
     }
-}
+    traverseMove(_move) {
+        return 1;
+    }
+    traverseCommutator(commutator) {
+        return 2 * (this.traverseAlg(commutator.A) + this.traverseAlg(commutator.B));
+    }
+    traverseConjugate(conjugate) {
+        return 2 * this.traverseAlg(conjugate.A) + this.traverseAlg(conjugate.B);
+    }
+    traversePause(_pause) {
+        return 1;
+    }
+    traverseNewline(_newline) {
+        return 0;
+    }
+    traverseLineComment(_comment) {
+        return 0;
+    }
+};
+var $1f99a2124d8d6b11$export$d5ea806fd922b359 = (0, $OIFGm.functionFromTraversal)($1f99a2124d8d6b11$var$CountAnimatedLeaves);
 
 
-class $c7dd1edeefb0d4d3$export$b14c74960ae6f55e {
-    constructor(){
-        this.stickers = new Map();
-        this.faces = new Map();
-        this.turns = new Map();
+
+var $eb9PZ = parcelRequire("eb9PZ");
+
+var $9k9QR = parcelRequire("9k9QR");
+parcelRequire("lV0xh");
+
+var $OIFGm = parcelRequire("OIFGm");
+// src/cubing/twisty/controllers/AnimationTypes.ts
+function $8e08190ac5cfc1c3$var$directionScalar(direction) {
+    return direction;
+}
+// src/cubing/twisty/model/helpers.ts
+function $8e08190ac5cfc1c3$var$arrayEquals(a, b) {
+    if (a === b) return true;
+    if (a.length !== b.length) return false;
+    for(let i = 0; i < a.length; i++){
+        if (a[i] !== b[i]) return false;
     }
-    /**
-     * Adds a face of stickers to the puzzle.
-     *
-     * @param stickers - array of sticker values
-     * @param label - label to reference the face by
-     * @returns object with the faceId and list of sticker ids.
-     *  faceId will be label if that is present. Otherwise it
-     *  will be generated.
-     * @example
-     * ```
-     * const stickers = ['red', 'red', 'red', 'red'];
-     *
-     * // Add the F face
-     * addFace(stickers, 'F')
-     * ```
-     */ addFace(stickers, label) {
-        if (label && this.faces.has(label)) throw `Face ${label} already exists`;
-        else if (!label) label = (this.faces.size + 1).toString();
-        // Add Stickers
-        const stickerIds1 = stickers.reduce((stickerIds, nextSticker)=>{
-            const stickerId = (this.stickers.size + 1).toString();
-            this.stickers.set(stickerId, nextSticker);
-            stickerIds.push(stickerId);
-            return stickerIds;
-        }, []);
-        // Add Face
-        this.faces.set(label, stickerIds1);
-        return {
-            faceId: label,
-            stickerIds: stickerIds1
-        };
+    return true;
+}
+function $8e08190ac5cfc1c3$var$arrayEqualsCompare(a, b, compare) {
+    if (a === b) return true;
+    if (a.length !== b.length) return false;
+    for(let i = 0; i < a.length; i++){
+        if (!compare(a[i], b[i])) return false;
     }
-    /**
-     * Creates a turn definition that tells the simulator
-     * what sticker values to change when turning.
-     *
-     * A change is an array with two sticker ids (ex. ['sticker1', 'sticker2'])
-     * this means that when turning 'sticker1' will go to 'sticker2'.
-     * Or when doing a reverse turn, `sticker2' will go to 'sticker1'
-     *
-     * @param changes - list of turn definitions.
-     * @param label - label to reference the turn by
-     * @returns label of the turn that was created
-     */ addTurn(changes, label) {
-        if (label && this.turns.has(label)) throw `Turn ${label} already exists`;
-        else if (!label) label = (this.turns.size + 1).toString();
-        this.turns.set(label, changes);
-        return label;
+    return true;
+}
+function $8e08190ac5cfc1c3$var$mod(v, m, offset = 0) {
+    return (v % m + m + offset) % m - offset;
+}
+function $8e08190ac5cfc1c3$var$modIntoRange(v, rangeMin, rangeMax) {
+    return $8e08190ac5cfc1c3$var$mod(v - rangeMin, rangeMax - rangeMin) + rangeMin;
+}
+// src/cubing/twisty/controllers/TwistyAnimationController.ts
+var $8e08190ac5cfc1c3$var$CatchUpHelper = class {
+    constructor(model){
+        this.model = model;
+        this.catchingUp = false;
+        this.pendingFrame = false;
+        this.scheduler = new (0, $62nUG.RenderScheduler)(this.animFrame.bind(this));
+        this.catchUpMs = 500;
+        this.lastTimestamp = 0;
     }
-    /**
-     * Executes a turn on the puzzle
-     *
-     * @param label - label of the turn to execute
-     * @param prime - true to do the turn in reverse
-     */ doTurn(label, reverse = false) {
-        const changes = this.turns.get(label);
-        if (!changes) throw `Unknown turn ${label}`;
-        let movingSticker = reverse ? 1 : 0;
-        let replacedSticker = reverse ? 0 : 1;
-        let cached = {};
-        changes.forEach((change)=>{
-            // Cache value we're replacing
-            cached[change[replacedSticker]] = this.stickers.get(change[replacedSticker]);
-            // Update sticker with new value
-            this.stickers.set(change[replacedSticker], cached[change[movingSticker]] || this.stickers.get(change[movingSticker]));
+    start() {
+        if (!this.catchingUp) this.lastTimestamp = performance.now();
+        this.catchingUp = true;
+        this.pendingFrame = true;
+        this.scheduler.requestAnimFrame();
+    }
+    stop() {
+        this.catchingUp = false;
+        this.scheduler.cancelAnimFrame();
+    }
+    animFrame(timestamp) {
+        this.scheduler.requestAnimFrame();
+        const delta = (timestamp - this.lastTimestamp) / this.catchUpMs;
+        this.lastTimestamp = timestamp;
+        this.model.catchUpMove.set((async ()=>{
+            const previousCatchUpMove = await this.model.catchUpMove.get();
+            if (previousCatchUpMove.move === null) return previousCatchUpMove;
+            const amount = previousCatchUpMove.amount + delta;
+            if (amount >= 1) {
+                this.pendingFrame = true;
+                this.stop();
+                this.model.timestampRequest.set("end");
+                return {
+                    move: null,
+                    amount: 0
+                };
+            }
+            this.pendingFrame = false;
+            return {
+                move: previousCatchUpMove.move,
+                amount: amount
+            };
+        })());
+    }
+};
+var $8e08190ac5cfc1c3$var$TwistyAnimationController = class {
+    constructor(model, delegate){
+        this.delegate = delegate;
+        this.playing = false;
+        this.direction = 1 /* Forwards */ ;
+        this.lastDatestamp = 0;
+        this.scheduler = new (0, $62nUG.RenderScheduler)(this.animFrame.bind(this));
+        this.#animFrameEffectiveTimestampStaleDropper = new (0, $62nUG.StaleDropper)();
+        this.model = model;
+        this.lastTimestampPromise = this.#effectiveTimestampMilliseconds();
+        this.model.playingInfo.addFreshListener(this.onPlayingProp.bind(this));
+        this.catchUpHelper = new $8e08190ac5cfc1c3$var$CatchUpHelper(this.model);
+        this.model.catchUpMove.addFreshListener(this.onCatchUpMoveProp.bind(this));
+    }
+    async onPlayingProp(playingInfo) {
+        if (playingInfo.playing !== this.playing) playingInfo.playing ? this.play(playingInfo) : this.pause();
+    }
+    async onCatchUpMoveProp(catchUpMove) {
+        const catchingUp = catchUpMove.move !== null;
+        if (catchingUp !== this.catchUpHelper.catchingUp) catchingUp ? this.catchUpHelper.start() : this.catchUpHelper.stop();
+        this.scheduler.requestAnimFrame();
+    }
+    async #effectiveTimestampMilliseconds() {
+        return (await this.model.detailedTimelineInfo.get()).timestamp;
+    }
+    jumpToStart(options) {
+        this.model.timestampRequest.set("start");
+        this.pause();
+        if (options?.flash) this.delegate.flash();
+    }
+    jumpToEnd(options) {
+        this.model.timestampRequest.set("end");
+        this.pause();
+        if (options?.flash) this.delegate.flash();
+    }
+    playPause() {
+        if (this.playing) this.pause();
+        else this.play();
+    }
+    async play(options) {
+        const direction = options?.direction ?? 1 /* Forwards */ ;
+        const coarseTimelineInfo = await this.model.coarseTimelineInfo.get();
+        if (options?.autoSkipToOtherEndIfStartingAtBoundary ?? true) {
+            if (direction === 1 /* Forwards */  && coarseTimelineInfo.atEnd) {
+                this.model.timestampRequest.set("start");
+                this.delegate.flash();
+            }
+            if (direction === -1 /* Backwards */  && coarseTimelineInfo.atStart) {
+                this.model.timestampRequest.set("end");
+                this.delegate.flash();
+            }
+        }
+        this.model.playingInfo.set({
+            playing: true,
+            direction: direction,
+            untilBoundary: options?.untilBoundary ?? "entire-timeline" /* EntireTimeline */ ,
+            loop: options?.loop ?? false
+        });
+        this.playing = true;
+        this.lastDatestamp = performance.now();
+        this.lastTimestampPromise = this.#effectiveTimestampMilliseconds();
+        this.scheduler.requestAnimFrame();
+    }
+    pause() {
+        this.playing = false;
+        this.scheduler.cancelAnimFrame();
+        this.model.playingInfo.set({
+            playing: false,
+            untilBoundary: "entire-timeline" /* EntireTimeline */ 
         });
     }
-    /**
-     * checks that every sticker on every face
-     * is the same value
-     */ isSolved() {
-        const faces = this.faces.entries();
-        let entry = faces.next();
-        do {
-            const stickerIds = entry.value[1];
-            let value = this.stickers.get(stickerIds[0]);
-            for (let id of stickerIds){
-                if (value != this.stickers.get(id)) return false;
+    #animFrameEffectiveTimestampStaleDropper;
+    async animFrame(frameDatestamp) {
+        if (this.playing) this.scheduler.requestAnimFrame();
+        const lastDatestamp = this.lastDatestamp;
+        const freshenerResult = await this.#animFrameEffectiveTimestampStaleDropper.queue(Promise.all([
+            this.model.playingInfo.get(),
+            this.lastTimestampPromise,
+            this.model.timeRange.get(),
+            this.model.tempoScale.get(),
+            this.model.currentMoveInfo.get()
+        ]));
+        const [playingInfo, lastTimestamp, timeRange, tempoScale, currentMoveInfo] = freshenerResult;
+        if (!playingInfo.playing) {
+            this.playing = false;
+            return;
+        }
+        let end = currentMoveInfo.earliestEnd;
+        if (currentMoveInfo.currentMoves.length === 0 || playingInfo.untilBoundary === "entire-timeline" /* EntireTimeline */ ) end = timeRange.end;
+        let start = currentMoveInfo.latestStart;
+        if (currentMoveInfo.currentMoves.length === 0 || playingInfo.untilBoundary === "entire-timeline" /* EntireTimeline */ ) start = timeRange.start;
+        let delta = (frameDatestamp - lastDatestamp) * $8e08190ac5cfc1c3$var$directionScalar(this.direction) * tempoScale;
+        delta = Math.max(delta, 1);
+        delta *= playingInfo.direction;
+        let newTimestamp = lastTimestamp + delta;
+        let newSmartTimestampRequest = null;
+        if (newTimestamp >= end) {
+            if (playingInfo.loop) newTimestamp = $8e08190ac5cfc1c3$var$modIntoRange(newTimestamp, timeRange.start, timeRange.end);
+            else {
+                if (newTimestamp === timeRange.end) newSmartTimestampRequest = "end";
+                else newTimestamp = end;
+                this.playing = false;
+                this.model.playingInfo.set({
+                    playing: false
+                });
             }
-            entry = faces.next();
-        }while (!entry.done);
+        } else if (newTimestamp <= start) {
+            if (playingInfo.loop) newTimestamp = $8e08190ac5cfc1c3$var$modIntoRange(newTimestamp, timeRange.start, timeRange.end);
+            else {
+                if (newTimestamp === timeRange.start) newSmartTimestampRequest = "start";
+                else newTimestamp = start;
+                this.playing = false;
+                this.model.playingInfo.set({
+                    playing: false
+                });
+            }
+        }
+        this.lastDatestamp = frameDatestamp;
+        this.lastTimestampPromise = Promise.resolve(newTimestamp);
+        this.model.timestampRequest.set(newSmartTimestampRequest ?? newTimestamp);
+    }
+};
+// src/cubing/twisty/controllers/TwistyPlayerController.ts
+var $8e08190ac5cfc1c3$var$TwistyPlayerController = class {
+    constructor(model, delegate){
+        this.model = model;
+        this.animationController = new $8e08190ac5cfc1c3$var$TwistyAnimationController(model, delegate);
+    }
+    jumpToStart(options) {
+        this.animationController.jumpToStart(options);
+    }
+    jumpToEnd(options) {
+        this.animationController.jumpToEnd(options);
+    }
+    togglePlay(play) {
+        if (typeof play === "undefined") this.animationController.playPause();
+        play ? this.animationController.play() : this.animationController.pause();
+    }
+    async visitTwizzleLink() {
+        const a = document.createElement("a");
+        a.href = await this.model.twizzleLink();
+        a.target = "_blank";
+        a.click();
+    }
+};
+// src/cubing/twisty/model/props/viewer/ControlPanelProp.ts
+var $8e08190ac5cfc1c3$var$controlsLocations = {
+    "bottom-row": true,
+    none: true
+};
+var $8e08190ac5cfc1c3$var$ControlPanelProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/views/TwistyViewerWrapper.css.ts
+var $8e08190ac5cfc1c3$var$twistyViewerWrapperCSS = new (0, $62nUG.CSSSource)(`
+:host {
+  width: 384px;
+  height: 256px;
+  display: grid;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+}
+
+.wrapper > * {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.wrapper.back-view-side-by-side {
+  grid-template-columns: 1fr 1fr;
+}
+
+.wrapper.back-view-top-right {
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 3fr;
+}
+
+.wrapper.back-view-top-right > :nth-child(1) {
+  grid-row: 1 / 3;
+  grid-column: 1 / 3;
+}
+
+.wrapper.back-view-top-right > :nth-child(2) {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+}
+`);
+// src/cubing/twisty/views/2D/KPuzzleSVGWrapper.ts
+var $8e08190ac5cfc1c3$var$xmlns = "http://www.w3.org/2000/svg";
+var $8e08190ac5cfc1c3$var$DATA_COPY_ID_ATTRIBUTE = "data-copy-id";
+var $8e08190ac5cfc1c3$var$svgCounter = 0;
+function $8e08190ac5cfc1c3$var$nextSVGID() {
+    $8e08190ac5cfc1c3$var$svgCounter += 1;
+    return `svg${$8e08190ac5cfc1c3$var$svgCounter.toString()}`;
+}
+var $8e08190ac5cfc1c3$var$colorMaps = {
+    dim: {
+        white: "#dddddd",
+        orange: "#884400",
+        limegreen: "#008800",
+        red: "#660000",
+        "rgb(34, 102, 255)": "#000088",
+        yellow: "#888800",
+        "rgb(102, 0, 153)": "rgb(50, 0, 76)"
+    },
+    oriented: {
+        white: "#44ddcc",
+        orange: "#44ddcc",
+        limegreen: "#44ddcc",
+        red: "#44ddcc",
+        "rgb(34, 102, 255)": "#44ddcc",
+        yellow: "#44ddcc"
+    },
+    ignored: "#555555",
+    invisible: "#00000000"
+};
+var $8e08190ac5cfc1c3$export$1c51709df4cf438 = class {
+    constructor(kpuzzle, svgSource, experimentalStickeringMask){
+        this.kpuzzle = kpuzzle;
+        this.originalColors = {};
+        this.gradients = {};
+        if (!svgSource) throw new Error(`No SVG definition for puzzle type: ${kpuzzle.name()}`);
+        this.svgID = $8e08190ac5cfc1c3$var$nextSVGID();
+        this.wrapperElement = document.createElement("div");
+        this.wrapperElement.classList.add("svg-wrapper");
+        this.wrapperElement.innerHTML = svgSource;
+        const svgElem = this.wrapperElement.querySelector("svg");
+        if (!svgElem) throw new Error("Could not get SVG element");
+        this.svgElement = svgElem;
+        if ($8e08190ac5cfc1c3$var$xmlns !== svgElem.namespaceURI) throw new Error("Unexpected XML namespace");
+        svgElem.style.maxWidth = "100%";
+        svgElem.style.maxHeight = "100%";
+        this.gradientDefs = document.createElementNS($8e08190ac5cfc1c3$var$xmlns, "defs");
+        svgElem.insertBefore(this.gradientDefs, svgElem.firstChild);
+        for(const orbitName in kpuzzle.definition.orbits){
+            const orbitDefinition = kpuzzle.definition.orbits[orbitName];
+            for(let idx = 0; idx < orbitDefinition.numPieces; idx++)for(let orientation = 0; orientation < orbitDefinition.numOrientations; orientation++){
+                const id = this.elementID(orbitName, idx, orientation);
+                const elem = this.elementByID(id);
+                let originalColor = elem.style.fill;
+                if (experimentalStickeringMask) (()=>{
+                    const a = experimentalStickeringMask.orbits;
+                    if (!a) return;
+                    const orbitStickeringMask = a[orbitName];
+                    if (!orbitStickeringMask) return;
+                    const pieceStickeringMask = orbitStickeringMask.pieces[idx];
+                    if (!pieceStickeringMask) return;
+                    const faceletStickeringMasks = pieceStickeringMask.facelets[orientation];
+                    if (!faceletStickeringMasks) return;
+                    const stickeringMask = typeof faceletStickeringMasks === "string" ? faceletStickeringMasks : faceletStickeringMasks?.mask;
+                    const colorMap = $8e08190ac5cfc1c3$var$colorMaps[stickeringMask];
+                    if (typeof colorMap === "string") originalColor = colorMap;
+                    else if (colorMap) originalColor = colorMap[originalColor];
+                })();
+                else originalColor = elem.style.fill;
+                this.originalColors[id] = originalColor;
+                this.gradients[id] = this.newGradient(id, originalColor);
+                this.gradientDefs.appendChild(this.gradients[id]);
+                elem.setAttribute("style", `fill: url(#grad-${this.svgID}-${id})`);
+            }
+        }
+        for (const hintElem of Array.from(svgElem.querySelectorAll(`[${$8e08190ac5cfc1c3$var$DATA_COPY_ID_ATTRIBUTE}]`))){
+            const id = hintElem.getAttribute($8e08190ac5cfc1c3$var$DATA_COPY_ID_ATTRIBUTE);
+            hintElem.setAttribute("style", `fill: url(#grad-${this.svgID}-${id})`);
+        }
+    }
+    drawState(state, nextState, fraction) {
+        this.draw(state, nextState, fraction);
+    }
+    draw(state, nextState, fraction) {
+        const transformation = state.experimentalToTransformation();
+        const nextTransformation = nextState?.experimentalToTransformation();
+        if (!transformation) throw new Error("Distinguishable pieces are not handled for SVG yet!");
+        for(const orbitName in transformation.kpuzzle.definition.orbits){
+            const orbitDefinition = transformation.kpuzzle.definition.orbits[orbitName];
+            const curTransformationOrbit = transformation.transformationData[orbitName];
+            const nextTransformationOrbit = nextTransformation ? nextTransformation.transformationData[orbitName] : null;
+            for(let idx = 0; idx < orbitDefinition.numPieces; idx++)for(let orientation = 0; orientation < orbitDefinition.numOrientations; orientation++){
+                const id = this.elementID(orbitName, idx, orientation);
+                const fromCur = this.elementID(orbitName, curTransformationOrbit.permutation[idx], (orbitDefinition.numOrientations - curTransformationOrbit.orientation[idx] + orientation) % orbitDefinition.numOrientations);
+                let singleColor = false;
+                if (nextTransformationOrbit) {
+                    const fromNext = this.elementID(orbitName, nextTransformationOrbit.permutation[idx], (orbitDefinition.numOrientations - nextTransformationOrbit.orientation[idx] + orientation) % orbitDefinition.numOrientations);
+                    if (fromCur === fromNext) singleColor = true;
+                    fraction = fraction || 0;
+                    const easedBackwardsPercent = 100 * (1 - fraction * fraction * (2 - fraction * fraction));
+                    this.gradients[id].children[0].setAttribute("stop-color", this.originalColors[fromCur]);
+                    this.gradients[id].children[1].setAttribute("stop-color", this.originalColors[fromCur]);
+                    this.gradients[id].children[1].setAttribute("offset", `${Math.max(easedBackwardsPercent - 5, 0)}%`);
+                    this.gradients[id].children[2].setAttribute("offset", `${Math.max(easedBackwardsPercent - 5, 0)}%`);
+                    this.gradients[id].children[3].setAttribute("offset", `${easedBackwardsPercent}%`);
+                    this.gradients[id].children[4].setAttribute("offset", `${easedBackwardsPercent}%`);
+                    this.gradients[id].children[4].setAttribute("stop-color", this.originalColors[fromNext]);
+                    this.gradients[id].children[5].setAttribute("stop-color", this.originalColors[fromNext]);
+                } else singleColor = true;
+                if (singleColor) {
+                    this.gradients[id].children[0].setAttribute("stop-color", this.originalColors[fromCur]);
+                    this.gradients[id].children[1].setAttribute("stop-color", this.originalColors[fromCur]);
+                    this.gradients[id].children[1].setAttribute("offset", "100%");
+                    this.gradients[id].children[2].setAttribute("offset", "100%");
+                    this.gradients[id].children[3].setAttribute("offset", "100%");
+                    this.gradients[id].children[4].setAttribute("offset", "100%");
+                }
+            }
+        }
+    }
+    newGradient(id, originalColor) {
+        const grad = document.createElementNS($8e08190ac5cfc1c3$var$xmlns, "radialGradient");
+        grad.setAttribute("id", `grad-${this.svgID}-${id}`);
+        grad.setAttribute("r", "70.7107%");
+        const stopDefs = [
+            {
+                offset: 0,
+                color: originalColor
+            },
+            {
+                offset: 0,
+                color: originalColor
+            },
+            {
+                offset: 0,
+                color: "black"
+            },
+            {
+                offset: 0,
+                color: "black"
+            },
+            {
+                offset: 0,
+                color: originalColor
+            },
+            {
+                offset: 100,
+                color: originalColor
+            }
+        ];
+        for (const stopDef of stopDefs){
+            const stop = document.createElementNS($8e08190ac5cfc1c3$var$xmlns, "stop");
+            stop.setAttribute("offset", `${stopDef.offset}%`);
+            stop.setAttribute("stop-color", stopDef.color);
+            stop.setAttribute("stop-opacity", "1");
+            grad.appendChild(stop);
+        }
+        return grad;
+    }
+    elementID(orbitName, idx, orientation) {
+        return `${orbitName}-l${idx}-o${orientation}`;
+    }
+    elementByID(id) {
+        return this.wrapperElement.querySelector(`#${id}`);
+    }
+};
+// src/cubing/twisty/views/2D/Twisty2DPuzzle.css.ts
+var $8e08190ac5cfc1c3$var$twisty2DSVGCSS = new (0, $62nUG.CSSSource)(`
+:host {
+  width: 384px;
+  height: 256px;
+  display: grid;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+}
+
+.svg-wrapper,
+twisty-2d-svg,
+svg {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  min-height: 0;
+}
+
+svg {
+  animation: fade-in 0.25s ease-in;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+`);
+// src/cubing/twisty/views/2D/Twisty2DPuzzle.ts
+var $8e08190ac5cfc1c3$var$Twisty2DPuzzle = class extends (0, $62nUG.ManagedCustomElement) {
+    constructor(model, kpuzzle, svgSource, options, puzzleLoader){
+        super();
+        this.model = model;
+        this.kpuzzle = kpuzzle;
+        this.svgSource = svgSource;
+        this.options = options;
+        this.puzzleLoader = puzzleLoader;
+        this.scheduler = new (0, $62nUG.RenderScheduler)(this.render.bind(this));
+        this.#cachedPosition = null;
+        this.#freshListenerManager = new (0, $62nUG.FreshListenerManager)();
+        this.addCSS($8e08190ac5cfc1c3$var$twisty2DSVGCSS);
+        this.resetSVG();
+        this.#freshListenerManager.addListener(this.model.puzzleID, (puzzleID)=>{
+            if (puzzleLoader?.id !== puzzleID) this.disconnect();
+        });
+        this.#freshListenerManager.addListener(this.model.legacyPosition, this.onPositionChange.bind(this));
+        if (this.options?.experimentalStickeringMask) this.experimentalSetStickeringMask(this.options.experimentalStickeringMask);
+    }
+    #cachedPosition;
+    #freshListenerManager;
+    disconnect() {
+        this.#freshListenerManager.disconnect();
+    }
+    onPositionChange(position) {
+        try {
+            if (position.movesInProgress.length > 0) {
+                const move = position.movesInProgress[0].move;
+                let partialMove = move;
+                if (position.movesInProgress[0].direction === -1 /* Backwards */ ) partialMove = move.invert();
+                const newState = position.state.applyMove(partialMove);
+                this.svgWrapper.draw(position.state, newState, position.movesInProgress[0].fraction);
+            } else {
+                this.svgWrapper.draw(position.state);
+                this.#cachedPosition = position;
+            }
+        } catch (e) {
+            console.warn("Bad position (this doesn't necessarily mean something is wrong). Pre-emptively disconnecting:", this.puzzleLoader?.id, e);
+            this.disconnect();
+        }
+    }
+    scheduleRender() {
+        this.scheduler.requestAnimFrame();
+    }
+    experimentalSetStickeringMask(stickeringMask) {
+        this.resetSVG(stickeringMask);
+    }
+    resetSVG(stickeringMask) {
+        if (this.svgWrapper) this.removeElement(this.svgWrapper.wrapperElement);
+        if (!this.kpuzzle) return;
+        this.svgWrapper = new $8e08190ac5cfc1c3$export$1c51709df4cf438(this.kpuzzle, this.svgSource, stickeringMask);
+        this.addElement(this.svgWrapper.wrapperElement);
+        if (this.#cachedPosition) this.onPositionChange(this.#cachedPosition);
+    }
+    render() {}
+};
+(0, $62nUG.customElementsShim).define("twisty-2d-puzzle", $8e08190ac5cfc1c3$var$Twisty2DPuzzle);
+// src/cubing/twisty/views/2D/Twisty2DPuzzleWrapper.ts
+var $8e08190ac5cfc1c3$var$Twisty2DPuzzleWrapper = class {
+    constructor(model, schedulable, puzzleLoader, effectiveVisualization){
+        this.model = model;
+        this.schedulable = schedulable;
+        this.puzzleLoader = puzzleLoader;
+        this.effectiveVisualization = effectiveVisualization;
+        this.twisty2DPuzzle();
+        this.#freshListenerManager.addListener(this.model.twistySceneModel.stickeringMask, async (stickeringMask)=>{
+            (await this.twisty2DPuzzle()).experimentalSetStickeringMask(stickeringMask);
+        });
+    }
+    #freshListenerManager = new (0, $62nUG.FreshListenerManager)();
+    disconnect() {
+        this.#freshListenerManager.disconnect();
+    }
+    scheduleRender() {}
+    #cachedTwisty2DPuzzle = null;
+    async twisty2DPuzzle() {
+        return this.#cachedTwisty2DPuzzle ?? (this.#cachedTwisty2DPuzzle = (async ()=>{
+            const svgPromise = this.effectiveVisualization === "experimental-2D-LL" ? this.puzzleLoader.llSVG() : this.puzzleLoader.svg();
+            return new $8e08190ac5cfc1c3$var$Twisty2DPuzzle(this.model, await this.puzzleLoader.kpuzzle(), await svgPromise, {}, this.puzzleLoader);
+        })());
+    }
+};
+// src/cubing/twisty/views/2D/Twisty2DSceneWrapper.ts
+var $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper = class extends (0, $62nUG.ManagedCustomElement) {
+    constructor(model, effectiveVisualization){
+        super();
+        this.model = model;
+        this.effectiveVisualization = effectiveVisualization;
+    }
+    #freshListenerManager = new (0, $62nUG.FreshListenerManager)();
+    disconnect() {
+        this.#freshListenerManager.disconnect();
+    }
+    async connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$twistyViewerWrapperCSS);
+        if (this.model) this.#freshListenerManager.addListener(this.model.twistyPlayerModel.puzzleLoader, this.onPuzzleLoader.bind(this));
+    }
+    #cachedScene;
+    async scene() {
+        return this.#cachedScene ?? (this.#cachedScene = (async ()=>new (await (0, $62nUG.THREEJS)).Scene())());
+    }
+    scheduleRender() {
+        this.#currentTwisty2DPuzzleWrapper?.scheduleRender();
+    }
+    #currentTwisty2DPuzzleWrapper = null;
+    currentTwisty2DPuzzleWrapper() {
+        return this.#currentTwisty2DPuzzleWrapper;
+    }
+    async setCurrentTwisty2DPuzzleWrapper(twisty2DPuzzleWrapper) {
+        const old = this.#currentTwisty2DPuzzleWrapper;
+        this.#currentTwisty2DPuzzleWrapper = twisty2DPuzzleWrapper;
+        old?.disconnect();
+        const twisty2DPuzzlePromise = twisty2DPuzzleWrapper.twisty2DPuzzle();
+        this.contentWrapper.textContent = "";
+        this.addElement(await twisty2DPuzzlePromise);
+    }
+    async onPuzzleLoader(puzzleLoader) {
+        this.#currentTwisty2DPuzzleWrapper?.disconnect();
+        const twisty2DPuzzleWrapper = new $8e08190ac5cfc1c3$var$Twisty2DPuzzleWrapper(this.model.twistyPlayerModel, this, puzzleLoader, this.effectiveVisualization);
+        this.setCurrentTwisty2DPuzzleWrapper(twisty2DPuzzleWrapper);
+    }
+};
+(0, $62nUG.customElementsShim).define("twisty-2d-scene-wrapper", $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper);
+// src/cubing/twisty/views/ClassListManager.ts
+var $8e08190ac5cfc1c3$var$ClassListManager = class {
+    constructor(elem, prefix, validSuffixes){
+        this.elem = elem;
+        this.prefix = prefix;
+        this.validSuffixes = validSuffixes;
+    }
+    #currentClassName = null;
+    clearValue() {
+        if (this.#currentClassName) this.elem.contentWrapper.classList.remove(this.#currentClassName);
+        this.#currentClassName = null;
+    }
+    setValue(suffix) {
+        if (!this.validSuffixes.includes(suffix)) throw new Error(`Invalid suffix: ${suffix}`);
+        const newClassName = `${this.prefix}${suffix}`;
+        const changed = this.#currentClassName !== newClassName;
+        if (changed) {
+            this.clearValue();
+            this.elem.contentWrapper.classList.add(newClassName);
+            this.#currentClassName = newClassName;
+        }
+        return changed;
+    }
+};
+// src/cubing/twisty/views/InitialValueTracker.ts
+var $8e08190ac5cfc1c3$var$InitialValueTracker = class {
+    constructor(){
+        this.promise = new Promise((resolve, reject)=>{
+            this.#resolve = resolve;
+            this.reject = reject;
+        });
+    }
+    #resolve;
+    handleNewValue(t) {
+        this.#resolve(t);
+    }
+};
+// src/cubing/twisty/views/3D/Twisty3DPuzzleWrapper.ts
+var $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper = class extends EventTarget {
+    constructor(model, schedulable, puzzleLoader, visualizationStrategy){
+        super();
+        this.model = model;
+        this.schedulable = schedulable;
+        this.puzzleLoader = puzzleLoader;
+        this.visualizationStrategy = visualizationStrategy;
+        this.twisty3DPuzzle();
+        this.#freshListenerManager.addListener(this.model.puzzleLoader, (puzzleLoader2)=>{
+            if (this.puzzleLoader.id !== puzzleLoader2.id) this.disconnect();
+        });
+        this.#freshListenerManager.addListener(this.model.legacyPosition, async (position)=>{
+            try {
+                (await this.twisty3DPuzzle()).onPositionChange(position);
+                this.scheduleRender();
+            } catch (e) {
+                this.disconnect();
+            }
+        });
+        this.#freshListenerManager.addListener(this.model.twistySceneModel.hintFacelet, async (hintFaceletStyle)=>{
+            (await this.twisty3DPuzzle()).experimentalUpdateOptions({
+                hintFacelets: hintFaceletStyle === "auto" ? "floating" : hintFaceletStyle
+            });
+            this.scheduleRender();
+        });
+        this.#freshListenerManager.addListener(this.model.twistySceneModel.foundationDisplay, async (foundationDisplay)=>{
+            (await this.twisty3DPuzzle()).experimentalUpdateOptions({
+                showFoundation: foundationDisplay !== "none"
+            });
+            this.scheduleRender();
+        });
+        this.#freshListenerManager.addListener(this.model.twistySceneModel.stickeringMask, async (stickeringMask)=>{
+            const twisty3D = await this.twisty3DPuzzle();
+            twisty3D.setStickeringMask(stickeringMask);
+            this.scheduleRender();
+        });
+        this.#freshListenerManager.addListener(this.model.twistySceneModel.faceletScale, async (faceletScale)=>{
+            (await this.twisty3DPuzzle()).experimentalUpdateOptions({
+                faceletScale: faceletScale
+            });
+            this.scheduleRender();
+        });
+        this.#freshListenerManager.addMultiListener3([
+            this.model.twistySceneModel.stickeringMask,
+            this.model.twistySceneModel.foundationStickerSprite,
+            this.model.twistySceneModel.hintStickerSprite
+        ], async (inputs)=>{
+            if ("experimentalUpdateTexture" in await this.twisty3DPuzzle()) {
+                (await this.twisty3DPuzzle()).experimentalUpdateTexture(inputs[0].specialBehaviour === "picture", inputs[1], inputs[2]);
+                this.scheduleRender();
+            }
+        });
+    }
+    #freshListenerManager = new (0, $62nUG.FreshListenerManager)();
+    disconnect() {
+        this.#freshListenerManager.disconnect();
+    }
+    scheduleRender() {
+        this.schedulable.scheduleRender();
+        this.dispatchEvent(new CustomEvent("render-scheduled"));
+    }
+    #cachedTwisty3DPuzzle = null;
+    async twisty3DPuzzle() {
+        return this.#cachedTwisty3DPuzzle ?? (this.#cachedTwisty3DPuzzle = (async ()=>{
+            const proxyPromise = (0, $62nUG.proxy3D)();
+            if (this.puzzleLoader.id === "3x3x3" && this.visualizationStrategy === "Cube3D") {
+                const [foundationSprite, hintSprite, experimentalStickeringMask, initialHintFaceletsAnimation] = await Promise.all([
+                    this.model.twistySceneModel.foundationStickerSprite.get(),
+                    this.model.twistySceneModel.hintStickerSprite.get(),
+                    this.model.twistySceneModel.stickeringMask.get(),
+                    this.model.twistySceneModel.initialHintFaceletsAnimation.get()
+                ]);
+                return (await proxyPromise).cube3DShim(()=>this.schedulable.scheduleRender(), {
+                    foundationSprite: foundationSprite,
+                    hintSprite: hintSprite,
+                    experimentalStickeringMask: experimentalStickeringMask,
+                    initialHintFaceletsAnimation: initialHintFaceletsAnimation
+                });
+            } else {
+                const [hintFacelets, foundationSprite, hintSprite, faceletScale] = await Promise.all([
+                    this.model.twistySceneModel.hintFacelet.get(),
+                    this.model.twistySceneModel.foundationStickerSprite.get(),
+                    this.model.twistySceneModel.hintStickerSprite.get(),
+                    this.model.twistySceneModel.faceletScale.get()
+                ]);
+                const pg3d = (await proxyPromise).pg3dShim(()=>this.schedulable.scheduleRender(), this.puzzleLoader, hintFacelets === "auto" ? "floating" : hintFacelets, faceletScale);
+                pg3d.then((p)=>p.experimentalUpdateTexture(true, foundationSprite ?? void 0, hintSprite ?? void 0));
+                return pg3d;
+            }
+        })());
+    }
+    async raycastMove(raycasterPromise, transformations) {
+        const puzzle = await this.twisty3DPuzzle();
+        if (!("experimentalGetControlTargets" in puzzle)) {
+            console.info("not PG3D! skipping raycast");
+            return;
+        }
+        const targets = puzzle.experimentalGetControlTargets();
+        const [raycaster, movePressCancelOptions] = await Promise.all([
+            raycasterPromise,
+            this.model.twistySceneModel.movePressCancelOptions.get()
+        ]);
+        const intersects = raycaster.intersectObjects(targets);
+        if (intersects.length > 0) {
+            const closestMove = puzzle.getClosestMoveToAxis(intersects[0].point, transformations);
+            if (closestMove) this.model.experimentalAddMove(closestMove.move, {
+                cancel: movePressCancelOptions
+            });
+            else console.info("Skipping move!");
+        }
+    }
+};
+// src/cubing/twisty/views/3D/Twisty3DSceneWrapper.ts
+var $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper = class extends (0, $62nUG.ManagedCustomElement) {
+    constructor(model){
+        super();
+        this.model = model;
+    }
+    #backViewClassListManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "back-view-", [
+        "auto",
+        "none",
+        "side-by-side",
+        "top-right"
+    ]);
+    #freshListenerManager = new (0, $62nUG.FreshListenerManager)();
+    disconnect() {
+        this.#freshListenerManager.disconnect();
+    }
+    async connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$twistyViewerWrapperCSS);
+        const vantage = new (0, $62nUG.Twisty3DVantage)(this.model, this);
+        this.addVantage(vantage);
+        if (this.model) {
+            this.#freshListenerManager.addMultiListener([
+                this.model.puzzleLoader,
+                this.model.visualizationStrategy
+            ], this.onPuzzle.bind(this));
+            this.#freshListenerManager.addListener(this.model.backView, this.onBackView.bind(this));
+        }
+        this.scheduleRender();
+    }
+    #backViewVantage = null;
+    setBackView(backView) {
+        const shouldHaveBackView = [
+            "side-by-side",
+            "top-right"
+        ].includes(backView);
+        const hasBackView = this.#backViewVantage !== null;
+        this.#backViewClassListManager.setValue(backView);
+        if (shouldHaveBackView) {
+            if (!hasBackView) {
+                this.#backViewVantage = new (0, $62nUG.Twisty3DVantage)(this.model, this, {
+                    backView: true
+                });
+                this.addVantage(this.#backViewVantage);
+                this.scheduleRender();
+            }
+        } else if (this.#backViewVantage) {
+            this.removeVantage(this.#backViewVantage);
+            this.#backViewVantage = null;
+        }
+    }
+    onBackView(backView) {
+        this.setBackView(backView);
+    }
+    async onPress(e) {
+        const twisty3DPuzzleWrapper = this.#currentTwisty3DPuzzleWrapper;
+        if (!twisty3DPuzzleWrapper) {
+            console.info("no wrapper; skipping scene wrapper press!");
+            return;
+        }
+        const raycasterPromise = (async ()=>{
+            const [camera, three] = await Promise.all([
+                e.detail.cameraPromise,
+                (0, $62nUG.THREEJS)
+            ]);
+            const raycaster = new three.Raycaster();
+            const mouse = new (await (0, $62nUG.THREEJS)).Vector2(e.detail.pressInfo.normalizedX, e.detail.pressInfo.normalizedY);
+            raycaster.setFromCamera(mouse, camera);
+            return raycaster;
+        })();
+        twisty3DPuzzleWrapper.raycastMove(raycasterPromise, {
+            invert: !e.detail.pressInfo.rightClick,
+            depth: e.detail.pressInfo.keys.ctrlOrMetaKey ? "rotation" : e.detail.pressInfo.keys.shiftKey ? "secondSlice" : "none"
+        });
+    }
+    #cachedScene;
+    async scene() {
+        return this.#cachedScene ?? (this.#cachedScene = (async ()=>new (await (0, $62nUG.THREEJS)).Scene())());
+    }
+    #vantages = /* @__PURE__ */ new Set();
+    addVantage(vantage) {
+        vantage.addEventListener("press", this.onPress.bind(this));
+        this.#vantages.add(vantage);
+        this.contentWrapper.appendChild(vantage);
+    }
+    removeVantage(vantage) {
+        this.#vantages.delete(vantage);
+        vantage.remove();
+        vantage.disconnect();
+        this.#currentTwisty3DPuzzleWrapper?.disconnect();
+    }
+    experimentalVantages() {
+        return this.#vantages.values();
+    }
+    scheduleRender() {
+        for (const vantage of this.#vantages)vantage.scheduleRender();
+    }
+    #currentTwisty3DPuzzleWrapper = null;
+    async setCurrentTwisty3DPuzzleWrapper(scene, twisty3DPuzzleWrapper) {
+        const old = this.#currentTwisty3DPuzzleWrapper;
+        try {
+            this.#currentTwisty3DPuzzleWrapper = twisty3DPuzzleWrapper;
+            old?.disconnect();
+            scene.add(await twisty3DPuzzleWrapper.twisty3DPuzzle());
+        } finally{
+            if (old) scene.remove(await old.twisty3DPuzzle());
+        }
+        this.#initialWrapperTracker.handleNewValue(twisty3DPuzzleWrapper);
+    }
+    #initialWrapperTracker = new $8e08190ac5cfc1c3$var$InitialValueTracker();
+    async experimentalTwisty3DPuzzleWrapper() {
+        return this.#currentTwisty3DPuzzleWrapper || this.#initialWrapperTracker.promise;
+    }
+    #twisty3DStaleDropper = new (0, $62nUG.StaleDropper)();
+    async onPuzzle(inputs) {
+        if (inputs[1] === "2D") return;
+        this.#currentTwisty3DPuzzleWrapper?.disconnect();
+        const [scene, twisty3DPuzzleWrapper] = await this.#twisty3DStaleDropper.queue(Promise.all([
+            this.scene(),
+            new $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper(this.model, this, inputs[0], inputs[1])
+        ]));
+        this.setCurrentTwisty3DPuzzleWrapper(scene, twisty3DPuzzleWrapper);
+    }
+};
+(0, $62nUG.customElementsShim).define("twisty-3d-scene-wrapper", $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper);
+// src/cubing/twisty/views/control-panel/TwistyButtons.css.ts
+var $8e08190ac5cfc1c3$var$buttonGridCSS = new (0, $62nUG.CSSSource)(`
+:host {
+  width: 384px;
+  height: 24px;
+  display: grid;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.wrapper {
+  grid-auto-flow: column;
+}
+
+.viewer-link-none .twizzle-link-button {
+  display: none;
+}
+
+.wrapper twisty-button,
+.wrapper twisty-control-button {
+  width: inherit;
+  height: inherit;
+}
+`);
+var $8e08190ac5cfc1c3$var$buttonCSS = new (0, $62nUG.CSSSource)(`
+:host:not([hidden]) {
+  display: grid;
+}
+
+:host {
+  width: 48px;
+  height: 24px;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  background-color: rgba(196, 196, 196, 0.75);
+}
+
+button:enabled {
+  background-color: rgba(196, 196, 196, 0.75)
+}
+
+.dark-mode button:enabled {
+  background-color: #88888888;
+}
+
+button:disabled {
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.dark-mode button:disabled {
+  background-color: #ffffff44;
+}
+
+button:enabled:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+/* TODO: fullscreen icons have too much padding?? */
+.svg-skip-to-start button,
+button.svg-skip-to-start {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNjQzIDEwMzdxMTktMTkgMzItMTN0MTMgMzJ2MTQ3MnEwIDI2LTEzIDMydC0zMi0xM2wtNzEwLTcxMHEtOS05LTEzLTE5djcxMHEwIDI2LTEzIDMydC0zMi0xM2wtNzEwLTcxMHEtOS05LTEzLTE5djY3OHEwIDI2LTE5IDQ1dC00NSAxOUg5NjBxLTI2IDAtNDUtMTl0LTE5LTQ1VjEwODhxMC0yNiAxOS00NXQ0NS0xOWgxMjhxMjYgMCA0NSAxOXQxOSA0NXY2NzhxNC0xMSAxMy0xOWw3MTAtNzEwcTE5LTE5IDMyLTEzdDEzIDMydjcxMHE0LTExIDEzLTE5eiIvPjwvc3ZnPg==");
+}
+
+.svg-skip-to-end button,
+button.svg-skip-to-end {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik05NDEgMjU0N3EtMTkgMTktMzIgMTN0LTEzLTMyVjEwNTZxMC0yNiAxMy0zMnQzMiAxM2w3MTAgNzEwcTggOCAxMyAxOXYtNzEwcTAtMjYgMTMtMzJ0MzIgMTNsNzEwIDcxMHE4IDggMTMgMTl2LTY3OHEwLTI2IDE5LTQ1dDQ1LTE5aDEyOHEyNiAwIDQ1IDE5dDE5IDQ1djE0MDhxMCAyNi0xOSA0NXQtNDUgMTloLTEyOHEtMjYgMC00NS0xOXQtMTktNDV2LTY3OHEtNSAxMC0xMyAxOWwtNzEwIDcxMHEtMTkgMTktMzIgMTN0LTEzLTMydi03MTBxLTUgMTAtMTMgMTl6Ii8+PC9zdmc+");
+}
+
+.svg-step-forward button,
+button.svg-step-forward {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNjg4IDE1NjhxMCAyNi0xOSA0NWwtNTEyIDUxMnEtMTkgMTktNDUgMTl0LTQ1LTE5cS0xOS0xOS0xOS00NXYtMjU2aC0yMjRxLTk4IDAtMTc1LjUgNnQtMTU0IDIxLjVxLTc2LjUgMTUuNS0xMzMgNDIuNXQtMTA1LjUgNjkuNXEtNDkgNDIuNS04MCAxMDF0LTQ4LjUgMTM4LjVxLTE3LjUgODAtMTcuNSAxODEgMCA1NSA1IDEyMyAwIDYgMi41IDIzLjV0Mi41IDI2LjVxMCAxNS04LjUgMjV0LTIzLjUgMTBxLTE2IDAtMjgtMTctNy05LTEzLTIydC0xMy41LTMwcS03LjUtMTctMTAuNS0yNC0xMjctMjg1LTEyNy00NTEgMC0xOTkgNTMtMzMzIDE2Mi00MDMgODc1LTQwM2gyMjR2LTI1NnEwLTI2IDE5LTQ1dDQ1LTE5cTI2IDAgNDUgMTlsNTEyIDUxMnExOSAxOSAxOSA0NXoiLz48L3N2Zz4=");
+}
+
+.svg-step-backward button,
+button.svg-step-backward {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNjg4IDIwNDhxMCAxNjYtMTI3IDQ1MS0zIDctMTAuNSAyNHQtMTMuNSAzMHEtNiAxMy0xMyAyMi0xMiAxNy0yOCAxNy0xNSAwLTIzLjUtMTB0LTguNS0yNXEwLTkgMi41LTI2LjV0Mi41LTIzLjVxNS02OCA1LTEyMyAwLTEwMS0xNy41LTE4MXQtNDguNS0xMzguNXEtMzEtNTguNS04MC0xMDF0LTEwNS41LTY5LjVxLTU2LjUtMjctMTMzLTQyLjV0LTE1NC0yMS41cS03Ny41LTYtMTc1LjUtNmgtMjI0djI1NnEwIDI2LTE5IDQ1dC00NSAxOXEtMjYgMC00NS0xOWwtNTEyLTUxMnEtMTktMTktMTktNDV0MTktNDVsNTEyLTUxMnExOS0xOSA0NS0xOXQ0NSAxOXExOSAxOSAxOSA0NXYyNTZoMjI0cTcxMyAwIDg3NSA0MDMgNTMgMTM0IDUzIDMzM3oiLz48L3N2Zz4=");
+}
+
+.svg-pause button,
+button.svg-pause {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNTYwIDEwODh2MTQwOHEwIDI2LTE5IDQ1dC00NSAxOWgtNTEycS0yNiAwLTQ1LTE5dC0xOS00NVYxMDg4cTAtMjYgMTktNDV0NDUtMTloNTEycTI2IDAgNDUgMTl0MTkgNDV6bS04OTYgMHYxNDA4cTAgMjYtMTkgNDV0LTQ1IDE5aC01MTJxLTI2IDAtNDUtMTl0LTE5LTQ1VjEwODhxMC0yNiAxOS00NXQ0NS0xOWg1MTJxMjYgMCA0NSAxOXQxOSA0NXoiLz48L3N2Zz4=");
+}
+
+.svg-play button,
+button.svg-play {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNDcyLjUgMTgyM2wtMTMyOCA3MzhxLTIzIDEzLTM5LjUgM3QtMTYuNS0zNlYxMDU2cTAtMjYgMTYuNS0zNnQzOS41IDNsMTMyOCA3MzhxMjMgMTMgMjMgMzF0LTIzIDMxeiIvPjwvc3ZnPg==");
+}
+
+.svg-enter-fullscreen button,
+button.svg-enter-fullscreen {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCAyOCAyOCIgd2lkdGg9IjI4Ij48cGF0aCBkPSJNMiAyaDI0djI0SDJ6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTkgMTZIN3Y1aDV2LTJIOXYtM3ptLTItNGgyVjloM1Y3SDd2NXptMTIgN2gtM3YyaDV2LTVoLTJ2M3pNMTYgN3YyaDN2M2gyVjdoLTV6Ii8+PC9zdmc+");
+}
+
+.svg-exit-fullscreen button,
+button.svg-exit-fullscreen {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCAyOCAyOCIgd2lkdGg9IjI4Ij48cGF0aCBkPSJNMiAyaDI0djI0SDJ6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTcgMThoM3YzaDJ2LTVIN3Yyem0zLThIN3YyaDVWN2gtMnYzem02IDExaDJ2LTNoM3YtMmgtNXY1em0yLTExVjdoLTJ2NWg1di0yaC0zeiIvPjwvc3ZnPg==");
+}
+
+.svg-twizzle-tw button,
+button.svg-twizzle-tw {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODY0IiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMzk3LjU4MSAxNTEuMTh2NTcuMDg0aC04OS43MDN2MjQwLjM1MmgtNjYuOTU1VjIwOC4yNjRIMTUxLjIydi01Ny4wODNoMjQ2LjM2MXptNTQuMzEgNzEuNjc3bDcuNTEyIDMzLjY5MmMyLjcxOCAxMi4xNiA1LjU4IDI0LjY4IDguNTg0IDM3LjU1NWEyMTgwLjc3NSAyMTgwLjc3NSAwIDAwOS40NDIgMzguODQzIDEyNjYuMyAxMjY2LjMgMCAwMDEwLjA4NiAzNy41NTVjMy43Mi0xMi41OSA3LjM2OC0yNS40NjYgMTAuOTQ1LTM4LjYyOCAzLjU3Ni0xMy4xNjIgNy4wMS0yNi4xMSAxMC4zLTM4Ljg0M2w1Ljc2OS0yMi40NTZjMS4yNDgtNC44ODcgMi40NzItOS43MDUgMy42NzQtMTQuNDU1IDMuMDA0LTExLjg3NSA1LjY1MS0yMi45NjIgNy45NC0zMy4yNjNoNDYuMzU0bDIuMzg0IDEwLjU2M2EyMDAwLjc3IDIwMDAuNzcgMCAwMDMuOTM1IDE2LjgyOGw2LjcxMSAyNy43MWMxLjIxMyA0Ljk1NiAyLjQ1IDkuOTggMy43MDkgMTUuMDczYTMxMTkuNzc3IDMxMTkuNzc3IDAgMDA5Ljg3MSAzOC44NDMgMTI0OS4yMjcgMTI0OS4yMjcgMCAwMDEwLjczIDM4LjYyOCAxOTA3LjYwNSAxOTA3LjYwNSAwIDAwMTAuMzAxLTM3LjU1NSAxMzk3Ljk0IDEzOTcuOTQgMCAwMDkuNjU3LTM4Ljg0M2w0LjQtMTkuMDQ2Yy43MTUtMy4xMyAxLjQyMS02LjIzNiAyLjExOC05LjMyMWw5LjU3Ny00Mi44OGg2Ni41MjZhMjk4OC43MTggMjk4OC43MTggMCAwMS0xOS41MjkgNjYuMzExbC01LjcyOCAxOC40ODJhMzIzNy40NiAzMjM3LjQ2IDAgMDEtMTQuMDE1IDQzLjc1MmMtNi40MzggMTkuNi0xMi43MzMgMzcuNjk4LTE4Ljg4NSA1NC4yOTRsLTMuMzA2IDguODI1Yy00Ljg4NCAxMi44OTgtOS40MzMgMjQuMjYzLTEzLjY0NyAzNC4wOTVoLTQ5Ljc4N2E4NDE3LjI4OSA4NDE3LjI4OSAwIDAxLTIxLjAzMS02NC44MDkgMTI4OC42ODYgMTI4OC42ODYgMCAwMS0xOC44ODUtNjQuODEgMTk3Mi40NDQgMTk3Mi40NDQgMCAwMS0xOC4yNCA2NC44MSAyNTc5LjQxMiAyNTc5LjQxMiAwIDAxLTIwLjM4OCA2NC44MWgtNDkuNzg3Yy00LjY4Mi0xMC45MjYtOS43Mi0yMy43NDMtMTUuMTEtMzguNDUxbC0xLjYyOS00LjQ3Yy01LjI1OC0xNC41MjEtMTAuNjgtMzAuMTkyLTE2LjI2Ni00Ny4wMTRsLTIuNDA0LTcuMjhjLTYuNDM4LTE5LjYtMTMuMDItNDAuMzQ0LTE5Ljc0My02Mi4yMzRhMjk4OC43MDcgMjk4OC43MDcgMCAwMS0xOS41MjktNjYuMzExaDY3LjM4NXoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvc3ZnPg==");
+}
+`);
+// src/cubing/twisty/views/document.ts
+var $8e08190ac5cfc1c3$var$globalSafeDocument = typeof document === "undefined" ? null : document;
+// src/cubing/twisty/views/control-panel/webkit-fullscreen.ts
+var $8e08190ac5cfc1c3$var$fullscreenEnabled = $8e08190ac5cfc1c3$var$globalSafeDocument?.fullscreenEnabled || !!$8e08190ac5cfc1c3$var$globalSafeDocument?.webkitFullscreenEnabled;
+function $8e08190ac5cfc1c3$var$documentExitFullscreen() {
+    if (document.exitFullscreen) return document.exitFullscreen();
+    else return document.webkitExitFullscreen();
+}
+function $8e08190ac5cfc1c3$var$documentFullscreenElement() {
+    if (document.fullscreenElement) return document.fullscreenElement;
+    else return document.webkitFullscreenElement ?? null;
+}
+function $8e08190ac5cfc1c3$var$requestFullscreen(element) {
+    if (element.requestFullscreen) return element.requestFullscreen();
+    else return element.webkitRequestFullscreen();
+}
+// src/cubing/twisty/model/props/viewer/ButtonAppearanceProp.ts
+var $8e08190ac5cfc1c3$var$buttonIcons = [
+    "skip-to-start",
+    "skip-to-end",
+    "step-forward",
+    "step-backward",
+    "pause",
+    "play",
+    "enter-fullscreen",
+    "exit-fullscreen",
+    "twizzle-tw"
+];
+var $8e08190ac5cfc1c3$var$ButtonAppearanceProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        const buttonAppearances = {
+            fullscreen: {
+                enabled: $8e08190ac5cfc1c3$var$fullscreenEnabled,
+                icon: document.fullscreenElement === null ? "enter-fullscreen" : "exit-fullscreen",
+                title: "Enter fullscreen"
+            },
+            "jump-to-start": {
+                enabled: !inputs.coarseTimelineInfo.atStart,
+                icon: "skip-to-start",
+                title: "Restart"
+            },
+            "play-step-backwards": {
+                enabled: !inputs.coarseTimelineInfo.atStart,
+                icon: "step-backward",
+                title: "Step backward"
+            },
+            "play-pause": {
+                enabled: !(inputs.coarseTimelineInfo.atStart && inputs.coarseTimelineInfo.atEnd),
+                icon: inputs.coarseTimelineInfo.playing ? "pause" : "play",
+                title: inputs.coarseTimelineInfo.playing ? "Pause" : "Play"
+            },
+            "play-step": {
+                enabled: !inputs.coarseTimelineInfo.atEnd,
+                icon: "step-forward",
+                title: "Step forward"
+            },
+            "jump-to-end": {
+                enabled: !inputs.coarseTimelineInfo.atEnd,
+                icon: "skip-to-end",
+                title: "Skip to End"
+            },
+            "twizzle-link": {
+                enabled: true,
+                icon: "twizzle-tw",
+                title: "View at Twizzle",
+                hidden: inputs.viewerLink === "none"
+            }
+        };
+        return buttonAppearances;
+    }
+};
+// src/cubing/twisty/views/control-panel/TwistyButtons.ts
+var $8e08190ac5cfc1c3$var$buttonCommands = {
+    fullscreen: true,
+    "jump-to-start": true,
+    "play-step-backwards": true,
+    "play-pause": true,
+    "play-step": true,
+    "jump-to-end": true,
+    "twizzle-link": true
+};
+var $8e08190ac5cfc1c3$var$TwistyButtons = class extends (0, $62nUG.ManagedCustomElement) {
+    constructor(model, controller, defaultFullscreenElement){
+        super();
+        this.model = model;
+        this.controller = controller;
+        this.defaultFullscreenElement = defaultFullscreenElement;
+        this.buttons = null;
+    }
+    connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$buttonGridCSS);
+        const buttons = {};
+        for(const command in $8e08190ac5cfc1c3$var$buttonCommands){
+            const button = new $8e08190ac5cfc1c3$var$TwistyButton();
+            buttons[command] = button;
+            button.htmlButton.addEventListener("click", ()=>this.#onCommand(command));
+            this.addElement(button);
+        }
+        this.buttons = buttons;
+        this.model?.buttonAppearance.addFreshListener(this.update.bind(this));
+        this.model?.twistySceneModel.darkMode.addFreshListener(this.updateDarkMode.bind(this));
+    }
+     #onCommand(command1) {
+        switch(command1){
+            case "fullscreen":
+                this.onFullscreenButton();
+                break;
+            case "jump-to-start":
+                this.controller?.jumpToStart({
+                    flash: true
+                });
+                break;
+            case "play-step-backwards":
+                this.controller?.animationController.play({
+                    direction: -1 /* Backwards */ ,
+                    untilBoundary: "move" /* Move */ 
+                });
+                break;
+            case "play-pause":
+                this.controller?.togglePlay();
+                break;
+            case "play-step":
+                this.controller?.animationController.play({
+                    direction: 1 /* Forwards */ ,
+                    untilBoundary: "move" /* Move */ 
+                });
+                break;
+            case "jump-to-end":
+                this.controller?.jumpToEnd({
+                    flash: true
+                });
+                break;
+            case "twizzle-link":
+                this.controller?.visitTwizzleLink();
+                break;
+            default:
+                throw new Error("Missing command");
+        }
+    }
+    async onFullscreenButton() {
+        if (!this.defaultFullscreenElement) throw new Error("Attempted to go fullscreen without an element.");
+        if ($8e08190ac5cfc1c3$var$documentFullscreenElement() === this.defaultFullscreenElement) $8e08190ac5cfc1c3$var$documentExitFullscreen();
+        else {
+            this.buttons?.fullscreen.setIcon("exit-fullscreen");
+            $8e08190ac5cfc1c3$var$requestFullscreen(await this.model?.twistySceneModel.fullscreenElement.get() ?? this.defaultFullscreenElement);
+            const onFullscreen = ()=>{
+                if ($8e08190ac5cfc1c3$var$documentFullscreenElement() !== this.defaultFullscreenElement) {
+                    this.buttons?.fullscreen.setIcon("enter-fullscreen");
+                    window.removeEventListener("fullscreenchange", onFullscreen);
+                }
+            };
+            window.addEventListener("fullscreenchange", onFullscreen);
+        }
+    }
+    async update(buttonAppearances) {
+        for(const command in $8e08190ac5cfc1c3$var$buttonCommands){
+            const button = this.buttons[command];
+            const info = buttonAppearances[command];
+            button.htmlButton.disabled = !info.enabled;
+            button.htmlButton.title = info.title;
+            button.setIcon(info.icon);
+            button.hidden = !!info.hidden;
+        }
+    }
+    updateDarkMode(darkMode) {
+        for (const button of Object.values(this.buttons ?? {}))button.updateDarkMode(darkMode);
+    }
+};
+(0, $62nUG.customElementsShim).define("twisty-buttons", $8e08190ac5cfc1c3$var$TwistyButtons);
+var $8e08190ac5cfc1c3$var$TwistyButton = class extends (0, $62nUG.ManagedCustomElement) {
+    constructor(){
+        super(...arguments);
+        this.htmlButton = document.createElement("button");
+        this.#iconManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "svg-", $8e08190ac5cfc1c3$var$buttonIcons);
+    }
+    updateDarkMode(darkMode) {
+        this.contentWrapper.classList.toggle("dark-mode", darkMode === "dark");
+    }
+    connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$buttonCSS);
+        this.addElement(this.htmlButton);
+    }
+    #iconManager;
+    setIcon(iconName) {
+        this.#iconManager.setValue(iconName);
+    }
+};
+(0, $62nUG.customElementsShim).define("twisty-button", $8e08190ac5cfc1c3$var$TwistyButton);
+// src/cubing/twisty/views/control-panel/TwistyScrubber.css.ts
+var $8e08190ac5cfc1c3$var$twistyScrubberCSS = new (0, $62nUG.CSSSource)(`
+:host {
+  width: 384px;
+  height: 16px;
+  display: grid;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: rgba(196, 196, 196, 0.75);
+}
+
+input:not(:disabled) {
+  cursor: ew-resize;
+}
+
+.wrapper.dark-mode {
+  background: #666666;
+}
+`);
+// src/cubing/twisty/views/control-panel/TwistyScrubber.ts
+var $8e08190ac5cfc1c3$var$SLOW_DOWN_SCRUBBING = false;
+var $8e08190ac5cfc1c3$var$isMouseDown = false;
+$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mousedown", function(event) {
+    if (event.which) $8e08190ac5cfc1c3$var$isMouseDown = true;
+}, true);
+$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mouseup", function(event) {
+    if (event.which) $8e08190ac5cfc1c3$var$isMouseDown = false;
+}, true);
+var $8e08190ac5cfc1c3$var$y = 0;
+var $8e08190ac5cfc1c3$var$clickNum = 0;
+$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mousedown", ()=>{
+    $8e08190ac5cfc1c3$var$clickNum++;
+}, false);
+$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mousemove", $8e08190ac5cfc1c3$var$onMouseUpdate, false);
+$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mouseenter", $8e08190ac5cfc1c3$var$onMouseUpdate, false);
+function $8e08190ac5cfc1c3$var$onMouseUpdate(e) {
+    $8e08190ac5cfc1c3$var$y = e.pageY;
+}
+var $8e08190ac5cfc1c3$var$lastVal = 0;
+var $8e08190ac5cfc1c3$var$lastPreval = 0;
+var $8e08190ac5cfc1c3$var$scaling = false;
+var $8e08190ac5cfc1c3$var$currentClickNum = 0;
+var $8e08190ac5cfc1c3$var$TwistyScrubber = class extends (0, $62nUG.ManagedCustomElement) {
+    constructor(model, controller){
+        super();
+        this.model = model;
+        this.controller = controller;
+    }
+    async onDetailedTimelineInfo(detailedTimelineInfo) {
+        const inputElem = await this.inputElem();
+        inputElem.min = detailedTimelineInfo.timeRange.start.toString();
+        inputElem.max = detailedTimelineInfo.timeRange.end.toString();
+        inputElem.disabled = inputElem.min === inputElem.max;
+        inputElem.value = detailedTimelineInfo.timestamp.toString();
+    }
+    async connectedCallback() {
+        this.addCSS($8e08190ac5cfc1c3$var$twistyScrubberCSS);
+        this.addElement(await this.inputElem());
+        this.model?.twistySceneModel.darkMode.addFreshListener(this.updateDarkMode.bind(this));
+    }
+    updateDarkMode(darkMode) {
+        this.contentWrapper.classList.toggle("dark-mode", darkMode === "dark");
+    }
+    #inputElem = null;
+    async inputElem() {
+        return this.#inputElem ?? (this.#inputElem = (async ()=>{
+            const elem = document.createElement("input");
+            elem.type = "range";
+            elem.disabled = true;
+            this.model?.detailedTimelineInfo.addFreshListener(this.onDetailedTimelineInfo.bind(this));
+            elem.addEventListener("input", this.onInput.bind(this));
+            elem.addEventListener("keydown", this.onKeypress.bind(this));
+            return elem;
+        })());
+    }
+    async onInput(e) {
+        if ($8e08190ac5cfc1c3$var$scaling) return;
+        const inputElem = await this.inputElem();
+        await this.slowDown(e, inputElem);
+        const value = parseInt(inputElem.value);
+        this.model?.playingInfo.set({
+            playing: false
+        });
+        this.model?.timestampRequest.set(value);
+    }
+    onKeypress(e) {
+        switch(e.key){
+            case "ArrowLeft":
+            case "ArrowRight":
+                this.controller?.animationController.play({
+                    direction: e.key === "ArrowLeft" ? -1 /* Backwards */  : 1 /* Forwards */ ,
+                    untilBoundary: "move" /* Move */ 
+                });
+                e.preventDefault();
+                break;
+            case " ":
+                this.controller?.togglePlay();
+                e.preventDefault();
+                break;
+        }
+    }
+    async slowDown(e, inputElem) {
+        if (!$8e08190ac5cfc1c3$var$SLOW_DOWN_SCRUBBING) return;
+        if ($8e08190ac5cfc1c3$var$isMouseDown) {
+            const rect = inputElem.getBoundingClientRect();
+            const sliderY = rect.top + rect.height / 2;
+            console.log(sliderY, e, $8e08190ac5cfc1c3$var$y, $8e08190ac5cfc1c3$var$isMouseDown);
+            const yDist = Math.abs(sliderY - $8e08190ac5cfc1c3$var$y);
+            let scale = 1;
+            if (yDist > 64) scale = Math.max(Math.pow(2, -(yDist - 64) / 64), 1 / 32);
+            const preVal = parseInt(inputElem.value);
+            console.log("cl", $8e08190ac5cfc1c3$var$currentClickNum, $8e08190ac5cfc1c3$var$clickNum, preVal);
+            if ($8e08190ac5cfc1c3$var$currentClickNum === $8e08190ac5cfc1c3$var$clickNum) {
+                const delta = (preVal - $8e08190ac5cfc1c3$var$lastPreval) * scale;
+                console.log("delta", delta, yDist);
+                $8e08190ac5cfc1c3$var$scaling = true;
+                let newVal = preVal;
+                newVal = $8e08190ac5cfc1c3$var$lastVal + delta * scale + (preVal - $8e08190ac5cfc1c3$var$lastVal) * Math.min(1, Math.pow(0.5, yDist * yDist / 64));
+                inputElem.value = newVal.toString();
+                console.log(scale);
+                $8e08190ac5cfc1c3$var$scaling = false;
+                this.contentWrapper.style.opacity = scale.toString();
+            } else $8e08190ac5cfc1c3$var$currentClickNum = $8e08190ac5cfc1c3$var$clickNum;
+            $8e08190ac5cfc1c3$var$lastPreval = preVal;
+        }
+    }
+};
+(0, $62nUG.customElementsShim).define("twisty-scrubber", $8e08190ac5cfc1c3$var$TwistyScrubber);
+// src/cubing/twisty/views/screenshot.ts
+var $8e08190ac5cfc1c3$var$cachedCamera = null;
+async function $8e08190ac5cfc1c3$var$screenshot(model, options) {
+    const [{ PerspectiveCamera: PerspectiveCamera , Scene: Scene  }, puzzleLoader, visualizationStrategy, _stickering, _stickeringMaskRequest, _legacyPosition, orbitCoordinates] = await Promise.all([
+        (0, $62nUG.THREEJS),
+        await model.puzzleLoader.get(),
+        await model.visualizationStrategy.get(),
+        await model.twistySceneModel.stickeringRequest.get(),
+        await model.twistySceneModel.stickeringMaskRequest.get(),
+        await model.legacyPosition.get(),
+        await model.twistySceneModel.orbitCoordinates.get()
+    ]);
+    const width = options?.width ?? 2048;
+    const height = options?.height ?? 2048;
+    const aspectRatio = width / height;
+    const camera = $8e08190ac5cfc1c3$var$cachedCamera ?? ($8e08190ac5cfc1c3$var$cachedCamera = await (async ()=>{
+        return new PerspectiveCamera(20, aspectRatio, 0.1, 20);
+    })());
+    const scene = new Scene();
+    const twisty3DWrapper = new $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper(model, {
+        scheduleRender: ()=>{}
+    }, puzzleLoader, visualizationStrategy);
+    scene.add(await twisty3DWrapper.twisty3DPuzzle());
+    await (0, $62nUG.setCameraFromOrbitCoordinates)(camera, orbitCoordinates);
+    const rendererCanvas = await (0, $62nUG.rawRenderPooled)(width, height, scene, camera);
+    const dataURL = rendererCanvas.toDataURL();
+    const defaultFilename = await $8e08190ac5cfc1c3$var$getDefaultFilename(model);
+    return {
+        dataURL: dataURL,
+        download: async (filename)=>{
+            $8e08190ac5cfc1c3$var$downloadURL(dataURL, filename ?? defaultFilename);
+        }
+    };
+}
+async function $8e08190ac5cfc1c3$var$getDefaultFilename(model) {
+    const [puzzleID, algWithIssues] = await Promise.all([
+        model.puzzleID.get(),
+        model.alg.get()
+    ]);
+    return `[${puzzleID}]${algWithIssues.alg.experimentalNumChildAlgNodes() === 0 ? "" : ` ${algWithIssues.alg.toString()}`}`;
+}
+function $8e08190ac5cfc1c3$var$downloadURL(url, name, extension = "png") {
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${name}.${extension}`;
+    a.click();
+}
+// src/cubing/twisty/views/TwistyPlayer.css.ts
+var $8e08190ac5cfc1c3$var$twistyPlayerCSS = new (0, $62nUG.CSSSource)(`
+:host {
+  width: 384px;
+  height: 256px;
+  display: grid;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.wrapper {
+  display: grid;
+  overflow: hidden;
+  contain: size;
+  grid-template-rows: 7fr minmax(1.5em, 0.5fr) minmax(2em, 1fr);
+}
+
+.wrapper > * {
+  width: inherit;
+  height: inherit;
+  overflow: hidden;
+}
+
+.wrapper.controls-none {
+  grid-template-rows: 7fr;
+}
+
+.wrapper.controls-none twisty-scrubber,
+.wrapper.controls-none twisty-control-button-panel ,
+.wrapper.controls-none twisty-scrubber,
+.wrapper.controls-none twisty-buttons {
+  display: none;
+}
+
+twisty-scrubber {
+  background: rgba(196, 196, 196, 0.5);
+}
+
+.wrapper.checkered,
+.wrapper.checkered-transparent {
+  background-color: #EAEAEA;
+  background-image: linear-gradient(45deg, #DDD 25%, transparent 25%, transparent 75%, #DDD 75%, #DDD),
+    linear-gradient(45deg, #DDD 25%, transparent 25%, transparent 75%, #DDD 75%, #DDD);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.wrapper.checkered-transparent {
+  background-color: #F4F4F4;
+  background-image: linear-gradient(45deg, #DDDDDD88 25%, transparent 25%, transparent 75%, #DDDDDD88 75%, #DDDDDD88),
+    linear-gradient(45deg, #DDDDDD88 25%, transparent 25%, transparent 75%, #DDDDDD88 75%, #DDDDDD88);
+}
+
+.wrapper.dark-mode {
+  background-color: #444;
+  background-image: linear-gradient(45deg, #DDDDDD0b 25%, transparent 25%, transparent 75%, #DDDDDD0b 75%, #DDDDDD0b),
+    linear-gradient(45deg, #DDDDDD0b 25%, transparent 25%, transparent 75%, #DDDDDD0b 75%, #DDDDDD0b);
+}
+
+.visualization-wrapper > * {
+  width: 100%;
+  height: 100%;
+}
+
+.error-elem {
+  width: 100%;
+  height: 100%;
+  display: none;
+  place-content: center;
+  font-family: sans-serif;
+  box-shadow: inset 0 0 2em rgb(255, 0, 0);
+  color: red;
+  text-shadow: 0 0 0.2em white;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.wrapper.error .visualization-wrapper {
+  display: none;
+}
+
+.wrapper.error .error-elem {
+  display: grid;
+}
+`);
+// src/cubing/twisty/model/props/general/ArbitraryStringProp.ts
+var $8e08190ac5cfc1c3$var$ArbitraryStringProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return null;
+    }
+};
+// src/cubing/twisty/model/props/general/URLProp.ts
+var $8e08190ac5cfc1c3$var$URLProp = class extends (0, $62nUG.TwistyPropSource) {
+    getDefaultValue() {
+        return null;
+    }
+    derive(input) {
+        if (typeof input === "string") return new URL(input, location.href);
+        return input;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/AlgProp.ts
+var $8e08190ac5cfc1c3$var$AlgIssues = class {
+    constructor(issues){
+        this.warnings = Object.freeze(issues?.warnings ?? []);
+        this.errors = Object.freeze(issues?.errors ?? []);
+        Object.freeze(this);
+    }
+    add(issues) {
+        return new $8e08190ac5cfc1c3$var$AlgIssues({
+            warnings: this.warnings.concat(issues?.warnings ?? []),
+            errors: this.errors.concat(issues?.errors ?? [])
+        });
+    }
+    log() {
+        if (this.errors.length > 0) console.error(`\u{1F6A8} ${this.errors[0]}`);
+        else if (this.warnings.length > 0) console.warn(`\u26A0\uFE0F ${this.warnings[0]}`);
+        else console.info("\uD83D\uDE0E No issues!");
+    }
+};
+function $8e08190ac5cfc1c3$var$algWithIssuesFromString(s) {
+    try {
+        const alg = (0, $OIFGm.Alg).fromString(s);
+        const warnings = [];
+        if (alg.toString() !== s) warnings.push("Alg is non-canonical!");
+        return {
+            alg: alg,
+            issues: new $8e08190ac5cfc1c3$var$AlgIssues({
+                warnings: warnings
+            })
+        };
+    } catch (e) {
+        return {
+            alg: new (0, $OIFGm.Alg)(),
+            issues: new $8e08190ac5cfc1c3$var$AlgIssues({
+                errors: [
+                    `Malformed alg: ${e.toString()}`
+                ]
+            })
+        };
+    }
+}
+function $8e08190ac5cfc1c3$var$algWithIssuesEquals(a1, a2) {
+    return a1.alg.isIdentical(a2.alg) && $8e08190ac5cfc1c3$var$arrayEquals(a1.issues.warnings, a2.issues.warnings) && $8e08190ac5cfc1c3$var$arrayEquals(a1.issues.errors, a2.issues.errors);
+}
+var $8e08190ac5cfc1c3$var$AlgProp = class extends (0, $62nUG.TwistyPropSource) {
+    getDefaultValue() {
+        return {
+            alg: new (0, $OIFGm.Alg)(),
+            issues: new $8e08190ac5cfc1c3$var$AlgIssues()
+        };
+    }
+    canReuseValue(v1, v2) {
+        return $8e08190ac5cfc1c3$var$algWithIssuesEquals(v1, v2);
+    }
+    async derive(newAlg) {
+        if (typeof newAlg === "string") return $8e08190ac5cfc1c3$var$algWithIssuesFromString(newAlg);
+        else return {
+            alg: newAlg,
+            issues: new $8e08190ac5cfc1c3$var$AlgIssues()
+        };
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/AlgTransformationProp.ts
+var $8e08190ac5cfc1c3$var$AlgTransformationProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(input) {
+        return input.kpuzzle.algToTransformation(input.setupAlg.alg);
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/AnchorTransformationProp.ts
+var $8e08190ac5cfc1c3$var$AnchorTransformationProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        if (inputs.setupTransformation) return inputs.setupTransformation;
+        switch(inputs.setupAnchor){
+            case "start":
+                return inputs.setupAlgTransformation;
+            case "end":
+                {
+                    const algTransformation = inputs.indexer.transformationAtIndex(inputs.indexer.numAnimatedLeaves());
+                    const inverseAlgTransformation = algTransformation.invert();
+                    return inputs.setupAlgTransformation.applyTransformation(inverseAlgTransformation);
+                }
+            default:
+                throw new Error("Unimplemented!");
+        }
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/CatchUpMoveProp.ts
+var $8e08190ac5cfc1c3$var$CatchUpMoveProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return {
+            move: null,
+            amount: 0
+        };
+    }
+    canReuseValue(v1, v2) {
+        return v1.move === v2.move && v1.amount === v2.amount;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/CurrentLeavesSimplified.ts
+var $8e08190ac5cfc1c3$var$CurrentLeavesSimplifiedProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        return {
+            stateIndex: inputs.currentMoveInfo.stateIndex,
+            movesFinishing: inputs.currentMoveInfo.movesFinishing.map((currentMoveInfo)=>currentMoveInfo.move),
+            movesFinished: inputs.currentMoveInfo.movesFinished.map((currentMoveInfo)=>currentMoveInfo.move)
+        };
+    }
+    canReuseValue(v1, v2) {
+        return v1.stateIndex === v2.stateIndex && $8e08190ac5cfc1c3$var$arrayEqualsCompare(v1.movesFinishing, v2.movesFinishing, (m1, m2)=>m1.isIdentical(m2)) && $8e08190ac5cfc1c3$var$arrayEqualsCompare(v1.movesFinished, v2.movesFinished, (m1, m2)=>m1.isIdentical(m2));
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/CurrentMoveInfoProp.ts
+var $8e08190ac5cfc1c3$var$CurrentMoveInfoProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        function addCatchUpMove(currentMoveInfo) {
+            if (inputs.detailedTimelineInfo.atEnd && inputs.catchUpMove.move !== null) currentMoveInfo.currentMoves.push({
+                move: inputs.catchUpMove.move,
+                direction: -1 /* Backwards */ ,
+                fraction: 1 - inputs.catchUpMove.amount,
+                startTimestamp: -1,
+                endTimestamp: -1
+            });
+            return currentMoveInfo;
+        }
+        if (inputs.indexer.currentMoveInfo) return addCatchUpMove(inputs.indexer.currentMoveInfo(inputs.detailedTimelineInfo.timestamp));
+        else {
+            const idx = inputs.indexer.timestampToIndex(inputs.detailedTimelineInfo.timestamp);
+            const currentMoveInfo = {
+                stateIndex: idx,
+                currentMoves: [],
+                movesFinishing: [],
+                movesFinished: [],
+                movesStarting: [],
+                latestStart: -Infinity,
+                earliestEnd: Infinity
+            };
+            if (inputs.indexer.numAnimatedLeaves() > 0) {
+                const move = inputs.indexer.getAnimLeaf(idx)?.as((0, $OIFGm.Move));
+                if (!move) return addCatchUpMove(currentMoveInfo);
+                const start = inputs.indexer.indexToMoveStartTimestamp(idx);
+                const duration = inputs.indexer.moveDuration(idx);
+                const fraction = duration ? (inputs.detailedTimelineInfo.timestamp - start) / duration : 0;
+                const end = start + duration;
+                const currentMove = {
+                    move: move,
+                    direction: 1 /* Forwards */ ,
+                    fraction: fraction,
+                    startTimestamp: start,
+                    endTimestamp: end
+                };
+                if (fraction === 0) currentMoveInfo.movesStarting.push(currentMove);
+                else if (fraction === 1) currentMoveInfo.movesFinishing.push(currentMove);
+                else {
+                    currentMoveInfo.currentMoves.push(currentMove);
+                    currentMoveInfo.latestStart = Math.max(currentMoveInfo.latestStart, start);
+                    currentMoveInfo.earliestEnd = Math.min(currentMoveInfo.earliestEnd, end);
+                }
+            }
+            return addCatchUpMove(currentMoveInfo);
+        }
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/CurrentStateProp.ts
+var $8e08190ac5cfc1c3$var$CurrentStateProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        let transformation = inputs.indexer.transformationAtIndex(inputs.currentLeavesSimplified.stateIndex);
+        transformation = inputs.anchoredStart.applyTransformation(transformation);
+        for (const finishingMove of inputs.currentLeavesSimplified.movesFinishing)transformation = transformation.applyMove(finishingMove);
+        for (const finishedMove of inputs.currentLeavesSimplified.movesFinished)transformation = transformation.applyMove(finishedMove);
+        return transformation.toKState();
+    }
+};
+// src/cubing/twisty/controllers/indexer/AlgDuration.ts
+function $8e08190ac5cfc1c3$var$defaultDurationForAmount(amount) {
+    switch(Math.abs(amount)){
+        case 0:
+            return 0;
+        case 1:
+            return 1e3;
+        case 2:
+            return 1500;
+        default:
+            return 2e3;
+    }
+}
+var $8e08190ac5cfc1c3$var$AlgDuration = class extends (0, $OIFGm.TraversalUp) {
+    constructor(durationForAmount = $8e08190ac5cfc1c3$var$defaultDurationForAmount){
+        super();
+        this.durationForAmount = durationForAmount;
+    }
+    traverseAlg(alg) {
+        let total = 0;
+        for (const algNode of alg.childAlgNodes())total += this.traverseAlgNode(algNode);
+        return total;
+    }
+    traverseGrouping(grouping) {
+        return grouping.amount * this.traverseAlg(grouping.alg);
+    }
+    traverseMove(move) {
+        return this.durationForAmount(move.amount);
+    }
+    traverseCommutator(commutator) {
+        return 2 * (this.traverseAlg(commutator.A) + this.traverseAlg(commutator.B));
+    }
+    traverseConjugate(conjugate) {
+        return 2 * this.traverseAlg(conjugate.A) + this.traverseAlg(conjugate.B);
+    }
+    traversePause(_pause) {
+        return this.durationForAmount(1);
+    }
+    traverseNewline(_newline) {
+        return this.durationForAmount(1);
+    }
+    traverseLineComment(_comment) {
+        return this.durationForAmount(0);
+    }
+};
+// src/cubing/twisty/controllers/indexer/SimpleAlgIndexer.ts
+var $8e08190ac5cfc1c3$export$f1f512573dac63bc = class {
+    constructor(kpuzzle, alg){
+        this.kpuzzle = kpuzzle;
+        this.durationFn = new $8e08190ac5cfc1c3$var$AlgDuration($8e08190ac5cfc1c3$var$defaultDurationForAmount);
+        this.moves = new (0, $OIFGm.Alg)(alg.experimentalExpand());
+    }
+    getAnimLeaf(index) {
+        return Array.from(this.moves.childAlgNodes())[index];
+    }
+    indexToMoveStartTimestamp(index) {
+        const alg = new (0, $OIFGm.Alg)(Array.from(this.moves.childAlgNodes()).slice(0, index));
+        return this.durationFn.traverseAlg(alg);
+    }
+    timestampToIndex(timestamp) {
+        let cumulativeTime = 0;
+        let i;
+        for(i = 0; i < this.numAnimatedLeaves(); i++){
+            cumulativeTime += this.durationFn.traverseMove(this.getAnimLeaf(i));
+            if (cumulativeTime >= timestamp) return i;
+        }
+        return i;
+    }
+    stateAtIndex(index) {
+        return this.kpuzzle.startState().applyTransformation(this.transformationAtIndex(index));
+    }
+    transformationAtIndex(index) {
+        let state = this.kpuzzle.identityTransformation();
+        for (const move of Array.from(this.moves.childAlgNodes()).slice(0, index))state = state.applyMove(move);
+        return state;
+    }
+    algDuration() {
+        return this.durationFn.traverseAlg(this.moves);
+    }
+    numAnimatedLeaves() {
+        return (0, $1f99a2124d8d6b11$export$d5ea806fd922b359)(this.moves);
+    }
+    moveDuration(index) {
+        return this.durationFn.traverseMove(this.getAnimLeaf(index));
+    }
+};
+// src/cubing/twisty/controllers/indexer/simultaneous-moves/simul-moves.ts
+var $8e08190ac5cfc1c3$var$axisLookup = {
+    u: "y",
+    l: "x",
+    f: "z",
+    r: "x",
+    b: "z",
+    d: "y",
+    m: "x",
+    e: "y",
+    s: "z",
+    x: "x",
+    y: "y",
+    z: "z"
+};
+function $8e08190ac5cfc1c3$var$isSameAxis(move1, move2) {
+    return $8e08190ac5cfc1c3$var$axisLookup[move1.family[0].toLowerCase()] === $8e08190ac5cfc1c3$var$axisLookup[move2.family[0].toLowerCase()];
+}
+var $8e08190ac5cfc1c3$var$LocalSimulMoves = class extends (0, $OIFGm.TraversalUp) {
+    traverseAlg(alg) {
+        const processed = [];
+        for (const childAlgNode of alg.childAlgNodes())processed.push(this.traverseAlgNode(childAlgNode));
+        return Array.prototype.concat(...processed);
+    }
+    traverseGroupingOnce(alg) {
+        if (alg.experimentalIsEmpty()) return [];
+        for (const algNode of alg.childAlgNodes()){
+            if (!algNode.is((0, $OIFGm.Move))) return this.traverseAlg(alg);
+        }
+        const moves = Array.from(alg.childAlgNodes());
+        let maxSimulDur = $8e08190ac5cfc1c3$var$defaultDurationForAmount(moves[0].amount);
+        for(let i = 0; i < moves.length - 1; i++){
+            for(let j = 1; j < moves.length; j++){
+                if (!$8e08190ac5cfc1c3$var$isSameAxis(moves[i], moves[j])) return this.traverseAlg(alg);
+            }
+            maxSimulDur = Math.max(maxSimulDur, $8e08190ac5cfc1c3$var$defaultDurationForAmount(moves[i].amount));
+        }
+        const localMovesWithRange = moves.map((blockMove)=>{
+            return {
+                animLeafAlgNode: blockMove,
+                msUntilNext: 0,
+                duration: maxSimulDur
+            };
+        });
+        localMovesWithRange[localMovesWithRange.length - 1].msUntilNext = maxSimulDur;
+        return localMovesWithRange;
+    }
+    traverseGrouping(grouping) {
+        const processed = [];
+        const segmentOnce = grouping.amount > 0 ? grouping.alg : grouping.alg.invert();
+        for(let i = 0; i < Math.abs(grouping.amount); i++)processed.push(this.traverseGroupingOnce(segmentOnce));
+        return Array.prototype.concat(...processed);
+    }
+    traverseMove(move) {
+        const duration = $8e08190ac5cfc1c3$var$defaultDurationForAmount(move.amount);
+        return [
+            {
+                animLeafAlgNode: move,
+                msUntilNext: duration,
+                duration: duration
+            }
+        ];
+    }
+    traverseCommutator(commutator) {
+        const processed = [];
+        const segmentsOnce = [
+            commutator.A,
+            commutator.B,
+            commutator.A.invert(),
+            commutator.B.invert()
+        ];
+        for (const segment of segmentsOnce)processed.push(this.traverseGroupingOnce(segment));
+        return Array.prototype.concat(...processed);
+    }
+    traverseConjugate(conjugate) {
+        const processed = [];
+        const segmentsOnce = [
+            conjugate.A,
+            conjugate.B,
+            conjugate.A.invert()
+        ];
+        for (const segment of segmentsOnce)processed.push(this.traverseGroupingOnce(segment));
+        return Array.prototype.concat(...processed);
+    }
+    traversePause(pause) {
+        if (pause.experimentalNISSGrouping) return [];
+        const duration = $8e08190ac5cfc1c3$var$defaultDurationForAmount(1);
+        return [
+            {
+                animLeafAlgNode: pause,
+                msUntilNext: duration,
+                duration: duration
+            }
+        ];
+    }
+    traverseNewline(_newline) {
+        return [];
+    }
+    traverseLineComment(_comment) {
+        return [];
+    }
+};
+var $8e08190ac5cfc1c3$var$localSimulMoves = (0, $OIFGm.functionFromTraversal)($8e08190ac5cfc1c3$var$LocalSimulMoves);
+function $8e08190ac5cfc1c3$var$simulMoves(a) {
+    let timestamp = 0;
+    const l = $8e08190ac5cfc1c3$var$localSimulMoves(a).map((localSimulMove)=>{
+        const leafWithRange = {
+            animLeaf: localSimulMove.animLeafAlgNode,
+            start: timestamp,
+            end: timestamp + localSimulMove.duration
+        };
+        timestamp += localSimulMove.msUntilNext;
+        return leafWithRange;
+    });
+    return l;
+}
+// src/cubing/twisty/controllers/indexer/simultaneous-moves/SimultaneousMoveIndexer.ts
+var $8e08190ac5cfc1c3$var$demos = {
+    "y' y' U' E D R2 r2 F2 B2 U E D' R2 L2' z2 S2 U U D D S2 F2' B2": [
+        {
+            animLeaf: new (0, $OIFGm.Move)("y", -1),
+            start: 0,
+            end: 1e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("y", -1),
+            start: 1e3,
+            end: 2e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("U", -1),
+            start: 1e3,
+            end: 1600
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("E", 1),
+            start: 1200,
+            end: 1800
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("D"),
+            start: 1400,
+            end: 2e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("R", 2),
+            start: 2e3,
+            end: 3500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("r", 2),
+            start: 2e3,
+            end: 3500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("F", 2),
+            start: 3500,
+            end: 4200
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("B", 2),
+            start: 3800,
+            end: 4500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("U", 1),
+            start: 4500,
+            end: 5500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("E", 1),
+            start: 4500,
+            end: 5500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("D", -1),
+            start: 4500,
+            end: 5500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("R", 2),
+            start: 5500,
+            end: 6500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("L", -2),
+            start: 5500,
+            end: 6500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("z", 2),
+            start: 5500,
+            end: 6500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("S", 2),
+            start: 6500,
+            end: 7500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("U"),
+            start: 7500,
+            end: 8e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("D"),
+            start: 7750,
+            end: 8250
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("U"),
+            start: 8e3,
+            end: 8500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("D"),
+            start: 8250,
+            end: 8750
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("S", 2),
+            start: 8750,
+            end: 9250
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("F", -2),
+            start: 8750,
+            end: 1e4
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("B", 2),
+            start: 8750,
+            end: 1e4
+        }
+    ],
+    "M' R' U' D' M R": [
+        {
+            animLeaf: new (0, $OIFGm.Move)("M", -1),
+            start: 0,
+            end: 1e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("R", -1),
+            start: 0,
+            end: 1e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("U", -1),
+            start: 1e3,
+            end: 2e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("D", -1),
+            start: 1e3,
+            end: 2e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("M"),
+            start: 2e3,
+            end: 3e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("R"),
+            start: 2e3,
+            end: 3e3
+        }
+    ],
+    "U' E' r E r2' E r U E": [
+        {
+            animLeaf: new (0, $OIFGm.Move)("U", -1),
+            start: 0,
+            end: 1e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("E", -1),
+            start: 0,
+            end: 1e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("r"),
+            start: 1e3,
+            end: 2500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("E"),
+            start: 2500,
+            end: 3500
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("r", -2),
+            start: 3500,
+            end: 5e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("E"),
+            start: 5e3,
+            end: 6e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("r"),
+            start: 6e3,
+            end: 7e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("U"),
+            start: 7e3,
+            end: 8e3
+        },
+        {
+            animLeaf: new (0, $OIFGm.Move)("E"),
+            start: 7e3,
+            end: 8e3
+        }
+    ]
+};
+var $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer = class {
+    constructor(kpuzzle, alg){
+        this.kpuzzle = kpuzzle;
+        this.animLeaves = $8e08190ac5cfc1c3$var$demos[alg.toString()] ?? $8e08190ac5cfc1c3$var$simulMoves(alg);
+    }
+    getAnimLeaf(index) {
+        return this.animLeaves[Math.min(index, this.animLeaves.length - 1)]?.animLeaf ?? null;
+    }
+    getAnimLeafWithRange(index) {
+        return this.animLeaves[Math.min(index, this.animLeaves.length - 1)];
+    }
+    indexToMoveStartTimestamp(index) {
+        let start = 0;
+        if (this.animLeaves.length > 0) start = this.animLeaves[Math.min(index, this.animLeaves.length - 1)].start;
+        return start;
+    }
+    timestampToIndex(timestamp) {
+        let i = 0;
+        for(i = 0; i < this.animLeaves.length; i++){
+            if (this.animLeaves[i].start >= timestamp) return Math.max(0, i - 1);
+        }
+        return Math.max(0, i - 1);
+    }
+    timestampToPosition(timestamp, startState) {
+        const currentMoveInfo = this.currentMoveInfo(timestamp);
+        let state = startState ?? this.kpuzzle.identityTransformation().toKState();
+        for (const leafWithRange of this.animLeaves.slice(0, currentMoveInfo.stateIndex)){
+            const move = leafWithRange.animLeaf.as((0, $OIFGm.Move));
+            if (move !== null) state = state.applyMove(move);
+        }
+        return {
+            state: state,
+            movesInProgress: currentMoveInfo.currentMoves
+        };
+    }
+    currentMoveInfo(timestamp) {
+        let windowEarliestTimestamp = Infinity;
+        for (const leafWithRange of this.animLeaves){
+            if (leafWithRange.start <= timestamp && leafWithRange.end >= timestamp) windowEarliestTimestamp = Math.min(windowEarliestTimestamp, leafWithRange.start);
+            else if (leafWithRange.start > timestamp) break;
+        }
+        const currentMoves = [];
+        const movesStarting = [];
+        const movesFinishing = [];
+        const movesFinished = [];
+        let latestStart = -Infinity;
+        let earliestEnd = Infinity;
+        let stateIndex = 0;
+        for (const leafWithRange1 of this.animLeaves){
+            if (leafWithRange1.end <= windowEarliestTimestamp) stateIndex++;
+            else if (leafWithRange1.start > timestamp) break;
+            else {
+                const move = leafWithRange1.animLeaf.as((0, $OIFGm.Move));
+                if (move !== null) {
+                    let fraction = (timestamp - leafWithRange1.start) / (leafWithRange1.end - leafWithRange1.start);
+                    let moveFinished = false;
+                    if (fraction > 1) {
+                        fraction = 1;
+                        moveFinished = true;
+                    }
+                    const currentMove = {
+                        move: move,
+                        direction: 1 /* Forwards */ ,
+                        fraction: fraction,
+                        startTimestamp: leafWithRange1.start,
+                        endTimestamp: leafWithRange1.end
+                    };
+                    switch(fraction){
+                        case 0:
+                            movesStarting.push(currentMove);
+                            break;
+                        case 1:
+                            if (moveFinished) movesFinished.push(currentMove);
+                            else movesFinishing.push(currentMove);
+                            break;
+                        default:
+                            currentMoves.push(currentMove);
+                            latestStart = Math.max(latestStart, leafWithRange1.start);
+                            earliestEnd = Math.min(earliestEnd, leafWithRange1.end);
+                    }
+                }
+            }
+        }
+        return {
+            stateIndex: stateIndex,
+            currentMoves: currentMoves,
+            latestStart: latestStart,
+            earliestEnd: earliestEnd,
+            movesStarting: movesStarting,
+            movesFinishing: movesFinishing,
+            movesFinished: movesFinished
+        };
+    }
+    stateAtIndex(index, startState) {
+        let state = startState ?? this.kpuzzle.startState();
+        for(let i = 0; i < this.animLeaves.length && i < index; i++){
+            const leafWithRange = this.animLeaves[i];
+            const move = leafWithRange.animLeaf.as((0, $OIFGm.Move));
+            if (move !== null) state = state.applyMove(move);
+        }
+        return state;
+    }
+    transformationAtIndex(index) {
+        let transformation = this.kpuzzle.identityTransformation();
+        for (const leafWithRange of this.animLeaves.slice(0, index)){
+            const move = leafWithRange.animLeaf.as((0, $OIFGm.Move));
+            if (move !== null) transformation = transformation.applyMove(move);
+        }
+        return transformation;
+    }
+    algDuration() {
+        let max = 0;
+        for (const leafWithRange of this.animLeaves)max = Math.max(max, leafWithRange.end);
+        return max;
+    }
+    numAnimatedLeaves() {
+        return this.animLeaves.length;
+    }
+    moveDuration(index) {
+        const move = this.getAnimLeafWithRange(index);
+        return move.end - move.start;
+    }
+};
+// src/cubing/twisty/controllers/indexer/tree/AlgWalker.ts
+var $8e08190ac5cfc1c3$var$AlgWalkerDecoration = class {
+    constructor(moveCount, duration, forward, backward, children = []){
+        this.moveCount = moveCount;
+        this.duration = duration;
+        this.forward = forward;
+        this.backward = backward;
+        this.children = children;
+    }
+};
+var $8e08190ac5cfc1c3$var$DecoratorConstructor = class extends (0, $OIFGm.TraversalUp) {
+    constructor(kpuzzle){
+        super();
+        this.kpuzzle = kpuzzle;
+        this.durationFn = new $8e08190ac5cfc1c3$var$AlgDuration($8e08190ac5cfc1c3$var$defaultDurationForAmount);
+        this.cache = {};
+        this.identity = kpuzzle.identityTransformation();
+        this.dummyLeaf = new $8e08190ac5cfc1c3$var$AlgWalkerDecoration(0, 0, this.identity, this.identity, []);
+    }
+    traverseAlg(alg) {
+        let moveCount = 0;
+        let duration = 0;
+        let transformation = this.identity;
+        const child = [];
+        for (const algNode of alg.childAlgNodes()){
+            const apd = this.traverseAlgNode(algNode);
+            moveCount += apd.moveCount;
+            duration += apd.duration;
+            if (transformation === this.identity) transformation = apd.forward;
+            else transformation = transformation.applyTransformation(apd.forward);
+            child.push(apd);
+        }
+        return new $8e08190ac5cfc1c3$var$AlgWalkerDecoration(moveCount, duration, transformation, transformation.invert(), child);
+    }
+    traverseGrouping(grouping) {
+        const dec = this.traverseAlg(grouping.alg);
+        return this.mult(dec, grouping.amount, [
+            dec
+        ]);
+    }
+    traverseMove(move) {
+        const key = move.toString();
+        let r2 = this.cache[key];
+        if (r2) return r2;
+        const transformation = this.kpuzzle.moveToTransformation(move);
+        r2 = new $8e08190ac5cfc1c3$var$AlgWalkerDecoration(1, this.durationFn.traverseAlgNode(move), transformation, transformation.invert());
+        this.cache[key] = r2;
+        return r2;
+    }
+    traverseCommutator(commutator) {
+        const decA = this.traverseAlg(commutator.A);
+        const decB = this.traverseAlg(commutator.B);
+        const AB = decA.forward.applyTransformation(decB.forward);
+        const ApBp = decA.backward.applyTransformation(decB.backward);
+        const ABApBp = AB.applyTransformation(ApBp);
+        const dec = new $8e08190ac5cfc1c3$var$AlgWalkerDecoration(2 * (decA.moveCount + decB.moveCount), 2 * (decA.duration + decB.duration), ABApBp, ABApBp.invert(), [
+            decA,
+            decB
+        ]);
+        return this.mult(dec, 1, [
+            dec,
+            decA,
+            decB
+        ]);
+    }
+    traverseConjugate(conjugate) {
+        const decA = this.traverseAlg(conjugate.A);
+        const decB = this.traverseAlg(conjugate.B);
+        const AB = decA.forward.applyTransformation(decB.forward);
+        const ABAp = AB.applyTransformation(decA.backward);
+        const dec = new $8e08190ac5cfc1c3$var$AlgWalkerDecoration(2 * decA.moveCount + decB.moveCount, 2 * decA.duration + decB.duration, ABAp, ABAp.invert(), [
+            decA,
+            decB
+        ]);
+        return this.mult(dec, 1, [
+            dec,
+            decA,
+            decB
+        ]);
+    }
+    traversePause(pause) {
+        if (pause.experimentalNISSGrouping) return this.dummyLeaf;
+        return new $8e08190ac5cfc1c3$var$AlgWalkerDecoration(1, this.durationFn.traverseAlgNode(pause), this.identity, this.identity);
+    }
+    traverseNewline(_newline) {
+        return this.dummyLeaf;
+    }
+    traverseLineComment(_comment) {
+        return this.dummyLeaf;
+    }
+    mult(apd, n, child) {
+        const absn = Math.abs(n);
+        const st = apd.forward.selfMultiply(n);
+        return new $8e08190ac5cfc1c3$var$AlgWalkerDecoration(apd.moveCount * absn, apd.duration * absn, st, st.invert(), child);
+    }
+};
+var $8e08190ac5cfc1c3$var$WalkerDown = class {
+    constructor(apd, back){
+        this.apd = apd;
+        this.back = back;
+    }
+};
+var $8e08190ac5cfc1c3$var$AlgWalker = class extends (0, $OIFGm.TraversalDownUp) {
+    constructor(kpuzzle, algOrAlgNode, apd){
+        super();
+        this.kpuzzle = kpuzzle;
+        this.algOrAlgNode = algOrAlgNode;
+        this.apd = apd;
+        this.i = -1;
+        this.dur = -1;
+        this.goali = -1;
+        this.goaldur = -1;
+        this.move = void 0;
+        this.back = false;
+        this.moveDuration = 0;
+        this.st = this.kpuzzle.identityTransformation();
+        this.root = new $8e08190ac5cfc1c3$var$WalkerDown(this.apd, false);
+    }
+    moveByIndex(loc) {
+        if (this.i >= 0 && this.i === loc) return this.move !== void 0;
+        return this.dosearch(loc, Infinity);
+    }
+    moveByDuration(dur) {
+        if (this.dur >= 0 && this.dur < dur && this.dur + this.moveDuration >= dur) return this.move !== void 0;
+        return this.dosearch(Infinity, dur);
+    }
+    dosearch(loc, dur) {
+        this.goali = loc;
+        this.goaldur = dur;
+        this.i = 0;
+        this.dur = 0;
+        this.move = void 0;
+        this.moveDuration = 0;
+        this.back = false;
+        this.st = this.kpuzzle.identityTransformation();
+        const r2 = this.algOrAlgNode.is((0, $OIFGm.Alg)) ? this.traverseAlg(this.algOrAlgNode, this.root) : this.traverseAlgNode(this.algOrAlgNode, this.root);
+        return r2;
+    }
+    traverseAlg(alg, wd) {
+        if (!this.firstcheck(wd)) return false;
+        let i = wd.back ? alg.experimentalNumChildAlgNodes() - 1 : 0;
+        for (const algNode of (0, $OIFGm.directedGenerator)(alg.childAlgNodes(), wd.back ? -1 /* Backwards */  : 1 /* Forwards */ )){
+            if (this.traverseAlgNode(algNode, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[i], wd.back))) return true;
+            i += wd.back ? -1 : 1;
+        }
+        return false;
+    }
+    traverseGrouping(grouping, wd) {
+        if (!this.firstcheck(wd)) return false;
+        const back = this.domult(wd, grouping.amount);
+        return this.traverseAlg(grouping.alg, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[0], back));
+    }
+    traverseMove(move, wd) {
+        if (!this.firstcheck(wd)) return false;
+        this.move = move;
+        this.moveDuration = wd.apd.duration;
+        this.back = wd.back;
         return true;
     }
-    getValues() {
-        let values = {};
-        this.faces.forEach((stickerIds, key)=>{
-            values[key] = stickerIds.map((id)=>this.stickers.get(id));
-        });
-        return values;
+    traverseCommutator(commutator, wd) {
+        if (!this.firstcheck(wd)) return false;
+        const back = this.domult(wd, 1);
+        if (back) return this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], !back)) || this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back)) || this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back));
+        else return this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back)) || this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back)) || this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], !back));
     }
-    /**
-     * override value of sticker on a face
-     *
-     * @param face - label
-     * @param index - index of sticker to set value of
-     * @param value - value to set the sticker to
-     */ setValue(face, index, value) {
-        if (!this.faces.has(face)) {
-            console.warn(`attempting to set sticker value on invalid face: ${face}`);
-            return;
+    traverseConjugate(conjugate, wd) {
+        if (!this.firstcheck(wd)) return false;
+        const back = this.domult(wd, 1);
+        if (back) return this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back)) || this.traverseAlg(conjugate.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back));
+        else return this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back)) || this.traverseAlg(conjugate.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back));
+    }
+    traversePause(pause, wd) {
+        if (!this.firstcheck(wd)) return false;
+        this.move = pause;
+        this.moveDuration = wd.apd.duration;
+        this.back = wd.back;
+        return true;
+    }
+    traverseNewline(_newline, _wd) {
+        return false;
+    }
+    traverseLineComment(_lineComment, _wd) {
+        return false;
+    }
+    firstcheck(wd) {
+        if (wd.apd.moveCount + this.i <= this.goali && wd.apd.duration + this.dur < this.goaldur) return this.keepgoing(wd);
+        return true;
+    }
+    domult(wd, amount) {
+        let back = wd.back;
+        if (amount === 0) return back;
+        if (amount < 0) {
+            back = !back;
+            amount = -amount;
         }
-        let faceStickers = this.faces.get(face);
-        let stickerId = faceStickers[index];
-        if (!faceStickers) {
-            console.warn(`attempting to set sticker value for invalid sticker: ${face} ${index}`);
-            return;
+        const base = wd.apd.children[0];
+        const full = Math.min(Math.floor((this.goali - this.i) / base.moveCount), Math.ceil((this.goaldur - this.dur) / base.duration - 1));
+        if (full > 0) this.keepgoing(new $8e08190ac5cfc1c3$var$WalkerDown(base, back), full);
+        return back;
+    }
+    keepgoing(wd, mul = 1) {
+        this.i += mul * wd.apd.moveCount;
+        this.dur += mul * wd.apd.duration;
+        if (mul !== 1) {
+            if (wd.back) this.st = this.st.applyTransformation(wd.apd.backward.selfMultiply(mul));
+            else this.st = this.st.applyTransformation(wd.apd.forward.selfMultiply(mul));
+        } else if (wd.back) this.st = this.st.applyTransformation(wd.apd.backward);
+        else this.st = this.st.applyTransformation(wd.apd.forward);
+        return false;
+    }
+};
+// src/cubing/twisty/controllers/indexer/tree/chunkAlgs.ts
+var $8e08190ac5cfc1c3$var$MIN_CHUNKING_THRESHOLD = 16;
+function $8e08190ac5cfc1c3$var$chunkifyAlg(alg, chunkMaxLength) {
+    const mainAlgBuilder = new (0, $OIFGm.AlgBuilder)();
+    const chunkAlgBuilder = new (0, $OIFGm.AlgBuilder)();
+    for (const algNode of alg.childAlgNodes()){
+        chunkAlgBuilder.push(algNode);
+        if (chunkAlgBuilder.experimentalNumAlgNodes() >= chunkMaxLength) {
+            mainAlgBuilder.push(new (0, $OIFGm.Grouping)(chunkAlgBuilder.toAlg()));
+            chunkAlgBuilder.reset();
         }
-        this.stickers.set(stickerId, value);
     }
-    /**
-     * parse and execute a sequence of moves
-     *
-     * @example
-     * ```typescript
-     * // assuming U, R, and F are turn labels
-     * simulator.alg("U R F")
-     * ```
-     *
-     * @param alg - algorithm
-     */ alg(alg) {
-        // Default implementation
-        if (!alg) return;
-        alg.split(" ").forEach((turn)=>this.doTurn(turn));
+    mainAlgBuilder.push(new (0, $OIFGm.Grouping)(chunkAlgBuilder.toAlg()));
+    return mainAlgBuilder.toAlg();
+}
+var $8e08190ac5cfc1c3$var$ChunkAlgs = class extends (0, $OIFGm.TraversalUp) {
+    traverseAlg(alg) {
+        const algLength = alg.experimentalNumChildAlgNodes();
+        if (algLength < $8e08190ac5cfc1c3$var$MIN_CHUNKING_THRESHOLD) return alg;
+        return $8e08190ac5cfc1c3$var$chunkifyAlg(alg, Math.ceil(Math.sqrt(algLength)));
     }
-    /**
-     * reverses an algorithm then executes it
-     */ case(alg) {
-    // No default implementation
+    traverseGrouping(grouping) {
+        return new (0, $OIFGm.Grouping)(this.traverseAlg(grouping.alg), grouping.amount);
     }
-    /**
-     * resets stickers back to solved position. Uses face name
-     * as sticker value by default
-     */ reset() {
-        this.faces.forEach((stickerIds, faceName)=>{
-            stickerIds.forEach((stickerId)=>{
-                this.stickers.set(stickerId, faceName);
+    traverseMove(move) {
+        return move;
+    }
+    traverseCommutator(commutator) {
+        return new (0, $OIFGm.Conjugate)(this.traverseAlg(commutator.A), this.traverseAlg(commutator.B));
+    }
+    traverseConjugate(conjugate) {
+        return new (0, $OIFGm.Conjugate)(this.traverseAlg(conjugate.A), this.traverseAlg(conjugate.B));
+    }
+    traversePause(pause) {
+        return pause;
+    }
+    traverseNewline(newline) {
+        return newline;
+    }
+    traverseLineComment(comment) {
+        return comment;
+    }
+};
+var $8e08190ac5cfc1c3$var$chunkAlgs = (0, $OIFGm.functionFromTraversal)($8e08190ac5cfc1c3$var$ChunkAlgs);
+// src/cubing/twisty/controllers/indexer/tree/TreeAlgIndexer.ts
+var $8e08190ac5cfc1c3$export$ff289a905dec21cb = class {
+    constructor(kpuzzle, alg){
+        this.kpuzzle = kpuzzle;
+        const deccon = new $8e08190ac5cfc1c3$var$DecoratorConstructor(this.kpuzzle);
+        const chunkedAlg = $8e08190ac5cfc1c3$var$chunkAlgs(alg);
+        this.decoration = deccon.traverseAlg(chunkedAlg);
+        this.walker = new $8e08190ac5cfc1c3$var$AlgWalker(this.kpuzzle, chunkedAlg, this.decoration);
+    }
+    getAnimLeaf(index) {
+        if (this.walker.moveByIndex(index)) {
+            if (!this.walker.move) throw new Error("`this.walker.mv` missing");
+            const move = this.walker.move;
+            if (this.walker.back) return move.invert();
+            return move;
+        }
+        return null;
+    }
+    indexToMoveStartTimestamp(index) {
+        if (this.walker.moveByIndex(index) || this.walker.i === index) return this.walker.dur;
+        throw new Error(`Out of algorithm: index ${index}`);
+    }
+    indexToMovesInProgress(index) {
+        if (this.walker.moveByIndex(index) || this.walker.i === index) return this.walker.dur;
+        throw new Error(`Out of algorithm: index ${index}`);
+    }
+    stateAtIndex(index, startState) {
+        this.walker.moveByIndex(index);
+        return (startState ?? this.kpuzzle.startState()).applyTransformation(this.walker.st);
+    }
+    transformationAtIndex(index) {
+        this.walker.moveByIndex(index);
+        return this.walker.st;
+    }
+    numAnimatedLeaves() {
+        return this.decoration.moveCount;
+    }
+    timestampToIndex(timestamp) {
+        this.walker.moveByDuration(timestamp);
+        return this.walker.i;
+    }
+    algDuration() {
+        return this.decoration.duration;
+    }
+    moveDuration(index) {
+        this.walker.moveByIndex(index);
+        return this.walker.moveDuration;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/IndexerConstructorProp.ts
+var $8e08190ac5cfc1c3$var$IndexerConstructorProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        switch(inputs.indexerConstructorRequest){
+            case "auto":
+                if ((0, $1f99a2124d8d6b11$export$3bb9ec80d65f79cf)(inputs.alg.alg) < 100 && inputs.puzzle === "3x3x3" && inputs.visualizationStrategy === "Cube3D") return $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer;
+                else return $8e08190ac5cfc1c3$export$ff289a905dec21cb;
+            case "tree":
+                return $8e08190ac5cfc1c3$export$ff289a905dec21cb;
+            case "simple":
+                return $8e08190ac5cfc1c3$export$f1f512573dac63bc;
+            case "simultaneous":
+                return $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer;
+            default:
+                throw new Error("Invalid indexer request!");
+        }
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/IndexerConstructorRequestProp.ts
+var $8e08190ac5cfc1c3$var$IndexerConstructorRequestProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/IndexerProp.ts
+var $8e08190ac5cfc1c3$var$IndexerProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(input) {
+        return new input.indexerConstructor(input.kpuzzle, input.algWithIssues.alg);
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/LegacyPositionProp.ts
+var $8e08190ac5cfc1c3$var$LegacyPositionProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        return {
+            state: inputs.state,
+            movesInProgress: inputs.currentMoveInfo.currentMoves
+        };
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/NaiveMoveCountProp.ts
+var $8e08190ac5cfc1c3$var$NaiveMoveCountProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        if (inputs.alg.issues.errors.length > 0) return null;
+        return (0, $1f99a2124d8d6b11$export$3bb9ec80d65f79cf)(inputs.alg.alg);
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/PuzzleAlgProp.ts
+var $8e08190ac5cfc1c3$var$validate = true;
+var $8e08190ac5cfc1c3$var$PuzzleAlgProp = class extends (0, $62nUG.TwistyPropDerived) {
+    async derive(inputs) {
+        try {
+            if ($8e08190ac5cfc1c3$var$validate) inputs.kpuzzle.algToTransformation(inputs.algWithIssues.alg);
+            return inputs.algWithIssues;
+        } catch (e) {
+            return {
+                alg: new (0, $OIFGm.Alg)(),
+                issues: new $8e08190ac5cfc1c3$var$AlgIssues({
+                    errors: [
+                        `Invalid alg for puzzle: ${e.toString()}`
+                    ]
+                })
+            };
+        }
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/SetupAnchorProp.ts
+var $8e08190ac5cfc1c3$var$SetupAnchorProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "start";
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/SetupTransformationProp.ts
+var $8e08190ac5cfc1c3$var$SetupTransformationProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return null;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/structure/KPuzzleProp.ts
+var $8e08190ac5cfc1c3$var$KPuzzleProp = class extends (0, $62nUG.TwistyPropDerived) {
+    async derive(inputs) {
+        return inputs.puzzleLoader.kpuzzle();
+    }
+};
+// src/cubing/twisty/model/props/puzzle/structure/PuzzleDescriptionProp.ts
+var $8e08190ac5cfc1c3$var$PGPuzzleDescriptionStringProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return 0, $62nUG.NO_VALUE;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/structure/PuzzleIDProp.ts
+var $8e08190ac5cfc1c3$var$PuzzleIDProp = class extends (0, $62nUG.TwistyPropDerived) {
+    async derive(inputs) {
+        return inputs.puzzleLoader.id;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/structure/PuzzleIDRequestProp.ts
+var $8e08190ac5cfc1c3$var$PuzzleIDRequestProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return 0, $62nUG.NO_VALUE;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/structure/PuzzleLoaderProp.ts
+var $8e08190ac5cfc1c3$var$PuzzleLoaderProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        if (inputs.puzzleIDRequest && inputs.puzzleIDRequest !== (0, $62nUG.NO_VALUE)) {
+            const puzzleLoader = (0, $eb9PZ.puzzles)[inputs.puzzleIDRequest];
+            if (!puzzleLoader) this.userVisibleErrorTracker.set({
+                errors: [
+                    `Invalid puzzle ID: ${inputs.puzzleIDRequest}`
+                ]
             });
-        });
-    }
-}
-
-
-const $a552dd61b777f7b8$export$aab610c505c06a8f = {
-    value: "#FFFF00"
-};
-const $a552dd61b777f7b8$export$aa201224bb439d47 = {
-    value: "#FF0000"
-};
-const $a552dd61b777f7b8$export$738c3b9a44c87ecc = {
-    value: "#0000FF"
-};
-const $a552dd61b777f7b8$export$29814851e0aa981f = {
-    value: "#FFFFFF"
-};
-const $a552dd61b777f7b8$export$3de5e29ed1757f9b = {
-    value: "#FFA500"
-};
-const $a552dd61b777f7b8$export$48d4b2cd5bc0e88b = {
-    value: "#00FF00"
-};
-const $a552dd61b777f7b8$export$7ffdeca4b2f927a2 = {
-    value: "#800080"
-};
-const $a552dd61b777f7b8$export$7d278ca694634874 = {
-    value: "#808080"
-};
-const $a552dd61b777f7b8$export$1225f83626261b80 = {
-    value: "#00008B"
-};
-const $a552dd61b777f7b8$export$ff076ff0c4d77395 = {
-    value: "#ffffb3"
-};
-const $a552dd61b777f7b8$export$e0ebd895ef030b6d = {
-    value: "#32CD32"
-};
-const $a552dd61b777f7b8$export$d68d0fda4a10dbc2 = {
-    value: "#FF69B4"
-};
-const $a552dd61b777f7b8$export$7a91b0fde7ec420f = {
-    value: "#000000"
-};
-const $a552dd61b777f7b8$export$6597749b34bb1aec = {
-    value: "#404040"
-};
-const $a552dd61b777f7b8$export$f8ea35a42260644 = {
-    value: "#FFFF00",
-    stroke: "#DDDD00"
-};
-const $a552dd61b777f7b8$export$7901c298af2b8d83 = {
-    value: "#FF0000",
-    stroke: "#DD0000"
-};
-const $a552dd61b777f7b8$export$a11c97893961affb = {
-    value: "#0000FF",
-    stroke: "#0000DD"
-};
-const $a552dd61b777f7b8$export$d0c18299ad9e8571 = {
-    value: "#FFFFFF",
-    stroke: "#DDD"
-};
-const $a552dd61b777f7b8$export$36003d2b566c2e7a = {
-    value: "#FFA500",
-    stroke: "#DD8500"
-};
-const $a552dd61b777f7b8$export$ad63947d03e3ccba = {
-    value: "#00FF00",
-    stroke: "#00DD00"
-};
-const $a552dd61b777f7b8$export$4bde46112ba7cd7a = {
-    value: "#800080",
-    stroke: "#5c005c"
-};
-const $a552dd61b777f7b8$export$819b712065175813 = {
-    value: "#808080",
-    stroke: "#6b6b6b"
-};
-const $a552dd61b777f7b8$export$102b4a2dab1cc261 = {
-    value: "#00008B",
-    stroke: "#000075"
-};
-const $a552dd61b777f7b8$export$72f460dd5f01d0e4 = {
-    value: "#ffffb3",
-    stroke: "#e6e6a3"
-};
-const $a552dd61b777f7b8$export$9a752ac04d471666 = {
-    value: "#32CD32",
-    stroke: "#2db32d"
-};
-const $a552dd61b777f7b8$export$7fdcd4061f1d99cb = {
-    value: "#FF69B4",
-    stroke: "#de5b9c"
-};
-
-
-var $ca66abb67f2ac25e$export$6173bdc2540cf84d;
-(function(PIECE_TYPE1) {
-    PIECE_TYPE1[PIECE_TYPE1["CORNER"] = 0] = "CORNER";
-    PIECE_TYPE1[PIECE_TYPE1["EDGE"] = 1] = "EDGE";
-    PIECE_TYPE1[PIECE_TYPE1["MIDDLE"] = 2] = "MIDDLE";
-})($ca66abb67f2ac25e$export$6173bdc2540cf84d || ($ca66abb67f2ac25e$export$6173bdc2540cf84d = {}));
-
-
-class $621efe85613594b3$export$64b5c384219d3699 {
-    constructor(x, y, z){
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-    static fromValues(x, y, z) {
-        return new $621efe85613594b3$export$64b5c384219d3699(x, y, z);
-    }
-    transformMat4(m) {
-        let w = m.values[3] * this.x + m.values[7] * this.y + m.values[11] * this.z + m.values[15];
-        w = w || 1.0;
-        const x = (m.values[0] * this.x + m.values[4] * this.y + m.values[8] * this.z + m.values[12]) / w;
-        const y = (m.values[1] * this.x + m.values[5] * this.y + m.values[9] * this.z + m.values[13]) / w;
-        const z = (m.values[2] * this.x + m.values[6] * this.y + m.values[10] * this.z + m.values[14]) / w;
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-    multiply(x, y, z) {
-        this.x = this.x * x;
-        this.y = this.y * y;
-        this.z = this.z * z;
-    }
-    rotateX(origin, radians) {
-        // translate point to origin
-        let x = this.x - origin.x;
-        let y = this.y - origin.y;
-        let z = this.z - origin.z;
-        // rotate
-        this.x = x;
-        this.y = y * Math.cos(radians) - z * Math.sin(radians);
-        this.z = y * Math.sin(radians) + z * Math.cos(radians);
-        // translate back
-        this.x += origin.x;
-        this.y += origin.y;
-        this.z += origin.z;
-        return this;
-    }
-    rotateZ(origin, radians) {
-        // translate point to origin
-        let x = this.x - origin.x;
-        let y = this.y - origin.y;
-        let z = this.z - origin.z;
-        // rotate
-        this.x = x * Math.cos(radians) - y * Math.sin(radians);
-        this.y = x * Math.sin(radians) + y * Math.cos(radians);
-        this.z = z;
-        // translate back
-        this.x += origin.x;
-        this.y += origin.y;
-        this.z += origin.z;
-        return this;
-    }
-    clone() {
-        return $621efe85613594b3$export$64b5c384219d3699.fromValues(this.x, this.y, this.z);
-    }
-}
-class $621efe85613594b3$export$c977b3e384af9ae1 {
-    constructor(x, y){
-        this.x = x;
-        this.y = y;
-    }
-    static fromValues(x, y) {
-        return new $621efe85613594b3$export$c977b3e384af9ae1(x, y);
-    }
-}
-
-
-const $9b3744130fd33c3e$export$f37ee267a00cc8d1 = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0.92875, -0.24803, 0);
-const $9b3744130fd33c3e$export$55b0a8c193af45de = (0, $a552dd61b777f7b8$export$aab610c505c06a8f);
-const $9b3744130fd33c3e$export$1fc89f64133f4a0c = (0, $a552dd61b777f7b8$export$29814851e0aa981f);
-const $9b3744130fd33c3e$export$cb85c16e1d24099a = (0, $a552dd61b777f7b8$export$aa201224bb439d47);
-const $9b3744130fd33c3e$export$66e6a34bcf8f025 = (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc);
-const $9b3744130fd33c3e$export$14680afe79e23391 = (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b);
-const $9b3744130fd33c3e$export$fd9287afea1ea787 = (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b);
-const $9b3744130fd33c3e$export$e1bf8712b5945cd = {
-    top: $9b3744130fd33c3e$export$55b0a8c193af45de,
-    front: $9b3744130fd33c3e$export$cb85c16e1d24099a,
-    bottom: $9b3744130fd33c3e$export$1fc89f64133f4a0c,
-    left: $9b3744130fd33c3e$export$66e6a34bcf8f025,
-    right: $9b3744130fd33c3e$export$14680afe79e23391,
-    back: $9b3744130fd33c3e$export$fd9287afea1ea787
-};
-const $9b3744130fd33c3e$export$a5aadce9b3884cce = [
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-        colors: [
-            $9b3744130fd33c3e$export$55b0a8c193af45de,
-            $9b3744130fd33c3e$export$cb85c16e1d24099a,
-            $9b3744130fd33c3e$export$66e6a34bcf8f025
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-        colors: [
-            $9b3744130fd33c3e$export$55b0a8c193af45de,
-            $9b3744130fd33c3e$export$66e6a34bcf8f025
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-        colors: [
-            $9b3744130fd33c3e$export$55b0a8c193af45de,
-            $9b3744130fd33c3e$export$66e6a34bcf8f025,
-            $9b3744130fd33c3e$export$fd9287afea1ea787
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-        colors: [
-            $9b3744130fd33c3e$export$55b0a8c193af45de,
-            $9b3744130fd33c3e$export$fd9287afea1ea787
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-        colors: [
-            $9b3744130fd33c3e$export$55b0a8c193af45de,
-            $9b3744130fd33c3e$export$fd9287afea1ea787,
-            $9b3744130fd33c3e$export$14680afe79e23391
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-        colors: [
-            $9b3744130fd33c3e$export$55b0a8c193af45de,
-            $9b3744130fd33c3e$export$14680afe79e23391
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-        colors: [
-            $9b3744130fd33c3e$export$55b0a8c193af45de,
-            $9b3744130fd33c3e$export$14680afe79e23391,
-            $9b3744130fd33c3e$export$cb85c16e1d24099a
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-        colors: [
-            $9b3744130fd33c3e$export$55b0a8c193af45de,
-            $9b3744130fd33c3e$export$cb85c16e1d24099a
-        ]
-    }, 
-];
-const $9b3744130fd33c3e$export$4c6069d7db9ecde2 = [
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-        colors: [
-            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
-            $9b3744130fd33c3e$export$fd9287afea1ea787
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-        colors: [
-            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
-            $9b3744130fd33c3e$export$fd9287afea1ea787,
-            $9b3744130fd33c3e$export$66e6a34bcf8f025
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-        colors: [
-            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
-            $9b3744130fd33c3e$export$66e6a34bcf8f025
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-        colors: [
-            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
-            $9b3744130fd33c3e$export$66e6a34bcf8f025,
-            $9b3744130fd33c3e$export$cb85c16e1d24099a
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-        colors: [
-            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
-            $9b3744130fd33c3e$export$cb85c16e1d24099a
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-        colors: [
-            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
-            $9b3744130fd33c3e$export$cb85c16e1d24099a,
-            $9b3744130fd33c3e$export$14680afe79e23391
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-        colors: [
-            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
-            $9b3744130fd33c3e$export$14680afe79e23391
-        ]
-    },
-    {
-        type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-        colors: [
-            $9b3744130fd33c3e$export$1fc89f64133f4a0c,
-            $9b3744130fd33c3e$export$14680afe79e23391,
-            $9b3744130fd33c3e$export$fd9287afea1ea787
-        ]
-    }, 
-];
-
-
-
-const $edb14850c73ace03$var$square1TurnRegex = /((\()?(-?\d)\s*,\s*(-?\d)(\))?)|(\/)/g;
-function $edb14850c73ace03$export$b431853fef50a69d(algorithm) {
-    let turns = [];
-    let match;
-    while(match = $edb14850c73ace03$var$square1TurnRegex.exec(algorithm))if (match[0] === "/") turns.push({
-        slice: true
-    });
-    else turns.push({
-        top: parseInt(match[3]),
-        bottom: parseInt(match[4])
-    });
-    return turns;
-}
-
-
-const $6a2ff1079a5489d4$var$pieceValue = {
-    [(0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER]: 2,
-    [(0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE]: 1
-};
-class $6a2ff1079a5489d4$export$2c536ad444fb73c5 extends (0, $c7dd1edeefb0d4d3$export$b14c74960ae6f55e) {
-    constructor(scheme = (0, $9b3744130fd33c3e$export$e1bf8712b5945cd)){
-        super();
-        this.scheme = scheme;
-        this.topLayer = $6a2ff1079a5489d4$var$solvedTop(this.scheme);
-        this.bottomLayer = $6a2ff1079a5489d4$var$solvedBottom(this.scheme);
-        this.middleRotated = false;
-    }
-    alg(alg) {
-        (0, $edb14850c73ace03$export$b431853fef50a69d)(alg).forEach((move)=>{
-            if ("slice" in move) this.slice();
-            else {
-                this.rotateTop(move.top);
-                this.rotateBottom(move.bottom);
-            }
-        });
-    }
-    case(alg) {
-        (0, $edb14850c73ace03$export$b431853fef50a69d)(alg).reverse().forEach((move)=>{
-            if ("slice" in move) this.slice();
-            else {
-                this.rotateTop(move.top * -1);
-                this.rotateBottom(move.bottom * -1);
-            }
-        });
-    }
-    slice() {
-        let topNum = 0;
-        let bottomNum = 0;
-        let value = 0;
-        for(let i = this.topLayer.length; i > 0 && value < 6; i--){
-            value += $6a2ff1079a5489d4$var$pieceValue[this.topLayer[i - 1].type];
-            topNum++;
+            return puzzleLoader;
         }
-        if (value != 6) throw "Cannot perform slice move. Top layer misaligned";
-        value = 0;
-        for(let i1 = this.bottomLayer.length; i1 > 0 && value < 6; i1--){
-            value += $6a2ff1079a5489d4$var$pieceValue[this.bottomLayer[i1 - 1].type];
-            bottomNum++;
-        }
-        if (value != 6) throw "Cannot perform slice move. Bottom layer misaligned";
-        const topSlice = this.topLayer.splice(this.topLayer.length - topNum, this.topLayer.length);
-        const bottomSlice = this.bottomLayer.splice(this.bottomLayer.length - bottomNum, this.bottomLayer.length);
-        this.topLayer = this.topLayer.concat(bottomSlice);
-        this.bottomLayer = this.bottomLayer.concat(topSlice);
-        this.middleRotated = !this.middleRotated;
+        if (inputs.puzzleDescriptionRequest && inputs.puzzleDescriptionRequest !== (0, $62nUG.NO_VALUE)) return (0, $9k9QR.customPGPuzzleLoader)(inputs.puzzleDescriptionRequest);
+        return 0, $eb9PZ.cube3x3x3;
     }
-    rotateTop(turns) {
-        const originalTurns = turns;
-        while(turns != 0)if (turns < 0) {
-            const piece = this.topLayer.shift();
-            const value = $6a2ff1079a5489d4$var$pieceValue[piece.type];
-            if (Math.abs(turns) < value) throw `Invalid Square1 Move. Cannot turn top layer ${originalTurns} steps`;
-            this.topLayer.push(piece);
-            turns += value;
-        } else {
-            const piece = this.topLayer.pop();
-            const value = $6a2ff1079a5489d4$var$pieceValue[piece.type];
-            if (Math.abs(turns) < value) throw `Invalid Square1 Move. Cannot turn top layer ${originalTurns} steps`;
-            this.topLayer.unshift(piece);
-            turns -= value;
+};
+// src/cubing/twisty/model/props/timeline/CoarseTimelineInfoProp.ts
+var $8e08190ac5cfc1c3$var$CoarseTimelineInfoProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        return {
+            playing: inputs.playingInfo.playing,
+            atStart: inputs.detailedTimelineInfo.atStart,
+            atEnd: inputs.detailedTimelineInfo.atEnd
+        };
+    }
+    canReuseValue(v1, v2) {
+        return v1.playing === v2.playing && v1.atStart === v2.atStart && v1.atEnd === v2.atEnd;
+    }
+};
+// src/cubing/twisty/model/props/timeline/DetailedTimelineInfoProp.ts
+var $8e08190ac5cfc1c3$var$DetailedTimelineInfoProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        let timestamp = this.#requestedTimestampToMilliseconds(inputs);
+        let atStart = false;
+        let atEnd = false;
+        if (timestamp >= inputs.timeRange.end) {
+            atEnd = true;
+            timestamp = Math.min(inputs.timeRange.end, timestamp);
+        }
+        if (timestamp <= inputs.timeRange.start) {
+            atStart = true;
+            timestamp = Math.max(inputs.timeRange.start, timestamp);
+        }
+        return {
+            timestamp: timestamp,
+            timeRange: inputs.timeRange,
+            atStart: atStart,
+            atEnd: atEnd
+        };
+    }
+     #requestedTimestampToMilliseconds(inputs) {
+        switch(inputs.timestampRequest){
+            case "auto":
+                return inputs.setupAnchor === "start" && inputs.setupAlg.alg.experimentalIsEmpty() ? inputs.timeRange.end : inputs.timeRange.start;
+            case "start":
+                return inputs.timeRange.start;
+            case "end":
+                return inputs.timeRange.end;
+            case "anchor":
+                return inputs.setupAnchor === "start" ? inputs.timeRange.start : inputs.timeRange.end;
+            case "opposite-anchor":
+                return inputs.setupAnchor === "start" ? inputs.timeRange.end : inputs.timeRange.start;
+            default:
+                return inputs.timestampRequest;
         }
     }
-    rotateBottom(turns) {
-        const originalTurns = turns;
-        while(turns != 0)if (turns < 0) {
-            const piece = this.bottomLayer.shift();
-            const value = $6a2ff1079a5489d4$var$pieceValue[piece.type];
-            if (Math.abs(turns) < value) throw `Invalid Square1 Move. Cannot turn top layer ${originalTurns} steps`;
-            this.bottomLayer.push(piece);
-            turns += value;
-        } else {
-            const piece = this.bottomLayer.pop();
-            const value = $6a2ff1079a5489d4$var$pieceValue[piece.type];
-            if (Math.abs(turns) < value) throw `Invalid Square1 Move. Cannot turn top layer ${originalTurns} steps`;
-            this.bottomLayer.unshift(piece);
-            turns -= value;
+    canReuseValue(v1, v2) {
+        return v1.timestamp === v2.timestamp && v1.timeRange.start === v2.timeRange.start && v1.timeRange.end === v2.timeRange.end && v1.atStart === v2.atStart && v1.atEnd === v2.atEnd;
+    }
+};
+// src/cubing/twisty/model/props/timeline/PlayingInfoProp.ts
+var $8e08190ac5cfc1c3$var$PlayingInfoProp = class extends (0, $62nUG.TwistyPropSource) {
+    async getDefaultValue() {
+        return {
+            direction: 1 /* Forwards */ ,
+            playing: false,
+            untilBoundary: "entire-timeline" /* EntireTimeline */ ,
+            loop: false
+        };
+    }
+    async derive(newInfo, oldValuePromise) {
+        const oldValue = await oldValuePromise;
+        const newValue = Object.assign({}, oldValue);
+        Object.assign(newValue, newInfo);
+        return newValue;
+    }
+    canReuseValue(v1, v2) {
+        return v1.direction === v2.direction && v1.playing === v2.playing && v1.untilBoundary === v2.untilBoundary && v1.loop === v2.loop;
+    }
+};
+// src/cubing/twisty/model/props/timeline/TempoScaleProp.ts
+var $8e08190ac5cfc1c3$var$TempoScaleProp = class extends (0, $62nUG.TwistyPropSource) {
+    getDefaultValue() {
+        return 1;
+    }
+    derive(v) {
+        return v < 0 ? 1 : v;
+    }
+};
+// src/cubing/twisty/model/props/timeline/TimestampRequestProp.ts
+var $8e08190ac5cfc1c3$var$smartTimestamps = {
+    auto: true,
+    start: true,
+    end: true,
+    anchor: true,
+    "opposite-anchor": true
+};
+var $8e08190ac5cfc1c3$var$TimestampRequestProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+    set(v) {
+        if (!this.validInput(v)) return;
+        super.set(v);
+    }
+    validInput(v) {
+        if (typeof v === "number") return true;
+        if ($8e08190ac5cfc1c3$var$smartTimestamps[v]) return true;
+        return false;
+    }
+};
+// src/cubing/twisty/model/props/viewer/BackViewProp.ts
+var $8e08190ac5cfc1c3$export$9052cca4b8cc895f = {
+    none: true,
+    "side-by-side": true,
+    "top-right": true
+};
+var $8e08190ac5cfc1c3$var$BackViewProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/TimeRangeProp.ts
+var $8e08190ac5cfc1c3$var$TimeRangeProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        return {
+            start: 0,
+            end: inputs.indexer.algDuration()
+        };
+    }
+};
+// src/cubing/twisty/model/props/viewer/ViewerLinkProp.ts
+var $8e08190ac5cfc1c3$var$ViewerLinkProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/VisualizationProp.ts
+var $8e08190ac5cfc1c3$var$VisualizationFormatProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/VisualizationStrategyProp.ts
+var $8e08190ac5cfc1c3$var$VisualizationStrategyProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        switch(inputs.puzzleID){
+            case "clock":
+            case "square1":
+            case "kilominx":
+            case "redi_cube":
+            case "melindas2x2x2x2":
+                return "2D";
+            case "3x3x3":
+                switch(inputs.visualizationRequest){
+                    case "auto":
+                    case "3D":
+                        return "Cube3D";
+                    default:
+                        return inputs.visualizationRequest;
+                }
+            default:
+                switch(inputs.visualizationRequest){
+                    case "auto":
+                    case "3D":
+                        return "PG3D";
+                    case "experimental-2D-LL":
+                        if ([
+                            "2x2x2",
+                            "4x4x4",
+                            "megaminx"
+                        ].includes(inputs.puzzleID)) return "experimental-2D-LL";
+                        else return "2D";
+                    default:
+                        return inputs.visualizationRequest;
+                }
         }
     }
-}
-function $6a2ff1079a5489d4$var$solvedTop(scheme) {
-    return [
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-            colors: [
-                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
-                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a),
-                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025), 
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-            colors: [
-                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
-                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025)
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-            colors: [
-                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
-                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025),
-                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787), 
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-            colors: [
-                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
-                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787)
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-            colors: [
-                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
-                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787),
-                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391), 
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-            colors: [
-                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
-                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391)
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-            colors: [
-                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
-                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391),
-                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a), 
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-            colors: [
-                scheme.top || (0, $9b3744130fd33c3e$export$55b0a8c193af45de),
-                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a)
-            ]
-        }, 
-    ];
-}
-function $6a2ff1079a5489d4$var$solvedBottom(scheme) {
-    return [
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-            colors: [
-                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
-                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787)
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-            colors: [
-                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
-                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787),
-                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025), 
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-            colors: [
-                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
-                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025)
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-            colors: [
-                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
-                scheme.left || (0, $9b3744130fd33c3e$export$66e6a34bcf8f025),
-                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a), 
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-            colors: [
-                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
-                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a)
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-            colors: [
-                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
-                scheme.front || (0, $9b3744130fd33c3e$export$cb85c16e1d24099a),
-                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391), 
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE,
-            colors: [
-                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
-                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391)
-            ]
-        },
-        {
-            type: (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER,
-            colors: [
-                scheme.bottom || (0, $9b3744130fd33c3e$export$1fc89f64133f4a0c),
-                scheme.right || (0, $9b3744130fd33c3e$export$14680afe79e23391),
-                scheme.back || (0, $9b3744130fd33c3e$export$fd9287afea1ea787), 
-            ]
-        }, 
-    ];
-}
-
-
-
-
-const $09452e3a6320fe56$var$skewbTurnRegex = /([LRUB])(\'?)/g;
-const $09452e3a6320fe56$var$DirectionToTurnType = {
-    "": (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise,
-    "'": (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise
 };
-function $09452e3a6320fe56$export$bbb21588e7059e00(algorithm) {
-    let turns = [];
-    let match;
-    while(match = $09452e3a6320fe56$var$skewbTurnRegex.exec(algorithm)){
-        const rawUnit = match[1];
-        const rawDirection = match[2];
-        turns.push({
-            unit: rawUnit,
-            turnType: $09452e3a6320fe56$var$DirectionToTurnType[rawDirection],
-            slices: 1
-        });
+// src/cubing/twisty/model/props/puzzle/display/FaceletScaleProp.ts
+var $8e08190ac5cfc1c3$var$FaceletScaleProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
     }
-    return turns;
+};
+// src/cubing/twisty/model/props/puzzle/display/FoundationDisplayProp.ts
+var $8e08190ac5cfc1c3$var$FoundationDisplayProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/puzzle/display/InitialHintFaceletsAnimationProp.ts
+var $8e08190ac5cfc1c3$var$InitialHintFaceletsAnimationProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/puzzle/display/SpriteProp.ts
+var $8e08190ac5cfc1c3$var$cachedLoader = null;
+async function $8e08190ac5cfc1c3$var$loader() {
+    return $8e08190ac5cfc1c3$var$cachedLoader ?? ($8e08190ac5cfc1c3$var$cachedLoader = new (await (0, $62nUG.THREEJS)).TextureLoader());
 }
-
-
-function $047c8aa02737eb97$export$f922ebe57f2c36e8(array, chunkSize) {
-    const newSize = Math.ceil(array.length / chunkSize);
-    return new Array(newSize).fill(null).map((_, index)=>array.slice(index * chunkSize, (index + 1) * chunkSize));
-}
-function $047c8aa02737eb97$export$57295b69bf9c5d15(length, value) {
-    return new Array(length).fill(value);
-}
-
-
-
-class $cdfaf7e439ac29e3$export$b9c7478369a38c76 extends (0, $c7dd1edeefb0d4d3$export$b14c74960ae6f55e) {
-    constructor(){
-        super();
-        const { stickerIds: top  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "top"), "top");
-        const { stickerIds: front  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "front"), "front");
-        const { stickerIds: right  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "right"), "right");
-        const { stickerIds: bottom  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "bottom"), "bottom");
-        const { stickerIds: back  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "back"), "back");
-        const { stickerIds: left  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(5, "left"), "left");
-        // Skewb Notation https://www.worldcubeassociation.org/regulations/#12h
-        this.addTurn([
-            [
-                right[0],
-                back[0]
-            ],
-            [
-                right[2],
-                back[4]
-            ],
-            [
-                right[3],
-                back[1]
-            ],
-            [
-                right[4],
-                back[3]
-            ],
-            [
-                back[0],
-                bottom[0]
-            ],
-            [
-                back[4],
-                bottom[2]
-            ],
-            [
-                back[1],
-                bottom[3]
-            ],
-            [
-                back[3],
-                bottom[4]
-            ],
-            [
-                bottom[0],
-                right[0]
-            ],
-            [
-                bottom[2],
-                right[2]
-            ],
-            [
-                bottom[3],
-                right[3]
-            ],
-            [
-                bottom[4],
-                right[4]
-            ],
-            [
-                front[4],
-                top[2]
-            ],
-            [
-                top[2],
-                left[3]
-            ],
-            [
-                left[3],
-                front[4]
-            ], 
-        ], "R");
-        this.addTurn([
-            [
-                $cdfaf7e439ac29e3$var$center(top),
-                $cdfaf7e439ac29e3$var$center(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topLeft(top),
-                $cdfaf7e439ac29e3$var$topLeft(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topRight(top),
-                $cdfaf7e439ac29e3$var$topRight(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(top),
-                $cdfaf7e439ac29e3$var$bottomLeft(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$center(left),
-                $cdfaf7e439ac29e3$var$center(back)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topLeft(left),
-                $cdfaf7e439ac29e3$var$topRight(back)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topRight(left),
-                $cdfaf7e439ac29e3$var$bottomRight(back)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(left),
-                $cdfaf7e439ac29e3$var$topLeft(back)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$center(back),
-                $cdfaf7e439ac29e3$var$center(top)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topRight(back),
-                $cdfaf7e439ac29e3$var$topLeft(top)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomRight(back),
-                $cdfaf7e439ac29e3$var$topRight(top)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topLeft(back),
-                $cdfaf7e439ac29e3$var$bottomLeft(top)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topRight(right),
-                $cdfaf7e439ac29e3$var$topLeft(front)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topLeft(front),
-                $cdfaf7e439ac29e3$var$bottomLeft(bottom)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(bottom),
-                $cdfaf7e439ac29e3$var$topRight(right)
-            ], 
-        ], "U");
-        this.addTurn([
-            [
-                $cdfaf7e439ac29e3$var$center(left),
-                $cdfaf7e439ac29e3$var$center(front)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(left),
-                $cdfaf7e439ac29e3$var$topLeft(front)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topRight(left),
-                $cdfaf7e439ac29e3$var$bottomRight(front)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomRight(left),
-                $cdfaf7e439ac29e3$var$bottomLeft(front)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$center(front),
-                $cdfaf7e439ac29e3$var$center(bottom)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topLeft(front),
-                $cdfaf7e439ac29e3$var$topRight(bottom)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomRight(front),
-                $cdfaf7e439ac29e3$var$bottomLeft(bottom)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(front),
-                $cdfaf7e439ac29e3$var$topLeft(bottom)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$center(bottom),
-                $cdfaf7e439ac29e3$var$center(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topRight(bottom),
-                $cdfaf7e439ac29e3$var$bottomLeft(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(bottom),
-                $cdfaf7e439ac29e3$var$topRight(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topLeft(bottom),
-                $cdfaf7e439ac29e3$var$bottomRight(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomRight(back),
-                $cdfaf7e439ac29e3$var$bottomLeft(top)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(top),
-                $cdfaf7e439ac29e3$var$bottomLeft(right)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(right),
-                $cdfaf7e439ac29e3$var$bottomRight(back)
-            ], 
-        ], "L");
-        this.addTurn([
-            [
-                $cdfaf7e439ac29e3$var$center(back),
-                $cdfaf7e439ac29e3$var$center(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topRight(back),
-                $cdfaf7e439ac29e3$var$bottomRight(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(back),
-                $cdfaf7e439ac29e3$var$topLeft(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomRight(back),
-                $cdfaf7e439ac29e3$var$bottomLeft(left)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$center(left),
-                $cdfaf7e439ac29e3$var$center(bottom)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomRight(left),
-                $cdfaf7e439ac29e3$var$bottomRight(bottom)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topLeft(left),
-                $cdfaf7e439ac29e3$var$topLeft(bottom)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(left),
-                $cdfaf7e439ac29e3$var$bottomLeft(bottom)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$center(bottom),
-                $cdfaf7e439ac29e3$var$center(back)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomRight(bottom),
-                $cdfaf7e439ac29e3$var$topRight(back)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topLeft(bottom),
-                $cdfaf7e439ac29e3$var$bottomLeft(back)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(bottom),
-                $cdfaf7e439ac29e3$var$bottomRight(back)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$topLeft(top),
-                $cdfaf7e439ac29e3$var$bottomLeft(front)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomLeft(front),
-                $cdfaf7e439ac29e3$var$bottomRight(right)
-            ],
-            [
-                $cdfaf7e439ac29e3$var$bottomRight(right),
-                $cdfaf7e439ac29e3$var$topLeft(top)
-            ], 
-        ], "B");
-    }
-    R(reverse) {
-        this.doTurn("R", reverse);
-    }
-    U(reverse) {
-        this.doTurn("U", reverse);
-    }
-    L(reverse) {
-        this.doTurn("L", reverse);
-    }
-    B(reverse) {
-        this.doTurn("B", reverse);
-    }
-    alg(alg) {
-        if (!alg) return;
-        this.doTurns((0, $09452e3a6320fe56$export$bbb21588e7059e00)(alg));
-    }
-    case(alg) {
-        if (!alg) return;
-        let turns = (0, $09452e3a6320fe56$export$bbb21588e7059e00)(alg).reverse().map((turn)=>Object.assign(Object.assign({}, turn), {
-                turnType: turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise ? (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise : (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise
-            }));
-        this.doTurns(turns);
-    }
-    doTurns(turns) {
-        turns.forEach((turn)=>{
-            let reverse = turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
-            switch(turn.unit){
-                case "R":
-                    this.R(reverse);
-                    break;
-                case "U":
-                    this.U(reverse);
-                    break;
-                case "L":
-                    this.L(reverse);
-                    break;
-                case "B":
-                    this.B(reverse);
-                    break;
+var $8e08190ac5cfc1c3$var$SpriteProp = class extends (0, $62nUG.TwistyPropDerived) {
+    async derive(inputs) {
+        const { spriteURL: textureURL  } = inputs;
+        if (textureURL === null) return null;
+        return new Promise(async (resolve, _reject)=>{
+            const onLoadingError = ()=>{
+                console.warn("Could not load sprite:", textureURL.toString());
+                resolve(null);
+            };
+            try {
+                (await $8e08190ac5cfc1c3$var$loader()).load(textureURL.toString(), resolve, onLoadingError, onLoadingError);
+            } catch (e) {
+                onLoadingError();
             }
         });
     }
-}
-const $cdfaf7e439ac29e3$var$center = (face)=>face[0];
-const $cdfaf7e439ac29e3$var$topLeft = (face)=>face[1];
-const $cdfaf7e439ac29e3$var$topRight = (face)=>face[2];
-const $cdfaf7e439ac29e3$var$bottomLeft = (face)=>face[3];
-const $cdfaf7e439ac29e3$var$bottomRight = (face)=>face[4];
-
-
-
-
-const $40dd552cdb78c76f$var$pyraminxTurnRegex = /([LlRrUuBb])(\'?)/g;
-const $40dd552cdb78c76f$var$DirectionToTurnType = {
-    "": (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise,
-    "'": (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise
 };
-function $40dd552cdb78c76f$export$889bfdf6aad78bd0(algorithm) {
-    let turns = [];
-    let match;
-    while(match = $40dd552cdb78c76f$var$pyraminxTurnRegex.exec(algorithm)){
-        const rawUnit = match[1];
-        const rawDirection = match[2];
-        turns.push({
-            unit: rawUnit,
-            turnType: $40dd552cdb78c76f$var$DirectionToTurnType[rawDirection],
-            slices: 1
-        });
-    }
-    return turns;
-}
-
-
-
-
-class $e8a3bdbf0be390cd$export$d05b816c594f90e8 extends (0, $c7dd1edeefb0d4d3$export$b14c74960ae6f55e) {
-    constructor(){
-        super();
-        const { stickerIds: U  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(9, "top"), "top");
-        const { stickerIds: L  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(9, "left"), "left");
-        const { stickerIds: R  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(9, "right"), "right");
-        const { stickerIds: B  } = this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(9, "back"), "back");
-        // Tip turns
-        this.addTurn([
-            [
-                U[8],
-                R[8]
-            ],
-            [
-                R[8],
-                L[8]
-            ],
-            [
-                L[8],
-                U[8]
-            ], 
-        ], "u");
-        this.addTurn([
-            [
-                L[0],
-                B[8]
-            ],
-            [
-                B[8],
-                U[4]
-            ],
-            [
-                U[4],
-                L[0]
-            ], 
-        ], "l");
-        this.addTurn([
-            [
-                L[4],
-                R[0]
-            ],
-            [
-                R[0],
-                B[4]
-            ],
-            [
-                B[4],
-                L[4]
-            ], 
-        ], "r");
-        this.addTurn([
-            [
-                R[4],
-                U[0]
-            ],
-            [
-                U[0],
-                B[0]
-            ],
-            [
-                B[0],
-                R[4]
-            ], 
-        ], "b");
-        // Full turns
-        this.addTurn([
-            [
-                U[5],
-                R[5]
-            ],
-            [
-                U[6],
-                R[6]
-            ],
-            [
-                U[7],
-                R[7]
-            ],
-            [
-                U[8],
-                R[8]
-            ],
-            [
-                R[5],
-                L[5]
-            ],
-            [
-                R[6],
-                L[6]
-            ],
-            [
-                R[7],
-                L[7]
-            ],
-            [
-                R[8],
-                L[8]
-            ],
-            [
-                L[5],
-                U[5]
-            ],
-            [
-                L[6],
-                U[6]
-            ],
-            [
-                L[7],
-                U[7]
-            ],
-            [
-                L[8],
-                U[8]
-            ], 
-        ], "U");
-        this.addTurn([
-            [
-                L[0],
-                B[8]
-            ],
-            [
-                L[1],
-                B[6]
-            ],
-            [
-                L[2],
-                B[5]
-            ],
-            [
-                L[5],
-                B[7]
-            ],
-            [
-                B[8],
-                U[4]
-            ],
-            [
-                B[6],
-                U[3]
-            ],
-            [
-                B[5],
-                U[7]
-            ],
-            [
-                B[7],
-                U[2]
-            ],
-            [
-                U[4],
-                L[0]
-            ],
-            [
-                U[3],
-                L[1]
-            ],
-            [
-                U[7],
-                L[2]
-            ],
-            [
-                U[2],
-                L[5]
-            ], 
-        ], "L");
-        this.addTurn([
-            [
-                L[2],
-                R[5]
-            ],
-            [
-                L[3],
-                R[1]
-            ],
-            [
-                L[4],
-                R[0]
-            ],
-            [
-                L[7],
-                R[2]
-            ],
-            [
-                R[5],
-                B[2]
-            ],
-            [
-                R[1],
-                B[3]
-            ],
-            [
-                R[0],
-                B[4]
-            ],
-            [
-                R[2],
-                B[7]
-            ],
-            [
-                B[2],
-                L[2]
-            ],
-            [
-                B[3],
-                L[3]
-            ],
-            [
-                B[4],
-                L[4]
-            ],
-            [
-                B[7],
-                L[7]
-            ], 
-        ], "R");
-        this.addTurn([
-            [
-                R[2],
-                U[5]
-            ],
-            [
-                R[3],
-                U[1]
-            ],
-            [
-                R[4],
-                U[0]
-            ],
-            [
-                R[7],
-                U[2]
-            ],
-            [
-                U[5],
-                B[5]
-            ],
-            [
-                U[1],
-                B[1]
-            ],
-            [
-                U[0],
-                B[0]
-            ],
-            [
-                U[2],
-                B[2]
-            ],
-            [
-                B[5],
-                R[2]
-            ],
-            [
-                B[1],
-                R[3]
-            ],
-            [
-                B[0],
-                R[4]
-            ],
-            [
-                B[2],
-                R[7]
-            ], 
-        ], "B");
-    }
-    U(reverse) {
-        this.doTurn("U", reverse);
-    }
-    R(reverse) {
-        this.doTurn("R", reverse);
-    }
-    L(reverse) {
-        this.doTurn("L", reverse);
-    }
-    B(reverse) {
-        this.doTurn("B", reverse);
-    }
-    u(reverse) {
-        this.doTurn("u", reverse);
-    }
-    r(reverse) {
-        this.doTurn("r", reverse);
-    }
-    l(reverse) {
-        this.doTurn("l", reverse);
-    }
-    b(reverse) {
-        this.doTurn("b", reverse);
-    }
-    alg(alg) {
-        if (!alg) return;
-        this.doTurns((0, $40dd552cdb78c76f$export$889bfdf6aad78bd0)(alg));
-    }
-    case(alg) {
-        if (!alg) return;
-        let turns = (0, $40dd552cdb78c76f$export$889bfdf6aad78bd0)(alg).reverse().map((turn)=>Object.assign(Object.assign({}, turn), {
-                turnType: turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise ? (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise : (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise
-            }));
-        this.doTurns(turns);
-    }
-    doTurns(turns) {
-        turns.forEach((turn)=>{
-            let reverse = turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
-            switch(turn.unit){
-                case "R":
-                    this.R(reverse);
-                    break;
-                case "r":
-                    this.r(reverse);
-                    break;
-                case "U":
-                    this.U(reverse);
-                    break;
-                case "u":
-                    this.u(reverse);
-                    break;
-                case "L":
-                    this.L(reverse);
-                    break;
-                case "l":
-                    this.l(reverse);
-                    break;
-                case "B":
-                    this.B(reverse);
-                    break;
-                case "b":
-                    this.b(reverse);
-                    break;
-            }
-        });
-    }
-}
-
-
-
-const $afda28ca3a9b935f$export$b431d11d200ea34 = [
-    // Front
-    "U",
-    "R",
-    "F",
-    "dr",
-    "dl",
-    "L",
-    // Back
-    "d",
-    "br",
-    "BR",
-    "BL",
-    "bl",
-    "b", 
-];
-
-
-
-
-
-const $0fe59fa9c94bcb30$var$megaminxTurnNotation = /([RD])([\+\+|\-\-]+)|([UFRL]|BR|BL)([2-3]?)(\'?)/g;
-var $0fe59fa9c94bcb30$var$PochmannDirections;
-(function(PochmannDirections1) {
-    PochmannDirections1["Clockwise"] = "++";
-    PochmannDirections1["CounterClockwise"] = "--";
-    PochmannDirections1["FaceClockwise"] = "";
-    PochmannDirections1["FaceCounter"] = "'";
-})($0fe59fa9c94bcb30$var$PochmannDirections || ($0fe59fa9c94bcb30$var$PochmannDirections = {}));
-const $0fe59fa9c94bcb30$var$DirectionToTurnType = {
-    [$0fe59fa9c94bcb30$var$PochmannDirections.Clockwise]: (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise,
-    [$0fe59fa9c94bcb30$var$PochmannDirections.CounterClockwise]: (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise,
-    [$0fe59fa9c94bcb30$var$PochmannDirections.FaceClockwise]: (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise,
-    [$0fe59fa9c94bcb30$var$PochmannDirections.FaceCounter]: (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise
-};
-function $0fe59fa9c94bcb30$export$4d3e69443db6a686(algorithm) {
-    if (!algorithm) return [];
-    let turns = [];
-    let match;
-    while(match = $0fe59fa9c94bcb30$var$megaminxTurnNotation.exec(algorithm)){
-        const rawUnit = match[1] ? `${match[1]}xx` : match[3];
-        const rawDirection = match[2] || match[5];
-        const rawNumber = match[4];
-        turns.push({
-            unit: rawUnit,
-            turnType: $0fe59fa9c94bcb30$var$DirectionToTurnType[rawDirection],
-            slices: 1,
-            n: rawNumber ? parseInt(rawNumber) : 1
-        });
-    }
-    return turns;
-}
-
-
-class $2f51a1953a3cf56c$export$af68e8b316be1d11 extends (0, $c7dd1edeefb0d4d3$export$b14c74960ae6f55e) {
-    constructor(){
-        super();
-        (0, $afda28ca3a9b935f$export$b431d11d200ea34).forEach((faceName)=>{
-            this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(11, faceName), faceName);
-        });
-        const U = this.faces.get("U"); // White
-        const R = this.faces.get("R"); // Blue
-        const F = this.faces.get("F"); // Red
-        const dr = this.faces.get("dr"); // Pink
-        const dl = this.faces.get("dl"); // Light Yellow
-        const L = this.faces.get("L"); // Green
-        const d = this.faces.get("d"); // Gray
-        const br = this.faces.get("br"); // Light Green
-        const BR = this.faces.get("BR"); // Yellow
-        const BL = this.faces.get("BL"); // Purple
-        const bl = this.faces.get("bl"); // Dark Blue
-        const b = this.faces.get("b"); // Orange
-        // R
-        this.addTurn([
-            [
-                F[2],
-                U[6]
-            ],
-            [
-                F[1],
-                U[5]
-            ],
-            [
-                F[10],
-                U[4]
-            ],
-            [
-                U[6],
-                BR[10]
-            ],
-            [
-                U[5],
-                BR[9]
-            ],
-            [
-                U[4],
-                BR[8]
-            ],
-            [
-                BR[10],
-                br[8]
-            ],
-            [
-                BR[9],
-                br[7]
-            ],
-            [
-                BR[8],
-                br[6]
-            ],
-            [
-                br[8],
-                dr[2]
-            ],
-            [
-                br[7],
-                dr[1]
-            ],
-            [
-                br[6],
-                dr[10]
-            ],
-            [
-                dr[2],
-                F[2]
-            ],
-            [
-                dr[1],
-                F[1]
-            ],
-            [
-                dr[10],
-                F[10]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(R), 
-        ], "R");
-        // F
-        this.addTurn([
-            [
-                U[2],
-                R[2]
-            ],
-            [
-                U[3],
-                R[3]
-            ],
-            [
-                U[4],
-                R[4]
-            ],
-            [
-                R[2],
-                dr[2]
-            ],
-            [
-                R[3],
-                dr[3]
-            ],
-            [
-                R[4],
-                dr[4]
-            ],
-            [
-                dr[2],
-                dl[2]
-            ],
-            [
-                dr[3],
-                dl[3]
-            ],
-            [
-                dr[4],
-                dl[4]
-            ],
-            [
-                dl[2],
-                L[2]
-            ],
-            [
-                dl[3],
-                L[3]
-            ],
-            [
-                dl[4],
-                L[4]
-            ],
-            [
-                L[2],
-                U[2]
-            ],
-            [
-                L[3],
-                U[3]
-            ],
-            [
-                L[4],
-                U[4]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(F), 
-        ], "F");
-        // U
-        this.addTurn([
-            [
-                F[2],
-                L[4]
-            ],
-            [
-                F[3],
-                L[5]
-            ],
-            [
-                F[4],
-                L[6]
-            ],
-            [
-                L[4],
-                BL[8]
-            ],
-            [
-                L[5],
-                BL[9]
-            ],
-            [
-                L[6],
-                BL[10]
-            ],
-            [
-                BL[8],
-                BR[6]
-            ],
-            [
-                BL[9],
-                BR[7]
-            ],
-            [
-                BL[10],
-                BR[8]
-            ],
-            [
-                BR[6],
-                R[10]
-            ],
-            [
-                BR[7],
-                R[1]
-            ],
-            [
-                BR[8],
-                R[2]
-            ],
-            [
-                R[10],
-                F[2]
-            ],
-            [
-                R[1],
-                F[3]
-            ],
-            [
-                R[2],
-                F[4]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(U), 
-        ], "U");
-        // L
-        this.addTurn([
-            [
-                F[4],
-                dl[4]
-            ],
-            [
-                F[5],
-                dl[5]
-            ],
-            [
-                F[6],
-                dl[6]
-            ],
-            [
-                dl[4],
-                bl[8]
-            ],
-            [
-                dl[5],
-                bl[9]
-            ],
-            [
-                dl[6],
-                bl[10]
-            ],
-            [
-                bl[8],
-                BL[6]
-            ],
-            [
-                bl[9],
-                BL[7]
-            ],
-            [
-                bl[10],
-                BL[8]
-            ],
-            [
-                BL[6],
-                U[10]
-            ],
-            [
-                BL[7],
-                U[1]
-            ],
-            [
-                BL[8],
-                U[2]
-            ],
-            [
-                U[10],
-                F[4]
-            ],
-            [
-                U[1],
-                F[5]
-            ],
-            [
-                U[2],
-                F[6]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(L), 
-        ], "L");
-        // BR
-        this.addTurn([
-            [
-                U[6],
-                BL[10]
-            ],
-            [
-                U[7],
-                BL[1]
-            ],
-            [
-                U[8],
-                BL[2]
-            ],
-            [
-                BL[10],
-                b[8]
-            ],
-            [
-                BL[1],
-                b[9]
-            ],
-            [
-                BL[2],
-                b[10]
-            ],
-            [
-                b[8],
-                br[4]
-            ],
-            [
-                b[9],
-                br[5]
-            ],
-            [
-                b[10],
-                br[6]
-            ],
-            [
-                br[4],
-                R[8]
-            ],
-            [
-                br[5],
-                R[9]
-            ],
-            [
-                br[6],
-                R[10]
-            ],
-            [
-                R[8],
-                U[6]
-            ],
-            [
-                R[9],
-                U[7]
-            ],
-            [
-                R[10],
-                U[8]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(BR), 
-        ], "BR");
-        // BL
-        this.addTurn([
-            [
-                U[8],
-                L[6]
-            ],
-            [
-                U[9],
-                L[7]
-            ],
-            [
-                U[10],
-                L[8]
-            ],
-            [
-                L[6],
-                bl[10]
-            ],
-            [
-                L[7],
-                bl[1]
-            ],
-            [
-                L[8],
-                bl[2]
-            ],
-            [
-                bl[10],
-                b[6]
-            ],
-            [
-                bl[1],
-                b[7]
-            ],
-            [
-                bl[2],
-                b[8]
-            ],
-            [
-                b[6],
-                BR[4]
-            ],
-            [
-                b[7],
-                BR[5]
-            ],
-            [
-                b[8],
-                BR[6]
-            ],
-            [
-                BR[4],
-                U[8]
-            ],
-            [
-                BR[5],
-                U[9]
-            ],
-            [
-                BR[6],
-                U[10]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(BL), 
-        ], "BL");
-        // dr
-        this.addTurn([
-            [
-                F[8],
-                R[4]
-            ],
-            [
-                F[9],
-                R[5]
-            ],
-            [
-                F[10],
-                R[6]
-            ],
-            [
-                R[4],
-                br[8]
-            ],
-            [
-                R[5],
-                br[9]
-            ],
-            [
-                R[6],
-                br[10]
-            ],
-            [
-                br[8],
-                d[6]
-            ],
-            [
-                br[9],
-                d[7]
-            ],
-            [
-                br[10],
-                d[8]
-            ],
-            [
-                d[6],
-                dl[10]
-            ],
-            [
-                d[7],
-                dl[1]
-            ],
-            [
-                d[8],
-                dl[2]
-            ],
-            [
-                dl[10],
-                F[8]
-            ],
-            [
-                dl[1],
-                F[9]
-            ],
-            [
-                dl[2],
-                F[10]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(dr), 
-        ], "dr");
-        // dl
-        this.addTurn([
-            [
-                F[6],
-                dr[4]
-            ],
-            [
-                F[7],
-                dr[5]
-            ],
-            [
-                F[8],
-                dr[6]
-            ],
-            [
-                dr[4],
-                d[8]
-            ],
-            [
-                dr[5],
-                d[9]
-            ],
-            [
-                dr[6],
-                d[10]
-            ],
-            [
-                d[8],
-                bl[6]
-            ],
-            [
-                d[9],
-                bl[7]
-            ],
-            [
-                d[10],
-                bl[8]
-            ],
-            [
-                bl[6],
-                L[10]
-            ],
-            [
-                bl[7],
-                L[1]
-            ],
-            [
-                bl[8],
-                L[2]
-            ],
-            [
-                L[10],
-                F[6]
-            ],
-            [
-                L[1],
-                F[7]
-            ],
-            [
-                L[2],
-                F[8]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(dl), 
-        ], "dl");
-        // d
-        this.addTurn([
-            [
-                br[10],
-                b[2]
-            ],
-            [
-                br[1],
-                b[3]
-            ],
-            [
-                br[2],
-                b[4]
-            ],
-            [
-                b[2],
-                bl[4]
-            ],
-            [
-                b[3],
-                bl[5]
-            ],
-            [
-                b[4],
-                bl[6]
-            ],
-            [
-                bl[4],
-                dl[8]
-            ],
-            [
-                bl[5],
-                dl[9]
-            ],
-            [
-                bl[6],
-                dl[10]
-            ],
-            [
-                dl[8],
-                dr[6]
-            ],
-            [
-                dl[9],
-                dr[7]
-            ],
-            [
-                dl[10],
-                dr[8]
-            ],
-            [
-                dr[6],
-                br[10]
-            ],
-            [
-                dr[7],
-                br[1]
-            ],
-            [
-                dr[8],
-                br[2]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(d), 
-        ], "d");
-        // br
-        this.addTurn([
-            [
-                b[10],
-                d[4]
-            ],
-            [
-                b[1],
-                d[5]
-            ],
-            [
-                b[2],
-                d[6]
-            ],
-            [
-                d[4],
-                dr[8]
-            ],
-            [
-                d[5],
-                dr[9]
-            ],
-            [
-                d[6],
-                dr[10]
-            ],
-            [
-                dr[8],
-                R[6]
-            ],
-            [
-                dr[9],
-                R[7]
-            ],
-            [
-                dr[10],
-                R[8]
-            ],
-            [
-                R[6],
-                BR[10]
-            ],
-            [
-                R[7],
-                BR[1]
-            ],
-            [
-                R[8],
-                BR[2]
-            ],
-            [
-                BR[10],
-                b[10]
-            ],
-            [
-                BR[1],
-                b[1]
-            ],
-            [
-                BR[2],
-                b[2]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(br), 
-        ], "br");
-        // bl
-        this.addTurn([
-            [
-                BL[4],
-                L[8]
-            ],
-            [
-                BL[5],
-                L[9]
-            ],
-            [
-                BL[6],
-                L[10]
-            ],
-            [
-                L[8],
-                dl[6]
-            ],
-            [
-                L[9],
-                dl[7]
-            ],
-            [
-                L[10],
-                dl[8]
-            ],
-            [
-                dl[6],
-                d[10]
-            ],
-            [
-                dl[7],
-                d[1]
-            ],
-            [
-                dl[8],
-                d[2]
-            ],
-            [
-                d[10],
-                b[4]
-            ],
-            [
-                d[1],
-                b[5]
-            ],
-            [
-                d[2],
-                b[6]
-            ],
-            [
-                b[4],
-                BL[4]
-            ],
-            [
-                b[5],
-                BL[5]
-            ],
-            [
-                b[6],
-                BL[6]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(bl), 
-        ], "bl");
-        // b
-        this.addTurn([
-            [
-                br[2],
-                BR[2]
-            ],
-            [
-                br[3],
-                BR[3]
-            ],
-            [
-                br[4],
-                BR[4]
-            ],
-            [
-                BR[2],
-                BL[2]
-            ],
-            [
-                BR[3],
-                BL[3]
-            ],
-            [
-                BR[4],
-                BL[4]
-            ],
-            [
-                BL[2],
-                bl[2]
-            ],
-            [
-                BL[3],
-                bl[3]
-            ],
-            [
-                BL[4],
-                bl[4]
-            ],
-            [
-                bl[2],
-                d[2]
-            ],
-            [
-                bl[3],
-                d[3]
-            ],
-            [
-                bl[4],
-                d[4]
-            ],
-            [
-                d[2],
-                br[2]
-            ],
-            [
-                d[3],
-                br[3]
-            ],
-            [
-                d[4],
-                br[4]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(b), 
-        ], "b");
-        // "Pochmann notation"
-        // D++ / D--
-        this.addTurn([
-            // Top Layer
-            [
-                F[0],
-                R[0]
-            ],
-            [
-                F[1],
-                R[9]
-            ],
-            [
-                F[5],
-                R[3]
-            ],
-            [
-                F[6],
-                R[4]
-            ],
-            [
-                F[7],
-                R[5]
-            ],
-            [
-                F[8],
-                R[6]
-            ],
-            [
-                F[9],
-                R[7]
-            ],
-            [
-                F[10],
-                R[8]
-            ],
-            [
-                R[0],
-                BR[0]
-            ],
-            [
-                R[3],
-                BR[9]
-            ],
-            [
-                R[4],
-                BR[10]
-            ],
-            [
-                R[5],
-                BR[1]
-            ],
-            [
-                R[6],
-                BR[2]
-            ],
-            [
-                R[7],
-                BR[3]
-            ],
-            [
-                R[8],
-                BR[4]
-            ],
-            [
-                R[9],
-                BR[5]
-            ],
-            [
-                BR[0],
-                BL[0]
-            ],
-            [
-                BR[9],
-                BL[1]
-            ],
-            [
-                BR[10],
-                BL[2]
-            ],
-            [
-                BR[1],
-                BL[3]
-            ],
-            [
-                BR[2],
-                BL[4]
-            ],
-            [
-                BR[3],
-                BL[5]
-            ],
-            [
-                BR[4],
-                BL[6]
-            ],
-            [
-                BR[5],
-                BL[7]
-            ],
-            [
-                BL[0],
-                L[0]
-            ],
-            [
-                BL[1],
-                L[7]
-            ],
-            [
-                BL[2],
-                L[8]
-            ],
-            [
-                BL[3],
-                L[9]
-            ],
-            [
-                BL[4],
-                L[10]
-            ],
-            [
-                BL[5],
-                L[1]
-            ],
-            [
-                BL[6],
-                L[2]
-            ],
-            [
-                BL[7],
-                L[3]
-            ],
-            [
-                L[0],
-                F[0]
-            ],
-            [
-                L[7],
-                F[5]
-            ],
-            [
-                L[8],
-                F[6]
-            ],
-            [
-                L[9],
-                F[7]
-            ],
-            [
-                L[10],
-                F[8]
-            ],
-            [
-                L[1],
-                F[9]
-            ],
-            [
-                L[2],
-                F[10]
-            ],
-            [
-                L[3],
-                F[1]
-            ],
-            // Bottom Layer
-            [
-                dr[0],
-                br[0]
-            ],
-            [
-                dr[1],
-                br[5]
-            ],
-            [
-                dr[2],
-                br[6]
-            ],
-            [
-                dr[3],
-                br[7]
-            ],
-            [
-                dr[4],
-                br[8]
-            ],
-            [
-                dr[5],
-                br[9]
-            ],
-            [
-                dr[6],
-                br[10]
-            ],
-            [
-                dr[7],
-                br[1]
-            ],
-            [
-                dr[8],
-                br[2]
-            ],
-            [
-                dr[9],
-                br[3]
-            ],
-            [
-                dr[10],
-                br[4]
-            ],
-            [
-                br[0],
-                b[0]
-            ],
-            [
-                br[1],
-                b[3]
-            ],
-            [
-                br[2],
-                b[4]
-            ],
-            [
-                br[3],
-                b[5]
-            ],
-            [
-                br[4],
-                b[6]
-            ],
-            [
-                br[5],
-                b[7]
-            ],
-            [
-                br[6],
-                b[8]
-            ],
-            [
-                br[7],
-                b[9]
-            ],
-            [
-                br[8],
-                b[10]
-            ],
-            [
-                br[9],
-                b[1]
-            ],
-            [
-                br[10],
-                b[2]
-            ],
-            [
-                b[0],
-                bl[0]
-            ],
-            [
-                b[1],
-                bl[3]
-            ],
-            [
-                b[2],
-                bl[4]
-            ],
-            [
-                b[3],
-                bl[5]
-            ],
-            [
-                b[4],
-                bl[6]
-            ],
-            [
-                b[5],
-                bl[7]
-            ],
-            [
-                b[6],
-                bl[8]
-            ],
-            [
-                b[7],
-                bl[9]
-            ],
-            [
-                b[8],
-                bl[10]
-            ],
-            [
-                b[9],
-                bl[1]
-            ],
-            [
-                b[10],
-                bl[2]
-            ],
-            [
-                bl[0],
-                dl[0]
-            ],
-            [
-                bl[1],
-                dl[5]
-            ],
-            [
-                bl[2],
-                dl[6]
-            ],
-            [
-                bl[3],
-                dl[7]
-            ],
-            [
-                bl[4],
-                dl[8]
-            ],
-            [
-                bl[5],
-                dl[9]
-            ],
-            [
-                bl[6],
-                dl[10]
-            ],
-            [
-                bl[7],
-                dl[1]
-            ],
-            [
-                bl[8],
-                dl[2]
-            ],
-            [
-                bl[9],
-                dl[3]
-            ],
-            [
-                bl[10],
-                dl[4]
-            ],
-            [
-                dl[0],
-                dr[0]
-            ],
-            [
-                dl[1],
-                dr[9]
-            ],
-            [
-                dl[2],
-                dr[10]
-            ],
-            [
-                dl[3],
-                dr[1]
-            ],
-            [
-                dl[4],
-                dr[2]
-            ],
-            [
-                dl[5],
-                dr[3]
-            ],
-            [
-                dl[6],
-                dr[4]
-            ],
-            [
-                dl[7],
-                dr[5]
-            ],
-            [
-                dl[8],
-                dr[6]
-            ],
-            [
-                dl[9],
-                dr[7]
-            ],
-            [
-                dl[10],
-                dr[8]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(d), 
-        ], "D++");
-        // R++ / R--
-        this.addTurn([
-            // Top Layer
-            [
-                F[0],
-                U[0]
-            ],
-            [
-                F[7],
-                U[3]
-            ],
-            [
-                F[8],
-                U[4]
-            ],
-            [
-                F[9],
-                U[5]
-            ],
-            [
-                F[10],
-                U[6]
-            ],
-            [
-                F[1],
-                U[7]
-            ],
-            [
-                F[2],
-                U[8]
-            ],
-            [
-                F[3],
-                U[9]
-            ],
-            [
-                U[0],
-                BL[0]
-            ],
-            [
-                U[3],
-                BL[9]
-            ],
-            [
-                U[4],
-                BL[10]
-            ],
-            [
-                U[5],
-                BL[1]
-            ],
-            [
-                U[6],
-                BL[2]
-            ],
-            [
-                U[7],
-                BL[3]
-            ],
-            [
-                U[8],
-                BL[4]
-            ],
-            [
-                U[9],
-                BL[5]
-            ],
-            [
-                BL[0],
-                bl[0]
-            ],
-            [
-                BL[9],
-                bl[1]
-            ],
-            [
-                BL[10],
-                bl[2]
-            ],
-            [
-                BL[1],
-                bl[3]
-            ],
-            [
-                BL[2],
-                bl[4]
-            ],
-            [
-                BL[3],
-                bl[5]
-            ],
-            [
-                BL[4],
-                bl[6]
-            ],
-            [
-                BL[5],
-                bl[7]
-            ],
-            [
-                bl[0],
-                dl[0]
-            ],
-            [
-                bl[1],
-                dl[7]
-            ],
-            [
-                bl[2],
-                dl[8]
-            ],
-            [
-                bl[3],
-                dl[9]
-            ],
-            [
-                bl[4],
-                dl[10]
-            ],
-            [
-                bl[5],
-                dl[1]
-            ],
-            [
-                bl[6],
-                dl[2]
-            ],
-            [
-                bl[7],
-                dl[3]
-            ],
-            [
-                dl[0],
-                F[0]
-            ],
-            [
-                dl[7],
-                F[7]
-            ],
-            [
-                dl[8],
-                F[8]
-            ],
-            [
-                dl[9],
-                F[9]
-            ],
-            [
-                dl[10],
-                F[10]
-            ],
-            [
-                dl[1],
-                F[1]
-            ],
-            [
-                dl[2],
-                F[2]
-            ],
-            [
-                dl[3],
-                F[3]
-            ],
-            // Bottom Layer
-            [
-                dr[0],
-                R[0]
-            ],
-            [
-                dr[1],
-                R[9]
-            ],
-            [
-                dr[2],
-                R[10]
-            ],
-            [
-                dr[3],
-                R[1]
-            ],
-            [
-                dr[4],
-                R[2]
-            ],
-            [
-                dr[5],
-                R[3]
-            ],
-            [
-                dr[6],
-                R[4]
-            ],
-            [
-                dr[7],
-                R[5]
-            ],
-            [
-                dr[8],
-                R[6]
-            ],
-            [
-                dr[9],
-                R[7]
-            ],
-            [
-                dr[10],
-                R[8]
-            ],
-            [
-                R[0],
-                BR[0]
-            ],
-            [
-                R[1],
-                BR[5]
-            ],
-            [
-                R[2],
-                BR[6]
-            ],
-            [
-                R[3],
-                BR[7]
-            ],
-            [
-                R[4],
-                BR[8]
-            ],
-            [
-                R[5],
-                BR[9]
-            ],
-            [
-                R[6],
-                BR[10]
-            ],
-            [
-                R[7],
-                BR[1]
-            ],
-            [
-                R[8],
-                BR[2]
-            ],
-            [
-                R[9],
-                BR[3]
-            ],
-            [
-                R[10],
-                BR[4]
-            ],
-            [
-                BR[0],
-                b[0]
-            ],
-            [
-                BR[1],
-                b[1]
-            ],
-            [
-                BR[2],
-                b[2]
-            ],
-            [
-                BR[3],
-                b[3]
-            ],
-            [
-                BR[4],
-                b[4]
-            ],
-            [
-                BR[5],
-                b[5]
-            ],
-            [
-                BR[6],
-                b[6]
-            ],
-            [
-                BR[7],
-                b[7]
-            ],
-            [
-                BR[8],
-                b[8]
-            ],
-            [
-                BR[9],
-                b[9]
-            ],
-            [
-                BR[10],
-                b[10]
-            ],
-            [
-                b[0],
-                d[0]
-            ],
-            [
-                b[1],
-                d[5]
-            ],
-            [
-                b[2],
-                d[6]
-            ],
-            [
-                b[3],
-                d[7]
-            ],
-            [
-                b[4],
-                d[8]
-            ],
-            [
-                b[5],
-                d[9]
-            ],
-            [
-                b[6],
-                d[10]
-            ],
-            [
-                b[7],
-                d[1]
-            ],
-            [
-                b[8],
-                d[2]
-            ],
-            [
-                b[9],
-                d[3]
-            ],
-            [
-                b[10],
-                d[4]
-            ],
-            [
-                d[0],
-                dr[0]
-            ],
-            [
-                d[1],
-                dr[5]
-            ],
-            [
-                d[2],
-                dr[6]
-            ],
-            [
-                d[3],
-                dr[7]
-            ],
-            [
-                d[4],
-                dr[8]
-            ],
-            [
-                d[5],
-                dr[9]
-            ],
-            [
-                d[6],
-                dr[10]
-            ],
-            [
-                d[7],
-                dr[1]
-            ],
-            [
-                d[8],
-                dr[2]
-            ],
-            [
-                d[9],
-                dr[3]
-            ],
-            [
-                d[10],
-                dr[4]
-            ],
-            ...$2f51a1953a3cf56c$var$makeFaceTurnDefinitions(br), 
-        ], "R++");
-    }
-    U(reverse) {
-        this.doTurn("U", reverse);
-    }
-    R(reverse) {
-        this.doTurn("R", reverse);
-    }
-    F(reverse) {
-        this.doTurn("F", reverse);
-    }
-    dr(reverse) {
-        this.doTurn("dr", reverse);
-    }
-    dl(reverse) {
-        this.doTurn("dl", reverse);
-    }
-    L(reverse) {
-        this.doTurn("L", reverse);
-    }
-    d(reverse) {
-        this.doTurn("d", reverse);
-    }
-    br(reverse) {
-        this.doTurn("br", reverse);
-    }
-    BR(reverse) {
-        this.doTurn("BR", reverse);
-    }
-    BL(reverse) {
-        this.doTurn("BL", reverse);
-    }
-    bl(reverse) {
-        this.doTurn("bl", reverse);
-    }
-    b(reverse) {
-        this.doTurn("b", reverse);
-    }
-    /**
-     * D++ for Pochmann notation. D-- if reverse = false
-     */ Dxx(reverse) {
-        this.doTurn("D++", reverse);
-    }
-    /**
-     * R++ for Pochmann notation. R-- if reverse = false
-     */ Rxx(reverse) {
-        this.doTurn("R++", reverse);
-    }
-    /**
-     * Parses and executes a megaminx algorithm using WCA standard notation
-     *
-     * @see https://www.stefan-pochmann.info/spocc/other_stuff/tools/scramble_megaminx/)
-     * @see https://www.worldcubeassociation.org/regulations/#12d
-     *
-     * @param alg megaminx algorithm to parse
-     * @example
-     * ```
-     * R-- D++ R++ U'
-     * ```
-     */ alg(alg) {
-        if (!alg) return;
-        // pochmann notation
-        this.doTurns((0, $0fe59fa9c94bcb30$export$4d3e69443db6a686)(alg));
-    }
-    case(alg) {
-        if (!alg) return;
-        let turns = (0, $0fe59fa9c94bcb30$export$4d3e69443db6a686)(alg).reverse().map((turn)=>Object.assign(Object.assign({}, turn), {
-                turnType: turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise ? (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise : (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise
-            }));
-        this.doTurns(turns);
-    }
-    doTurns(turns) {
-        turns.forEach((turn)=>{
-            let reverse = turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
-            let turnFunc;
-            switch(turn.unit){
-                case "Rxx":
-                    turnFunc = this.Rxx.bind(this);
-                    break;
-                case "Dxx":
-                    turnFunc = this.Dxx.bind(this);
-                    break;
-                case "U":
-                    turnFunc = this.U.bind(this);
-                    break;
-                case "R":
-                    turnFunc = this.R.bind(this);
-                    break;
-                case "F":
-                    turnFunc = this.F.bind(this);
-                    break;
-                case "L":
-                    turnFunc = this.L.bind(this);
-                    break;
-                case "BL":
-                    turnFunc = this.BL.bind(this);
-                    break;
-                case "BR":
-                    turnFunc = this.BR.bind(this);
-                    break;
-            }
-            for(let i = turn.n; i > 0; i--)turnFunc(reverse);
-        });
-    }
-}
-/**
- * Generates turn definitions for rotating a megaminx face clockwise
- * @param face array of sticker ids
- */ function $2f51a1953a3cf56c$var$makeFaceTurnDefinitions(face) {
-    return [
-        // Edges
-        [
-            face[1],
-            face[9]
-        ],
-        [
-            face[9],
-            face[7]
-        ],
-        [
-            face[7],
-            face[5]
-        ],
-        [
-            face[5],
-            face[3]
-        ],
-        [
-            face[3],
-            face[1]
-        ],
-        // Corners
-        [
-            face[2],
-            face[10]
-        ],
-        [
-            face[10],
-            face[8]
-        ],
-        [
-            face[8],
-            face[6]
-        ],
-        [
-            face[6],
-            face[4]
-        ],
-        [
-            face[4],
-            face[2]
-        ], 
-    ];
-}
-
-
-
-
-var $3512c0058d02a649$export$c330f3c58d208f27;
-(function(SIMULATOR_FACE1) {
-    SIMULATOR_FACE1["U"] = "U";
-    SIMULATOR_FACE1["R"] = "R";
-    SIMULATOR_FACE1["F"] = "F";
-    SIMULATOR_FACE1["D"] = "D";
-    SIMULATOR_FACE1["L"] = "L";
-    SIMULATOR_FACE1["B"] = "B";
-})($3512c0058d02a649$export$c330f3c58d208f27 || ($3512c0058d02a649$export$c330f3c58d208f27 = {}));
-const $3512c0058d02a649$export$536fbd71b400a4b6 = [
-    $3512c0058d02a649$export$c330f3c58d208f27.U,
-    $3512c0058d02a649$export$c330f3c58d208f27.R,
-    $3512c0058d02a649$export$c330f3c58d208f27.F,
-    $3512c0058d02a649$export$c330f3c58d208f27.D,
-    $3512c0058d02a649$export$c330f3c58d208f27.L,
-    $3512c0058d02a649$export$c330f3c58d208f27.B, 
-];
-var $3512c0058d02a649$export$b8ec17f09eb1440;
-(function(CUBE_AXIS1) {
-    CUBE_AXIS1["X"] = "X";
-    CUBE_AXIS1["Y"] = "Y";
-    CUBE_AXIS1["Z"] = "Z";
-})($3512c0058d02a649$export$b8ec17f09eb1440 || ($3512c0058d02a649$export$b8ec17f09eb1440 = {}));
-const $3512c0058d02a649$export$bbc7c457d672c0a9 = {
-    X: [
-        $3512c0058d02a649$export$c330f3c58d208f27.U,
-        $3512c0058d02a649$export$c330f3c58d208f27.B,
-        $3512c0058d02a649$export$c330f3c58d208f27.D,
-        $3512c0058d02a649$export$c330f3c58d208f27.F
-    ],
-    Y: [
-        $3512c0058d02a649$export$c330f3c58d208f27.L,
-        $3512c0058d02a649$export$c330f3c58d208f27.B,
-        $3512c0058d02a649$export$c330f3c58d208f27.R,
-        $3512c0058d02a649$export$c330f3c58d208f27.F
-    ],
-    Z: [
-        $3512c0058d02a649$export$c330f3c58d208f27.L,
-        $3512c0058d02a649$export$c330f3c58d208f27.U,
-        $3512c0058d02a649$export$c330f3c58d208f27.R,
-        $3512c0058d02a649$export$c330f3c58d208f27.D
+// src/cubing/twisty/model/props/puzzle/display/StickeringMaskProp.ts
+var $8e08190ac5cfc1c3$var$r = {
+    facelets: [
+        "regular",
+        "regular",
+        "regular",
+        "regular",
+        "regular"
     ]
 };
-const $3512c0058d02a649$export$6770aa440ff8bf63 = {
-    X: {
-        [$3512c0058d02a649$export$c330f3c58d208f27.U]: 0,
-        [$3512c0058d02a649$export$c330f3c58d208f27.B]: 2,
-        [$3512c0058d02a649$export$c330f3c58d208f27.F]: 0,
-        [$3512c0058d02a649$export$c330f3c58d208f27.D]: 0
-    },
-    Y: {
-        [$3512c0058d02a649$export$c330f3c58d208f27.B]: -1,
-        [$3512c0058d02a649$export$c330f3c58d208f27.F]: -1,
-        [$3512c0058d02a649$export$c330f3c58d208f27.L]: -1,
-        [$3512c0058d02a649$export$c330f3c58d208f27.R]: -1
-    },
-    Z: {
-        [$3512c0058d02a649$export$c330f3c58d208f27.U]: -1,
-        [$3512c0058d02a649$export$c330f3c58d208f27.D]: 1,
-        [$3512c0058d02a649$export$c330f3c58d208f27.L]: 2,
-        [$3512c0058d02a649$export$c330f3c58d208f27.R]: 0
+async function $8e08190ac5cfc1c3$var$fullStickeringMask(puzzleLoader) {
+    const { definition: definition  } = await puzzleLoader.kpuzzle();
+    const fullStickeringMask2 = {
+        orbits: {}
+    };
+    for (const [orbitName, orbitDef] of Object.entries(definition.orbits))fullStickeringMask2.orbits[orbitName] = {
+        pieces: new Array(orbitDef.numPieces).fill($8e08190ac5cfc1c3$var$r)
+    };
+    return fullStickeringMask2;
+}
+var $8e08190ac5cfc1c3$var$StickeringMaskProp = class extends (0, $62nUG.TwistyPropDerived) {
+    getDefaultValue() {
+        return {
+            orbits: {}
+        };
+    }
+    async derive(inputs) {
+        if (inputs.stickeringMaskRequest) return inputs.stickeringMaskRequest;
+        if (inputs.stickeringRequest === "picture") return {
+            specialBehaviour: "picture",
+            orbits: {}
+        };
+        return inputs.puzzleLoader.stickeringMask?.(inputs.stickeringRequest ?? "full") ?? $8e08190ac5cfc1c3$var$fullStickeringMask(inputs.puzzleLoader);
     }
 };
-const $3512c0058d02a649$export$30e27bd18eb96591 = {
-    [$3512c0058d02a649$export$c330f3c58d208f27.U]: false,
-    [$3512c0058d02a649$export$c330f3c58d208f27.R]: false,
-    [$3512c0058d02a649$export$c330f3c58d208f27.F]: false,
-    [$3512c0058d02a649$export$c330f3c58d208f27.D]: true,
-    [$3512c0058d02a649$export$c330f3c58d208f27.L]: true,
-    [$3512c0058d02a649$export$c330f3c58d208f27.B]: true
+// src/cubing/twisty/model/props/puzzle/display/parseSerializedStickeringMask.ts
+var $8e08190ac5cfc1c3$var$charMap = {
+    "-": "Regular" /* Regular */ ,
+    D: "Dim" /* Dim */ ,
+    I: "Ignored" /* Ignored */ ,
+    X: "Invisible" /* Invisible */ ,
+    O: "IgnoreNonPrimary" /* IgnoreNonPrimary */ ,
+    P: "PermuteNonPrimary" /* PermuteNonPrimary */ ,
+    o: "Ignoriented" /* Ignoriented */ ,
+    "?": "OrientationWithoutPermutation" /* OrientationWithoutPermutation */ ,
+    "@": "Regular" /* Regular */ 
 };
-
-
-
-
-function $769573e6855c11ce$export$c9fcf1a7df975d78(degrees) {
-    return Math.PI * degrees / 180;
+function $8e08190ac5cfc1c3$var$parseSerializedStickeringMask(serializedStickeringMask) {
+    const stickeringMask = {
+        orbits: {}
+    };
+    const serializedOrbits = serializedStickeringMask.split(",");
+    for (const serializedOrbit of serializedOrbits){
+        const [orbitName, serializedOrbitPieces, ...rest] = serializedOrbit.split(":");
+        if (rest.length > 0) throw new Error(`Invalid serialized orbit stickering mask (too many colons): \`${serializedOrbit}\``);
+        const pieces = [];
+        stickeringMask.orbits[orbitName] = {
+            pieces: pieces
+        };
+        for (const char of serializedOrbitPieces){
+            const pieceStickering = $8e08190ac5cfc1c3$var$charMap[char];
+            pieces.push((0, $9k9QR.getPieceStickeringMask)(pieceStickering));
+        }
+    }
+    return stickeringMask;
 }
-function $769573e6855c11ce$export$5c9a959bb3fc7749(radius, theta) {
-    const x = radius * Math.cos(theta);
-    const y = radius * Math.sin(theta);
-    return (0, $621efe85613594b3$export$c977b3e384af9ae1).fromValues(x, y);
+// src/cubing/twisty/model/props/puzzle/display/StickeringMaskRequestProp.ts
+var $8e08190ac5cfc1c3$var$StickeringMaskRequestProp = class extends (0, $62nUG.TwistyPropSource) {
+    getDefaultValue() {
+        return null;
+    }
+    derive(input) {
+        if (input === null) return null;
+        else if (typeof input === "string") return $8e08190ac5cfc1c3$var$parseSerializedStickeringMask(input);
+        else return input;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/display/StickeringRequestProp.ts
+var $8e08190ac5cfc1c3$var$StickeringRequestProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return null;
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/DragInputProp.ts
+var $8e08190ac5cfc1c3$var$DragInputProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/MovePressCancelOptions.ts
+var $8e08190ac5cfc1c3$var$MovePressCancelOptions = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return {};
+    }
+};
+// src/cubing/twisty/model/props/puzzle/state/MovePressInputProp.ts
+var $8e08190ac5cfc1c3$var$MovePressInputProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/BackgroundProp.ts
+var $8e08190ac5cfc1c3$var$BackgroundProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/DarkModeProp.ts
+var $8e08190ac5cfc1c3$var$DarkModeProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        return inputs.darkModeRequest === "dark" ? "dark" : "light";
+    }
+};
+// src/cubing/twisty/model/props/viewer/DarkModeRequestProp.ts
+var $8e08190ac5cfc1c3$var$DarkModeRequstProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+};
+// src/cubing/twisty/model/props/viewer/DOMElementReferenceProp.ts
+var $8e08190ac5cfc1c3$var$DOMElementReferenceProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return null;
+    }
+};
+// src/cubing/twisty/model/props/viewer/LatitudeLimit.ts
+var $8e08190ac5cfc1c3$var$DEFAULT_LATITUDE_LIMIT = 35;
+var $8e08190ac5cfc1c3$var$LatitudeLimitProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return $8e08190ac5cfc1c3$var$DEFAULT_LATITUDE_LIMIT;
+    }
+};
+// src/cubing/twisty/model/props/viewer/OrbitCoordinatesRequestProp.ts
+function $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(c1, c2) {
+    return c1.latitude === c2.latitude && c1.longitude === c2.longitude && c1.distance === c2.distance;
 }
-function $769573e6855c11ce$export$b38c4fbdaa6dc58e(p1, p2) {
-    return Math.sqrt(Math.pow(p2.y - p1.y, 2) + Math.pow(p2.x - p1.x, 2));
+var $8e08190ac5cfc1c3$var$OrbitCoordinatesRequestProp = class extends (0, $62nUG.TwistyPropSource) {
+    getDefaultValue() {
+        return "auto";
+    }
+    canReuseValue(v1, v2) {
+        return v1 === v2 || $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(v1, v2);
+    }
+    async derive(newCoordinates, oldValuePromise) {
+        if (newCoordinates === "auto") return "auto";
+        let oldValue = await oldValuePromise;
+        if (oldValue === "auto") oldValue = {};
+        const newValue = Object.assign({}, oldValue);
+        Object.assign(newValue, newCoordinates);
+        if (typeof newValue.latitude !== "undefined") newValue.latitude = Math.min(Math.max(newValue.latitude, -90), 90);
+        if (typeof newValue.longitude !== "undefined") newValue.longitude = $8e08190ac5cfc1c3$var$mod(newValue.longitude, 360, 180);
+        return newValue;
+    }
+};
+// src/cubing/twisty/model/props/viewer/OrbitCoordinatesProp.ts
+var $8e08190ac5cfc1c3$var$OrbitCoordinatesProp = class extends (0, $62nUG.TwistyPropDerived) {
+    canReuseValue(v1, v2) {
+        return $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(v1, v2);
+    }
+    async derive(inputs) {
+        if (inputs.orbitCoordinatesRequest === "auto") return $8e08190ac5cfc1c3$var$defaultCameraOrbitCoordinates(inputs.puzzleID, inputs.strategy);
+        const req = Object.assign(Object.assign({}, $8e08190ac5cfc1c3$var$defaultCameraOrbitCoordinates(inputs.puzzleID, inputs.strategy), inputs.orbitCoordinatesRequest));
+        if (Math.abs(req.latitude) <= inputs.latitudeLimit) return req;
+        else {
+            const { latitude: latitude , longitude: longitude , distance: distance  } = req;
+            return {
+                latitude: inputs.latitudeLimit * Math.sign(latitude),
+                longitude: longitude,
+                distance: distance
+            };
+        }
+    }
+};
+var $8e08190ac5cfc1c3$var$centeredCameraOrbitCoordinates = {
+    latitude: 31.717474411461005,
+    longitude: 0,
+    distance: 5.877852522924731
+};
+var $8e08190ac5cfc1c3$var$cubeCube3DCameraOrbitCoordinates = {
+    latitude: 35,
+    longitude: 30,
+    distance: 6
+};
+var $8e08190ac5cfc1c3$var$cubePG3DCameraOrbitCoordinates = {
+    latitude: 35,
+    longitude: 30,
+    distance: 6.25
+};
+var $8e08190ac5cfc1c3$var$megaminxCameraOrbitCoordinates = {
+    latitude: Math.atan(0.5) * (0, $62nUG.DEGREES_PER_RADIAN),
+    longitude: 0,
+    distance: 6.7
+};
+var $8e08190ac5cfc1c3$var$pyraminxCameraOrbitCoordinates = {
+    latitude: 26.56505117707799,
+    longitude: 0,
+    distance: 6
+};
+function $8e08190ac5cfc1c3$var$defaultCameraOrbitCoordinates(puzzleID, strategy) {
+    if (puzzleID[1] === "x") {
+        if (strategy === "Cube3D") return $8e08190ac5cfc1c3$var$cubeCube3DCameraOrbitCoordinates;
+        else return $8e08190ac5cfc1c3$var$cubePG3DCameraOrbitCoordinates;
+    } else switch(puzzleID){
+        case "megaminx":
+        case "gigaminx":
+            return $8e08190ac5cfc1c3$var$megaminxCameraOrbitCoordinates;
+        case "pyraminx":
+        case "master_tetraminx":
+            return $8e08190ac5cfc1c3$var$pyraminxCameraOrbitCoordinates;
+        case "skewb":
+            return $8e08190ac5cfc1c3$var$cubePG3DCameraOrbitCoordinates;
+        default:
+            return $8e08190ac5cfc1c3$var$centeredCameraOrbitCoordinates;
+    }
 }
-function $769573e6855c11ce$export$707d248eb4bbe669(length) {
-    return length / (2 * Math.tan(Math.PI / 5));
-}
-function $769573e6855c11ce$export$ca47e7f5b75033b9(length) {
-    return length / (2 * Math.sin(Math.PI / 5));
-}
-function $769573e6855c11ce$export$25da5b6921e25b42(length) {
-    return length / 2 * Math.sqrt(2.5 + 1.1 * Math.sqrt(5));
-}
-function $769573e6855c11ce$export$5ae0742aaf43249b(vertices) {
-    let cx = 0, cy = 0, cz = 0;
-    vertices.forEach((vertex)=>{
-        cx += vertex.x;
-        cy += vertex.y;
-        cz += vertex.z;
-    });
-    cx /= vertices.length;
-    cy /= vertices.length;
-    cz /= vertices.length;
-    return (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(cx, cy, cz);
-}
-function $769573e6855c11ce$export$d02631cccf789723(from, to) {
-    if (from === to) return [
-        from
-    ];
-    const increment = from < to ? 1 : -1;
-    let values = [];
-    for(let current = from; current != to; current += increment)values.push(current);
-    values.push(to);
-    return values;
-}
-
-
-
-
-class $97796b1f3eccc5ed$export$e38eb81901bc8623 extends (0, $c7dd1edeefb0d4d3$export$b14c74960ae6f55e) {
-    constructor(size){
-        super();
-        this.size = size;
-        this.gridSize = size * size;
-        (0, $3512c0058d02a649$export$536fbd71b400a4b6).forEach((faceName)=>{
-            // Create stickers for face
-            this.addFace((0, $047c8aa02737eb97$export$57295b69bf9c5d15)(this.gridSize, faceName), faceName);
-            const faceChanges = this.makeFaceTurnDefinitions(faceName);
-            // Create rotation for stickers on face only
-            this.addTurn(faceChanges, faceName);
+// src/cubing/twisty/model/TwistySceneModel.ts
+var $8e08190ac5cfc1c3$var$TwistySceneModel = class {
+    constructor(twistyPlayerModel){
+        this.twistyPlayerModel = twistyPlayerModel;
+        this.background = new $8e08190ac5cfc1c3$var$BackgroundProp();
+        this.darkModeRequest = new $8e08190ac5cfc1c3$var$DarkModeRequstProp();
+        this.dragInput = new $8e08190ac5cfc1c3$var$DragInputProp();
+        this.foundationDisplay = new $8e08190ac5cfc1c3$var$FoundationDisplayProp();
+        this.foundationStickerSpriteURL = new $8e08190ac5cfc1c3$var$URLProp();
+        this.fullscreenElement = new $8e08190ac5cfc1c3$var$DOMElementReferenceProp();
+        this.hintFacelet = new (0, $62nUG.HintFaceletProp)();
+        this.hintStickerSpriteURL = new $8e08190ac5cfc1c3$var$URLProp();
+        this.initialHintFaceletsAnimation = new $8e08190ac5cfc1c3$var$InitialHintFaceletsAnimationProp();
+        this.latitudeLimit = new $8e08190ac5cfc1c3$var$LatitudeLimitProp();
+        this.movePressInput = new $8e08190ac5cfc1c3$var$MovePressInputProp();
+        this.movePressCancelOptions = new $8e08190ac5cfc1c3$var$MovePressCancelOptions();
+        this.orbitCoordinatesRequest = new $8e08190ac5cfc1c3$var$OrbitCoordinatesRequestProp();
+        this.stickeringMaskRequest = new $8e08190ac5cfc1c3$var$StickeringMaskRequestProp();
+        this.stickeringRequest = new $8e08190ac5cfc1c3$var$StickeringRequestProp();
+        this.faceletScale = new $8e08190ac5cfc1c3$var$FaceletScaleProp();
+        this.darkMode = new $8e08190ac5cfc1c3$var$DarkModeProp({
+            darkModeRequest: this.darkModeRequest
         });
-        // Create rotations for stickers on each layer
-        // around each turnable axis
-        [
-            (0, $3512c0058d02a649$export$b8ec17f09eb1440).X,
-            (0, $3512c0058d02a649$export$b8ec17f09eb1440).Y,
-            (0, $3512c0058d02a649$export$b8ec17f09eb1440).Z
-        ].forEach((axis)=>{
-            for(let column = 0; column < this.size; column++){
-                let layerChanges = [];
-                (0, $3512c0058d02a649$export$bbc7c457d672c0a9)[axis].forEach((faceName, i)=>{
-                    const nextFaceName = (0, $3512c0058d02a649$export$bbc7c457d672c0a9)[axis][(i + 1) % (0, $3512c0058d02a649$export$bbc7c457d672c0a9)[axis].length];
-                    const nextFace = this.faces.get(nextFaceName);
-                    const currentFace = this.faces.get(faceName);
-                    for(let row = 0; row < this.size; row++){
-                        const stickerIndex = this.size * row + column;
-                        const sticker1 = currentFace[this.axisAlignedSticker(axis, faceName, stickerIndex)];
-                        const sticker2 = nextFace[this.axisAlignedSticker(axis, nextFaceName, stickerIndex)];
-                        layerChanges.push([
-                            sticker1,
-                            sticker2
-                        ]);
-                    }
-                });
-                this.addTurn(layerChanges, `${axis}-${column}`);
-            }
+        this.foundationStickerSprite = new $8e08190ac5cfc1c3$var$SpriteProp({
+            spriteURL: this.foundationStickerSpriteURL
+        });
+        this.hintStickerSprite = new $8e08190ac5cfc1c3$var$SpriteProp({
+            spriteURL: this.hintStickerSpriteURL
+        });
+        this.orbitCoordinates = new $8e08190ac5cfc1c3$var$OrbitCoordinatesProp({
+            orbitCoordinatesRequest: this.orbitCoordinatesRequest,
+            latitudeLimit: this.latitudeLimit,
+            puzzleID: twistyPlayerModel.puzzleID,
+            strategy: twistyPlayerModel.visualizationStrategy
+        });
+        this.stickeringMask = new $8e08190ac5cfc1c3$var$StickeringMaskProp({
+            stickeringMaskRequest: this.stickeringMaskRequest,
+            stickeringRequest: this.stickeringRequest,
+            puzzleLoader: twistyPlayerModel.puzzleLoader
         });
     }
-    /**
-     * Makes turn definitions for a face of the cube
-     *
-     * @param faceName the label of the face to make turn definitions
-     * @example returning turn definitions for stickers on a 2x2
-     * ```
-     * addFace(['y', 'y', 'y', 'y'], 'U');
-     * // returns { faceId: 'U', stickerIds: ['1','2','3','4'] }
-     *
-     * makeTurnDefinitions('U');
-     * // returns [
-     * //   ['1','2'],
-     * //   ['2','4'],
-     * //   ['3','1'],
-     * //   ['4','3']
-     * // ]
-     * ```
-     */ makeFaceTurnDefinitions(faceName) {
-        const stickerIds = this.faces.get(faceName);
-        return stickerIds.map((stickerId, i)=>[
-                stickerId,
-                stickerIds[this.clockwiseSticker(i)], 
+};
+// src/cubing/twisty/model/UserVisibleErrorTracker.ts
+var $8e08190ac5cfc1c3$var$EMPTY_ERRORS = {
+    errors: []
+};
+var $8e08190ac5cfc1c3$var$UserVisibleErrorTracker = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return $8e08190ac5cfc1c3$var$EMPTY_ERRORS;
+    }
+    reset() {
+        this.set(this.getDefaultValue());
+    }
+    canReuseValue(_v1, _v2) {
+        return $8e08190ac5cfc1c3$var$arrayEquals(_v1.errors, _v2.errors);
+    }
+};
+// src/cubing/twisty/model/TwistyPlayerModel.ts
+var $8e08190ac5cfc1c3$var$TwistyPlayerModel = class {
+    constructor(){
+        this.userVisibleErrorTracker = new $8e08190ac5cfc1c3$var$UserVisibleErrorTracker();
+        this.alg = new $8e08190ac5cfc1c3$var$AlgProp();
+        this.backView = new $8e08190ac5cfc1c3$var$BackViewProp();
+        this.controlPanel = new $8e08190ac5cfc1c3$var$ControlPanelProp();
+        this.catchUpMove = new $8e08190ac5cfc1c3$var$CatchUpMoveProp();
+        this.indexerConstructorRequest = new $8e08190ac5cfc1c3$var$IndexerConstructorRequestProp();
+        this.playingInfo = new $8e08190ac5cfc1c3$var$PlayingInfoProp();
+        this.puzzleDescriptionRequest = new $8e08190ac5cfc1c3$var$PGPuzzleDescriptionStringProp();
+        this.puzzleIDRequest = new $8e08190ac5cfc1c3$var$PuzzleIDRequestProp();
+        this.setupAnchor = new $8e08190ac5cfc1c3$var$SetupAnchorProp();
+        this.setupAlg = new $8e08190ac5cfc1c3$var$AlgProp();
+        this.setupTransformation = new $8e08190ac5cfc1c3$var$SetupTransformationProp();
+        this.tempoScale = new $8e08190ac5cfc1c3$var$TempoScaleProp();
+        this.timestampRequest = new $8e08190ac5cfc1c3$var$TimestampRequestProp();
+        this.viewerLink = new $8e08190ac5cfc1c3$var$ViewerLinkProp();
+        this.visualizationFormat = new $8e08190ac5cfc1c3$var$VisualizationFormatProp();
+        this.title = new $8e08190ac5cfc1c3$var$ArbitraryStringProp();
+        this.videoURL = new $8e08190ac5cfc1c3$var$URLProp();
+        this.competitionID = new $8e08190ac5cfc1c3$var$ArbitraryStringProp();
+        this.puzzleLoader = new $8e08190ac5cfc1c3$var$PuzzleLoaderProp({
+            puzzleIDRequest: this.puzzleIDRequest,
+            puzzleDescriptionRequest: this.puzzleDescriptionRequest
+        }, this.userVisibleErrorTracker);
+        this.kpuzzle = new $8e08190ac5cfc1c3$var$KPuzzleProp({
+            puzzleLoader: this.puzzleLoader
+        });
+        this.puzzleID = new $8e08190ac5cfc1c3$var$PuzzleIDProp({
+            puzzleLoader: this.puzzleLoader
+        });
+        this.puzzleAlg = new $8e08190ac5cfc1c3$var$PuzzleAlgProp({
+            algWithIssues: this.alg,
+            kpuzzle: this.kpuzzle
+        });
+        this.puzzleSetupAlg = new $8e08190ac5cfc1c3$var$PuzzleAlgProp({
+            algWithIssues: this.setupAlg,
+            kpuzzle: this.kpuzzle
+        });
+        this.visualizationStrategy = new $8e08190ac5cfc1c3$var$VisualizationStrategyProp({
+            visualizationRequest: this.visualizationFormat,
+            puzzleID: this.puzzleID
+        });
+        this.indexerConstructor = new $8e08190ac5cfc1c3$var$IndexerConstructorProp({
+            alg: this.alg,
+            puzzle: this.puzzleID,
+            visualizationStrategy: this.visualizationStrategy,
+            indexerConstructorRequest: this.indexerConstructorRequest
+        });
+        this.moveCount = new $8e08190ac5cfc1c3$var$NaiveMoveCountProp({
+            alg: this.puzzleAlg
+        });
+        this.setupAlgTransformation = new $8e08190ac5cfc1c3$var$AlgTransformationProp({
+            setupAlg: this.puzzleSetupAlg,
+            kpuzzle: this.kpuzzle
+        });
+        this.indexer = new $8e08190ac5cfc1c3$var$IndexerProp({
+            indexerConstructor: this.indexerConstructor,
+            algWithIssues: this.puzzleAlg,
+            kpuzzle: this.kpuzzle
+        });
+        this.anchorTransformation = new $8e08190ac5cfc1c3$var$AnchorTransformationProp({
+            setupTransformation: this.setupTransformation,
+            setupAnchor: this.setupAnchor,
+            setupAlgTransformation: this.setupAlgTransformation,
+            indexer: this.indexer
+        });
+        this.timeRange = new $8e08190ac5cfc1c3$var$TimeRangeProp({
+            indexer: this.indexer
+        });
+        this.detailedTimelineInfo = new $8e08190ac5cfc1c3$var$DetailedTimelineInfoProp({
+            timestampRequest: this.timestampRequest,
+            timeRange: this.timeRange,
+            setupAnchor: this.setupAnchor,
+            setupAlg: this.setupAlg
+        });
+        this.coarseTimelineInfo = new $8e08190ac5cfc1c3$var$CoarseTimelineInfoProp({
+            detailedTimelineInfo: this.detailedTimelineInfo,
+            playingInfo: this.playingInfo
+        });
+        this.currentMoveInfo = new $8e08190ac5cfc1c3$var$CurrentMoveInfoProp({
+            indexer: this.indexer,
+            detailedTimelineInfo: this.detailedTimelineInfo,
+            catchUpMove: this.catchUpMove
+        });
+        this.buttonAppearance = new $8e08190ac5cfc1c3$var$ButtonAppearanceProp({
+            coarseTimelineInfo: this.coarseTimelineInfo,
+            viewerLink: this.viewerLink
+        });
+        this.currentLeavesSimplified = new $8e08190ac5cfc1c3$var$CurrentLeavesSimplifiedProp({
+            currentMoveInfo: this.currentMoveInfo
+        });
+        this.currentState = new $8e08190ac5cfc1c3$var$CurrentStateProp({
+            anchoredStart: this.anchorTransformation,
+            currentLeavesSimplified: this.currentLeavesSimplified,
+            indexer: this.indexer
+        });
+        this.legacyPosition = new $8e08190ac5cfc1c3$var$LegacyPositionProp({
+            currentMoveInfo: this.currentMoveInfo,
+            state: this.currentState
+        });
+        this.twistySceneModel = new $8e08190ac5cfc1c3$var$TwistySceneModel(this);
+    }
+    async twizzleLink() {
+        const [viewerLink, puzzleID, puzzleDescription, alg, setup, anchor, experimentalStickeringRequest, experimentalTitle] = await Promise.all([
+            this.viewerLink.get(),
+            this.puzzleID.get(),
+            this.puzzleDescriptionRequest.get(),
+            this.alg.get(),
+            this.setupAlg.get(),
+            this.setupAnchor.get(),
+            this.twistySceneModel.stickeringRequest.get(),
+            this.twistySceneModel.twistyPlayerModel.title.get()
+        ]);
+        const isExplorer = viewerLink === "experimental-twizzle-explorer";
+        const url = new URL(`https://alpha.twizzle.net/${isExplorer ? "explore" : "edit"}/`);
+        if (!alg.alg.experimentalIsEmpty()) url.searchParams.set("alg", alg.alg.toString());
+        if (!setup.alg.experimentalIsEmpty()) url.searchParams.set("setup-alg", setup.alg.toString());
+        if (anchor !== "start") url.searchParams.set("setup-anchor", anchor);
+        if (experimentalStickeringRequest !== "full" && experimentalStickeringRequest !== null) url.searchParams.set("experimental-stickering", experimentalStickeringRequest);
+        if (isExplorer && puzzleDescription !== (0, $62nUG.NO_VALUE)) url.searchParams.set("puzzle-description", puzzleDescription);
+        else if (puzzleID !== "3x3x3") url.searchParams.set("puzzle", puzzleID);
+        if (experimentalTitle) url.searchParams.set("title", experimentalTitle);
+        return url.toString();
+    }
+    experimentalAddAlgLeaf(algLeaf, options) {
+        const maybeMove = algLeaf.as((0, $OIFGm.Move));
+        if (maybeMove) this.experimentalAddMove(maybeMove, options);
+        else this.alg.set((async ()=>{
+            const alg = (await this.alg.get()).alg;
+            const newAlg = alg.concat(new (0, $OIFGm.Alg)([
+                algLeaf
+            ]));
+            this.timestampRequest.set("end");
+            return newAlg;
+        })());
+    }
+    experimentalAddMove(flexibleMove, options) {
+        const move = typeof flexibleMove === "string" ? new (0, $OIFGm.Move)(flexibleMove) : flexibleMove;
+        this.alg.set((async ()=>{
+            const [{ alg: alg  }, puzzleLoader] = await Promise.all([
+                this.alg.get(),
+                this.puzzleLoader.get()
             ]);
+            const newAlg = (0, $OIFGm.experimentalAppendMove)(alg, move, {
+                ...options,
+                ...await (0, $9k9QR.getPartialAppendOptionsForPuzzleSpecificSimplifyOptions)(puzzleLoader)
+            });
+            this.timestampRequest.set("end");
+            this.catchUpMove.set({
+                move: move,
+                amount: 0
+            });
+            return newAlg;
+        })());
     }
-    /**
-     * Given sticker i return the index it will go to
-     * after rotating clockwise
-     *
-     * ex. stickers are stored in an array but represent a grid
-     * so, for a 3x3 sticker index 0 will rotate to 2, 1 to 5, etc...
-     *
-     * ```
-     *  0 | 1 | 2
-     *  ----------
-     *  3 | 4 | 5
-     *  ----------
-     *  6 | 7 | 8
-     * ```
-     */ clockwiseSticker(stickerIndex) {
-        return (stickerIndex + 1) * this.size % (this.gridSize + 1) - 1;
+    experimentalRemoveFinalChild() {
+        this.alg.set((async ()=>{
+            const alg = (await this.alg.get()).alg;
+            const children = Array.from(alg.childAlgNodes());
+            const [finalChild] = children.splice(-1);
+            if (!finalChild) return alg;
+            this.timestampRequest.set("end");
+            const finalChildMove = finalChild.as((0, $OIFGm.Move));
+            if (finalChildMove) this.catchUpMove.set({
+                move: finalChildMove.invert(),
+                amount: 0
+            });
+            return new (0, $OIFGm.Alg)(children);
+        })());
     }
-    /**
-     * Given sticker i return the index it will go to
-     * after rotating counterclockwise
-     */ counterClockwiseSticker(stickerIndex) {
-        return this.oppositeSticker(this.clockwiseSticker(stickerIndex));
+};
+// src/cubing/twisty/views/TwistyPlayerSettable.ts
+function $8e08190ac5cfc1c3$var$err(propName) {
+    return new Error(`Cannot get \`.${propName}\` directly from a \`TwistyPlayer\`.`);
+}
+var $8e08190ac5cfc1c3$var$TwistyPlayerSettable = class extends (0, $62nUG.ManagedCustomElement) {
+    constructor(){
+        super(...arguments);
+        this.experimentalModel = new $8e08190ac5cfc1c3$var$TwistyPlayerModel();
+        this.experimentalGet = new $8e08190ac5cfc1c3$var$ExperimentalGetters(this.experimentalModel);
     }
-    /**
-     * Given sticker i return the index it will go to
-     * after rotating 180 degrees
-     */ oppositeSticker(stickerIndex) {
-        return this.gridSize - (stickerIndex + 1);
+    set alg(newAlg) {
+        this.experimentalModel.alg.set(newAlg);
     }
-    axisAlignedSticker(axis, face, stickerIndex) {
-        switch((0, $3512c0058d02a649$export$6770aa440ff8bf63)[axis][face]){
-            case 0:
-                return stickerIndex;
-            case 1:
-                return this.clockwiseSticker(stickerIndex);
-            case 2:
-                return this.oppositeSticker(stickerIndex);
-            case -1:
-                return this.counterClockwiseSticker(stickerIndex);
-            default:
-                throw `Invalid axis face orientation value ${(0, $3512c0058d02a649$export$6770aa440ff8bf63)[axis][face]}`;
-        }
+    get alg() {
+        throw $8e08190ac5cfc1c3$var$err("alg");
     }
-    /**
-     * Performs a turn on a given face.
-     *
-     * @param face the face to turn
-     * @param axis axis to perform inner layer turns on
-     * @param reverse true if you want to turn the face counter clockwise
-     * @param from inner layer to start turning from
-     * @param to last inner layer to stop turning
-     * @param to last inner layer to stop turning
-     */ turnFace(face, axis, reverse, from, to) {
-        if (Math.abs(to - from) >= this.size - 1) {
-            console.error(`Invalid number of layers to turn, skipping turn.; face=${face}, layers=${Math.abs(to - from) + 1}`);
-            return;
-        }
-        // Rotate face
-        this.doTurn(face, reverse);
-        // Turn inner layers
-        (0, $769573e6855c11ce$export$d02631cccf789723)(from, to).forEach((layer)=>{
-            this.doTurn(`${axis}-${layer}`, (0, $3512c0058d02a649$export$30e27bd18eb96591)[face] ? !reverse : reverse);
+    set experimentalSetupAlg(newSetup) {
+        this.experimentalModel.setupAlg.set(newSetup);
+    }
+    get experimentalSetupAlg() {
+        throw $8e08190ac5cfc1c3$var$err("setup");
+    }
+    set experimentalSetupAnchor(anchor) {
+        this.experimentalModel.setupAnchor.set(anchor);
+    }
+    get experimentalSetupAnchor() {
+        throw $8e08190ac5cfc1c3$var$err("anchor");
+    }
+    set puzzle(puzzleID) {
+        this.experimentalModel.puzzleIDRequest.set(puzzleID);
+    }
+    get puzzle() {
+        throw $8e08190ac5cfc1c3$var$err("puzzle");
+    }
+    set experimentalPuzzleDescription(puzzleDescription) {
+        this.experimentalModel.puzzleDescriptionRequest.set(puzzleDescription);
+    }
+    get experimentalPuzzleDescription() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalPuzzleDescription");
+    }
+    set timestamp(timestamp) {
+        this.experimentalModel.timestampRequest.set(timestamp);
+    }
+    get timestamp() {
+        throw $8e08190ac5cfc1c3$var$err("timestamp");
+    }
+    set hintFacelets(hintFaceletStyle) {
+        this.experimentalModel.twistySceneModel.hintFacelet.set(hintFaceletStyle);
+    }
+    get hintFacelets() {
+        throw $8e08190ac5cfc1c3$var$err("hintFacelets");
+    }
+    set experimentalStickering(stickering) {
+        this.experimentalModel.twistySceneModel.stickeringRequest.set(stickering);
+    }
+    get experimentalStickering() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalStickering");
+    }
+    set experimentalStickeringMaskOrbits(stickeringMask) {
+        this.experimentalModel.twistySceneModel.stickeringMaskRequest.set(stickeringMask);
+    }
+    get experimentalStickeringMaskOrbits() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalStickeringMaskOrbits");
+    }
+    set experimentalFaceletScale(faceletScale) {
+        this.experimentalModel.twistySceneModel.faceletScale.set(faceletScale);
+    }
+    get experimentalFaceletScale() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalFaceletScale");
+    }
+    set backView(backView) {
+        this.experimentalModel.backView.set(backView);
+    }
+    get backView() {
+        throw $8e08190ac5cfc1c3$var$err("backView");
+    }
+    set background(backgroundTheme) {
+        this.experimentalModel.twistySceneModel.background.set(backgroundTheme);
+    }
+    get background() {
+        throw $8e08190ac5cfc1c3$var$err("background");
+    }
+    set darkMode(darkMode) {
+        this.experimentalModel.twistySceneModel.darkModeRequest.set(darkMode);
+    }
+    get darkMode() {
+        throw $8e08190ac5cfc1c3$var$err("darkMode");
+    }
+    set controlPanel(newControlPanel) {
+        this.experimentalModel.controlPanel.set(newControlPanel);
+    }
+    get controlPanel() {
+        throw $8e08190ac5cfc1c3$var$err("controlPanel");
+    }
+    set visualization(visualizationFormat) {
+        this.experimentalModel.visualizationFormat.set(visualizationFormat);
+    }
+    get visualization() {
+        throw $8e08190ac5cfc1c3$var$err("visualization");
+    }
+    set experimentalTitle(title) {
+        this.experimentalModel.title.set(title);
+    }
+    get experimentalTitle() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalTitle");
+    }
+    set experimentalVideoURL(videoURL) {
+        this.experimentalModel.videoURL.set(videoURL);
+    }
+    get experimentalVideoURL() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalVideoURL");
+    }
+    set experimentalCompetitionID(competitionID) {
+        this.experimentalModel.competitionID.set(competitionID);
+    }
+    get experimentalCompetitionID() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalCompetitionID");
+    }
+    set viewerLink(viewerLinkPage) {
+        this.experimentalModel.viewerLink.set(viewerLinkPage);
+    }
+    get viewerLink() {
+        throw $8e08190ac5cfc1c3$var$err("viewerLink");
+    }
+    set experimentalMovePressInput(movePressInput) {
+        this.experimentalModel.twistySceneModel.movePressInput.set(movePressInput);
+    }
+    get experimentalMovePressInput() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalMovePressInput");
+    }
+    set experimentalMovePressCancelOptions(movePressCancelOptions) {
+        this.experimentalModel.twistySceneModel.movePressCancelOptions.set(movePressCancelOptions);
+    }
+    get experimentalMovePressCancelOptions() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalMovePressCancelOptions");
+    }
+    set cameraLatitude(latitude) {
+        this.experimentalModel.twistySceneModel.orbitCoordinatesRequest.set({
+            latitude: latitude
         });
     }
-    /**
-     * Performs a U turn
-     * @param reverse true if you want to turn the face counter clockwise (U')
-     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
-     */ U(reverse = false, layers = 1) {
-        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).U, (0, $3512c0058d02a649$export$b8ec17f09eb1440).Y, reverse, this.size - 1, this.size - layers);
+    get cameraLatitude() {
+        throw $8e08190ac5cfc1c3$var$err("cameraLatitude");
     }
-    /**
-     * Performs an R turn
-     * @param reverse true if you want to turn the face counter clockwise (R')
-     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
-     */ R(reverse = false, layers = 1) {
-        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).R, (0, $3512c0058d02a649$export$b8ec17f09eb1440).X, reverse, this.size - 1, this.size - layers);
+    set cameraLongitude(longitude) {
+        this.experimentalModel.twistySceneModel.orbitCoordinatesRequest.set({
+            longitude: longitude
+        });
     }
-    /**
-     * Performs an F turn
-     * @param reverse true if you want to turn the face counter clockwise (F')
-     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
-     */ F(reverse = false, layers = 1) {
-        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).F, (0, $3512c0058d02a649$export$b8ec17f09eb1440).Z, reverse, 0, layers - 1);
+    get cameraLongitude() {
+        throw $8e08190ac5cfc1c3$var$err("cameraLongitude");
     }
-    /**
-     * Performs a D turn
-     * @param reverse true if you want to turn the face counter clockwise (D')
-     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
-     */ D(reverse = false, layers = 1) {
-        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).D, (0, $3512c0058d02a649$export$b8ec17f09eb1440).Y, reverse, 0, layers - 1);
+    set cameraDistance(distance) {
+        this.experimentalModel.twistySceneModel.orbitCoordinatesRequest.set({
+            distance: distance
+        });
     }
-    /**
-     * Performs an L turn
-     * @param reverse true if you want to turn the face counter clockwise (L')
-     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
-     */ L(reverse = false, layers = 1) {
-        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).L, (0, $3512c0058d02a649$export$b8ec17f09eb1440).X, reverse, 0, layers - 1);
+    get cameraDistance() {
+        throw $8e08190ac5cfc1c3$var$err("cameraDistance");
     }
-    /**
-     * Performs a B turn
-     * @param reverse true if you want to turn the face counter clockwise (B')
-     * @param layers how many inner layers of the face to turn defaults to 1. Cannot be the cube size or greater
-     */ B(reverse = false, layers = 1) {
-        this.turnFace((0, $3512c0058d02a649$export$c330f3c58d208f27).B, (0, $3512c0058d02a649$export$b8ec17f09eb1440).Z, reverse, this.size - 1, this.size - layers);
+    set cameraLatitudeLimit(latitudeLimit) {
+        this.experimentalModel.twistySceneModel.latitudeLimit.set(latitudeLimit);
     }
-    /**
-     * Rotates the middle slice in the direction of an L turn
-     * https://ruwix.com/the-rubiks-cube/notation/advanced/
-     *
-     * Will rotate all middle layers inbetween R and L for larger cubes
-     */ M(reverse = false) {
-        for(let layer = 1; layer < this.size - 1; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).X}-${layer}`, !reverse);
+    get cameraLatitudeLimit() {
+        throw $8e08190ac5cfc1c3$var$err("cameraLatitudeLimit");
     }
-    /**
-     * Rotates the standing layers in the direction of an F turn
-     * https://ruwix.com/the-rubiks-cube/notation/advanced/
-     *
-     * Will rotate all middle layers inbetween F and B for larger cubes
-     */ S(reverse = false) {
-        for(let layer = 1; layer < this.size - 1; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).Z}-${layer}`, reverse);
+    set indexer(indexer) {
+        this.experimentalModel.indexerConstructorRequest.set(indexer);
     }
-    /**
-     * Rotates the equitorial layers in the direction of a D turn
-     * https://ruwix.com/the-rubiks-cube/notation/advanced/
-     *
-     * Will rotate all middle layers inbetween U and D for larger cubes
-     */ E(reverse = false) {
-        for(let layer = 1; layer < this.size - 1; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).Y}-${layer}`, !reverse);
+    get indexer() {
+        throw $8e08190ac5cfc1c3$var$err("indexer");
     }
-    /**
-     * rotates the entire cube on R
-     */ X(reverse = false) {
-        this.doTurn("R", reverse);
-        this.doTurn("L", !reverse);
-        for(let layer = 0; layer < this.size; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).X}-${layer}`, reverse);
+    set tempoScale(newTempoScale) {
+        this.experimentalModel.tempoScale.set(newTempoScale);
     }
-    /**
-     * rotates the entire cube on U
-     */ Y(reverse = false) {
-        this.doTurn("U", reverse);
-        this.doTurn("D", !reverse);
-        for(let layer = 0; layer < this.size; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).Y}-${layer}`, reverse);
+    get tempoScale() {
+        throw $8e08190ac5cfc1c3$var$err("tempoScale");
     }
-    /**
-     * rotates the entire cube on F
-     */ Z(reverse = false) {
-        this.doTurn("F", reverse);
-        this.doTurn("B", !reverse);
-        for(let layer = 0; layer < this.size; layer++)this.doTurn(`${(0, $3512c0058d02a649$export$b8ec17f09eb1440).Z}-${layer}`, reverse);
+    set experimentalSprite(url) {
+        this.experimentalModel.twistySceneModel.foundationStickerSpriteURL.set(url);
     }
-    alg(alg) {
-        if (!alg) return;
-        this.doTurns((0, $124cae5f9b200e70$export$40cd6d717443f0f5)(alg));
+    get experimentalSprite() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalSprite");
     }
-    /**
-     * reverses an algorithm then executes it
-     */ case(alg) {
-        if (!alg) return;
-        let turns = (0, $124cae5f9b200e70$export$40cd6d717443f0f5)(alg).reverse().map((turn)=>{
-            switch(turn.turnType){
-                case (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise:
-                    turn.turnType = (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
-                    break;
-                case (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise:
-                    turn.turnType = (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Clockwise;
-                    break;
-                case (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Double:
-                    break;
+    set experimentalHintSprite(url) {
+        this.experimentalModel.twistySceneModel.hintStickerSpriteURL.set(url);
+    }
+    get experimentalHintSprite() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalHintSprite");
+    }
+    set fullscreenElement(element) {
+        this.experimentalModel.twistySceneModel.fullscreenElement.set(element);
+    }
+    get fullscreenElement() {
+        throw $8e08190ac5cfc1c3$var$err("fullscreenElement");
+    }
+    set experimentalInitialHintFaceletsAnimation(anim) {
+        this.experimentalModel.twistySceneModel.initialHintFaceletsAnimation.set(anim);
+    }
+    get experimentalInitialHintFaceletsAnimation() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalInitialHintFaceletsAnimation");
+    }
+    set experimentalDragInput(dragInputMode) {
+        this.experimentalModel.twistySceneModel.dragInput.set(dragInputMode);
+    }
+    get experimentalDragInput() {
+        throw $8e08190ac5cfc1c3$var$err("experimentalDragInput");
+    }
+};
+var $8e08190ac5cfc1c3$var$ExperimentalGetters = class {
+    constructor(model){
+        this.model = model;
+    }
+    async alg() {
+        return (await this.model.alg.get()).alg;
+    }
+    async setupAlg() {
+        return (await this.model.setupAlg.get()).alg;
+    }
+    puzzleID() {
+        return this.model.puzzleID.get();
+    }
+    async timestamp() {
+        return (await this.model.detailedTimelineInfo.get()).timestamp;
+    }
+};
+// src/cubing/twisty/views/TwistyPlayer.ts
+var $8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX = "data-";
+var $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap = {
+    alg: "alg",
+    "experimental-setup-alg": "experimentalSetupAlg",
+    "experimental-setup-anchor": "experimentalSetupAnchor",
+    puzzle: "puzzle",
+    "experimental-puzzle-description": "experimentalPuzzleDescription",
+    visualization: "visualization",
+    "hint-facelets": "hintFacelets",
+    "experimental-stickering": "experimentalStickering",
+    "experimental-stickering-mask-orbits": "experimentalStickeringMaskOrbits",
+    background: "background",
+    "dark-mode": "darkMode",
+    "control-panel": "controlPanel",
+    "back-view": "backView",
+    "experimental-initial-hint-facelets-animation": "experimentalInitialHintFaceletsAnimation",
+    "viewer-link": "viewerLink",
+    "experimental-move-press-input": "experimentalMovePressInput",
+    "experimental-drag-input": "experimentalDragInput",
+    "experimental-title": "experimentalTitle",
+    "experimental-video-url": "experimentalVideoURL",
+    "experimental-competition-id": "experimentalCompetitionID",
+    "camera-latitude": "cameraLatitude",
+    "camera-longitude": "cameraLongitude",
+    "camera-distance": "cameraDistance",
+    "camera-latitude-limit": "cameraLatitudeLimit",
+    "tempo-scale": "tempoScale",
+    "experimental-sprite": "experimentalSprite",
+    "experimental-hint-sprite": "experimentalHintSprite"
+};
+var $8e08190ac5cfc1c3$var$configKeys = Object.fromEntries(Object.values($8e08190ac5cfc1c3$var$twistyPlayerAttributeMap).map((s)=>[
+        s,
+        true
+    ]));
+var $8e08190ac5cfc1c3$var$propOnly = {
+    experimentalMovePressCancelOptions: true
+};
+var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$var$TwistyPlayerSettable {
+    constructor(config = {}){
+        super();
+        this.controller = new $8e08190ac5cfc1c3$var$TwistyPlayerController(this.experimentalModel, this);
+        this.experimentalCanvasClickCallback = ()=>{};
+        this.#controlsManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "controls-", [
+            "auto"
+        ].concat(Object.keys($8e08190ac5cfc1c3$var$controlsLocations)));
+        this.#visualizationWrapperElem = document.createElement("div");
+        this.#errorElem = document.createElement("div");
+        this.#alreadyConnected = false;
+        this.#flashLevel = "auto";
+        this.#visualizationWrapper = null;
+        this.#initial3DVisualizationWrapper = new $8e08190ac5cfc1c3$var$InitialValueTracker();
+        this.#visualizationStrategy = null;
+        for (const [propName, value] of Object.entries(config)){
+            if (!($8e08190ac5cfc1c3$var$configKeys[propName] || $8e08190ac5cfc1c3$var$propOnly[propName])) {
+                console.warn(`Invalid config passed to TwistyPlayer: ${propName}`);
+                break;
             }
-            return turn;
-        });
-        this.doTurns(turns);
+            this[propName] = value;
+        }
     }
-    doTurns(turns) {
-        turns.forEach((turn)=>{
-            let turnFunc;
-            switch(turn.unit){
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).U:
-                    turnFunc = this.U.bind(this);
+    #controlsManager;
+    #visualizationWrapperElem;
+    #errorElem;
+    #alreadyConnected;
+    async connectedCallback() {
+        if (this.#alreadyConnected) return;
+        this.#alreadyConnected = true;
+        this.addCSS($8e08190ac5cfc1c3$var$twistyPlayerCSS);
+        this.addElement(this.#visualizationWrapperElem).classList.add("visualization-wrapper");
+        this.addElement(this.#errorElem).classList.add("error-elem");
+        this.#errorElem.textContent = "Error";
+        this.experimentalModel.userVisibleErrorTracker.addFreshListener((userVisibleError)=>{
+            const errorString = userVisibleError.errors[0] ?? null;
+            this.contentWrapper.classList.toggle("error", !!errorString);
+            if (errorString) this.#errorElem.textContent = errorString;
+        });
+        const scrubber = new $8e08190ac5cfc1c3$var$TwistyScrubber(this.experimentalModel, this.controller);
+        this.contentWrapper.appendChild(scrubber);
+        this.buttons = new $8e08190ac5cfc1c3$var$TwistyButtons(this.experimentalModel, this.controller, this);
+        this.contentWrapper.appendChild(this.buttons);
+        this.experimentalModel.twistySceneModel.background.addFreshListener((backgroundTheme)=>{
+            this.contentWrapper.classList.toggle("checkered", [
+                "auto",
+                "checkered"
+            ].includes(backgroundTheme));
+            this.contentWrapper.classList.toggle("checkered-transparent", backgroundTheme === "checkered-transparent");
+        });
+        this.experimentalModel.twistySceneModel.darkMode.addFreshListener((darkModeTheme)=>{
+            this.contentWrapper.classList.toggle("dark-mode", [
+                "dark"
+            ].includes(darkModeTheme));
+        });
+        this.experimentalModel.controlPanel.addFreshListener((controlPanel)=>{
+            this.#controlsManager.setValue(controlPanel);
+        });
+        this.experimentalModel.visualizationStrategy.addFreshListener(this.#setVisualizationWrapper.bind(this));
+        this.experimentalModel.puzzleID.addFreshListener(this.flash.bind(this));
+    }
+    #flashLevel;
+    experimentalSetFlashLevel(newLevel) {
+        this.#flashLevel = newLevel;
+    }
+    flash() {
+        if (this.#flashLevel === "auto") this.#visualizationWrapper?.animate([
+            {
+                opacity: 0.25
+            },
+            {
+                opacity: 1
+            }
+        ], {
+            duration: 250,
+            easing: "ease-out"
+        });
+    }
+    #visualizationWrapper;
+    #initial3DVisualizationWrapper;
+    #visualizationStrategy;
+     #setVisualizationWrapper(strategy) {
+        if (strategy !== this.#visualizationStrategy) {
+            this.#visualizationWrapper?.remove();
+            this.#visualizationWrapper?.disconnect();
+            let newWrapper;
+            switch(strategy){
+                case "2D":
+                case "experimental-2D-LL":
+                    newWrapper = new $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper(this.experimentalModel.twistySceneModel, strategy);
                     break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).R:
-                    turnFunc = this.R.bind(this);
-                    break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).F:
-                    turnFunc = this.F.bind(this);
-                    break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).D:
-                    turnFunc = this.D.bind(this);
-                    break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).L:
-                    turnFunc = this.L.bind(this);
-                    break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).B:
-                    turnFunc = this.B.bind(this);
-                    break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).M:
-                    turnFunc = this.M.bind(this);
-                    break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).E:
-                    turnFunc = this.E.bind(this);
-                    break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).S:
-                    turnFunc = this.S.bind(this);
-                    break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).X:
-                    turnFunc = this.X.bind(this);
-                    break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).Y:
-                    turnFunc = this.Y.bind(this);
-                    break;
-                case (0, $124cae5f9b200e70$export$3732f170b13d5060).Z:
-                    turnFunc = this.Z.bind(this);
+                case "Cube3D":
+                case "PG3D":
+                    newWrapper = new $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper(this.experimentalModel);
+                    this.#initial3DVisualizationWrapper.handleNewValue(newWrapper);
                     break;
                 default:
-                    console.warn(`Unsupported cube move`, turn);
-                    break;
+                    throw new Error("Invalid visualization");
             }
-            const reverse = turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).CounterClockwise;
-            turnFunc(reverse, turn.slices);
-            if (turn.turnType === (0, $68fd4c41993b3878$export$b3ef12f1067db51f).Double) turnFunc(reverse, turn.slices);
-        });
-    }
-}
-
-
-
-const $8aa68f315e3e013d$export$b10747473b5ad61e = (()=>{
-    let current = 0;
-    return function() {
-        return current++;
-    };
-})();
-
-
-
-/**
- * Credit to logic https://github.com/toji/gl-matrix/blob/master/src/mat4.js
- */ const $4ae27753aa4c892b$var$EPSILON = 0.000001;
-class $4ae27753aa4c892b$export$2ae72fc923e5eb5 {
-    constructor(values){
-        if (Array.isArray(values) && values.length == 16) this.values = values;
-        else this.values = [
-            1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            1
-        ];
-    }
-    /**
-     * Returns a 4x4 matrix with the given values
-     */ static fromValues(m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15, m16) {
-        return new $4ae27753aa4c892b$export$2ae72fc923e5eb5([
-            m1,
-            m2,
-            m3,
-            m4,
-            m5,
-            m6,
-            m7,
-            m8,
-            m9,
-            m10,
-            m11,
-            m12,
-            m13,
-            m14,
-            m15,
-            m16, 
-        ]);
-    }
-    static fromQuaternion(q) {
-        let { a: x , b: y , c: z , d: w  } = q;
-        let x2 = x + x;
-        let y2 = y + y;
-        let z2 = z + z;
-        let xx = x * x2;
-        let yx = y * x2;
-        let yy = y * y2;
-        let zx = z * x2;
-        let zy = z * y2;
-        let zz = z * z2;
-        let wx = w * x2;
-        let wy = w * y2;
-        let wz = w * z2;
-        return $4ae27753aa4c892b$export$2ae72fc923e5eb5.fromValues(1 - yy - zz, yx + wz, zx - wy, 0, yx - wz, 1 - xx - zz, zy + wx, 0, zx + wy, zy - wx, 1 - xx - yy, 0, 0, 0, 0, 1);
-    }
-    static fromTranslation(x, y, z) {
-        return $4ae27753aa4c892b$export$2ae72fc923e5eb5.fromValues(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, y, z, 1);
-    }
-    static fromXRotation(radians) {
-        let s = Math.sin(radians);
-        let c = Math.cos(radians);
-        return $4ae27753aa4c892b$export$2ae72fc923e5eb5.fromValues(1, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, 0, 0, 0, 1);
-    }
-    static fromYRotation(radians) {
-        let s = Math.sin(radians);
-        let c = Math.cos(radians);
-        return $4ae27753aa4c892b$export$2ae72fc923e5eb5.fromValues(c, 0, -s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1);
-    }
-    /**
-     * copy values from one matrix to another
-     */ static copy(out, matrix) {
-        out.values[0] = matrix.values[0];
-        out.values[1] = matrix.values[1];
-        out.values[2] = matrix.values[2];
-        out.values[3] = matrix.values[3];
-        out.values[4] = matrix.values[4];
-        out.values[5] = matrix.values[5];
-        out.values[6] = matrix.values[6];
-        out.values[7] = matrix.values[7];
-        out.values[8] = matrix.values[8];
-        out.values[9] = matrix.values[9];
-        out.values[10] = matrix.values[10];
-        out.values[11] = matrix.values[11];
-        out.values[12] = matrix.values[12];
-        out.values[13] = matrix.values[13];
-        out.values[14] = matrix.values[14];
-        out.values[15] = matrix.values[15];
-    }
-    static multiply(out, a, b) {
-        let a00 = a.values[0], a01 = a.values[1], a02 = a.values[2], a03 = a.values[3];
-        let a10 = a.values[4], a11 = a.values[5], a12 = a.values[6], a13 = a.values[7];
-        let a20 = a.values[8], a21 = a.values[9], a22 = a.values[10], a23 = a.values[11];
-        let a30 = a.values[12], a31 = a.values[13], a32 = a.values[14], a33 = a.values[15];
-        // Cache only the current line of the second matrix
-        let b0 = b.values[0], b1 = b.values[1], b2 = b.values[2], b3 = b.values[3];
-        out.values[0] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
-        out.values[1] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
-        out.values[2] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
-        out.values[3] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
-        b0 = b.values[4];
-        b1 = b.values[5];
-        b2 = b.values[6];
-        b3 = b.values[7];
-        out.values[4] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
-        out.values[5] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
-        out.values[6] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
-        out.values[7] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
-        b0 = b.values[8];
-        b1 = b.values[9];
-        b2 = b.values[10];
-        b3 = b.values[11];
-        out.values[8] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
-        out.values[9] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
-        out.values[10] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
-        out.values[11] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
-        b0 = b.values[12];
-        b1 = b.values[13];
-        b2 = b.values[14];
-        b3 = b.values[15];
-        out.values[12] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
-        out.values[13] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
-        out.values[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
-        out.values[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
-        return out;
-    }
-    /**
-     * Generates a perspective projection matrix with the given bounds.
-     * The near/far clip planes correspond to a normalized device coordinate Z range of [-1, 1],
-     * which matches WebGL/OpenGL's clip volume.
-     * Passing null/undefined/no value for far will generate infinite projection matrix.
-     *
-     * @param {number} fovy Vertical field of view in radians
-     * @param {number} aspect Aspect ratio. typically viewport width/height
-     * @param {number} near Near bound of the frustum
-     * @param {number} far Far bound of the frustum, can be null or Infinity
-     */ static perspective(fovy, aspect, near, far) {
-        const f = 1.0 / Math.tan(fovy / 2);
-        const values = [
-            f / aspect,
-            0,
-            0,
-            0,
-            0,
-            f,
-            0,
-            0,
-            0,
-            0,
-            0,
-            -1,
-            0,
-            0,
-            0,
-            0
-        ];
-        if (far != null && far !== Infinity) {
-            const nf = 1 / (near - far);
-            values[10] = (far + near) * nf;
-            values[14] = 2 * far * near * nf;
-        } else {
-            values[10] = -1;
-            values[14] = -2 * near;
-        }
-        return new $4ae27753aa4c892b$export$2ae72fc923e5eb5(values);
-    }
-    translate(x, y, z) {
-        this.values[12] = this.values[0] * x + this.values[4] * y + this.values[8] * z + this.values[12];
-        this.values[13] = this.values[1] * x + this.values[5] * y + this.values[9] * z + this.values[13];
-        this.values[14] = this.values[2] * x + this.values[6] * y + this.values[10] * z + this.values[14];
-        this.values[15] = this.values[3] * x + this.values[7] * y + this.values[11] * z + this.values[15];
-    }
-    scale(x, y, z) {
-        this.values[0] = this.values[0] * x;
-        this.values[1] = this.values[1] * x;
-        this.values[2] = this.values[2] * x;
-        this.values[3] = this.values[3] * x;
-        this.values[4] = this.values[4] * y;
-        this.values[5] = this.values[5] * y;
-        this.values[6] = this.values[6] * y;
-        this.values[7] = this.values[7] * y;
-        this.values[8] = this.values[8] * z;
-        this.values[9] = this.values[9] * z;
-        this.values[10] = this.values[10] * z;
-        this.values[11] = this.values[11] * z;
-    }
-    /**
-     * Rotates the matrix by the given angle around the axis (x, y, z)
-     */ rotate(radians, x, y, z) {
-        let len = Math.hypot(x, y, z);
-        if (len < $4ae27753aa4c892b$var$EPSILON) return;
-        len = 1 / len;
-        x *= len;
-        y *= len;
-        z *= len;
-        let s = Math.sin(radians);
-        let c = Math.cos(radians);
-        let t = 1 - c;
-        let a00, a01, a02, a03;
-        let a10, a11, a12, a13;
-        let a20, a21, a22, a23;
-        let b00, b01, b02;
-        let b10, b11, b12;
-        let b20, b21, b22;
-        a00 = this.values[0];
-        a01 = this.values[1];
-        a02 = this.values[2];
-        a03 = this.values[3];
-        a10 = this.values[4];
-        a11 = this.values[5];
-        a12 = this.values[6];
-        a13 = this.values[7];
-        a20 = this.values[8];
-        a21 = this.values[9];
-        a22 = this.values[10];
-        a23 = this.values[11];
-        // Construct the elements of the rotation matrix
-        b00 = x * x * t + c;
-        b01 = y * x * t + z * s;
-        b02 = z * x * t - y * s;
-        b10 = x * y * t - z * s;
-        b11 = y * y * t + c;
-        b12 = z * y * t + x * s;
-        b20 = x * z * t + y * s;
-        b21 = y * z * t - x * s;
-        b22 = z * z * t + c;
-        // Perform rotation-specific matrix multiplication
-        this.values[0] = a00 * b00 + a10 * b01 + a20 * b02;
-        this.values[1] = a01 * b00 + a11 * b01 + a21 * b02;
-        this.values[2] = a02 * b00 + a12 * b01 + a22 * b02;
-        this.values[3] = a03 * b00 + a13 * b01 + a23 * b02;
-        this.values[4] = a00 * b10 + a10 * b11 + a20 * b12;
-        this.values[5] = a01 * b10 + a11 * b11 + a21 * b12;
-        this.values[6] = a02 * b10 + a12 * b11 + a22 * b12;
-        this.values[7] = a03 * b10 + a13 * b11 + a23 * b12;
-        this.values[8] = a00 * b20 + a10 * b21 + a20 * b22;
-        this.values[9] = a01 * b20 + a11 * b21 + a21 * b22;
-        this.values[10] = a02 * b20 + a12 * b21 + a22 * b22;
-        this.values[11] = a03 * b20 + a13 * b21 + a23 * b22;
-    }
-    multiply(b) {
-        $4ae27753aa4c892b$export$2ae72fc923e5eb5.multiply(this, this, b);
-    }
-}
-
-
-class $87867bd021cba182$export$e4dd07dff30cc924 {
-    constructor(){
-        this.uid = (0, $8aa68f315e3e013d$export$b10747473b5ad61e)();
-        this.matrix = new (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5)();
-        this.centroid = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0);
-    }
-    translate(x, y, z) {
-        this.matrix.translate(x, y, z);
-    }
-    rotate(rad, x, y, z) {
-        this.matrix.rotate(rad, x, y, z);
-    }
-    scale(x, y, z) {
-        this.matrix.scale(x, y, z);
-    }
-    setColor(color) {
-        this.color = color;
-    }
-}
-
-
-class $91f47f50fb317cec$export$eb2fcfdbd7ba97d4 extends (0, $87867bd021cba182$export$e4dd07dff30cc924) {
-    constructor(objects = []){
-        super();
-        this.setObjects(objects);
-    }
-    setObjects(objects) {
-        this.objects = objects;
-    }
-    addObject(object) {
-        this.objects.push(object);
-    }
-    setCentroid(vector) {
-        this.centroid = vector;
-    }
-}
-
-
-
-const $854ac96c255d8d1d$export$55533674495ff043 = Math.sqrt(3);
-const $854ac96c255d8d1d$export$c0b538e05e5e54a3 = Math.atan((0, $769573e6855c11ce$export$c9fcf1a7df975d78)(15));
-const $854ac96c255d8d1d$export$39e437b5f63eb270 = (0, $769573e6855c11ce$export$c9fcf1a7df975d78)(30);
-const $854ac96c255d8d1d$export$9e603a757beb2f43 = (0, $769573e6855c11ce$export$c9fcf1a7df975d78)(36);
-const $854ac96c255d8d1d$export$2a5342a5afcad79 = (0, $769573e6855c11ce$export$c9fcf1a7df975d78)(60);
-const $854ac96c255d8d1d$export$a3aa84d936ce2537 = (0, $769573e6855c11ce$export$c9fcf1a7df975d78)(72);
-
-
-
-class $fad1ebfc94109219$export$cacb46a2bffbc820 {
-    constructor(topLayer = (0, $9b3744130fd33c3e$export$a5aadce9b3884cce), bottomLayer = (0, $9b3744130fd33c3e$export$4c6069d7db9ecde2), middleRotated = false, scheme = (0, $9b3744130fd33c3e$export$e1bf8712b5945cd), sideLength = 0.7){
-        this.scheme = scheme;
-        this.sideLength = sideLength;
-        this.halfSide = this.sideLength / 2;
-        this.halfEdgePiece = this.halfSide * (0, $854ac96c255d8d1d$export$c0b538e05e5e54a3);
-        this.layerWidth = this.halfSide - this.halfEdgePiece;
-        this.middleWidth = this.sideLength - 2 * this.layerWidth;
-        this.halfMiddleWidth = this.middleWidth / 2;
-        this.borderLayerWidth = this.sideLength * 0.2;
-        this.outerHalfSide = (sideLength + this.borderLayerWidth) / 2;
-        this.outerHalfEdgePiece = this.outerHalfSide * (0, $854ac96c255d8d1d$export$c0b538e05e5e54a3);
-        this.pieces = this.buildSquare1(topLayer, bottomLayer, middleRotated);
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.pieces);
-    }
-    makeLayer(pieces) {
-        let geometry = [];
-        let angle = Math.PI;
-        pieces.forEach((piece, index)=>{
-            switch(piece.type){
-                case (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).CORNER:
-                    const corner = this.square1Corner(piece.colors[0], piece.colors[1], piece.colors[2]);
-                    corner.rotate(angle, 0, 0, 1);
-                    geometry.push(corner);
-                    angle -= (0, $854ac96c255d8d1d$export$2a5342a5afcad79);
-                    break;
-                case (0, $ca66abb67f2ac25e$export$6173bdc2540cf84d).EDGE:
-                    const edge = this.square1Edge(piece.colors[0], piece.colors[1]);
-                    edge.rotate(angle - (0, $854ac96c255d8d1d$export$2a5342a5afcad79), 0, 0, 1);
-                    geometry.push(edge);
-                    angle -= (0, $854ac96c255d8d1d$export$39e437b5f63eb270);
-                    break;
-            }
-        });
-        return geometry;
-    }
-    /**
-     * Not implemented. Just here for {@link Visualizer}'s sake
-     */ setColors(colors) {}
-}
-
-
-
-
-
-class $26e0610aa22af478$export$aa6504bc3c7c25a1 {
-    /**
-     * @param indices indices of vertices that make up a face
-     * @param vertices vertices of the geometry to calculate centroid from
-     * @param color color of the sticker
-     */ constructor(indices, vertices, color){
-        this.indices = indices;
-        this.color = color;
-        this.uid = (0, $8aa68f315e3e013d$export$b10747473b5ad61e)();
-        if (vertices) this.calculateCentroid(vertices);
-    }
-    /**
-     * recalculate the centroid of the face.
-     */ calculateCentroid(vertices) {
-        this.centroid = (0, $769573e6855c11ce$export$5ae0742aaf43249b)(// Calculate centroid from vertices included in the face
-        vertices.filter((v, i)=>this.indices.includes(i)));
-    }
-}
-
-
-
-
-class $621b987b54afb04b$export$2db6c17465f94a2 extends (0, $87867bd021cba182$export$e4dd07dff30cc924) {
-    constructor(vertices, faces){
-        super();
-        this.vertices = vertices;
-        this.faces = faces;
-        this.centroid = (0, $769573e6855c11ce$export$5ae0742aaf43249b)(this.vertices);
-    }
-}
-
-
-
-
-
-class $f35abbac62e00809$export$65ad724200307558 extends (0, $fad1ebfc94109219$export$cacb46a2bffbc820) {
-    constructor(topLayer = (0, $9b3744130fd33c3e$export$a5aadce9b3884cce), bottomLayer = (0, $9b3744130fd33c3e$export$4c6069d7db9ecde2), middleRotated = false, scheme = (0, $9b3744130fd33c3e$export$e1bf8712b5945cd), sideLength = 0.7){
-        super(topLayer, bottomLayer, middleRotated, scheme, sideLength);
-    }
-    square1Corner(top, side1, side2) {
-        const points = [
-            // Top
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfEdgePiece, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfSide, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, 0),
-            // Sides
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfSide, this.outerHalfEdgePiece, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfSide, this.outerHalfSide, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfEdgePiece, this.outerHalfSide, 0), 
-        ];
-        const faces = [
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                2,
-                3
-            ], points, top),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                2,
-                3,
-                6,
-                5
-            ], points, side1),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                1,
-                2,
-                5,
-                4
-            ], points, side2), 
-        ];
-        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(points, faces);
-    }
-    square1Edge(top, side) {
-        const points = [
-            // Top
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, 0).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfEdgePiece, this.halfSide, 0).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
-            // Side
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfEdgePiece, this.outerHalfSide, 0).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.outerHalfEdgePiece, this.outerHalfSide, 0).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)), 
-        ];
-        const faces = [
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                2
-            ], points, top),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                1,
-                2,
-                4,
-                3
-            ], points, side), 
-        ];
-        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(points, faces);
-    }
-    square1Middle(front, right, back, rotated) {
-        const layerHeight = this.halfSide - this.halfEdgePiece;
-        const middleHeight = this.sideLength - 2 * layerHeight;
-        const halfMiddleHeight = middleHeight / 2;
-        const cornerLength = this.outerHalfSide - this.outerHalfEdgePiece;
-        const vertices = [
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.outerHalfSide, halfMiddleHeight, -0.01),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.outerHalfEdgePiece, halfMiddleHeight, -0.01),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfSide, halfMiddleHeight, -0.01),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.outerHalfSide, -halfMiddleHeight, -0.01),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.outerHalfEdgePiece, -halfMiddleHeight, -0.01),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.outerHalfSide, -halfMiddleHeight, -0.01),
-            // Points for when middle is rotated
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(2 * this.outerHalfEdgePiece, halfMiddleHeight, -0.01),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(2 * this.outerHalfEdgePiece, -halfMiddleHeight, -0.01),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(2 * cornerLength, halfMiddleHeight, -0.01),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(2 * cornerLength, -halfMiddleHeight, -0.01), 
-        ];
-        // Left
-        const faces = [
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                4,
-                3
-            ], vertices, front)
-        ];
-        // Right
-        if (!rotated) faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-            1,
-            2,
-            5,
-            4
-        ], vertices, front));
-        else {
-            faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                1,
-                6,
-                7,
-                4
-            ], vertices, back));
-            faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                6,
-                8,
-                9,
-                7
-            ], vertices, right));
-        }
-        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(vertices, faces);
-    }
-    buildSquare1(top, bottom, middleRotated) {
-        const layerHeight = this.halfSide - this.halfEdgePiece;
-        const middleHeight = this.sideLength - 2 * layerHeight;
-        const halfMiddleHeight = middleHeight / 2;
-        let pieces = [];
-        const topLayer = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeLayer(top));
-        const bottomLayer = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeLayer(bottom));
-        topLayer.translate(0, this.outerHalfSide + halfMiddleHeight, 0);
-        bottomLayer.translate(0, -(this.outerHalfSide + halfMiddleHeight), 0);
-        bottomLayer.rotate((0, $854ac96c255d8d1d$export$39e437b5f63eb270), 0, 0, 1);
-        pieces = [
-            topLayer,
-            bottomLayer
-        ];
-        const frontColor = this.scheme.front || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).front;
-        const leftColor = this.scheme.left || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).left;
-        const backColor = this.scheme.back || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).back;
-        const m = this.square1Middle(frontColor, leftColor, backColor, middleRotated);
-        this.faces = {
-            top: topLayer,
-            bottom: bottomLayer
-        };
-        pieces.push(m);
-        return pieces;
-    }
-}
-
-
-
-
-
-
-
-
-
-const $69cfc5366d5d5306$var$INNER_FACE_COLOR = {
-    value: "#333",
-    stroke: "#333"
-};
-class $69cfc5366d5d5306$export$8f7198aedf2eb582 extends (0, $fad1ebfc94109219$export$cacb46a2bffbc820) {
-    constructor(topLayer = (0, $9b3744130fd33c3e$export$a5aadce9b3884cce), bottomLayer = (0, $9b3744130fd33c3e$export$4c6069d7db9ecde2), middleRotated = false, scheme = (0, $9b3744130fd33c3e$export$e1bf8712b5945cd), sideLength = 1.25){
-        super(topLayer, bottomLayer, middleRotated, scheme, sideLength);
-    }
-    square1Corner(top, side1, side2) {
-        const points = [
-            // Top
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, this.halfSide),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfEdgePiece, this.halfSide),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfSide, this.halfSide),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, this.halfSide),
-            // Bottom
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, this.halfSide - this.layerWidth),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfEdgePiece, this.halfSide - this.layerWidth),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide, this.halfSide, this.halfSide - this.layerWidth),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, this.halfSide - this.layerWidth), 
-        ];
-        const faces = [
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                2,
-                3
-            ], points, top),
-            // TODO: the faces commented out here are the underside of the pieces so
-            // they show gray when the cube is scrambled. But they are overlapping sometimes
-            // with outward sticker faces. removing them for now, but it'd be nice to
-            // fix this.
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                4,
-                5,
-                6,
-                7
-            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                5,
-                4
-            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                2,
-                3,
-                7,
-                6
-            ], points, side1),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                1,
-                2,
-                6,
-                5
-            ], points, side2),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                3,
-                7,
-                4
-            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR), 
-        ];
-        const innerCentroid = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfSide / 2, this.halfSide / 2, this.halfSide / 2);
-        faces[1].centroid = innerCentroid;
-        faces[2].centroid = innerCentroid;
-        faces[5].centroid = innerCentroid;
-        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(points, faces);
-    }
-    square1Edge(top, side) {
-        const points = [
-            // Top
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, this.halfSide).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, this.halfSide).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfEdgePiece, this.halfSide, this.halfSide).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
-            // Bottom
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, this.halfSide - this.layerWidth).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, this.halfSide - this.layerWidth).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfEdgePiece, this.halfSide, this.halfSide - this.layerWidth).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270)), 
-        ];
-        const faces = [
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                2
-            ], points, top),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                3,
-                4,
-                5
-            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                1,
-                2,
-                5,
-                4
-            ], points, side),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                4,
-                3
-            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                2,
-                5,
-                3
-            ], points, $69cfc5366d5d5306$var$INNER_FACE_COLOR), 
-        ];
-        const innerFaceCentroid = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, this.halfSide / 2, this.halfSide / 2).rotateZ((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $854ac96c255d8d1d$export$39e437b5f63eb270));
-        // Override centroid to avoid drawing over outside stickers
-        faces[1].centroid = innerFaceCentroid;
-        faces[3].centroid = innerFaceCentroid;
-        faces[4].centroid = innerFaceCentroid;
-        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(points, faces);
-    }
-    square1Middle(front, side, back) {
-        const vertices = [
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfSide, -this.halfSide, this.halfMiddleWidth),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfSide, this.halfSide, this.halfMiddleWidth),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, this.halfMiddleWidth),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfEdgePiece, -this.halfSide, this.halfMiddleWidth),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfSide, -this.halfSide, -this.halfMiddleWidth),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfSide, this.halfSide, -this.halfMiddleWidth),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(this.halfEdgePiece, this.halfSide, -this.halfMiddleWidth),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfEdgePiece, -this.halfSide, -this.halfMiddleWidth), 
-        ];
-        const faces = [
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                2,
-                3
-            ], vertices, {
-                value: "#333"
-            }),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                4,
-                5,
-                6,
-                7
-            ], vertices, {
-                value: "#333"
-            }),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                5,
-                4
-            ], vertices, side),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                1,
-                2,
-                6,
-                5
-            ], vertices, back),
-            // new Face([2, 3, 7, 6], vertices, { value: "#333" }),
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                3,
-                7,
-                4
-            ], vertices, front), 
-        ];
-        const innerFaceCentroid = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-this.halfSide / 2, 0, 0);
-        // Override centroid to avoid drawing over outside stickers
-        faces[0].centroid = innerFaceCentroid;
-        faces[1].centroid = innerFaceCentroid;
-        faces[2].centroid = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-(this.halfSide + this.halfSide * 0.45), 0, 0);
-        return new (0, $621b987b54afb04b$export$2db6c17465f94a2)(vertices, faces);
-    }
-    buildSquare1(top, bottom, middleRotated) {
-        const topLayer = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeLayer(top));
-        const bottomLayer = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeLayer(bottom));
-        bottomLayer.rotate(Math.PI, 1, 0, 0);
-        bottomLayer.rotate((0, $854ac96c255d8d1d$export$39e437b5f63eb270), 0, 0, 1);
-        const pieces = [
-            topLayer,
-            bottomLayer
-        ];
-        const frontColor = this.scheme.front || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).front;
-        const leftColor = this.scheme.left || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).left;
-        const backColor = this.scheme.back || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).back;
-        const rightColor = this.scheme.right || (0, $9b3744130fd33c3e$export$e1bf8712b5945cd).right;
-        const m1 = this.square1Middle(frontColor, leftColor, backColor);
-        const m2 = this.square1Middle(backColor, rightColor, frontColor);
-        m2.rotate(Math.PI, 0, 0, 1);
-        if (middleRotated) m2.rotate(Math.PI, (0, $9b3744130fd33c3e$export$f37ee267a00cc8d1).x, (0, $9b3744130fd33c3e$export$f37ee267a00cc8d1).y, (0, $9b3744130fd33c3e$export$f37ee267a00cc8d1).z);
-        pieces.push(m1);
-        pieces.push(m2);
-        this.faces = {
-            top: topLayer,
-            bottom: bottomLayer
-        };
-        return pieces;
-    }
-}
-
-
-
-
-
-
-
-class $ab22ce71036e5c6a$export$7ff5ac152ef991b0 extends (0, $621b987b54afb04b$export$2db6c17465f94a2) {
-    constructor(width, height, color){
-        let vertices = [
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(width, 0, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(width, -height, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, -height, 0), 
-        ];
-        let faces = [
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                2,
-                3
-            ], vertices, color)
-        ];
-        super(vertices, faces);
-    }
-}
-
-
-
-
-
-
-class $0769609a0d2fbcad$export$5a465592bfe74b48 extends (0, $621b987b54afb04b$export$2db6c17465f94a2) {
-    constructor(a, b, c, color){
-        let verticies = [
-            a,
-            b,
-            c
-        ];
-        let faces = [
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                2
-            ], verticies, color)
-        ];
-        super(verticies, faces);
-    }
-}
-class $0769609a0d2fbcad$export$2906df35a9cfb655 extends $0769609a0d2fbcad$export$5a465592bfe74b48 {
-    constructor(base, color){
-        let height = base * ((0, $854ac96c255d8d1d$export$55533674495ff043) / 2);
-        super((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(base / 2, height, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(base, 0, 0), color);
-    }
-}
-
-
-
-class $6b11631b09d59b70$export$e3345590c1271270 {
-    constructor(){
-        const cubeWidth = 1;
-        const centerWidth = Math.sqrt(Math.pow(cubeWidth / 2, 2) * 2);
-        const orange = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$3de5e29ed1757f9b), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-cubeWidth, 0, 0)));
-        const green = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(2 * cubeWidth, 0, 0)));
-        const white = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$29814851e0aa981f), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, -cubeWidth, 0)));
-        const red = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$aa201224bb439d47), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(cubeWidth, 0, 0)));
-        const yellow = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$aab610c505c06a8f), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, cubeWidth, 0)));
-        const blue = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$738c3b9a44c87ecc), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 0, 0)));
-        this.U = yellow;
-        this.R = red;
-        this.F = blue;
-        this.L = orange;
-        this.B = green;
-        this.D = white;
-        this.faces = {
-            top: this.U,
-            front: this.F,
-            right: this.R,
-            back: this.B,
-            left: this.L,
-            bottom: this.D
-        };
-        this.stickers = [
-            red,
-            yellow,
-            blue,
-            orange,
-            green,
-            white
-        ];
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
-        this.group.translate(-cubeWidth / 4, 0, 0);
-        this.group.scale(0.5, 0.5, 0.5);
-    }
-    makeStickers(color, width, translate) {
-        const center = new (0, $ab22ce71036e5c6a$export$7ff5ac152ef991b0)(width, width, color);
-        center.translate(translate.x, translate.y, translate.z);
-        center.rotate(Math.PI / 4, 0, 0, 1);
-        center.translate(-width / 2, width / 2, 0);
-        const triangles = [];
-        for(let i = 0; i < 4; i++){
-            const triangle = new (0, $0769609a0d2fbcad$export$5a465592bfe74b48)((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-width / 2, width / 2, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, width, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(width / 2, width / 2, 0), color);
-            triangle.translate(translate.x, translate.y, translate.z);
-            triangle.rotate(-Math.PI / 2 * i, 0, 0, 1);
-            triangle.rotate(Math.PI / 4, 0, 0, 1);
-            triangles.push(triangle);
-        }
-        return [
-            center,
-            ...triangles
-        ];
-    }
-    setColors(colors) {
-        let { top: top , right: right , front: front , bottom: bottom , left: left , back: back  } = colors;
-        this.setFaceColors(this.U, top);
-        this.setFaceColors(this.R, right);
-        this.setFaceColors(this.F, front);
-        this.setFaceColors(this.D, bottom);
-        this.setFaceColors(this.L, left);
-        this.setFaceColors(this.B, back);
-    }
-    setFaceColors(faceStickers, colors = []) {
-        faceStickers.objects[0].faces[0].color = colors[0] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        faceStickers.objects[1].faces[0].color = colors[1] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        faceStickers.objects[2].faces[0].color = colors[2] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        faceStickers.objects[3].faces[0].color = colors[4] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f); // Setting 3 -> 4 and 4 -> 3 now because 4 and 3 are stored incorrectly in this class.
-        faceStickers.objects[4].faces[0].color = colors[3] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-    }
-}
-
-
-
-
-
-
-
-class $37e6b69258b7c736$export$20e672f2d64f35af {
-    constructor(){
-        const cubeWidth = 1.25;
-        const centerWidth = Math.sqrt(Math.pow(cubeWidth / 2, 2) * 2);
-        const halfWidth = cubeWidth / 2;
-        const red = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$aa201224bb439d47), centerWidth));
-        const yellow = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$aab610c505c06a8f), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(1, 0, 0)));
-        const blue = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$738c3b9a44c87ecc), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 1, 0)));
-        const orange = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$3de5e29ed1757f9b), centerWidth));
-        const green = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, 1, 0)));
-        const white = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.makeStickers((0, $a552dd61b777f7b8$export$29814851e0aa981f), centerWidth, (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(1, 0, 0)));
-        this.U = yellow;
-        this.R = red;
-        this.F = blue;
-        this.L = orange;
-        this.B = green;
-        this.D = white;
-        this.faces = {
-            top: this.U,
-            front: this.F,
-            right: this.R,
-            back: this.B,
-            left: this.L,
-            bottom: this.D
-        };
-        red.translate(0, 0, halfWidth);
-        red.rotate(Math.PI, 1, 0, 0);
-        red.rotate(Math.PI / 2, 0, 0, 1);
-        orange.rotate(-Math.PI / 2, 0, 0, 1);
-        orange.translate(0, 0, -halfWidth);
-        blue.rotate(-Math.PI / 2, 1, 0, 0);
-        blue.translate(-halfWidth, 0, 0);
-        green.translate(halfWidth, 0, 0);
-        green.rotate(Math.PI, 0, 1, 0);
-        green.rotate(-Math.PI / 2, 1, 0, 0);
-        yellow.rotate(Math.PI, 0, 1, 0);
-        yellow.translate(0, halfWidth, 0);
-        white.translate(0, -halfWidth, 0);
-        white.rotate(Math.PI, 1, 0, 0);
-        this.stickers = [
-            red,
-            yellow,
-            blue,
-            orange,
-            green,
-            white
-        ];
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
-    }
-    makeStickers(color, width, axis) {
-        const center = new (0, $ab22ce71036e5c6a$export$7ff5ac152ef991b0)(width, width, color);
-        if (axis) center.rotate(Math.PI / 2, axis.x, axis.y, axis.z);
-        center.rotate(Math.PI / 4, 0, 0, 1);
-        center.translate(-width / 2, width / 2, 0);
-        const triangles = [];
-        for(let i = 0; i < 4; i++){
-            const triangle = new (0, $0769609a0d2fbcad$export$5a465592bfe74b48)((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-width / 2, width / 2, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, width, 0), (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(width / 2, width / 2, 0), color);
-            if (axis) triangle.rotate(Math.PI / 2, axis.x, axis.y, axis.z);
-            triangle.rotate(Math.PI / 2 * i, 0, 0, 1);
-            triangle.rotate(Math.PI / 4, 0, 0, 1);
-            triangles.push(triangle);
-        }
-        return [
-            center,
-            ...triangles
-        ];
-    }
-    setColors(colors) {
-        let { top: top , right: right , front: front , bottom: bottom , left: left , back: back  } = colors;
-        this.setFaceColors(this.U, top);
-        this.setFaceColors(this.R, right);
-        this.setFaceColors(this.F, front);
-        this.setFaceColors(this.D, bottom);
-        this.setFaceColors(this.L, left);
-        this.setFaceColors(this.B, back);
-    }
-    setFaceColors(faceStickers, colors = []) {
-        faceStickers.objects[0].faces[0].color = colors[0] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        faceStickers.objects[1].faces[0].color = colors[1] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        faceStickers.objects[2].faces[0].color = colors[2] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        faceStickers.objects[3].faces[0].color = colors[4] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f); // Setting 3 -> 4 and 4 -> 3 now because 4 and 3 are stored incorrectly in this class.
-        faceStickers.objects[4].faces[0].color = colors[3] || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-    }
-}
-
-
-
-
-
-
-
-class $d02903eb7c5e7081$export$2740e532fae15f15 extends (0, $621b987b54afb04b$export$2db6c17465f94a2) {
-    constructor(base, size, color){
-        const halfBase = base / 2;
-        const fullHeight = base * ((0, $854ac96c255d8d1d$export$55533674495ff043) / 2);
-        const triangleBase = base / size;
-        const triangleHeight = fullHeight / size;
-        const inradius = fullHeight / 3;
-        let vertices = [];
-        let faces = [];
-        /**
-         * Builds one layer of verticies at a time
-         * for each layer after the first it constructs
-         * faces for the triangles (0,1,4), (1,2,5) etc...
-         *
-         *       9
-         *     7   8
-         *   4   5   6
-         * 0   1   2   3
-         */ let index = 0;
-        for(let layer = 0; layer <= size; layer++)for(let vertex = 0, count = size - layer; vertex <= count; vertex++){
-            const horizontalOffset = -halfBase;
-            const verticalOffset = -inradius;
-            const x = triangleBase * vertex + layer * triangleBase / 2 + horizontalOffset;
-            const y = triangleHeight * layer + verticalOffset;
-            vertices.push((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(x, y, 0));
-            if (layer > 0) {
-                // down triangle
-                if (vertex > 0) faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                    index,
-                    index - 1,
-                    index - count - 2
-                ], null, color));
-                // up triangle
-                faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                    index,
-                    index - count - 2,
-                    index - count - 1
-                ], null, color));
-            }
-            index++;
-        }
-        faces.forEach((face)=>face.calculateCentroid(vertices));
-        super(vertices, faces);
-    }
-}
-
-
-
-
-const $b12b0953e8a23e46$var$DEG_60_RADIANS = 60 * Math.PI / 180;
-class $b12b0953e8a23e46$export$4d37e698849b50f7 {
-    constructor(size, sideLength = 0.925){
-        this.size = size;
-        const fullHeight = sideLength * ((0, $854ac96c255d8d1d$export$55533674495ff043) / 2);
-        const inDiameter = fullHeight / 1.5;
-        const faceSpacing = inDiameter * 0.1;
-        const U = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$aab610c505c06a8f));
-        const R = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b));
-        const L = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc));
-        const B = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$aa201224bb439d47));
-        this.L = L;
-        this.R = R;
-        this.U = U;
-        this.B = B;
-        R.rotate(-$b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
-        R.translate(0, inDiameter + faceSpacing, 0);
-        R.rotate(2 * $b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
-        U.rotate($b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
-        U.translate(0, inDiameter + faceSpacing, 0);
-        U.rotate(-2 * $b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
-        B.rotate(3 * $b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
-        B.translate(0, inDiameter + faceSpacing, 0);
-        B.rotate(-2 * $b12b0953e8a23e46$var$DEG_60_RADIANS, 0, 0, 1);
-        this.faces = {
-            top: this.U,
-            right: this.R,
-            left: this.L,
-            back: this.B
-        };
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)([
-            U,
-            R,
-            L,
-            B
-        ]);
-    }
-    setColors(colors) {
-        let { left: left , right: right , top: top , back: back  } = colors;
-        this.setFaceColors(this.L, left);
-        this.setFaceColors(this.R, right);
-        this.setFaceColors(this.U, top);
-        this.setFaceColors(this.B, back);
-    }
-    setFaceColors(lattice, colors) {
-        lattice.faces.forEach((f, i)=>{
-            if (colors && colors[i]) f.color = colors[i];
-            else f.color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        });
-    }
-}
-
-
-
-
-
-const $0389636ee7b68987$var$ARC_COS_THIRD = Math.acos(1 / 3);
-const $0389636ee7b68987$var$DEG_120_RADIANS = 120 * Math.PI / 180;
-const $0389636ee7b68987$var$SQRT_24 = Math.sqrt(24);
-class $0389636ee7b68987$export$b13f2da466ab891e {
-    constructor(size, sideLength = 1.75){
-        this.size = size;
-        const insphereRadius = sideLength / $0389636ee7b68987$var$SQRT_24;
-        const U = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$aab610c505c06a8f));
-        const R = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b));
-        const L = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc));
-        const B = new (0, $d02903eb7c5e7081$export$2740e532fae15f15)(sideLength, size, (0, $a552dd61b777f7b8$export$aa201224bb439d47));
-        this.L = L;
-        this.R = R;
-        this.U = U;
-        this.B = B;
-        U.rotate($0389636ee7b68987$var$DEG_120_RADIANS, 0, 0, 1);
-        U.rotate($0389636ee7b68987$var$ARC_COS_THIRD, 1, 0, 0);
-        U.translate(0, 0, insphereRadius);
-        R.rotate($0389636ee7b68987$var$ARC_COS_THIRD, 1, 0, 0);
-        R.translate(0, 0, insphereRadius);
-        L.rotate(-$0389636ee7b68987$var$DEG_120_RADIANS, 0, 0, 1);
-        L.rotate($0389636ee7b68987$var$ARC_COS_THIRD, 1, 0, 0);
-        L.translate(0, 0, insphereRadius);
-        B.rotate(Math.PI, 0, 1, 0);
-        B.translate(0, 0, insphereRadius);
-        this.faces = {
-            top: this.U,
-            right: this.R,
-            left: this.L,
-            back: this.B
-        };
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)([
-            U,
-            L,
-            R,
-            B
-        ]);
-    }
-    setColors(colors) {
-        let { left: left , right: right , top: top , back: back  } = colors;
-        this.setFaceColors(this.L, left);
-        this.setFaceColors(this.R, right);
-        this.setFaceColors(this.U, top);
-        this.setFaceColors(this.B, back);
-    }
-    setFaceColors(lattice, colors) {
-        lattice.faces.forEach((f, i)=>{
-            if (colors && colors[i]) f.color = colors[i];
-            else f.color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        });
-    }
-}
-
-
-
-
-
-
-
-
-class $620e0e2ec86f1c38$export$3bc4526132adddba extends (0, $621b987b54afb04b$export$2db6c17465f94a2) {
-    /**
-     *
-     * @param color
-     * @param layers number of layers
-     * @param length length of entire edge of the outer pentagon
-     */ constructor(color, layers = 2, length = 1.6, layerWidth = 0.4 // TODO: calculate this somehow
-    ){
-        const outRadius = (0, $769573e6855c11ce$export$ca47e7f5b75033b9)(length);
-        const radiusDiff = $620e0e2ec86f1c38$var$layerWidthToRadiusDiff(layerWidth);
-        const centerOutRadius = outRadius - radiusDiff * (layers - 1);
-        const vertices = $620e0e2ec86f1c38$var$faceVerticies(layers, centerOutRadius, radiusDiff, layerWidth);
-        super(vertices, $620e0e2ec86f1c38$var$makeFaces(layers, color, vertices));
-    }
-}
-/**
- * Given the the distance between two parallel sides of the
- * dividen pentagon, calculate the difference in pentagon radius
- */ function $620e0e2ec86f1c38$var$layerWidthToRadiusDiff(width) {
-    const aSquared = width * width;
-    const angleRadians = 71 * Math.PI / 180;
-    // Law of cosines
-    const cSquared = 2 * aSquared - 2 * aSquared * Math.cos(angleRadians);
-    const diff = 2 * Math.sqrt(Math.abs(aSquared - cSquared));
-    return diff;
-}
-/**
- * creates mapping for indicies in one layer to another
- * so we can build the geometry for a megaminx face
- */ function $620e0e2ec86f1c38$var$downMapping(layer) {
-    if (layer < 1) return [];
-    let mapping = [];
-    const layerPoints = 5 + (layer - 1) * 10;
-    let previousPoints = 5 * (layer - 1) * (layer - 1);
-    for(let i = 0; i < layerPoints; i++){
-        mapping.push(i + previousPoints);
-        if (i % (layerPoints / 5) === 0) mapping.push(i + previousPoints);
-    }
-    mapping.push(mapping.shift());
-    mapping.push(mapping.shift());
-    return mapping;
-}
-function $620e0e2ec86f1c38$var$layerVertexNumbers(layer) {
-    let previousPoints = 5 * layer * layer;
-    let vertexNumbers = [];
-    for(let i = 0, layerPoints = 5 + layer * 10; i < layerPoints; i++)vertexNumbers.push(i + previousPoints);
-    return vertexNumbers;
-}
-function $620e0e2ec86f1c38$var$makeFaces(layers, color, vertices) {
-    let faces = [];
-    const firstLayerFace = new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-        0,
-        1,
-        2,
-        3,
-        4
-    ], vertices, color);
-    faces.push(firstLayerFace);
-    let totalPoints = 5;
-    let currentPoint = 5;
-    for(let i = 1; i < layers; i++){
-        const layerPoints = 5 + i * 10;
-        totalPoints += layerPoints;
-        const downMap = $620e0e2ec86f1c38$var$downMapping(i);
-        const prevLayer = $620e0e2ec86f1c38$var$layerVertexNumbers(i - 1);
-        const currentLayer = $620e0e2ec86f1c38$var$layerVertexNumbers(i);
-        while(currentPoint < totalPoints){
-            const currentLayerPoint = currentPoint - (prevLayer[prevLayer.length - 1] + 1);
-            const f1isCorner = currentLayerPoint % (layerPoints / 5) === 0;
-            if (f1isCorner) {
-                currentPoint++;
-                continue;
-            }
-            const f2isCorner = (currentLayerPoint + 1) % (layerPoints / 5) === 0;
-            let f1 = currentPoint;
-            let f2 = currentLayer[(currentLayerPoint + 1) % currentLayer.length];
-            let f3 = f2isCorner ? f2 + 1 : downMap.shift();
-            let f4 = f2isCorner ? downMap.shift() : prevLayer[(prevLayer.indexOf(f3) - 1 + prevLayer.length) % prevLayer.length];
-            currentPoint++;
-            faces.push(new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                f1,
-                f2,
-                f3,
-                f4
-            ], vertices, color));
+            this.#visualizationWrapperElem.appendChild(newWrapper);
+            this.#visualizationWrapper = newWrapper;
+            this.#visualizationStrategy = strategy;
         }
     }
-    return faces;
-}
-/**
- * Takes two points and extrapolates points along the line they make
- *
- * @param p1 point 1
- * @param p2 point 2
- * @param segments how many points to extrapolate from each direction p1 -> p2 and p2 -> p1
- */ function $620e0e2ec86f1c38$var$segmentPoints(p1, p2, segments, layerWidth) {
-    if (segments === 0) return [
-        (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p1.x, p1.y, 0),
-        (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p2.x, p2.y, 0), 
-    ];
-    const length = (0, $769573e6855c11ce$export$b38c4fbdaa6dc58e)(p1, p2);
-    let points = [];
-    for(let i = segments; i > 0; i--){
-        // extrapolate from p1.v
-        let a = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p1.x + (p2.x - p1.x) / length * layerWidth * i, p1.y + (p2.y - p1.y) / length * layerWidth * i, 0);
-        points.unshift(a);
-        // extrapolate from p2.v
-        let b = (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p2.x + (p1.x - p2.x) / length * layerWidth * i, p2.y + (p1.y - p2.y) / length * layerWidth * i, 0);
-        points.push(b);
+    async experimentalCurrentVantages() {
+        this.connectedCallback();
+        const wrapper = this.#visualizationWrapper;
+        if (wrapper instanceof $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper) return wrapper.experimentalVantages();
+        return [];
     }
-    points.unshift((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p1.x, p1.y, 0));
-    points.push((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(p2.x, p2.y, 0));
-    return points;
-}
-function $620e0e2ec86f1c38$var$layerVerticies(layer, radius, layerWidth) {
-    let verticies = [];
-    for(let i = 0; i < 5; i++){
-        const theta = i * (2 * Math.PI) / 5 - Math.PI / 10;
-        const v = (0, $769573e6855c11ce$export$5c9a959bb3fc7749)(radius, theta);
-        if (verticies.length > 0) {
-            const lastPoint = verticies[verticies.length - 1];
-            const points = $620e0e2ec86f1c38$var$segmentPoints((0, $621efe85613594b3$export$c977b3e384af9ae1).fromValues(lastPoint.x, lastPoint.y), v, layer, layerWidth);
-            points.shift(); // Remove the first, otherwise it's duplicated
-            verticies = verticies.concat(points);
-        } else verticies.push((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(v.x, v.y, 0));
+    async experimentalCurrentCanvases() {
+        const vantages = await this.experimentalCurrentVantages();
+        const canvases = [];
+        for (const vantage of vantages)canvases.push((await vantage.canvasInfo()).canvas);
+        return canvases;
     }
-    // Insert segments for last and first
-    const first = verticies[0];
-    const last = verticies[verticies.length - 1];
-    const points = $620e0e2ec86f1c38$var$segmentPoints((0, $621efe85613594b3$export$c977b3e384af9ae1).fromValues(last.x, last.y), (0, $621efe85613594b3$export$c977b3e384af9ae1).fromValues(first.x, first.y), layer, layerWidth);
-    points.pop();
-    points.shift();
-    verticies = verticies.concat(points);
-    return verticies;
-}
-function $620e0e2ec86f1c38$var$faceVerticies(layers, radius, radiusDiff, layerWidth) {
-    let verticies = [];
-    for(let i = 0; i < layers; i++){
-        const r = radius + radiusDiff * i;
-        verticies = [
-            ...verticies,
-            ...$620e0e2ec86f1c38$var$layerVerticies(i, r, layerWidth)
-        ];
-    }
-    return verticies;
-}
-
-
-
-
-
-const $9f9a0f6d3e178a44$var$DEG_36_RADIANS = 36 * Math.PI / 180;
-const $9f9a0f6d3e178a44$var$DEG_72_RADIANS = 72 * Math.PI / 180;
-/**
- * for a megaminx with side length 1,
- * layer widths that look good.
- */ const $9f9a0f6d3e178a44$var$OPTIMAL_LAYER_WIDTH = {
-    2: 0.3,
-    3: 0.17,
-    4: 0.121
-};
-function $9f9a0f6d3e178a44$var$getLayerWidth(length, layers) {
-    return $9f9a0f6d3e178a44$var$OPTIMAL_LAYER_WIDTH[layers] || length / (layers * 1.9);
-}
-class $9f9a0f6d3e178a44$export$1740bb9cc2dfacc1 {
-    constructor(layers){
-        this.layers = layers;
-        const sideLength = 0.75;
-        const layerWidth = $9f9a0f6d3e178a44$var$getLayerWidth(length, layers);
-        // Left
-        this.U = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$29814851e0aa981f), layers, sideLength, layerWidth);
-        this.F = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aa201224bb439d47), layers, sideLength, layerWidth);
-        this.R = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$738c3b9a44c87ecc), layers, sideLength, layerWidth);
-        this.L = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b), layers, sideLength, layerWidth);
-        this.dl = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$ff076ff0c4d77395), layers, sideLength, layerWidth);
-        this.dr = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$d68d0fda4a10dbc2), layers, sideLength, layerWidth);
-        // Right
-        this.BL = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$7ffdeca4b2f927a2), layers, sideLength, layerWidth);
-        this.BR = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aab610c505c06a8f), layers, sideLength, layerWidth);
-        this.d = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$7d278ca694634874), layers, sideLength, layerWidth);
-        this.bl = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$1225f83626261b80), layers, sideLength, layerWidth);
-        this.br = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$e0ebd895ef030b6d), layers, sideLength, layerWidth);
-        this.b = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$3de5e29ed1757f9b), layers, sideLength, layerWidth);
-        const ind = 2 * (0, $769573e6855c11ce$export$707d248eb4bbe669)(sideLength);
-        // Left
-        this.U.translate(0, ind, 0);
-        this.U.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.R.rotate(-$9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
-        this.R.translate(0, ind, 0);
-        this.R.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.L.rotate($9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
-        this.L.translate(0, ind, 0);
-        this.L.rotate(-5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.dl.rotate(2 * $9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
-        this.dl.translate(0, ind, 0);
-        this.dl.rotate(-5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.dr.rotate(-2 * $9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
-        this.dr.translate(0, ind, 0);
-        this.dr.rotate(-5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        // Right
-        this.b.rotate(Math.PI, 0, 0, 1);
-        this.b.rotate(-2 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.d.rotate(3 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.d.translate(0, ind, 0);
-        this.d.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.br.rotate($9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.br.translate(0, ind, 0);
-        this.br.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.BR.rotate(-$9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.BR.translate(0, ind, 0);
-        this.BR.rotate(-5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.BL.rotate(-3 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.BL.translate(0, ind, 0);
-        this.BL.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.bl.rotate(5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        this.bl.translate(0, ind, 0);
-        this.bl.rotate(-5 * $9f9a0f6d3e178a44$var$DEG_36_RADIANS, 0, 0, 1);
-        let bottomTransforms = new (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5)();
-        bottomTransforms.rotate(-$9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
-        bottomTransforms.translate(0, 2 * ind, 0);
-        bottomTransforms.rotate(2 * $9f9a0f6d3e178a44$var$DEG_72_RADIANS, 0, 0, 1);
-        bottomTransforms.translate(0, -ind, 0);
-        [
-            this.d,
-            this.bl,
-            this.BL,
-            this.BR,
-            this.br,
-            this.b
-        ].forEach((face)=>{
-            (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).multiply(face.matrix, bottomTransforms, face.matrix);
-        });
-        this.faces = {
-            U: this.U,
-            F: this.F,
-            R: this.R,
-            dr: this.dr,
-            dl: this.dl,
-            L: this.L,
-            d: this.d,
-            br: this.br,
-            BR: this.BR,
-            BL: this.BL,
-            bl: this.bl,
-            b: this.b
-        };
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)([
-            this.U,
-            this.F,
-            this.L,
-            this.dr,
-            this.dl,
-            this.R,
-            this.d,
-            this.bl,
-            this.BL,
-            this.BR,
-            this.br,
-            this.b, 
-        ]);
-        this.group.scale(0.33, 0.33, 0.33);
-        this.group.translate(-1.75 * sideLength, 0, 0);
-    }
-    setColors(colors) {
-        let { U: U , R: R , F: F , d: d , L: L , b: b , dr: dr , dl: dl , br: br , BR: BR , BL: BL , bl: bl  } = colors;
-        this.setFaceColors(this.U, U);
-        this.setFaceColors(this.R, R);
-        this.setFaceColors(this.F, F);
-        this.setFaceColors(this.d, d);
-        this.setFaceColors(this.L, L);
-        this.setFaceColors(this.b, b);
-        this.setFaceColors(this.dr, dr);
-        this.setFaceColors(this.dl, dl);
-        this.setFaceColors(this.BR, BR);
-        this.setFaceColors(this.BL, BL);
-        this.setFaceColors(this.bl, bl);
-        this.setFaceColors(this.br, br);
-    }
-    oldSetColors(colors) {
-        const n = this.layers;
-        const numStickers = 5 * n * n - 5 * n + 1;
-        let [U, R, F, dr, dl, L, d, br, BR, BL, bl, b] = (0, $047c8aa02737eb97$export$f922ebe57f2c36e8)(colors, numStickers);
-        this.setFaceColors(this.U, U);
-        this.setFaceColors(this.R, R);
-        this.setFaceColors(this.F, F);
-        this.setFaceColors(this.d, d);
-        this.setFaceColors(this.L, L);
-        this.setFaceColors(this.b, b);
-        this.setFaceColors(this.dr, dr);
-        this.setFaceColors(this.dl, dl);
-        this.setFaceColors(this.br, br);
-        this.setFaceColors(this.BR, BR);
-        this.setFaceColors(this.BL, BL);
-        this.setFaceColors(this.bl, bl);
-    }
-    setFaceColors(faceStickers, colors) {
-        faceStickers.faces.forEach((f, i)=>{
-            if (colors && colors[i]) f.color = colors[i];
-            else f.color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        });
-    }
-}
-
-
-
-
-
-
-const $3a9e3c9d3c2b6eb2$var$OPTIMAL_LAYER_WIDTH = {
-    2: 0.3,
-    3: 0.17,
-    4: 0.121
-};
-function $3a9e3c9d3c2b6eb2$var$getLayerWidth(length, layers) {
-    return $3a9e3c9d3c2b6eb2$var$OPTIMAL_LAYER_WIDTH[layers] || length / (layers * 1.9);
-}
-class $3a9e3c9d3c2b6eb2$export$cdb3e392e3d8acd3 {
-    constructor(layers = 2){
-        this.layers = layers;
-        const length = 0.75;
-        const megaminxRadius = (0, $769573e6855c11ce$export$25da5b6921e25b42)(length);
-        const layerWidth = $3a9e3c9d3c2b6eb2$var$getLayerWidth(length, layers);
-        // Front
-        this.U = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$29814851e0aa981f), layers, length, layerWidth);
-        this.F = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aa201224bb439d47), layers, length, layerWidth);
-        this.R = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$738c3b9a44c87ecc), layers, length, layerWidth);
-        this.dr = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$d68d0fda4a10dbc2), layers, length, layerWidth);
-        this.dl = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$ff076ff0c4d77395), layers, length, layerWidth);
-        this.L = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b), layers, length, layerWidth);
-        // Back
-        this.d = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$7d278ca694634874), layers, length, layerWidth);
-        this.br = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$e0ebd895ef030b6d), layers, length, layerWidth);
-        this.BR = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aab610c505c06a8f), layers, length, layerWidth);
-        this.BL = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$7ffdeca4b2f927a2), layers, length, layerWidth);
-        this.bl = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$1225f83626261b80), layers, length, layerWidth);
-        this.b = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$3de5e29ed1757f9b), layers, length, layerWidth);
-        this.F.translate(0, 0, megaminxRadius);
-        this.b.rotate(Math.PI, 0, 0, 1);
-        this.b.rotate(Math.PI, 0, 1, 0);
-        this.b.translate(0, 0, megaminxRadius);
-        this.U.rotate(Math.PI, 0, 0, 1);
-        this.U.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
-        this.U.translate(0, 0, megaminxRadius);
-        this.L.rotate(72 * Math.PI / 180, 0, 0, 1);
-        this.L.rotate(Math.PI, 0, 0, 1);
-        this.L.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
-        this.L.translate(0, 0, megaminxRadius);
-        this.R.rotate(72 * Math.PI / 180, 0, 0, 1);
-        this.R.rotate(Math.PI / 5, 0, 0, 1);
-        this.R.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
-        this.R.translate(0, 0, megaminxRadius);
-        this.dr.rotate(72 * Math.PI / 180, 0, 0, 1);
-        this.dr.rotate(-Math.PI / 5, 0, 0, 1);
-        this.dr.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
-        this.dr.translate(0, 0, megaminxRadius);
-        this.dl.rotate(72 * Math.PI / 180, 0, 0, 1);
-        this.dl.rotate(-3 * Math.PI / 5, 0, 0, 1);
-        this.dl.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
-        this.dl.translate(0, 0, megaminxRadius);
-        this.BL.rotate(Math.PI / 5, 0, 0, 1);
-        this.BL.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
-        this.BL.translate(0, 0, megaminxRadius);
-        this.BR.rotate(-Math.PI / 5, 0, 0, 1);
-        this.BR.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
-        this.BR.translate(0, 0, megaminxRadius);
-        this.bl.rotate(3 * Math.PI / 5, 0, 0, 1);
-        this.bl.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
-        this.bl.translate(0, 0, megaminxRadius);
-        this.d.rotate(5 * Math.PI / 5, 0, 0, 1);
-        this.d.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
-        this.d.translate(0, 0, megaminxRadius);
-        this.br.rotate(7 * Math.PI / 5, 0, 0, 1);
-        this.br.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
-        this.br.translate(0, 0, megaminxRadius);
-        this.stickers = [
-            this.U,
-            this.F,
-            this.R,
-            this.dr,
-            this.dl,
-            this.L,
-            this.d,
-            this.br,
-            this.BR,
-            this.BL,
-            this.bl,
-            this.b, 
-        ];
-        this.faces = {
-            U: this.U,
-            F: this.F,
-            R: this.R,
-            dr: this.dr,
-            dl: this.dl,
-            L: this.L,
-            d: this.d,
-            br: this.br,
-            BR: this.BR,
-            BL: this.BL,
-            bl: this.bl,
-            b: this.b
-        };
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
-    }
-    setColors(colors) {
-        let { U: U , R: R , F: F , d: d , L: L , b: b , dr: dr , dl: dl , br: br , BR: BR , BL: BL , bl: bl  } = colors;
-        this.setFaceColors(this.U, U);
-        this.setFaceColors(this.R, R);
-        this.setFaceColors(this.F, F);
-        this.setFaceColors(this.d, d);
-        this.setFaceColors(this.L, L);
-        this.setFaceColors(this.b, b);
-        this.setFaceColors(this.dr, dr);
-        this.setFaceColors(this.dl, dl);
-        this.setFaceColors(this.BR, BR);
-        this.setFaceColors(this.BL, BL);
-        this.setFaceColors(this.bl, bl);
-        this.setFaceColors(this.br, br);
-    }
-    setFaceColors(faceStickers, colors) {
-        faceStickers.faces.forEach((f, i)=>{
-            if (colors && colors[i]) f.color = colors[i];
-            else f.color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        });
-    }
-}
-
-
-
-
-
-
-
-function $74a47afe49de5952$export$8ba898995dfae3b(length, size, color) {
-    const halfLength = length / 2;
-    const elementWidth = length / size;
-    const halfElementWidth = elementWidth / 2;
-    let stickers = [];
-    for(let i = 0; i < size; i++){
-        let vOffset = -(-halfLength + halfElementWidth + elementWidth * i);
-        stickers = stickers.concat($74a47afe49de5952$export$deaeb1b23a2709a4(length, size, color, vOffset));
-    }
-    return stickers;
-}
-function $74a47afe49de5952$export$deaeb1b23a2709a4(length, size, color, vOffset = 0) {
-    const halfLength = length / 2;
-    const elementWidth = length / size;
-    const halfElementWidth = elementWidth / 2;
-    let stickers = [];
-    for(let i = 0; i < size; i++){
-        let hOffset = -halfLength + halfElementWidth + elementWidth * i;
-        let vertices = [
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-halfElementWidth + hOffset, halfElementWidth + vOffset, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(halfElementWidth + hOffset, halfElementWidth + vOffset, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(halfElementWidth + hOffset, -halfElementWidth + vOffset, 0),
-            (0, $621efe85613594b3$export$64b5c384219d3699).fromValues(-halfElementWidth + hOffset, -halfElementWidth + vOffset, 0), 
-        ];
-        let faces = [
-            new (0, $26e0610aa22af478$export$aa6504bc3c7c25a1)([
-                0,
-                1,
-                2,
-                3
-            ], vertices, color)
-        ];
-        stickers.push(new (0, $621b987b54afb04b$export$2db6c17465f94a2)(vertices, faces));
-    }
-    return stickers;
-}
-
-
-
-
-class $297241875fed3d05$export$702e5ad345915691 {
-    constructor(size, rotationAngle = Math.PI / 4){
-        this.size = size;
-        this.cubeWidth = 1.45;
-        this.halfCubeWidth = this.cubeWidth / 2;
-        this.stickerWidth = this.cubeWidth / size;
-        this.halfStickerWidth = this.stickerWidth / 2;
-        this.cubeWidth = this.stickerWidth * size;
-        this.U = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(this.cubeWidth, this.size, (0, $a552dd61b777f7b8$export$aab610c505c06a8f)));
-        this.R = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$deaeb1b23a2709a4)(this.cubeWidth, this.size, (0, $a552dd61b777f7b8$export$aa201224bb439d47)));
-        this.F = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$deaeb1b23a2709a4)(this.cubeWidth, this.size, (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc)));
-        this.B = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$deaeb1b23a2709a4)(this.cubeWidth, this.size, (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b)));
-        this.L = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$deaeb1b23a2709a4)(this.cubeWidth, this.size, (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b)));
-        const borderOffset = this.halfCubeWidth + this.halfStickerWidth;
-        this.B.translate(0, borderOffset, 0);
-        this.B.rotate(Math.PI, 0, 0, 1);
-        this.F.translate(0, -borderOffset, 0);
-        this.R.translate(borderOffset, 0, 0);
-        this.R.rotate(Math.PI / 2, 0, 0, 1);
-        this.L.translate(-borderOffset, 0, 0);
-        this.L.rotate(-Math.PI / 2, 0, 0, 1);
-        this.rotateBorder(this.F.objects, rotationAngle);
-        this.rotateBorder(this.R.objects, rotationAngle);
-        this.rotateBorder(this.B.objects, rotationAngle);
-        this.rotateBorder(this.L.objects, rotationAngle);
-        this.stickers = [
-            this.U,
-            this.R,
-            this.F,
-            this.B,
-            this.L
-        ];
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
-        this.faces = {
-            U: this.U,
-            R: this.R,
-            F: this.F,
-            L: this.L,
-            B: this.B
-        };
-    }
-    setFaceColors(faceStickers, colors) {
-        faceStickers.objects.forEach((g, i)=>{
-            if (colors && colors[i]) g.faces[0].color = colors[i];
-            else g.faces[0].color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        });
-    }
-    setColors(colors) {
-        let { U: U , R: R , F: F , L: L , B: B  } = colors;
-        this.setFaceColors(this.U, U);
-        this.setFaceColors(this.R, R);
-        this.setFaceColors(this.F, F);
-        this.setFaceColors(this.L, L);
-        this.setFaceColors(this.B, B);
-    }
-    /**
-     * given a row of stickers centered at 0,0,0
-     * rotates each vertex of each sticker around
-     * the top of the sticker.
-     */ rotateBorder(stickers, radians) {
-        stickers.forEach((sticker)=>{
-            sticker.vertices = sticker.vertices.map((vertex)=>{
-                return vertex.rotateX((0, $621efe85613594b3$export$64b5c384219d3699).fromValues(0, this.halfStickerWidth, 0), radians);
+    async experimentalCurrentThreeJSPuzzleObject(puzzleRenderScheduledCallback) {
+        this.connectedCallback();
+        const sceneWrapper = await this.#initial3DVisualizationWrapper.promise;
+        const puzzleWrapper = await sceneWrapper.experimentalTwisty3DPuzzleWrapper();
+        const twisty3DPuzzlePromise = puzzleWrapper.twisty3DPuzzle();
+        const safeToCallback = (async ()=>{
+            await twisty3DPuzzlePromise;
+            await new Promise((resolve)=>setTimeout(resolve, 0));
+        })();
+        if (puzzleRenderScheduledCallback) {
+            const scheduler = new (0, $62nUG.RenderScheduler)(async ()=>{});
+            puzzleWrapper.addEventListener("render-scheduled", async ()=>{
+                if (!scheduler.requestIsPending()) {
+                    scheduler.requestAnimFrame();
+                    await safeToCallback;
+                    puzzleRenderScheduledCallback();
+                }
             });
-            sticker.centroid = (0, $769573e6855c11ce$export$5ae0742aaf43249b)(sticker.vertices);
-        });
+        }
+        return twisty3DPuzzlePromise;
     }
+    jumpToStart(options) {
+        this.controller.jumpToStart(options);
+    }
+    jumpToEnd(options) {
+        this.controller.jumpToEnd(options);
+    }
+    play() {
+        this.controller.togglePlay(true);
+    }
+    pause() {
+        this.controller.togglePlay(false);
+    }
+    togglePlay(play) {
+        this.controller.togglePlay(play);
+    }
+    experimentalAddMove(flexibleMove, options) {
+        this.experimentalModel.experimentalAddMove(flexibleMove, options);
+    }
+    experimentalAddAlgLeaf(algLeaf, options) {
+        this.experimentalModel.experimentalAddAlgLeaf(algLeaf, options);
+    }
+    static get observedAttributes() {
+        const observed = [];
+        for (const key of Object.keys($8e08190ac5cfc1c3$var$twistyPlayerAttributeMap))observed.push(key, $8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX + key);
+        return observed;
+    }
+    experimentalRemoveFinalChild() {
+        this.experimentalModel.experimentalRemoveFinalChild();
+    }
+    attributeChangedCallback(attributeName, _oldValue, newValue) {
+        if (attributeName.startsWith($8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX)) attributeName = attributeName.slice($8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX.length);
+        const setterName = $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap[attributeName];
+        if (!setterName) return;
+        this[setterName] = newValue;
+    }
+    async experimentalScreenshot(options) {
+        return (await $8e08190ac5cfc1c3$var$screenshot(this.experimentalModel, options)).dataURL;
+    }
+    async experimentalDownloadScreenshot(filename) {
+        if ([
+            "2D",
+            "experimental-2D-LL"
+        ].includes(await this.experimentalModel.visualizationStrategy.get())) {
+            const wrapper2D = this.#visualizationWrapper;
+            const twisty2DPuzzle = await wrapper2D.currentTwisty2DPuzzleWrapper().twisty2DPuzzle();
+            const str = new XMLSerializer().serializeToString(twisty2DPuzzle.svgWrapper.svgElement);
+            const url = URL.createObjectURL(new Blob([
+                str
+            ]));
+            $8e08190ac5cfc1c3$var$downloadURL(url, filename ?? await $8e08190ac5cfc1c3$var$getDefaultFilename(this.experimentalModel), "svg");
+        } else await (await $8e08190ac5cfc1c3$var$screenshot(this.experimentalModel)).download(filename);
+    }
+};
+(0, $62nUG.customElementsShim).define("twisty-player", $8e08190ac5cfc1c3$export$d03687cb83cd55dc);
+// src/cubing/twisty/views/TwistyAlgViewer.css.ts
+var $8e08190ac5cfc1c3$var$twistyAlgViewerCSS = new (0, $62nUG.CSSSource)(`
+:host {
+  display: inline;
 }
 
-
-
-
-
-class $a6a9c628ca796938$export$319925cb9fcaf5a1 {
-    constructor(size){
-        const cubeWidth = 1;
-        this.size = size;
-        const U = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$aab610c505c06a8f));
-        const R = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$aa201224bb439d47));
-        const F = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc));
-        const D = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$29814851e0aa981f));
-        const L = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b));
-        const B = (0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b));
-        this.U = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(U);
-        this.U.translate(0, cubeWidth, 0);
-        this.R = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(R);
-        this.R.translate(cubeWidth, 0, 0);
-        this.F = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(F);
-        this.D = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(D);
-        this.D.translate(0, -cubeWidth, 0);
-        this.L = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(L);
-        this.L.translate(-cubeWidth, 0, 0);
-        this.B = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(B);
-        this.B.translate(2 * cubeWidth, 0, 0);
-        this.stickers = [
-            this.U,
-            this.R,
-            this.F,
-            this.D,
-            this.L,
-            this.B
-        ];
-        this.faces = {
-            U: this.U,
-            R: this.R,
-            F: this.F,
-            D: this.D,
-            L: this.L,
-            B: this.B
-        };
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
-        this.group.translate(-cubeWidth / 4, 0, 0);
-        this.group.scale(0.5, 0.5, 0.5);
-    }
-    setFaceColors(faceStickers, colors) {
-        faceStickers.objects.forEach((g, i)=>{
-            if (colors && colors[i]) g.faces[0].color = colors[i];
-            else g.faces[0].color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        });
-    }
-    setColors(colors) {
-        let { U: U , R: R , F: F , D: D , L: L , B: B  } = colors;
-        this.setFaceColors(this.U, U);
-        this.setFaceColors(this.R, R);
-        this.setFaceColors(this.F, F);
-        this.setFaceColors(this.D, D);
-        this.setFaceColors(this.L, L);
-        this.setFaceColors(this.B, B);
-    }
+.wrapper {
+  display: inline;
 }
 
-
-
-
-
-class $d70803cf2e627d01$export$310f6ef17ab0638d {
-    constructor(size){
-        this.size = size;
-        const cubeWidth = 1.25;
-        const halfWidth = cubeWidth / 2;
-        this.U = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$aab610c505c06a8f)));
-        this.R = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$aa201224bb439d47)));
-        this.F = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc)));
-        this.D = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$29814851e0aa981f)));
-        this.L = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b)));
-        this.B = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)((0, $74a47afe49de5952$export$8ba898995dfae3b)(cubeWidth, size, (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b)));
-        this.U.rotate(-Math.PI / 2, 0, 1, 0);
-        this.U.rotate(-Math.PI / 2, 1, 0, 0);
-        this.U.translate(0, 0, halfWidth);
-        this.R.translate(0, 0, halfWidth);
-        this.F.rotate(-Math.PI / 2, 0, 1, 0);
-        this.F.translate(0, 0, halfWidth);
-        this.D.rotate(-Math.PI / 2, 0, 1, 0);
-        this.D.rotate(Math.PI / 2, 1, 0, 0);
-        this.D.translate(0, 0, halfWidth);
-        this.L.rotate(-Math.PI, 0, 1, 0);
-        this.L.translate(0, 0, halfWidth);
-        this.B.rotate(Math.PI / 2, 0, 1, 0);
-        this.B.translate(0, 0, halfWidth);
-        this.stickers = [
-            this.U,
-            this.R,
-            this.F,
-            this.D,
-            this.L,
-            this.B
-        ];
-        this.faces = {
-            U: this.U,
-            R: this.R,
-            F: this.F,
-            D: this.D,
-            L: this.L,
-            B: this.B
-        };
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)(this.stickers);
-    }
-    setFaceColors(faceStickers, colors) {
-        faceStickers.objects.forEach((g, i)=>{
-            if (colors && colors[i]) g.faces[0].color = colors[i];
-            else g.faces[0].color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        });
-    }
-    setColors(colors) {
-        let { U: U , R: R , F: F , D: D , L: L , B: B  } = colors;
-        this.setFaceColors(this.U, U);
-        this.setFaceColors(this.R, R);
-        this.setFaceColors(this.F, F);
-        this.setFaceColors(this.D, D);
-        this.setFaceColors(this.L, L);
-        this.setFaceColors(this.B, B);
-    }
+a:not(:hover) {
+  color: inherit;
+  text-decoration: none;
 }
 
+twisty-alg-leaf-elem.twisty-alg-comment {
+  color: rgba(0, 0, 0, 0.4);
+}
 
-
-
-
-class $a3f52faa72a35e94$export$21b07c8f274aebd5 extends (0, $87867bd021cba182$export$e4dd07dff30cc924) {
-    constructor(p1, p2){
+.wrapper.current-move {
+  background: rgba(66, 133, 244, 0.3);
+  margin-left: -0.1em;
+  margin-right: -0.1em;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+  border-radius: 0.1em;
+}
+`);
+// src/cubing/twisty/views/TwistyAlgViewer.ts
+var $8e08190ac5cfc1c3$var$DEFAULT_OFFSET_MS = 250;
+var $8e08190ac5cfc1c3$var$TwistyAlgLeafElem = class extends (0, $62nUG.ManagedCustomElement) {
+    constructor(className, text, dataDown, algOrAlgNode, offsetIntoMove, clickable){
+        super({
+            mode: "open"
+        });
+        this.algOrAlgNode = algOrAlgNode;
+        this.classList.add(className);
+        this.addCSS($8e08190ac5cfc1c3$var$twistyAlgViewerCSS);
+        if (clickable) {
+            const anchor = this.contentWrapper.appendChild(document.createElement("a"));
+            anchor.href = "#";
+            anchor.textContent = text;
+            anchor.addEventListener("click", (e)=>{
+                e.preventDefault();
+                dataDown.twistyAlgViewer.jumpToIndex(dataDown.earliestMoveIndex, offsetIntoMove);
+            });
+        } else this.contentWrapper.appendChild(document.createElement("span")).textContent = text;
+    }
+    pathToIndex(_index) {
+        return [];
+    }
+    setCurrentMove(current) {
+        this.contentWrapper.classList.toggle("current-move", current);
+    }
+};
+(0, $62nUG.customElementsShim).define("twisty-alg-leaf-elem", $8e08190ac5cfc1c3$var$TwistyAlgLeafElem);
+var $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem = class extends (0, $62nUG.HTMLElementShim) {
+    constructor(className, algOrAlgNode){
         super();
-        this.p1 = p1;
-        this.p2 = p2;
-        this.centroid = (0, $769573e6855c11ce$export$5ae0742aaf43249b)([
-            p1,
-            p2
-        ]);
+        this.algOrAlgNode = algOrAlgNode;
+        this.queue = [];
+        this.classList.add(className);
     }
+    addString(str) {
+        this.queue.push(document.createTextNode(str));
+    }
+    addElem(dataUp) {
+        this.queue.push(dataUp.element);
+        return dataUp.moveCount;
+    }
+    flushQueue(direction = 1 /* Forwards */ ) {
+        for (const node of $8e08190ac5cfc1c3$var$maybeReverseList(this.queue, direction))this.append(node);
+        this.queue = [];
+    }
+    pathToIndex(_index) {
+        return [];
+    }
+};
+(0, $62nUG.customElementsShim).define("twisty-alg-wrapper-elem", $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem);
+function $8e08190ac5cfc1c3$var$oppositeDirection(direction) {
+    return direction === 1 /* Forwards */  ? -1 /* Backwards */  : 1 /* Forwards */ ;
 }
-
-
-
-
-function $53113c971984a86b$export$aea013efd02e7164(vertex, transforms) {
-    let v = vertex.clone();
-    transforms.forEach((m, i)=>{
-        v.transformMat4(m);
-    });
-    return v;
+function $8e08190ac5cfc1c3$var$updateDirectionByAmount(currentDirection, amount) {
+    return amount < 0 ? $8e08190ac5cfc1c3$var$oppositeDirection(currentDirection) : currentDirection;
 }
-
-
-class $d200f3d5310f459f$export$591c2d18e52a6d30 {
+function $8e08190ac5cfc1c3$var$maybeReverseList(l, direction) {
+    if (direction === 1 /* Forwards */ ) return l;
+    const copy = Array.from(l);
+    copy.reverse();
+    return copy;
+}
+var $8e08190ac5cfc1c3$var$AlgToDOMTree = class extends (0, $OIFGm.TraversalDownUp) {
+    traverseAlg(alg, dataDown) {
+        let moveCount = 0;
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-alg", alg);
+        let first = true;
+        for (const algNode of (0, $OIFGm.direct)(alg.childAlgNodes(), dataDown.direction)){
+            if (!first) element.addString(" ");
+            first = false;
+            if (algNode.as((0, $OIFGm.Pause))?.experimentalNISSGrouping) element.addString("^(");
+            if (!algNode.as((0, $OIFGm.Grouping))?.experimentalNISSPlaceholder) moveCount += element.addElem(this.traverseAlgNode(algNode, {
+                earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+                twistyAlgViewer: dataDown.twistyAlgViewer,
+                direction: dataDown.direction
+            }));
+            if (algNode.as((0, $OIFGm.Pause))?.experimentalNISSGrouping) element.addString(")");
+        }
+        element.flushQueue(dataDown.direction);
+        return {
+            moveCount: moveCount,
+            element: element
+        };
+    }
+    traverseGrouping(grouping, dataDown) {
+        const square1Tuple = grouping.experimentalAsSquare1Tuple();
+        const direction = $8e08190ac5cfc1c3$var$updateDirectionByAmount(dataDown.direction, grouping.amount);
+        let moveCount = 0;
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-grouping", grouping);
+        element.addString("(");
+        if (square1Tuple) {
+            moveCount += element.addElem({
+                moveCount: 1,
+                element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-move", square1Tuple[0].amount.toString(), dataDown, square1Tuple[0], true, true)
+            });
+            element.addString(", ");
+            moveCount += element.addElem({
+                moveCount: 1,
+                element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-move", square1Tuple[1].amount.toString(), dataDown, square1Tuple[1], true, true)
+            });
+        } else moveCount += element.addElem(this.traverseAlg(grouping.alg, {
+            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+            twistyAlgViewer: dataDown.twistyAlgViewer,
+            direction: direction
+        }));
+        element.addString(`)${grouping.experimentalRepetitionSuffix}`);
+        element.flushQueue();
+        return {
+            moveCount: moveCount * Math.abs(grouping.amount),
+            element: element
+        };
+    }
+    traverseMove(move, dataDown) {
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-move", move.toString(), dataDown, move, true, true);
+        dataDown.twistyAlgViewer.highlighter.addMove(move.startCharIndex, element);
+        return {
+            moveCount: 1,
+            element: element
+        };
+    }
+    traverseCommutator(commutator, dataDown) {
+        let moveCount = 0;
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-commutator", commutator);
+        element.addString("[");
+        element.flushQueue();
+        const [first, second] = $8e08190ac5cfc1c3$var$maybeReverseList([
+            commutator.A,
+            commutator.B
+        ], dataDown.direction);
+        moveCount += element.addElem(this.traverseAlg(first, {
+            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+            twistyAlgViewer: dataDown.twistyAlgViewer,
+            direction: dataDown.direction
+        }));
+        element.addString(", ");
+        moveCount += element.addElem(this.traverseAlg(second, {
+            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+            twistyAlgViewer: dataDown.twistyAlgViewer,
+            direction: dataDown.direction
+        }));
+        element.flushQueue(dataDown.direction);
+        element.addString("]");
+        element.flushQueue();
+        return {
+            moveCount: moveCount * 2,
+            element: element
+        };
+    }
+    traverseConjugate(conjugate, dataDown) {
+        let moveCount = 0;
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-conjugate", conjugate);
+        element.addString("[");
+        const aLen = element.addElem(this.traverseAlg(conjugate.A, {
+            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+            twistyAlgViewer: dataDown.twistyAlgViewer,
+            direction: dataDown.direction
+        }));
+        moveCount += aLen;
+        element.addString(": ");
+        moveCount += element.addElem(this.traverseAlg(conjugate.B, {
+            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
+            twistyAlgViewer: dataDown.twistyAlgViewer,
+            direction: dataDown.direction
+        }));
+        element.addString("]");
+        element.flushQueue();
+        return {
+            moveCount: moveCount + aLen,
+            element: element
+        };
+    }
+    traversePause(pause, dataDown) {
+        if (pause.experimentalNISSGrouping) return this.traverseAlg(pause.experimentalNISSGrouping.alg, dataDown);
+        return {
+            moveCount: 1,
+            element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-pause", ".", dataDown, pause, true, true)
+        };
+    }
+    traverseNewline(newline, _dataDown) {
+        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-newline", newline);
+        element.append(document.createElement("br"));
+        return {
+            moveCount: 0,
+            element: element
+        };
+    }
+    traverseLineComment(lineComment, dataDown) {
+        return {
+            moveCount: 0,
+            element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-line-comment", `//${lineComment.text}`, dataDown, lineComment, false, false)
+        };
+    }
+};
+var $8e08190ac5cfc1c3$var$algToDOMTree = (0, $OIFGm.functionFromTraversal)($8e08190ac5cfc1c3$var$AlgToDOMTree);
+var $8e08190ac5cfc1c3$var$MoveHighlighter = class {
     constructor(){
-        this.polygons = [];
-        this.arrows = [];
+        this.moveCharIndexMap = /* @__PURE__ */ new Map();
+        this.currentElem = null;
     }
-    render(scene, camera) {
-        this.polygons = [];
-        scene.objects.forEach((object)=>{
-            this.renderObject3D(object, camera, []);
+    addMove(charIndex, elem) {
+        this.moveCharIndexMap.set(charIndex, elem);
+    }
+    set(move) {
+        const newElem = move ? this.moveCharIndexMap.get(move.startCharIndex) ?? null : null;
+        if (this.currentElem === newElem) return;
+        this.currentElem?.classList.remove("twisty-alg-current-move");
+        this.currentElem?.setCurrentMove(false);
+        newElem?.classList.add("twisty-alg-current-move");
+        newElem?.setCurrentMove(true);
+        this.currentElem = newElem;
+    }
+};
+var $8e08190ac5cfc1c3$export$e0a62567c31d067 = class extends (0, $62nUG.HTMLElementShim) {
+    constructor(options){
+        super();
+        this.highlighter = new $8e08190ac5cfc1c3$var$MoveHighlighter();
+        this.#twistyPlayer = null;
+        this.lastClickTimestamp = null;
+        if (options?.twistyPlayer) this.twistyPlayer = options?.twistyPlayer;
+    }
+    #domTree;
+    #twistyPlayer;
+    connectedCallback() {}
+    setAlg(alg) {
+        this.#domTree = $8e08190ac5cfc1c3$var$algToDOMTree(alg, {
+            earliestMoveIndex: 0,
+            twistyAlgViewer: this,
+            direction: 1 /* Forwards */ 
+        }).element;
+        this.textContent = "";
+        this.appendChild(this.#domTree);
+    }
+    get twistyPlayer() {
+        return this.#twistyPlayer;
+    }
+    set twistyPlayer(twistyPlayer) {
+        this.#setTwistyPlayer(twistyPlayer);
+    }
+    async #setTwistyPlayer(twistyPlayer1) {
+        if (this.#twistyPlayer) {
+            console.warn("twisty-player reassignment is not supported");
+            return;
+        }
+        if (twistyPlayer1 === null) throw new Error("clearing twistyPlayer is not supported");
+        this.#twistyPlayer = twistyPlayer1;
+        this.#twistyPlayer.experimentalModel.alg.addFreshListener((algWithIssues)=>{
+            this.setAlg(algWithIssues.alg);
         });
-        this.onBeforeRender();
-        this.renderPolygons();
-        this.renderArrows();
-        this.onComplete();
-    }
-    renderPolygons() {
-        this.polygons.sort((a, b)=>{
-            return a.centroid.z - b.centroid.z;
+        const sourceAlg = (await this.#twistyPlayer.experimentalModel.alg.get()).alg;
+        const parsedAlg = "startCharIndex" in sourceAlg ? sourceAlg : (0, $OIFGm.Alg).fromString(sourceAlg.toString());
+        this.setAlg(parsedAlg);
+        twistyPlayer1.experimentalModel.currentMoveInfo.addFreshListener((currentMoveInfo)=>{
+            let moveInfo = currentMoveInfo.currentMoves[0];
+            moveInfo ?? (moveInfo = currentMoveInfo.movesStarting[0]);
+            moveInfo ?? (moveInfo = currentMoveInfo.movesFinishing[0]);
+            if (!moveInfo) this.highlighter.set(null);
+            else {
+                const mainCurrentMove = moveInfo.move;
+                this.highlighter.set(mainCurrentMove);
+            }
         });
-        this.polygons.forEach((p)=>this.drawPolygon(p));
-    }
-    renderArrows() {
-        this.arrows.forEach(({ p1: p1 , p2: p2 , uid: uid  })=>{
-            this.drawArrow(p1, p2, uid);
+        twistyPlayer1.experimentalModel.detailedTimelineInfo.addFreshListener((detailedTimelineInfo)=>{
+            if (detailedTimelineInfo.timestamp !== this.lastClickTimestamp) this.lastClickTimestamp = null;
         });
     }
-    renderObject3D(object1, camera, transformations) {
-        if (object1 instanceof (0, $621b987b54afb04b$export$2db6c17465f94a2)) this.renderGeometry(object1, camera, transformations);
-        else if (object1 instanceof (0, $a3f52faa72a35e94$export$21b07c8f274aebd5)) this.renderArrow(object1, camera, transformations);
-        else if (object1 instanceof (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)) {
-            let group = object1;
-            // let sorted = this.sortObjects(group.objects, camera, [
-            //   group.matrix,
-            //   ...transformations,
-            // ]);
-            group.objects.forEach((object)=>{
-                this.renderObject3D(object, camera, [
-                    group.matrix,
-                    ...transformations
+    async jumpToIndex(index, offsetIntoMove) {
+        const twistyPlayer = this.#twistyPlayer;
+        if (twistyPlayer) {
+            twistyPlayer.pause();
+            const timestampPromise = (async ()=>{
+                const indexer = await twistyPlayer.experimentalModel.indexer.get();
+                const offset = offsetIntoMove ? $8e08190ac5cfc1c3$var$DEFAULT_OFFSET_MS : 0;
+                return indexer.indexToMoveStartTimestamp(index) + indexer.moveDuration(index) - offset;
+            })();
+            twistyPlayer.experimentalModel.timestampRequest.set(await timestampPromise);
+            if (this.lastClickTimestamp === await timestampPromise) {
+                twistyPlayer.play();
+                this.lastClickTimestamp = null;
+            } else this.lastClickTimestamp = await timestampPromise;
+        }
+    }
+    async attributeChangedCallback(attributeName, _oldValue, newValue) {
+        if (attributeName === "for") {
+            const elem = document.getElementById(newValue);
+            if (!elem) {
+                console.warn("for= elem does not exist");
+                return;
+            }
+            await customElements.whenDefined("twisty-player");
+            if (!(elem instanceof $8e08190ac5cfc1c3$export$d03687cb83cd55dc)) {
+                console.warn("for= elem is not a twisty-player");
+                return;
+            }
+            this.twistyPlayer = elem;
+        }
+    }
+    static get observedAttributes() {
+        return [
+            "for"
+        ];
+    }
+};
+(0, $62nUG.customElementsShim).define("twisty-alg-viewer", $8e08190ac5cfc1c3$export$e0a62567c31d067);
+// src/cubing/twisty/views/TwistyAlgEditor/LeafTokens.ts
+var $8e08190ac5cfc1c3$var$LeafTokens = class extends (0, $OIFGm.TraversalDownUp) {
+    traverseAlg(alg, dataDown) {
+        const algNodeArrays = [];
+        let numMovesInside = 0;
+        for (const algNode of alg.childAlgNodes()){
+            const dataUp = this.traverseAlgNode(algNode, {
+                numMovesSofar: dataDown.numMovesSofar + numMovesInside
+            });
+            algNodeArrays.push(dataUp.tokens);
+            numMovesInside += dataUp.numLeavesInside;
+        }
+        return {
+            tokens: Array.prototype.concat(...algNodeArrays),
+            numLeavesInside: numMovesInside
+        };
+    }
+    traverseGrouping(grouping, dataDown) {
+        const dataUp = this.traverseAlg(grouping.alg, dataDown);
+        return {
+            tokens: dataUp.tokens,
+            numLeavesInside: dataUp.numLeavesInside * grouping.amount
+        };
+    }
+    traverseMove(move, dataDown) {
+        return {
+            tokens: [
+                {
+                    leaf: move,
+                    idx: dataDown.numMovesSofar
+                }
+            ],
+            numLeavesInside: 1
+        };
+    }
+    traverseCommutator(commutator, dataDown) {
+        const dataUpA = this.traverseAlg(commutator.A, dataDown);
+        const dataUpB = this.traverseAlg(commutator.B, {
+            numMovesSofar: dataDown.numMovesSofar + dataUpA.numLeavesInside
+        });
+        return {
+            tokens: dataUpA.tokens.concat(dataUpB.tokens),
+            numLeavesInside: dataUpA.numLeavesInside * 2 + dataUpB.numLeavesInside
+        };
+    }
+    traverseConjugate(conjugate, dataDown) {
+        const dataUpA = this.traverseAlg(conjugate.A, dataDown);
+        const dataUpB = this.traverseAlg(conjugate.B, {
+            numMovesSofar: dataDown.numMovesSofar + dataUpA.numLeavesInside
+        });
+        return {
+            tokens: dataUpA.tokens.concat(dataUpB.tokens),
+            numLeavesInside: dataUpA.numLeavesInside * 2 + dataUpB.numLeavesInside * 2
+        };
+    }
+    traversePause(pause, dataDown) {
+        return {
+            tokens: [
+                {
+                    leaf: pause,
+                    idx: dataDown.numMovesSofar
+                }
+            ],
+            numLeavesInside: 1
+        };
+    }
+    traverseNewline(_newline, _dataDown) {
+        return {
+            tokens: [],
+            numLeavesInside: 0
+        };
+    }
+    traverseLineComment(_comment, _dataDown) {
+        return {
+            tokens: [],
+            numLeavesInside: 0
+        };
+    }
+};
+var $8e08190ac5cfc1c3$var$leafTokens = (0, $OIFGm.functionFromTraversal)($8e08190ac5cfc1c3$var$LeafTokens);
+// src/cubing/twisty/views/TwistyAlgEditor/model.ts
+var $8e08190ac5cfc1c3$var$TwistyAlgEditorValueProp = class extends (0, $62nUG.SimpleTwistyPropSource) {
+    getDefaultValue() {
+        return "";
+    }
+};
+var $8e08190ac5cfc1c3$var$AlgEditorAlgWithIssuesProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(input) {
+        return $8e08190ac5cfc1c3$var$algWithIssuesFromString(input.value);
+    }
+};
+var $8e08190ac5cfc1c3$var$TwistyAlgEditorSelectionProp = class extends (0, $62nUG.TwistyPropSource) {
+    getDefaultValue() {
+        return {
+            selectionStart: 0,
+            selectionEnd: 0,
+            endChangedMostRecently: false
+        };
+    }
+    async derive(input, oldValue) {
+        const { selectionStart: selectionStart , selectionEnd: selectionEnd  } = input;
+        const lastResult = await oldValue;
+        const endChangedMostRecently = input.selectionStart === lastResult.selectionStart && input.selectionEnd !== (await oldValue).selectionEnd;
+        return {
+            selectionStart: selectionStart,
+            selectionEnd: selectionEnd,
+            endChangedMostRecently: endChangedMostRecently
+        };
+    }
+};
+var $8e08190ac5cfc1c3$var$TargetCharProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        return inputs.selectionInfo.endChangedMostRecently ? inputs.selectionInfo.selectionEnd : inputs.selectionInfo.selectionStart;
+    }
+};
+var $8e08190ac5cfc1c3$var$LeafTokensProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        return $8e08190ac5cfc1c3$var$leafTokens(inputs.algWithIssues.alg, {
+            numMovesSofar: 0
+        }).tokens;
+    }
+};
+var $8e08190ac5cfc1c3$var$LeafToHighlightProp = class extends (0, $62nUG.TwistyPropDerived) {
+    derive(inputs) {
+        function withWhere(leafInfo) {
+            if (leafInfo === null) return null;
+            let where;
+            if (inputs.targetChar < leafInfo.leaf.startCharIndex) where = "before";
+            else if (inputs.targetChar === leafInfo.leaf.startCharIndex) where = "start";
+            else if (inputs.targetChar < leafInfo.leaf.endCharIndex) where = "inside";
+            else if (inputs.targetChar === leafInfo.leaf.endCharIndex) where = "end";
+            else where = "after";
+            return {
+                leafInfo: leafInfo,
+                where: where
+            };
+        }
+        let lastLeafInfo = null;
+        for (const leafInfo1 of inputs.leafTokens){
+            if (inputs.targetChar < leafInfo1.leaf.startCharIndex && lastLeafInfo !== null) return withWhere(lastLeafInfo);
+            if (inputs.targetChar <= leafInfo1.leaf.endCharIndex) return withWhere(leafInfo1);
+            lastLeafInfo = leafInfo1;
+        }
+        return withWhere(lastLeafInfo);
+    }
+};
+var $8e08190ac5cfc1c3$var$TwistyAlgEditorModel = class {
+    constructor(){
+        this.valueProp = new $8e08190ac5cfc1c3$var$TwistyAlgEditorValueProp();
+        this.selectionProp = new $8e08190ac5cfc1c3$var$TwistyAlgEditorSelectionProp();
+        this.targetCharProp = new $8e08190ac5cfc1c3$var$TargetCharProp({
+            selectionInfo: this.selectionProp
+        });
+        this.algEditorAlgWithIssues = new $8e08190ac5cfc1c3$var$AlgEditorAlgWithIssuesProp({
+            value: this.valueProp
+        });
+        this.leafTokensProp = new $8e08190ac5cfc1c3$var$LeafTokensProp({
+            algWithIssues: this.algEditorAlgWithIssues
+        });
+        this.leafToHighlight = new $8e08190ac5cfc1c3$var$LeafToHighlightProp({
+            leafTokens: this.leafTokensProp,
+            targetChar: this.targetCharProp
+        });
+    }
+};
+// src/cubing/twisty/views/TwistyAlgEditor/TwistyAlgEditor.css.ts
+var $8e08190ac5cfc1c3$var$twistyAlgEditorCSS = new (0, $62nUG.CSSSource)(`
+:host {
+  width: 384px;
+  display: grid;
+}
+
+.wrapper {
+  /*overflow: hidden;
+  resize: horizontal;*/
+
+  background: var(--background, none);
+  display: grid;
+}
+
+textarea, .carbon-copy {
+  grid-area: 1 / 1 / 2 / 2;
+
+  width: 100%;
+  font-family: sans-serif;
+  line-height: 1.2em;
+
+  font-size: var(--font-size, inherit);
+  font-family: var(--font-family, sans-serif);
+
+  box-sizing: border-box;
+
+  padding: var(--padding, 0.5em);
+  /* Prevent horizontal growth. */
+  overflow-x: hidden;
+}
+
+textarea {
+  resize: none;
+  background: none;
+  z-index: 2;
+  overflow: hidden;
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.25));
+}
+
+.carbon-copy {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: transparent;
+  user-select: none;
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.carbon-copy .highlight {
+  background: var(--highlight-color, rgba(255, 128, 0, 0.5));
+  padding: 0.1em 0.2em;
+  margin: -0.1em -0.2em;
+  border-radius: 0.2em;
+}
+
+.wrapper.issue-warning textarea,
+.wrapper.valid-for-puzzle-warning textarea {
+  outline: none;
+  border: 1px solid rgba(200, 200, 0, 0.5);
+  background: rgba(255, 255, 0, 0.1);
+}
+
+.wrapper.issue-error textarea,
+.wrapper.valid-for-puzzle-error textarea {
+  outline: none;
+  border: 1px solid red;
+  background: rgba(255, 0, 0, 0.1);
+}
+`);
+// src/cubing/twisty/views/TwistyAlgEditor/TwistyAlgEditor.ts
+var $8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER = "for-twisty-player";
+var $8e08190ac5cfc1c3$var$ATTRIBUTE_PLACEHOLDER = "placeholder";
+var $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP = "twisty-player-prop";
+var $8e08190ac5cfc1c3$export$ca185a52cf2c5e67 = class extends (0, $62nUG.ManagedCustomElement) {
+    constructor(options){
+        super();
+        this.model = new $8e08190ac5cfc1c3$var$TwistyAlgEditorModel();
+        this.#textarea = document.createElement("textarea");
+        this.#carbonCopy = document.createElement("div");
+        this.#carbonCopyPrefix = document.createElement("span");
+        this.#carbonCopyHighlight = document.createElement("span");
+        this.#carbonCopySuffix = document.createElement("span");
+        this.#textareaClassListValidForPuzzleManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "valid-for-puzzle-", [
+            "none",
+            "warning",
+            "error"
+        ]);
+        this.#twistyPlayer = null;
+        this.debugNeverRequestTimestamp = false;
+        this.#onInputHasFired = false;
+        this.#highlightedLeaf = null;
+        this.#carbonCopy.classList.add("carbon-copy");
+        this.addElement(this.#carbonCopy);
+        this.#textarea.rows = 1;
+        this.addElement(this.#textarea);
+        this.#carbonCopyPrefix.classList.add("prefix");
+        this.#carbonCopy.appendChild(this.#carbonCopyPrefix);
+        this.#carbonCopyHighlight.classList.add("highlight");
+        this.#carbonCopy.appendChild(this.#carbonCopyHighlight);
+        this.#carbonCopySuffix.classList.add("suffix");
+        this.#carbonCopy.appendChild(this.#carbonCopySuffix);
+        this.#textarea.placeholder = "Alg";
+        this.#textarea.setAttribute("spellcheck", "false");
+        this.addCSS($8e08190ac5cfc1c3$var$twistyAlgEditorCSS);
+        this.#textarea.addEventListener("input", ()=>{
+            this.#onInputHasFired = true;
+            this.onInput();
+        });
+        this.#textarea.addEventListener("blur", ()=>this.onBlur());
+        document.addEventListener("selectionchange", ()=>this.onSelectionChange());
+        if (options?.twistyPlayer) this.twistyPlayer = options.twistyPlayer;
+        this.#twistyPlayerProp = options?.twistyPlayerProp ?? "alg";
+        if (options?.twistyPlayerProp === "alg") this.model.leafToHighlight.addFreshListener((highlightInfo)=>{
+            if (highlightInfo) this.highlightLeaf(highlightInfo.leafInfo.leaf);
+        });
+    }
+    #textarea;
+    #carbonCopy;
+    #carbonCopyPrefix;
+    #carbonCopyHighlight;
+    #carbonCopySuffix;
+    #textareaClassListValidForPuzzleManager;
+    #twistyPlayer;
+    #twistyPlayerProp;
+    get #algProp() {
+        if (this.#twistyPlayer === null) return null;
+        else return this.#twistyPlayer.experimentalModel[this.#twistyPlayerProp];
+    }
+    set algString(s) {
+        this.#textarea.value = s;
+        this.onInput();
+    }
+    get algString() {
+        return this.#textarea.value;
+    }
+    set placeholder(placeholderText) {
+        this.#textarea.placeholder = placeholderText;
+    }
+    #onInputHasFired;
+    onInput() {
+        this.#carbonCopyHighlight.hidden = true;
+        this.highlightLeaf(null);
+        const endTrimmed = this.#textarea.value.trimEnd();
+        this.model.valueProp.set(endTrimmed);
+        this.#algProp?.set(endTrimmed);
+    }
+    async onSelectionChange() {
+        if (document.activeElement !== this || this.shadow.activeElement !== this.#textarea) return;
+        if (this.#twistyPlayerProp !== "alg") return;
+        const { selectionStart: selectionStart , selectionEnd: selectionEnd  } = this.#textarea;
+        this.model.selectionProp.set({
+            selectionStart: selectionStart,
+            selectionEnd: selectionEnd
+        });
+    }
+    async onBlur() {}
+    setAlgIssueClassForPuzzle(issues) {
+        this.#textareaClassListValidForPuzzleManager.setValue(issues);
+    }
+     #padSuffix(s) {
+        return s.endsWith("\n") ? `${s} ` : s;
+    }
+    #highlightedLeaf;
+    highlightLeaf(leaf) {
+        if (this.#twistyPlayerProp !== "alg") return;
+        if (leaf === null) {
+            this.#carbonCopyPrefix.textContent = "";
+            this.#carbonCopyHighlight.textContent = "";
+            this.#carbonCopySuffix.textContent = this.#padSuffix(this.#textarea.value);
+            return;
+        }
+        if (leaf === this.#highlightedLeaf) return;
+        this.#highlightedLeaf = leaf;
+        this.#carbonCopyPrefix.textContent = this.#textarea.value.slice(0, leaf.startCharIndex);
+        this.#carbonCopyHighlight.textContent = this.#textarea.value.slice(leaf.startCharIndex, leaf.endCharIndex);
+        this.#carbonCopySuffix.textContent = this.#padSuffix(this.#textarea.value.slice(leaf.endCharIndex));
+        this.#carbonCopyHighlight.hidden = false;
+    }
+    get twistyPlayer() {
+        return this.#twistyPlayer;
+    }
+    set twistyPlayer(twistyPlayer) {
+        if (this.#twistyPlayer) {
+            console.warn("twisty-player reassignment/clearing is not supported");
+            return;
+        }
+        this.#twistyPlayer = twistyPlayer;
+        if (!twistyPlayer) return;
+        (async ()=>{
+            this.algString = this.#algProp ? (await this.#algProp.get()).alg.toString() : "";
+        })();
+        if (this.#twistyPlayerProp === "alg") {
+            this.#twistyPlayer?.experimentalModel.puzzleAlg.addFreshListener((algWithIssues)=>{
+                if (algWithIssues.issues.errors.length === 0) {
+                    this.setAlgIssueClassForPuzzle(algWithIssues.issues.warnings.length === 0 ? "none" : "warning");
+                    const newAlg = algWithIssues.alg;
+                    const oldAlg = (0, $OIFGm.Alg).fromString(this.algString);
+                    if (!newAlg.isIdentical(oldAlg)) {
+                        this.algString = newAlg.toString();
+                        this.onInput();
+                    }
+                } else this.setAlgIssueClassForPuzzle("error");
+            });
+            this.model.leafToHighlight.addFreshListener(async (highlightInfo)=>{
+                if (highlightInfo === null) return;
+                const [indexer, timestampRequest] = await Promise.all([
+                    await twistyPlayer.experimentalModel.indexer.get(),
+                    await twistyPlayer.experimentalModel.timestampRequest.get()
                 ]);
-            });
-        }
-    }
-    renderGeometry(object, camera, transformations) {
-        // this.sortFaces(object.faces, object, transformations);
-        object.faces.forEach((face)=>{
-            let points = [];
-            face.indices.map((index)=>object.vertices[index]).forEach((vertex)=>{
-                let objectToScreen = [
-                    object.matrix,
-                    ...transformations,
-                    camera.matrix, 
-                ];
-                let screenPoint = (0, $53113c971984a86b$export$aea013efd02e7164)(vertex, objectToScreen);
-                // Need to flip y to look correct on svg viewbox
-                screenPoint.multiply(1, -1, 1);
-                points.push(screenPoint);
-            });
-            this.addPolygon(points, face, object, transformations);
-        });
-    }
-    renderArrow(object, camera, transformations) {
-        let objectToScreen = [
-            object.matrix,
-            ...transformations,
-            camera.matrix
-        ];
-        let p1Screen = (0, $53113c971984a86b$export$aea013efd02e7164)(object.p1, objectToScreen);
-        let p2Screen = (0, $53113c971984a86b$export$aea013efd02e7164)(object.p2, objectToScreen);
-        this.arrows.push({
-            p1: p1Screen,
-            p2: p2Screen,
-            uid: object.uid
-        });
-    }
-    addPolygon(points, face, object, transformations) {
-        this.polygons.push({
-            points: points,
-            face: face,
-            object: object,
-            centroid: (0, $53113c971984a86b$export$aea013efd02e7164)(face.centroid, [
-                object.matrix,
-                ...transformations, 
-            ])
-        });
-    }
-    sortObjects(objects, camera, transformations) {
-        let sorted = [
-            ...objects
-        ];
-        sorted.sort((a, b)=>{
-            let aToWorld = [
-                a.matrix,
-                ...transformations
-            ];
-            let bToWorld = [
-                b.matrix,
-                ...transformations
-            ];
-            let aCentroid = (0, $53113c971984a86b$export$aea013efd02e7164)(a.centroid, aToWorld);
-            let bCentroid = (0, $53113c971984a86b$export$aea013efd02e7164)(b.centroid, bToWorld);
-            // TODO actually use camera, currently only sorting by Z
-            return aCentroid.z - bCentroid.z;
-        });
-        return sorted;
-    }
-}
-
-
-
-function $03cd6fa25491fbdf$export$a7d1cb6337256826(width, height, minx, miny, svgWidth, svgHeight) {
-    const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svgElement.setAttributeNS(null, "width", width.toString());
-    svgElement.setAttributeNS(null, "height", height.toString());
-    svgElement.setAttributeNS(null, "viewBox", `${minx} ${miny} ${svgWidth} ${svgHeight}`);
-    svgElement.setAttributeNS(null, "id", "sr-visualizer");
-    return svgElement;
-}
-function $03cd6fa25491fbdf$export$a8b73e67b1fc384f(points, color, strokeWidth) {
-    const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-    $03cd6fa25491fbdf$export$566f38bcb2c6d2ff(polygon, points, color, strokeWidth);
-    return polygon;
-}
-function $03cd6fa25491fbdf$export$eaac66dbd110ddd0(start, end, color, strokeWidth) {
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    let strokeColor = color ? color.value : (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f).value;
-    line.setAttributeNS(null, "x1", start.x.toString());
-    line.setAttributeNS(null, "y1", (-start.y).toString());
-    line.setAttributeNS(null, "x2", end.x.toString());
-    line.setAttributeNS(null, "y2", (-end.y).toString());
-    line.setAttributeNS(null, "stroke", strokeColor);
-    line.setAttributeNS(null, "marker-end", "url(#arrowhead)");
-    if (strokeWidth) line.setAttributeNS(null, "stroke-width", strokeWidth);
-    return line;
-}
-function $03cd6fa25491fbdf$export$566f38bcb2c6d2ff(polygon, points, color, strokeWidth) {
-    const pointsAttribute = $03cd6fa25491fbdf$var$makePointsAttributeValue(points);
-    const colorValue = color ? color.value : "black";
-    const strokeValue = color && color.stroke || "#000000";
-    polygon.setAttributeNS(null, "points", pointsAttribute);
-    polygon.setAttributeNS(null, "fill", colorValue);
-    if (strokeWidth) {
-        polygon.setAttributeNS(null, "stroke", strokeValue);
-        polygon.setAttributeNS(null, "stroke-width", strokeWidth);
-    }
-    polygon.setAttributeNS(null, "stroke-linejoin", "round");
-}
-function $03cd6fa25491fbdf$export$2e99a70e5aad98e8(svg) {
-    while(svg.hasChildNodes())svg.removeChild(svg.lastChild);
-}
-function $03cd6fa25491fbdf$export$b60c6aa84d6c96eb(color) {
-    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-    const arrowHeadMarker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
-    arrowHeadMarker.setAttributeNS(null, "id", "arrowhead");
-    arrowHeadMarker.setAttributeNS(null, "markerWidth", "4");
-    arrowHeadMarker.setAttributeNS(null, "markerHeight", "3.5");
-    arrowHeadMarker.setAttributeNS(null, "refX", "3");
-    arrowHeadMarker.setAttributeNS(null, "refY", "1.75");
-    arrowHeadMarker.setAttributeNS(null, "orient", "auto");
-    const arrowHeadPolygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-    arrowHeadPolygon.setAttributeNS(null, "points", "0 0, 4 1.75, 0 3.5");
-    arrowHeadPolygon.setAttributeNS(null, "fill", color.value);
-    defs.appendChild(arrowHeadMarker);
-    arrowHeadMarker.appendChild(arrowHeadPolygon);
-    return defs;
-}
-function $03cd6fa25491fbdf$var$makePointsAttributeValue(points) {
-    return points.reduce((pointString, point)=>{
-        return `${pointString ? pointString + " " : ""}${point.x}, ${point.y}`;
-    }, "");
-}
-
-
-class $b6fdeb59030f2391$export$a263bf3b3314d432 extends (0, $d200f3d5310f459f$export$591c2d18e52a6d30) {
-    /**
-     * Creates an SVG renderer. This will create it's own html `<svg>` element. it's
-     * the user's job to add this element to the page.
-     *
-     * @example
-     * ```
-     * const renderer = new HtmlSvgRenderer(width, height, minx, miny, svgWidth, svgHeight)
-     * document.getElementById('my-element').appendChild(renderer.domElement);
-     * ```
-     *
-     * @param width svg element width in pixels
-     * @param height svg element height in pixels
-     * @param minx min x for the svg element viewbox
-     * @param miny min x for the svg element viewbox
-     * @param svgWidth svg viewbox width
-     * @param svgHeight svg viewbox height
-     */ constructor(width, height, minx, miny, svgWidth, svgHeight, arrowColor){
-        super();
-        this.strokeWidth = "0.035";
-        this.arrowStrokeWidth = "0.03";
-        this.polygons = [];
-        this.lines = [];
-        this.uidToPolygon = {};
-        this.uidToLine = {};
-        this.arrowColor = arrowColor || (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-        this.domElement = document.createElement("div");
-        this.domElement.className = "svg-renderer";
-        this.svgElement = (0, $03cd6fa25491fbdf$export$a7d1cb6337256826)(width, height, minx, miny, svgWidth, svgHeight);
-        const markers = (0, $03cd6fa25491fbdf$export$b60c6aa84d6c96eb)(this.arrowColor);
-        this.svgElement.appendChild(markers);
-        this.domElement.appendChild(this.svgElement);
-    }
-    onBeforeRender() {}
-    drawPolygon({ points: points , face: face , object: object  }) {
-        if (!this.uidToPolygon[face.uid]) // Create new polygon for a face that hasn't been rendered
-        this.uidToPolygon[face.uid] = (0, $03cd6fa25491fbdf$export$a8b73e67b1fc384f)(points, face.color || object.color, this.strokeWidth);
-        else {
-            // Just update existing polygon element
-            const polygon = this.uidToPolygon[face.uid];
-            (0, $03cd6fa25491fbdf$export$566f38bcb2c6d2ff)(polygon, points, face.color || object.color, this.strokeWidth);
-        }
-        this.svgElement.appendChild(this.uidToPolygon[face.uid]);
-    }
-    drawArrow(p1Screen, p2Screen, uid) {
-        let arrow;
-        if (!this.uidToLine[uid]) {
-            arrow = (0, $03cd6fa25491fbdf$export$eaac66dbd110ddd0)(p1Screen, p2Screen, this.arrowColor, this.arrowStrokeWidth);
-            this.uidToLine[uid] = arrow;
-        } else {
-            arrow = this.uidToLine[uid];
-            arrow.setAttributeNS(null, "x1", p1Screen[0].toString());
-            arrow.setAttributeNS(null, "y1", (-p1Screen[1]).toString());
-            arrow.setAttributeNS(null, "x2", p2Screen[0].toString());
-            arrow.setAttributeNS(null, "y2", (-p2Screen[1]).toString());
-        }
-        this.svgElement.appendChild(this.uidToLine[uid]);
-    }
-    onComplete() {}
-}
-
-
-
-
-class $02ccaf9a8fcca6ac$export$7b9bdc1e44abccbc extends (0, $d200f3d5310f459f$export$591c2d18e52a6d30) {
-    constructor(width, height, lineWidth = 5, arrowColor = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f)){
-        super();
-        this.width = width;
-        this.height = height;
-        this.lineWidth = lineWidth;
-        this.arrowColor = arrowColor;
-        this.domElement = document.createElement("div");
-        this.domElement.className = "canvas-renderer";
-        this.canvasElement = document.createElement("canvas");
-        this.domElement.appendChild(this.canvasElement);
-        this.canvasElement.width = width;
-        this.canvasElement.height = height;
-        this.ctx = this.canvasElement.getContext("2d");
-    }
-    /**
-     * Visualizer point values will be in range (-.9, .9)
-     * Convert these values to canvas points (0, imgSize)
-     * using linear interpolation
-     *
-     * really the camera matrix should be set up properly
-     * so we don't have to do this...
-     */ convertRange(n, range) {
-        return (n - -0.9) / 1.8 * range;
-    }
-    onBeforeRender() {
-        this.ctx.clearRect(0, 0, this.width, this.height);
-    }
-    drawPolygon(polygon) {
-        var _a, _b;
-        this.ctx.lineWidth = this.lineWidth;
-        this.ctx.lineJoin = "round";
-        this.ctx.fillStyle = ((_b = (_a = polygon === null || polygon === void 0 ? void 0 : polygon.face) === null || _a === void 0 ? void 0 : _a.color) === null || _b === void 0 ? void 0 : _b.value) || "#000000";
-        this.ctx.strokeStyle = "#000000";
-        this.ctx.moveTo(this.convertRange(polygon.points[0].x, this.width), this.convertRange(polygon.points[0].y, this.height));
-        this.ctx.beginPath();
-        for(let i = 0; i <= polygon.points.length; i++){
-            let point = polygon.points[(i + 1) % polygon.points.length];
-            this.ctx.lineTo(this.convertRange(point.x, this.width), this.convertRange(point.y, this.height));
-        }
-        this.ctx.closePath();
-        this.ctx.fill();
-        this.ctx.stroke();
-    }
-    drawArrow(p1, p2, uid) {
-        const toX = this.convertRange(p2.x, this.width);
-        const toY = this.convertRange(-p2.y, this.height);
-        const fromX = this.convertRange(p1.x, this.width);
-        const fromY = this.convertRange(-p1.y, this.height);
-        const headlen = 20; // length of head in pixels
-        const dx = toX - fromX;
-        const dy = toY - fromY;
-        const angle = Math.atan2(dy, dx);
-        this.ctx.strokeStyle = this.arrowColor.value;
-        this.ctx.beginPath();
-        this.ctx.moveTo(fromX, fromY);
-        this.ctx.lineTo(toX, toY);
-        this.ctx.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
-        this.ctx.moveTo(toX, toY);
-        this.ctx.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
-        this.ctx.stroke();
-    }
-    setLineWidth(lineWidth) {
-        this.lineWidth = lineWidth;
-    }
-    onComplete() {}
-}
-
-
-
-
-class $8829b46f93b3ad40$export$79f141de891a5fed {
-    constructor(){
-        this.matrix = (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).perspective(Math.PI / 2, 1, 0.1, 1000);
-        this.matrix.translate(0, 0, -5);
-        this.matrix.scale(4, 4, 1);
-    }
-}
-
-
-class $28323f62027ce013$export$38af1803e3442a7f {
-    constructor(){
-        this.objects = [];
-    }
-    add(geometry) {
-        this.objects.push(geometry);
-    }
-    clear() {
-        this.objects = [];
-    }
-}
-
-
-
-
-
-
-
-
-
-
-var $91999ea7a2299fe5$export$6eba7df48b4f9fa4;
-(function(VisualizerType1) {
-    VisualizerType1["CUBE"] = "cube";
-    VisualizerType1["CUBE_NET"] = "cube-net";
-    VisualizerType1["CUBE_TOP"] = "cube-top";
-    VisualizerType1["MEGAMINX"] = "megaminx";
-    VisualizerType1["MEGAMINX_NET"] = "megaminx-net";
-    VisualizerType1["MEGAMINX_TOP"] = "megaminx-top";
-    VisualizerType1["PYRAMINX"] = "pyraminx";
-    VisualizerType1["PYRAMINX_NET"] = "pyraminx-net";
-    VisualizerType1["SKEWB"] = "skewb";
-    VisualizerType1["SKEWB_NET"] = "skewb-net";
-    VisualizerType1["SQUARE1"] = "square1";
-    VisualizerType1["SQUARE1_NET"] = "square1-net";
-})($91999ea7a2299fe5$export$6eba7df48b4f9fa4 || ($91999ea7a2299fe5$export$6eba7df48b4f9fa4 = {}));
-
-
-
-
-const $30e930f0b924ba0f$export$30d3ec8a0554e1fb = {
-    size: 3,
-    scheme: {
-        U: (0, $a552dd61b777f7b8$export$aab610c505c06a8f),
-        R: (0, $a552dd61b777f7b8$export$aa201224bb439d47),
-        F: (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc),
-        D: (0, $a552dd61b777f7b8$export$29814851e0aa981f),
-        L: (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b),
-        B: (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b)
-    },
-    rotations: [
-        {
-            x: 0,
-            y: 45,
-            z: 0
-        },
-        {
-            x: 34,
-            y: 0,
-            z: 0
-        }, 
-    ]
-};
-const $30e930f0b924ba0f$export$8aacf2dde66a4bfd = {
-    size: 2,
-    scheme: {
-        U: (0, $a552dd61b777f7b8$export$29814851e0aa981f),
-        F: (0, $a552dd61b777f7b8$export$aa201224bb439d47),
-        R: (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc),
-        dr: (0, $a552dd61b777f7b8$export$d68d0fda4a10dbc2),
-        dl: (0, $a552dd61b777f7b8$export$ff076ff0c4d77395),
-        L: (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b),
-        d: (0, $a552dd61b777f7b8$export$7d278ca694634874),
-        br: (0, $a552dd61b777f7b8$export$e0ebd895ef030b6d),
-        BR: (0, $a552dd61b777f7b8$export$aab610c505c06a8f),
-        BL: (0, $a552dd61b777f7b8$export$7ffdeca4b2f927a2),
-        bl: (0, $a552dd61b777f7b8$export$1225f83626261b80),
-        b: (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b)
-    }
-};
-const $30e930f0b924ba0f$export$baebf346c77e7713 = {
-    size: 3,
-    scheme: {
-        left: (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc),
-        right: (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b),
-        top: (0, $a552dd61b777f7b8$export$aab610c505c06a8f),
-        back: (0, $a552dd61b777f7b8$export$aa201224bb439d47)
-    },
-    rotations: [
-        {
-            x: 0,
-            y: 0,
-            z: 60
-        },
-        {
-            x: -60,
-            y: 0,
-            z: 0
-        }, 
-    ]
-};
-const $30e930f0b924ba0f$export$773020f8d4b0ecb5 = {
-    scheme: {
-        top: (0, $a552dd61b777f7b8$export$aab610c505c06a8f),
-        front: (0, $a552dd61b777f7b8$export$738c3b9a44c87ecc),
-        right: (0, $a552dd61b777f7b8$export$aa201224bb439d47),
-        back: (0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b),
-        left: (0, $a552dd61b777f7b8$export$3de5e29ed1757f9b),
-        bottom: (0, $a552dd61b777f7b8$export$29814851e0aa981f)
-    },
-    rotations: [
-        {
-            x: 0,
-            y: 45,
-            z: 0
-        },
-        {
-            x: 34,
-            y: 0,
-            z: 0
-        }, 
-    ]
-};
-const $30e930f0b924ba0f$export$2bb29b0375848c91 = {
-    scheme: (0, $9b3744130fd33c3e$export$e1bf8712b5945cd),
-    rotations: [
-        {
-            x: 0,
-            y: 0,
-            z: -34
-        },
-        {
-            x: -56,
-            y: 0,
-            z: 0
-        }, 
-    ]
-};
-function $30e930f0b924ba0f$export$430a3269e24b912e(type) {
-    switch(type){
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE:
-            return $30e930f0b924ba0f$export$30d3ec8a0554e1fb;
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET:
-            return Object.assign(Object.assign({}, $30e930f0b924ba0f$export$30d3ec8a0554e1fb), {
-                rotations: null
-            });
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP:
-            return Object.assign(Object.assign({}, $30e930f0b924ba0f$export$30d3ec8a0554e1fb), {
-                rotations: null
-            });
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX:
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET:
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP:
-            return $30e930f0b924ba0f$export$8aacf2dde66a4bfd;
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX:
-            return $30e930f0b924ba0f$export$baebf346c77e7713;
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET:
-            return Object.assign(Object.assign({}, $30e930f0b924ba0f$export$baebf346c77e7713), {
-                rotations: null
-            });
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB:
-            return $30e930f0b924ba0f$export$773020f8d4b0ecb5;
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET:
-            return Object.assign(Object.assign({}, $30e930f0b924ba0f$export$773020f8d4b0ecb5), {
-                rotations: null
-            });
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1:
-            return $30e930f0b924ba0f$export$2bb29b0375848c91;
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1_NET:
-            return Object.assign(Object.assign({}, $30e930f0b924ba0f$export$2bb29b0375848c91), {
-                rotations: null
-            });
-        default:
-            throw new Error(`Could not get default options for puzzle ${type}`);
-    }
-}
-
-
-
-
-
-function $eb061d61c60e3d6c$export$3b653dfd563c7b3f(options) {
-    if (options.alg && typeof options.alg !== "string") {
-        console.warn(`Inavlid alg ${options.alg}. alg must be a string`);
-        options.alg = "";
-    }
-    if (options.case && typeof options.case !== "string") {
-        console.warn(`Inavlid case ${options.case}. case must be a string`);
-        options.case = "";
-    }
-    if (options.scheme) {
-        if (typeof options.scheme !== "object" || Array.isArray(options.scheme)) {
-            console.warn(`Invalid scheme ${options.scheme}. scheme must be an object`);
-            options.scheme = {};
-        } else Object.keys(options.scheme).forEach((face)=>{
-            const faceColor = options.scheme[face];
-            if (faceColor == null || typeof faceColor !== "object" || !faceColor.value) {
-                console.warn(`Invalid scheme color ${faceColor}. must be an type IColor`);
-                options.scheme[face] = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-            }
-        });
-    }
-    if (options.mask) {
-        if (typeof options.mask !== "object" || Array.isArray(options.mask)) {
-            console.warn(`Invalid mask ${options.mask}. scheme must be an object`);
-            options.mask = {};
-        } else Object.keys(options.mask).forEach((face)=>{
-            const maskValues = options.mask[face];
-            if (!Array.isArray(maskValues)) {
-                console.warn(`Invalid mask ${maskValues}. must be an array`);
-                options.mask[face] = [];
-            } else {
-                for(let i = 0; i < maskValues.length; i++)if (!Number.isInteger(maskValues[i])) {
-                    console.warn(`Invalid mask value ${maskValues[i]}. must be a number`);
-                    options.mask[face] = [];
-                    break;
+                if (timestampRequest === "auto" && !this.#onInputHasFired) return;
+                const moveStartTimestamp = indexer.indexToMoveStartTimestamp(highlightInfo.leafInfo.idx);
+                const duration = indexer.moveDuration(highlightInfo.leafInfo.idx);
+                let newTimestamp;
+                switch(highlightInfo.where){
+                    case "before":
+                        newTimestamp = moveStartTimestamp;
+                        break;
+                    case "start":
+                    case "inside":
+                        newTimestamp = moveStartTimestamp + duration / 4;
+                        break;
+                    case "end":
+                    case "after":
+                        newTimestamp = moveStartTimestamp + duration;
+                        break;
+                    default:
+                        console.log("invalid where");
+                        throw new Error("Invalid where!");
                 }
-            }
-        });
-    }
-    if (options.stickerColors) {
-        if (typeof options.stickerColors !== "object" || Array.isArray(options.stickerColors)) {
-            console.warn(`Invalid stickerColors ${options.stickerColors}. stickerColors must be an object`);
-            options.stickerColors = {};
-        } else Object.keys(options.stickerColors).forEach((face)=>{
-            const faceColors = options.stickerColors[face];
-            if (!Array.isArray(faceColors)) {
-                console.warn(`Invalid colors ${faceColors}. must be an array`);
-                options.stickerColors[face] = [];
-            } else {
-                for(let i = 0; i < faceColors.length; i++)if (!$eb061d61c60e3d6c$export$9797b605b6184901(faceColors[i])) {
-                    options.stickerColors[face] = [];
-                    break;
-                }
-            }
-        });
-    }
-    if (options.rotations) {
-        if (!Array.isArray(options.rotations)) {
-            console.warn(`invalid rotations ${options.rotations}, must be an array`);
-            options.rotations = [];
-        } else {
-            for(let i = 0; i < options.rotations.length; i++)if (!$eb061d61c60e3d6c$var$validRotation(options.rotations[i])) {
-                options.rotations = [];
-                break;
-            }
+                if (!this.debugNeverRequestTimestamp) twistyPlayer.experimentalModel.timestampRequest.set(newTimestamp);
+            });
+            twistyPlayer.experimentalModel.currentLeavesSimplified.addFreshListener(async (currentLeavesSimplified)=>{
+                const indexer = await twistyPlayer.experimentalModel.indexer.get();
+                const leaf = indexer.getAnimLeaf(currentLeavesSimplified.stateIndex);
+                this.highlightLeaf(leaf);
+            });
         }
     }
-    if (options.scale && !Number.isFinite(options.scale)) {
-        console.warn(`invalid scale ${options.scale}, must be a finite number`);
-        options.scale = 1;
+    attributeChangedCallback(attributeName, _oldValue, newValue) {
+        switch(attributeName){
+            case $8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER:
+                {
+                    const elem = document.getElementById(newValue);
+                    if (!elem) {
+                        console.warn(`${$8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER}= elem does not exist`);
+                        return;
+                    }
+                    if (!(elem instanceof $8e08190ac5cfc1c3$export$d03687cb83cd55dc)) {
+                        console.warn(`${$8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER}=is not a twisty-player`);
+                        return;
+                    }
+                    this.twistyPlayer = elem;
+                    return;
+                }
+            case $8e08190ac5cfc1c3$var$ATTRIBUTE_PLACEHOLDER:
+                this.placeholder = newValue;
+                return;
+            case $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP:
+                if (this.#twistyPlayer) {
+                    console.log("cannot set prop");
+                    throw new Error("cannot set prop after twisty player");
+                }
+                this.#twistyPlayerProp = newValue;
+                return;
+        }
     }
-    if (options.translation && !$eb061d61c60e3d6c$var$validTranslation(options.translation)) options.translation = {
-        x: 0,
-        y: 0,
-        z: 0
+    static get observedAttributes() {
+        return [
+            $8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER,
+            $8e08190ac5cfc1c3$var$ATTRIBUTE_PLACEHOLDER,
+            $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP
+        ];
+    }
+};
+(0, $62nUG.customElementsShim).define("twisty-alg-editor", $8e08190ac5cfc1c3$export$ca185a52cf2c5e67);
+// src/cubing/twisty/views/twizzle/TwizzleLink.css.ts
+var $8e08190ac5cfc1c3$var$twizzleLinkCSS = new (0, $62nUG.CSSSource)(`
+.wrapper {
+  background: rgb(255, 245, 235);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.setup-alg, twisty-alg-viewer {
+  padding: 0.5em 1em;
+}
+
+.heading {
+  background: rgba(255, 230, 210, 1);
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+}
+
+.heading.title {
+  background: rgb(255, 245, 235);
+  font-size: 150%;
+  white-space: pre;
+}
+
+.heading a {
+  text-decoration: none;
+  color: inherit;
+}
+
+twisty-player {
+  width: 100%;
+  min-height: 128px;
+  height: 288px;
+  resize: vertical;
+  overflow-y: hidden;
+}
+
+twisty-player + .heading {
+  padding-top: 0.5em;
+}
+
+twisty-alg-viewer {
+  display: inline-block;
+}
+
+.wrapper {
+  container-type: inline-size;
+}
+
+.scrollable-region {
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.scrollable-region {
+  max-height: 18em;
+  overflow-y: auto;
+}
+
+@container (min-width: 512px) {
+  .responsive-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  twisty-player {
+    height: 320px
+  }
+  .scrollable-region {
+    border-top: none;
+    border-left: 1px solid rgba(0, 0, 0, 0.25);
+    contain: strict;
+    max-height: 100cqh;
+  }
+}
+
+.wrapper:fullscreen,
+.wrapper:fullscreen .responsive-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper:fullscreen twisty-player,
+.wrapper:fullscreen .scrollable-region {
+  height: 50%;
+}
+
+@container (min-width: 512px) {
+  .wrapper:fullscreen twisty-player,
+  .wrapper:fullscreen .scrollable-region {
+    height: 100%;
+  }
+}
+`);
+var $8e08190ac5cfc1c3$var$twizzleLinkForumTweaksCSS = new (0, $62nUG.CSSSource)(`
+.wrapper {
+  background: white;
+}
+
+.heading {
+  background: #4285f422;
+}
+
+.scrollable-region {
+  overflow-y: auto;
+}
+
+.wrapper.dark-mode {
+  background: #262626;
+  color: #929292;
+  border-color: #FFFFFF44;
+  color-scheme: dark;
+}
+
+.wrapper.dark-mode .heading:not(.title) {
+  background: #1d1d1d;
+  color: #ececec;
+}
+
+.heading.title {
+  background: none;
+}
+`);
+// src/cubing/twisty/views/twizzle/url-params.ts
+function $8e08190ac5cfc1c3$var$getConfigFromURL(prefix = "", url = location.href) {
+    const paramMapping = {
+        alg: "alg",
+        "setup-alg": "experimental-setup-alg",
+        "setup-anchor": "experimental-setup-anchor",
+        puzzle: "puzzle",
+        stickering: "experimental-stickering",
+        "puzzle-description": "experimental-puzzle-description",
+        title: "experimental-title",
+        "video-url": "experimental-video-url",
+        competition: "experimental-competition-id"
     };
-    if (options.arrows) {
-        if (!Array.isArray(options.arrows)) {
-            console.warn(`invalid arrows, must be an array`);
-            options.arrows = [];
-        } else {
-            for(let i = 0; i < options.arrows.length; i++)if (!$eb061d61c60e3d6c$var$validArrow(options.arrows[i])) {
-                options.arrows = [];
-                break;
-            }
+    const params = new URL(url).searchParams;
+    const config = {};
+    for (const [ourParam, twistyPlayerParam] of Object.entries(paramMapping)){
+        const paramValue = params.get(prefix + ourParam);
+        if (paramValue !== null) {
+            const configKey = $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap[twistyPlayerParam];
+            config[configKey] = paramValue;
         }
     }
-}
-function $eb061d61c60e3d6c$export$9797b605b6184901(c) {
-    if (typeof c !== "object") {
-        console.warn(`invalid color ${c}, must be type object`);
-        return false;
-    }
-    if (!c.value || typeof c.value !== "string") {
-        console.warn(`invalid color value ${c.value}, must be type string`);
-        return false;
-    }
-    if (c.stroke && typeof c.stroke !== "string") {
-        console.warn(`invalid color stroke ${c.stroke}, must be type string`);
-        return false;
-    }
-    return true;
-}
-function $eb061d61c60e3d6c$var$validRotation(r) {
-    if (!r || typeof r !== "object") {
-        console.warn(`invalid rotation ${r}, must be an object`);
-        return false;
-    }
-    if (r.x && !Number.isFinite(r.x)) {
-        console.warn(`invalid x rotation ${r.x}, must be a number`);
-        return false;
-    }
-    if (r.y && !Number.isFinite(r.y)) {
-        console.warn(`invalid y rotation ${r.y}, must be a number`);
-        return false;
-    }
-    if (r.z && !Number.isFinite(r.z)) {
-        console.warn(`invalid z rotation ${r.z}, must be a number`);
-        return false;
-    }
-    return true;
-}
-function $eb061d61c60e3d6c$var$validTranslation(r) {
-    if (typeof r !== "object" || Array.isArray(r)) {
-        console.warn(`invalid translation ${r}, must be an object`);
-        return false;
-    }
-    if (r.x && !Number.isFinite(r.x)) {
-        console.warn(`invalid x translation ${r.x}, must be a number`);
-        return false;
-    }
-    if (r.y && !Number.isFinite(r.y)) {
-        console.warn(`invalid y translation ${r.y}, must be a number`);
-        return false;
-    }
-    if (r.z && !Number.isFinite(r.z)) {
-        console.warn(`invalid z translation ${r.z}, must be a number`);
-        return false;
-    }
-    return true;
-}
-function $eb061d61c60e3d6c$var$validArrow(a) {
-    if (typeof a !== "object") {
-        console.warn(`invalid arrow ${a}, must be an object`);
-        return false;
-    }
-    if (typeof a.end !== "object" || typeof a.start !== "object") {
-        console.warn(`invalid arrow ${a}, must have start and end`);
-        return false;
-    }
-    if (typeof a.start.face !== "string" || !Number.isInteger(a.start.sticker)) {
-        console.warn(`invalid arrow start ${a.start}`);
-        return false;
-    }
-    if (typeof a.end.face !== "string" || !Number.isInteger(a.end.sticker)) {
-        console.warn(`invalid arrow end ${a.end}`);
-        return false;
-    }
-    return true;
+    return config;
 }
 
-
-
-
-
-
-
-
-
-
-const $1cf201749a692690$var$OPTIMAL_LAYER_WIDTH = {
-    2: 0.3,
-    3: 0.17,
-    4: 0.121
-};
-function $1cf201749a692690$var$getLayerWidth(length, layers) {
-    return $1cf201749a692690$var$OPTIMAL_LAYER_WIDTH[layers] || length / (layers * 1.9);
-}
-class $1cf201749a692690$export$e470815a9331019b {
-    constructor(){
-        this.createFaces();
-        this.removeHiddenStickers();
-    }
-    createFaces() {
-        const layers = 2;
-        const length = 0.75;
-        const layerWidth = $1cf201749a692690$var$getLayerWidth(length, layers);
-        const megaminxRadius = (0, $769573e6855c11ce$export$25da5b6921e25b42)(length);
-        this.U = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$29814851e0aa981f), layers, length, layerWidth);
-        this.F = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aa201224bb439d47), layers, length, layerWidth);
-        this.R = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$738c3b9a44c87ecc), layers, length, layerWidth);
-        this.L = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$48d4b2cd5bc0e88b), layers, length, layerWidth);
-        this.BR = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$aab610c505c06a8f), layers, length, layerWidth);
-        this.BL = new (0, $620e0e2ec86f1c38$export$3bc4526132adddba)((0, $a552dd61b777f7b8$export$7ffdeca4b2f927a2), layers, length, layerWidth);
-        this.F.translate(0, 0, megaminxRadius);
-        this.U.rotate(Math.PI, 0, 0, 1);
-        this.U.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
-        this.U.translate(0, 0, megaminxRadius);
-        this.L.rotate(72 * Math.PI / 180, 0, 0, 1);
-        this.L.rotate(Math.PI, 0, 0, 1);
-        this.L.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
-        this.L.translate(0, 0, megaminxRadius);
-        this.R.rotate(72 * Math.PI / 180, 0, 0, 1);
-        this.R.rotate(Math.PI / 5, 0, 0, 1);
-        this.R.rotate((180 - 116.57) * Math.PI / 180, 1, 0, 0);
-        this.R.translate(0, 0, megaminxRadius);
-        this.BL.rotate(Math.PI / 5, 0, 0, 1);
-        this.BL.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
-        this.BL.translate(0, 0, megaminxRadius);
-        this.BR.rotate(-Math.PI / 5, 0, 0, 1);
-        this.BR.rotate(-116.57 * Math.PI / 180, 1, 0, 0);
-        this.BR.translate(0, 0, megaminxRadius);
-        this.faces = {
-            U: this.U,
-            F: this.F,
-            R: this.R,
-            dr: this.BR,
-            dl: this.BL,
-            L: this.L
-        };
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)([
-            this.U,
-            this.F,
-            this.R,
-            this.BR,
-            this.BL,
-            this.L
-        ]);
-        this.group.rotate((0, $769573e6855c11ce$export$c9fcf1a7df975d78)(63), 1, 0, 0);
-    }
-    setColors(colors) {
-        let { U: U , R: R , F: F , L: L , BR: BR , BL: BL  } = colors;
-        this.createFaces();
-        // If length is larger than we expect for
-        // a side of the puzzle, assume we're receiving
-        // colors for the entire face of the puzzle. and
-        // just take out the the colors for visible stickers
-        // if (R.length > 3) {
-        //   R = R.slice(2, 5);
-        //   F = F.slice(2, 5);
-        //   L = L.slice(2, 5);
-        //   BR = BR.slice(2, 5);
-        //   BL = BL.slice(2, 5);
-        // }
-        // this.U.faces[1].color = BLACK;
-        // this.R.faces[1].color = BLACK;
-        // this.F.faces[1].color = BLACK;
-        // this.L.faces[1].color = BLACK;
-        // this.BR.faces[1].color = BLACK;
-        // this.BL.faces[1].color = BLACK;
-        this.setFaceColors(this.U, U);
-        this.setFaceColors(this.R, R);
-        this.setFaceColors(this.F, F);
-        this.setFaceColors(this.L, L);
-        this.setFaceColors(this.BR, BR);
-        this.setFaceColors(this.BL, BL);
-        this.removeHiddenStickers();
-    }
-    setFaceColors(faceStickers, colors) {
-        faceStickers.faces.forEach((f, i)=>{
-            if (colors && colors[i]) f.color = colors[i];
-            else f.color = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
+// src/cubing/twisty/views/twizzle/TwizzleLink.ts
+var $8e08190ac5cfc1c3$export$6b2b3b705349e8be = class extends (0, $62nUG.ManagedCustomElement) {
+    constructor(options){
+        super({
+            mode: "open"
         });
+        this.options = options;
+        this.twistyPlayer = null;
+        this.a = null;
     }
-    /**
-     * hide stickers that aren't in the top layer
-     * so only the top of the megaminx is shown
-     */ removeHiddenStickers() {
-        this.F.faces = this.F.faces.slice(2, 5);
-        this.BL.faces = this.BL.faces.slice(8, 11);
-        this.L.faces = this.L.faces.slice(4, 7);
-        this.R.faces = [
-            this.R.faces[1],
-            this.R.faces[2],
-            this.R.faces[10]
-        ];
-        this.BR.faces = this.BR.faces.slice(6, 9);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * Since puzzle geometry doesn't change for any instance of "Visuzlier"
- * we can cache the geometry generated to avoid generating it on each time
- * we render a puzzle
- */ const $2d5e029956976abc$var$geometryCache = {
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1]: {},
-    [(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1_NET]: {}
-};
-function $2d5e029956976abc$export$a54886ebc2f206ca(type, options) {
-    switch(type){
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE:
-            return $2d5e029956976abc$export$ce223d612b94804b(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET:
-            return $2d5e029956976abc$export$2d79bfcb45a755b7(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP:
-            return $2d5e029956976abc$export$da01d12bd2a96873(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX:
-            return $2d5e029956976abc$export$e86e3ab67725ca28(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET:
-            return $2d5e029956976abc$export$fb9d2b332439f5b1(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP:
-            return $2d5e029956976abc$export$d15f11b50aa190ae(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX:
-            return $2d5e029956976abc$export$2a54f5180f3334c3(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET:
-            return $2d5e029956976abc$export$1419bce623d2254(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB:
-            return $2d5e029956976abc$export$aacba2b20c89cc2d(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET:
-            return $2d5e029956976abc$export$adbac64368d7035(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1:
-            return $2d5e029956976abc$export$f604efa486f7569(options);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1_NET:
-            return $2d5e029956976abc$export$4dfbff0cdc093eac(options);
-    }
-}
-function $2d5e029956976abc$export$32eadc934192bf8c(type, options) {
-    switch(type){
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE:
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET:
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP:
-            return new (0, $97796b1f3eccc5ed$export$e38eb81901bc8623)(options.size);
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX:
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET:
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP:
-            return new (0, $2f51a1953a3cf56c$export$af68e8b316be1d11)();
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX:
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET:
-            return new (0, $e8a3bdbf0be390cd$export$d05b816c594f90e8)();
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB:
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET:
-            return new (0, $cdfaf7e439ac29e3$export$b9c7478369a38c76)();
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1:
-        case (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1_NET:
-            return $2d5e029956976abc$var$initSquare1Simulator(options);
-    }
-}
-function $2d5e029956976abc$export$ce223d612b94804b(options = {}) {
-    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE][options.size] = new (0, $d70803cf2e627d01$export$310f6ef17ab0638d)(options.size);
-    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE][options.size];
-}
-function $2d5e029956976abc$export$2d79bfcb45a755b7(options = {}) {
-    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET][options.size] = new (0, $a6a9c628ca796938$export$319925cb9fcaf5a1)(options.size);
-    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_NET][options.size];
-}
-function $2d5e029956976abc$export$da01d12bd2a96873(options = {}) {
-    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP][options.size] = new (0, $297241875fed3d05$export$702e5ad345915691)(options.size);
-    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).CUBE_TOP][options.size];
-}
-function $2d5e029956976abc$export$e86e3ab67725ca28(options = {}) {
-    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX][options.size] = new (0, $3a9e3c9d3c2b6eb2$export$cdb3e392e3d8acd3)(options.size);
-    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX][options.size];
-}
-function $2d5e029956976abc$export$fb9d2b332439f5b1(options = {}) {
-    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET][options.size] = new (0, $9f9a0f6d3e178a44$export$1740bb9cc2dfacc1)(options.size);
-    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET][options.size];
-}
-function $2d5e029956976abc$export$d15f11b50aa190ae(options = {}) {
-    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP][2]) // megaminx top size not supported, so just cache by size 2
-    $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP][2] = new (0, $1cf201749a692690$export$e470815a9331019b)();
-    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP][2];
-}
-function $2d5e029956976abc$export$2a54f5180f3334c3(options = {}) {
-    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX][options.size] = new (0, $0389636ee7b68987$export$b13f2da466ab891e)(options.size);
-    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX][options.size];
-}
-function $2d5e029956976abc$export$1419bce623d2254(options = {}) {
-    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET][options.size]) $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET][options.size] = new (0, $b12b0953e8a23e46$export$4d37e698849b50f7)(options.size);
-    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET][options.size];
-}
-function $2d5e029956976abc$export$aacba2b20c89cc2d(options = {}) {
-    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB][1]) // Skewb size not supported, so just cache by size 1
-    $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB][1] = new (0, $37e6b69258b7c736$export$20e672f2d64f35af)();
-    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB][1];
-}
-function $2d5e029956976abc$export$adbac64368d7035(options = {}) {
-    if (!$2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET][1]) // Skewb size not supported, so just cache by size 1
-    $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET][1] = new (0, $6b11631b09d59b70$export$e3345590c1271270)();
-    return $2d5e029956976abc$var$geometryCache[(0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SKEWB_NET][1];
-}
-function $2d5e029956976abc$export$f604efa486f7569(options = {}) {
-    const simulator = $2d5e029956976abc$var$initSquare1Simulator(options);
-    const geometry = new (0, $69cfc5366d5d5306$export$8f7198aedf2eb582)(simulator.topLayer, simulator.bottomLayer, simulator.middleRotated, options.scheme);
-    return geometry;
-}
-function $2d5e029956976abc$export$4dfbff0cdc093eac(options = {}) {
-    const simulator = $2d5e029956976abc$var$initSquare1Simulator(options);
-    const geometry = new (0, $f35abbac62e00809$export$65ad724200307558)(simulator.topLayer, simulator.bottomLayer, simulator.middleRotated, options.scheme);
-    return geometry;
-}
-function $2d5e029956976abc$var$initSquare1Simulator(options) {
-    const simulator = new (0, $6a2ff1079a5489d4$export$2c536ad444fb73c5)(options.scheme);
-    if (options.case) simulator.case(options.case);
-    else if (options.alg) simulator.alg(options.alg);
-    return simulator;
-}
-
-
-
-class $e2bd02c995c89b46$export$23d6a54f0bbc85a3 {
-    constructor(a, b, c, d){
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
-    }
-    static fromEuler(x, y, z) {
-        let halfToRad = Math.PI / 360;
-        x *= halfToRad;
-        z *= halfToRad;
-        y *= halfToRad;
-        let sx = Math.sin(x);
-        let cx = Math.cos(x);
-        let sy = Math.sin(y);
-        let cy = Math.cos(y);
-        let sz = Math.sin(z);
-        let cz = Math.cos(z);
-        let a = sx * cy * cz - cx * sy * sz;
-        let b = cx * sy * cz + sx * cy * sz;
-        let c = cx * cy * sz - sx * sy * cz;
-        let d = cx * cy * cz + sx * sy * sz;
-        return new $e2bd02c995c89b46$export$23d6a54f0bbc85a3(a, b, c, d);
-    }
-}
-
-
-/**
- * Applies a color scheme to simulator values
- *
- * @param faceValues face values from the simulator
- * @param scheme color scheme to
- */ function $fb7402156073a837$var$applyColorScheme(faceValues, scheme) {
-    return Object.keys(faceValues).reduce((colors, face)=>{
-        colors[face] = faceValues[face].map((value)=>scheme[value] || (0, $a552dd61b777f7b8$export$6597749b34bb1aec));
-        return colors;
-    }, {});
-}
-function $fb7402156073a837$var$isSquare1(type) {
-    return type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1 || type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).SQUARE1_NET;
-}
-function $fb7402156073a837$var$isPyraminx(type) {
-    return type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX || type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).PYRAMINX_NET;
-}
-function $fb7402156073a837$var$isMegaminx(type) {
-    return type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX || type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_NET || type === (0, $91999ea7a2299fe5$export$6eba7df48b4f9fa4).MEGAMINX_TOP;
-}
-/**
- * Return true if we can apply simulator colors. Currently
- * we don't simulate n-layered megaminx/pyraminx.
- */ function $fb7402156073a837$var$canApplySimulatorColors(type, size) {
-    if ($fb7402156073a837$var$isPyraminx(type)) return size === 3;
-    if ($fb7402156073a837$var$isMegaminx(type)) return size === 2;
-    return true;
-}
-function $fb7402156073a837$var$createArrow(a, puzzle, group) {
-    var _a, _b, _c, _d, _e, _f, _g, _h;
-    // Get the face the arrow is pointing to
-    let startFace = puzzle.faces[a.start.face];
-    let endFace = puzzle.faces[a.end.face];
-    if (!startFace || !endFace) throw new Error(`Invalid arrow definition ${JSON.stringify(a)}`);
-    // Transform from sticker coordinates to group coordinates
-    let startTransformations = [
-        startFace.matrix,
-        puzzle.group.matrix,
-        group.matrix, 
-    ];
-    let endTransformations = [
-        endFace.matrix,
-        puzzle.group.matrix,
-        group.matrix
-    ];
-    let start;
-    let end;
-    // Get the stickers on the face
-    if (startFace instanceof (0, $621b987b54afb04b$export$2db6c17465f94a2) && endFace instanceof (0, $621b987b54afb04b$export$2db6c17465f94a2)) {
-        start = (_a = startFace.faces[a.start.sticker]) === null || _a === void 0 ? void 0 : _a.centroid;
-        end = (_b = endFace.faces[a.end.sticker]) === null || _b === void 0 ? void 0 : _b.centroid;
-    } else {
-        if (puzzle instanceof (0, $69cfc5366d5d5306$export$8f7198aedf2eb582)) {
-            start = (_c = startFace.objects[a.start.sticker]) === null || _c === void 0 ? void 0 : _c.faces[0].centroid;
-            end = (_d = endFace.objects[a.end.sticker]) === null || _d === void 0 ? void 0 : _d.faces[0].centroid;
-        } else {
-            start = (_e = startFace.objects[a.start.sticker]) === null || _e === void 0 ? void 0 : _e.centroid;
-            end = (_f = endFace.objects[a.end.sticker]) === null || _f === void 0 ? void 0 : _f.centroid;
+    fallback() {
+        this.contentWrapper.textContent = "";
+        if (this.a) {
+            const span = this.contentWrapper.appendChild(document.createElement("span"));
+            span.textContent = "\u2757\uFE0F";
+            span.title = "Could not show a player for link";
+            this.addElement(this.a);
         }
-        startTransformations.unshift((_g = startFace.objects[a.start.sticker]) === null || _g === void 0 ? void 0 : _g.matrix);
-        endTransformations.unshift((_h = endFace.objects[a.end.sticker]) === null || _h === void 0 ? void 0 : _h.matrix);
+        this.#cssElem?.remove();
+        this.#cssCDNForumTweaksElem?.remove();
     }
-    if (!start || !end) throw new Error(`Invalid arrow definition ${JSON.stringify(a)}`);
-    let p1 = (0, $53113c971984a86b$export$aea013efd02e7164)(start, startTransformations);
-    let p2 = (0, $53113c971984a86b$export$aea013efd02e7164)(end, endTransformations);
-    return new (0, $a3f52faa72a35e94$export$21b07c8f274aebd5)(p1, p2);
-}
-class $fb7402156073a837$export$5eb306383074849d {
-    constructor(renderer, type, options = {}){
-        this.type = type;
-        this.camera = new (0, $8829b46f93b3ad40$export$79f141de891a5fed)();
-        this.scene = new (0, $28323f62027ce013$export$38af1803e3442a7f)();
-        this.group = new (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)();
-        this.scene.add(this.group);
-        this.renderer = renderer;
-        this.initPuzzleOptions(options);
-        this.puzzleGeometry = (0, $2d5e029956976abc$export$a54886ebc2f206ca)(this.type, this.options);
-        this.simulator = (0, $2d5e029956976abc$export$32eadc934192bf8c)(this.type, this.options);
-        this.buildGroupMatrix();
-        this.applyColors();
-        this.addArrows();
-        this.group.addObject(this.puzzleGeometry.group);
-        this.render();
+    #cssElem;
+    #cssCDNForumTweaksElem;
+    #scrollableRegion;
+    #responsiveWrapper;
+    async connectedCallback() {
+        this.#responsiveWrapper = this.addElement(document.createElement("div"));
+        this.#responsiveWrapper.classList.add("responsive-wrapper");
+        if (this.options?.darkMode) this.contentWrapper.classList.add("dark-mode");
+        this.#cssElem = this.addCSS($8e08190ac5cfc1c3$var$twizzleLinkCSS);
+        if (this.options?.cdnForumTweaks) this.addCSS($8e08190ac5cfc1c3$var$twizzleLinkForumTweaksCSS);
+        this.a = this.querySelector("a");
+        if (!this.a) return;
+        const config = $8e08190ac5cfc1c3$var$getConfigFromURL("", this.a.href);
+        const href = this.a?.href;
+        const { hostname: hostname , pathname: pathname  } = new URL(href);
+        if (hostname !== "alpha.twizzle.net") {
+            this.fallback();
+            return;
+        }
+        if ([
+            "/edit/",
+            "/explore/"
+        ].includes(pathname)) {
+            const isExplorer = pathname === "/explore/";
+            if (config.puzzle && !(config.puzzle in (0, $eb9PZ.puzzles))) {
+                const puzzleDescription = (await (parcelRequire("ak7Jm"))).getPuzzleDescriptionString(config.puzzle);
+                delete config.puzzle;
+                config.experimentalPuzzleDescription = puzzleDescription;
+            }
+            this.twistyPlayer = this.#responsiveWrapper.appendChild(new $8e08190ac5cfc1c3$export$d03687cb83cd55dc({
+                background: this.options?.cdnForumTweaks ? "checkered-transparent" : "checkered",
+                darkMode: this.options?.darkMode ? "dark" : "light",
+                ...config,
+                viewerLink: isExplorer ? "experimental-twizzle-explorer" : "auto"
+            }));
+            this.twistyPlayer.fullscreenElement = this.contentWrapper;
+            if (config.experimentalTitle) this.twistyPlayer.experimentalTitle = config.experimentalTitle;
+            this.#scrollableRegion = this.#responsiveWrapper.appendChild(document.createElement("div"));
+            this.#scrollableRegion.classList.add("scrollable-region");
+            if (config.experimentalTitle) this.addHeading(config.experimentalTitle).classList.add("title");
+            if (config.experimentalSetupAlg) {
+                this.addHeading("Setup", async ()=>(await this.twistyPlayer?.experimentalModel.setupAlg.get())?.alg.toString() ?? null);
+                const setupAlgDiv = this.#scrollableRegion.appendChild(document.createElement("div"));
+                setupAlgDiv.classList.add("setup-alg");
+                setupAlgDiv.textContent = new (0, $OIFGm.Alg)(config.experimentalSetupAlg).toString();
+            }
+            this.addHeading("Moves", async ()=>(await this.twistyPlayer?.experimentalModel.alg.get())?.alg.toString() ?? null);
+            const twistyAlgViewer = this.#scrollableRegion.appendChild(new $8e08190ac5cfc1c3$export$e0a62567c31d067({
+                twistyPlayer: this.twistyPlayer
+            }));
+            twistyAlgViewer.part.add("twisty-alg-viewer");
+        } else this.fallback();
     }
-    applyColors() {
-        const hasCustomColors = this.options.stickerColors && !$fb7402156073a837$var$isSquare1(this.type);
-        const canUseSimulator = $fb7402156073a837$var$canApplySimulatorColors(this.type, this.options.size);
-        if (hasCustomColors) this.puzzleGeometry.setColors(this.options.stickerColors);
-        else if (canUseSimulator) this.applySimulatorColors();
-        else {
-            // Apply scheme to puzzle geomety manually, for puzzles
-            // not supported by simulators (megaminx != 2 pyraminx != 3)
-            const faces = this.puzzleGeometry.faces;
-            Object.keys(faces).forEach((face)=>{
-                const stickers = faces[face];
-                const faceColor = this.options.scheme[face];
-                if (stickers instanceof (0, $621b987b54afb04b$export$2db6c17465f94a2)) stickers.faces.forEach((f)=>f.color = faceColor);
-                else if (stickers instanceof (0, $91f47f50fb317cec$export$eb2fcfdbd7ba97d4)) stickers.objects.forEach((o)=>o.color = faceColor);
+    addHeading(text, getTextToCopy) {
+        const headingDiv = this.#scrollableRegion.appendChild(document.createElement("div"));
+        headingDiv.classList.add("heading");
+        headingDiv.textContent = text;
+        if (getTextToCopy) {
+            headingDiv.textContent += " ";
+            const a = headingDiv.appendChild(document.createElement("a"));
+            a.textContent = "\uD83D\uDCCB";
+            a.href = "#";
+            a.title = "Copy to clipboard";
+            async function setAndClear(text2) {
+                a.textContent = text2;
+                await new Promise((resolve)=>setTimeout(resolve, 2e3));
+                if (a.textContent === text2) a.textContent = "\uD83D\uDCCB";
+            }
+            a.addEventListener("click", async (e)=>{
+                e.preventDefault();
+                a.textContent = "\u2026\uD83D\uDCCB";
+                const textToCopy = await getTextToCopy();
+                if (textToCopy) try {
+                    await navigator.clipboard.writeText(textToCopy);
+                    setAndClear("\u2705\uD83D\uDCCB");
+                } catch (e2) {
+                    setAndClear("\u274C\uD83D\uDCCB");
+                    throw e2;
+                }
+                else setAndClear("\u274C\uD83D\uDCCB");
             });
         }
-    }
-    applySimulatorColors() {
-        if (this.options.mask) this.applyMask(this.options);
-        if (this.options.alg || this.options.case) this.applyAlgorithm();
-        const faceValues = this.simulator.getValues();
-        const faceColors = $fb7402156073a837$var$applyColorScheme(faceValues, this.options.scheme);
-        this.puzzleGeometry.setColors(faceColors);
-    }
-    applyAlgorithm() {
-        if ($fb7402156073a837$var$isSquare1(this.type)) // puzzle factory applies algorithm to square 1 when greating the puzzle geometry
-        return;
-        if (this.options.case) this.simulator.case(this.options.case);
-        else if (this.options.alg) this.simulator.alg(this.options.alg);
-    }
-    applyMask(options) {
-        Object.keys(options.mask).forEach((maskedFace)=>{
-            options.mask[maskedFace].forEach((index)=>this.simulator.setValue(maskedFace, index, "mask"));
-        });
-    }
-    /**
-     * build the group matrix for the puzzle. This sets up the
-     * rotation, scale, and translation for the resulting rendered
-     * image.
-     */ buildGroupMatrix() {
-        this.group.matrix = new (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5)();
-        // Rotate the group matrix
-        if (this.options.rotations) this.options.rotations.forEach((rotation)=>{
-            const { x: x = 0 , y: y = 0 , z: z = 0  } = rotation;
-            let rotationMatrix = (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).fromQuaternion((0, $e2bd02c995c89b46$export$23d6a54f0bbc85a3).fromEuler(x, y, z));
-            (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).multiply(this.group.matrix, rotationMatrix, this.group.matrix);
-        });
-        // Scale the group matrix
-        if (this.options.scale) {
-            let scale = this.options.scale;
-            this.group.matrix.scale(scale, scale, scale);
-        }
-        // Translate the group matrix
-        if (this.options.translation) {
-            const { x: x = 0 , y: y = 0 , z: z = 0  } = this.options.translation;
-            let translationMatrix = (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).fromTranslation(x, y, z);
-            (0, $4ae27753aa4c892b$export$2ae72fc923e5eb5).multiply(this.group.matrix, translationMatrix, this.group.matrix);
-        }
-    }
-    addArrows() {
-        if (!this.options.arrows) return;
-        this.options.arrows.forEach((arrow)=>{
-            try {
-                this.scene.add($fb7402156073a837$var$createArrow(arrow, this.puzzleGeometry, this.group));
-            } catch (e) {
-                console.error(e);
-                console.warn(`Invalid arrow ${JSON.stringify(arrow)}`);
-            }
-        });
-    }
-    initPuzzleOptions(options) {
-        this.options = Object.assign(Object.assign({}, (0, $30e930f0b924ba0f$export$430a3269e24b912e)(this.type)), options);
-        (0, $eb061d61c60e3d6c$export$3b653dfd563c7b3f)(this.options);
-    }
-    applyOptionsToPuzzle() {
-        this.simulator.reset();
-        this.buildGroupMatrix();
-        this.applyColors();
-        this.addArrows();
-    }
-    setPuzzleOptions(options) {
-        this.initPuzzleOptions(options);
-        // Handle square1 geometry separately, since it
-        // changes, unlike the other puzzles
-        if ($fb7402156073a837$var$isSquare1(this.type)) {
-            this.puzzleGeometry = (0, $2d5e029956976abc$export$a54886ebc2f206ca)(this.type, this.options);
-            this.group.setObjects([
-                this.puzzleGeometry.group
-            ]);
-        }
-        this.applyOptionsToPuzzle();
-    }
-    render() {
-        this.renderer.render(this.scene, this.camera);
-    }
-}
-
-
-
-
-
-
-
-const $179bc5a49dda12b3$var$defaultOptions = {
-    width: 500,
-    height: 500,
-    minx: -0.9,
-    miny: -0.9,
-    svgWidth: 1.8,
-    svgHeight: 1.8,
-    strokeWidth: 0.02,
-    arrowColor: (0, $a552dd61b777f7b8$export$7d278ca694634874),
-    arrowStrokeWidth: 0.03
-};
-function $179bc5a49dda12b3$export$13f4b12aafeba5d6(element, type, options = {}) {
-    return new $179bc5a49dda12b3$export$5df67eceec1fd9b9(element, type, options);
-}
-class $179bc5a49dda12b3$export$5df67eceec1fd9b9 extends (0, $fb7402156073a837$export$5eb306383074849d) {
-    constructor(element, type, options = {}){
-        options = Object.assign(Object.assign({}, $179bc5a49dda12b3$var$defaultOptions), options);
-        if (typeof element === "string") {
-            element = document.querySelector(element);
-            if (element === null) throw new Error(`Could not find visuzlier element by query selector: ${element}`);
-        }
-        const renderer = new (0, $b6fdeb59030f2391$export$a263bf3b3314d432)(options.width, options.height, options.minx, options.miny, options.svgWidth, options.svgHeight, options.arrowColor);
-        renderer.strokeWidth = "" + options.strokeWidth;
-        element.appendChild(renderer.domElement);
-        super(renderer, type, options.puzzle);
-        this.svgOptions = options;
-    }
-    /**
-     * Set the stroke width for the svg elements rendered and re draw the puzzle.
-     *
-     * @param strokeWidth - value to set the stroke width to. It depends on the svg options and puzzle size,
-     *                      but good values are around .01 - .06
-     */ setStrokeWidth(strokeWidth) {
-        this.svgOptions.strokeWidth = strokeWidth;
-        this.renderer.strokeWidth = "" + this.svgOptions.strokeWidth;
-        this.render();
-    }
-    /**
-     * Dynamically update the svg element options
-     *
-     * @param options - options for the svg element that is being rendered to
-     */ setSvgOptions(options) {
-        this.svgOptions = Object.assign(Object.assign({}, $179bc5a49dda12b3$var$defaultOptions), options);
-        $179bc5a49dda12b3$var$validateSvgOptions(this.svgOptions);
-        const renderer = this.renderer;
-        const svgElement = renderer.svgElement;
-        renderer.strokeWidth = "" + this.svgOptions.strokeWidth;
-        renderer.arrowStrokeWidth = "" + this.svgOptions.arrowStrokeWidth;
-        svgElement.setAttributeNS(null, "width", this.svgOptions.width.toString());
-        svgElement.setAttributeNS(null, "height", this.svgOptions.width.toString());
-        svgElement.setAttributeNS(null, "viewBox", `${this.svgOptions.minx} ${this.svgOptions.miny} ${this.svgOptions.svgWidth} ${this.svgOptions.svgHeight}`);
-        this.render();
-    }
-}
-function $179bc5a49dda12b3$var$validateSvgOptions(options) {
-    if (!Number.isInteger(options.width)) {
-        console.warn(`invalid svg width ${options.width}. Must be a whole number`);
-        options.width = $179bc5a49dda12b3$var$defaultOptions.width;
-    }
-    if (!Number.isInteger(options.height)) {
-        console.warn(`invalid svg height ${options.height}. Must be a whole number`);
-        options.width = $179bc5a49dda12b3$var$defaultOptions.height;
-    }
-    if (!Number.isFinite(options.minx)) {
-        console.warn(`invalid svg minx ${options.minx}`);
-        options.minx = $179bc5a49dda12b3$var$defaultOptions.minx;
-    }
-    if (!Number.isFinite(options.miny)) {
-        console.warn(`invalid svg miny ${options.miny}`);
-        options.minx = $179bc5a49dda12b3$var$defaultOptions.miny;
-    }
-    if (!Number.isFinite(options.svgWidth)) {
-        console.warn(`invalid svgWidth ${options.svgWidth}`);
-        options.minx = $179bc5a49dda12b3$var$defaultOptions.svgWidth;
-    }
-    if (!Number.isFinite(options.svgHeight)) {
-        console.warn(`invalid svgHeight ${options.svgHeight}`);
-        options.minx = $179bc5a49dda12b3$var$defaultOptions.svgHeight;
-    }
-    if (!Number.isFinite(options.strokeWidth)) {
-        console.warn(`invalid strokeWidth ${options.strokeWidth}`);
-        options.minx = $179bc5a49dda12b3$var$defaultOptions.strokeWidth;
-    }
-    if (!Number.isFinite(options.arrowStrokeWidth)) {
-        console.warn(`invalid arrowStrokeWidth ${options.arrowStrokeWidth}`);
-        options.minx = $179bc5a49dda12b3$var$defaultOptions.arrowStrokeWidth;
-    }
-    if (options.arrowColor && !(0, $eb061d61c60e3d6c$export$9797b605b6184901)(options.arrowColor)) options.arrowColor = (0, $a552dd61b777f7b8$export$7a91b0fde7ec420f);
-}
-
-
-
-
-const $ecf8af2bbd620cb6$var$defaultOptions = {
-    width: 500,
-    height: 500,
-    minx: -0.9,
-    miny: -0.9,
-    svgWidth: 1.8,
-    svgHeight: 1.8,
-    strokeWidth: 0.02,
-    arrowColor: (0, $a552dd61b777f7b8$export$7d278ca694634874),
-    arrowStrokeWidth: 0.03
-};
-function $ecf8af2bbd620cb6$export$1f536085c24cc947(container, type, options = {}) {
-    if (typeof container === "string") {
-        container = document.querySelector(container);
-        if (container === null) throw new Error(`Could not find visuzlier element by query selector: ${container}`);
-    }
-    let element = document.createElement("div");
-    options = Object.assign(Object.assign({}, $ecf8af2bbd620cb6$var$defaultOptions), options);
-    (0, $179bc5a49dda12b3$export$13f4b12aafeba5d6)(element, type, options);
-    setTimeout(()=>{
-        let svgElement = element.querySelector("svg");
-        let targetImage = document.createElement("img");
-        container.appendChild(targetImage);
-        let canvas = document.createElement("canvas");
-        let ctx = canvas.getContext("2d");
-        let loader = new Image();
-        loader.width = canvas.width = targetImage.width = options.width;
-        loader.height = canvas.height = targetImage.height = options.height;
-        loader.onload = function() {
-            ctx.drawImage(loader, 0, 0, loader.width, loader.height);
-            targetImage.src = canvas.toDataURL();
-        };
-        var svgAsXML = new XMLSerializer().serializeToString(svgElement);
-        loader.src = `data:image/svg+xml,${encodeURIComponent(svgAsXML)}`;
-    });
-}
-
-
-
-
-
-const $eaf2995ff9b5c5b5$var$defaultOptions = {
-    width: 500,
-    height: 500,
-    lineWidth: 5,
-    arrowColor: (0, $a552dd61b777f7b8$export$7d278ca694634874)
-};
-function $eaf2995ff9b5c5b5$export$8d01c972ee8b14a9(element, type, options = {}) {
-    return new $eaf2995ff9b5c5b5$export$6a0b871733d37c2(element, type, options);
-}
-class $eaf2995ff9b5c5b5$export$6a0b871733d37c2 extends (0, $fb7402156073a837$export$5eb306383074849d) {
-    constructor(element, type, options){
-        options = Object.assign(Object.assign({}, $eaf2995ff9b5c5b5$var$defaultOptions), options);
-        if (typeof element === "string") {
-            element = document.querySelector(element);
-            if (element === null) throw new Error(`Could not find visuzlier element by query selector: ${element}`);
-        }
-        const renderer = new (0, $02ccaf9a8fcca6ac$export$7b9bdc1e44abccbc)(options.width, options.height, options.lineWidth, options.arrowColor);
-        element.appendChild(renderer.domElement);
-        super(renderer, type, options.puzzle);
-    }
-}
-
-
-
-const $cb698455e8cf1dac$export$622052d5b2a49ca5 = {
-    CUBE_3: {
-        LAST_LAYER: {
-            F: [
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            B: [
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            R: [
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            L: [
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            D: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ]
-        },
-        F2L: {
-            F: [
-                0,
-                1,
-                2
-            ],
-            B: [
-                0,
-                1,
-                2
-            ],
-            R: [
-                0,
-                1,
-                2
-            ],
-            L: [
-                0,
-                1,
-                2
-            ],
-            U: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ]
-        },
-        FIRST_LAYER: {
-            F: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5
-            ],
-            B: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5
-            ],
-            R: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5
-            ],
-            L: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5
-            ],
-            U: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ]
-        },
-        OLL: {
-            R: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            F: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            D: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            L: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            B: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ]
-        },
-        CORNERS_LAST_LAYER: {
-            U: [
-                1,
-                3,
-                5,
-                7
-            ],
-            F: [
-                1,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            B: [
-                1,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            R: [
-                1,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            L: [
-                1,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            D: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ]
-        },
-        EDGES_LAST_LAYER: {
-            U: [
-                0,
-                2,
-                6,
-                8
-            ],
-            F: [
-                0,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            B: [
-                0,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            R: [
-                0,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            L: [
-                0,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ],
-            D: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
-            ]
-        }
-    },
-    MEGA_3: {
-        OLL: {
-            F: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            R: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            L: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            BR: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            BL: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            d: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            b: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            dl: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            dr: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            bl: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ],
-            br: [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8,
-                9,
-                10
-            ]
-        }
+        return headingDiv;
     }
 };
-
-
-
-
-
-
-const $90ea97863349bce3$export$ab9c2d573a6e2267 = {
-    Scene: $28323f62027ce013$export$38af1803e3442a7f,
-    Camera: $8829b46f93b3ad40$export$79f141de891a5fed,
-    HtmlSvgRenderer: $b6fdeb59030f2391$export$a263bf3b3314d432,
-    HtmlCanvasRenderer: $02ccaf9a8fcca6ac$export$7b9bdc1e44abccbc,
-    PolygonRenderer: $d200f3d5310f459f$export$591c2d18e52a6d30
-};
-const $90ea97863349bce3$export$b89c271f50b83709 = {
-    RubiksCube: $d70803cf2e627d01$export$310f6ef17ab0638d,
-    RubiksCubeNet: $a6a9c628ca796938$export$319925cb9fcaf5a1,
-    RubiksCubeTopLayer: $297241875fed3d05$export$702e5ad345915691,
-    Megaminx: $3a9e3c9d3c2b6eb2$export$cdb3e392e3d8acd3,
-    MegaminxNet: $9f9a0f6d3e178a44$export$1740bb9cc2dfacc1,
-    Pyraminx: $0389636ee7b68987$export$b13f2da466ab891e,
-    PyraminxNet: $b12b0953e8a23e46$export$4d37e698849b50f7,
-    Skewb: $37e6b69258b7c736$export$20e672f2d64f35af,
-    SkewbNet: $6b11631b09d59b70$export$e3345590c1271270,
-    Square1: $69cfc5366d5d5306$export$8f7198aedf2eb582,
-    Square1Net: $f35abbac62e00809$export$65ad724200307558
-};
-const $90ea97863349bce3$export$b14c74960ae6f55e = {
-    RubiksCubeSimulator: $97796b1f3eccc5ed$export$e38eb81901bc8623,
-    MegaminxSimulator: $2f51a1953a3cf56c$export$af68e8b316be1d11,
-    PyraminxSimulator: $e8a3bdbf0be390cd$export$d05b816c594f90e8,
-    SkewbSimulator: $cdfaf7e439ac29e3$export$b9c7478369a38c76,
-    Square1Simualtor: $6a2ff1079a5489d4$export$2c536ad444fb73c5
-};
-const $90ea97863349bce3$export$a6d7434b6633f36b = {
-    TurnType: $68fd4c41993b3878$export$b3ef12f1067db51f,
-    parseCubeAlgorithm: (0, $124cae5f9b200e70$export$40cd6d717443f0f5),
-    parseMegaminxAlgorithm: (0, $0fe59fa9c94bcb30$export$4d3e69443db6a686),
-    parsePyraminxAlgorithm: (0, $40dd552cdb78c76f$export$889bfdf6aad78bd0),
-    parseSkewbAlgorithm: (0, $09452e3a6320fe56$export$bbb21588e7059e00),
-    parseSquare1Algorithm: (0, $edb14850c73ace03$export$b431853fef50a69d)
-};
+(0, $62nUG.customElementsShim).define("twizzle-link", $8e08190ac5cfc1c3$export$6b2b3b705349e8be);
 
 
 const $32a17876c16008e4$export$25f0557f767cf1c9 = ({ step: step  })=>{
-    const [svg, setSvg] = (0, $d4J5n.useState)(null);
-    const imgRef = (0, $d4J5n.useCallback)((node)=>{
-        if (node && !svg) setSvg((0, $179bc5a49dda12b3$export$13f4b12aafeba5d6)(node, step.image.type, {
-            width: 200,
-            height: 200,
-            puzzle: step.image.puzzle
-        }));
+    const twistyPlayerRef = (0, $d4J5n.useRef)(null);
+    const setRef = (0, $d4J5n.useCallback)((node)=>{
+        if (node) {
+            while(node.firstChild)node.removeChild(node.firstChild);
+            const twistyPlayer = new (0, $8e08190ac5cfc1c3$export$d03687cb83cd55dc)({
+                ...step.image,
+                hintFacelets: "none",
+                background: "none",
+                experimentalSetupAnchor: "end",
+                controlPanel: "none",
+                experimentalDragInput: "none"
+            });
+            twistyPlayer.style.width = "200px";
+            twistyPlayer.style.height = "200px";
+            node.appendChild(twistyPlayer);
+            twistyPlayerRef.current = twistyPlayer;
+        }
     }, []);
     return /*#__PURE__*/ (0, $228IU.jsx)((0, $4e6a86e4405d949c$export$2e2bcd8739ae039), {
         sx: {
@@ -35423,7 +31487,7 @@ const $32a17876c16008e4$export$25f0557f767cf1c9 = ({ step: step  })=>{
                         /*#__PURE__*/ (0, $228IU.jsx)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
                             height: 200,
                             width: 200,
-                            ref: imgRef
+                            ref: setRef
                         }),
                         /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
                             variant: "h5",
@@ -35439,92 +31503,13 @@ const $32a17876c16008e4$export$25f0557f767cf1c9 = ({ step: step  })=>{
 };
 
 
-// TODO fix scheme?
-const $b11ef0a77969f35b$var$megaminxYellowUpScheme = {
-    U: {
-        value: "#FFFF00"
-    },
-    F: {
-        value: "#00FF00"
-    },
-    R: {
-        value: "#FFA500"
-    },
-    dr: {
-        value: "#FF69B4"
-    },
-    dl: {
-        value: "#ffffb3"
-    },
-    L: {
-        value: "#0000FF"
-    },
-    d: {
-        value: "#808080"
-    },
-    br: {
-        value: "#FF0000"
-    },
-    BR: {
-        value: "#808080"
-    },
-    BL: {
-        value: "#800080"
-    },
-    bl: {
-        value: "#32CD32"
-    },
-    b: {
-        value: "#FFA500"
-    }
-};
-const $b11ef0a77969f35b$var$megaminxGreyUpScheme = {
-    U: {
-        value: "#808080"
-    },
-    F: {
-        value: "#FFA500"
-    },
-    R: {
-        value: "#32CD32"
-    },
-    dr: {
-        value: "#FF69B4"
-    },
-    dl: {
-        value: "#ffffb3"
-    },
-    L: {
-        value: "#4ecdf8"
-    },
-    d: {
-        value: "#808080"
-    },
-    br: {
-        value: "#FF0000"
-    },
-    BR: {
-        value: "#FF69B4"
-    },
-    BL: {
-        value: "#FFFDD0"
-    },
-    bl: {
-        value: "#32CD32"
-    },
-    b: {
-        value: "#FFA500"
-    }
-};
 const $b11ef0a77969f35b$export$f68871ba002ca835 = [
     {
         displayName: "2x2x2",
         slug: "/222",
         image: {
-            type: "cube",
-            puzzle: {
-                size: "2"
-            }
+            puzzle: "2x2x2",
+            visualization: "3D"
         },
         twisty: "2x2x2",
         quantumMoveOrder: 4,
@@ -35532,10 +31517,9 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
             {
                 displayName: "CLL",
                 image: {
-                    type: "cube-top",
-                    puzzle: {
-                        size: "2"
-                    }
+                    puzzle: "2x2x2",
+                    visualization: "experimental-2D-LL",
+                    alg: "R U R' U R U2 R'"
                 },
                 slug: "cll",
                 cases: "cll",
@@ -35548,8 +31532,8 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
         displayName: "3x3x3",
         slug: "/333",
         image: {
-            type: "cube",
-            puzzle: {}
+            puzzle: "3x3x3",
+            visualization: "PG3D"
         },
         twisty: "3x3x3",
         quantumMoveOrder: 4,
@@ -35557,42 +31541,10 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
             {
                 displayName: "F2L",
                 image: {
-                    type: "cube",
-                    puzzle: {
-                        mask: {
-                            F: [
-                                0,
-                                1,
-                                2
-                            ],
-                            B: [
-                                0,
-                                1,
-                                2
-                            ],
-                            R: [
-                                0,
-                                1,
-                                2
-                            ],
-                            L: [
-                                0,
-                                1,
-                                2
-                            ],
-                            U: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8
-                            ]
-                        }
-                    }
+                    puzzle: "3x3x3",
+                    visualization: "PG3D",
+                    experimentalStickering: "LS",
+                    alg: "R U R' U'"
                 },
                 slug: "f2l",
                 cases: "333-f2l",
@@ -35610,8 +31562,8 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
         displayName: "3x3x3 OH",
         slug: "/333oh",
         image: {
-            type: "cube",
-            puzzle: {}
+            puzzle: "3x3x3",
+            visualization: "PG3D"
         },
         twisty: "3x3x3",
         quantumMoveOrder: 4,
@@ -35643,66 +31595,9 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
             {
                 displayName: "OLL",
                 image: {
-                    type: "cube",
-                    puzzle: {
-                        mask: {
-                            R: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8
-                            ],
-                            F: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8
-                            ],
-                            D: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8
-                            ],
-                            L: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8
-                            ],
-                            B: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8
-                            ]
-                        }
-                    }
+                    puzzle: "3x3x3",
+                    visualization: "PG3D",
+                    experimentalStickering: "OLL"
                 },
                 slug: "oll",
                 quantumMoveOrder: 4,
@@ -35752,8 +31647,8 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
         displayName: "Megaminx",
         slug: "/megaminx",
         image: {
-            type: "megaminx",
-            puzzle: {}
+            puzzle: "megaminx",
+            visualization: "3D"
         },
         twisty: "megaminx",
         quantumMoveOrder: 5,
@@ -35761,156 +31656,10 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
             {
                 displayName: "2-look OLL",
                 image: {
-                    type: "megaminx-top",
-                    puzzle: {
-                        case: "F U R U' R' F' R' U2' R U R' U R",
-                        mask: {
-                            F: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            R: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            L: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            BR: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            BL: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            d: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            b: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            dl: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            dr: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            bl: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            br: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ]
-                        },
-                        scheme: $b11ef0a77969f35b$var$megaminxYellowUpScheme
-                    }
+                    puzzle: "megaminx",
+                    visualization: "experimental-2D-LL",
+                    experimentalStickering: "OLL",
+                    alg: "F U R U' R' F' R' U2' R U R' U R"
                 },
                 slug: "2-look-oll",
                 quantumMoveOrder: 5,
@@ -35918,163 +31667,10 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                     {
                         displayName: "Edge Orientation",
                         image: {
-                            type: "megaminx-top",
-                            puzzle: {
-                                case: "F R U R' U' F'",
-                                mask: {
-                                    U: [
-                                        2,
-                                        4,
-                                        6,
-                                        8,
-                                        10
-                                    ],
-                                    F: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    R: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    L: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    BR: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    BL: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    d: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    b: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    dl: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    dr: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    bl: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    br: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ]
-                                },
-                                scheme: $b11ef0a77969f35b$var$megaminxYellowUpScheme
-                            }
+                            puzzle: "megaminx",
+                            visualization: "experimental-2D-LL",
+                            experimentalStickering: "EOLL",
+                            alg: "F R U R' U' F'"
                         },
                         slug: "eo",
                         cases: "mega-oll-eo",
@@ -36084,156 +31680,10 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                     {
                         displayName: "Corner Orientation",
                         image: {
-                            type: "megaminx-top",
-                            puzzle: {
-                                case: "R U2 R' U' R U' R'",
-                                mask: {
-                                    F: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    R: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    L: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    BR: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    BL: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    d: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    b: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    dl: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    dr: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    bl: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    br: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ]
-                                },
-                                scheme: $b11ef0a77969f35b$var$megaminxYellowUpScheme
-                            }
+                            puzzle: "megaminx",
+                            visualization: "experimental-2D-LL",
+                            experimentalStickering: "OLL",
+                            alg: "R U2 R' U' R U' R'"
                         },
                         slug: "co",
                         cases: "mega-oll-co",
@@ -36245,140 +31695,10 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
             {
                 displayName: "2-look PLL",
                 image: {
-                    type: "megaminx-top",
-                    puzzle: {
-                        case: "F R U R' F U R' U' F' U R2 U2' R' F'",
-                        mask: {
-                            F: [
-                                0,
-                                1,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            R: [
-                                0,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9
-                            ],
-                            L: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            BR: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                9,
-                                10
-                            ],
-                            BL: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7
-                            ],
-                            d: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            b: [
-                                0,
-                                1,
-                                2,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            dl: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            dr: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            bl: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ],
-                            br: [
-                                0,
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10
-                            ]
-                        },
-                        scheme: $b11ef0a77969f35b$var$megaminxGreyUpScheme
-                    }
+                    puzzle: "megaminx",
+                    visualization: "experimental-2D-LL",
+                    experimentalStickering: "PLL",
+                    alg: "F R U R' F U R' U' F' U R2 U2' R' F'"
                 },
                 slug: "2-look-pll",
                 quantumMoveOrder: 5,
@@ -36386,143 +31706,10 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                     {
                         displayName: "Edge Permutation",
                         image: {
-                            arrowColor: {
-                                value: "#FFFFFF"
-                            },
-                            type: "megaminx-top",
-                            puzzle: {
-                                case: "F' R' F U F' R F U R' U2 R U' R' U' R U2 R' U R",
-                                mask: {
-                                    F: [
-                                        0,
-                                        1,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    R: [
-                                        0,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9
-                                    ],
-                                    L: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    BR: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        9,
-                                        10
-                                    ],
-                                    BL: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7
-                                    ],
-                                    d: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    b: [
-                                        0,
-                                        1,
-                                        2,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    dl: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    dr: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    bl: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    br: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ]
-                                },
-                                scheme: $b11ef0a77969f35b$var$megaminxGreyUpScheme
-                            }
+                            puzzle: "megaminx",
+                            visualization: "experimental-2D-LL",
+                            experimentalStickering: "EPLL",
+                            alg: "F' R' F U F' R F U R' U2 R U' R' U' R U2 R' U R"
                         },
                         slug: "ep",
                         cases: "mega-pll-ep",
@@ -36532,140 +31719,10 @@ const $b11ef0a77969f35b$export$f68871ba002ca835 = [
                     {
                         displayName: "Corner Permutation",
                         image: {
-                            type: "megaminx-top",
-                            puzzle: {
-                                case: "R' F' R U R U' R2' F R U R' F' R F U'",
-                                mask: {
-                                    F: [
-                                        0,
-                                        1,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    R: [
-                                        0,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9
-                                    ],
-                                    L: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    BR: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        9,
-                                        10
-                                    ],
-                                    BL: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7
-                                    ],
-                                    d: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    b: [
-                                        0,
-                                        1,
-                                        2,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    dl: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    dr: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    bl: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ],
-                                    br: [
-                                        0,
-                                        1,
-                                        2,
-                                        3,
-                                        4,
-                                        5,
-                                        6,
-                                        7,
-                                        8,
-                                        9,
-                                        10
-                                    ]
-                                },
-                                scheme: $b11ef0a77969f35b$var$megaminxGreyUpScheme
-                            }
+                            puzzle: "megaminx",
+                            visualization: "experimental-2D-LL",
+                            experimentalStickering: "CPLL",
+                            alg: "R' F' R U R U' R2' F R U R' F' R F U'"
                         },
                         slug: "cp",
                         cases: "mega-pll-cp",
@@ -38901,10 +33958,10 @@ const $b1410301c6957cc6$export$cc64fe338ae13d0f = (alg)=>alg.replace($b1410301c6
 
 
 
-var $j3ukw = parcelRequire("j3ukw");
+var $OIFGm = parcelRequire("OIFGm");
 
 
-var $j3ukw = parcelRequire("j3ukw");
+var $OIFGm = parcelRequire("OIFGm");
 const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
     const { algs: algs , step: step  } = (0, $5b1ea468d903474a$export$4138103a3ae699cc)();
     const [stepStorage] = (0, $9517aa852f99e8b1$export$2e2bcd8739ae039)(step.slug, {
@@ -38928,42 +33985,10 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
     });
     const filterAlgs = ()=>algs.filter((alg)=>!(stepStorage.options["exclude-learned"] && stepStorage.cases[alg.name].status === "learned" || stepStorage.options["exclude-unstarted"] && stepStorage.cases[alg.name].status === "unstarted"));
     const [order, setOrder] = (0, $d4J5n.useState)((0, (/*@__PURE__*/$parcel$interopDefault($d3ff3298a4c42353$exports)))(filterAlgs()));
-    const [index1, setIndex] = (0, $d4J5n.useState)(0);
-    const [hint, setHint] = (0, $d4J5n.useState)("");
-    const isLast = (0, $d4J5n.useMemo)(()=>index1 >= order.length - 1, [
-        index1
-    ]);
-    const isFirst = (0, $d4J5n.useMemo)(()=>index1 === 0, [
-        index1
-    ]);
-    const currentCase = (0, $d4J5n.useMemo)(()=>order[index1], [
-        index1
-    ]);
-    const preferredSolution = (0, $d4J5n.useMemo)(()=>currentCase && (0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(currentCase.solutions[stepStorage.cases[currentCase.name].preferred]).split(" "), [
-        currentCase
-    ]);
-    const previousCase = ()=>{
-        setHint("");
-        setIndex((index)=>index - 1);
-    };
-    const nextCase = ()=>{
-        setHint("");
-        if (isLast) {
-            alert("starting over!!");
-            setOrder((0, (/*@__PURE__*/$parcel$interopDefault($d3ff3298a4c42353$exports)))(filterAlgs()));
-            setIndex(0);
-        } else setIndex((index)=>index + 1);
-    };
-    const handleSpace = (e)=>{
-        e.preventDefault();
-        nextCase();
-    };
-    const randomIntUpTo = (max)=>{
-        return Math.floor(Math.random() * (max + 1));
-    };
+    const randomIntUpTo = (max)=>Math.floor(Math.random() * (max + 1));
     const randomAUF = ()=>randomIntUpTo(step.quantumMoveOrder - 1);
     const createSetup = (setup)=>{
-        return new (0, $j3ukw.Alg)(`${setup} U${randomAUF()}`).experimentalSimplify({
+        return new (0, $OIFGm.Alg)(`${setup} U${randomAUF()}`).experimentalSimplify({
             cancel: true,
             puzzleLoader: {
                 puzzleSpecificSimplifyOptions: {
@@ -38972,68 +33997,100 @@ const $e0134a5109cce5f9$export$d17e05c732d1a969 = ()=>{
             }
         });
     };
-    const currentSetup = (0, $d4J5n.useMemo)(()=>currentCase ? createSetup((0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(currentCase.setups)).toString() : "No cases found that match your current filters.", [
-        currentCase
-    ]);
+    const getRandomCase = (newIndex)=>{
+        const _case = order[newIndex];
+        return {
+            setup: createSetup((0, $3fcb4d79a9375aeb$export$2e2bcd8739ae039)(_case.setups)).toString(),
+            preferredSolution: (0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(_case.solutions[stepStorage.cases[_case.name].preferred]).split(" ")
+        };
+    };
+    const setCase = (index)=>{
+        setState({
+            index: index,
+            ...getRandomCase(index)
+        });
+    };
+    const [state, setState] = (0, $d4J5n.useState)({
+        index: 0,
+        ...getRandomCase(0)
+    });
+    const [hint, setHint] = (0, $d4J5n.useState)("");
+    const previousCase = ()=>{
+        setHint("");
+        setCase(state.index - 1);
+    };
+    const nextCase = ()=>{
+        setHint("");
+        if (state.index >= order.length - 1) {
+            alert("starting over!!");
+            setOrder((0, (/*@__PURE__*/$parcel$interopDefault($d3ff3298a4c42353$exports)))(filterAlgs()));
+            setCase(0);
+        } else setCase(state.index + 1);
+    };
+    const handleSpace = (e)=>{
+        e.preventDefault();
+        nextCase();
+    };
     (0, $d325342d90344c14$export$2e2bcd8739ae039)(" ", handleSpace, [
-        isLast
+        state
     ]);
     const updateHint = ()=>{
         const newHintLength = hint.length > 0 ? hint.split(" ").length + 1 : 1;
-        setHint(preferredSolution.slice(0, newHintLength).join(" "));
+        setHint(state.preferredSolution.slice(0, newHintLength).join(" "));
     };
     return /*#__PURE__*/ (0, $228IU.jsx)((0, $228IU.Fragment), {
         children: /*#__PURE__*/ (0, $228IU.jsxs)((0, $f2d8fe790f2a3612$export$2e2bcd8739ae039), {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-            minHeight: "95vh",
-            maxWidth: "95vw",
-            textAlign: "center",
+            sx: {
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                width: "88vw",
+                textAlign: "center",
+                position: "fixed",
+                height: "100%",
+                left: "50%",
+                transform: "translateX(-50%)"
+            },
             children: [
                 /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
                     component: "h1",
                     variant: "h3",
-                    children: currentSetup
+                    children: state.setup
                 }),
-                currentCase && /*#__PURE__*/ (0, $228IU.jsxs)((0, $228IU.Fragment), {
-                    children: [
-                        /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
-                            variant: "contained",
-                            sx: {
-                                mt: 3
-                            },
-                            size: "large",
-                            onClick: nextCase,
-                            children: isLast ? "Start over" : "Next case"
-                        }),
-                        /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
-                            variant: "text",
-                            sx: {
-                                mt: 2
-                            },
-                            size: "large",
-                            onClick: updateHint,
-                            children: "Hint"
-                        }),
-                        /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
-                            component: "h5",
-                            variant: "h5",
-                            children: hint
-                        }),
-                        !isFirst && /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
-                            variant: "text",
-                            sx: {
-                                mt: 3,
-                                position: "fixed",
-                                bottom: 50
-                            },
-                            size: "small",
-                            onClick: previousCase,
-                            children: "Previous case"
-                        })
-                    ]
+                /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
+                    variant: "contained",
+                    sx: {
+                        mt: 3
+                    },
+                    size: "large",
+                    onClick: nextCase,
+                    children: state.index >= order.length - 1 ? "Start over" : "Next case"
+                }),
+                /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
+                    variant: "text",
+                    sx: {
+                        mt: 2
+                    },
+                    size: "large",
+                    onClick: updateHint,
+                    children: "Hint"
+                }),
+                /*#__PURE__*/ (0, $228IU.jsx)((0, $bebdf3a72854fb13$export$2e2bcd8739ae039), {
+                    component: "h5",
+                    variant: "h5",
+                    children: hint
+                }),
+                state.index !== 0 && /*#__PURE__*/ (0, $228IU.jsx)((0, $65c4d565b4687bd9$export$2e2bcd8739ae039), {
+                    variant: "text",
+                    sx: {
+                        mt: 3,
+                        position: "fixed",
+                        bottom: 85
+                    },
+                    size: "small",
+                    onClick: previousCase,
+                    children: "Previous case"
                 })
             ]
         })
@@ -39054,4585 +34111,8 @@ var $228IU = parcelRequire("228IU");
 var $d4J5n = parcelRequire("d4J5n");
 
 
-var $9IDdS = parcelRequire("9IDdS");
-parcelRequire("8NQJK");
 
-var $j3ukw = parcelRequire("j3ukw");
-// src/cubing/notation/CountMoves.ts
-var $ce7d5deeec50f6ba$var$CountMoves = class extends (0, $j3ukw.TraversalUp) {
-    constructor(metric){
-        super();
-        this.metric = metric;
-    }
-    traverseAlg(alg) {
-        let r = 0;
-        for (const algNode of alg.childAlgNodes())r += this.traverseAlgNode(algNode);
-        return r;
-    }
-    traverseGrouping(grouping) {
-        const alg = grouping.alg;
-        return this.traverseAlg(alg) * Math.abs(grouping.amount);
-    }
-    traverseMove(move) {
-        return this.metric(move);
-    }
-    traverseCommutator(commutator) {
-        return 2 * (this.traverseAlg(commutator.A) + this.traverseAlg(commutator.B));
-    }
-    traverseConjugate(conjugate) {
-        return 2 * this.traverseAlg(conjugate.A) + this.traverseAlg(conjugate.B);
-    }
-    traversePause(_pause) {
-        return 0;
-    }
-    traverseNewline(_newLine) {
-        return 0;
-    }
-    traverseLineComment(_comment) {
-        return 0;
-    }
-};
-function $ce7d5deeec50f6ba$var$isCharUppercase(c) {
-    return "A" <= c && c <= "Z";
-}
-function $ce7d5deeec50f6ba$var$baseMetric(move) {
-    const fam = move.family;
-    if ($ce7d5deeec50f6ba$var$isCharUppercase(fam[0]) && fam[fam.length - 1] === "v" || fam === "x" || fam === "y" || fam === "z" || fam === "T") return 0;
-    else return 1;
-}
-function $ce7d5deeec50f6ba$var$etmMetric(_move) {
-    return 1;
-}
-function $ce7d5deeec50f6ba$var$quantumMetric(move) {
-    const fam = move.family;
-    if ($ce7d5deeec50f6ba$var$isCharUppercase(fam[0]) && fam[fam.length - 1] === "v" || fam === "x" || fam === "y" || fam === "z" || fam === "T") return 0;
-    else return Math.abs(move.amount);
-}
-var $ce7d5deeec50f6ba$var$countMovesInstance = new $ce7d5deeec50f6ba$var$CountMoves($ce7d5deeec50f6ba$var$baseMetric);
-var $ce7d5deeec50f6ba$export$3bb9ec80d65f79cf = $ce7d5deeec50f6ba$var$countMovesInstance.traverseAlg.bind($ce7d5deeec50f6ba$var$countMovesInstance);
-var $ce7d5deeec50f6ba$var$countMovesETMInstance = new $ce7d5deeec50f6ba$var$CountMoves($ce7d5deeec50f6ba$var$etmMetric);
-var $ce7d5deeec50f6ba$export$6990ae67f1cd4a6c = $ce7d5deeec50f6ba$var$countMovesInstance.traverseAlg.bind($ce7d5deeec50f6ba$var$countMovesETMInstance);
-var $ce7d5deeec50f6ba$var$countQuantumMovesInstance = new $ce7d5deeec50f6ba$var$CountMoves($ce7d5deeec50f6ba$var$quantumMetric);
-var $ce7d5deeec50f6ba$export$5ea07e609cc3aa95 = $ce7d5deeec50f6ba$var$countQuantumMovesInstance.traverseAlg.bind($ce7d5deeec50f6ba$var$countQuantumMovesInstance);
-// src/cubing/notation/CountAnimatedLeaves.ts
-var $ce7d5deeec50f6ba$var$CountAnimatedLeaves = class extends (0, $j3ukw.TraversalUp) {
-    traverseAlg(alg) {
-        let total = 0;
-        for (const part of alg.childAlgNodes())total += this.traverseAlgNode(part);
-        return total;
-    }
-    traverseGrouping(grouping) {
-        return this.traverseAlg(grouping.alg) * Math.abs(grouping.amount);
-    }
-    traverseMove(_move) {
-        return 1;
-    }
-    traverseCommutator(commutator) {
-        return 2 * (this.traverseAlg(commutator.A) + this.traverseAlg(commutator.B));
-    }
-    traverseConjugate(conjugate) {
-        return 2 * this.traverseAlg(conjugate.A) + this.traverseAlg(conjugate.B);
-    }
-    traversePause(_pause) {
-        return 1;
-    }
-    traverseNewline(_newline) {
-        return 0;
-    }
-    traverseLineComment(_comment) {
-        return 0;
-    }
-};
-var $ce7d5deeec50f6ba$var$countAnimatedLeavesInstance = new $ce7d5deeec50f6ba$var$CountAnimatedLeaves();
-var $ce7d5deeec50f6ba$export$d5ea806fd922b359 = $ce7d5deeec50f6ba$var$countAnimatedLeavesInstance.traverseAlg.bind($ce7d5deeec50f6ba$var$countAnimatedLeavesInstance);
-
-
-
-var $ch5j6 = parcelRequire("ch5j6");
-
-var $jZEJE = parcelRequire("jZEJE");
-parcelRequire("c3OhB");
-
-var $j3ukw = parcelRequire("j3ukw");
-// src/cubing/twisty/controllers/AnimationTypes.ts
-function $8e08190ac5cfc1c3$var$directionScalar(direction) {
-    return direction;
-}
-// src/cubing/twisty/model/helpers.ts
-function $8e08190ac5cfc1c3$var$arrayEquals(a, b) {
-    if (a === b) return true;
-    if (a.length !== b.length) return false;
-    for(let i = 0; i < a.length; i++){
-        if (a[i] !== b[i]) return false;
-    }
-    return true;
-}
-function $8e08190ac5cfc1c3$var$arrayEqualsCompare(a, b, compare) {
-    if (a === b) return true;
-    if (a.length !== b.length) return false;
-    for(let i = 0; i < a.length; i++){
-        if (!compare(a[i], b[i])) return false;
-    }
-    return true;
-}
-function $8e08190ac5cfc1c3$var$mod(v, m, offset = 0) {
-    return (v % m + m + offset) % m - offset;
-}
-function $8e08190ac5cfc1c3$var$modIntoRange(v, rangeMin, rangeMax) {
-    return $8e08190ac5cfc1c3$var$mod(v - rangeMin, rangeMax - rangeMin) + rangeMin;
-}
-// src/cubing/twisty/controllers/TwistyAnimationController.ts
-var $8e08190ac5cfc1c3$var$CatchUpHelper = class {
-    constructor(model){
-        this.model = model;
-        this.catchingUp = false;
-        this.pendingFrame = false;
-        this.scheduler = new (0, $9IDdS.RenderScheduler)(this.animFrame.bind(this));
-        this.catchUpMs = 500;
-        this.lastTimestamp = 0;
-    }
-    start() {
-        if (!this.catchingUp) this.lastTimestamp = performance.now();
-        this.catchingUp = true;
-        this.pendingFrame = true;
-        this.scheduler.requestAnimFrame();
-    }
-    stop() {
-        this.catchingUp = false;
-        this.scheduler.cancelAnimFrame();
-    }
-    animFrame(timestamp) {
-        this.scheduler.requestAnimFrame();
-        const delta = (timestamp - this.lastTimestamp) / this.catchUpMs;
-        this.lastTimestamp = timestamp;
-        this.model.catchUpMove.set((async ()=>{
-            const previousCatchUpMove = await this.model.catchUpMove.get();
-            if (previousCatchUpMove.move === null) return previousCatchUpMove;
-            const amount = previousCatchUpMove.amount + delta;
-            if (amount >= 1) {
-                this.pendingFrame = true;
-                this.stop();
-                this.model.timestampRequest.set("end");
-                return {
-                    move: null,
-                    amount: 0
-                };
-            }
-            this.pendingFrame = false;
-            return {
-                move: previousCatchUpMove.move,
-                amount: amount
-            };
-        })());
-    }
-};
-var $8e08190ac5cfc1c3$var$TwistyAnimationController = class {
-    constructor(model, delegate){
-        this.delegate = delegate;
-        this.playing = false;
-        this.direction = 1 /* Forwards */ ;
-        this.lastDatestamp = 0;
-        this.scheduler = new (0, $9IDdS.RenderScheduler)(this.animFrame.bind(this));
-        this.#animFrameEffectiveTimestampStaleDropper = new (0, $9IDdS.StaleDropper)();
-        this.model = model;
-        this.lastTimestampPromise = this.#effectiveTimestampMilliseconds();
-        this.model.playingInfo.addFreshListener(this.onPlayingProp.bind(this));
-        this.catchUpHelper = new $8e08190ac5cfc1c3$var$CatchUpHelper(this.model);
-        this.model.catchUpMove.addFreshListener(this.onCatchUpMoveProp.bind(this));
-    }
-    async onPlayingProp(playingInfo) {
-        if (playingInfo.playing !== this.playing) playingInfo.playing ? this.play(playingInfo) : this.pause();
-    }
-    async onCatchUpMoveProp(catchUpMove) {
-        const catchingUp = catchUpMove.move !== null;
-        if (catchingUp !== this.catchUpHelper.catchingUp) catchingUp ? this.catchUpHelper.start() : this.catchUpHelper.stop();
-        this.scheduler.requestAnimFrame();
-    }
-    async #effectiveTimestampMilliseconds() {
-        return (await this.model.detailedTimelineInfo.get()).timestamp;
-    }
-    jumpToStart(options) {
-        this.model.timestampRequest.set("start");
-        this.pause();
-        if (options?.flash) this.delegate.flash();
-    }
-    jumpToEnd(options) {
-        this.model.timestampRequest.set("end");
-        this.pause();
-        if (options?.flash) this.delegate.flash();
-    }
-    playPause() {
-        if (this.playing) this.pause();
-        else this.play();
-    }
-    async play(options) {
-        const direction = options?.direction ?? 1 /* Forwards */ ;
-        const coarseTimelineInfo = await this.model.coarseTimelineInfo.get();
-        if (options?.autoSkipToOtherEndIfStartingAtBoundary ?? true) {
-            if (direction === 1 /* Forwards */  && coarseTimelineInfo.atEnd) {
-                this.model.timestampRequest.set("start");
-                this.delegate.flash();
-            }
-            if (direction === -1 /* Backwards */  && coarseTimelineInfo.atStart) {
-                this.model.timestampRequest.set("end");
-                this.delegate.flash();
-            }
-        }
-        this.model.playingInfo.set({
-            playing: true,
-            direction: direction,
-            untilBoundary: options?.untilBoundary ?? "entire-timeline" /* EntireTimeline */ ,
-            loop: options?.loop ?? false
-        });
-        this.playing = true;
-        this.lastDatestamp = performance.now();
-        this.lastTimestampPromise = this.#effectiveTimestampMilliseconds();
-        this.scheduler.requestAnimFrame();
-    }
-    pause() {
-        this.playing = false;
-        this.scheduler.cancelAnimFrame();
-        this.model.playingInfo.set({
-            playing: false,
-            untilBoundary: "entire-timeline" /* EntireTimeline */ 
-        });
-    }
-    #animFrameEffectiveTimestampStaleDropper;
-    async animFrame(frameDatestamp) {
-        if (this.playing) this.scheduler.requestAnimFrame();
-        const lastDatestamp = this.lastDatestamp;
-        const freshenerResult = await this.#animFrameEffectiveTimestampStaleDropper.queue(Promise.all([
-            this.model.playingInfo.get(),
-            this.lastTimestampPromise,
-            this.model.timeRange.get(),
-            this.model.tempoScale.get(),
-            this.model.currentMoveInfo.get()
-        ]));
-        const [playingInfo, lastTimestamp, timeRange, tempoScale, currentMoveInfo] = freshenerResult;
-        if (!playingInfo.playing) {
-            this.playing = false;
-            return;
-        }
-        let end = currentMoveInfo.earliestEnd;
-        if (currentMoveInfo.currentMoves.length === 0 || playingInfo.untilBoundary === "entire-timeline" /* EntireTimeline */ ) end = timeRange.end;
-        let start = currentMoveInfo.latestStart;
-        if (currentMoveInfo.currentMoves.length === 0 || playingInfo.untilBoundary === "entire-timeline" /* EntireTimeline */ ) start = timeRange.start;
-        let delta = (frameDatestamp - lastDatestamp) * $8e08190ac5cfc1c3$var$directionScalar(this.direction) * tempoScale;
-        delta = Math.max(delta, 1);
-        delta *= playingInfo.direction;
-        let newTimestamp = lastTimestamp + delta;
-        let newSmartTimestampRequest = null;
-        if (newTimestamp >= end) {
-            if (playingInfo.loop) newTimestamp = $8e08190ac5cfc1c3$var$modIntoRange(newTimestamp, timeRange.start, timeRange.end);
-            else {
-                if (newTimestamp === timeRange.end) newSmartTimestampRequest = "end";
-                else newTimestamp = end;
-                this.playing = false;
-                this.model.playingInfo.set({
-                    playing: false
-                });
-            }
-        } else if (newTimestamp <= start) {
-            if (playingInfo.loop) newTimestamp = $8e08190ac5cfc1c3$var$modIntoRange(newTimestamp, timeRange.start, timeRange.end);
-            else {
-                if (newTimestamp === timeRange.start) newSmartTimestampRequest = "start";
-                else newTimestamp = start;
-                this.playing = false;
-                this.model.playingInfo.set({
-                    playing: false
-                });
-            }
-        }
-        this.lastDatestamp = frameDatestamp;
-        this.lastTimestampPromise = Promise.resolve(newTimestamp);
-        this.model.timestampRequest.set(newSmartTimestampRequest ?? newTimestamp);
-    }
-};
-// src/cubing/twisty/controllers/TwistyPlayerController.ts
-var $8e08190ac5cfc1c3$var$TwistyPlayerController = class {
-    constructor(model, delegate){
-        this.model = model;
-        this.animationController = new $8e08190ac5cfc1c3$var$TwistyAnimationController(model, delegate);
-    }
-    jumpToStart(options) {
-        this.animationController.jumpToStart(options);
-    }
-    jumpToEnd(options) {
-        this.animationController.jumpToEnd(options);
-    }
-    togglePlay(play) {
-        if (typeof play === "undefined") this.animationController.playPause();
-        play ? this.animationController.play() : this.animationController.pause();
-    }
-    async visitTwizzleLink() {
-        const a = document.createElement("a");
-        a.href = await this.model.twizzleLink();
-        a.target = "_blank";
-        a.click();
-    }
-};
-// src/cubing/twisty/model/props/viewer/ControlPanelProp.ts
-var $8e08190ac5cfc1c3$var$controlsLocations = {
-    "bottom-row": true,
-    none: true
-};
-var $8e08190ac5cfc1c3$var$ControlPanelProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "auto";
-    }
-};
-// src/cubing/twisty/views/TwistyViewerWrapper.css.ts
-var $8e08190ac5cfc1c3$var$twistyViewerWrapperCSS = new (0, $9IDdS.CSSSource)(`
-:host {
-  width: 384px;
-  height: 256px;
-  display: grid;
-}
-
-.wrapper {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  overflow: hidden;
-}
-
-.wrapper > * {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.wrapper.back-view-side-by-side {
-  grid-template-columns: 1fr 1fr;
-}
-
-.wrapper.back-view-top-right {
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: 1fr 3fr;
-}
-
-.wrapper.back-view-top-right > :nth-child(1) {
-  grid-row: 1 / 3;
-  grid-column: 1 / 3;
-}
-
-.wrapper.back-view-top-right > :nth-child(2) {
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
-}
-`);
-// src/cubing/twisty/views/2D/KPuzzleSVGWrapper.ts
-var $8e08190ac5cfc1c3$var$xmlns = "http://www.w3.org/2000/svg";
-var $8e08190ac5cfc1c3$var$svgCounter = 0;
-function $8e08190ac5cfc1c3$var$nextSVGID() {
-    $8e08190ac5cfc1c3$var$svgCounter += 1;
-    return `svg${$8e08190ac5cfc1c3$var$svgCounter.toString()}`;
-}
-var $8e08190ac5cfc1c3$var$colorMaps = {
-    dim: {
-        white: "#dddddd",
-        orange: "#884400",
-        limegreen: "#008800",
-        red: "#660000",
-        "rgb(34, 102, 255)": "#000088",
-        yellow: "#888800"
-    },
-    oriented: {
-        white: "#44ddcc",
-        orange: "#44ddcc",
-        limegreen: "#44ddcc",
-        red: "#44ddcc",
-        "rgb(34, 102, 255)": "#44ddcc",
-        yellow: "#44ddcc"
-    },
-    ignored: {
-        white: "#444444",
-        orange: "#444444",
-        limegreen: "#444444",
-        red: "#444444",
-        "rgb(34, 102, 255)": "#444444",
-        yellow: "#444444"
-    },
-    invisible: {
-        white: "#00000000",
-        orange: "#00000000",
-        limegreen: "#00000000",
-        red: "#00000000",
-        "rgb(34, 102, 255)": "#00000000",
-        yellow: "#00000000"
-    }
-};
-var $8e08190ac5cfc1c3$export$1c51709df4cf438 = class {
-    constructor(kpuzzle, svgSource, experimentalStickeringMask){
-        this.kpuzzle = kpuzzle;
-        this.originalColors = {};
-        this.gradients = {};
-        if (!svgSource) throw new Error(`No SVG definition for puzzle type: ${kpuzzle.name()}`);
-        this.svgID = $8e08190ac5cfc1c3$var$nextSVGID();
-        this.wrapperElement = document.createElement("div");
-        this.wrapperElement.classList.add("svg-wrapper");
-        this.wrapperElement.innerHTML = svgSource;
-        const svgElem = this.wrapperElement.querySelector("svg");
-        if (!svgElem) throw new Error("Could not get SVG element");
-        this.svgElement = svgElem;
-        if ($8e08190ac5cfc1c3$var$xmlns !== svgElem.namespaceURI) throw new Error("Unexpected XML namespace");
-        svgElem.style.maxWidth = "100%";
-        svgElem.style.maxHeight = "100%";
-        this.gradientDefs = document.createElementNS($8e08190ac5cfc1c3$var$xmlns, "defs");
-        svgElem.insertBefore(this.gradientDefs, svgElem.firstChild);
-        for(const orbitName in kpuzzle.definition.orbits){
-            const orbitDefinition = kpuzzle.definition.orbits[orbitName];
-            for(let idx = 0; idx < orbitDefinition.numPieces; idx++)for(let orientation = 0; orientation < orbitDefinition.numOrientations; orientation++){
-                const id = this.elementID(orbitName, idx, orientation);
-                const elem = this.elementByID(id);
-                let originalColor = elem.style.fill;
-                if (experimentalStickeringMask) (()=>{
-                    const a = experimentalStickeringMask.orbits;
-                    if (!a) return;
-                    const orbitStickeringMask = a[orbitName];
-                    if (!orbitStickeringMask) return;
-                    const pieceStickeringMask = orbitStickeringMask.pieces[idx];
-                    if (!pieceStickeringMask) return;
-                    const faceletStickeringMasks = pieceStickeringMask.facelets[orientation];
-                    if (!faceletStickeringMasks) return;
-                    const stickeringMask = typeof faceletStickeringMasks === "string" ? faceletStickeringMasks : faceletStickeringMasks?.mask;
-                    const colorMap = $8e08190ac5cfc1c3$var$colorMaps[stickeringMask];
-                    if (colorMap) originalColor = colorMap[originalColor];
-                })();
-                else originalColor = elem.style.fill;
-                this.originalColors[id] = originalColor;
-                this.gradients[id] = this.newGradient(id, originalColor);
-                this.gradientDefs.appendChild(this.gradients[id]);
-                elem.setAttribute("style", `fill: url(#grad-${this.svgID}-${id})`);
-            }
-        }
-    }
-    drawState(state, nextState, fraction) {
-        this.draw(state, nextState, fraction);
-    }
-    draw(state, nextState, fraction) {
-        const transformation = state.experimentalToTransformation();
-        const nextTransformation = nextState?.experimentalToTransformation();
-        if (!transformation) throw new Error("Distinguishable pieces are not handled for SVG yet!");
-        for(const orbitName in transformation.kpuzzle.definition.orbits){
-            const orbitDefinition = transformation.kpuzzle.definition.orbits[orbitName];
-            const curTransformationOrbit = transformation.transformationData[orbitName];
-            const nextTransformationOrbit = nextTransformation ? nextTransformation.transformationData[orbitName] : null;
-            for(let idx = 0; idx < orbitDefinition.numPieces; idx++)for(let orientation = 0; orientation < orbitDefinition.numOrientations; orientation++){
-                const id = this.elementID(orbitName, idx, orientation);
-                const fromCur = this.elementID(orbitName, curTransformationOrbit.permutation[idx], (orbitDefinition.numOrientations - curTransformationOrbit.orientation[idx] + orientation) % orbitDefinition.numOrientations);
-                let singleColor = false;
-                if (nextTransformationOrbit) {
-                    const fromNext = this.elementID(orbitName, nextTransformationOrbit.permutation[idx], (orbitDefinition.numOrientations - nextTransformationOrbit.orientation[idx] + orientation) % orbitDefinition.numOrientations);
-                    if (fromCur === fromNext) singleColor = true;
-                    fraction = fraction || 0;
-                    const easedBackwardsPercent = 100 * (1 - fraction * fraction * (2 - fraction * fraction));
-                    this.gradients[id].children[0].setAttribute("stop-color", this.originalColors[fromCur]);
-                    this.gradients[id].children[1].setAttribute("stop-color", this.originalColors[fromCur]);
-                    this.gradients[id].children[1].setAttribute("offset", `${Math.max(easedBackwardsPercent - 5, 0)}%`);
-                    this.gradients[id].children[2].setAttribute("offset", `${Math.max(easedBackwardsPercent - 5, 0)}%`);
-                    this.gradients[id].children[3].setAttribute("offset", `${easedBackwardsPercent}%`);
-                    this.gradients[id].children[4].setAttribute("offset", `${easedBackwardsPercent}%`);
-                    this.gradients[id].children[4].setAttribute("stop-color", this.originalColors[fromNext]);
-                    this.gradients[id].children[5].setAttribute("stop-color", this.originalColors[fromNext]);
-                } else singleColor = true;
-                if (singleColor) {
-                    this.gradients[id].children[0].setAttribute("stop-color", this.originalColors[fromCur]);
-                    this.gradients[id].children[1].setAttribute("stop-color", this.originalColors[fromCur]);
-                    this.gradients[id].children[1].setAttribute("offset", "100%");
-                    this.gradients[id].children[2].setAttribute("offset", "100%");
-                    this.gradients[id].children[3].setAttribute("offset", "100%");
-                    this.gradients[id].children[4].setAttribute("offset", "100%");
-                }
-            }
-        }
-    }
-    newGradient(id, originalColor) {
-        const grad = document.createElementNS($8e08190ac5cfc1c3$var$xmlns, "radialGradient");
-        grad.setAttribute("id", `grad-${this.svgID}-${id}`);
-        grad.setAttribute("r", "70.7107%");
-        const stopDefs = [
-            {
-                offset: 0,
-                color: originalColor
-            },
-            {
-                offset: 0,
-                color: originalColor
-            },
-            {
-                offset: 0,
-                color: "black"
-            },
-            {
-                offset: 0,
-                color: "black"
-            },
-            {
-                offset: 0,
-                color: originalColor
-            },
-            {
-                offset: 100,
-                color: originalColor
-            }
-        ];
-        for (const stopDef of stopDefs){
-            const stop = document.createElementNS($8e08190ac5cfc1c3$var$xmlns, "stop");
-            stop.setAttribute("offset", `${stopDef.offset}%`);
-            stop.setAttribute("stop-color", stopDef.color);
-            stop.setAttribute("stop-opacity", "1");
-            grad.appendChild(stop);
-        }
-        return grad;
-    }
-    elementID(orbitName, idx, orientation) {
-        return `${orbitName}-l${idx}-o${orientation}`;
-    }
-    elementByID(id) {
-        return this.wrapperElement.querySelector(`#${id}`);
-    }
-};
-// src/cubing/twisty/views/2D/Twisty2DPuzzle.css.ts
-var $8e08190ac5cfc1c3$var$twisty2DSVGCSS = new (0, $9IDdS.CSSSource)(`
-:host {
-  width: 384px;
-  height: 256px;
-  display: grid;
-}
-
-.wrapper {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  overflow: hidden;
-}
-
-.svg-wrapper,
-twisty-2d-svg,
-svg {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  min-height: 0;
-}
-
-svg {
-  animation: fade-in 0.25s ease-in;
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-`);
-// src/cubing/twisty/views/2D/Twisty2DPuzzle.ts
-var $8e08190ac5cfc1c3$var$Twisty2DPuzzle = class extends (0, $9IDdS.ManagedCustomElement) {
-    constructor(model, kpuzzle, svgSource, options, puzzleLoader){
-        super();
-        this.model = model;
-        this.kpuzzle = kpuzzle;
-        this.svgSource = svgSource;
-        this.options = options;
-        this.puzzleLoader = puzzleLoader;
-        this.scheduler = new (0, $9IDdS.RenderScheduler)(this.render.bind(this));
-        this.#cachedPosition = null;
-        this.#freshListenerManager = new (0, $9IDdS.FreshListenerManager)();
-        this.addCSS($8e08190ac5cfc1c3$var$twisty2DSVGCSS);
-        this.resetSVG();
-        this.#freshListenerManager.addListener(this.model.puzzleID, (puzzleID)=>{
-            if (puzzleLoader?.id !== puzzleID) this.disconnect();
-        });
-        this.#freshListenerManager.addListener(this.model.legacyPosition, this.onPositionChange.bind(this));
-        if (this.options?.experimentalStickeringMask) this.experimentalSetStickeringMask(this.options.experimentalStickeringMask);
-    }
-    #cachedPosition;
-    #freshListenerManager;
-    disconnect() {
-        this.#freshListenerManager.disconnect();
-    }
-    onPositionChange(position) {
-        try {
-            if (position.movesInProgress.length > 0) {
-                const move = position.movesInProgress[0].move;
-                let partialMove = move;
-                if (position.movesInProgress[0].direction === -1 /* Backwards */ ) partialMove = move.invert();
-                const newState = position.state.applyMove(partialMove);
-                this.svgWrapper.draw(position.state, newState, position.movesInProgress[0].fraction);
-            } else {
-                this.svgWrapper.draw(position.state);
-                this.#cachedPosition = position;
-            }
-        } catch (e) {
-            console.warn("Bad position (this doesn't necessarily mean something is wrong). Pre-emptively disconnecting:", this.puzzleLoader?.id, e);
-            this.disconnect();
-        }
-    }
-    scheduleRender() {
-        this.scheduler.requestAnimFrame();
-    }
-    experimentalSetStickeringMask(stickeringMask) {
-        this.resetSVG(stickeringMask);
-    }
-    resetSVG(stickeringMask) {
-        if (this.svgWrapper) this.removeElement(this.svgWrapper.wrapperElement);
-        if (!this.kpuzzle) return;
-        this.svgWrapper = new $8e08190ac5cfc1c3$export$1c51709df4cf438(this.kpuzzle, this.svgSource, stickeringMask);
-        this.addElement(this.svgWrapper.wrapperElement);
-        if (this.#cachedPosition) this.onPositionChange(this.#cachedPosition);
-    }
-    render() {}
-};
-(0, $9IDdS.customElementsShim).define("twisty-2d-puzzle", $8e08190ac5cfc1c3$var$Twisty2DPuzzle);
-// src/cubing/twisty/views/2D/Twisty2DPuzzleWrapper.ts
-var $8e08190ac5cfc1c3$var$Twisty2DPuzzleWrapper = class {
-    constructor(model, schedulable, puzzleLoader, effectiveVisualization){
-        this.model = model;
-        this.schedulable = schedulable;
-        this.puzzleLoader = puzzleLoader;
-        this.effectiveVisualization = effectiveVisualization;
-        this.twisty2DPuzzle();
-        this.#freshListenerManager.addListener(this.model.twistySceneModel.stickeringMask, async (stickeringMask)=>{
-            (await this.twisty2DPuzzle()).experimentalSetStickeringMask(stickeringMask);
-        });
-    }
-    #freshListenerManager = new (0, $9IDdS.FreshListenerManager)();
-    disconnect() {
-        this.#freshListenerManager.disconnect();
-    }
-    scheduleRender() {}
-    #cachedTwisty2DPuzzle = null;
-    async twisty2DPuzzle() {
-        return this.#cachedTwisty2DPuzzle ?? (this.#cachedTwisty2DPuzzle = (async ()=>{
-            const svgPromise = this.effectiveVisualization === "experimental-2D-LL" ? this.puzzleLoader.llSVG() : this.puzzleLoader.svg();
-            return new $8e08190ac5cfc1c3$var$Twisty2DPuzzle(this.model, await this.puzzleLoader.kpuzzle(), await svgPromise, {}, this.puzzleLoader);
-        })());
-    }
-};
-// src/cubing/twisty/views/2D/Twisty2DSceneWrapper.ts
-var $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper = class extends (0, $9IDdS.ManagedCustomElement) {
-    constructor(model, effectiveVisualization){
-        super();
-        this.model = model;
-        this.effectiveVisualization = effectiveVisualization;
-    }
-    #freshListenerManager = new (0, $9IDdS.FreshListenerManager)();
-    disconnect() {
-        this.#freshListenerManager.disconnect();
-    }
-    async connectedCallback() {
-        this.addCSS($8e08190ac5cfc1c3$var$twistyViewerWrapperCSS);
-        if (this.model) this.#freshListenerManager.addListener(this.model.twistyPlayerModel.puzzleLoader, this.onPuzzleLoader.bind(this));
-    }
-    #cachedScene;
-    async scene() {
-        return this.#cachedScene ?? (this.#cachedScene = (async ()=>new (await (0, $9IDdS.THREEJS)).Scene())());
-    }
-    scheduleRender() {
-        this.#currentTwisty2DPuzzleWrapper?.scheduleRender();
-    }
-    #currentTwisty2DPuzzleWrapper = null;
-    currentTwisty2DPuzzleWrapper() {
-        return this.#currentTwisty2DPuzzleWrapper;
-    }
-    async setCurrentTwisty2DPuzzleWrapper(twisty2DPuzzleWrapper) {
-        const old = this.#currentTwisty2DPuzzleWrapper;
-        this.#currentTwisty2DPuzzleWrapper = twisty2DPuzzleWrapper;
-        old?.disconnect();
-        const twisty2DPuzzlePromise = twisty2DPuzzleWrapper.twisty2DPuzzle();
-        this.contentWrapper.textContent = "";
-        this.addElement(await twisty2DPuzzlePromise);
-    }
-    async onPuzzleLoader(puzzleLoader) {
-        this.#currentTwisty2DPuzzleWrapper?.disconnect();
-        const twisty2DPuzzleWrapper = new $8e08190ac5cfc1c3$var$Twisty2DPuzzleWrapper(this.model.twistyPlayerModel, this, puzzleLoader, this.effectiveVisualization);
-        this.setCurrentTwisty2DPuzzleWrapper(twisty2DPuzzleWrapper);
-    }
-};
-(0, $9IDdS.customElementsShim).define("twisty-2d-scene-wrapper", $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper);
-// src/cubing/twisty/views/ClassListManager.ts
-var $8e08190ac5cfc1c3$var$ClassListManager = class {
-    constructor(elem, prefix, validSuffixes){
-        this.elem = elem;
-        this.prefix = prefix;
-        this.validSuffixes = validSuffixes;
-    }
-    #currentClassName = null;
-    clearValue() {
-        if (this.#currentClassName) this.elem.contentWrapper.classList.remove(this.#currentClassName);
-        this.#currentClassName = null;
-    }
-    setValue(suffix) {
-        if (!this.validSuffixes.includes(suffix)) throw new Error(`Invalid suffix: ${suffix}`);
-        const newClassName = `${this.prefix}${suffix}`;
-        const changed = this.#currentClassName !== newClassName;
-        if (changed) {
-            this.clearValue();
-            this.elem.contentWrapper.classList.add(newClassName);
-            this.#currentClassName = newClassName;
-        }
-        return changed;
-    }
-};
-// src/cubing/twisty/views/InitialValueTracker.ts
-var $8e08190ac5cfc1c3$var$InitialValueTracker = class {
-    constructor(){
-        this.promise = new Promise((resolve, reject)=>{
-            this.#resolve = resolve;
-            this.reject = reject;
-        });
-    }
-    #resolve;
-    handleNewValue(t) {
-        this.#resolve(t);
-    }
-};
-// src/cubing/twisty/views/3D/Twisty3DPuzzleWrapper.ts
-var $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper = class extends EventTarget {
-    constructor(model, schedulable, puzzleLoader, visualizationStrategy){
-        super();
-        this.model = model;
-        this.schedulable = schedulable;
-        this.puzzleLoader = puzzleLoader;
-        this.visualizationStrategy = visualizationStrategy;
-        this.twisty3DPuzzle();
-        this.#freshListenerManager.addListener(this.model.puzzleLoader, (puzzleLoader2)=>{
-            if (this.puzzleLoader.id !== puzzleLoader2.id) this.disconnect();
-        });
-        this.#freshListenerManager.addListener(this.model.legacyPosition, async (position)=>{
-            try {
-                (await this.twisty3DPuzzle()).onPositionChange(position);
-                this.scheduleRender();
-            } catch (e) {
-                this.disconnect();
-            }
-        });
-        this.#freshListenerManager.addListener(this.model.twistySceneModel.hintFacelet, async (hintFaceletStyle)=>{
-            (await this.twisty3DPuzzle()).experimentalUpdateOptions({
-                hintFacelets: hintFaceletStyle === "auto" ? "floating" : hintFaceletStyle
-            });
-            this.scheduleRender();
-        });
-        this.#freshListenerManager.addListener(this.model.twistySceneModel.foundationDisplay, async (foundationDisplay)=>{
-            (await this.twisty3DPuzzle()).experimentalUpdateOptions({
-                showFoundation: foundationDisplay !== "none"
-            });
-            this.scheduleRender();
-        });
-        this.#freshListenerManager.addListener(this.model.twistySceneModel.stickeringMask, async (stickeringMask)=>{
-            const twisty3D = await this.twisty3DPuzzle();
-            twisty3D.setStickeringMask(stickeringMask);
-            this.scheduleRender();
-        });
-        this.#freshListenerManager.addMultiListener3([
-            this.model.twistySceneModel.stickeringMask,
-            this.model.twistySceneModel.foundationStickerSprite,
-            this.model.twistySceneModel.hintStickerSprite
-        ], async (inputs)=>{
-            if ("experimentalUpdateTexture" in await this.twisty3DPuzzle()) {
-                (await this.twisty3DPuzzle()).experimentalUpdateTexture(inputs[0].specialBehaviour === "picture", inputs[1], inputs[2]);
-                this.scheduleRender();
-            }
-        });
-    }
-    #freshListenerManager = new (0, $9IDdS.FreshListenerManager)();
-    disconnect() {
-        this.#freshListenerManager.disconnect();
-    }
-    scheduleRender() {
-        this.schedulable.scheduleRender();
-        this.dispatchEvent(new CustomEvent("render-scheduled"));
-    }
-    #cachedTwisty3DPuzzle = null;
-    async twisty3DPuzzle() {
-        return this.#cachedTwisty3DPuzzle ?? (this.#cachedTwisty3DPuzzle = (async ()=>{
-            const proxyPromise = (0, $9IDdS.proxy3D)();
-            if (this.puzzleLoader.id === "3x3x3" && this.visualizationStrategy === "Cube3D") {
-                const [foundationSprite, hintSprite, experimentalStickeringMask] = await Promise.all([
-                    this.model.twistySceneModel.foundationStickerSprite.get(),
-                    this.model.twistySceneModel.hintStickerSprite.get(),
-                    this.model.twistySceneModel.stickeringMask.get()
-                ]);
-                return (await proxyPromise).cube3DShim(()=>this.schedulable.scheduleRender(), {
-                    foundationSprite: foundationSprite,
-                    hintSprite: hintSprite,
-                    experimentalStickeringMask: experimentalStickeringMask
-                });
-            } else {
-                const [hintFacelets, foundationSprite, hintSprite] = await Promise.all([
-                    this.model.twistySceneModel.hintFacelet.get(),
-                    this.model.twistySceneModel.foundationStickerSprite.get(),
-                    this.model.twistySceneModel.hintStickerSprite.get()
-                ]);
-                const pg3d = (await proxyPromise).pg3dShim(()=>this.schedulable.scheduleRender(), this.puzzleLoader, hintFacelets === "auto" ? "floating" : hintFacelets);
-                pg3d.then((p)=>p.experimentalUpdateTexture(true, foundationSprite ?? void 0, hintSprite ?? void 0));
-                return pg3d;
-            }
-        })());
-    }
-    async raycastMove(raycasterPromise, transformations) {
-        const puzzle = await this.twisty3DPuzzle();
-        if (!("experimentalGetControlTargets" in puzzle)) {
-            console.info("not PG3D! skipping raycast");
-            return;
-        }
-        const targets = puzzle.experimentalGetControlTargets();
-        const [raycaster, movePressCancelOptions] = await Promise.all([
-            raycasterPromise,
-            this.model.twistySceneModel.movePressCancelOptions.get()
-        ]);
-        const intersects = raycaster.intersectObjects(targets);
-        if (intersects.length > 0) {
-            const closestMove = puzzle.getClosestMoveToAxis(intersects[0].point, transformations);
-            if (closestMove) this.model.experimentalAddMove(closestMove.move, {
-                cancel: movePressCancelOptions
-            });
-            else console.info("Skipping move!");
-        }
-    }
-};
-// src/cubing/twisty/views/3D/Twisty3DSceneWrapper.ts
-var $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper = class extends (0, $9IDdS.ManagedCustomElement) {
-    constructor(model){
-        super();
-        this.model = model;
-    }
-    #backViewClassListManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "back-view-", [
-        "auto",
-        "none",
-        "side-by-side",
-        "top-right"
-    ]);
-    #freshListenerManager = new (0, $9IDdS.FreshListenerManager)();
-    disconnect() {
-        this.#freshListenerManager.disconnect();
-    }
-    async connectedCallback() {
-        this.addCSS($8e08190ac5cfc1c3$var$twistyViewerWrapperCSS);
-        const vantage = new (0, $9IDdS.Twisty3DVantage)(this.model, this);
-        this.addVantage(vantage);
-        if (this.model) {
-            this.#freshListenerManager.addMultiListener([
-                this.model.puzzleLoader,
-                this.model.visualizationStrategy
-            ], this.onPuzzle.bind(this));
-            this.#freshListenerManager.addListener(this.model.backView, this.onBackView.bind(this));
-        }
-        this.scheduleRender();
-    }
-    #backViewVantage = null;
-    setBackView(backView) {
-        const shouldHaveBackView = [
-            "side-by-side",
-            "top-right"
-        ].includes(backView);
-        const hasBackView = this.#backViewVantage !== null;
-        this.#backViewClassListManager.setValue(backView);
-        if (shouldHaveBackView) {
-            if (!hasBackView) {
-                this.#backViewVantage = new (0, $9IDdS.Twisty3DVantage)(this.model, this, {
-                    backView: true
-                });
-                this.addVantage(this.#backViewVantage);
-                this.scheduleRender();
-            }
-        } else if (this.#backViewVantage) {
-            this.removeVantage(this.#backViewVantage);
-            this.#backViewVantage = null;
-        }
-    }
-    onBackView(backView) {
-        this.setBackView(backView);
-    }
-    async onPress(e) {
-        const twisty3DPuzzleWrapper = this.#currentTwisty3DPuzzleWrapper;
-        if (!twisty3DPuzzleWrapper) {
-            console.info("no wrapper; skipping scene wrapper press!");
-            return;
-        }
-        const raycasterPromise = (async ()=>{
-            const [camera, three] = await Promise.all([
-                e.detail.cameraPromise,
-                (0, $9IDdS.THREEJS)
-            ]);
-            const raycaster = new three.Raycaster();
-            const mouse = new (await (0, $9IDdS.THREEJS)).Vector2(e.detail.pressInfo.normalizedX, e.detail.pressInfo.normalizedY);
-            raycaster.setFromCamera(mouse, camera);
-            return raycaster;
-        })();
-        twisty3DPuzzleWrapper.raycastMove(raycasterPromise, {
-            invert: !e.detail.pressInfo.rightClick,
-            depth: e.detail.pressInfo.keys.ctrlOrMetaKey ? "rotation" : e.detail.pressInfo.keys.shiftKey ? "secondSlice" : "none"
-        });
-    }
-    #cachedScene;
-    async scene() {
-        return this.#cachedScene ?? (this.#cachedScene = (async ()=>new (await (0, $9IDdS.THREEJS)).Scene())());
-    }
-    #vantages = /* @__PURE__ */ new Set();
-    addVantage(vantage) {
-        vantage.addEventListener("press", this.onPress.bind(this));
-        this.#vantages.add(vantage);
-        this.contentWrapper.appendChild(vantage);
-    }
-    removeVantage(vantage) {
-        this.#vantages.delete(vantage);
-        vantage.remove();
-        vantage.disconnect();
-        this.#currentTwisty3DPuzzleWrapper?.disconnect();
-    }
-    experimentalVantages() {
-        return this.#vantages.values();
-    }
-    scheduleRender() {
-        for (const vantage of this.#vantages)vantage.scheduleRender();
-    }
-    #currentTwisty3DPuzzleWrapper = null;
-    async setCurrentTwisty3DPuzzleWrapper(scene, twisty3DPuzzleWrapper) {
-        const old = this.#currentTwisty3DPuzzleWrapper;
-        try {
-            this.#currentTwisty3DPuzzleWrapper = twisty3DPuzzleWrapper;
-            old?.disconnect();
-            scene.add(await twisty3DPuzzleWrapper.twisty3DPuzzle());
-        } finally{
-            if (old) scene.remove(await old.twisty3DPuzzle());
-        }
-        this.#initialWrapperTracker.handleNewValue(twisty3DPuzzleWrapper);
-    }
-    #initialWrapperTracker = new $8e08190ac5cfc1c3$var$InitialValueTracker();
-    async experimentalTwisty3DPuzzleWrapper() {
-        return this.#currentTwisty3DPuzzleWrapper || this.#initialWrapperTracker.promise;
-    }
-    #twisty3DStaleDropper = new (0, $9IDdS.StaleDropper)();
-    async onPuzzle(inputs) {
-        if (inputs[1] === "2D") return;
-        this.#currentTwisty3DPuzzleWrapper?.disconnect();
-        const [scene, twisty3DPuzzleWrapper] = await this.#twisty3DStaleDropper.queue(Promise.all([
-            this.scene(),
-            new $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper(this.model, this, inputs[0], inputs[1])
-        ]));
-        this.setCurrentTwisty3DPuzzleWrapper(scene, twisty3DPuzzleWrapper);
-    }
-};
-(0, $9IDdS.customElementsShim).define("twisty-3d-scene-wrapper", $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper);
-// src/cubing/twisty/views/control-panel/TwistyButtons.css.ts
-var $8e08190ac5cfc1c3$var$buttonGridCSS = new (0, $9IDdS.CSSSource)(`
-:host {
-  width: 384px;
-  height: 24px;
-  display: grid;
-}
-
-.wrapper {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  overflow: hidden;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-
-.wrapper {
-  grid-auto-flow: column;
-}
-
-.viewer-link-none .twizzle-link-button {
-  display: none;
-}
-
-.wrapper twisty-button,
-.wrapper twisty-control-button {
-  width: inherit;
-  height: inherit;
-}
-`);
-var $8e08190ac5cfc1c3$var$buttonCSS = new (0, $9IDdS.CSSSource)(`
-:host:not([hidden]) {
-  display: grid;
-}
-
-:host {
-  width: 48px;
-  height: 24px;
-}
-
-.wrapper {
-  width: 100%;
-  height: 100%;
-}
-
-button {
-  width: 100%;
-  height: 100%;
-  border: none;
-  
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-
-  background-color: rgba(196, 196, 196, 0.75);
-}
-
-button:enabled {
-  background-color: rgba(196, 196, 196, 0.75)
-}
-
-button:disabled {
-  background-color: rgba(0, 0, 0, 0.4);
-  opacity: 0.25;
-  pointer-events: none;
-}
-
-button:enabled:hover {
-  background-color: rgba(255, 255, 255, 0.75);
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-}
-
-/* TODO: fullscreen icons have too much padding?? */
-.svg-skip-to-start button,
-button.svg-skip-to-start {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNjQzIDEwMzdxMTktMTkgMzItMTN0MTMgMzJ2MTQ3MnEwIDI2LTEzIDMydC0zMi0xM2wtNzEwLTcxMHEtOS05LTEzLTE5djcxMHEwIDI2LTEzIDMydC0zMi0xM2wtNzEwLTcxMHEtOS05LTEzLTE5djY3OHEwIDI2LTE5IDQ1dC00NSAxOUg5NjBxLTI2IDAtNDUtMTl0LTE5LTQ1VjEwODhxMC0yNiAxOS00NXQ0NS0xOWgxMjhxMjYgMCA0NSAxOXQxOSA0NXY2NzhxNC0xMSAxMy0xOWw3MTAtNzEwcTE5LTE5IDMyLTEzdDEzIDMydjcxMHE0LTExIDEzLTE5eiIvPjwvc3ZnPg==");
-}
-
-.svg-skip-to-end button,
-button.svg-skip-to-end {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik05NDEgMjU0N3EtMTkgMTktMzIgMTN0LTEzLTMyVjEwNTZxMC0yNiAxMy0zMnQzMiAxM2w3MTAgNzEwcTggOCAxMyAxOXYtNzEwcTAtMjYgMTMtMzJ0MzIgMTNsNzEwIDcxMHE4IDggMTMgMTl2LTY3OHEwLTI2IDE5LTQ1dDQ1LTE5aDEyOHEyNiAwIDQ1IDE5dDE5IDQ1djE0MDhxMCAyNi0xOSA0NXQtNDUgMTloLTEyOHEtMjYgMC00NS0xOXQtMTktNDV2LTY3OHEtNSAxMC0xMyAxOWwtNzEwIDcxMHEtMTkgMTktMzIgMTN0LTEzLTMydi03MTBxLTUgMTAtMTMgMTl6Ii8+PC9zdmc+");
-}
-
-.svg-step-forward button,
-button.svg-step-forward {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNjg4IDE1NjhxMCAyNi0xOSA0NWwtNTEyIDUxMnEtMTkgMTktNDUgMTl0LTQ1LTE5cS0xOS0xOS0xOS00NXYtMjU2aC0yMjRxLTk4IDAtMTc1LjUgNnQtMTU0IDIxLjVxLTc2LjUgMTUuNS0xMzMgNDIuNXQtMTA1LjUgNjkuNXEtNDkgNDIuNS04MCAxMDF0LTQ4LjUgMTM4LjVxLTE3LjUgODAtMTcuNSAxODEgMCA1NSA1IDEyMyAwIDYgMi41IDIzLjV0Mi41IDI2LjVxMCAxNS04LjUgMjV0LTIzLjUgMTBxLTE2IDAtMjgtMTctNy05LTEzLTIydC0xMy41LTMwcS03LjUtMTctMTAuNS0yNC0xMjctMjg1LTEyNy00NTEgMC0xOTkgNTMtMzMzIDE2Mi00MDMgODc1LTQwM2gyMjR2LTI1NnEwLTI2IDE5LTQ1dDQ1LTE5cTI2IDAgNDUgMTlsNTEyIDUxMnExOSAxOSAxOSA0NXoiLz48L3N2Zz4=");
-}
-
-.svg-step-backward button,
-button.svg-step-backward {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNjg4IDIwNDhxMCAxNjYtMTI3IDQ1MS0zIDctMTAuNSAyNHQtMTMuNSAzMHEtNiAxMy0xMyAyMi0xMiAxNy0yOCAxNy0xNSAwLTIzLjUtMTB0LTguNS0yNXEwLTkgMi41LTI2LjV0Mi41LTIzLjVxNS02OCA1LTEyMyAwLTEwMS0xNy41LTE4MXQtNDguNS0xMzguNXEtMzEtNTguNS04MC0xMDF0LTEwNS41LTY5LjVxLTU2LjUtMjctMTMzLTQyLjV0LTE1NC0yMS41cS03Ny41LTYtMTc1LjUtNmgtMjI0djI1NnEwIDI2LTE5IDQ1dC00NSAxOXEtMjYgMC00NS0xOWwtNTEyLTUxMnEtMTktMTktMTktNDV0MTktNDVsNTEyLTUxMnExOS0xOSA0NS0xOXQ0NSAxOXExOSAxOSAxOSA0NXYyNTZoMjI0cTcxMyAwIDg3NSA0MDMgNTMgMTM0IDUzIDMzM3oiLz48L3N2Zz4=");
-}
-
-.svg-pause button,
-button.svg-pause {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNTYwIDEwODh2MTQwOHEwIDI2LTE5IDQ1dC00NSAxOWgtNTEycS0yNiAwLTQ1LTE5dC0xOS00NVYxMDg4cTAtMjYgMTktNDV0NDUtMTloNTEycTI2IDAgNDUgMTl0MTkgNDV6bS04OTYgMHYxNDA4cTAgMjYtMTkgNDV0LTQ1IDE5aC01MTJxLTI2IDAtNDUtMTl0LTE5LTQ1VjEwODhxMC0yNiAxOS00NXQ0NS0xOWg1MTJxMjYgMCA0NSAxOXQxOSA0NXoiLz48L3N2Zz4=");
-}
-
-.svg-play button,
-button.svg-play {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNTg0IiBoZWlnaHQ9IjM1ODQiIHZpZXdCb3g9IjAgMCAzNTg0IDM1ODQiPjxwYXRoIGQ9Ik0yNDcyLjUgMTgyM2wtMTMyOCA3MzhxLTIzIDEzLTM5LjUgM3QtMTYuNS0zNlYxMDU2cTAtMjYgMTYuNS0zNnQzOS41IDNsMTMyOCA3MzhxMjMgMTMgMjMgMzF0LTIzIDMxeiIvPjwvc3ZnPg==");
-}
-
-.svg-enter-fullscreen button,
-button.svg-enter-fullscreen {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCAyOCAyOCIgd2lkdGg9IjI4Ij48cGF0aCBkPSJNMiAyaDI0djI0SDJ6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTkgMTZIN3Y1aDV2LTJIOXYtM3ptLTItNGgyVjloM1Y3SDd2NXptMTIgN2gtM3YyaDV2LTVoLTJ2M3pNMTYgN3YyaDN2M2gyVjdoLTV6Ii8+PC9zdmc+");
-}
-
-.svg-exit-fullscreen button,
-button.svg-exit-fullscreen {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCAyOCAyOCIgd2lkdGg9IjI4Ij48cGF0aCBkPSJNMiAyaDI0djI0SDJ6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTcgMThoM3YzaDJ2LTVIN3Yyem0zLThIN3YyaDVWN2gtMnYzem02IDExaDJ2LTNoM3YtMmgtNXY1em0yLTExVjdoLTJ2NWg1di0yaC0zeiIvPjwvc3ZnPg==");
-}
-
-.svg-twizzle-tw button,
-button.svg-twizzle-tw {
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODY0IiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMzk3LjU4MSAxNTEuMTh2NTcuMDg0aC04OS43MDN2MjQwLjM1MmgtNjYuOTU1VjIwOC4yNjRIMTUxLjIydi01Ny4wODNoMjQ2LjM2MXptNTQuMzEgNzEuNjc3bDcuNTEyIDMzLjY5MmMyLjcxOCAxMi4xNiA1LjU4IDI0LjY4IDguNTg0IDM3LjU1NWEyMTgwLjc3NSAyMTgwLjc3NSAwIDAwOS40NDIgMzguODQzIDEyNjYuMyAxMjY2LjMgMCAwMDEwLjA4NiAzNy41NTVjMy43Mi0xMi41OSA3LjM2OC0yNS40NjYgMTAuOTQ1LTM4LjYyOCAzLjU3Ni0xMy4xNjIgNy4wMS0yNi4xMSAxMC4zLTM4Ljg0M2w1Ljc2OS0yMi40NTZjMS4yNDgtNC44ODcgMi40NzItOS43MDUgMy42NzQtMTQuNDU1IDMuMDA0LTExLjg3NSA1LjY1MS0yMi45NjIgNy45NC0zMy4yNjNoNDYuMzU0bDIuMzg0IDEwLjU2M2EyMDAwLjc3IDIwMDAuNzcgMCAwMDMuOTM1IDE2LjgyOGw2LjcxMSAyNy43MWMxLjIxMyA0Ljk1NiAyLjQ1IDkuOTggMy43MDkgMTUuMDczYTMxMTkuNzc3IDMxMTkuNzc3IDAgMDA5Ljg3MSAzOC44NDMgMTI0OS4yMjcgMTI0OS4yMjcgMCAwMDEwLjczIDM4LjYyOCAxOTA3LjYwNSAxOTA3LjYwNSAwIDAwMTAuMzAxLTM3LjU1NSAxMzk3Ljk0IDEzOTcuOTQgMCAwMDkuNjU3LTM4Ljg0M2w0LjQtMTkuMDQ2Yy43MTUtMy4xMyAxLjQyMS02LjIzNiAyLjExOC05LjMyMWw5LjU3Ny00Mi44OGg2Ni41MjZhMjk4OC43MTggMjk4OC43MTggMCAwMS0xOS41MjkgNjYuMzExbC01LjcyOCAxOC40ODJhMzIzNy40NiAzMjM3LjQ2IDAgMDEtMTQuMDE1IDQzLjc1MmMtNi40MzggMTkuNi0xMi43MzMgMzcuNjk4LTE4Ljg4NSA1NC4yOTRsLTMuMzA2IDguODI1Yy00Ljg4NCAxMi44OTgtOS40MzMgMjQuMjYzLTEzLjY0NyAzNC4wOTVoLTQ5Ljc4N2E4NDE3LjI4OSA4NDE3LjI4OSAwIDAxLTIxLjAzMS02NC44MDkgMTI4OC42ODYgMTI4OC42ODYgMCAwMS0xOC44ODUtNjQuODEgMTk3Mi40NDQgMTk3Mi40NDQgMCAwMS0xOC4yNCA2NC44MSAyNTc5LjQxMiAyNTc5LjQxMiAwIDAxLTIwLjM4OCA2NC44MWgtNDkuNzg3Yy00LjY4Mi0xMC45MjYtOS43Mi0yMy43NDMtMTUuMTEtMzguNDUxbC0xLjYyOS00LjQ3Yy01LjI1OC0xNC41MjEtMTAuNjgtMzAuMTkyLTE2LjI2Ni00Ny4wMTRsLTIuNDA0LTcuMjhjLTYuNDM4LTE5LjYtMTMuMDItNDAuMzQ0LTE5Ljc0My02Mi4yMzRhMjk4OC43MDcgMjk4OC43MDcgMCAwMS0xOS41MjktNjYuMzExaDY3LjM4NXoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvc3ZnPg==");
-}
-`);
-// src/cubing/twisty/views/document.ts
-var $8e08190ac5cfc1c3$var$globalSafeDocument = typeof document === "undefined" ? null : document;
-// src/cubing/twisty/views/control-panel/webkit-fullscreen.ts
-var $8e08190ac5cfc1c3$var$fullscreenEnabled = $8e08190ac5cfc1c3$var$globalSafeDocument?.fullscreenEnabled || !!$8e08190ac5cfc1c3$var$globalSafeDocument?.webkitFullscreenEnabled;
-function $8e08190ac5cfc1c3$var$documentExitFullscreen() {
-    if (document.exitFullscreen) return document.exitFullscreen();
-    else return document.webkitExitFullscreen();
-}
-function $8e08190ac5cfc1c3$var$documentFullscreenElement() {
-    if (document.fullscreenElement) return document.fullscreenElement;
-    else return document.webkitFullscreenElement ?? null;
-}
-function $8e08190ac5cfc1c3$var$requestFullscreen(element) {
-    if (element.requestFullscreen) return element.requestFullscreen();
-    else return element.webkitRequestFullscreen();
-}
-// src/cubing/twisty/model/props/viewer/ButtonAppearanceProp.ts
-var $8e08190ac5cfc1c3$var$buttonIcons = [
-    "skip-to-start",
-    "skip-to-end",
-    "step-forward",
-    "step-backward",
-    "pause",
-    "play",
-    "enter-fullscreen",
-    "exit-fullscreen",
-    "twizzle-tw"
-];
-var $8e08190ac5cfc1c3$var$ButtonAppearanceProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        const buttonAppearances = {
-            fullscreen: {
-                enabled: $8e08190ac5cfc1c3$var$fullscreenEnabled,
-                icon: document.fullscreenElement === null ? "enter-fullscreen" : "exit-fullscreen",
-                title: "Enter fullscreen"
-            },
-            "jump-to-start": {
-                enabled: !inputs.coarseTimelineInfo.atStart,
-                icon: "skip-to-start",
-                title: "Restart"
-            },
-            "play-step-backwards": {
-                enabled: !inputs.coarseTimelineInfo.atStart,
-                icon: "step-backward",
-                title: "Step backward"
-            },
-            "play-pause": {
-                enabled: !(inputs.coarseTimelineInfo.atStart && inputs.coarseTimelineInfo.atEnd),
-                icon: inputs.coarseTimelineInfo.playing ? "pause" : "play",
-                title: inputs.coarseTimelineInfo.playing ? "Pause" : "Play"
-            },
-            "play-step": {
-                enabled: !inputs.coarseTimelineInfo.atEnd,
-                icon: "step-forward",
-                title: "Step forward"
-            },
-            "jump-to-end": {
-                enabled: !inputs.coarseTimelineInfo.atEnd,
-                icon: "skip-to-end",
-                title: "Skip to End"
-            },
-            "twizzle-link": {
-                enabled: true,
-                icon: "twizzle-tw",
-                title: "View at Twizzle",
-                hidden: inputs.viewerLink === "none"
-            }
-        };
-        return buttonAppearances;
-    }
-};
-// src/cubing/twisty/views/control-panel/TwistyButtons.ts
-var $8e08190ac5cfc1c3$var$buttonCommands = {
-    fullscreen: true,
-    "jump-to-start": true,
-    "play-step-backwards": true,
-    "play-pause": true,
-    "play-step": true,
-    "jump-to-end": true,
-    "twizzle-link": true
-};
-var $8e08190ac5cfc1c3$var$TwistyButtons = class extends (0, $9IDdS.ManagedCustomElement) {
-    constructor(model, controller, fullscreenElement){
-        super();
-        this.model = model;
-        this.controller = controller;
-        this.fullscreenElement = fullscreenElement;
-        this.buttons = null;
-    }
-    connectedCallback() {
-        this.addCSS($8e08190ac5cfc1c3$var$buttonGridCSS);
-        const buttons = {};
-        for(const command in $8e08190ac5cfc1c3$var$buttonCommands){
-            const button = new $8e08190ac5cfc1c3$var$TwistyButton();
-            buttons[command] = button;
-            button.htmlButton.addEventListener("click", ()=>this.#onCommand(command));
-            this.addElement(button);
-        }
-        this.buttons = buttons;
-        this.model?.buttonAppearance.addFreshListener(this.update.bind(this));
-    }
-     #onCommand(command1) {
-        switch(command1){
-            case "fullscreen":
-                this.onFullscreenButton();
-                break;
-            case "jump-to-start":
-                this.controller?.jumpToStart({
-                    flash: true
-                });
-                break;
-            case "play-step-backwards":
-                this.controller?.animationController.play({
-                    direction: -1 /* Backwards */ ,
-                    untilBoundary: "move" /* Move */ 
-                });
-                break;
-            case "play-pause":
-                this.controller?.togglePlay();
-                break;
-            case "play-step":
-                this.controller?.animationController.play({
-                    direction: 1 /* Forwards */ ,
-                    untilBoundary: "move" /* Move */ 
-                });
-                break;
-            case "jump-to-end":
-                this.controller?.jumpToEnd({
-                    flash: true
-                });
-                break;
-            case "twizzle-link":
-                this.controller?.visitTwizzleLink();
-                break;
-            default:
-                throw new Error("Missing command");
-        }
-    }
-    async onFullscreenButton() {
-        if (!this.fullscreenElement) throw new Error("Attempted to go fullscreen without an element.");
-        if ($8e08190ac5cfc1c3$var$documentFullscreenElement() === this.fullscreenElement) $8e08190ac5cfc1c3$var$documentExitFullscreen();
-        else {
-            this.buttons?.fullscreen.setIcon("exit-fullscreen");
-            $8e08190ac5cfc1c3$var$requestFullscreen(this.fullscreenElement);
-            const onFullscreen = ()=>{
-                if ($8e08190ac5cfc1c3$var$documentFullscreenElement() !== this.fullscreenElement) {
-                    this.buttons?.fullscreen.setIcon("enter-fullscreen");
-                    window.removeEventListener("fullscreenchange", onFullscreen);
-                }
-            };
-            window.addEventListener("fullscreenchange", onFullscreen);
-        }
-    }
-    async update(buttonAppearances) {
-        for(const command in $8e08190ac5cfc1c3$var$buttonCommands){
-            const button = this.buttons[command];
-            const info = buttonAppearances[command];
-            button.htmlButton.disabled = !info.enabled;
-            button.htmlButton.title = info.title;
-            button.setIcon(info.icon);
-            button.hidden = !!info.hidden;
-        }
-    }
-};
-(0, $9IDdS.customElementsShim).define("twisty-buttons", $8e08190ac5cfc1c3$var$TwistyButtons);
-var $8e08190ac5cfc1c3$var$TwistyButton = class extends (0, $9IDdS.ManagedCustomElement) {
-    constructor(){
-        super(...arguments);
-        this.htmlButton = document.createElement("button");
-        this.#iconManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "svg-", $8e08190ac5cfc1c3$var$buttonIcons);
-    }
-    connectedCallback() {
-        this.addCSS($8e08190ac5cfc1c3$var$buttonCSS);
-        this.addElement(this.htmlButton);
-    }
-    #iconManager;
-    setIcon(iconName) {
-        this.#iconManager.setValue(iconName);
-    }
-};
-(0, $9IDdS.customElementsShim).define("twisty-button", $8e08190ac5cfc1c3$var$TwistyButton);
-// src/cubing/twisty/views/control-panel/TwistyScrubber.css.ts
-var $8e08190ac5cfc1c3$var$twistyScrubberCSS = new (0, $9IDdS.CSSSource)(`
-:host {
-  width: 384px;
-  height: 16px;
-  display: grid;
-}
-
-.wrapper {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  overflow: hidden;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  background: rgba(196, 196, 196, 0.75)
-}
-
-input:not(:disabled) {
-  cursor: ew-resize;
-}
-`);
-// src/cubing/twisty/views/control-panel/TwistyScrubber.ts
-var $8e08190ac5cfc1c3$var$SLOW_DOWN_SCRUBBING = false;
-var $8e08190ac5cfc1c3$var$isMouseDown = false;
-$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mousedown", function(event) {
-    if (event.which) $8e08190ac5cfc1c3$var$isMouseDown = true;
-}, true);
-$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mouseup", function(event) {
-    if (event.which) $8e08190ac5cfc1c3$var$isMouseDown = false;
-}, true);
-var $8e08190ac5cfc1c3$var$y = 0;
-var $8e08190ac5cfc1c3$var$clickNum = 0;
-$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mousedown", ()=>{
-    $8e08190ac5cfc1c3$var$clickNum++;
-}, false);
-$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mousemove", $8e08190ac5cfc1c3$var$onMouseUpdate, false);
-$8e08190ac5cfc1c3$var$globalSafeDocument?.addEventListener("mouseenter", $8e08190ac5cfc1c3$var$onMouseUpdate, false);
-function $8e08190ac5cfc1c3$var$onMouseUpdate(e) {
-    $8e08190ac5cfc1c3$var$y = e.pageY;
-}
-var $8e08190ac5cfc1c3$var$lastVal = 0;
-var $8e08190ac5cfc1c3$var$lastPreval = 0;
-var $8e08190ac5cfc1c3$var$scaling = false;
-var $8e08190ac5cfc1c3$var$currentClickNum = 0;
-var $8e08190ac5cfc1c3$var$TwistyScrubber = class extends (0, $9IDdS.ManagedCustomElement) {
-    constructor(model, controller){
-        super();
-        this.model = model;
-        this.controller = controller;
-    }
-    async onDetailedTimelineInfo(detailedTimelineInfo) {
-        const inputElem = await this.inputElem();
-        inputElem.min = detailedTimelineInfo.timeRange.start.toString();
-        inputElem.max = detailedTimelineInfo.timeRange.end.toString();
-        inputElem.disabled = inputElem.min === inputElem.max;
-        inputElem.value = detailedTimelineInfo.timestamp.toString();
-    }
-    async connectedCallback() {
-        this.addCSS($8e08190ac5cfc1c3$var$twistyScrubberCSS);
-        this.addElement(await this.inputElem());
-    }
-    #inputElem = null;
-    async inputElem() {
-        return this.#inputElem ?? (this.#inputElem = (async ()=>{
-            const elem = document.createElement("input");
-            elem.type = "range";
-            elem.disabled = true;
-            this.model?.detailedTimelineInfo.addFreshListener(this.onDetailedTimelineInfo.bind(this));
-            elem.addEventListener("input", this.onInput.bind(this));
-            elem.addEventListener("keydown", this.onKeypress.bind(this));
-            return elem;
-        })());
-    }
-    async onInput(e) {
-        if ($8e08190ac5cfc1c3$var$scaling) return;
-        const inputElem = await this.inputElem();
-        await this.slowDown(e, inputElem);
-        const value = parseInt(inputElem.value);
-        this.model?.playingInfo.set({
-            playing: false
-        });
-        this.model?.timestampRequest.set(value);
-    }
-    onKeypress(e) {
-        switch(e.key){
-            case "ArrowLeft":
-            case "ArrowRight":
-                this.controller?.animationController.play({
-                    direction: e.key === "ArrowLeft" ? -1 /* Backwards */  : 1 /* Forwards */ ,
-                    untilBoundary: "move" /* Move */ 
-                });
-                e.preventDefault();
-                break;
-            case " ":
-                this.controller?.togglePlay();
-                e.preventDefault();
-                break;
-        }
-    }
-    async slowDown(e, inputElem) {
-        if (!$8e08190ac5cfc1c3$var$SLOW_DOWN_SCRUBBING) return;
-        if ($8e08190ac5cfc1c3$var$isMouseDown) {
-            const rect = inputElem.getBoundingClientRect();
-            const sliderY = rect.top + rect.height / 2;
-            console.log(sliderY, e, $8e08190ac5cfc1c3$var$y, $8e08190ac5cfc1c3$var$isMouseDown);
-            const yDist = Math.abs(sliderY - $8e08190ac5cfc1c3$var$y);
-            let scale = 1;
-            if (yDist > 64) scale = Math.max(Math.pow(2, -(yDist - 64) / 64), 1 / 32);
-            const preVal = parseInt(inputElem.value);
-            console.log("cl", $8e08190ac5cfc1c3$var$currentClickNum, $8e08190ac5cfc1c3$var$clickNum, preVal);
-            if ($8e08190ac5cfc1c3$var$currentClickNum === $8e08190ac5cfc1c3$var$clickNum) {
-                const delta = (preVal - $8e08190ac5cfc1c3$var$lastPreval) * scale;
-                console.log("delta", delta, yDist);
-                $8e08190ac5cfc1c3$var$scaling = true;
-                let newVal = preVal;
-                newVal = $8e08190ac5cfc1c3$var$lastVal + delta * scale + (preVal - $8e08190ac5cfc1c3$var$lastVal) * Math.min(1, Math.pow(0.5, yDist * yDist / 64));
-                inputElem.value = newVal.toString();
-                console.log(scale);
-                $8e08190ac5cfc1c3$var$scaling = false;
-                this.contentWrapper.style.opacity = scale.toString();
-            } else $8e08190ac5cfc1c3$var$currentClickNum = $8e08190ac5cfc1c3$var$clickNum;
-            $8e08190ac5cfc1c3$var$lastPreval = preVal;
-        }
-    }
-};
-(0, $9IDdS.customElementsShim).define("twisty-scrubber", $8e08190ac5cfc1c3$var$TwistyScrubber);
-// src/cubing/twisty/views/screenshot.ts
-var $8e08190ac5cfc1c3$var$cachedCamera = null;
-async function $8e08190ac5cfc1c3$var$screenshot(model, options) {
-    const [{ PerspectiveCamera: PerspectiveCamera , Scene: Scene  }, puzzleLoader, visualizationStrategy, _stickering, _stickeringMaskRequest, _legacyPosition, orbitCoordinates] = await Promise.all([
-        (0, $9IDdS.THREEJS),
-        await model.puzzleLoader.get(),
-        await model.visualizationStrategy.get(),
-        await model.twistySceneModel.stickeringRequest.get(),
-        await model.twistySceneModel.stickeringMaskRequest.get(),
-        await model.legacyPosition.get(),
-        await model.twistySceneModel.orbitCoordinates.get()
-    ]);
-    const width = options?.width ?? 2048;
-    const height = options?.height ?? 2048;
-    const aspectRatio = width / height;
-    const camera = $8e08190ac5cfc1c3$var$cachedCamera ?? ($8e08190ac5cfc1c3$var$cachedCamera = await (async ()=>{
-        return new PerspectiveCamera(20, aspectRatio, 0.1, 20);
-    })());
-    const scene = new Scene();
-    const twisty3DWrapper = new $8e08190ac5cfc1c3$var$Twisty3DPuzzleWrapper(model, {
-        scheduleRender: ()=>{}
-    }, puzzleLoader, visualizationStrategy);
-    scene.add(await twisty3DWrapper.twisty3DPuzzle());
-    await (0, $9IDdS.setCameraFromOrbitCoordinates)(camera, orbitCoordinates);
-    const rendererCanvas = await (0, $9IDdS.rawRenderPooled)(width, height, scene, camera);
-    const dataURL = rendererCanvas.toDataURL();
-    const defaultFilename = await $8e08190ac5cfc1c3$var$getDefaultFilename(model);
-    return {
-        dataURL: dataURL,
-        download: async (filename)=>{
-            $8e08190ac5cfc1c3$var$downloadURL(dataURL, filename ?? defaultFilename);
-        }
-    };
-}
-async function $8e08190ac5cfc1c3$var$getDefaultFilename(model) {
-    const [puzzleID, algWithIssues] = await Promise.all([
-        model.puzzleID.get(),
-        model.alg.get()
-    ]);
-    return `[${puzzleID}]${algWithIssues.alg.experimentalNumChildAlgNodes() === 0 ? "" : ` ${algWithIssues.alg.toString()}`}`;
-}
-function $8e08190ac5cfc1c3$var$downloadURL(url, name, extension = "png") {
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${name}.${extension}`;
-    a.click();
-}
-// src/cubing/twisty/views/TwistyPlayer.css.ts
-var $8e08190ac5cfc1c3$var$twistyPlayerCSS = new (0, $9IDdS.CSSSource)(`
-:host {
-  width: 384px;
-  height: 256px;
-  display: grid;
-
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-.wrapper {
-  display: grid;
-  overflow: hidden;
-  grid-template-rows: 7fr minmax(1.5em, 0.5fr) minmax(2em, 1fr);
-}
-
-.wrapper > * {
-  width: inherit;
-  height: inherit;
-  overflow: hidden;
-}
-
-.wrapper.controls-none {
-  grid-template-rows: 7fr;
-}
-
-.wrapper.controls-none twisty-scrubber,
-.wrapper.controls-none twisty-control-button-panel ,
-.wrapper.controls-none twisty-scrubber,
-.wrapper.controls-none twisty-buttons {
-  display: none;
-}
-
-twisty-scrubber {
-  background: rgba(196, 196, 196, 0.5);
-}
-
-.wrapper.checkered {
-  background-color: #EAEAEA;
-  background-image: linear-gradient(45deg, #DDD 25%, transparent 25%, transparent 75%, #DDD 75%, #DDD),
-    linear-gradient(45deg, #DDD 25%, transparent 25%, transparent 75%, #DDD 75%, #DDD);
-  background-size: 32px 32px;
-  background-position: 0 0, 16px 16px;
-}
-
-.visualization-wrapper > * {
-  width: 100%;
-  height: 100%;
-}
-
-.error-elem {
-  width: 100%;
-  height: 100%;
-  display: none;
-  place-content: center;
-  font-family: sans-serif;
-  box-shadow: inset 0 0 2em rgb(255, 0, 0);
-  color: red;
-  text-shadow: 0 0 0.2em white;
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.wrapper.error .visualization-wrapper {
-  display: none;
-}
-
-.wrapper.error .error-elem {
-  display: grid;
-}
-`);
-// src/cubing/twisty/model/props/general/ArbitraryStringProp.ts
-var $8e08190ac5cfc1c3$var$ArbitraryStringProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return null;
-    }
-};
-// src/cubing/twisty/model/props/general/URLProp.ts
-var $8e08190ac5cfc1c3$var$URLProp = class extends (0, $9IDdS.TwistyPropSource) {
-    getDefaultValue() {
-        return null;
-    }
-    derive(input) {
-        if (typeof input === "string") return new URL(input, location.href);
-        return input;
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/AlgProp.ts
-var $8e08190ac5cfc1c3$var$AlgIssues = class {
-    constructor(issues){
-        this.warnings = Object.freeze(issues?.warnings ?? []);
-        this.errors = Object.freeze(issues?.errors ?? []);
-        Object.freeze(this);
-    }
-    add(issues) {
-        return new $8e08190ac5cfc1c3$var$AlgIssues({
-            warnings: this.warnings.concat(issues?.warnings ?? []),
-            errors: this.errors.concat(issues?.errors ?? [])
-        });
-    }
-    log() {
-        if (this.errors.length > 0) console.error(`\u{1F6A8} ${this.errors[0]}`);
-        else if (this.warnings.length > 0) console.warn(`\u26A0\uFE0F ${this.warnings[0]}`);
-        else console.info("\uD83D\uDE0E No issues!");
-    }
-};
-function $8e08190ac5cfc1c3$var$algWithIssuesFromString(s) {
-    try {
-        const alg = (0, $j3ukw.Alg).fromString(s);
-        const warnings = [];
-        if (alg.toString() !== s) warnings.push("Alg is non-canonical!");
-        return {
-            alg: alg,
-            issues: new $8e08190ac5cfc1c3$var$AlgIssues({
-                warnings: warnings
-            })
-        };
-    } catch (e) {
-        return {
-            alg: new (0, $j3ukw.Alg)(),
-            issues: new $8e08190ac5cfc1c3$var$AlgIssues({
-                errors: [
-                    `Malformed alg: ${e.toString()}`
-                ]
-            })
-        };
-    }
-}
-function $8e08190ac5cfc1c3$var$algWithIssuesEquals(a1, a2) {
-    return a1.alg.isIdentical(a2.alg) && $8e08190ac5cfc1c3$var$arrayEquals(a1.issues.warnings, a2.issues.warnings) && $8e08190ac5cfc1c3$var$arrayEquals(a1.issues.errors, a2.issues.errors);
-}
-var $8e08190ac5cfc1c3$var$AlgProp = class extends (0, $9IDdS.TwistyPropSource) {
-    getDefaultValue() {
-        return {
-            alg: new (0, $j3ukw.Alg)(),
-            issues: new $8e08190ac5cfc1c3$var$AlgIssues()
-        };
-    }
-    canReuseValue(v1, v2) {
-        return $8e08190ac5cfc1c3$var$algWithIssuesEquals(v1, v2);
-    }
-    async derive(newAlg) {
-        if (typeof newAlg === "string") return $8e08190ac5cfc1c3$var$algWithIssuesFromString(newAlg);
-        else return {
-            alg: newAlg,
-            issues: new $8e08190ac5cfc1c3$var$AlgIssues()
-        };
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/AlgTransformationProp.ts
-var $8e08190ac5cfc1c3$var$AlgTransformationProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(input) {
-        return input.kpuzzle.algToTransformation(input.setupAlg.alg);
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/AnchorTransformationProp.ts
-var $8e08190ac5cfc1c3$var$AnchorTransformationProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        if (inputs.setupTransformation) return inputs.setupTransformation;
-        switch(inputs.setupAnchor){
-            case "start":
-                return inputs.setupAlgTransformation;
-            case "end":
-                {
-                    const algTransformation = inputs.indexer.transformationAtIndex(inputs.indexer.numAnimatedLeaves());
-                    const inverseAlgTransformation = algTransformation.invert();
-                    return inputs.setupAlgTransformation.applyTransformation(inverseAlgTransformation);
-                }
-            default:
-                throw new Error("Unimplemented!");
-        }
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/CatchUpMoveProp.ts
-var $8e08190ac5cfc1c3$var$CatchUpMoveProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return {
-            move: null,
-            amount: 0
-        };
-    }
-    canReuseValue(v1, v2) {
-        return v1.move === v2.move && v1.amount === v2.amount;
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/CurrentLeavesSimplified.ts
-var $8e08190ac5cfc1c3$var$CurrentLeavesSimplifiedProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        return {
-            stateIndex: inputs.currentMoveInfo.stateIndex,
-            movesFinishing: inputs.currentMoveInfo.movesFinishing.map((currentMoveInfo)=>currentMoveInfo.move),
-            movesFinished: inputs.currentMoveInfo.movesFinished.map((currentMoveInfo)=>currentMoveInfo.move)
-        };
-    }
-    canReuse(v1, v2) {
-        return v1.stateIndex === v2.stateIndex && $8e08190ac5cfc1c3$var$arrayEqualsCompare(v1.movesFinishing, v2.movesFinishing, (m1, m2)=>m1.isIdentical(m2)) && $8e08190ac5cfc1c3$var$arrayEqualsCompare(v1.movesFinished, v2.movesFinished, (m1, m2)=>m1.isIdentical(m2));
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/CurrentMoveInfoProp.ts
-var $8e08190ac5cfc1c3$var$CurrentMoveInfoProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        function addCatchUpMove(currentMoveInfo) {
-            if (inputs.detailedTimelineInfo.atEnd && inputs.catchUpMove.move !== null) currentMoveInfo.currentMoves.push({
-                move: inputs.catchUpMove.move,
-                direction: -1 /* Backwards */ ,
-                fraction: 1 - inputs.catchUpMove.amount,
-                startTimestamp: -1,
-                endTimestamp: -1
-            });
-            return currentMoveInfo;
-        }
-        if (inputs.indexer.currentMoveInfo) return addCatchUpMove(inputs.indexer.currentMoveInfo(inputs.detailedTimelineInfo.timestamp));
-        else {
-            const idx = inputs.indexer.timestampToIndex(inputs.detailedTimelineInfo.timestamp);
-            const currentMoveInfo = {
-                stateIndex: idx,
-                currentMoves: [],
-                movesFinishing: [],
-                movesFinished: [],
-                movesStarting: [],
-                latestStart: -Infinity,
-                earliestEnd: Infinity
-            };
-            if (inputs.indexer.numAnimatedLeaves() > 0) {
-                const move = inputs.indexer.getAnimLeaf(idx)?.as((0, $j3ukw.Move));
-                if (!move) return addCatchUpMove(currentMoveInfo);
-                const start = inputs.indexer.indexToMoveStartTimestamp(idx);
-                const duration = inputs.indexer.moveDuration(idx);
-                const fraction = duration ? (inputs.detailedTimelineInfo.timestamp - start) / duration : 0;
-                const end = start + duration;
-                const currentMove = {
-                    move: move,
-                    direction: 1 /* Forwards */ ,
-                    fraction: fraction,
-                    startTimestamp: start,
-                    endTimestamp: end
-                };
-                if (fraction === 0) currentMoveInfo.movesStarting.push(currentMove);
-                else if (fraction === 1) currentMoveInfo.movesFinishing.push(currentMove);
-                else {
-                    currentMoveInfo.currentMoves.push(currentMove);
-                    currentMoveInfo.latestStart = Math.max(currentMoveInfo.latestStart, start);
-                    currentMoveInfo.earliestEnd = Math.min(currentMoveInfo.earliestEnd, end);
-                }
-            }
-            return addCatchUpMove(currentMoveInfo);
-        }
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/CurrentStateProp.ts
-var $8e08190ac5cfc1c3$var$CurrentStateProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        let transformation = inputs.indexer.transformationAtIndex(inputs.currentLeavesSimplified.stateIndex);
-        transformation = inputs.anchoredStart.applyTransformation(transformation);
-        for (const finishingMove of inputs.currentLeavesSimplified.movesFinishing)transformation = transformation.applyMove(finishingMove);
-        for (const finishedMove of inputs.currentLeavesSimplified.movesFinished)transformation = transformation.applyMove(finishedMove);
-        return transformation.toKState();
-    }
-};
-// src/cubing/twisty/controllers/indexer/AlgDuration.ts
-function $8e08190ac5cfc1c3$var$defaultDurationForAmount(amount) {
-    switch(Math.abs(amount)){
-        case 0:
-            return 0;
-        case 1:
-            return 1e3;
-        case 2:
-            return 1500;
-        default:
-            return 2e3;
-    }
-}
-var $8e08190ac5cfc1c3$var$AlgDuration = class extends (0, $j3ukw.TraversalUp) {
-    constructor(durationForAmount = $8e08190ac5cfc1c3$var$defaultDurationForAmount){
-        super();
-        this.durationForAmount = durationForAmount;
-    }
-    traverseAlg(alg) {
-        let total = 0;
-        for (const algNode of alg.childAlgNodes())total += this.traverseAlgNode(algNode);
-        return total;
-    }
-    traverseGrouping(grouping) {
-        return grouping.amount * this.traverseAlg(grouping.alg);
-    }
-    traverseMove(move) {
-        return this.durationForAmount(move.amount);
-    }
-    traverseCommutator(commutator) {
-        return 2 * (this.traverseAlg(commutator.A) + this.traverseAlg(commutator.B));
-    }
-    traverseConjugate(conjugate) {
-        return 2 * this.traverseAlg(conjugate.A) + this.traverseAlg(conjugate.B);
-    }
-    traversePause(_pause) {
-        return this.durationForAmount(1);
-    }
-    traverseNewline(_newline) {
-        return this.durationForAmount(1);
-    }
-    traverseLineComment(_comment) {
-        return this.durationForAmount(0);
-    }
-};
-// src/cubing/twisty/controllers/indexer/SimpleAlgIndexer.ts
-var $8e08190ac5cfc1c3$export$f1f512573dac63bc = class {
-    constructor(kpuzzle, alg){
-        this.kpuzzle = kpuzzle;
-        this.durationFn = new $8e08190ac5cfc1c3$var$AlgDuration($8e08190ac5cfc1c3$var$defaultDurationForAmount);
-        this.moves = new (0, $j3ukw.Alg)(alg.experimentalExpand());
-    }
-    getAnimLeaf(index) {
-        return Array.from(this.moves.childAlgNodes())[index];
-    }
-    indexToMoveStartTimestamp(index) {
-        const alg = new (0, $j3ukw.Alg)(Array.from(this.moves.childAlgNodes()).slice(0, index));
-        return this.durationFn.traverseAlg(alg);
-    }
-    timestampToIndex(timestamp) {
-        let cumulativeTime = 0;
-        let i;
-        for(i = 0; i < this.numAnimatedLeaves(); i++){
-            cumulativeTime += this.durationFn.traverseMove(this.getAnimLeaf(i));
-            if (cumulativeTime >= timestamp) return i;
-        }
-        return i;
-    }
-    stateAtIndex(index) {
-        return this.kpuzzle.startState().applyTransformation(this.transformationAtIndex(index));
-    }
-    transformationAtIndex(index) {
-        let state = this.kpuzzle.identityTransformation();
-        for (const move of Array.from(this.moves.childAlgNodes()).slice(0, index))state = state.applyMove(move);
-        return state;
-    }
-    algDuration() {
-        return this.durationFn.traverseAlg(this.moves);
-    }
-    numAnimatedLeaves() {
-        return (0, $ce7d5deeec50f6ba$export$d5ea806fd922b359)(this.moves);
-    }
-    moveDuration(index) {
-        return this.durationFn.traverseMove(this.getAnimLeaf(index));
-    }
-};
-// src/cubing/twisty/controllers/indexer/simultaneous-moves/simul-moves.ts
-var $8e08190ac5cfc1c3$var$axisLookup = {
-    u: "y",
-    l: "x",
-    f: "z",
-    r: "x",
-    b: "z",
-    d: "y",
-    m: "x",
-    e: "y",
-    s: "z",
-    x: "x",
-    y: "y",
-    z: "z"
-};
-function $8e08190ac5cfc1c3$var$isSameAxis(move1, move2) {
-    return $8e08190ac5cfc1c3$var$axisLookup[move1.family[0].toLowerCase()] === $8e08190ac5cfc1c3$var$axisLookup[move2.family[0].toLowerCase()];
-}
-var $8e08190ac5cfc1c3$var$LocalSimulMoves = class extends (0, $j3ukw.TraversalUp) {
-    traverseAlg(alg) {
-        const processed = [];
-        for (const childAlgNode of alg.childAlgNodes())processed.push(this.traverseAlgNode(childAlgNode));
-        return Array.prototype.concat(...processed);
-    }
-    traverseGroupingOnce(alg) {
-        if (alg.experimentalIsEmpty()) return [];
-        for (const algNode of alg.childAlgNodes()){
-            if (!algNode.is((0, $j3ukw.Move))) return this.traverseAlg(alg);
-        }
-        const moves = Array.from(alg.childAlgNodes());
-        let maxSimulDur = $8e08190ac5cfc1c3$var$defaultDurationForAmount(moves[0].amount);
-        for(let i = 0; i < moves.length - 1; i++){
-            for(let j = 1; j < moves.length; j++){
-                if (!$8e08190ac5cfc1c3$var$isSameAxis(moves[i], moves[j])) return this.traverseAlg(alg);
-            }
-            maxSimulDur = Math.max(maxSimulDur, $8e08190ac5cfc1c3$var$defaultDurationForAmount(moves[i].amount));
-        }
-        const localMovesWithRange = moves.map((blockMove)=>{
-            return {
-                animLeafAlgNode: blockMove,
-                msUntilNext: 0,
-                duration: maxSimulDur
-            };
-        });
-        localMovesWithRange[localMovesWithRange.length - 1].msUntilNext = maxSimulDur;
-        return localMovesWithRange;
-    }
-    traverseGrouping(grouping) {
-        const processed = [];
-        const segmentOnce = grouping.amount > 0 ? grouping.alg : grouping.alg.invert();
-        for(let i = 0; i < Math.abs(grouping.amount); i++)processed.push(this.traverseGroupingOnce(segmentOnce));
-        return Array.prototype.concat(...processed);
-    }
-    traverseMove(move) {
-        const duration = $8e08190ac5cfc1c3$var$defaultDurationForAmount(move.amount);
-        return [
-            {
-                animLeafAlgNode: move,
-                msUntilNext: duration,
-                duration: duration
-            }
-        ];
-    }
-    traverseCommutator(commutator) {
-        const processed = [];
-        const segmentsOnce = [
-            commutator.A,
-            commutator.B,
-            commutator.A.invert(),
-            commutator.B.invert()
-        ];
-        for (const segment of segmentsOnce)processed.push(this.traverseGroupingOnce(segment));
-        return Array.prototype.concat(...processed);
-    }
-    traverseConjugate(conjugate) {
-        const processed = [];
-        const segmentsOnce = [
-            conjugate.A,
-            conjugate.B,
-            conjugate.A.invert()
-        ];
-        for (const segment of segmentsOnce)processed.push(this.traverseGroupingOnce(segment));
-        return Array.prototype.concat(...processed);
-    }
-    traversePause(pause) {
-        if (pause.experimentalNISSGrouping) return [];
-        const duration = $8e08190ac5cfc1c3$var$defaultDurationForAmount(1);
-        return [
-            {
-                animLeafAlgNode: pause,
-                msUntilNext: duration,
-                duration: duration
-            }
-        ];
-    }
-    traverseNewline(_newline) {
-        return [];
-    }
-    traverseLineComment(_comment) {
-        return [];
-    }
-};
-var $8e08190ac5cfc1c3$var$localSimulMovesInstance = new $8e08190ac5cfc1c3$var$LocalSimulMoves();
-var $8e08190ac5cfc1c3$var$localSimulMoves = $8e08190ac5cfc1c3$var$localSimulMovesInstance.traverseAlg.bind($8e08190ac5cfc1c3$var$localSimulMovesInstance);
-function $8e08190ac5cfc1c3$var$simulMoves(a) {
-    let timestamp = 0;
-    const l = $8e08190ac5cfc1c3$var$localSimulMoves(a).map((localSimulMove)=>{
-        const leafWithRange = {
-            animLeaf: localSimulMove.animLeafAlgNode,
-            start: timestamp,
-            end: timestamp + localSimulMove.duration
-        };
-        timestamp += localSimulMove.msUntilNext;
-        return leafWithRange;
-    });
-    return l;
-}
-// src/cubing/twisty/controllers/indexer/simultaneous-moves/SimultaneousMoveIndexer.ts
-var $8e08190ac5cfc1c3$var$demos = {
-    "y' y' U' E D R2 r2 F2 B2 U E D' R2 L2' z2 S2 U U D D S2 F2' B2": [
-        {
-            animLeaf: new (0, $j3ukw.Move)("y", -1),
-            start: 0,
-            end: 1e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("y", -1),
-            start: 1e3,
-            end: 2e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("U", -1),
-            start: 1e3,
-            end: 1600
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("E", 1),
-            start: 1200,
-            end: 1800
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("D"),
-            start: 1400,
-            end: 2e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("R", 2),
-            start: 2e3,
-            end: 3500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("r", 2),
-            start: 2e3,
-            end: 3500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("F", 2),
-            start: 3500,
-            end: 4200
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("B", 2),
-            start: 3800,
-            end: 4500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("U", 1),
-            start: 4500,
-            end: 5500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("E", 1),
-            start: 4500,
-            end: 5500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("D", -1),
-            start: 4500,
-            end: 5500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("R", 2),
-            start: 5500,
-            end: 6500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("L", -2),
-            start: 5500,
-            end: 6500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("z", 2),
-            start: 5500,
-            end: 6500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("S", 2),
-            start: 6500,
-            end: 7500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("U"),
-            start: 7500,
-            end: 8e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("D"),
-            start: 7750,
-            end: 8250
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("U"),
-            start: 8e3,
-            end: 8500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("D"),
-            start: 8250,
-            end: 8750
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("S", 2),
-            start: 8750,
-            end: 9250
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("F", -2),
-            start: 8750,
-            end: 1e4
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("B", 2),
-            start: 8750,
-            end: 1e4
-        }
-    ],
-    "M' R' U' D' M R": [
-        {
-            animLeaf: new (0, $j3ukw.Move)("M", -1),
-            start: 0,
-            end: 1e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("R", -1),
-            start: 0,
-            end: 1e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("U", -1),
-            start: 1e3,
-            end: 2e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("D", -1),
-            start: 1e3,
-            end: 2e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("M"),
-            start: 2e3,
-            end: 3e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("R"),
-            start: 2e3,
-            end: 3e3
-        }
-    ],
-    "U' E' r E r2' E r U E": [
-        {
-            animLeaf: new (0, $j3ukw.Move)("U", -1),
-            start: 0,
-            end: 1e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("E", -1),
-            start: 0,
-            end: 1e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("r"),
-            start: 1e3,
-            end: 2500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("E"),
-            start: 2500,
-            end: 3500
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("r", -2),
-            start: 3500,
-            end: 5e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("E"),
-            start: 5e3,
-            end: 6e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("r"),
-            start: 6e3,
-            end: 7e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("U"),
-            start: 7e3,
-            end: 8e3
-        },
-        {
-            animLeaf: new (0, $j3ukw.Move)("E"),
-            start: 7e3,
-            end: 8e3
-        }
-    ]
-};
-var $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer = class {
-    constructor(kpuzzle, alg){
-        this.kpuzzle = kpuzzle;
-        this.animLeaves = $8e08190ac5cfc1c3$var$demos[alg.toString()] ?? $8e08190ac5cfc1c3$var$simulMoves(alg);
-    }
-    getAnimLeaf(index) {
-        return this.animLeaves[Math.min(index, this.animLeaves.length - 1)]?.animLeaf ?? null;
-    }
-    getAnimLeafWithRange(index) {
-        return this.animLeaves[Math.min(index, this.animLeaves.length - 1)];
-    }
-    indexToMoveStartTimestamp(index) {
-        let start = 0;
-        if (this.animLeaves.length > 0) start = this.animLeaves[Math.min(index, this.animLeaves.length - 1)].start;
-        return start;
-    }
-    timestampToIndex(timestamp) {
-        let i = 0;
-        for(i = 0; i < this.animLeaves.length; i++){
-            if (this.animLeaves[i].start >= timestamp) return Math.max(0, i - 1);
-        }
-        return Math.max(0, i - 1);
-    }
-    timestampToPosition(timestamp, startState) {
-        const currentMoveInfo = this.currentMoveInfo(timestamp);
-        let state = startState ?? this.kpuzzle.identityTransformation().toKState();
-        for (const leafWithRange of this.animLeaves.slice(0, currentMoveInfo.stateIndex)){
-            const move = leafWithRange.animLeaf.as((0, $j3ukw.Move));
-            if (move !== null) state = state.applyMove(move);
-        }
-        return {
-            state: state,
-            movesInProgress: currentMoveInfo.currentMoves
-        };
-    }
-    currentMoveInfo(timestamp) {
-        let windowEarliestTimestamp = Infinity;
-        for (const leafWithRange of this.animLeaves){
-            if (leafWithRange.start <= timestamp && leafWithRange.end >= timestamp) windowEarliestTimestamp = Math.min(windowEarliestTimestamp, leafWithRange.start);
-            else if (leafWithRange.start > timestamp) break;
-        }
-        const currentMoves = [];
-        const movesStarting = [];
-        const movesFinishing = [];
-        const movesFinished = [];
-        let latestStart = -Infinity;
-        let earliestEnd = Infinity;
-        let stateIndex = 0;
-        for (const leafWithRange1 of this.animLeaves){
-            if (leafWithRange1.end <= windowEarliestTimestamp) stateIndex++;
-            else if (leafWithRange1.start > timestamp) break;
-            else {
-                const move = leafWithRange1.animLeaf.as((0, $j3ukw.Move));
-                if (move !== null) {
-                    let fraction = (timestamp - leafWithRange1.start) / (leafWithRange1.end - leafWithRange1.start);
-                    let moveFinished = false;
-                    if (fraction > 1) {
-                        fraction = 1;
-                        moveFinished = true;
-                    }
-                    const currentMove = {
-                        move: move,
-                        direction: 1 /* Forwards */ ,
-                        fraction: fraction,
-                        startTimestamp: leafWithRange1.start,
-                        endTimestamp: leafWithRange1.end
-                    };
-                    switch(fraction){
-                        case 0:
-                            movesStarting.push(currentMove);
-                            break;
-                        case 1:
-                            if (moveFinished) movesFinished.push(currentMove);
-                            else movesFinishing.push(currentMove);
-                            break;
-                        default:
-                            currentMoves.push(currentMove);
-                            latestStart = Math.max(latestStart, leafWithRange1.start);
-                            earliestEnd = Math.min(earliestEnd, leafWithRange1.end);
-                    }
-                }
-            }
-        }
-        return {
-            stateIndex: stateIndex,
-            currentMoves: currentMoves,
-            latestStart: latestStart,
-            earliestEnd: earliestEnd,
-            movesStarting: movesStarting,
-            movesFinishing: movesFinishing,
-            movesFinished: movesFinished
-        };
-    }
-    stateAtIndex(index, startState) {
-        let state = startState ?? this.kpuzzle.startState();
-        for(let i = 0; i < this.animLeaves.length && i < index; i++){
-            const leafWithRange = this.animLeaves[i];
-            const move = leafWithRange.animLeaf.as((0, $j3ukw.Move));
-            if (move !== null) state = state.applyMove(move);
-        }
-        return state;
-    }
-    transformationAtIndex(index) {
-        let transformation = this.kpuzzle.identityTransformation();
-        for (const leafWithRange of this.animLeaves.slice(0, index)){
-            const move = leafWithRange.animLeaf.as((0, $j3ukw.Move));
-            if (move !== null) transformation = transformation.applyMove(move);
-        }
-        return transformation;
-    }
-    algDuration() {
-        let max = 0;
-        for (const leafWithRange of this.animLeaves)max = Math.max(max, leafWithRange.end);
-        return max;
-    }
-    numAnimatedLeaves() {
-        return this.animLeaves.length;
-    }
-    moveDuration(index) {
-        const move = this.getAnimLeafWithRange(index);
-        return move.end - move.start;
-    }
-};
-// src/cubing/twisty/controllers/indexer/tree/AlgWalker.ts
-var $8e08190ac5cfc1c3$var$AlgWalkterDecoration = class {
-    constructor(moveCount, duration, forward, backward, children = []){
-        this.moveCount = moveCount;
-        this.duration = duration;
-        this.forward = forward;
-        this.backward = backward;
-        this.children = children;
-    }
-};
-var $8e08190ac5cfc1c3$var$DecoratorConstructor = class extends (0, $j3ukw.TraversalUp) {
-    constructor(kpuzzle){
-        super();
-        this.kpuzzle = kpuzzle;
-        this.durationFn = new $8e08190ac5cfc1c3$var$AlgDuration($8e08190ac5cfc1c3$var$defaultDurationForAmount);
-        this.cache = {};
-        this.identity = kpuzzle.identityTransformation();
-        this.dummyLeaf = new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(0, 0, this.identity, this.identity, []);
-    }
-    traverseAlg(alg) {
-        let moveCount = 0;
-        let duration = 0;
-        let transformation = this.identity;
-        const child = [];
-        for (const algNode of alg.childAlgNodes()){
-            const apd = this.traverseAlgNode(algNode);
-            moveCount += apd.moveCount;
-            duration += apd.duration;
-            if (transformation === this.identity) transformation = apd.forward;
-            else transformation = transformation.applyTransformation(apd.forward);
-            child.push(apd);
-        }
-        return new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(moveCount, duration, transformation, transformation.invert(), child);
-    }
-    traverseGrouping(grouping) {
-        const dec = this.traverseAlg(grouping.alg);
-        return this.mult(dec, grouping.amount, [
-            dec
-        ]);
-    }
-    traverseMove(move) {
-        const key = move.toString();
-        let r2 = this.cache[key];
-        if (r2) return r2;
-        const transformation = this.kpuzzle.moveToTransformation(move);
-        r2 = new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(1, this.durationFn.traverseAlgNode(move), transformation, transformation.invert());
-        this.cache[key] = r2;
-        return r2;
-    }
-    traverseCommutator(commutator) {
-        const decA = this.traverseAlg(commutator.A);
-        const decB = this.traverseAlg(commutator.B);
-        const AB = decA.forward.applyTransformation(decB.forward);
-        const ApBp = decA.backward.applyTransformation(decB.backward);
-        const ABApBp = AB.applyTransformation(ApBp);
-        const dec = new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(2 * (decA.moveCount + decB.moveCount), 2 * (decA.duration + decB.duration), ABApBp, ABApBp.invert(), [
-            decA,
-            decB
-        ]);
-        return this.mult(dec, 1, [
-            dec,
-            decA,
-            decB
-        ]);
-    }
-    traverseConjugate(conjugate) {
-        const decA = this.traverseAlg(conjugate.A);
-        const decB = this.traverseAlg(conjugate.B);
-        const AB = decA.forward.applyTransformation(decB.forward);
-        const ABAp = AB.applyTransformation(decA.backward);
-        const dec = new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(2 * decA.moveCount + decB.moveCount, 2 * decA.duration + decB.duration, ABAp, ABAp.invert(), [
-            decA,
-            decB
-        ]);
-        return this.mult(dec, 1, [
-            dec,
-            decA,
-            decB
-        ]);
-    }
-    traversePause(pause) {
-        if (pause.experimentalNISSGrouping) return this.dummyLeaf;
-        return new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(1, this.durationFn.traverseAlgNode(pause), this.identity, this.identity);
-    }
-    traverseNewline(_newline) {
-        return this.dummyLeaf;
-    }
-    traverseLineComment(_comment) {
-        return this.dummyLeaf;
-    }
-    mult(apd, n, child) {
-        const absn = Math.abs(n);
-        const st = apd.forward.selfMultiply(n);
-        return new $8e08190ac5cfc1c3$var$AlgWalkterDecoration(apd.moveCount * absn, apd.duration * absn, st, st.invert(), child);
-    }
-};
-var $8e08190ac5cfc1c3$var$WalkerDown = class {
-    constructor(apd, back){
-        this.apd = apd;
-        this.back = back;
-    }
-};
-var $8e08190ac5cfc1c3$var$AlgWalker = class extends (0, $j3ukw.TraversalDownUp) {
-    constructor(kpuzzle, algOrAlgNode, apd){
-        super();
-        this.kpuzzle = kpuzzle;
-        this.algOrAlgNode = algOrAlgNode;
-        this.apd = apd;
-        this.i = -1;
-        this.dur = -1;
-        this.goali = -1;
-        this.goaldur = -1;
-        this.move = void 0;
-        this.back = false;
-        this.moveDuration = 0;
-        this.st = this.kpuzzle.identityTransformation();
-        this.root = new $8e08190ac5cfc1c3$var$WalkerDown(this.apd, false);
-    }
-    moveByIndex(loc) {
-        if (this.i >= 0 && this.i === loc) return this.move !== void 0;
-        return this.dosearch(loc, Infinity);
-    }
-    moveByDuration(dur) {
-        if (this.dur >= 0 && this.dur < dur && this.dur + this.moveDuration >= dur) return this.move !== void 0;
-        return this.dosearch(Infinity, dur);
-    }
-    dosearch(loc, dur) {
-        this.goali = loc;
-        this.goaldur = dur;
-        this.i = 0;
-        this.dur = 0;
-        this.move = void 0;
-        this.moveDuration = 0;
-        this.back = false;
-        this.st = this.kpuzzle.identityTransformation();
-        const r2 = this.algOrAlgNode.is((0, $j3ukw.Alg)) ? this.traverseAlg(this.algOrAlgNode, this.root) : this.traverseAlgNode(this.algOrAlgNode, this.root);
-        return r2;
-    }
-    traverseAlg(alg, wd) {
-        if (!this.firstcheck(wd)) return false;
-        let i = wd.back ? alg.experimentalNumChildAlgNodes() - 1 : 0;
-        for (const algNode of (0, $j3ukw.directedGenerator)(alg.childAlgNodes(), wd.back ? -1 /* Backwards */  : 1 /* Forwards */ )){
-            if (this.traverseAlgNode(algNode, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[i], wd.back))) return true;
-            i += wd.back ? -1 : 1;
-        }
-        return false;
-    }
-    traverseGrouping(grouping, wd) {
-        if (!this.firstcheck(wd)) return false;
-        const back = this.domult(wd, grouping.amount);
-        return this.traverseAlg(grouping.alg, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[0], back));
-    }
-    traverseMove(move, wd) {
-        if (!this.firstcheck(wd)) return false;
-        this.move = move;
-        this.moveDuration = wd.apd.duration;
-        this.back = wd.back;
-        return true;
-    }
-    traverseCommutator(commutator, wd) {
-        if (!this.firstcheck(wd)) return false;
-        const back = this.domult(wd, 1);
-        if (back) return this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], !back)) || this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back)) || this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back));
-        else return this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back)) || this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(commutator.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back)) || this.traverseAlg(commutator.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], !back));
-    }
-    traverseConjugate(conjugate, wd) {
-        if (!this.firstcheck(wd)) return false;
-        const back = this.domult(wd, 1);
-        if (back) return this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back)) || this.traverseAlg(conjugate.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back));
-        else return this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], back)) || this.traverseAlg(conjugate.B, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[2], back)) || this.traverseAlg(conjugate.A, new $8e08190ac5cfc1c3$var$WalkerDown(wd.apd.children[1], !back));
-    }
-    traversePause(pause, wd) {
-        if (!this.firstcheck(wd)) return false;
-        this.move = pause;
-        this.moveDuration = wd.apd.duration;
-        this.back = wd.back;
-        return true;
-    }
-    traverseNewline(_newline, _wd) {
-        return false;
-    }
-    traverseLineComment(_lineComment, _wd) {
-        return false;
-    }
-    firstcheck(wd) {
-        if (wd.apd.moveCount + this.i <= this.goali && wd.apd.duration + this.dur < this.goaldur) return this.keepgoing(wd);
-        return true;
-    }
-    domult(wd, amount) {
-        let back = wd.back;
-        if (amount === 0) return back;
-        if (amount < 0) {
-            back = !back;
-            amount = -amount;
-        }
-        const base = wd.apd.children[0];
-        const full = Math.min(Math.floor((this.goali - this.i) / base.moveCount), Math.ceil((this.goaldur - this.dur) / base.duration - 1));
-        if (full > 0) this.keepgoing(new $8e08190ac5cfc1c3$var$WalkerDown(base, back), full);
-        return back;
-    }
-    keepgoing(wd, mul = 1) {
-        this.i += mul * wd.apd.moveCount;
-        this.dur += mul * wd.apd.duration;
-        if (mul !== 1) {
-            if (wd.back) this.st = this.st.applyTransformation(wd.apd.backward.selfMultiply(mul));
-            else this.st = this.st.applyTransformation(wd.apd.forward.selfMultiply(mul));
-        } else if (wd.back) this.st = this.st.applyTransformation(wd.apd.backward);
-        else this.st = this.st.applyTransformation(wd.apd.forward);
-        return false;
-    }
-};
-// src/cubing/twisty/controllers/indexer/tree/chunkAlgs.ts
-var $8e08190ac5cfc1c3$var$MIN_CHUNKING_THRESHOLD = 16;
-function $8e08190ac5cfc1c3$var$chunkifyAlg(alg, chunkMaxLength) {
-    const mainAlgBuilder = new (0, $j3ukw.AlgBuilder)();
-    const chunkAlgBuilder = new (0, $j3ukw.AlgBuilder)();
-    for (const algNode of alg.childAlgNodes()){
-        chunkAlgBuilder.push(algNode);
-        if (chunkAlgBuilder.experimentalNumAlgNodes() >= chunkMaxLength) {
-            mainAlgBuilder.push(new (0, $j3ukw.Grouping)(chunkAlgBuilder.toAlg()));
-            chunkAlgBuilder.reset();
-        }
-    }
-    mainAlgBuilder.push(new (0, $j3ukw.Grouping)(chunkAlgBuilder.toAlg()));
-    return mainAlgBuilder.toAlg();
-}
-var $8e08190ac5cfc1c3$var$ChunkAlgs = class extends (0, $j3ukw.TraversalUp) {
-    traverseAlg(alg) {
-        const algLength = alg.experimentalNumChildAlgNodes();
-        if (algLength < $8e08190ac5cfc1c3$var$MIN_CHUNKING_THRESHOLD) return alg;
-        return $8e08190ac5cfc1c3$var$chunkifyAlg(alg, Math.ceil(Math.sqrt(algLength)));
-    }
-    traverseGrouping(grouping) {
-        return new (0, $j3ukw.Grouping)(this.traverseAlg(grouping.alg), grouping.amount);
-    }
-    traverseMove(move) {
-        return move;
-    }
-    traverseCommutator(commutator) {
-        return new (0, $j3ukw.Conjugate)(this.traverseAlg(commutator.A), this.traverseAlg(commutator.B));
-    }
-    traverseConjugate(conjugate) {
-        return new (0, $j3ukw.Conjugate)(this.traverseAlg(conjugate.A), this.traverseAlg(conjugate.B));
-    }
-    traversePause(pause) {
-        return pause;
-    }
-    traverseNewline(newline) {
-        return newline;
-    }
-    traverseLineComment(comment) {
-        return comment;
-    }
-};
-var $8e08190ac5cfc1c3$var$chunkAlgsInstance = new $8e08190ac5cfc1c3$var$ChunkAlgs();
-var $8e08190ac5cfc1c3$var$chunkAlgs = $8e08190ac5cfc1c3$var$chunkAlgsInstance.traverseAlg.bind($8e08190ac5cfc1c3$var$chunkAlgsInstance);
-// src/cubing/twisty/controllers/indexer/tree/TreeAlgIndexer.ts
-var $8e08190ac5cfc1c3$export$ff289a905dec21cb = class {
-    constructor(kpuzzle, alg){
-        this.kpuzzle = kpuzzle;
-        const deccon = new $8e08190ac5cfc1c3$var$DecoratorConstructor(this.kpuzzle);
-        const chunkedAlg = $8e08190ac5cfc1c3$var$chunkAlgs(alg);
-        this.decoration = deccon.traverseAlg(chunkedAlg);
-        this.walker = new $8e08190ac5cfc1c3$var$AlgWalker(this.kpuzzle, chunkedAlg, this.decoration);
-    }
-    getAnimLeaf(index) {
-        if (this.walker.moveByIndex(index)) {
-            if (!this.walker.move) throw new Error("`this.walker.mv` missing");
-            const move = this.walker.move;
-            if (this.walker.back) return move.invert();
-            return move;
-        }
-        return null;
-    }
-    indexToMoveStartTimestamp(index) {
-        if (this.walker.moveByIndex(index) || this.walker.i === index) return this.walker.dur;
-        throw new Error(`Out of algorithm: index ${index}`);
-    }
-    indexToMovesInProgress(index) {
-        if (this.walker.moveByIndex(index) || this.walker.i === index) return this.walker.dur;
-        throw new Error(`Out of algorithm: index ${index}`);
-    }
-    stateAtIndex(index, startState) {
-        this.walker.moveByIndex(index);
-        return (startState ?? this.kpuzzle.startState()).applyTransformation(this.walker.st);
-    }
-    transformationAtIndex(index) {
-        this.walker.moveByIndex(index);
-        return this.walker.st;
-    }
-    numAnimatedLeaves() {
-        return this.decoration.moveCount;
-    }
-    timestampToIndex(timestamp) {
-        this.walker.moveByDuration(timestamp);
-        return this.walker.i;
-    }
-    algDuration() {
-        return this.decoration.duration;
-    }
-    moveDuration(index) {
-        this.walker.moveByIndex(index);
-        return this.walker.moveDuration;
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/IndexerConstructorProp.ts
-var $8e08190ac5cfc1c3$var$IndexerConstructorProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        switch(inputs.indexerConstructorRequest){
-            case "auto":
-                if ((0, $ce7d5deeec50f6ba$export$3bb9ec80d65f79cf)(inputs.alg.alg) < 100 && inputs.puzzle === "3x3x3" && inputs.visualizationStrategy === "Cube3D") return $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer;
-                else return $8e08190ac5cfc1c3$export$ff289a905dec21cb;
-            case "tree":
-                return $8e08190ac5cfc1c3$export$ff289a905dec21cb;
-            case "simple":
-                return $8e08190ac5cfc1c3$export$f1f512573dac63bc;
-            case "simultaneous":
-                return $8e08190ac5cfc1c3$var$SimultaneousMoveIndexer;
-            default:
-                throw new Error("Invalid indexer request!");
-        }
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/IndexerConstructorRequestProp.ts
-var $8e08190ac5cfc1c3$var$IndexerConstructorRequestProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "auto";
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/IndexerProp.ts
-var $8e08190ac5cfc1c3$var$IndexerProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(input) {
-        return new input.indexerConstructor(input.kpuzzle, input.algWithIssues.alg);
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/LegacyPositionProp.ts
-var $8e08190ac5cfc1c3$var$LegacyPositionProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        return {
-            state: inputs.state,
-            movesInProgress: inputs.currentMoveInfo.currentMoves
-        };
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/NaiveMoveCountProp.ts
-var $8e08190ac5cfc1c3$var$NaiveMoveCountProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        if (inputs.alg.issues.errors.length > 0) return null;
-        return (0, $ce7d5deeec50f6ba$export$3bb9ec80d65f79cf)(inputs.alg.alg);
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/PuzzleAlgProp.ts
-var $8e08190ac5cfc1c3$var$validate = true;
-var $8e08190ac5cfc1c3$var$PuzzleAlgProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    async derive(inputs) {
-        try {
-            if ($8e08190ac5cfc1c3$var$validate) inputs.kpuzzle.algToTransformation(inputs.algWithIssues.alg);
-            return inputs.algWithIssues;
-        } catch (e) {
-            return {
-                alg: new (0, $j3ukw.Alg)(),
-                issues: new $8e08190ac5cfc1c3$var$AlgIssues({
-                    errors: [
-                        `Invalid alg for puzzle: ${e.toString()}`
-                    ]
-                })
-            };
-        }
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/SetupAnchorProp.ts
-var $8e08190ac5cfc1c3$var$SetupAnchorProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "start";
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/SetupTransformationProp.ts
-var $8e08190ac5cfc1c3$var$SetupTransformationProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return null;
-    }
-};
-// src/cubing/twisty/model/props/puzzle/structure/KPuzzleProp.ts
-var $8e08190ac5cfc1c3$var$KPuzzleProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    async derive(inputs) {
-        return inputs.puzzleLoader.kpuzzle();
-    }
-};
-// src/cubing/twisty/model/props/puzzle/structure/PuzzleDescriptionProp.ts
-var $8e08190ac5cfc1c3$var$PGPuzzleDescriptionStringProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return 0, $9IDdS.NO_VALUE;
-    }
-};
-// src/cubing/twisty/model/props/puzzle/structure/PuzzleIDProp.ts
-var $8e08190ac5cfc1c3$var$PuzzleIDProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    async derive(inputs) {
-        return inputs.puzzleLoader.id;
-    }
-};
-// src/cubing/twisty/model/props/puzzle/structure/PuzzleIDRequestProp.ts
-var $8e08190ac5cfc1c3$var$PuzzleIDRequestProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return 0, $9IDdS.NO_VALUE;
-    }
-};
-// src/cubing/twisty/model/props/puzzle/structure/PuzzleLoaderProp.ts
-var $8e08190ac5cfc1c3$var$PuzzleLoaderProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        if (inputs.puzzleIDRequest && inputs.puzzleIDRequest !== (0, $9IDdS.NO_VALUE)) {
-            const puzzleLoader = (0, $ch5j6.puzzles)[inputs.puzzleIDRequest];
-            if (!puzzleLoader) this.userVisibleErrorTracker.set({
-                errors: [
-                    `Invalid puzzle ID: ${inputs.puzzleIDRequest}`
-                ]
-            });
-            return puzzleLoader;
-        }
-        if (inputs.puzzleDescriptionRequest && inputs.puzzleDescriptionRequest !== (0, $9IDdS.NO_VALUE)) return (0, $jZEJE.customPGPuzzleLoader)(inputs.puzzleDescriptionRequest);
-        return 0, $ch5j6.cube3x3x3;
-    }
-};
-// src/cubing/twisty/model/props/timeline/CoarseTimelineInfoProp.ts
-var $8e08190ac5cfc1c3$var$CoarseTimelineInfoProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        return {
-            playing: inputs.playingInfo.playing,
-            atStart: inputs.detailedTimelineInfo.atStart,
-            atEnd: inputs.detailedTimelineInfo.atEnd
-        };
-    }
-    canReuseValue(v1, v2) {
-        return v1.playing === v2.playing && v1.atStart === v2.atStart && v1.atEnd === v2.atEnd;
-    }
-};
-// src/cubing/twisty/model/props/timeline/DetailedTimelineInfoProp.ts
-var $8e08190ac5cfc1c3$var$DetailedTimelineInfoProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        let timestamp = this.#requestedTimestampToMilliseconds(inputs);
-        let atStart = false;
-        let atEnd = false;
-        if (timestamp >= inputs.timeRange.end) {
-            atEnd = true;
-            timestamp = Math.min(inputs.timeRange.end, timestamp);
-        }
-        if (timestamp <= inputs.timeRange.start) {
-            atStart = true;
-            timestamp = Math.max(inputs.timeRange.start, timestamp);
-        }
-        return {
-            timestamp: timestamp,
-            timeRange: inputs.timeRange,
-            atStart: atStart,
-            atEnd: atEnd
-        };
-    }
-     #requestedTimestampToMilliseconds(inputs) {
-        switch(inputs.timestampRequest){
-            case "start":
-                return inputs.timeRange.start;
-            case "end":
-                return inputs.timeRange.end;
-            case "anchor":
-                return inputs.setupAnchor === "start" ? inputs.timeRange.start : inputs.timeRange.end;
-            case "opposite-anchor":
-                return inputs.setupAnchor === "start" ? inputs.timeRange.end : inputs.timeRange.start;
-            default:
-                return inputs.timestampRequest;
-        }
-    }
-    canReuse(v1, v2) {
-        return v1.timestamp === v2.timestamp && v1.timeRange.start === v2.timeRange.start && v1.timeRange.end === v2.timeRange.end && v1.atStart === v2.atStart && v1.atEnd === v2.atEnd;
-    }
-};
-// src/cubing/twisty/model/props/timeline/PlayingInfoProp.ts
-var $8e08190ac5cfc1c3$var$PlayingInfoProp = class extends (0, $9IDdS.TwistyPropSource) {
-    async getDefaultValue() {
-        return {
-            direction: 1 /* Forwards */ ,
-            playing: false,
-            untilBoundary: "entire-timeline" /* EntireTimeline */ ,
-            loop: false
-        };
-    }
-    async derive(newInfo, oldValuePromise) {
-        const oldValue = await oldValuePromise;
-        const newValue = Object.assign({}, oldValue);
-        Object.assign(newValue, newInfo);
-        return newValue;
-    }
-    canReuseValue(v1, v2) {
-        return v1.direction === v2.direction && v1.playing === v2.playing && v1.untilBoundary === v2.untilBoundary && v1.loop === v2.loop;
-    }
-};
-// src/cubing/twisty/model/props/timeline/TempoScaleProp.ts
-var $8e08190ac5cfc1c3$var$TempoScaleProp = class extends (0, $9IDdS.TwistyPropSource) {
-    getDefaultValue() {
-        return 1;
-    }
-    derive(v) {
-        return v < 0 ? 1 : v;
-    }
-};
-// src/cubing/twisty/model/props/timeline/TimestampRequestProp.ts
-var $8e08190ac5cfc1c3$var$smartTimestamps = {
-    start: true,
-    end: true,
-    anchor: true,
-    "opposite-anchor": true
-};
-var $8e08190ac5cfc1c3$var$TimestampRequestProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "opposite-anchor";
-    }
-    set(v) {
-        if (!this.validInput(v)) return;
-        super.set(v);
-    }
-    validInput(v) {
-        if (typeof v === "number") return true;
-        if ($8e08190ac5cfc1c3$var$smartTimestamps[v]) return true;
-        return false;
-    }
-};
-// src/cubing/twisty/model/props/viewer/BackViewProp.ts
-var $8e08190ac5cfc1c3$export$9052cca4b8cc895f = {
-    none: true,
-    "side-by-side": true,
-    "top-right": true
-};
-var $8e08190ac5cfc1c3$var$BackViewProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "auto";
-    }
-};
-// src/cubing/twisty/model/props/viewer/TimeRangeProp.ts
-var $8e08190ac5cfc1c3$var$TimeRangeProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        return {
-            start: 0,
-            end: inputs.indexer.algDuration()
-        };
-    }
-};
-// src/cubing/twisty/model/props/viewer/ViewerLinkProp.ts
-var $8e08190ac5cfc1c3$var$ViewerLinkProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "auto";
-    }
-};
-// src/cubing/twisty/model/props/viewer/VisualizationProp.ts
-var $8e08190ac5cfc1c3$var$VisualizationFormatProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "auto";
-    }
-};
-// src/cubing/twisty/model/props/viewer/VisualizationStrategyProp.ts
-var $8e08190ac5cfc1c3$var$VisualizationStrategyProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        switch(inputs.puzzleID){
-            case "clock":
-            case "square1":
-            case "kilominx":
-            case "redi_cube":
-                return "2D";
-            case "3x3x3":
-                switch(inputs.visualizationRequest){
-                    case "auto":
-                    case "3D":
-                        return "Cube3D";
-                    default:
-                        return inputs.visualizationRequest;
-                }
-            default:
-                switch(inputs.visualizationRequest){
-                    case "auto":
-                    case "3D":
-                        return "PG3D";
-                    case "experimental-2D-LL":
-                        if (inputs.puzzleID === "4x4x4") return "experimental-2D-LL";
-                        else return "2D";
-                    default:
-                        return inputs.visualizationRequest;
-                }
-        }
-    }
-};
-// src/cubing/twisty/model/props/puzzle/display/FoundationDisplayProp.ts
-var $8e08190ac5cfc1c3$var$FoundationDisplayProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "auto";
-    }
-};
-// src/cubing/twisty/model/props/puzzle/display/SpriteProp.ts
-var $8e08190ac5cfc1c3$var$cachedLoader = null;
-async function $8e08190ac5cfc1c3$var$loader() {
-    return $8e08190ac5cfc1c3$var$cachedLoader ?? ($8e08190ac5cfc1c3$var$cachedLoader = new (await (0, $9IDdS.THREEJS)).TextureLoader());
-}
-var $8e08190ac5cfc1c3$var$SpriteProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    async derive(inputs) {
-        const { spriteURL: textureURL  } = inputs;
-        if (textureURL === null) return null;
-        return new Promise(async (resolve, _reject)=>{
-            const onLoadingError = ()=>{
-                console.warn("Could not load sprite:", textureURL.toString());
-                resolve(null);
-            };
-            try {
-                (await $8e08190ac5cfc1c3$var$loader()).load(textureURL.toString(), resolve, onLoadingError, onLoadingError);
-            } catch (e) {
-                onLoadingError();
-            }
-        });
-    }
-};
-// src/cubing/twisty/model/props/puzzle/display/StickeringMaskProp.ts
-var $8e08190ac5cfc1c3$var$r = {
-    facelets: [
-        "regular",
-        "regular",
-        "regular",
-        "regular",
-        "regular"
-    ]
-};
-async function $8e08190ac5cfc1c3$var$fullStickeringMask(puzzleLoader) {
-    const { definition: definition  } = await puzzleLoader.kpuzzle();
-    const fullStickeringMask2 = {
-        orbits: {}
-    };
-    for (const [orbitName, orbitDef] of Object.entries(definition.orbits))fullStickeringMask2.orbits[orbitName] = {
-        pieces: new Array(orbitDef.numPieces).fill($8e08190ac5cfc1c3$var$r)
-    };
-    return fullStickeringMask2;
-}
-var $8e08190ac5cfc1c3$var$StickeringMaskProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    getDefaultValue() {
-        return {
-            orbits: {}
-        };
-    }
-    async derive(inputs) {
-        if (inputs.stickeringMaskRequest) return inputs.stickeringMaskRequest;
-        if (inputs.stickeringRequest === "picture") return {
-            specialBehaviour: "picture",
-            orbits: {}
-        };
-        return inputs.puzzleLoader.stickeringMask?.(inputs.stickeringRequest ?? "full") ?? $8e08190ac5cfc1c3$var$fullStickeringMask(inputs.puzzleLoader);
-    }
-};
-// src/cubing/twisty/model/props/puzzle/display/parseSerializedStickeringMask.ts
-var $8e08190ac5cfc1c3$var$charMap = {
-    "-": "Regular" /* Regular */ ,
-    D: "Dim" /* Dim */ ,
-    I: "Ignored" /* Ignored */ ,
-    X: "Invisible" /* Invisible */ ,
-    O: "IgnoreNonPrimary" /* IgnoreNonPrimary */ ,
-    P: "PermuteNonPrimary" /* PermuteNonPrimary */ ,
-    o: "Ignoriented" /* Ignoriented */ ,
-    "?": "OrientationWithoutPermutation" /* OrientationWithoutPermutation */ ,
-    "@": "Regular" /* Regular */ 
-};
-function $8e08190ac5cfc1c3$var$parseSerializedStickeringMask(serializedStickeringMask) {
-    const stickeringMask = {
-        orbits: {}
-    };
-    const serializedOrbits = serializedStickeringMask.split(",");
-    for (const serializedOrbit of serializedOrbits){
-        const [orbitName, serializedOrbitPieces, ...rest] = serializedOrbit.split(":");
-        if (rest.length > 0) throw new Error(`Invalid serialized orbit stickering mask (too many colons): \`${serializedOrbit}\``);
-        const pieces = [];
-        stickeringMask.orbits[orbitName] = {
-            pieces: pieces
-        };
-        for (const char of serializedOrbitPieces){
-            const pieceStickering = $8e08190ac5cfc1c3$var$charMap[char];
-            pieces.push((0, $jZEJE.getPieceStickeringMask)(pieceStickering));
-        }
-    }
-    return stickeringMask;
-}
-// src/cubing/twisty/model/props/puzzle/display/StickeringMaskRequestProp.ts
-var $8e08190ac5cfc1c3$var$StickeringMaskRequestProp = class extends (0, $9IDdS.TwistyPropSource) {
-    getDefaultValue() {
-        return null;
-    }
-    derive(input) {
-        if (input === null) return null;
-        else if (typeof input === "string") return $8e08190ac5cfc1c3$var$parseSerializedStickeringMask(input);
-        else return input;
-    }
-};
-// src/cubing/twisty/model/props/puzzle/display/StickeringRequestProp.ts
-var $8e08190ac5cfc1c3$var$StickeringRequestProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return null;
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/DragInputProp.ts
-var $8e08190ac5cfc1c3$var$DragInputProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "auto";
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/MovePressCancelOptions.ts
-var $8e08190ac5cfc1c3$var$MovePressCancelOptions = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return {};
-    }
-};
-// src/cubing/twisty/model/props/puzzle/state/MovePressInputProp.ts
-var $8e08190ac5cfc1c3$var$MovePressInputProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "auto";
-    }
-};
-// src/cubing/twisty/model/props/viewer/BackgroundProp.ts
-var $8e08190ac5cfc1c3$var$BackgroundProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "auto";
-    }
-};
-// src/cubing/twisty/model/props/viewer/LatitudeLimit.ts
-var $8e08190ac5cfc1c3$var$DEFAULT_LATITUDE_LIMIT = 35;
-var $8e08190ac5cfc1c3$var$LatitudeLimitProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return $8e08190ac5cfc1c3$var$DEFAULT_LATITUDE_LIMIT;
-    }
-};
-// src/cubing/twisty/model/props/viewer/OrbitCoordinatesRequestProp.ts
-function $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(c1, c2) {
-    return c1.latitude === c2.latitude && c1.longitude === c2.longitude && c1.distance === c2.distance;
-}
-var $8e08190ac5cfc1c3$var$OrbitCoordinatesRequestProp = class extends (0, $9IDdS.TwistyPropSource) {
-    getDefaultValue() {
-        return "auto";
-    }
-    canReuseValue(v1, v2) {
-        return v1 === v2 || $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(v1, v2);
-    }
-    async derive(newCoordinates, oldValuePromise) {
-        if (newCoordinates === "auto") return "auto";
-        let oldValue = await oldValuePromise;
-        if (oldValue === "auto") oldValue = {};
-        const newValue = Object.assign({}, oldValue);
-        Object.assign(newValue, newCoordinates);
-        if (typeof newValue.latitude !== "undefined") newValue.latitude = Math.min(Math.max(newValue.latitude, -90), 90);
-        if (typeof newValue.longitude !== "undefined") newValue.longitude = $8e08190ac5cfc1c3$var$mod(newValue.longitude, 360, 180);
-        return newValue;
-    }
-};
-// src/cubing/twisty/model/props/viewer/OrbitCoordinatesProp.ts
-var $8e08190ac5cfc1c3$var$OrbitCoordinatesProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    canReuseValue(v1, v2) {
-        return $8e08190ac5cfc1c3$var$orbitCoordinatesEqual(v1, v2);
-    }
-    async derive(inputs) {
-        if (inputs.orbitCoordinatesRequest === "auto") return $8e08190ac5cfc1c3$var$defaultCameraOrbitCoordinates(inputs.puzzleID, inputs.strategy);
-        const req = Object.assign(Object.assign({}, $8e08190ac5cfc1c3$var$defaultCameraOrbitCoordinates(inputs.puzzleID, inputs.strategy), inputs.orbitCoordinatesRequest));
-        if (Math.abs(req.latitude) <= inputs.latitudeLimit) return req;
-        else {
-            const { latitude: latitude , longitude: longitude , distance: distance  } = req;
-            return {
-                latitude: inputs.latitudeLimit * Math.sign(latitude),
-                longitude: longitude,
-                distance: distance
-            };
-        }
-    }
-};
-var $8e08190ac5cfc1c3$var$centeredCameraOrbitCoordinates = {
-    latitude: 31.717474411461005,
-    longitude: 0,
-    distance: 5.877852522924731
-};
-var $8e08190ac5cfc1c3$var$cubeCube3DCameraOrbitCoordinates = {
-    latitude: 35,
-    longitude: 30,
-    distance: 6
-};
-var $8e08190ac5cfc1c3$var$cubePG3DCameraOrbitCoordinates = {
-    latitude: 35,
-    longitude: 30,
-    distance: 6.25
-};
-var $8e08190ac5cfc1c3$var$megaminxCameraOrbitCoordinates = {
-    latitude: Math.atan(0.5) * (0, $9IDdS.DEGREES_PER_RADIAN),
-    longitude: 0,
-    distance: 6.7
-};
-var $8e08190ac5cfc1c3$var$pyraminxCameraOrbitCoordinates = {
-    latitude: 26.56505117707799,
-    longitude: 0,
-    distance: 6
-};
-function $8e08190ac5cfc1c3$var$defaultCameraOrbitCoordinates(puzzleID, strategy) {
-    if (puzzleID[1] === "x") {
-        if (strategy === "Cube3D") return $8e08190ac5cfc1c3$var$cubeCube3DCameraOrbitCoordinates;
-        else return $8e08190ac5cfc1c3$var$cubePG3DCameraOrbitCoordinates;
-    } else switch(puzzleID){
-        case "megaminx":
-        case "gigaminx":
-            return $8e08190ac5cfc1c3$var$megaminxCameraOrbitCoordinates;
-        case "pyraminx":
-        case "master_tetraminx":
-            return $8e08190ac5cfc1c3$var$pyraminxCameraOrbitCoordinates;
-        case "skewb":
-            return $8e08190ac5cfc1c3$var$cubePG3DCameraOrbitCoordinates;
-        default:
-            return $8e08190ac5cfc1c3$var$centeredCameraOrbitCoordinates;
-    }
-}
-// src/cubing/twisty/model/TwistySceneModel.ts
-var $8e08190ac5cfc1c3$var$TwistySceneModel = class {
-    constructor(twistyPlayerModel){
-        this.twistyPlayerModel = twistyPlayerModel;
-        this.background = new $8e08190ac5cfc1c3$var$BackgroundProp();
-        this.dragInput = new $8e08190ac5cfc1c3$var$DragInputProp();
-        this.foundationDisplay = new $8e08190ac5cfc1c3$var$FoundationDisplayProp();
-        this.foundationStickerSpriteURL = new $8e08190ac5cfc1c3$var$URLProp();
-        this.hintFacelet = new (0, $9IDdS.HintFaceletProp)();
-        this.hintStickerSpriteURL = new $8e08190ac5cfc1c3$var$URLProp();
-        this.latitudeLimit = new $8e08190ac5cfc1c3$var$LatitudeLimitProp();
-        this.movePressInput = new $8e08190ac5cfc1c3$var$MovePressInputProp();
-        this.movePressCancelOptions = new $8e08190ac5cfc1c3$var$MovePressCancelOptions();
-        this.orbitCoordinatesRequest = new $8e08190ac5cfc1c3$var$OrbitCoordinatesRequestProp();
-        this.stickeringMaskRequest = new $8e08190ac5cfc1c3$var$StickeringMaskRequestProp();
-        this.stickeringRequest = new $8e08190ac5cfc1c3$var$StickeringRequestProp();
-        this.foundationStickerSprite = new $8e08190ac5cfc1c3$var$SpriteProp({
-            spriteURL: this.foundationStickerSpriteURL
-        });
-        this.hintStickerSprite = new $8e08190ac5cfc1c3$var$SpriteProp({
-            spriteURL: this.hintStickerSpriteURL
-        });
-        this.orbitCoordinates = new $8e08190ac5cfc1c3$var$OrbitCoordinatesProp({
-            orbitCoordinatesRequest: this.orbitCoordinatesRequest,
-            latitudeLimit: this.latitudeLimit,
-            puzzleID: twistyPlayerModel.puzzleID,
-            strategy: twistyPlayerModel.visualizationStrategy
-        });
-        this.stickeringMask = new $8e08190ac5cfc1c3$var$StickeringMaskProp({
-            stickeringMaskRequest: this.stickeringMaskRequest,
-            stickeringRequest: this.stickeringRequest,
-            puzzleLoader: twistyPlayerModel.puzzleLoader
-        });
-    }
-};
-// src/cubing/twisty/model/UserVisibleErrorTracker.ts
-var $8e08190ac5cfc1c3$var$EMPTY_ERRORS = {
-    errors: []
-};
-var $8e08190ac5cfc1c3$var$UserVisibleErrorTracker = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return $8e08190ac5cfc1c3$var$EMPTY_ERRORS;
-    }
-    reset() {
-        this.set(this.getDefaultValue());
-    }
-    canReuseValue(_v1, _v2) {
-        return $8e08190ac5cfc1c3$var$arrayEquals(_v1.errors, _v2.errors);
-    }
-};
-// src/cubing/twisty/model/TwistyPlayerModel.ts
-var $8e08190ac5cfc1c3$var$TwistyPlayerModel = class {
-    constructor(){
-        this.userVisibleErrorTracker = new $8e08190ac5cfc1c3$var$UserVisibleErrorTracker();
-        this.alg = new $8e08190ac5cfc1c3$var$AlgProp();
-        this.backView = new $8e08190ac5cfc1c3$var$BackViewProp();
-        this.controlPanel = new $8e08190ac5cfc1c3$var$ControlPanelProp();
-        this.catchUpMove = new $8e08190ac5cfc1c3$var$CatchUpMoveProp();
-        this.indexerConstructorRequest = new $8e08190ac5cfc1c3$var$IndexerConstructorRequestProp();
-        this.playingInfo = new $8e08190ac5cfc1c3$var$PlayingInfoProp();
-        this.puzzleDescriptionRequest = new $8e08190ac5cfc1c3$var$PGPuzzleDescriptionStringProp();
-        this.puzzleIDRequest = new $8e08190ac5cfc1c3$var$PuzzleIDRequestProp();
-        this.setupAnchor = new $8e08190ac5cfc1c3$var$SetupAnchorProp();
-        this.setupAlg = new $8e08190ac5cfc1c3$var$AlgProp();
-        this.setupTransformation = new $8e08190ac5cfc1c3$var$SetupTransformationProp();
-        this.tempoScale = new $8e08190ac5cfc1c3$var$TempoScaleProp();
-        this.timestampRequest = new $8e08190ac5cfc1c3$var$TimestampRequestProp();
-        this.viewerLink = new $8e08190ac5cfc1c3$var$ViewerLinkProp();
-        this.visualizationFormat = new $8e08190ac5cfc1c3$var$VisualizationFormatProp();
-        this.title = new $8e08190ac5cfc1c3$var$ArbitraryStringProp();
-        this.videoURL = new $8e08190ac5cfc1c3$var$URLProp();
-        this.competitionID = new $8e08190ac5cfc1c3$var$ArbitraryStringProp();
-        this.puzzleLoader = new $8e08190ac5cfc1c3$var$PuzzleLoaderProp({
-            puzzleIDRequest: this.puzzleIDRequest,
-            puzzleDescriptionRequest: this.puzzleDescriptionRequest
-        }, this.userVisibleErrorTracker);
-        this.kpuzzle = new $8e08190ac5cfc1c3$var$KPuzzleProp({
-            puzzleLoader: this.puzzleLoader
-        });
-        this.puzzleID = new $8e08190ac5cfc1c3$var$PuzzleIDProp({
-            puzzleLoader: this.puzzleLoader
-        });
-        this.puzzleAlg = new $8e08190ac5cfc1c3$var$PuzzleAlgProp({
-            algWithIssues: this.alg,
-            kpuzzle: this.kpuzzle
-        });
-        this.puzzleSetupAlg = new $8e08190ac5cfc1c3$var$PuzzleAlgProp({
-            algWithIssues: this.setupAlg,
-            kpuzzle: this.kpuzzle
-        });
-        this.visualizationStrategy = new $8e08190ac5cfc1c3$var$VisualizationStrategyProp({
-            visualizationRequest: this.visualizationFormat,
-            puzzleID: this.puzzleID
-        });
-        this.indexerConstructor = new $8e08190ac5cfc1c3$var$IndexerConstructorProp({
-            alg: this.alg,
-            puzzle: this.puzzleID,
-            visualizationStrategy: this.visualizationStrategy,
-            indexerConstructorRequest: this.indexerConstructorRequest
-        });
-        this.moveCount = new $8e08190ac5cfc1c3$var$NaiveMoveCountProp({
-            alg: this.puzzleAlg
-        });
-        this.setupAlgTransformation = new $8e08190ac5cfc1c3$var$AlgTransformationProp({
-            setupAlg: this.puzzleSetupAlg,
-            kpuzzle: this.kpuzzle
-        });
-        this.indexer = new $8e08190ac5cfc1c3$var$IndexerProp({
-            indexerConstructor: this.indexerConstructor,
-            algWithIssues: this.puzzleAlg,
-            kpuzzle: this.kpuzzle
-        });
-        this.anchorTransformation = new $8e08190ac5cfc1c3$var$AnchorTransformationProp({
-            setupTransformation: this.setupTransformation,
-            setupAnchor: this.setupAnchor,
-            setupAlgTransformation: this.setupAlgTransformation,
-            indexer: this.indexer
-        });
-        this.timeRange = new $8e08190ac5cfc1c3$var$TimeRangeProp({
-            indexer: this.indexer
-        });
-        this.detailedTimelineInfo = new $8e08190ac5cfc1c3$var$DetailedTimelineInfoProp({
-            timestampRequest: this.timestampRequest,
-            timeRange: this.timeRange,
-            setupAnchor: this.setupAnchor
-        });
-        this.coarseTimelineInfo = new $8e08190ac5cfc1c3$var$CoarseTimelineInfoProp({
-            detailedTimelineInfo: this.detailedTimelineInfo,
-            playingInfo: this.playingInfo
-        });
-        this.currentMoveInfo = new $8e08190ac5cfc1c3$var$CurrentMoveInfoProp({
-            indexer: this.indexer,
-            detailedTimelineInfo: this.detailedTimelineInfo,
-            catchUpMove: this.catchUpMove
-        });
-        this.buttonAppearance = new $8e08190ac5cfc1c3$var$ButtonAppearanceProp({
-            coarseTimelineInfo: this.coarseTimelineInfo,
-            viewerLink: this.viewerLink
-        });
-        this.currentLeavesSimplified = new $8e08190ac5cfc1c3$var$CurrentLeavesSimplifiedProp({
-            currentMoveInfo: this.currentMoveInfo
-        });
-        this.currentState = new $8e08190ac5cfc1c3$var$CurrentStateProp({
-            anchoredStart: this.anchorTransformation,
-            currentLeavesSimplified: this.currentLeavesSimplified,
-            indexer: this.indexer
-        });
-        this.legacyPosition = new $8e08190ac5cfc1c3$var$LegacyPositionProp({
-            currentMoveInfo: this.currentMoveInfo,
-            state: this.currentState
-        });
-        this.twistySceneModel = new $8e08190ac5cfc1c3$var$TwistySceneModel(this);
-    }
-    async twizzleLink() {
-        const [viewerLink, puzzleID, puzzleDescription, alg, setup, anchor, experimentalStickeringRequest] = await Promise.all([
-            this.viewerLink.get(),
-            this.puzzleID.get(),
-            this.puzzleDescriptionRequest.get(),
-            this.alg.get(),
-            this.setupAlg.get(),
-            this.setupAnchor.get(),
-            this.twistySceneModel.stickeringRequest.get()
-        ]);
-        const isExplorer = viewerLink === "experimental-twizzle-explorer";
-        const url = new URL(`https://alpha.twizzle.net/${isExplorer ? "explore" : "edit"}/`);
-        if (!alg.alg.experimentalIsEmpty()) url.searchParams.set("alg", alg.alg.toString());
-        if (!setup.alg.experimentalIsEmpty()) url.searchParams.set("setup-alg", setup.alg.toString());
-        if (anchor !== "start") url.searchParams.set("setup-anchor", anchor);
-        if (experimentalStickeringRequest !== "full" && experimentalStickeringRequest !== null) url.searchParams.set("experimental-stickering", experimentalStickeringRequest);
-        if (isExplorer && puzzleDescription !== (0, $9IDdS.NO_VALUE)) url.searchParams.set("puzzle-description", puzzleDescription);
-        else if (puzzleID !== "3x3x3") url.searchParams.set("puzzle", puzzleID);
-        return url.toString();
-    }
-    experimentalAddAlgLeaf(algLeaf, options) {
-        const maybeMove = algLeaf.as((0, $j3ukw.Move));
-        if (maybeMove) this.experimentalAddMove(maybeMove, options);
-        else this.alg.set((async ()=>{
-            const alg = (await this.alg.get()).alg;
-            const newAlg = alg.concat(new (0, $j3ukw.Alg)([
-                algLeaf
-            ]));
-            this.timestampRequest.set("end");
-            return newAlg;
-        })());
-    }
-    experimentalAddMove(flexibleMove, options) {
-        const move = typeof flexibleMove === "string" ? new (0, $j3ukw.Move)(flexibleMove) : flexibleMove;
-        this.alg.set((async ()=>{
-            const [{ alg: alg  }, puzzleLoader] = await Promise.all([
-                this.alg.get(),
-                this.puzzleLoader.get()
-            ]);
-            const newAlg = (0, $j3ukw.experimentalAppendMove)(alg, move, {
-                ...options,
-                puzzleLoader: puzzleLoader
-            });
-            this.timestampRequest.set("end");
-            this.catchUpMove.set({
-                move: move,
-                amount: 0
-            });
-            return newAlg;
-        })());
-    }
-    experimentalRemoveFinalChild() {
-        this.alg.set((async ()=>{
-            const alg = (await this.alg.get()).alg;
-            const children = Array.from(alg.childAlgNodes());
-            const [finalChild] = children.splice(-1);
-            if (!finalChild) return alg;
-            this.timestampRequest.set("end");
-            const finalChildMove = finalChild.as((0, $j3ukw.Move));
-            if (finalChildMove) this.catchUpMove.set({
-                move: finalChildMove.invert(),
-                amount: 0
-            });
-            return new (0, $j3ukw.Alg)(children);
-        })());
-    }
-};
-// src/cubing/twisty/views/TwistyPlayerSettable.ts
-function $8e08190ac5cfc1c3$var$err(propName) {
-    return new Error(`Cannot get \`.${propName}\` directly from a \`TwistyPlayer\`.`);
-}
-var $8e08190ac5cfc1c3$var$TwistyPlayerSettable = class extends (0, $9IDdS.ManagedCustomElement) {
-    constructor(){
-        super(...arguments);
-        this.experimentalModel = new $8e08190ac5cfc1c3$var$TwistyPlayerModel();
-        this.experimentalGet = new $8e08190ac5cfc1c3$var$ExperimentalGetters(this.experimentalModel);
-    }
-    set alg(newAlg) {
-        this.experimentalModel.alg.set(newAlg);
-    }
-    get alg() {
-        throw $8e08190ac5cfc1c3$var$err("alg");
-    }
-    set experimentalSetupAlg(newSetup) {
-        this.experimentalModel.setupAlg.set(newSetup);
-    }
-    get experimentalSetupAlg() {
-        throw $8e08190ac5cfc1c3$var$err("setup");
-    }
-    set experimentalSetupAnchor(anchor) {
-        this.experimentalModel.setupAnchor.set(anchor);
-    }
-    get experimentalSetupAnchor() {
-        throw $8e08190ac5cfc1c3$var$err("anchor");
-    }
-    set puzzle(puzzleID) {
-        this.experimentalModel.puzzleIDRequest.set(puzzleID);
-    }
-    get puzzle() {
-        throw $8e08190ac5cfc1c3$var$err("puzzle");
-    }
-    set experimentalPuzzleDescription(puzzleDescription) {
-        this.experimentalModel.puzzleDescriptionRequest.set(puzzleDescription);
-    }
-    get experimentalPuzzleDescription() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalPuzzleDescription");
-    }
-    set timestamp(timestamp) {
-        this.experimentalModel.timestampRequest.set(timestamp);
-    }
-    get timestamp() {
-        throw $8e08190ac5cfc1c3$var$err("timestamp");
-    }
-    set hintFacelets(hintFaceletStyle) {
-        this.experimentalModel.twistySceneModel.hintFacelet.set(hintFaceletStyle);
-    }
-    get hintFacelets() {
-        throw $8e08190ac5cfc1c3$var$err("hintFacelets");
-    }
-    set experimentalStickering(stickering) {
-        this.experimentalModel.twistySceneModel.stickeringRequest.set(stickering);
-    }
-    get experimentalStickering() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalStickering");
-    }
-    set experimentalStickeringMaskOrbits(stickeringMask) {
-        this.experimentalModel.twistySceneModel.stickeringMaskRequest.set(stickeringMask);
-    }
-    get experimentalStickeringMaskOrbits() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalStickeringMaskOrbits");
-    }
-    set backView(backView) {
-        this.experimentalModel.backView.set(backView);
-    }
-    get backView() {
-        throw $8e08190ac5cfc1c3$var$err("backView");
-    }
-    set background(backgroundTheme) {
-        this.experimentalModel.twistySceneModel.background.set(backgroundTheme);
-    }
-    get background() {
-        throw $8e08190ac5cfc1c3$var$err("background");
-    }
-    set controlPanel(newControlPanel) {
-        this.experimentalModel.controlPanel.set(newControlPanel);
-    }
-    get controlPanel() {
-        throw $8e08190ac5cfc1c3$var$err("controlPanel");
-    }
-    set visualization(visualizationFormat) {
-        this.experimentalModel.visualizationFormat.set(visualizationFormat);
-    }
-    get visualization() {
-        throw $8e08190ac5cfc1c3$var$err("visualization");
-    }
-    set experimentalTitle(title) {
-        this.experimentalModel.title.set(title);
-    }
-    get experimentalTitle() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalTitle");
-    }
-    set experimentalVideoURL(videoURL) {
-        this.experimentalModel.videoURL.set(videoURL);
-    }
-    get experimentalVideoURL() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalVideoURL");
-    }
-    set experimentalCompetitionID(competitionID) {
-        this.experimentalModel.competitionID.set(competitionID);
-    }
-    get experimentalCompetitionID() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalCompetitionID");
-    }
-    set viewerLink(viewerLinkPage) {
-        this.experimentalModel.viewerLink.set(viewerLinkPage);
-    }
-    get viewerLink() {
-        throw $8e08190ac5cfc1c3$var$err("viewerLink");
-    }
-    set experimentalMovePressInput(movePressInput) {
-        this.experimentalModel.twistySceneModel.movePressInput.set(movePressInput);
-    }
-    get experimentalMovePressInput() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalMovePressInput");
-    }
-    set experimentalMovePressCancelOptions(movePressCancelOptions) {
-        this.experimentalModel.twistySceneModel.movePressCancelOptions.set(movePressCancelOptions);
-    }
-    get experimentalMovePressCancelOptions() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalMovePressCancelOptions");
-    }
-    set cameraLatitude(latitude) {
-        this.experimentalModel.twistySceneModel.orbitCoordinatesRequest.set({
-            latitude: latitude
-        });
-    }
-    get cameraLatitude() {
-        throw $8e08190ac5cfc1c3$var$err("cameraLatitude");
-    }
-    set cameraLongitude(longitude) {
-        this.experimentalModel.twistySceneModel.orbitCoordinatesRequest.set({
-            longitude: longitude
-        });
-    }
-    get cameraLongitude() {
-        throw $8e08190ac5cfc1c3$var$err("cameraLongitude");
-    }
-    set cameraDistance(distance) {
-        this.experimentalModel.twistySceneModel.orbitCoordinatesRequest.set({
-            distance: distance
-        });
-    }
-    get cameraDistance() {
-        throw $8e08190ac5cfc1c3$var$err("cameraDistance");
-    }
-    set cameraLatitudeLimit(latitudeLimit) {
-        this.experimentalModel.twistySceneModel.latitudeLimit.set(latitudeLimit);
-    }
-    get cameraLatitudeLimit() {
-        throw $8e08190ac5cfc1c3$var$err("cameraLatitudeLimit");
-    }
-    set indexer(indexer) {
-        this.experimentalModel.indexerConstructorRequest.set(indexer);
-    }
-    get indexer() {
-        throw $8e08190ac5cfc1c3$var$err("indexer");
-    }
-    set tempoScale(newTempoScale) {
-        this.experimentalModel.tempoScale.set(newTempoScale);
-    }
-    get tempoScale() {
-        throw $8e08190ac5cfc1c3$var$err("tempoScale");
-    }
-    set experimentalSprite(url) {
-        this.experimentalModel.twistySceneModel.foundationStickerSpriteURL.set(url);
-    }
-    get experimentalSprite() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalSprite");
-    }
-    set experimentalHintSprite(url) {
-        this.experimentalModel.twistySceneModel.hintStickerSpriteURL.set(url);
-    }
-    get experimentalHintSprite() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalHintSprite");
-    }
-    set experimentalDragInput(dragInputMode) {
-        this.experimentalModel.twistySceneModel.dragInput.set(dragInputMode);
-    }
-    get experimentalDragInput() {
-        throw $8e08190ac5cfc1c3$var$err("experimentalDragInput");
-    }
-};
-var $8e08190ac5cfc1c3$var$ExperimentalGetters = class {
-    constructor(model){
-        this.model = model;
-    }
-    async alg() {
-        return (await this.model.alg.get()).alg;
-    }
-    async setupAlg() {
-        return (await this.model.setupAlg.get()).alg;
-    }
-    puzzleID() {
-        return this.model.puzzleID.get();
-    }
-    async timestamp() {
-        return (await this.model.detailedTimelineInfo.get()).timestamp;
-    }
-};
-// src/cubing/twisty/views/TwistyPlayer.ts
-var $8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX = "data-";
-var $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap = {
-    alg: "alg",
-    "experimental-setup-alg": "experimentalSetupAlg",
-    "experimental-setup-anchor": "experimentalSetupAnchor",
-    puzzle: "puzzle",
-    "experimental-puzzle-description": "experimentalPuzzleDescription",
-    visualization: "visualization",
-    "hint-facelets": "hintFacelets",
-    "experimental-stickering": "experimentalStickering",
-    "experimental-stickering-mask-orbits": "experimentalStickeringMaskOrbits",
-    background: "background",
-    "control-panel": "controlPanel",
-    "back-view": "backView",
-    "viewer-link": "viewerLink",
-    "experimental-move-press-input": "experimentalMovePressInput",
-    "experimental-drag-input": "experimentalDragInput",
-    "experimental-title": "experimentalTitle",
-    "experimental-video-url": "experimentalVideoURL",
-    "experimental-competition-id": "experimentalCompetitionID",
-    "camera-latitude": "cameraLatitude",
-    "camera-longitude": "cameraLongitude",
-    "camera-distance": "cameraDistance",
-    "camera-latitude-limit": "cameraLatitudeLimit",
-    "tempo-scale": "tempoScale",
-    "experimental-sprite": "experimentalSprite",
-    "experimental-hint-sprite": "experimentalHintSprite"
-};
-var $8e08190ac5cfc1c3$var$configKeys = Object.fromEntries(Object.values($8e08190ac5cfc1c3$var$twistyPlayerAttributeMap).map((s)=>[
-        s,
-        true
-    ]));
-var $8e08190ac5cfc1c3$var$propOnly = {
-    experimentalMovePressCancelOptions: true
-};
-var $8e08190ac5cfc1c3$export$d03687cb83cd55dc = class extends $8e08190ac5cfc1c3$var$TwistyPlayerSettable {
-    constructor(config = {}){
-        super();
-        this.controller = new $8e08190ac5cfc1c3$var$TwistyPlayerController(this.experimentalModel, this);
-        this.experimentalCanvasClickCallback = ()=>{};
-        this.#controlsManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "controls-", [
-            "auto"
-        ].concat(Object.keys($8e08190ac5cfc1c3$var$controlsLocations)));
-        this.#visualizationWrapperElem = document.createElement("div");
-        this.#errorElem = document.createElement("div");
-        this.#alreadyConnected = false;
-        this.#flashLevel = "auto";
-        this.#visualizationWrapper = null;
-        this.#initial3DVisualizationWrapper = new $8e08190ac5cfc1c3$var$InitialValueTracker();
-        this.#visualizationStrategy = null;
-        for (const [propName, value] of Object.entries(config)){
-            if (!($8e08190ac5cfc1c3$var$configKeys[propName] || $8e08190ac5cfc1c3$var$propOnly[propName])) {
-                console.warn(`Invalid config passed to TwistyPlayer: ${propName}`);
-                break;
-            }
-            this[propName] = value;
-        }
-    }
-    #controlsManager;
-    #visualizationWrapperElem;
-    #errorElem;
-    #alreadyConnected;
-    async connectedCallback() {
-        if (this.#alreadyConnected) return;
-        this.#alreadyConnected = true;
-        this.addCSS($8e08190ac5cfc1c3$var$twistyPlayerCSS);
-        this.addElement(this.#visualizationWrapperElem).classList.add("visualization-wrapper");
-        this.addElement(this.#errorElem).classList.add("error-elem");
-        this.#errorElem.textContent = "Error";
-        this.experimentalModel.userVisibleErrorTracker.addFreshListener((userVisibleError)=>{
-            const errorString = userVisibleError.errors[0] ?? null;
-            this.contentWrapper.classList.toggle("error", !!errorString);
-            if (errorString) this.#errorElem.textContent = errorString;
-        });
-        const scrubber = new $8e08190ac5cfc1c3$var$TwistyScrubber(this.experimentalModel, this.controller);
-        this.contentWrapper.appendChild(scrubber);
-        this.buttons = new $8e08190ac5cfc1c3$var$TwistyButtons(this.experimentalModel, this.controller, this);
-        this.contentWrapper.appendChild(this.buttons);
-        this.experimentalModel.twistySceneModel.background.addFreshListener((backgroundTheme)=>{
-            this.contentWrapper.classList.toggle("checkered", backgroundTheme !== "none");
-        });
-        this.experimentalModel.controlPanel.addFreshListener((controlPanel)=>{
-            this.#controlsManager.setValue(controlPanel);
-        });
-        this.experimentalModel.visualizationStrategy.addFreshListener(this.#setVisualizationWrapper.bind(this));
-        this.experimentalModel.puzzleID.addFreshListener(this.flash.bind(this));
-    }
-    #flashLevel;
-    experimentalSetFlashLevel(newLevel) {
-        this.#flashLevel = newLevel;
-    }
-    flash() {
-        if (this.#flashLevel === "auto") this.#visualizationWrapper?.animate([
-            {
-                opacity: 0.25
-            },
-            {
-                opacity: 1
-            }
-        ], {
-            duration: 250,
-            easing: "ease-out"
-        });
-    }
-    #visualizationWrapper;
-    #initial3DVisualizationWrapper;
-    #visualizationStrategy;
-     #setVisualizationWrapper(strategy) {
-        if (strategy !== this.#visualizationStrategy) {
-            this.#visualizationWrapper?.remove();
-            this.#visualizationWrapper?.disconnect();
-            let newWrapper;
-            switch(strategy){
-                case "2D":
-                case "experimental-2D-LL":
-                    newWrapper = new $8e08190ac5cfc1c3$var$Twisty2DSceneWrapper(this.experimentalModel.twistySceneModel, strategy);
-                    break;
-                case "Cube3D":
-                case "PG3D":
-                    newWrapper = new $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper(this.experimentalModel);
-                    this.#initial3DVisualizationWrapper.handleNewValue(newWrapper);
-                    break;
-                default:
-                    throw new Error("Invalid visualization");
-            }
-            this.#visualizationWrapperElem.appendChild(newWrapper);
-            this.#visualizationWrapper = newWrapper;
-            this.#visualizationStrategy = strategy;
-        }
-    }
-    async experimentalCurrentVantages() {
-        this.connectedCallback();
-        const wrapper = this.#visualizationWrapper;
-        if (wrapper instanceof $8e08190ac5cfc1c3$var$Twisty3DSceneWrapper) return wrapper.experimentalVantages();
-        return [];
-    }
-    async experimentalCurrentCanvases() {
-        const vantages = await this.experimentalCurrentVantages();
-        const canvases = [];
-        for (const vantage of vantages)canvases.push((await vantage.canvasInfo()).canvas);
-        return canvases;
-    }
-    async experimentalCurrentThreeJSPuzzleObject(puzzleChangeCallback) {
-        this.connectedCallback();
-        const sceneWrapper = await this.#initial3DVisualizationWrapper.promise;
-        const puzzleWrapper = await sceneWrapper.experimentalTwisty3DPuzzleWrapper();
-        const twisty3DPuzzlePromise = puzzleWrapper.twisty3DPuzzle();
-        const safeToCallback = (async ()=>{
-            await twisty3DPuzzlePromise;
-            await new Promise((resolve)=>setTimeout(resolve, 0));
-        })();
-        if (puzzleChangeCallback) {
-            const scheduler = new (0, $9IDdS.RenderScheduler)(async ()=>{});
-            puzzleWrapper.addEventListener("render-scheduled", async ()=>{
-                if (!scheduler.requestIsPending()) {
-                    scheduler.requestAnimFrame();
-                    await safeToCallback;
-                    puzzleChangeCallback();
-                }
-            });
-        }
-        return twisty3DPuzzlePromise;
-    }
-    jumpToStart(options) {
-        this.controller.jumpToStart(options);
-    }
-    jumpToEnd(options) {
-        this.controller.jumpToEnd(options);
-    }
-    play() {
-        this.controller.togglePlay(true);
-    }
-    pause() {
-        this.controller.togglePlay(false);
-    }
-    togglePlay(play) {
-        this.controller.togglePlay(play);
-    }
-    experimentalAddMove(flexibleMove, options) {
-        this.experimentalModel.experimentalAddMove(flexibleMove, options);
-    }
-    experimentalAddAlgLeaf(algLeaf, options) {
-        this.experimentalModel.experimentalAddAlgLeaf(algLeaf, options);
-    }
-    static get observedAttributes() {
-        const observed = [];
-        for (const key of Object.keys($8e08190ac5cfc1c3$var$twistyPlayerAttributeMap))observed.push(key, $8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX + key);
-        return observed;
-    }
-    experimentalRemoveFinalChild() {
-        this.experimentalModel.experimentalRemoveFinalChild();
-    }
-    attributeChangedCallback(attributeName, _oldValue, newValue) {
-        if (attributeName.startsWith($8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX)) attributeName = attributeName.slice($8e08190ac5cfc1c3$var$DATA_ATTRIBUTE_PREFIX.length);
-        const setterName = $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap[attributeName];
-        if (!setterName) return;
-        this[setterName] = newValue;
-    }
-    async experimentalScreenshot(options) {
-        return (await $8e08190ac5cfc1c3$var$screenshot(this.experimentalModel, options)).dataURL;
-    }
-    async experimentalDownloadScreenshot(filename) {
-        if ([
-            "2D",
-            "experimental-2D-LL"
-        ].includes(await this.experimentalModel.visualizationStrategy.get())) {
-            const wrapper2D = this.#visualizationWrapper;
-            const twisty2DPuzzle = await wrapper2D.currentTwisty2DPuzzleWrapper().twisty2DPuzzle();
-            const str = new XMLSerializer().serializeToString(twisty2DPuzzle.svgWrapper.svgElement);
-            const url = URL.createObjectURL(new Blob([
-                str
-            ]));
-            $8e08190ac5cfc1c3$var$downloadURL(url, filename ?? await $8e08190ac5cfc1c3$var$getDefaultFilename(this.experimentalModel), "svg");
-        } else await (await $8e08190ac5cfc1c3$var$screenshot(this.experimentalModel)).download(filename);
-    }
-};
-(0, $9IDdS.customElementsShim).define("twisty-player", $8e08190ac5cfc1c3$export$d03687cb83cd55dc);
-// src/cubing/twisty/views/TwistyAlgViewer.css.ts
-var $8e08190ac5cfc1c3$var$twistyAlgViewerCSS = new (0, $9IDdS.CSSSource)(`
-:host {
-  display: inline;
-}
-
-.wrapper {
-  display: inline;
-}
-
-a:not(:hover) {
-  color: inherit;
-  text-decoration: none;
-}
-
-twisty-alg-leaf-elem.twisty-alg-comment {
-  color: rgba(0, 0, 0, 0.4);
-}
-
-.wrapper.current-move {
-  background: rgba(66, 133, 244, 0.3);
-  margin-left: -0.1em;
-  margin-right: -0.1em;
-  padding-left: 0.1em;
-  padding-right: 0.1em;
-  border-radius: 0.1em;
-}
-`);
-// src/cubing/twisty/views/TwistyAlgViewer.ts
-var $8e08190ac5cfc1c3$var$DEFAULT_OFFSET_MS = 250;
-var $8e08190ac5cfc1c3$var$TwistyAlgLeafElem = class extends (0, $9IDdS.ManagedCustomElement) {
-    constructor(className, text, dataDown, algOrAlgNode, offsetIntoMove, clickable){
-        super({
-            mode: "open"
-        });
-        this.algOrAlgNode = algOrAlgNode;
-        this.classList.add(className);
-        this.addCSS($8e08190ac5cfc1c3$var$twistyAlgViewerCSS);
-        if (clickable) {
-            const anchor = this.contentWrapper.appendChild(document.createElement("a"));
-            anchor.href = "#";
-            anchor.textContent = text;
-            anchor.addEventListener("click", (e)=>{
-                e.preventDefault();
-                dataDown.twistyAlgViewer.jumpToIndex(dataDown.earliestMoveIndex, offsetIntoMove);
-            });
-        } else this.contentWrapper.appendChild(document.createElement("span")).textContent = text;
-    }
-    pathToIndex(_index) {
-        return [];
-    }
-    setCurrentMove(current) {
-        this.contentWrapper.classList.toggle("current-move", current);
-    }
-};
-(0, $9IDdS.customElementsShim).define("twisty-alg-leaf-elem", $8e08190ac5cfc1c3$var$TwistyAlgLeafElem);
-var $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem = class extends (0, $9IDdS.HTMLElementShim) {
-    constructor(className, algOrAlgNode){
-        super();
-        this.algOrAlgNode = algOrAlgNode;
-        this.queue = [];
-        this.classList.add(className);
-    }
-    addString(str) {
-        this.queue.push(document.createTextNode(str));
-    }
-    addElem(dataUp) {
-        this.queue.push(dataUp.element);
-        return dataUp.moveCount;
-    }
-    flushQueue(direction = 1 /* Forwards */ ) {
-        for (const node of $8e08190ac5cfc1c3$var$maybeReverseList(this.queue, direction))this.append(node);
-        this.queue = [];
-    }
-    pathToIndex(_index) {
-        return [];
-    }
-};
-(0, $9IDdS.customElementsShim).define("twisty-alg-wrapper-elem", $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem);
-function $8e08190ac5cfc1c3$var$oppositeDirection(direction) {
-    return direction === 1 /* Forwards */  ? -1 /* Backwards */  : 1 /* Forwards */ ;
-}
-function $8e08190ac5cfc1c3$var$updateDirectionByAmount(currentDirection, amount) {
-    return amount < 0 ? $8e08190ac5cfc1c3$var$oppositeDirection(currentDirection) : currentDirection;
-}
-function $8e08190ac5cfc1c3$var$maybeReverseList(l, direction) {
-    if (direction === 1 /* Forwards */ ) return l;
-    const copy = Array.from(l);
-    copy.reverse();
-    return copy;
-}
-var $8e08190ac5cfc1c3$var$AlgToDOMTree = class extends (0, $j3ukw.TraversalDownUp) {
-    traverseAlg(alg, dataDown) {
-        let moveCount = 0;
-        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-alg", alg);
-        let first = true;
-        for (const algNode of (0, $j3ukw.direct)(alg.childAlgNodes(), dataDown.direction)){
-            if (!first) element.addString(" ");
-            first = false;
-            if (algNode.as((0, $j3ukw.Pause))?.experimentalNISSGrouping) element.addString("^(");
-            if (!algNode.as((0, $j3ukw.Grouping))?.experimentalNISSPlaceholder) moveCount += element.addElem(this.traverseAlgNode(algNode, {
-                earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
-                twistyAlgViewer: dataDown.twistyAlgViewer,
-                direction: dataDown.direction
-            }));
-            if (algNode.as((0, $j3ukw.Pause))?.experimentalNISSGrouping) element.addString(")");
-        }
-        element.flushQueue(dataDown.direction);
-        return {
-            moveCount: moveCount,
-            element: element
-        };
-    }
-    traverseGrouping(grouping, dataDown) {
-        const square1Tuple = grouping.experimentalAsSquare1Tuple();
-        const direction = $8e08190ac5cfc1c3$var$updateDirectionByAmount(dataDown.direction, grouping.amount);
-        let moveCount = 0;
-        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-grouping", grouping);
-        element.addString("(");
-        if (square1Tuple) {
-            moveCount += element.addElem({
-                moveCount: 1,
-                element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-move", square1Tuple[0].amount.toString(), dataDown, square1Tuple[0], true, true)
-            });
-            element.addString(", ");
-            moveCount += element.addElem({
-                moveCount: 1,
-                element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-move", square1Tuple[1].amount.toString(), dataDown, square1Tuple[1], true, true)
-            });
-        } else moveCount += element.addElem(this.traverseAlg(grouping.alg, {
-            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
-            twistyAlgViewer: dataDown.twistyAlgViewer,
-            direction: direction
-        }));
-        element.addString(`)${grouping.experimentalRepetitionSuffix}`);
-        element.flushQueue();
-        return {
-            moveCount: moveCount * Math.abs(grouping.amount),
-            element: element
-        };
-    }
-    traverseMove(move, dataDown) {
-        const element = new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-move", move.toString(), dataDown, move, true, true);
-        dataDown.twistyAlgViewer.highlighter.addMove(move.startCharIndex, element);
-        return {
-            moveCount: 1,
-            element: element
-        };
-    }
-    traverseCommutator(commutator, dataDown) {
-        let moveCount = 0;
-        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-commutator", commutator);
-        element.addString("[");
-        element.flushQueue();
-        const [first, second] = $8e08190ac5cfc1c3$var$maybeReverseList([
-            commutator.A,
-            commutator.B
-        ], dataDown.direction);
-        moveCount += element.addElem(this.traverseAlg(first, {
-            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
-            twistyAlgViewer: dataDown.twistyAlgViewer,
-            direction: dataDown.direction
-        }));
-        element.addString(", ");
-        moveCount += element.addElem(this.traverseAlg(second, {
-            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
-            twistyAlgViewer: dataDown.twistyAlgViewer,
-            direction: dataDown.direction
-        }));
-        element.flushQueue(dataDown.direction);
-        element.addString("]");
-        element.flushQueue();
-        return {
-            moveCount: moveCount * 2,
-            element: element
-        };
-    }
-    traverseConjugate(conjugate, dataDown) {
-        let moveCount = 0;
-        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-conjugate", conjugate);
-        element.addString("[");
-        const aLen = element.addElem(this.traverseAlg(conjugate.A, {
-            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
-            twistyAlgViewer: dataDown.twistyAlgViewer,
-            direction: dataDown.direction
-        }));
-        moveCount += aLen;
-        element.addString(": ");
-        moveCount += element.addElem(this.traverseAlg(conjugate.B, {
-            earliestMoveIndex: dataDown.earliestMoveIndex + moveCount,
-            twistyAlgViewer: dataDown.twistyAlgViewer,
-            direction: dataDown.direction
-        }));
-        element.addString("]");
-        element.flushQueue();
-        return {
-            moveCount: moveCount + aLen,
-            element: element
-        };
-    }
-    traversePause(pause, dataDown) {
-        if (pause.experimentalNISSGrouping) return this.traverseAlg(pause.experimentalNISSGrouping.alg, dataDown);
-        return {
-            moveCount: 1,
-            element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-pause", ".", dataDown, pause, true, true)
-        };
-    }
-    traverseNewline(newline, _dataDown) {
-        const element = new $8e08190ac5cfc1c3$var$TwistyAlgWrapperElem("twisty-alg-newline", newline);
-        element.append(document.createElement("br"));
-        return {
-            moveCount: 0,
-            element: element
-        };
-    }
-    traverseLineComment(lineComment, dataDown) {
-        return {
-            moveCount: 0,
-            element: new $8e08190ac5cfc1c3$var$TwistyAlgLeafElem("twisty-alg-line-comment", `//${lineComment.text}`, dataDown, lineComment, false, false)
-        };
-    }
-};
-var $8e08190ac5cfc1c3$var$algToDOMTreeInstance = new $8e08190ac5cfc1c3$var$AlgToDOMTree();
-var $8e08190ac5cfc1c3$var$algToDOMTree = $8e08190ac5cfc1c3$var$algToDOMTreeInstance.traverseAlg.bind($8e08190ac5cfc1c3$var$algToDOMTreeInstance);
-var $8e08190ac5cfc1c3$var$MoveHighlighter = class {
-    constructor(){
-        this.moveCharIndexMap = /* @__PURE__ */ new Map();
-        this.currentElem = null;
-    }
-    addMove(charIndex, elem) {
-        this.moveCharIndexMap.set(charIndex, elem);
-    }
-    set(move) {
-        const newElem = move ? this.moveCharIndexMap.get(move.startCharIndex) ?? null : null;
-        if (this.currentElem === newElem) return;
-        this.currentElem?.classList.remove("twisty-alg-current-move");
-        this.currentElem?.setCurrentMove(false);
-        newElem?.classList.add("twisty-alg-current-move");
-        newElem?.setCurrentMove(true);
-        this.currentElem = newElem;
-    }
-};
-var $8e08190ac5cfc1c3$export$e0a62567c31d067 = class extends (0, $9IDdS.HTMLElementShim) {
-    constructor(options){
-        super();
-        this.highlighter = new $8e08190ac5cfc1c3$var$MoveHighlighter();
-        this.#twistyPlayer = null;
-        this.lastClickTimestamp = null;
-        if (options?.twistyPlayer) this.twistyPlayer = options?.twistyPlayer;
-    }
-    #domTree;
-    #twistyPlayer;
-    connectedCallback() {}
-    setAlg(alg) {
-        this.#domTree = $8e08190ac5cfc1c3$var$algToDOMTree(alg, {
-            earliestMoveIndex: 0,
-            twistyAlgViewer: this,
-            direction: 1 /* Forwards */ 
-        }).element;
-        this.textContent = "";
-        this.appendChild(this.#domTree);
-    }
-    get twistyPlayer() {
-        return this.#twistyPlayer;
-    }
-    set twistyPlayer(twistyPlayer) {
-        this.#setTwistyPlayer(twistyPlayer);
-    }
-    async #setTwistyPlayer(twistyPlayer1) {
-        if (this.#twistyPlayer) {
-            console.warn("twisty-player reassignment is not supported");
-            return;
-        }
-        if (twistyPlayer1 === null) throw new Error("clearing twistyPlayer is not supported");
-        this.#twistyPlayer = twistyPlayer1;
-        this.#twistyPlayer.experimentalModel.alg.addFreshListener((algWithIssues)=>{
-            this.setAlg(algWithIssues.alg);
-        });
-        const sourceAlg = (await this.#twistyPlayer.experimentalModel.alg.get()).alg;
-        const parsedAlg = "startCharIndex" in sourceAlg ? sourceAlg : (0, $j3ukw.Alg).fromString(sourceAlg.toString());
-        this.setAlg(parsedAlg);
-        twistyPlayer1.experimentalModel.currentMoveInfo.addFreshListener((currentMoveInfo)=>{
-            let moveInfo = currentMoveInfo.currentMoves[0];
-            moveInfo ?? (moveInfo = currentMoveInfo.movesStarting[0]);
-            moveInfo ?? (moveInfo = currentMoveInfo.movesFinishing[0]);
-            if (!moveInfo) this.highlighter.set(null);
-            else {
-                const mainCurrentMove = moveInfo.move;
-                this.highlighter.set(mainCurrentMove);
-            }
-        });
-        twistyPlayer1.experimentalModel.detailedTimelineInfo.addFreshListener((detailedTimelineInfo)=>{
-            if (detailedTimelineInfo.timestamp !== this.lastClickTimestamp) this.lastClickTimestamp = null;
-        });
-    }
-    async jumpToIndex(index, offsetIntoMove) {
-        const twistyPlayer = this.#twistyPlayer;
-        if (twistyPlayer) {
-            twistyPlayer.pause();
-            const timestampPromise = (async ()=>{
-                const indexer = await twistyPlayer.experimentalModel.indexer.get();
-                const offset = offsetIntoMove ? $8e08190ac5cfc1c3$var$DEFAULT_OFFSET_MS : 0;
-                return (indexer.indexToMoveStartTimestamp(index) ?? -offset) + offset;
-            })();
-            twistyPlayer.experimentalModel.timestampRequest.set(await timestampPromise);
-            if (this.lastClickTimestamp === await timestampPromise) {
-                twistyPlayer.play();
-                this.lastClickTimestamp = null;
-            } else this.lastClickTimestamp = await timestampPromise;
-        }
-    }
-    async attributeChangedCallback(attributeName, _oldValue, newValue) {
-        if (attributeName === "for") {
-            const elem = document.getElementById(newValue);
-            if (!elem) {
-                console.warn("for= elem does not exist");
-                return;
-            }
-            await customElements.whenDefined("twisty-player");
-            if (!(elem instanceof $8e08190ac5cfc1c3$export$d03687cb83cd55dc)) {
-                console.warn("for= elem is not a twisty-player");
-                return;
-            }
-            this.twistyPlayer = elem;
-        }
-    }
-    static get observedAttributes() {
-        return [
-            "for"
-        ];
-    }
-};
-(0, $9IDdS.customElementsShim).define("twisty-alg-viewer", $8e08190ac5cfc1c3$export$e0a62567c31d067);
-// src/cubing/twisty/views/TwistyAlgEditor/LeafTokens.ts
-var $8e08190ac5cfc1c3$var$LeafTokens = class extends (0, $j3ukw.TraversalDownUp) {
-    traverseAlg(alg, dataDown) {
-        const algNodeArrays = [];
-        let numMovesInside = 0;
-        for (const algNode of alg.childAlgNodes()){
-            const dataUp = this.traverseAlgNode(algNode, {
-                numMovesSofar: dataDown.numMovesSofar + numMovesInside
-            });
-            algNodeArrays.push(dataUp.tokens);
-            numMovesInside += dataUp.numLeavesInside;
-        }
-        return {
-            tokens: Array.prototype.concat(...algNodeArrays),
-            numLeavesInside: numMovesInside
-        };
-    }
-    traverseGrouping(grouping, dataDown) {
-        const dataUp = this.traverseAlg(grouping.alg, dataDown);
-        return {
-            tokens: dataUp.tokens,
-            numLeavesInside: dataUp.numLeavesInside * grouping.amount
-        };
-    }
-    traverseMove(move, dataDown) {
-        return {
-            tokens: [
-                {
-                    leaf: move,
-                    idx: dataDown.numMovesSofar
-                }
-            ],
-            numLeavesInside: 1
-        };
-    }
-    traverseCommutator(commutator, dataDown) {
-        const dataUpA = this.traverseAlg(commutator.A, dataDown);
-        const dataUpB = this.traverseAlg(commutator.B, {
-            numMovesSofar: dataDown.numMovesSofar + dataUpA.numLeavesInside
-        });
-        return {
-            tokens: dataUpA.tokens.concat(dataUpB.tokens),
-            numLeavesInside: dataUpA.numLeavesInside * 2 + dataUpB.numLeavesInside
-        };
-    }
-    traverseConjugate(conjugate, dataDown) {
-        const dataUpA = this.traverseAlg(conjugate.A, dataDown);
-        const dataUpB = this.traverseAlg(conjugate.B, {
-            numMovesSofar: dataDown.numMovesSofar + dataUpA.numLeavesInside
-        });
-        return {
-            tokens: dataUpA.tokens.concat(dataUpB.tokens),
-            numLeavesInside: dataUpA.numLeavesInside * 2 + dataUpB.numLeavesInside * 2
-        };
-    }
-    traversePause(pause, dataDown) {
-        return {
-            tokens: [
-                {
-                    leaf: pause,
-                    idx: dataDown.numMovesSofar
-                }
-            ],
-            numLeavesInside: 1
-        };
-    }
-    traverseNewline(_newline, _dataDown) {
-        return {
-            tokens: [],
-            numLeavesInside: 0
-        };
-    }
-    traverseLineComment(_comment, _dataDown) {
-        return {
-            tokens: [],
-            numLeavesInside: 0
-        };
-    }
-};
-var $8e08190ac5cfc1c3$var$leafTokensInstance = new $8e08190ac5cfc1c3$var$LeafTokens();
-var $8e08190ac5cfc1c3$var$leafTokens = $8e08190ac5cfc1c3$var$leafTokensInstance.traverseAlg.bind($8e08190ac5cfc1c3$var$leafTokensInstance);
-// src/cubing/twisty/views/TwistyAlgEditor/model.ts
-var $8e08190ac5cfc1c3$var$TwistyAlgEditorValueProp = class extends (0, $9IDdS.SimpleTwistyPropSource) {
-    getDefaultValue() {
-        return "";
-    }
-};
-var $8e08190ac5cfc1c3$var$AlgEditorAlgWithIssuesProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(input) {
-        return $8e08190ac5cfc1c3$var$algWithIssuesFromString(input.value);
-    }
-};
-var $8e08190ac5cfc1c3$var$TwistyAlgEditorSelectionProp = class extends (0, $9IDdS.TwistyPropSource) {
-    getDefaultValue() {
-        return {
-            selectionStart: 0,
-            selectionEnd: 0,
-            endChangedMostRecently: false
-        };
-    }
-    async derive(input, oldValue) {
-        const { selectionStart: selectionStart , selectionEnd: selectionEnd  } = input;
-        const lastResult = await oldValue;
-        const endChangedMostRecently = input.selectionStart === lastResult.selectionStart && input.selectionEnd !== (await oldValue).selectionEnd;
-        return {
-            selectionStart: selectionStart,
-            selectionEnd: selectionEnd,
-            endChangedMostRecently: endChangedMostRecently
-        };
-    }
-};
-var $8e08190ac5cfc1c3$var$TargetCharProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        return inputs.selectionInfo.endChangedMostRecently ? inputs.selectionInfo.selectionEnd : inputs.selectionInfo.selectionStart;
-    }
-};
-var $8e08190ac5cfc1c3$var$LeafTokensProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        return $8e08190ac5cfc1c3$var$leafTokens(inputs.algWithIssues.alg, {
-            numMovesSofar: 0
-        }).tokens;
-    }
-};
-var $8e08190ac5cfc1c3$var$LeafToHighlightProp = class extends (0, $9IDdS.TwistyPropDerived) {
-    derive(inputs) {
-        function withWhere(leafInfo) {
-            if (leafInfo === null) return null;
-            let where;
-            if (inputs.targetChar < leafInfo.leaf.startCharIndex) where = "before";
-            else if (inputs.targetChar === leafInfo.leaf.startCharIndex) where = "start";
-            else if (inputs.targetChar < leafInfo.leaf.endCharIndex) where = "inside";
-            else if (inputs.targetChar === leafInfo.leaf.endCharIndex) where = "end";
-            else where = "after";
-            return {
-                leafInfo: leafInfo,
-                where: where
-            };
-        }
-        let lastLeafInfo = null;
-        for (const leafInfo1 of inputs.leafTokens){
-            if (inputs.targetChar < leafInfo1.leaf.startCharIndex && lastLeafInfo !== null) return withWhere(lastLeafInfo);
-            if (inputs.targetChar <= leafInfo1.leaf.endCharIndex) return withWhere(leafInfo1);
-            lastLeafInfo = leafInfo1;
-        }
-        return withWhere(lastLeafInfo);
-    }
-};
-var $8e08190ac5cfc1c3$var$TwistyAlgEditorModel = class {
-    constructor(){
-        this.valueProp = new $8e08190ac5cfc1c3$var$TwistyAlgEditorValueProp();
-        this.selectionProp = new $8e08190ac5cfc1c3$var$TwistyAlgEditorSelectionProp();
-        this.targetCharProp = new $8e08190ac5cfc1c3$var$TargetCharProp({
-            selectionInfo: this.selectionProp
-        });
-        this.algEditorAlgWithIssues = new $8e08190ac5cfc1c3$var$AlgEditorAlgWithIssuesProp({
-            value: this.valueProp
-        });
-        this.leafTokensProp = new $8e08190ac5cfc1c3$var$LeafTokensProp({
-            algWithIssues: this.algEditorAlgWithIssues
-        });
-        this.leafToHighlight = new $8e08190ac5cfc1c3$var$LeafToHighlightProp({
-            leafTokens: this.leafTokensProp,
-            targetChar: this.targetCharProp
-        });
-    }
-};
-// src/cubing/twisty/views/TwistyAlgEditor/TwistyAlgEditor.css.ts
-var $8e08190ac5cfc1c3$var$twistyAlgEditorCSS = new (0, $9IDdS.CSSSource)(`
-:host {
-  width: 384px;
-  display: grid;
-}
-
-.wrapper {
-  /*overflow: hidden;
-  resize: horizontal;*/
-
-  background: var(--background, none);
-  display: grid;
-}
-
-textarea, .carbon-copy {
-  grid-area: 1 / 1 / 2 / 2;
-
-  width: 100%;
-  font-family: sans-serif;
-  line-height: 1.2em;
-
-  font-size: var(--font-size, inherit);
-  font-family: var(--font-family, sans-serif);
-
-  box-sizing: border-box;
-
-  padding: var(--padding, 0.5em);
-  /* Prevent horizontal growth. */
-  overflow-x: hidden;
-}
-
-textarea {
-  resize: none;
-  background: none;
-  z-index: 2;
-  overflow: hidden;
-  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.25));
-}
-
-.carbon-copy {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  color: transparent;
-  user-select: none;
-  pointer-events: none;
-
-  z-index: 1;
-}
-
-.carbon-copy .highlight {
-  background: var(--highlight-color, rgba(255, 128, 0, 0.5));
-  padding: 0.1em 0.2em;
-  margin: -0.1em -0.2em;
-  border-radius: 0.2em;
-}
-
-.wrapper.issue-warning textarea,
-.wrapper.valid-for-puzzle-warning textarea {
-  outline: none;
-  border: 1px solid rgba(200, 200, 0, 0.5);
-  background: rgba(255, 255, 0, 0.1);
-}
-
-.wrapper.issue-error textarea,
-.wrapper.valid-for-puzzle-error textarea {
-  outline: none;
-  border: 1px solid red;
-  background: rgba(255, 0, 0, 0.1);
-}
-`);
-// src/cubing/twisty/views/TwistyAlgEditor/TwistyAlgEditor.ts
-var $8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER = "for-twisty-player";
-var $8e08190ac5cfc1c3$var$ATTRIBUTE_PLACEHOLDER = "placeholder";
-var $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP = "twisty-player-prop";
-var $8e08190ac5cfc1c3$export$ca185a52cf2c5e67 = class extends (0, $9IDdS.ManagedCustomElement) {
-    constructor(options){
-        super();
-        this.model = new $8e08190ac5cfc1c3$var$TwistyAlgEditorModel();
-        this.#textarea = document.createElement("textarea");
-        this.#carbonCopy = document.createElement("div");
-        this.#carbonCopyPrefix = document.createElement("span");
-        this.#carbonCopyHighlight = document.createElement("span");
-        this.#carbonCopySuffix = document.createElement("span");
-        this.#textareaClassListValidForPuzzleManager = new $8e08190ac5cfc1c3$var$ClassListManager(this, "valid-for-puzzle-", [
-            "none",
-            "warning",
-            "error"
-        ]);
-        this.#twistyPlayer = null;
-        this.debugNeverRequestTimestamp = false;
-        this.#onInputHasFired = false;
-        this.#highlightedLeaf = null;
-        this.#carbonCopy.classList.add("carbon-copy");
-        this.addElement(this.#carbonCopy);
-        this.#textarea.rows = 1;
-        this.addElement(this.#textarea);
-        this.#carbonCopyPrefix.classList.add("prefix");
-        this.#carbonCopy.appendChild(this.#carbonCopyPrefix);
-        this.#carbonCopyHighlight.classList.add("highlight");
-        this.#carbonCopy.appendChild(this.#carbonCopyHighlight);
-        this.#carbonCopySuffix.classList.add("suffix");
-        this.#carbonCopy.appendChild(this.#carbonCopySuffix);
-        this.#textarea.placeholder = "Alg";
-        this.#textarea.setAttribute("spellcheck", "false");
-        this.addCSS($8e08190ac5cfc1c3$var$twistyAlgEditorCSS);
-        this.#textarea.addEventListener("input", ()=>{
-            this.#onInputHasFired = true;
-            this.onInput();
-        });
-        this.#textarea.addEventListener("blur", ()=>this.onBlur());
-        document.addEventListener("selectionchange", ()=>this.onSelectionChange());
-        if (options?.twistyPlayer) this.twistyPlayer = options.twistyPlayer;
-        this.#twistyPlayerProp = options?.twistyPlayerProp ?? "alg";
-        if (options?.twistyPlayerProp === "alg") this.model.leafToHighlight.addFreshListener((highlightInfo)=>{
-            if (highlightInfo) this.highlightLeaf(highlightInfo.leafInfo.leaf);
-        });
-    }
-    #textarea;
-    #carbonCopy;
-    #carbonCopyPrefix;
-    #carbonCopyHighlight;
-    #carbonCopySuffix;
-    #textareaClassListValidForPuzzleManager;
-    #twistyPlayer;
-    #twistyPlayerProp;
-    get #algProp() {
-        if (this.#twistyPlayer === null) return null;
-        else return this.#twistyPlayer.experimentalModel[this.#twistyPlayerProp];
-    }
-    set algString(s) {
-        this.#textarea.value = s;
-        this.onInput();
-    }
-    get algString() {
-        return this.#textarea.value;
-    }
-    set placeholder(placeholderText) {
-        this.#textarea.placeholder = placeholderText;
-    }
-    #onInputHasFired;
-    onInput() {
-        this.#carbonCopyHighlight.hidden = true;
-        this.highlightLeaf(null);
-        const endTrimmed = this.#textarea.value.trimEnd();
-        this.model.valueProp.set(endTrimmed);
-        this.#algProp?.set(endTrimmed);
-    }
-    async onSelectionChange() {
-        if (document.activeElement !== this || this.shadow.activeElement !== this.#textarea) return;
-        if (this.#twistyPlayerProp !== "alg") return;
-        const { selectionStart: selectionStart , selectionEnd: selectionEnd  } = this.#textarea;
-        this.model.selectionProp.set({
-            selectionStart: selectionStart,
-            selectionEnd: selectionEnd
-        });
-    }
-    async onBlur() {}
-    setAlgIssueClassForPuzzle(issues) {
-        this.#textareaClassListValidForPuzzleManager.setValue(issues);
-    }
-     #padSuffix(s) {
-        return s.endsWith("\n") ? `${s} ` : s;
-    }
-    #highlightedLeaf;
-    highlightLeaf(leaf) {
-        if (this.#twistyPlayerProp !== "alg") return;
-        if (leaf === null) {
-            this.#carbonCopyPrefix.textContent = "";
-            this.#carbonCopyHighlight.textContent = "";
-            this.#carbonCopySuffix.textContent = this.#padSuffix(this.#textarea.value);
-            return;
-        }
-        if (leaf === this.#highlightedLeaf) return;
-        this.#highlightedLeaf = leaf;
-        this.#carbonCopyPrefix.textContent = this.#textarea.value.slice(0, leaf.startCharIndex);
-        this.#carbonCopyHighlight.textContent = this.#textarea.value.slice(leaf.startCharIndex, leaf.endCharIndex);
-        this.#carbonCopySuffix.textContent = this.#padSuffix(this.#textarea.value.slice(leaf.endCharIndex));
-        this.#carbonCopyHighlight.hidden = false;
-    }
-    get twistyPlayer() {
-        return this.#twistyPlayer;
-    }
-    set twistyPlayer(twistyPlayer) {
-        if (this.#twistyPlayer) {
-            console.warn("twisty-player reassignment/clearing is not supported");
-            return;
-        }
-        this.#twistyPlayer = twistyPlayer;
-        if (!twistyPlayer) return;
-        (async ()=>{
-            this.algString = this.#algProp ? (await this.#algProp.get()).alg.toString() : "";
-        })();
-        if (this.#twistyPlayerProp === "alg") {
-            this.#twistyPlayer?.experimentalModel.puzzleAlg.addFreshListener((algWithIssues)=>{
-                if (algWithIssues.issues.errors.length === 0) {
-                    this.setAlgIssueClassForPuzzle(algWithIssues.issues.warnings.length === 0 ? "none" : "warning");
-                    const newAlg = algWithIssues.alg;
-                    const oldAlg = (0, $j3ukw.Alg).fromString(this.algString);
-                    if (!newAlg.isIdentical(oldAlg)) {
-                        this.algString = newAlg.toString();
-                        this.onInput();
-                    }
-                } else this.setAlgIssueClassForPuzzle("error");
-            });
-            this.model.leafToHighlight.addFreshListener(async (highlightInfo)=>{
-                if (highlightInfo === null) return;
-                const [indexer, timestampRequest] = await Promise.all([
-                    await twistyPlayer.experimentalModel.indexer.get(),
-                    await twistyPlayer.experimentalModel.timestampRequest.get()
-                ]);
-                if (timestampRequest === "opposite-anchor" && !this.#onInputHasFired) return;
-                const moveStartTimestamp = indexer.indexToMoveStartTimestamp(highlightInfo.leafInfo.idx);
-                const duration = indexer.moveDuration(highlightInfo.leafInfo.idx);
-                let newTimestamp;
-                switch(highlightInfo.where){
-                    case "before":
-                        newTimestamp = moveStartTimestamp;
-                        break;
-                    case "start":
-                    case "inside":
-                        newTimestamp = moveStartTimestamp + duration / 4;
-                        break;
-                    case "end":
-                    case "after":
-                        newTimestamp = moveStartTimestamp + duration;
-                        break;
-                    default:
-                        console.log("invalid where");
-                        throw new Error("Invalid where!");
-                }
-                if (!this.debugNeverRequestTimestamp) twistyPlayer.experimentalModel.timestampRequest.set(newTimestamp);
-            });
-            twistyPlayer.experimentalModel.currentLeavesSimplified.addFreshListener(async (currentLeavesSimplified)=>{
-                const indexer = await twistyPlayer.experimentalModel.indexer.get();
-                const leaf = indexer.getAnimLeaf(currentLeavesSimplified.stateIndex);
-                this.highlightLeaf(leaf);
-            });
-        }
-    }
-    attributeChangedCallback(attributeName, _oldValue, newValue) {
-        switch(attributeName){
-            case $8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER:
-                {
-                    const elem = document.getElementById(newValue);
-                    if (!elem) {
-                        console.warn(`${$8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER}= elem does not exist`);
-                        return;
-                    }
-                    if (!(elem instanceof $8e08190ac5cfc1c3$export$d03687cb83cd55dc)) {
-                        console.warn(`${$8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER}=is not a twisty-player`);
-                        return;
-                    }
-                    this.twistyPlayer = elem;
-                    return;
-                }
-            case $8e08190ac5cfc1c3$var$ATTRIBUTE_PLACEHOLDER:
-                this.placeholder = newValue;
-                return;
-            case $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP:
-                if (this.#twistyPlayer) {
-                    console.log("cannot set prop");
-                    throw new Error("cannot set prop after twisty player");
-                }
-                this.#twistyPlayerProp = newValue;
-                return;
-        }
-    }
-    static get observedAttributes() {
-        return [
-            $8e08190ac5cfc1c3$var$ATTRIBUTE_FOR_TWISTY_PLAYER,
-            $8e08190ac5cfc1c3$var$ATTRIBUTE_PLACEHOLDER,
-            $8e08190ac5cfc1c3$var$ATTRIBUTE_TWISTY_PLAYER_PROP
-        ];
-    }
-};
-(0, $9IDdS.customElementsShim).define("twisty-alg-editor", $8e08190ac5cfc1c3$export$ca185a52cf2c5e67);
-// src/cubing/twisty/views/twizzle/TwizzleLink.css.ts
-var $8e08190ac5cfc1c3$var$twizzleLinkCSS = new (0, $9IDdS.CSSSource)(`
-.wrapper {
-  background: rgb(255, 245, 235);
-  display: grid;
-  grid-template-columns: 1fr;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-}
-
-.setup-alg, twisty-alg-viewer {
-  padding: 0.5em 1em;
-}
-
-.heading {
-  background: rgba(255, 230, 210, 1);
-  font-weight: bold;
-  padding: 0.25em 0.5em;
-}
-
-.heading.title {
-  background: rgb(255, 245, 235);
-  font-size: 150%;
-  white-space: pre;
-}
-
-twisty-player {
-  width: 100%;
-  resize: vertical;
-  overflow-y: hidden;
-}
-
-twisty-player + .heading {
-  padding-top: 0.5em;
-}
-`);
-// src/cubing/twisty/views/twizzle/url-params.ts
-function $8e08190ac5cfc1c3$var$getConfigFromURL(prefix = "", url = location.href) {
-    const paramMapping = {
-        alg: "alg",
-        "setup-alg": "experimental-setup-alg",
-        "setup-anchor": "experimental-setup-anchor",
-        puzzle: "puzzle",
-        stickering: "experimental-stickering",
-        "puzzle-description": "experimental-puzzle-description",
-        title: "experimental-title",
-        "video-url": "experimental-video-url",
-        competition: "experimental-competition-id"
-    };
-    const params = new URL(url).searchParams;
-    const config = {};
-    for (const [ourParam, twistyPlayerParam] of Object.entries(paramMapping)){
-        const paramValue = params.get(prefix + ourParam);
-        if (paramValue !== null) {
-            const configKey = $8e08190ac5cfc1c3$var$twistyPlayerAttributeMap[twistyPlayerParam];
-            config[configKey] = paramValue;
-        }
-    }
-    return config;
-}
-
-// src/cubing/twisty/views/twizzle/TwizzleLink.ts
-var $8e08190ac5cfc1c3$export$6b2b3b705349e8be = class extends (0, $9IDdS.ManagedCustomElement) {
-    constructor(){
-        super({
-            mode: "open"
-        });
-        this.twistyPlayer = null;
-        this.a = null;
-    }
-    fallback() {
-        this.contentWrapper.textContent = "";
-        if (this.a) {
-            const span = this.contentWrapper.appendChild(document.createElement("span"));
-            span.textContent = "\u2757\uFE0F";
-            span.title = "Could not show a player for link";
-            this.addElement(this.a);
-        }
-        if (this.#cssElem) this.#cssElem.remove();
-    }
-    #cssElem;
-    async connectedCallback() {
-        this.#cssElem = this.addCSS($8e08190ac5cfc1c3$var$twizzleLinkCSS);
-        this.a = this.querySelector("a");
-        if (!this.a) return;
-        const config = $8e08190ac5cfc1c3$var$getConfigFromURL("", this.a.href);
-        const href = this.a?.href;
-        const { hostname: hostname , pathname: pathname  } = new URL(href);
-        if (hostname !== "alpha.twizzle.net") {
-            this.fallback();
-            return;
-        }
-        if ([
-            "/edit/",
-            "/explore/"
-        ].includes(pathname)) {
-            const isExplorer = pathname === "/explore/";
-            if (config.puzzle && !(config.puzzle in (0, $ch5j6.puzzles))) {
-                const puzzleDescription = (await (parcelRequire("ak7Jm"))).getPuzzleDescriptionString(config.puzzle);
-                delete config.puzzle;
-                config.experimentalPuzzleDescription = puzzleDescription;
-            }
-            this.twistyPlayer = this.addElement(new $8e08190ac5cfc1c3$export$d03687cb83cd55dc({
-                ...config,
-                viewerLink: isExplorer ? "experimental-twizzle-explorer" : "auto"
-            }));
-            if (config.experimentalTitle) this.addHeading(config.experimentalTitle).classList.add("title");
-            if (config.experimentalSetupAlg) {
-                this.addHeading("Setup");
-                const setupAlgDiv = this.addElement(document.createElement("div"));
-                setupAlgDiv.classList.add("setup-alg");
-                setupAlgDiv.textContent = new (0, $j3ukw.Alg)(config.experimentalSetupAlg).toString();
-            }
-            this.addHeading("Moves");
-            const twistyAlgViewer = this.addElement(new $8e08190ac5cfc1c3$export$e0a62567c31d067({
-                twistyPlayer: this.twistyPlayer
-            }));
-            twistyAlgViewer.part.add("twisty-alg-viewer");
-        } else this.fallback();
-    }
-    addHeading(text) {
-        const headingDiv = this.addElement(document.createElement("div"));
-        headingDiv.classList.add("heading");
-        headingDiv.textContent = text;
-        return headingDiv;
-    }
-};
-(0, $9IDdS.customElementsShim).define("twizzle-link", $8e08190ac5cfc1c3$export$6b2b3b705349e8be);
-
-
-
-var $j3ukw = parcelRequire("j3ukw");
+var $OIFGm = parcelRequire("OIFGm");
 
 var $228IU = parcelRequire("228IU");
 
@@ -46231,7 +36711,7 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ alg: alg , handleClose: han
         if (node && !player) {
             const twistyPlayer = new (0, $8e08190ac5cfc1c3$export$d03687cb83cd55dc)({
                 puzzle: puzzle.twisty,
-                alg: new (0, $j3ukw.Alg)((0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[0])),
+                alg: new (0, $OIFGm.Alg)((0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[0])),
                 hintFacelets: "none",
                 background: "none",
                 experimentalSetupAnchor: "end",
@@ -46246,7 +36726,7 @@ const $7f9ac80f7f0322b6$export$86e0764efc64e1d1 = ({ alg: alg , handleClose: han
     }, []);
     const handleClick = (preferred)=>{
         if (player) {
-            player.alg = new (0, $j3ukw.Alg)((0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[preferred]));
+            player.alg = new (0, $OIFGm.Alg)((0, $b1410301c6957cc6$export$cc64fe338ae13d0f)(alg.solutions[preferred]));
             player.play();
         }
         setStepStorage({
@@ -46466,8 +36946,6 @@ var $d99c51b3a6101237$export$2e2bcd8739ae039 = $d99c51b3a6101237$var$yellow;
 
 var $iKTt2 = parcelRequire("iKTt2");
 
-
-var $3eSN5 = parcelRequire("3eSN5");
 var $55ec55a0502c8118$exports = {};
 "use strict";
 
@@ -46509,18 +36987,26 @@ const $2bdbbbe37662fb75$export$5d43e6e447ed594e = ({ alg: alg , algRowClick: alg
     const imgDimension = (0, $d4J5n.useMemo)(()=>isSmallScreen ? 75 : 120, [
         isSmallScreen
     ]);
-    const imgRef = (0, $d4J5n.useRef)(null);
+    const twistyPlayerRef = (0, $d4J5n.useRef)(null);
     const setRef = (0, $d4J5n.useCallback)((node)=>{
         if (node) {
-            const stepImageCopy = JSON.parse(JSON.stringify(step.image));
-            delete stepImageCopy.puzzle.case;
-            delete stepImageCopy.puzzle.alg;
             while(node.firstChild)node.removeChild(node.firstChild);
-            imgRef.current = (0, $179bc5a49dda12b3$export$13f4b12aafeba5d6)(node, stepImageCopy.type, {
-                ...(0, (/*@__PURE__*/$parcel$interopDefault($3eSN5)))({}, stepImageCopy, alg.image),
-                width: imgDimension,
-                height: imgDimension
+            const image = {
+                ...step.image,
+                ...alg.image
+            };
+            const twistyPlayer = new (0, $8e08190ac5cfc1c3$export$d03687cb83cd55dc)({
+                ...image,
+                hintFacelets: "none",
+                background: "none",
+                experimentalSetupAnchor: "end",
+                controlPanel: "none",
+                experimentalDragInput: "none"
             });
+            twistyPlayer.style.width = imgDimension + "px";
+            twistyPlayer.style.height = imgDimension + "px";
+            node.appendChild(twistyPlayer);
+            twistyPlayerRef.current = twistyPlayer;
         }
     }, [
         imgDimension
@@ -46685,24 +37171,24 @@ var $228IU = parcelRequire("228IU");
 
 var $iKTt2 = parcelRequire("iKTt2");
 var $5Cz32 = parcelRequire("5Cz32");
-var $7b4d9491b37fa408$export$60912654947077e3;
-var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
-var $7b4d9491b37fa408$export$94132a0e348806d4;
-var $7b4d9491b37fa408$export$33854e570d464ff0;
-var $7b4d9491b37fa408$export$d927737047eb3867;
 var $7b4d9491b37fa408$export$1237798dc640739a;
+var $7b4d9491b37fa408$export$cc74dcc53cfce4eb;
+var $7b4d9491b37fa408$export$33854e570d464ff0;
+var $7b4d9491b37fa408$export$60912654947077e3;
+var $7b4d9491b37fa408$export$9a9b59e08de24cef;
+var $7b4d9491b37fa408$export$94132a0e348806d4;
+var $7b4d9491b37fa408$export$d927737047eb3867;
 var $7b4d9491b37fa408$export$2ab9a8f9f1186f14;
 var $7b4d9491b37fa408$export$3a8cfe6058e12e09;
-var $7b4d9491b37fa408$export$9a9b59e08de24cef;
-$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
-$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
-$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
-$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
-$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
 $7b4d9491b37fa408$export$1237798dc640739a = `mkHomW_label`;
+$7b4d9491b37fa408$export$cc74dcc53cfce4eb = `mkHomW_wrapper`;
+$7b4d9491b37fa408$export$33854e570d464ff0 = `mkHomW_legends`;
+$7b4d9491b37fa408$export$60912654947077e3 = `mkHomW_bars`;
+$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
+$7b4d9491b37fa408$export$94132a0e348806d4 = `mkHomW_dot`;
+$7b4d9491b37fa408$export$d927737047eb3867 = `mkHomW_bar`;
 $7b4d9491b37fa408$export$2ab9a8f9f1186f14 = `mkHomW_value`;
 $7b4d9491b37fa408$export$3a8cfe6058e12e09 = `mkHomW_graduation`;
-$7b4d9491b37fa408$export$9a9b59e08de24cef = `mkHomW_legend`;
 
 
 const $8c09dba8c18700a3$var$colorMap = {
@@ -46719,13 +37205,16 @@ const $8c09dba8c18700a3$export$eddf502a5ea0cebd = ({ data: data  })=>{
             /*#__PURE__*/ (0, $228IU.jsxs)("div", {
                 className: $7b4d9491b37fa408$export$60912654947077e3,
                 children: [
-                    data.map((item, i)=>/*#__PURE__*/ (0, $228IU.jsx)("div", {
+                    data.map((item, i)=>{
+                        if (item.value === 0) return;
+                        return /*#__PURE__*/ (0, $228IU.jsx)("div", {
                             className: $7b4d9491b37fa408$export$d927737047eb3867,
                             style: {
                                 backgroundColor: $8c09dba8c18700a3$var$colorMap[item.name],
                                 width: item.value + "%"
                             }
-                        }, i)),
+                        }, i);
+                    }),
                     /*#__PURE__*/ (0, $228IU.jsx)("div", {
                         className: $7b4d9491b37fa408$export$d927737047eb3867,
                         style: {
@@ -48667,4 +39156,4 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register($9766102c6225
 }), document.getElementById("root"));
 
 
-//# sourceMappingURL=index.b44da51f.js.map
+//# sourceMappingURL=index.71881e6c.js.map

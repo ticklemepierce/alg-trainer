@@ -12,19 +12,25 @@ typeof globalThis !== 'undefined'
   ? global
   : {};
 var parcelRequire = $parcel$global["parcelRequire31c8"];
-parcelRequire.register("d0UjD", function(module, exports) {
+parcelRequire.register("bW4o7", function(module, exports) {
 
-$parcel$export(module.exports, "cube3x3x3SVG", () => $9796f58dd569aec1$export$9ff988fcbbd8ca49);
-$parcel$export(module.exports, "cube3x3x3LLSVG", () => $9796f58dd569aec1$export$50dbb4cced01278f);
+$parcel$export(module.exports, "cube3x3x3SVG", () => $8b0883dfaa49a4aa$export$9ff988fcbbd8ca49);
+$parcel$export(module.exports, "cube3x3x3LLSVG", () => $8b0883dfaa49a4aa$export$50dbb4cced01278f);
 // src/cubing/puzzles/implementations/dynamic/3x3x3/3x3x3.kpuzzle.svg.ts
-var $9796f58dd569aec1$export$9ff988fcbbd8ca49 = `<?xml version="1.0" encoding="UTF-8"?>
+var $8b0883dfaa49a4aa$export$9ff988fcbbd8ca49 = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
        "http://www.w3.org/TR/2001/REC-SVG-20050904/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 518 392" preserveAspectRatio="xMidYMid meet">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 518 440" preserveAspectRatio="xMidYMid meet">
   <title>3x3x3</title>
   <defs>
     <g id="sticker">
         <rect x="0" y="0" width="1" height="1" stroke="black" stroke-width="0.04px" />
+    </g>
+    <g id="sticker-thin-v">
+        <rect x="0" y="0" width="0.5" height="1" stroke="black" stroke-width="0.04px" style="opacity: 0.3;" />
+    </g>
+    <g id="sticker-thin-h">
+        <rect x="0" y="0" width="1" height="0.5" stroke="black" stroke-width="0.04px" style="opacity: 0.3;" />
     </g>
   </defs>
 
@@ -40,7 +46,20 @@ var $9796f58dd569aec1$export$9ff988fcbbd8ca49 = `<?xml version="1.0" encoding="U
 <!--    7 -       . . .                -->
 <!--    8 -       . . .                -->
 
-  <g id="puzzle" transform="translate(5,5) scale(40)">
+  <g id="puzzle" transform="translate(5,40) scale(40)">
+    <!-- Hints -->
+    <use data-copy-id="CORNERS-l0-o1" xlink:href="#sticker-thin-v" transform="translate(6.5,2.1)" style="fill: red"/>
+    <use data-copy-id="EDGES-l1-o1"   xlink:href="#sticker-thin-v" transform="translate(6.5,1.1)" style="fill: red"/>
+    <use data-copy-id="CORNERS-l1-o2" xlink:href="#sticker-thin-v" transform="translate(6.5,0.1)" style="fill: red"/>
+
+    <use data-copy-id="CORNERS-l2-o2" xlink:href="#sticker-thin-h" transform="translate(3.3,-0.6)" style="fill: #26f"/>
+    <use data-copy-id="EDGES-l2-o1"   xlink:href="#sticker-thin-h" transform="translate(4.3,-0.6)" style="fill: #26f"/>
+    <use data-copy-id="CORNERS-l1-o1" xlink:href="#sticker-thin-h" transform="translate(5.3,-0.6)" style="fill: #26f"/>
+
+    <use data-copy-id="CORNERS-l3-o2" xlink:href="#sticker-thin-v" transform="translate(2.6,2.1)" style="fill: orange"/>
+    <use data-copy-id="EDGES-l3-o1"   xlink:href="#sticker-thin-v" transform="translate(2.6,1.1)" style="fill: orange"/>
+    <use data-copy-id="CORNERS-l2-o1" xlink:href="#sticker-thin-v" transform="translate(2.6,0.1)" style="fill: orange"/>
+
     <!-- CORNERS -->
     <use id="CORNERS-l0-o0" xlink:href="#sticker" transform="translate(5.3,2.1)" style="fill: white"/>
     <use id="CORNERS-l0-o1" xlink:href="#sticker" transform="translate(6.5,3.3)" style="fill: red"/>
@@ -144,9 +163,10 @@ var $9796f58dd569aec1$export$9ff988fcbbd8ca49 = `<?xml version="1.0" encoding="U
     <use id="CENTERS-l5-o3" xlink:href="#sticker" transform="translate(4.3,7.5)" style="fill: yellow"/>
   </g>
 
-</svg>`;
+</svg>
+`;
 // src/cubing/puzzles/implementations/dynamic/3x3x3/3x3x3-ll.kpuzzle.svg.ts
-var $9796f58dd569aec1$export$50dbb4cced01278f = `<?xml version="1.0" encoding="UTF-8"?>
+var $8b0883dfaa49a4aa$export$50dbb4cced01278f = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="288px" height="288px" viewBox="-16 -16 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>3x3x3 LL</title>
   <defs>
@@ -258,4 +278,4 @@ var $9796f58dd569aec1$export$50dbb4cced01278f = `<?xml version="1.0" encoding="U
 });
 
 
-//# sourceMappingURL=puzzles-dynamic-3x3x3-ZKMODX2P.1715739c.js.map
+//# sourceMappingURL=puzzles-dynamic-3x3x3-QN5DUJUA.05472cf6.js.map

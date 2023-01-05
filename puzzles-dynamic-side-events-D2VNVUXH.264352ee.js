@@ -12,17 +12,20 @@ typeof globalThis !== 'undefined'
   ? global
   : {};
 var parcelRequire = $parcel$global["parcelRequire31c8"];
-parcelRequire.register("dfuIF", function(module, exports) {
+parcelRequire.register("lRt2v", function(module, exports) {
 
-$parcel$export(module.exports, "cube2x2x2JSON", () => $9a54815384d853d3$export$428611d6d9f2afa8);
-$parcel$export(module.exports, "cube2x2x2SVG", () => $9a54815384d853d3$export$d5d5138ff3843158);
-$parcel$export(module.exports, "clockJSON", () => $9a54815384d853d3$export$fcac39d9381aea12);
-$parcel$export(module.exports, "clockSVG", () => $9a54815384d853d3$export$a08cfe48d9b22bab);
-$parcel$export(module.exports, "pyraminxSVG", () => $9a54815384d853d3$export$ea7149c81fcecd7c);
-$parcel$export(module.exports, "sq1HyperOrbitJSON", () => $9a54815384d853d3$export$5adf1e316c8ad3ed);
-$parcel$export(module.exports, "sq1HyperOrbitSVG", () => $9a54815384d853d3$export$d1544b4db1e1c1a5);
+$parcel$export(module.exports, "cube2x2x2JSON", () => $fea512d2bed84d2a$export$428611d6d9f2afa8);
+$parcel$export(module.exports, "cube2x2x2SVG", () => $fea512d2bed84d2a$export$d5d5138ff3843158);
+$parcel$export(module.exports, "cube2x2x2LLSVG", () => $fea512d2bed84d2a$export$edc232e0904fe97e);
+$parcel$export(module.exports, "clockJSON", () => $fea512d2bed84d2a$export$fcac39d9381aea12);
+$parcel$export(module.exports, "clockSVG", () => $fea512d2bed84d2a$export$a08cfe48d9b22bab);
+$parcel$export(module.exports, "pyraminxSVG", () => $fea512d2bed84d2a$export$ea7149c81fcecd7c);
+$parcel$export(module.exports, "sq1HyperOrbitJSON", () => $fea512d2bed84d2a$export$5adf1e316c8ad3ed);
+$parcel$export(module.exports, "sq1HyperOrbitSVG", () => $fea512d2bed84d2a$export$d1544b4db1e1c1a5);
+$parcel$export(module.exports, "melindas2x2x2x2OrbitJSON", () => $fea512d2bed84d2a$export$f7c3d4dbceb709f2);
+$parcel$export(module.exports, "melindas2x2x2x2OrbitSVG", () => $fea512d2bed84d2a$export$4fba63276321d18c);
 // src/cubing/puzzles/implementations/dynamic/side-events/2x2x2.kpuzzle.json.ts
-var $9a54815384d853d3$export$428611d6d9f2afa8 = {
+var $fea512d2bed84d2a$export$428611d6d9f2afa8 = {
     name: "2x2x2",
     orbits: {
         CORNERS: {
@@ -79,30 +82,6 @@ var $9a54815384d853d3$export$428611d6d9f2afa8 = {
                 ]
             }
         },
-        y: {
-            CORNERS: {
-                permutation: [
-                    1,
-                    2,
-                    3,
-                    0,
-                    7,
-                    4,
-                    5,
-                    6
-                ],
-                orientation: [
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0
-                ]
-            }
-        },
         x: {
             CORNERS: {
                 permutation: [
@@ -127,116 +106,20 @@ var $9a54815384d853d3$export$428611d6d9f2afa8 = {
                 ]
             }
         },
-        L: {
+        y: {
             CORNERS: {
                 permutation: [
-                    0,
                     1,
-                    6,
-                    2,
-                    4,
-                    3,
-                    5,
-                    7
-                ],
-                orientation: [
-                    0,
-                    0,
-                    2,
-                    1,
-                    0,
-                    2,
-                    1,
-                    0
-                ]
-            }
-        },
-        F: {
-            CORNERS: {
-                permutation: [
-                    3,
-                    1,
-                    2,
-                    5,
-                    0,
-                    4,
-                    6,
-                    7
-                ],
-                orientation: [
-                    1,
-                    0,
-                    0,
-                    2,
-                    2,
-                    1,
-                    0,
-                    0
-                ]
-            }
-        },
-        R: {
-            CORNERS: {
-                permutation: [
-                    4,
-                    0,
                     2,
                     3,
-                    7,
-                    5,
-                    6,
-                    1
-                ],
-                orientation: [
-                    2,
-                    1,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    2
-                ]
-            }
-        },
-        B: {
-            CORNERS: {
-                permutation: [
                     0,
                     7,
-                    1,
-                    3,
                     4,
                     5,
-                    2,
                     6
                 ],
                 orientation: [
                     0,
-                    2,
-                    1,
-                    0,
-                    0,
-                    0,
-                    2,
-                    1
-                ]
-            }
-        },
-        D: {
-            CORNERS: {
-                permutation: [
-                    0,
-                    1,
-                    2,
-                    3,
-                    5,
-                    6,
-                    7,
-                    4
-                ],
-                orientation: [
-                    0,
                     0,
                     0,
                     0,
@@ -246,113 +129,28 @@ var $9a54815384d853d3$export$428611d6d9f2afa8 = {
                     0
                 ]
             }
-        },
-        z: {
-            CORNERS: {
-                permutation: [
-                    3,
-                    2,
-                    6,
-                    5,
-                    0,
-                    4,
-                    7,
-                    1
-                ],
-                orientation: [
-                    1,
-                    2,
-                    1,
-                    2,
-                    2,
-                    1,
-                    2,
-                    1
-                ]
-            }
         }
-    }
-};
-$9a54815384d853d3$export$428611d6d9f2afa8.moves["Rv"] = $9a54815384d853d3$export$428611d6d9f2afa8.moves["x"];
-$9a54815384d853d3$export$428611d6d9f2afa8.moves["Uv"] = $9a54815384d853d3$export$428611d6d9f2afa8.moves["y"];
-$9a54815384d853d3$export$428611d6d9f2afa8.moves["Fv"] = $9a54815384d853d3$export$428611d6d9f2afa8.moves["z"];
-$9a54815384d853d3$export$428611d6d9f2afa8.moves["Lv"] = {
-    CORNERS: {
-        permutation: [
-            1,
-            7,
-            6,
-            2,
-            0,
-            3,
-            5,
-            4
-        ],
-        orientation: [
-            2,
-            1,
-            2,
-            1,
-            1,
-            2,
-            1,
-            2
-        ]
-    }
-};
-$9a54815384d853d3$export$428611d6d9f2afa8.moves["Dv"] = {
-    CORNERS: {
-        permutation: [
-            3,
-            0,
-            1,
-            2,
-            5,
-            6,
-            7,
-            4
-        ],
-        orientation: [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-        ]
-    }
-};
-$9a54815384d853d3$export$428611d6d9f2afa8.moves["Bv"] = {
-    CORNERS: {
-        permutation: [
-            4,
-            7,
-            1,
-            0,
-            5,
-            3,
-            2,
-            6
-        ],
-        orientation: [
-            1,
-            2,
-            1,
-            2,
-            2,
-            1,
-            2,
-            1
-        ]
+    },
+    experimentalDerivedMoves: {
+        z: "[x: y]",
+        L: "[z: U]",
+        F: "[x: U]",
+        R: "[z': U]",
+        B: "[x': U]",
+        D: "[x2: U]",
+        Uv: "y",
+        Lv: "x'",
+        Fv: "z",
+        Rv: "x",
+        Bv: "z'",
+        Dv: "y'"
     }
 };
 // src/cubing/puzzles/implementations/dynamic/side-events/2x2x2.kpuzzle.svg.ts
-var $9a54815384d853d3$export$d5d5138ff3843158 = `<?xml version="1.0" encoding="UTF-8"?>
+var $fea512d2bed84d2a$export$d5d5138ff3843158 = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
        "http://www.w3.org/TR/2001/REC-SVG-20050904/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 520 394" preserveAspectRatio="xMidYMid meet">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 530 394" preserveAspectRatio="xMidYMid meet">
   <title>2x2x2</title>
   <defs>
     <g id="sticker">
@@ -394,8 +192,51 @@ var $9a54815384d853d3$export$d5d5138ff3843158 = `<?xml version="1.0" encoding="U
   </g>
 
 </svg>`;
+// src/cubing/puzzles/implementations/dynamic/side-events/2x2x2-ll.kpuzzle.svg.ts
+var $fea512d2bed84d2a$export$edc232e0904fe97e = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+       "http://www.w3.org/TR/2001/REC-SVG-20050904/DTD/svg11.dtd">
+    <svg width="288px" height="288px" viewBox="-16 -16 288 288" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+       <title>2x2x2 LL</title>
+  <defs>
+    <g id="sticker">
+        <rect x="0" y="0" width="1" height="1" stroke="black" stroke-width="0.04px" />
+    </g>
+  </defs>
+  <g id="2x2x2-LL" stroke="#000000" stroke-width="4" style="none" stroke-linejoin="round">
+    <rect    id="CORNERS-l0-o0" style="fill: white" x="128" y="128" width="76" height="76"></rect>
+    <polygon id="CORNERS-l0-o1" style="fill: red" points="204 128 252 128 252 252 204 204"></polygon>
+    <polygon id="CORNERS-l0-o2" style="fill: limegreen" transform="translate(206, 238) scale(1, -1) rotate(-90) translate(-206, -238) " points="172 160 220 160 220 284 172 236"></polygon>
+    <rect    id="CORNERS-l1-o0" style="fill: white" x="128" y="52" width="76" height="76"></rect>
+    <polygon id="CORNERS-l1-o1" style="fill: #26f" transform="translate(206, 18) rotate(-90) translate(-206, -18) " points="172 -60 220 -60 220 64 172 16"></polygon>
+    <polygon id="CORNERS-l1-o2" style="fill: red" transform="translate(238, 50) scale(1, -1) translate(-238, -50) " points="204 -28 252 -28 252 96 204 48"></polygon>
+    <rect    id="CORNERS-l2-o0" style="fill: white" x="52" y="52" width="76" height="76"></rect>
+    <polygon id="CORNERS-l2-o1" style="fill: orange" transform="translate(18, 50) scale(-1, -1) translate(-18, -50) " points="-16 -28 32 -28 32 96 -16 48"></polygon>
+    <polygon id="CORNERS-l2-o2" style="fill: #26f" transform="translate(50, 18) scale(1, -1) rotate(90) translate(-50, -18) " points="16 -60 64 -60 64 64 16 16"></polygon>
+    <rect    id="CORNERS-l3-o0" style="fill: white" x="52" y="128" width="76" height="76"></rect>
+    <polygon id="CORNERS-l3-o1" style="fill: limegreen" transform="translate(50, 238) rotate(90) translate(-50, -238) " points="16 160 64 160 64 284 16 236"></polygon>
+    <polygon id="CORNERS-l3-o2" style="fill: orange" transform="translate(18, 206) scale(-1, 1) translate(-18, -206) " points="-16 128 32 128 32 252 -16 204"></polygon>
+  </g>
+  <g style="opacity: 0">
+    <use id="CORNERS-l4-o0" xlink:href="#sticker" style="fill: yellow"/>
+    <use id="CORNERS-l4-o1" xlink:href="#sticker" style="fill: limegreen"/>
+    <use id="CORNERS-l4-o2" xlink:href="#sticker" style="fill: red"/>
+
+    <use id="CORNERS-l5-o0" xlink:href="#sticker" style="fill: yellow"/>
+    <use id="CORNERS-l5-o1" xlink:href="#sticker" style="fill: orange"/>
+    <use id="CORNERS-l5-o2" xlink:href="#sticker" style="fill: limegreen"/>
+
+    <use id="CORNERS-l6-o0" xlink:href="#sticker" style="fill: yellow"/>
+    <use id="CORNERS-l6-o1" xlink:href="#sticker" style="fill: #26f"/>
+    <use id="CORNERS-l6-o2" xlink:href="#sticker"  style="fill: orange"/>
+
+    <use id="CORNERS-l7-o0" xlink:href="#sticker" style="fill: yellow"/>
+    <use id="CORNERS-l7-o1" xlink:href="#sticker" style="fill: red"/>
+    <use id="CORNERS-l7-o2" xlink:href="#sticker" style="fill: #26f"/>
+  </g>
+</svg>`;
 // src/cubing/puzzles/implementations/dynamic/side-events/clock.kpuzzle.json.ts
-var $9a54815384d853d3$export$fcac39d9381aea12 = {
+var $fea512d2bed84d2a$export$fcac39d9381aea12 = {
     name: "clock",
     orbits: {
         DIALS: {
@@ -538,7 +379,7 @@ var $9a54815384d853d3$export$fcac39d9381aea12 = {
                     0,
                     0,
                     0,
-                    -1,
+                    11,
                     0,
                     0,
                     0,
@@ -638,7 +479,7 @@ var $9a54815384d853d3$export$fcac39d9381aea12 = {
                     0,
                     0,
                     0,
-                    -1,
+                    11,
                     0,
                     0
                 ]
@@ -734,7 +575,7 @@ var $9a54815384d853d3$export$fcac39d9381aea12 = {
                     0,
                     0,
                     0,
-                    -1
+                    11
                 ]
             },
             FACES: {
@@ -822,7 +663,7 @@ var $9a54815384d853d3$export$fcac39d9381aea12 = {
                     0,
                     0,
                     0,
-                    -1,
+                    11,
                     0,
                     0,
                     0,
@@ -914,9 +755,9 @@ var $9a54815384d853d3$export$fcac39d9381aea12 = {
                     0,
                     0,
                     0,
-                    -1,
+                    11,
                     0,
-                    -1,
+                    11,
                     0,
                     0,
                     0,
@@ -1008,13 +849,13 @@ var $9a54815384d853d3$export$fcac39d9381aea12 = {
                     0,
                     1,
                     1,
-                    -1,
+                    11,
                     0,
                     0,
                     0,
                     0,
                     0,
-                    -1,
+                    11,
                     0,
                     0
                 ]
@@ -1108,9 +949,9 @@ var $9a54815384d853d3$export$fcac39d9381aea12 = {
                     0,
                     0,
                     0,
-                    -1,
+                    11,
                     0,
-                    -1
+                    11
                 ]
             },
             FACES: {
@@ -1198,13 +1039,13 @@ var $9a54815384d853d3$export$fcac39d9381aea12 = {
                     0,
                     0,
                     0,
-                    -1,
+                    11,
                     0,
                     0,
                     0,
                     0,
                     0,
-                    -1
+                    11
                 ]
             },
             FACES: {
@@ -1290,15 +1131,15 @@ var $9a54815384d853d3$export$fcac39d9381aea12 = {
                     1,
                     1,
                     1,
-                    -1,
+                    11,
                     0,
-                    -1,
+                    11,
                     0,
                     0,
                     0,
-                    -1,
+                    11,
                     0,
-                    -1
+                    11
                 ]
             },
             FACES: {
@@ -1825,7 +1666,7 @@ var $9a54815384d853d3$export$fcac39d9381aea12 = {
     }
 };
 // src/cubing/puzzles/implementations/dynamic/side-events/clock.kpuzzle.svg.ts
-var $9a54815384d853d3$export$a08cfe48d9b22bab = `<?xml version="1.0" encoding="UTF-8"?>
+var $fea512d2bed84d2a$export$a08cfe48d9b22bab = `<?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 480 240" preserveAspectRatio="xMidYMid meet">
   <title>clock</title>
   <defs>
@@ -2195,7 +2036,7 @@ var $9a54815384d853d3$export$a08cfe48d9b22bab = `<?xml version="1.0" encoding="U
   </g>
 </svg>`;
 // src/cubing/puzzles/implementations/dynamic/side-events/pyraminx.kpuzzle.svg.ts
-var $9a54815384d853d3$export$ea7149c81fcecd7c = `<?xml version="1.0" encoding="UTF-8"?>
+var $fea512d2bed84d2a$export$ea7149c81fcecd7c = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
        "http://www.w3.org/TR/2001/REC-SVG-20050904/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-20 -20 546 480" preserveAspectRatio="xMidYMid meet">
@@ -2284,7 +2125,7 @@ var $9a54815384d853d3$export$ea7149c81fcecd7c = `<?xml version="1.0" encoding="U
 
 </svg>`;
 // src/cubing/puzzles/implementations/dynamic/side-events/sq1-hyperorbit.kpuzzle.json.ts
-var $9a54815384d853d3$export$5adf1e316c8ad3ed = {
+var $fea512d2bed84d2a$export$5adf1e316c8ad3ed = {
     name: "Square-1",
     orbits: {
         WEDGES: {
@@ -2564,7 +2405,7 @@ var $9a54815384d853d3$export$5adf1e316c8ad3ed = {
     }
 };
 // src/cubing/puzzles/implementations/dynamic/side-events/sq1-hyperorbit.kpuzzle.svg.ts
-var $9a54815384d853d3$export$d1544b4db1e1c1a5 = `<?xml version="1.0" encoding="UTF-8"?>
+var $fea512d2bed84d2a$export$d1544b4db1e1c1a5 = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="360px" height="552px" viewBox="0 0 360 552" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
     <title>sq1-fancy</title>
@@ -2859,8 +2700,1470 @@ var $9a54815384d853d3$export$d1544b4db1e1c1a5 = `<?xml version="1.0" encoding="U
         </g>
     </g>
 </svg>`;
+// src/cubing/puzzles/implementations/dynamic/side-events/melindas2x2x2x2.kpuzzle.json.ts
+var $fea512d2bed84d2a$var$orientation = new Array(64).fill(0);
+var $fea512d2bed84d2a$var$range = $fea512d2bed84d2a$var$orientation.map((_, i)=>i);
+var $fea512d2bed84d2a$export$f7c3d4dbceb709f2 = {
+    name: "Melinda's 2x2x2x2",
+    orbits: {
+        CORNERS: {
+            numPieces: 64,
+            numOrientations: 1
+        }
+    },
+    startStateData: {
+        CORNERS: {
+            pieces: $fea512d2bed84d2a$var$range,
+            orientation: $fea512d2bed84d2a$var$orientation
+        }
+    },
+    moves: {
+        Rx: {
+            CORNERS: {
+                permutation: [
+                    16,
+                    19,
+                    17,
+                    18,
+                    20,
+                    22,
+                    23,
+                    21,
+                    4,
+                    7,
+                    5,
+                    6,
+                    0,
+                    2,
+                    3,
+                    1,
+                    28,
+                    30,
+                    31,
+                    29,
+                    24,
+                    27,
+                    25,
+                    26,
+                    8,
+                    10,
+                    11,
+                    9,
+                    12,
+                    15,
+                    13,
+                    14,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        Ry: {
+            CORNERS: {
+                permutation: [
+                    12,
+                    13,
+                    14,
+                    15,
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    28,
+                    29,
+                    30,
+                    31,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        Rz: {
+            CORNERS: {
+                permutation: [
+                    4,
+                    6,
+                    7,
+                    5,
+                    20,
+                    23,
+                    21,
+                    22,
+                    24,
+                    26,
+                    27,
+                    25,
+                    8,
+                    11,
+                    9,
+                    10,
+                    0,
+                    3,
+                    1,
+                    2,
+                    16,
+                    18,
+                    19,
+                    17,
+                    28,
+                    31,
+                    29,
+                    30,
+                    12,
+                    14,
+                    15,
+                    13,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        Lx: {
+            CORNERS: {
+                permutation: [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    48,
+                    51,
+                    49,
+                    50,
+                    52,
+                    54,
+                    55,
+                    53,
+                    36,
+                    39,
+                    37,
+                    38,
+                    32,
+                    34,
+                    35,
+                    33,
+                    60,
+                    62,
+                    63,
+                    61,
+                    56,
+                    59,
+                    57,
+                    58,
+                    40,
+                    42,
+                    43,
+                    41,
+                    44,
+                    47,
+                    45,
+                    46
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        Ly: {
+            CORNERS: {
+                permutation: [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    44,
+                    45,
+                    46,
+                    47,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    60,
+                    61,
+                    62,
+                    63,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        Lz: {
+            CORNERS: {
+                permutation: [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    36,
+                    38,
+                    39,
+                    37,
+                    52,
+                    55,
+                    53,
+                    54,
+                    56,
+                    58,
+                    59,
+                    57,
+                    40,
+                    43,
+                    41,
+                    42,
+                    32,
+                    35,
+                    33,
+                    34,
+                    48,
+                    50,
+                    51,
+                    49,
+                    60,
+                    63,
+                    61,
+                    62,
+                    44,
+                    46,
+                    47,
+                    45
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        Mx: {
+            CORNERS: {
+                permutation: [
+                    0,
+                    1,
+                    2,
+                    3,
+                    20,
+                    22,
+                    23,
+                    21,
+                    4,
+                    7,
+                    5,
+                    6,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    24,
+                    27,
+                    25,
+                    26,
+                    8,
+                    10,
+                    11,
+                    9,
+                    28,
+                    29,
+                    30,
+                    31,
+                    48,
+                    51,
+                    49,
+                    50,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    32,
+                    34,
+                    35,
+                    33,
+                    60,
+                    62,
+                    63,
+                    61,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    44,
+                    47,
+                    45,
+                    46
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        My: {
+            CORNERS: {
+                permutation: [
+                    0,
+                    1,
+                    2,
+                    3,
+                    9,
+                    8,
+                    11,
+                    10,
+                    45,
+                    44,
+                    47,
+                    46,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    25,
+                    24,
+                    27,
+                    26,
+                    61,
+                    60,
+                    63,
+                    62,
+                    28,
+                    29,
+                    30,
+                    31,
+                    5,
+                    4,
+                    7,
+                    6,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    33,
+                    32,
+                    35,
+                    34,
+                    21,
+                    20,
+                    23,
+                    22,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    49,
+                    48,
+                    51,
+                    50
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        Mz: {
+            CORNERS: {
+                permutation: [
+                    0,
+                    1,
+                    2,
+                    3,
+                    34,
+                    33,
+                    35,
+                    32,
+                    47,
+                    45,
+                    44,
+                    46,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    7,
+                    5,
+                    4,
+                    6,
+                    10,
+                    9,
+                    11,
+                    8,
+                    28,
+                    29,
+                    30,
+                    31,
+                    51,
+                    49,
+                    48,
+                    50,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    62,
+                    61,
+                    63,
+                    60,
+                    22,
+                    21,
+                    23,
+                    20,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    27,
+                    25,
+                    24,
+                    26
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        Ox: {
+            CORNERS: {
+                permutation: [
+                    16,
+                    19,
+                    17,
+                    18,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    0,
+                    2,
+                    3,
+                    1,
+                    28,
+                    30,
+                    31,
+                    29,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    12,
+                    15,
+                    13,
+                    14,
+                    32,
+                    33,
+                    34,
+                    35,
+                    52,
+                    54,
+                    55,
+                    53,
+                    36,
+                    39,
+                    37,
+                    38,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    56,
+                    59,
+                    57,
+                    58,
+                    40,
+                    42,
+                    43,
+                    41,
+                    60,
+                    61,
+                    62,
+                    63
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        Oy: {
+            CORNERS: {
+                permutation: [
+                    37,
+                    36,
+                    39,
+                    38,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    1,
+                    0,
+                    3,
+                    2,
+                    53,
+                    52,
+                    55,
+                    54,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    17,
+                    16,
+                    19,
+                    18,
+                    32,
+                    33,
+                    34,
+                    35,
+                    41,
+                    40,
+                    43,
+                    42,
+                    13,
+                    12,
+                    15,
+                    14,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    57,
+                    56,
+                    59,
+                    58,
+                    29,
+                    28,
+                    31,
+                    30,
+                    60,
+                    61,
+                    62,
+                    63
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        Oz: {
+            CORNERS: {
+                permutation: [
+                    19,
+                    17,
+                    16,
+                    18,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    30,
+                    29,
+                    31,
+                    28,
+                    54,
+                    53,
+                    55,
+                    52,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    59,
+                    57,
+                    56,
+                    58,
+                    32,
+                    33,
+                    34,
+                    35,
+                    2,
+                    1,
+                    3,
+                    0,
+                    15,
+                    13,
+                    12,
+                    14,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    39,
+                    37,
+                    36,
+                    38,
+                    42,
+                    41,
+                    43,
+                    40,
+                    60,
+                    61,
+                    62,
+                    63
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        U2: {
+            CORNERS: {
+                permutation: [
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        D2: {
+            CORNERS: {
+                permutation: [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        F2: {
+            CORNERS: {
+                permutation: [
+                    52,
+                    53,
+                    54,
+                    55,
+                    48,
+                    49,
+                    50,
+                    51,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    36,
+                    37,
+                    38,
+                    39,
+                    32,
+                    33,
+                    34,
+                    35,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    20,
+                    21,
+                    22,
+                    23,
+                    16,
+                    17,
+                    18,
+                    19,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    4,
+                    5,
+                    6,
+                    7,
+                    0,
+                    1,
+                    2,
+                    3,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        B2: {
+            CORNERS: {
+                permutation: [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    60,
+                    61,
+                    62,
+                    63,
+                    56,
+                    57,
+                    58,
+                    59,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    44,
+                    45,
+                    46,
+                    47,
+                    40,
+                    41,
+                    42,
+                    43,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    28,
+                    29,
+                    30,
+                    31,
+                    24,
+                    25,
+                    26,
+                    27,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    12,
+                    13,
+                    14,
+                    15,
+                    8,
+                    9,
+                    10,
+                    11
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        y2: {
+            CORNERS: {
+                permutation: [
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    0,
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        },
+        z2: {
+            CORNERS: {
+                permutation: [
+                    52,
+                    53,
+                    54,
+                    55,
+                    48,
+                    49,
+                    50,
+                    51,
+                    60,
+                    61,
+                    62,
+                    63,
+                    56,
+                    57,
+                    58,
+                    59,
+                    36,
+                    37,
+                    38,
+                    39,
+                    32,
+                    33,
+                    34,
+                    35,
+                    44,
+                    45,
+                    46,
+                    47,
+                    40,
+                    41,
+                    42,
+                    43,
+                    20,
+                    21,
+                    22,
+                    23,
+                    16,
+                    17,
+                    18,
+                    19,
+                    28,
+                    29,
+                    30,
+                    31,
+                    24,
+                    25,
+                    26,
+                    27,
+                    4,
+                    5,
+                    6,
+                    7,
+                    0,
+                    1,
+                    2,
+                    3,
+                    12,
+                    13,
+                    14,
+                    15,
+                    8,
+                    9,
+                    10,
+                    11
+                ],
+                orientation: $fea512d2bed84d2a$var$orientation
+            }
+        }
+    },
+    experimentalDerivedMoves: {
+        x: "Lx Rx"
+    }
+};
+// src/cubing/puzzles/implementations/dynamic/side-events/melindas2x2x2x2.kpuzzle.svg.ts
+var $fea512d2bed84d2a$export$4fba63276321d18c = `<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 180 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>melindas2x2x2x2</title>
+<defs>
+  <g id="sticker-UL">
+    <path d="m 0,0 10,0 -10,10 z" stroke-width="0.75px" stroke="black" stroke-linecap="butt" stroke-linejoin="round" />
+  </g>
+  <g id="sticker-UR">
+    <path d="m 0,0 10,0 0,10 z" stroke-width="0.75px" stroke="black" stroke-linecap="butt" stroke-linejoin="round" />
+  </g>
+  <g id="sticker-DR">
+    <path d="m 10,0 0,10 -10,0 z" stroke-width="0.75px" stroke="black" stroke-linecap="butt" stroke-linejoin="round" />
+  </g>
+  <g id="sticker-DL">
+    <path d="m 00,0 10,10 -10,0 z" stroke-width="0.75px" stroke="black" stroke-linecap="butt" stroke-linejoin="round" />
+  </g>
+  <g id="squished-sticker-UL">
+    <path d="m 0,0 5,0 -5,10 z" stroke-width="0.75px" stroke="black" stroke-linecap="butt" stroke-linejoin="round" />
+  </g>
+  <g id="squished-sticker-UR">
+    <path d="m 0,0 5,0 0,10 z" stroke-width="0.75px" stroke="black" stroke-linecap="butt" stroke-linejoin="round" />
+  </g>
+  <g id="squished-sticker-DR">
+    <path d="m 5,0 0,10 -5,0 z" stroke-width="0.75px" stroke="black" stroke-linecap="butt" stroke-linejoin="round" />
+  </g>
+  <g id="squished-sticker-DL">
+    <path d="m 00,0 5,10 -5,0 z" stroke-width="0.75px" stroke="black" stroke-linecap="butt" stroke-linejoin="round" />
+  </g>
+</defs>
+<g>
+<g id="UL" transform="translate(45, 10)">
+  <use id="CORNERS-l40-o0" xlink:href="#sticker-UL" transform="translate( 0,  0)" style="fill: orange"/>
+  <use id="CORNERS-l41-o0" xlink:href="#sticker-DR" transform="translate( 0,  0)" style="fill: white"/>
+  <use id="CORNERS-l45-o0" xlink:href="#sticker-DL" transform="translate(10,  0)" style="fill: white"/>
+  <use id="CORNERS-l44-o0" xlink:href="#sticker-UR" transform="translate(10,  0)" style="fill: orange"/>
+  <use id="CORNERS-l36-o0" xlink:href="#sticker-DL" transform="translate( 0, 10)" style="fill: orange"/>
+  <use id="CORNERS-l37-o0" xlink:href="#sticker-UR" transform="translate( 0, 10)" style="fill: white"/>
+  <use id="CORNERS-l33-o0" xlink:href="#sticker-UL" transform="translate(10, 10)" style="fill: white"/>
+  <use id="CORNERS-l32-o0" xlink:href="#sticker-DR" transform="translate(10, 10)" style="fill: orange"/>
+</g>
+<g id="UR" transform="translate(65, 10)">
+  <use id="CORNERS-l8-o0" xlink:href="#sticker-UL" transform="translate( 0,  0)" style="fill: red"/>
+  <use id="CORNERS-l9-o0" xlink:href="#sticker-DR" transform="translate( 0,  0)" style="fill: white"/>
+  <use id="CORNERS-l13-o0" xlink:href="#sticker-DL" transform="translate(10,  0)" style="fill: white"/>
+  <use id="CORNERS-l12-o0" xlink:href="#sticker-UR" transform="translate(10,  0)" style="fill: red"/>
+  <use id="CORNERS-l4-o0" xlink:href="#sticker-DL" transform="translate( 0, 10)" style="fill: red"/>
+  <use id="CORNERS-l5-o0" xlink:href="#sticker-UR" transform="translate( 0, 10)" style="fill: white"/>
+  <use id="CORNERS-l1-o0" xlink:href="#sticker-UL" transform="translate(10, 10)" style="fill: white"/>
+  <use id="CORNERS-l0-o0" xlink:href="#sticker-DR" transform="translate(10, 10)" style="fill: red"/>
+</g>
+
+<g id="L" transform="translate(10, 35)">
+  <use data-copy-id="CORNERS-l40-o0" xlink:href="#sticker-UL" transform="translate( 0,  0)" style="fill: orange"/>
+  <use id="CORNERS-l43-o0" xlink:href="#sticker-DR" transform="translate( 0,  0)" style="fill: pink"/>
+  <use id="CORNERS-l38-o0" xlink:href="#sticker-DL" transform="translate(10,  0)" style="fill: pink"/>
+  <use data-copy-id="CORNERS-l36-o0" xlink:href="#sticker-UR" transform="translate(10,  0)" style="fill: orange"/>
+  <use id="CORNERS-l56-o0" xlink:href="#sticker-DL" transform="translate( 0, 10)" style="fill: orange"/>
+  <use id="CORNERS-l58-o0" xlink:href="#sticker-UR" transform="translate( 0, 10)" style="fill: pink"/>
+  <use id="CORNERS-l55-o0" xlink:href="#sticker-UL" transform="translate(10, 10)" style="fill: pink"/>
+  <use id="CORNERS-l52-o0" xlink:href="#sticker-DR" transform="translate(10, 10)" style="fill: orange"/>
+</g>
+
+<g id="FL" transform="translate(35, 35)">
+  <use data-copy-id="CORNERS-l36-o0" xlink:href="#sticker-UL" transform="translate( 0,  0)" style="fill: orange"/>
+  <use id="CORNERS-l39-o0" xlink:href="#sticker-DR" transform="translate( 0,  0)" style="fill: limegreen"/>
+  <use id="CORNERS-l34-o0" xlink:href="#sticker-DL" transform="translate(10,  0)" style="fill: limegreen"/>
+  <use data-copy-id="CORNERS-l32-o0" xlink:href="#sticker-UR" transform="translate(10,  0)" style="fill: orange"/>
+  <use data-copy-id="CORNERS-l52-o0" xlink:href="#sticker-DL" transform="translate( 0, 10)" style="fill: orange"/>
+  <use id="CORNERS-l54-o0" xlink:href="#sticker-UR" transform="translate( 0, 10)" style="fill: limegreen"/>
+  <use id="CORNERS-l51-o0" xlink:href="#sticker-UL" transform="translate(10, 10)" style="fill: limegreen"/>
+  <use id="CORNERS-l48-o0" xlink:href="#sticker-DR" transform="translate(10, 10)" style="fill: orange"/>
+</g>
+<g id="FR" transform="translate(75, 35)">
+  <use data-copy-id="CORNERS-l4-o0" xlink:href="#sticker-UL" transform="translate( 0,  0)" style="fill: red"/>
+  <use id="CORNERS-l7-o0" xlink:href="#sticker-DR" transform="translate( 0,  0)" style="fill: limegreen"/>
+  <use id="CORNERS-l2-o0" xlink:href="#sticker-DL" transform="translate(10,  0)" style="fill: limegreen"/>
+  <use data-copy-id="CORNERS-l0-o0" xlink:href="#sticker-UR" transform="translate(10,  0)" style="fill: red"/>
+  <use id="CORNERS-l20-o0" xlink:href="#sticker-DL" transform="translate( 0, 10)" style="fill: red"/>
+  <use id="CORNERS-l22-o0" xlink:href="#sticker-UR" transform="translate( 0, 10)" style="fill: limegreen"/>
+  <use id="CORNERS-l19-o0" xlink:href="#sticker-UL" transform="translate(10, 10)" style="fill: limegreen"/>
+  <use id="CORNERS-l16-o0" xlink:href="#sticker-DR" transform="translate(10, 10)" style="fill: red"/>
+</g>
+
+<g id="R" transform="translate(100, 35)">
+  <use data-copy-id="CORNERS-l0-o0" xlink:href="#sticker-UL" transform="translate( 0,  0)" style="fill: red"/>
+  <use id="CORNERS-l3-o0" xlink:href="#sticker-DR" transform="translate( 0,  0)" style="fill: pink"/>
+  <use id="CORNERS-l14-o0" xlink:href="#sticker-DL" transform="translate(10,  0)" style="fill: pink"/>
+  <use data-copy-id="CORNERS-l12-o0" xlink:href="#sticker-UR" transform="translate(10,  0)" style="fill: red"/>
+  <use data-copy-id="CORNERS-l16-o0" xlink:href="#sticker-DL" transform="translate( 0, 10)" style="fill: red"/>
+  <use id="CORNERS-l18-o0" xlink:href="#sticker-UR" transform="translate( 0, 10)" style="fill: pink"/>
+  <use id="CORNERS-l31-o0" xlink:href="#sticker-UL" transform="translate(10, 10)" style="fill: pink"/>
+  <use id="CORNERS-l28-o0" xlink:href="#sticker-DR" transform="translate(10, 10)" style="fill: red"/>
+</g>
+
+<g id="BR" transform="translate(125, 35)">
+  <use data-copy-id="CORNERS-l12-o0" xlink:href="#sticker-UL" transform="translate( 0,  0)" style="fill: red"/>
+  <use id="CORNERS-l15-o0" xlink:href="#sticker-DR" transform="translate( 0,  0)" style="fill: #26f"/>
+  <use id="CORNERS-l10-o0" xlink:href="#sticker-DL" transform="translate(10,  0)" style="fill: #26f"/>
+  <use data-copy-id="CORNERS-l8-o0" xlink:href="#sticker-UR" transform="translate(10,  0)" style="fill: red"/>
+  <use data-copy-id="CORNERS-l28-o0" xlink:href="#sticker-DL" transform="translate( 0, 10)" style="fill: red"/>
+  <use id="CORNERS-l30-o0" xlink:href="#sticker-UR" transform="translate( 0, 10)" style="fill: #26f"/>
+  <use id="CORNERS-l27-o0" xlink:href="#sticker-UL" transform="translate(10, 10)" style="fill: #26f"/>
+  <use id="CORNERS-l24-o0" xlink:href="#sticker-DR" transform="translate(10, 10)" style="fill: red"/>
+</g>
+<g id="BL" transform="translate(145, 35)">
+  <use data-copy-id="CORNERS-l44-o0" xlink:href="#sticker-UL" transform="translate( 0,  0)" style="fill: orange"/>
+  <use id="CORNERS-l47-o0" xlink:href="#sticker-DR" transform="translate( 0,  0)" style="fill: #26f"/>
+  <use id="CORNERS-l42-o0" xlink:href="#sticker-DL" transform="translate(10,  0)" style="fill: #26f"/>
+  <use data-copy-id="CORNERS-l40-o0" xlink:href="#sticker-UR" transform="translate(10,  0)" style="fill: orange"/>
+  <use id="CORNERS-l60-o0" xlink:href="#sticker-DL" transform="translate( 0, 10)" style="fill: orange"/>
+  <use id="CORNERS-l62-o0" xlink:href="#sticker-UR" transform="translate( 0, 10)" style="fill: #26f"/>
+  <use id="CORNERS-l59-o0" xlink:href="#sticker-UL" transform="translate(10, 10)" style="fill: #26f"/>
+  <use data-copy-id="CORNERS-l56-o0" xlink:href="#sticker-DR" transform="translate(10, 10)" style="fill: orange"/>
+</g>
+
+<g id="DL" transform="translate(45, 60)">
+  <use data-copy-id="CORNERS-l52-o0" xlink:href="#sticker-UL" transform="translate( 0,  0)" style="fill: orange"/>
+  <use id="CORNERS-l53-o0" xlink:href="#sticker-DR" transform="translate( 0,  0)" style="fill: yellow"/>
+  <use id="CORNERS-l49-o0" xlink:href="#sticker-DL" transform="translate(10,  0)" style="fill: yellow"/>
+  <use data-copy-id="CORNERS-l48-o0" xlink:href="#sticker-UR" transform="translate(10,  0)" style="fill: orange"/>
+  <use data-copy-id="CORNERS-l56-o0" xlink:href="#sticker-DL" transform="translate( 0, 10)" style="fill: orange"/>
+  <use id="CORNERS-l57-o0" xlink:href="#sticker-UR" transform="translate( 0, 10)" style="fill: yellow"/>
+  <use id="CORNERS-l61-o0" xlink:href="#sticker-UL" transform="translate(10, 10)" style="fill: yellow"/>
+  <use data-copy-id="CORNERS-l60-o0" xlink:href="#sticker-DR" transform="translate(10, 10)" style="fill: orange"/>
+</g>
+<g id="DR" transform="translate(65, 60)">
+  <use data-copy-id="CORNERS-l20-o0" xlink:href="#sticker-UL" transform="translate( 0,  0)" style="fill: red"/>
+  <use id="CORNERS-l21-o0" xlink:href="#sticker-DR" transform="translate( 0,  0)" style="fill: yellow"/>
+  <use id="CORNERS-l17-o0" xlink:href="#sticker-DL" transform="translate(10,  0)" style="fill: yellow"/>
+  <use data-copy-id="CORNERS-l16-o0" xlink:href="#sticker-UR" transform="translate(10,  0)" style="fill: red"/>
+  <use data-copy-id="CORNERS-l24-o0" xlink:href="#sticker-DL" transform="translate( 0, 10)" style="fill: red"/>
+  <use id="CORNERS-l25-o0" xlink:href="#sticker-UR" transform="translate( 0, 10)" style="fill: yellow"/>
+  <use id="CORNERS-l29-o0" xlink:href="#sticker-UL" transform="translate(10, 10)" style="fill: yellow"/>
+  <use data-copy-id="CORNERS-l28-o0" xlink:href="#sticker-DR" transform="translate(10, 10)" style="fill: red"/>
+</g>
+
+<g style="opacity: 0.3;">
+<g id="IL" transform="translate(55, 35)">
+  <use data-copy-id="CORNERS-l32-o0" xlink:href="#squished-sticker-UL" transform="translate( 0,  0)" style="fill: orange"/>
+  <use id="CORNERS-l35-o0" xlink:href="#squished-sticker-DR" transform="translate( 0,  0)" style="fill: purple"/>
+  <use id="CORNERS-l46-o0" xlink:href="#squished-sticker-DL" transform="translate(5,  0)" style="fill: purple"/>
+  <use data-copy-id="CORNERS-l44-o0" xlink:href="#squished-sticker-UR" transform="translate(5,  0)" style="fill: orange"/>
+  <use data-copy-id="CORNERS-l48-o0" xlink:href="#squished-sticker-DL" transform="translate( 0, 10)" style="fill: orange"/>
+  <use id="CORNERS-l50-o0" xlink:href="#squished-sticker-UR" transform="translate( 0, 10)" style="fill: purple"/>
+  <use id="CORNERS-l63-o0" xlink:href="#squished-sticker-UL" transform="translate(5, 10)" style="fill: purple"/>
+  <use data-copy-id="CORNERS-l60-o0" xlink:href="#squished-sticker-DR" transform="translate(5, 10)" style="fill: orange"/>
+</g>
+<g id="IR" transform="translate(65, 35)">
+  <use data-copy-id="CORNERS-l8-o0" xlink:href="#squished-sticker-UL" transform="translate( 0,  0)" style="fill: red"/>
+  <use id="CORNERS-l11-o0" xlink:href="#squished-sticker-DR" transform="translate( 0,  0)" style="fill: purple"/>
+  <use id="CORNERS-l6-o0" xlink:href="#squished-sticker-DL" transform="translate(5,  0)" style="fill: purple"/>
+  <use data-copy-id="CORNERS-l4-o0" xlink:href="#squished-sticker-UR" transform="translate(5,  0)" style="fill: red"/>
+  <use data-copy-id="CORNERS-l24-o0" xlink:href="#squished-sticker-DL" transform="translate( 0, 10)" style="fill: red"/>
+  <use id="CORNERS-l26-o0" xlink:href="#squished-sticker-UR" transform="translate( 0, 10)" style="fill: purple"/>
+  <use id="CORNERS-l23-o0" xlink:href="#squished-sticker-UL" transform="translate(5, 10)" style="fill: purple"/>
+  <use data-copy-id="CORNERS-l20-o0" xlink:href="#squished-sticker-DR" transform="translate(5, 10)" style="fill: red"/>
+</g>
+</g>
+</g>
+</svg>`;
 
 });
 
 
-//# sourceMappingURL=puzzles-dynamic-side-events-HMUBMHA5.33a29500.js.map
+//# sourceMappingURL=puzzles-dynamic-side-events-D2VNVUXH.264352ee.js.map
