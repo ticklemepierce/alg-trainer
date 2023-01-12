@@ -352,7 +352,7 @@ export const Puzzles: IPuzzle[] = [
             image: {
               puzzle: "megaminx",
               visualization: "experimental-2D-LL",
-              experimentalStickering: "CPLL",
+              experimentalStickering: "COLL",
               alg: "R' F' R U R U' R2' F R U R' F' R F U'",
             },
             slug: "cp",
