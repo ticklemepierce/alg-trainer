@@ -62,10 +62,7 @@ export const NavBar = () => {
     </Box>
   );
 
-  const imageUrl = new URL(
-    "../../icons/icon-128.png?width=32",
-    import.meta.url
-  );
+  const imageUrl = new URL("../../icons/icon-32.png", import.meta.url);
 
   return (
     <AppBar position="static">

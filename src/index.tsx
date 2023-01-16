@@ -11,6 +11,7 @@ import { NavBar } from "./components/nav-bar";
 
 import { Puzzles, Step, IPuzzle, isSubStep } from "./puzzles";
 import { PuzzleRoute } from "./components/puzzle";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const createStepRoutes = (step: Step) => (
   <Route path={`${step.slug}`} key={step.slug}>
@@ -40,20 +41,38 @@ const createPuzzleRoutes = (puzzle: IPuzzle) => (
 );
 
 const App = () => (
-  <HashRouter>
-    <NavBar />
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      {Puzzles.map((puzzle) => createPuzzleRoutes(puzzle))}
-    </Routes>
-  </HashRouter>
+  <HelmetProvider>
+    <Helmet>
+      <meta charSet="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="theme-color" content="#1976d2" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <link rel="apple-touch-icon" href="icons/icon-192.png" />
+      <link rel="manifest" href="manifest.json" />
+
+      <title>Alg Trainer</title>
+      <style>
+        {`
+          body {
+            padding: 0;
+            margin: 0;
+          }
+        `}
+      </style>
+    </Helmet>
+    <HashRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {Puzzles.map((puzzle) => createPuzzleRoutes(puzzle))}
+      </Routes>
+    </HashRouter>
+  </HelmetProvider>
 );
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register(new URL("../service-worker.js", import.meta.url), {
-      type: "module",
-    })
+    .register(new URL("../service-worker.js", import.meta.url))
     .then((_registration) => {
       // No Op
     })
