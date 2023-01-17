@@ -5,7 +5,9 @@ import { usePuzzle } from "../components/puzzle";
 import { IAlg, IBaseStep } from "../puzzles";
 
 export const AlgsPage = ({ step }: { step: IBaseStep }) => {
-  const { isLoading, data } = useFetch<IAlg[]>(`static/${step.cases}.json`);
+  const { isLoading, data } = useFetch<IAlg[]>(
+    `static/cases/${step.cases}.json`
+  );
   const { puzzle } = usePuzzle();
 
   if (isLoading) {

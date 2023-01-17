@@ -9,10 +9,6 @@ const method = process.argv.slice(2)[0];
 const options = {
   entryPoints: ["index.html"],
   outdir: "dist",
-  bundle: true,
-  minify: true,
-  sourcemap: true,
-  splitting: true,
   format: "esm",
   assetNames: "assets/[name]-[hash]",
   chunkNames: "[ext]/[name]-[hash]",
@@ -22,7 +18,6 @@ const options = {
     }),
     htmlPlugin(),
     copy({
-      // source: ['./static', './icons', './service-worker.js', 'manifest.json'],
       source: ["./static", "./icons", "manifest.json"],
       target: "./dist",
       copyWithFolder: true,
@@ -43,7 +38,13 @@ if (method === "watch") {
 }
 
 if (method === "build") {
-  await build(options);
+  await build({
+    ...options,
+    bundle: true,
+    minify: true,
+    sourcemap: true,
+    splitting: true,
+  });
 }
 
 setTimeout(() => {

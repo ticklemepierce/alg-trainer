@@ -118,7 +118,7 @@ while (currLinesIdx < lines.length) {
   currLinesIdx++;
 }
 
-writeFileSync(`static/${fileName}`, JSON.stringify(output, null, 2));
+writeFileSync(`static/cases/${fileName}`, JSON.stringify(output, null, 2));
 
 // TODO regenerate scrambles with random AUF
 // TODO update cases files with new image format
