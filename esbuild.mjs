@@ -10,6 +10,8 @@ const options = {
   entryPoints: ["index.html"],
   outdir: "dist",
   format: "esm",
+  jsx: "automatic",
+  bundle: true,
   assetNames: "assets/[name]-[hash]",
   chunkNames: "[ext]/[name]-[hash]",
   plugins: [

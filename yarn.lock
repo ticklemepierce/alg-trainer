@@ -2299,7 +2299,7 @@ esbuild-plugin-clean@^1.0.1:
     chalk "^4.1.2"
     del "^6.0.0"
 
-esbuild@^0.17.0:
+esbuild@^0.17.3:
   version "0.17.3"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.17.3.tgz#d9aa02a3bc441ed35f9569cd9505812ae3fcae61"
   integrity sha512-9n3AsBRe6sIyOc6kmoXg2ypCLgf3eZSraWFRpnkto+svt8cZNuKTkb1bhQcitBcvIqjNiK7K0J3KPmwGSfkA8g==
