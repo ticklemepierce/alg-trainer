@@ -6,6 +6,31 @@ import { injectManifest } from "workbox-build";
 
 const method = process.argv.slice(2)[0];
 
+const _injectManifest = () => ({
+  name: "_injectManifest",
+  setup(build) {
+    build.onEnd(() => {
+      injectManifest({
+        globDirectory: "dist/",
+        globPatterns: [
+          "**/*.{css,eot,html,ico,jpg,js,json,png,svg,ttf,txt,webmanifest,woff,woff2,webm,xml}",
+        ],
+        globFollow: true,
+        globStrict: true,
+        globIgnores: [
+          "**/*-es5.*.js",
+          "3rdpartylicenses.txt",
+          "assets/images/icons/icon-*.png",
+        ],
+        dontCacheBustURLsMatching: new RegExp(".+.[a-f0-9]{20}..+"),
+        maximumFileSizeToCacheInBytes: 5000000,
+        swSrc: "src-sw.js",
+        swDest: "dist/service-worker.js",
+      });
+    });
+  },
+});
+
 const options = {
   entryPoints: ["index.html"],
   outdir: "dist",
@@ -24,6 +49,7 @@ const options = {
       target: "./dist",
       copyWithFolder: true,
     }),
+    _injectManifest(),
   ],
 };
 
@@ -48,23 +74,3 @@ if (method === "build") {
     splitting: true,
   });
 }
-
-setTimeout(() => {
-  injectManifest({
-    globDirectory: "dist/",
-    globPatterns: [
-      "**/*.{css,eot,html,ico,jpg,js,json,png,svg,ttf,txt,webmanifest,woff,woff2,webm,xml}",
-    ],
-    globFollow: true,
-    globStrict: true,
-    globIgnores: [
-      "**/*-es5.*.js",
-      "3rdpartylicenses.txt",
-      "assets/images/icons/icon-*.png",
-    ],
-    dontCacheBustURLsMatching: new RegExp(".+.[a-f0-9]{20}..+"),
-    maximumFileSizeToCacheInBytes: 5000000,
-    swSrc: "src-sw.js",
-    swDest: "dist/service-worker.js",
-  });
-}, 1000);
