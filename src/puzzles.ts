@@ -237,43 +237,30 @@ export const Puzzles: IPuzzle[] = [
       // },
     ],
   },
-  // {
-  //   displayName: "4x4x4",
-  //   slug: "/444",
-  //   image: {
-  //     type: "cube",
-  //     puzzle: {
-  //       size: 4,
-  //     },
-  //   },
-  //   twisty: "4x4x4",
-  //   steps: [
-  //     {
-  //       displayName: "F3L",
-  //       image: {
-  //         type: "cube",
-  //         puzzle: {
-  //           size: 4,
-  //         },
-  //       },
-  //       slug: "f3l",
-  //       cases: "444-f3l",
-  //       filters: {},
-  //     },
-  //     {
-  //       displayName: "cross edges",
-  //       image: {
-  //         type: "cube",
-  //         puzzle: {
-  //           size: 4,
-  //         },
-  //       },
-  //       slug: "cross_edges",
-  //       cases: "444-hoya-cross-edges",
-  //       filters: {},
-  //     },
-  //   ],
-  // },
+  {
+    displayName: "4x4x4",
+    slug: "/444",
+    image: {
+      puzzle: "4x4x4",
+      visualization: "3D",
+    },
+    quantumMoveOrder: 4,
+    twisty: "4x4x4",
+    steps: [
+      {
+        displayName: "Hoya cross edges",
+        image: {
+          puzzle: "4x4x4",
+          visualization: "3D",
+          experimentalStickering: "Cross",
+        },
+        slug: "cross_edges",
+        cases: "hoya-edges",
+        filters: {},
+        quantumMoveOrder: 4,
+      },
+    ],
+  },
   {
     displayName: "Megaminx",
     slug: "/megaminx",

@@ -2,7 +2,6 @@ import { execSync } from "child_process";
 import { Alg } from "cubing/alg";
 import { writeFileSync, readFileSync } from "fs";
 import { Buffer } from "node:buffer";
-import times from "lodash.times";
 
 const input = process.argv[2];
 const fileName = input.endsWith(".json") ? input : `${input}.json`;
@@ -67,7 +66,7 @@ cases.forEach((_case, idx) => {
 const c = randomizeAuf ? 20 : 75;
 
 const data = execSync(
-  `twsearch --nowrite --moves ${moves} -s -c 75 --randomstart tws-files/${tws}`,
+  `twsearch --nowrite --moves ${moves} -s -c ${c} --randomstart tws-files/${tws}`,
   {
     input: algs.join("\r\n"),
   }

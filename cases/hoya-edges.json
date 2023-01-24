@@ -1,0 +1,182 @@
+{
+  "tws": "4x4x4.tws",
+  "moves": "R,U,F,D,L,B,Rw,Uw,Fw,Dw,Lw,Bw",
+  "cases": [
+    {
+      "name": "Hoya 1",
+      "display": "Rw' F' Rw F' Rw' F Rw",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "Rw' F' Rw F' Rw' F Rw"
+        }
+      },
+      "solutions": ["Rw' F' Rw F' Rw' F Rw", "Lw' U' Lw F' Lw' U Lw"]
+    },
+    {
+      "name": "Hoya 2",
+      "display": "Rw U Rw' F Rw U' Rw'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "Rw U Rw' F Rw U' Rw'"
+        }
+      },
+      "solutions": ["Rw U Rw' F Rw U' Rw'"]
+    },
+    {
+      "name": "Hoya 3",
+      "display": "U Rw U' Rw'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "U Rw U' Rw'"
+        }
+      },
+      "solutions": ["U Rw U' Rw'"]
+    },
+    {
+      "name": "Hoya 4",
+      "display": "U' Lw' U Lw",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "U' Lw' U Lw"
+        }
+      },
+      "solutions": ["U' Lw' U Lw"]
+    },
+    {
+      "name": "Hoya 5",
+      "display": "U2 Rw U Rw' U2 F2",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "U2 Rw U Rw' U2 F2"
+        }
+      },
+      "solutions": ["U2 Rw U Rw' U2 F2"]
+    },
+    {
+      "name": "Hoya 6",
+      "display": "U2 Rw U Rw' U R' F R",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "U2 Rw U Rw' U R' F R"
+        }
+      },
+      "solutions": ["U2 Rw U Rw' U R' F R"]
+    },
+    {
+      "name": "Hoya 7",
+      "display": "R' F R Lw' U Lw",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "R' F R Lw' U Lw"
+        }
+      },
+      "solutions": ["R' F R Lw' U Lw"]
+    },
+    {
+      "name": "Hoya 8",
+      "display": "U Rw U' Rw' F Rw U Rw'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "U Rw U' Rw' F Rw U Rw'"
+        }
+      },
+      "solutions": ["U Rw U' Rw' F Rw U Rw'"]
+    },
+    {
+      "name": "Hoya 9",
+      "display": "R' F R Rw U' Rw'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "R' F R Rw U' Rw'"
+        }
+      },
+      "solutions": ["R' F R Rw U' Rw'"]
+    },
+    {
+      "name": "Hoya 10",
+      "display": "Rw U Rw' F",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "Rw U Rw' F"
+        }
+      },
+      "solutions": ["Rw U Rw' F"]
+    },
+    {
+      "name": "Hoya 11",
+      "display": "Lw' U' Lw F'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "Lw' U' Lw F'"
+        }
+      },
+      "solutions": ["Lw' U' Lw F'"]
+    },
+    {
+      "name": "Hoya 12",
+      "display": "Rw U Rw'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "Rw U Rw'"
+        }
+      },
+      "solutions": ["Rw U Rw'"]
+    },
+    {
+      "name": "Hoya 13",
+      "display": "R U R' U' Lw' U Lw",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "R U R' U' Lw' U Lw"
+        }
+      },
+      "solutions": ["R U R' U' Lw' U Lw"]
+    },
+    {
+      "name": "Hoya 14",
+      "display": "F' U' Rw' F Rw2 U Rw'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "F' U' Rw' F Rw2 U Rw'"
+        }
+      },
+      "solutions": ["F' U' Rw' F Rw2 U Rw'", "(R' F R F') U' Lw' U Lw"]
+    },
+    {
+      "name": "Hoya 15",
+      "display": "Rw U' Rw' U Rw U' Rw'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "Rw U' Rw' U Rw U' Rw'"
+        }
+      },
+      "solutions": ["Rw U' Rw' U Rw U' Rw'"]
+    },
+    {
+      "name": "Hoya 16",
+      "display": "Rw U Rw' F Rw U Rw'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "Rw U Rw' F Rw U Rw'"
+        }
+      },
+      "solutions": ["Rw U Rw' F Rw U Rw'"]
+    }
+  ]
+}

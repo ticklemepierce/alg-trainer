@@ -23,10 +23,10 @@ const pages = [
     display: "3x3x3",
     link: "333",
   },
-  // {
-  //   display: "4x4x4",
-  //   link: "444",
-  // },
+  {
+    display: "4x4x4",
+    link: "444",
+  },
   {
     display: "Megaminx",
     link: "megaminx",
@@ -64,8 +64,6 @@ export const NavBar = () => {
 
   const imageUrl = new URL("../static/icons/icon-32.png", import.meta.url);
 
-  console.log("IMPORT META");
-  console.log(import.meta.url);
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
