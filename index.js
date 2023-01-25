@@ -756,7 +756,7 @@ twisty-alg-viewer {
             padding: 0;
             margin: 0;
           }
-        `})]}),(0,ct.jsxs)(Bce,{children:[(0,ct.jsx)(Qfe,{}),(0,ct.jsxs)(vU,{children:[(0,ct.jsx)(_s,{path:"/",element:(0,ct.jsx)(Mde,{})}),Nw.map(e=>_Ze(e))]})]})]});yme.default.render((0,ct.jsx)(mme.StrictMode,{children:(0,ct.jsx)(CZe,{})}),document.getElementById("root"));
+        `})]}),(0,ct.jsxs)(Bce,{children:[(0,ct.jsx)(Qfe,{}),(0,ct.jsxs)(vU,{children:[(0,ct.jsx)(_s,{path:"/",element:(0,ct.jsx)(Mde,{})}),Nw.map(e=>_Ze(e))]})]})]});"serviceWorker"in navigator&&navigator.serviceWorker.register(new URL("../service-worker.js",import.meta.url)).then(e=>{}).catch(e=>{console.error(e)});yme.default.render((0,ct.jsx)(mme.StrictMode,{children:(0,ct.jsx)(CZe,{})}),document.getElementById("root"));
 /*! Bundled license information:
 
 object-assign/index.js:
