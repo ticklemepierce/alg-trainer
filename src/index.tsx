@@ -85,17 +85,6 @@ const App = () => (
   </HelmetProvider>
 );
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register(new URL("../service-worker.js", import.meta.url))
-    .then((_registration) => {
-      // No Op
-    })
-    .catch((e) => {
-      console.error(e);
-    });
-}
-
 ReactDOM.render(
   <StrictMode>
     <App />

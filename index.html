@@ -1,4 +1,16 @@
 <html lang="en">
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("./service-worker.js")
+        .then((_registration) => {
+          // No Op
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+    }
+  </script>
   <body>
     <div id="root"></div>
     <script type="module" src="./src/index.tsx"></script>
