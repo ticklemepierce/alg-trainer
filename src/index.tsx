@@ -12,6 +12,9 @@ import { NavBar } from "./components/nav-bar";
 import { Puzzles, Step, IPuzzle, isSubStep } from "./puzzles";
 import { PuzzleRoute } from "./components/puzzle";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { setTwistyDebug } from "cubing/twisty";
+
+setTwistyDebug({ shareAllNewRenderers: "always" });
 
 const createStepRoutes = (step: Step) => (
   <Route path={`${step.slug}`} key={step.slug}>
