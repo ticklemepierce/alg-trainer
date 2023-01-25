@@ -25,6 +25,9 @@ const _injectManifest = () => ({
         maximumFileSizeToCacheInBytes: 5000000,
         swSrc: "src-sw.js",
         swDest: "dist/service-worker.js",
+        templatedUrls: {
+          "/": ["index.html"],
+        },
       });
     });
   },
@@ -36,8 +39,8 @@ const options = {
   format: "esm",
   jsx: "automatic",
   bundle: true,
-  assetNames: "assets/[name]",
-  chunkNames: "[ext]/[name]",
+  assetNames: "assets/[name]-[hash]",
+  chunkNames: "[ext]/[name]-[hash]",
   plugins: [
     clean({
       patterns: ["./dist/*"],
