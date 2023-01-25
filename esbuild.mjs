@@ -36,8 +36,8 @@ const options = {
   format: "esm",
   jsx: "automatic",
   bundle: true,
-  assetNames: "assets/[name]-[hash]",
-  chunkNames: "[ext]/[name]-[hash]",
+  assetNames: "assets/[name]",
+  chunkNames: "[ext]/[name]",
   plugins: [
     clean({
       patterns: ["./dist/*"],
