@@ -1080,22 +1080,22 @@ var Strategy = class {
     const event = options.event;
     const request = typeof options.request === "string" ? new Request(options.request) : options.request;
     const params = "params" in options ? options.params : void 0;
-    const handler2 = new StrategyHandler(this, { event, request, params });
-    const responseDone = this._getResponse(handler2, request, event);
-    const handlerDone = this._awaitComplete(responseDone, handler2, request, event);
+    const handler = new StrategyHandler(this, { event, request, params });
+    const responseDone = this._getResponse(handler, request, event);
+    const handlerDone = this._awaitComplete(responseDone, handler, request, event);
     return [responseDone, handlerDone];
   }
-  async _getResponse(handler2, request, event) {
-    await handler2.runCallbacks("handlerWillStart", { event, request });
+  async _getResponse(handler, request, event) {
+    await handler.runCallbacks("handlerWillStart", { event, request });
     let response = void 0;
     try {
-      response = await this._handle(request, handler2);
+      response = await this._handle(request, handler);
       if (!response || response.type === "error") {
         throw new WorkboxError("no-response", { url: request.url });
       }
     } catch (error) {
       if (error instanceof Error) {
-        for (const callback of handler2.iterateCallbacks("handlerDidError")) {
+        for (const callback of handler.iterateCallbacks("handlerDidError")) {
           response = await callback({ error, event, request });
           if (response) {
             break;
@@ -1108,12 +1108,12 @@ var Strategy = class {
         logger.log(`While responding to '${getFriendlyURL(request.url)}', an ${error instanceof Error ? error.toString() : ""} error occurred. Using a fallback response provided by a handlerDidError plugin.`);
       }
     }
-    for (const callback of handler2.iterateCallbacks("handlerWillRespond")) {
+    for (const callback of handler.iterateCallbacks("handlerWillRespond")) {
       response = await callback({ event, request, response });
     }
     return response;
   }
-  async _awaitComplete(responseDone, handler2, request, event) {
+  async _awaitComplete(responseDone, handler, request, event) {
     let response;
     let error;
     try {
@@ -1121,24 +1121,24 @@ var Strategy = class {
     } catch (error2) {
     }
     try {
-      await handler2.runCallbacks("handlerDidRespond", {
+      await handler.runCallbacks("handlerDidRespond", {
         event,
         request,
         response
       });
-      await handler2.doneWaiting();
+      await handler.doneWaiting();
     } catch (waitUntilError) {
       if (waitUntilError instanceof Error) {
         error = waitUntilError;
       }
     }
-    await handler2.runCallbacks("handlerDidComplete", {
+    await handler.runCallbacks("handlerDidComplete", {
       event,
       request,
       response,
       error
     });
-    handler2.destroy();
+    handler.destroy();
     if (error) {
       throw error;
     }
@@ -1177,19 +1177,19 @@ var PrecacheStrategy = class extends Strategy {
    *     triggered the request.
    * @return {Promise<Response>}
    */
-  async _handle(request, handler2) {
-    const response = await handler2.cacheMatch(request);
+  async _handle(request, handler) {
+    const response = await handler.cacheMatch(request);
     if (response) {
       return response;
     }
-    if (handler2.event && handler2.event.type === "install") {
-      return await this._handleInstall(request, handler2);
+    if (handler.event && handler.event.type === "install") {
+      return await this._handleInstall(request, handler);
     }
-    return await this._handleFetch(request, handler2);
+    return await this._handleFetch(request, handler);
   }
-  async _handleFetch(request, handler2) {
+  async _handleFetch(request, handler) {
     let response;
-    const params = handler2.params || {};
+    const params = handler.params || {};
     if (this._fallbackToNetwork) {
       if (true) {
         logger.warn(`The precached response for ${getFriendlyURL(request.url)} in ${this.cacheName} was not found. Falling back to the network.`);
@@ -1197,12 +1197,12 @@ var PrecacheStrategy = class extends Strategy {
       const integrityInManifest = params.integrity;
       const integrityInRequest = request.integrity;
       const noIntegrityConflict = !integrityInRequest || integrityInRequest === integrityInManifest;
-      response = await handler2.fetch(new Request(request, {
+      response = await handler.fetch(new Request(request, {
         integrity: request.mode !== "no-cors" ? integrityInRequest || integrityInManifest : void 0
       }));
       if (integrityInManifest && noIntegrityConflict && request.mode !== "no-cors") {
         this._useDefaultCacheabilityPluginIfNeeded();
-        const wasCached = await handler2.cachePut(request, response.clone());
+        const wasCached = await handler.cachePut(request, response.clone());
         if (true) {
           if (wasCached) {
             logger.log(`A response for ${getFriendlyURL(request.url)} was used to "repair" the precache.`);
@@ -1216,7 +1216,7 @@ var PrecacheStrategy = class extends Strategy {
       });
     }
     if (true) {
-      const cacheKey = params.cacheKey || await handler2.getCacheKey(request, "read");
+      const cacheKey = params.cacheKey || await handler.getCacheKey(request, "read");
       logger.groupCollapsed(`Precaching is responding to: ` + getFriendlyURL(request.url));
       logger.log(`Serving the precached url: ${getFriendlyURL(cacheKey instanceof Request ? cacheKey.url : cacheKey)}`);
       logger.groupCollapsed(`View request details here.`);
@@ -1229,10 +1229,10 @@ var PrecacheStrategy = class extends Strategy {
     }
     return response;
   }
-  async _handleInstall(request, handler2) {
+  async _handleInstall(request, handler) {
     this._useDefaultCacheabilityPluginIfNeeded();
-    const response = await handler2.fetch(request);
-    const wasCached = await handler2.cachePut(request, response.clone());
+    const response = await handler.fetch(request);
+    const wasCached = await handler.cachePut(request, response.clone());
     if (!wasCached) {
       throw new WorkboxError("bad-precaching-response", {
         url: request.url,
@@ -1584,27 +1584,27 @@ var validMethods = [
 ];
 
 // node_modules/workbox-routing/utils/normalizeHandler.js
-var normalizeHandler = (handler2) => {
-  if (handler2 && typeof handler2 === "object") {
+var normalizeHandler = (handler) => {
+  if (handler && typeof handler === "object") {
     if (true) {
-      finalAssertExports.hasMethod(handler2, "handle", {
+      finalAssertExports.hasMethod(handler, "handle", {
         moduleName: "workbox-routing",
         className: "Route",
         funcName: "constructor",
         paramName: "handler"
       });
     }
-    return handler2;
+    return handler;
   } else {
     if (true) {
-      finalAssertExports.isType(handler2, "function", {
+      finalAssertExports.isType(handler, "function", {
         moduleName: "workbox-routing",
         className: "Route",
         funcName: "constructor",
         paramName: "handler"
       });
     }
-    return { handle: handler2 };
+    return { handle: handler };
   }
 };
 
@@ -1621,7 +1621,7 @@ var Route = class {
    * @param {string} [method='GET'] The HTTP method to match the Route
    * against.
    */
-  constructor(match, handler2, method = defaultMethod) {
+  constructor(match, handler, method = defaultMethod) {
     if (true) {
       finalAssertExports.isType(match, "function", {
         moduleName: "workbox-routing",
@@ -1633,7 +1633,7 @@ var Route = class {
         finalAssertExports.isOneOf(method, validMethods, { paramName: "method" });
       }
     }
-    this.handler = normalizeHandler(handler2);
+    this.handler = normalizeHandler(handler);
     this.match = match;
     this.method = method;
   }
@@ -1642,8 +1642,8 @@ var Route = class {
    * @param {workbox-routing-handlerCallback} handler A callback
    * function that returns a Promise resolving to a Response
    */
-  setCatchHandler(handler2) {
-    this.catchHandler = normalizeHandler(handler2);
+  setCatchHandler(handler) {
+    this.catchHandler = normalizeHandler(handler);
   }
 };
 
@@ -1662,7 +1662,7 @@ var RegExpRoute = class extends Route {
    * @param {string} [method='GET'] The HTTP method to match the Route
    * against.
    */
-  constructor(regExp, handler2, method) {
+  constructor(regExp, handler, method) {
     if (true) {
       finalAssertExports.isInstance(regExp, RegExp, {
         moduleName: "workbox-routing",
@@ -1684,7 +1684,7 @@ var RegExpRoute = class extends Route {
       }
       return result.slice(1);
     };
-    super(match, handler2, method);
+    super(match, handler, method);
   }
 };
 
@@ -1796,10 +1796,10 @@ var Router = class {
       sameOrigin,
       url
     });
-    let handler2 = route && route.handler;
+    let handler = route && route.handler;
     const debugMessages = [];
     if (true) {
-      if (handler2) {
+      if (handler) {
         debugMessages.push([`Found a route to handle this request:`, route]);
         if (params) {
           debugMessages.push([
@@ -1810,13 +1810,13 @@ var Router = class {
       }
     }
     const method = request.method;
-    if (!handler2 && this._defaultHandlerMap.has(method)) {
+    if (!handler && this._defaultHandlerMap.has(method)) {
       if (true) {
         debugMessages.push(`Failed to find a matching route. Falling back to the default handler for ${method}.`);
       }
-      handler2 = this._defaultHandlerMap.get(method);
+      handler = this._defaultHandlerMap.get(method);
     }
-    if (!handler2) {
+    if (!handler) {
       if (true) {
         logger.debug(`No route found for: ${getFriendlyURL(url)}`);
       }
@@ -1835,7 +1835,7 @@ var Router = class {
     }
     let responsePromise;
     try {
-      responsePromise = handler2.handle({ url, request, event, params });
+      responsePromise = handler.handle({ url, request, event, params });
     } catch (err) {
       responsePromise = Promise.reject(err);
     }
@@ -1925,8 +1925,8 @@ var Router = class {
    * @param {string} [method='GET'] The HTTP method to associate with this
    * default handler. Each method has its own default.
    */
-  setDefaultHandler(handler2, method = defaultMethod) {
-    this._defaultHandlerMap.set(method, normalizeHandler(handler2));
+  setDefaultHandler(handler, method = defaultMethod) {
+    this._defaultHandlerMap.set(method, normalizeHandler(handler));
   }
   /**
    * If a Route throws an error while handling a request, this `handler`
@@ -1935,8 +1935,8 @@ var Router = class {
    * @param {workbox-routing~handlerCallback} handler A callback
    * function that returns a Promise resulting in a Response.
    */
-  setCatchHandler(handler2) {
-    this._catchHandler = normalizeHandler(handler2);
+  setCatchHandler(handler) {
+    this._catchHandler = normalizeHandler(handler);
   }
   /**
    * Registers a route with the router.
@@ -2013,7 +2013,7 @@ var getOrCreateDefaultRouter = () => {
 };
 
 // node_modules/workbox-routing/registerRoute.js
-function registerRoute(capture, handler2, method) {
+function registerRoute(capture, handler, method) {
   let route;
   if (typeof capture === "string") {
     const captureUrl = new URL(capture, location.href);
@@ -2039,11 +2039,11 @@ function registerRoute(capture, handler2, method) {
       }
       return url.href === captureUrl.href;
     };
-    route = new Route(matchCallback, handler2, method);
+    route = new Route(matchCallback, handler, method);
   } else if (capture instanceof RegExp) {
-    route = new RegExpRoute(capture, handler2, method);
+    route = new RegExpRoute(capture, handler, method);
   } else if (typeof capture === "function") {
-    route = new Route(capture, handler2, method);
+    route = new Route(capture, handler, method);
   } else if (capture instanceof Route) {
     route = capture;
   } else {
@@ -2181,7 +2181,7 @@ var NavigationRoute = class extends Route {
    * match the URL's pathname and search parameter, the route will handle the
    * request (assuming the denylist doesn't match).
    */
-  constructor(handler2, { allowlist = [/./], denylist = [] } = {}) {
+  constructor(handler, { allowlist = [/./], denylist = [] } = {}) {
     if (true) {
       finalAssertExports.isArrayOfClass(allowlist, RegExp, {
         moduleName: "workbox-routing",
@@ -2196,7 +2196,7 @@ var NavigationRoute = class extends Route {
         paramName: "options.denylist"
       });
     }
-    super((options) => this._match(options), handler2);
+    super((options) => this._match(options), handler);
     this._allowlist = allowlist;
     this._denylist = denylist;
   }
@@ -2236,8 +2236,203 @@ var NavigationRoute = class extends Route {
   }
 };
 
+// node_modules/workbox-strategies/utils/messages.js
+var messages2 = {
+  strategyStart: (strategyName, request) => `Using ${strategyName} to respond to '${getFriendlyURL(request.url)}'`,
+  printFinalResponse: (response) => {
+    if (response) {
+      logger.groupCollapsed(`View the final response here.`);
+      logger.log(response || "[No response returned]");
+      logger.groupEnd();
+    }
+  }
+};
+
+// node_modules/workbox-strategies/plugins/cacheOkAndOpaquePlugin.js
+var cacheOkAndOpaquePlugin = {
+  /**
+   * Returns a valid response (to allow caching) if the status is 200 (OK) or
+   * 0 (opaque).
+   *
+   * @param {Object} options
+   * @param {Response} options.response
+   * @return {Response|null}
+   *
+   * @private
+   */
+  cacheWillUpdate: async ({ response }) => {
+    if (response.status === 200 || response.status === 0) {
+      return response;
+    }
+    return null;
+  }
+};
+
+// node_modules/workbox-strategies/NetworkFirst.js
+var NetworkFirst = class extends Strategy {
+  /**
+   * @param {Object} [options]
+   * @param {string} [options.cacheName] Cache name to store and retrieve
+   * requests. Defaults to cache names provided by
+   * {@link workbox-core.cacheNames}.
+   * @param {Array<Object>} [options.plugins] [Plugins]{@link https://developers.google.com/web/tools/workbox/guides/using-plugins}
+   * to use in conjunction with this caching strategy.
+   * @param {Object} [options.fetchOptions] Values passed along to the
+   * [`init`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)
+   * of [non-navigation](https://github.com/GoogleChrome/workbox/issues/1796)
+   * `fetch()` requests made by this strategy.
+   * @param {Object} [options.matchOptions] [`CacheQueryOptions`](https://w3c.github.io/ServiceWorker/#dictdef-cachequeryoptions)
+   * @param {number} [options.networkTimeoutSeconds] If set, any network requests
+   * that fail to respond within the timeout will fallback to the cache.
+   *
+   * This option can be used to combat
+   * "[lie-fi]{@link https://developers.google.com/web/fundamentals/performance/poor-connectivity/#lie-fi}"
+   * scenarios.
+   */
+  constructor(options = {}) {
+    super(options);
+    if (!this.plugins.some((p) => "cacheWillUpdate" in p)) {
+      this.plugins.unshift(cacheOkAndOpaquePlugin);
+    }
+    this._networkTimeoutSeconds = options.networkTimeoutSeconds || 0;
+    if (true) {
+      if (this._networkTimeoutSeconds) {
+        finalAssertExports.isType(this._networkTimeoutSeconds, "number", {
+          moduleName: "workbox-strategies",
+          className: this.constructor.name,
+          funcName: "constructor",
+          paramName: "networkTimeoutSeconds"
+        });
+      }
+    }
+  }
+  /**
+   * @private
+   * @param {Request|string} request A request to run this strategy for.
+   * @param {workbox-strategies.StrategyHandler} handler The event that
+   *     triggered the request.
+   * @return {Promise<Response>}
+   */
+  async _handle(request, handler) {
+    const logs = [];
+    if (true) {
+      finalAssertExports.isInstance(request, Request, {
+        moduleName: "workbox-strategies",
+        className: this.constructor.name,
+        funcName: "handle",
+        paramName: "makeRequest"
+      });
+    }
+    const promises = [];
+    let timeoutId;
+    if (this._networkTimeoutSeconds) {
+      const { id, promise } = this._getTimeoutPromise({ request, logs, handler });
+      timeoutId = id;
+      promises.push(promise);
+    }
+    const networkPromise = this._getNetworkPromise({
+      timeoutId,
+      request,
+      logs,
+      handler
+    });
+    promises.push(networkPromise);
+    const response = await handler.waitUntil((async () => {
+      return await handler.waitUntil(Promise.race(promises)) || // If Promise.race() resolved with null, it might be due to a network
+      // timeout + a cache miss. If that were to happen, we'd rather wait until
+      // the networkPromise resolves instead of returning null.
+      // Note that it's fine to await an already-resolved promise, so we don't
+      // have to check to see if it's still "in flight".
+      await networkPromise;
+    })());
+    if (true) {
+      logger.groupCollapsed(messages2.strategyStart(this.constructor.name, request));
+      for (const log of logs) {
+        logger.log(log);
+      }
+      messages2.printFinalResponse(response);
+      logger.groupEnd();
+    }
+    if (!response) {
+      throw new WorkboxError("no-response", { url: request.url });
+    }
+    return response;
+  }
+  /**
+   * @param {Object} options
+   * @param {Request} options.request
+   * @param {Array} options.logs A reference to the logs array
+   * @param {Event} options.event
+   * @return {Promise<Response>}
+   *
+   * @private
+   */
+  _getTimeoutPromise({ request, logs, handler }) {
+    let timeoutId;
+    const timeoutPromise = new Promise((resolve) => {
+      const onNetworkTimeout = async () => {
+        if (true) {
+          logs.push(`Timing out the network response at ${this._networkTimeoutSeconds} seconds.`);
+        }
+        resolve(await handler.cacheMatch(request));
+      };
+      timeoutId = setTimeout(onNetworkTimeout, this._networkTimeoutSeconds * 1e3);
+    });
+    return {
+      promise: timeoutPromise,
+      id: timeoutId
+    };
+  }
+  /**
+   * @param {Object} options
+   * @param {number|undefined} options.timeoutId
+   * @param {Request} options.request
+   * @param {Array} options.logs A reference to the logs Array.
+   * @param {Event} options.event
+   * @return {Promise<Response>}
+   *
+   * @private
+   */
+  async _getNetworkPromise({ timeoutId, request, logs, handler }) {
+    let error;
+    let response;
+    try {
+      response = await handler.fetchAndCachePut(request);
+    } catch (fetchError) {
+      if (fetchError instanceof Error) {
+        error = fetchError;
+      }
+    }
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    if (true) {
+      if (response) {
+        logs.push(`Got response from network.`);
+      } else {
+        logs.push(`Unable to get a response from the network. Will respond with a cached response.`);
+      }
+    }
+    if (error || !response) {
+      response = await handler.cacheMatch(request);
+      if (true) {
+        if (response) {
+          logs.push(`Found a cached response in the '${this.cacheName}' cache.`);
+        } else {
+          logs.push(`No response found in the '${this.cacheName}' cache.`);
+        }
+      }
+    }
+    return response;
+  }
+};
+
 // sw.ts
-precacheAndRoute([{"revision":"348c87fddf308d20a2e210e906df7790","url":"chunk-CN3ADSZX.js"},{"revision":"c5c497075f29268d037977a57f9085bc","url":"chunk-Y4VXBZMG.js"},{"revision":"f2ef8b520230b08b6ab2f0a7c77b8e87","url":"chunk-ZPPTCLS3.js"},{"revision":"aa47e24c07cf593489fb5cdad1196ffa","url":"index.css"},{"revision":"de2178e32bb5b458195266f2d489e5e5","url":"index.html"},{"revision":"884a7d39fa6a03b569a4305c39e82835","url":"index.js"},{"revision":"85ea08f6237790001183fe6be1c20ac7","url":"manifest.json"},{"revision":"a42a6a016d8d87531de767c1b0a98810","url":"puzzle-geometry-N6WBCTL4.js"},{"revision":"3bc7b93d70e5b356ce836a806a89ff42","url":"puzzles-dynamic-3x3x3-QN5DUJUA-FBZMHHU2.js"},{"revision":"228d005d3e1e6cefcfbb8b0d29fb64e5","url":"puzzles-dynamic-4x4x4-DT42HVIY-DX6TXQV4.js"},{"revision":"628636509d504623852dc458e6f98942","url":"puzzles-dynamic-megaminx-FUKAIAP5-EI7SA5U5.js"},{"revision":"a2d96429c6b0377e4f462de48a9574c6","url":"puzzles-dynamic-side-events-FCWYXIA7-J6BYWUHX.js"},{"revision":"cd71b8b300034c4615a4105f6f86c2d3","url":"puzzles-dynamic-unofficial-QXSDLTK5-FF6NL6H3.js"},{"revision":"3f13606a5a694f203c00303f927b7559","url":"static/cases/333-f2l.json"},{"revision":"5f1be4237a0b8eb39d5c6f315c1a2489","url":"static/cases/cll.json"},{"revision":"509c7352d6cd97eb3a7af3d217be72e1","url":"static/cases/hoya-edges.json"},{"revision":"fccf62d2328d2898945e0e34c413f0a6","url":"static/cases/mega-oll-co.json"},{"revision":"b7daadbbae0c7d33b9400475b2c12cc6","url":"static/cases/mega-oll-eo.json"},{"revision":"5bfebdf1ec55557a85eaa9cdbe683c75","url":"static/cases/mega-pll-cp.json"},{"revision":"f372e09533b4d5990661c5fc84b4dfb0","url":"static/cases/mega-pll-ep.json"},{"revision":"6ca95608f95fa7a7124d477fa95ffe07","url":"static/cases/oh-oll.json"},{"revision":"576e48fb1aad1e4c5f7a7f08993ca827","url":"static/favicon.ico"},{"revision":"11232706c972e425949fd7bbdc48a3fa","url":"static/icons/favicon-16x16.png"},{"revision":"d9a82bcdbafa42f819aee95595916454","url":"static/icons/favicon-32x32.png"},{"revision":"30e826a2e94a5070441c61c5173249f8","url":"static/icons/icon-128.png"},{"revision":"e2674f9ac49db45598f1e3523b077866","url":"static/icons/icon-192.png"},{"revision":"51e43010d27075db2fcc343d5b585c61","url":"static/icons/icon-32.png"},{"revision":"4194e5a952096ec25ea6a46bb253c994","url":"static/icons/icon-512.png"},{"revision":"b6e11b99b8cb6e59b234d9d9a8e7f5de","url":"twisty-dynamic-3d-IAEGMDVR-2UMC7GKI.js"}]);
-var handler = createHandlerBoundToURL("index.html");
-var navigationRoute = new NavigationRoute(handler);
-registerRoute(navigationRoute);
+precacheAndRoute(
+  [{"revision":"348c87fddf308d20a2e210e906df7790","url":"chunk-CN3ADSZX.js"},{"revision":"c5c497075f29268d037977a57f9085bc","url":"chunk-Y4VXBZMG.js"},{"revision":"f2ef8b520230b08b6ab2f0a7c77b8e87","url":"chunk-ZPPTCLS3.js"},{"revision":"aa47e24c07cf593489fb5cdad1196ffa","url":"index.css"},{"revision":"de2178e32bb5b458195266f2d489e5e5","url":"index.html"},{"revision":"884a7d39fa6a03b569a4305c39e82835","url":"index.js"},{"revision":"85ea08f6237790001183fe6be1c20ac7","url":"manifest.json"},{"revision":"a42a6a016d8d87531de767c1b0a98810","url":"puzzle-geometry-N6WBCTL4.js"},{"revision":"3bc7b93d70e5b356ce836a806a89ff42","url":"puzzles-dynamic-3x3x3-QN5DUJUA-FBZMHHU2.js"},{"revision":"228d005d3e1e6cefcfbb8b0d29fb64e5","url":"puzzles-dynamic-4x4x4-DT42HVIY-DX6TXQV4.js"},{"revision":"628636509d504623852dc458e6f98942","url":"puzzles-dynamic-megaminx-FUKAIAP5-EI7SA5U5.js"},{"revision":"a2d96429c6b0377e4f462de48a9574c6","url":"puzzles-dynamic-side-events-FCWYXIA7-J6BYWUHX.js"},{"revision":"cd71b8b300034c4615a4105f6f86c2d3","url":"puzzles-dynamic-unofficial-QXSDLTK5-FF6NL6H3.js"},{"revision":"3f13606a5a694f203c00303f927b7559","url":"static/cases/333-f2l.json"},{"revision":"5f1be4237a0b8eb39d5c6f315c1a2489","url":"static/cases/cll.json"},{"revision":"509c7352d6cd97eb3a7af3d217be72e1","url":"static/cases/hoya-edges.json"},{"revision":"fccf62d2328d2898945e0e34c413f0a6","url":"static/cases/mega-oll-co.json"},{"revision":"b7daadbbae0c7d33b9400475b2c12cc6","url":"static/cases/mega-oll-eo.json"},{"revision":"5bfebdf1ec55557a85eaa9cdbe683c75","url":"static/cases/mega-pll-cp.json"},{"revision":"f372e09533b4d5990661c5fc84b4dfb0","url":"static/cases/mega-pll-ep.json"},{"revision":"6ca95608f95fa7a7124d477fa95ffe07","url":"static/cases/oh-oll.json"},{"revision":"576e48fb1aad1e4c5f7a7f08993ca827","url":"static/favicon.ico"},{"revision":"11232706c972e425949fd7bbdc48a3fa","url":"static/icons/favicon-16x16.png"},{"revision":"d9a82bcdbafa42f819aee95595916454","url":"static/icons/favicon-32x32.png"},{"revision":"30e826a2e94a5070441c61c5173249f8","url":"static/icons/icon-128.png"},{"revision":"e2674f9ac49db45598f1e3523b077866","url":"static/icons/icon-192.png"},{"revision":"51e43010d27075db2fcc343d5b585c61","url":"static/icons/icon-32.png"},{"revision":"4194e5a952096ec25ea6a46bb253c994","url":"static/icons/icon-512.png"},{"revision":"b6e11b99b8cb6e59b234d9d9a8e7f5de","url":"twisty-dynamic-3d-IAEGMDVR-2UMC7GKI.js"}].filter((file) => !file.url.includes("index.js"))
+);
+registerRoute(new NavigationRoute(createHandlerBoundToURL("index.html")));
+registerRoute(
+  ({ url }) => url.pathname.includes("index.js"),
+  new NetworkFirst()
+);
