@@ -65,7 +65,7 @@ const App = () => (
       />
       <link rel="manifest" href="manifest.json" />
 
-      <title>Alg Trainer Test</title>
+      <title>Alg Trainer</title>
       <style>
         {`
           body {
