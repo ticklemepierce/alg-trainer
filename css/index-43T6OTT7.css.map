@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/components/multiprogress/styles.module.css"],
-  "sourcesContent": [".wrapper {\n  margin: 20px 20%;\n}\n\n.value {\n  float: left;\n  text-align: center;\n}\n\n.graduation {\n  float: left;\n  text-align: center;\n}\n\n.bars {\n  height: 10px;\n}\n\n.bars .bar {\n  float: left;\n  height: 10px;\n}\n\n.bars div.bar:first-of-type {\n  border-top-left-radius: 5px;\n  border-bottom-left-radius: 5px;\n}\n\n.bars div.bar:last-of-type {\n  border-top-right-radius: 5px;\n  border-bottom-right-radius: 5px;\n}\n\n.legends {\n  text-align: center;\n  display: block;\n}\n\n.legends .legend {\n  display: flex;\n  margin: 5px;\n  justify-content: center;\n}\n\n.legends .legend .dot {\n  display: inline-block;\n  font-size: 25px;\n  line-height: 30px;\n  margin: 0;\n}\n\n.legends .legend .label {\n  display: inline-block;\n  margin: 0;\n  margin-left: 7px;\n  line-height: 30px;\n}\n"],
-  "mappings": "AAAA,yBAIA,mBACE,WACA,kBAQF,MACE,YAGF,WACE,WACA,YAGF,4BACE,2BACA,8BAGF,2BACE,4BACA,+BAGF,SACE,kBACA,cAGF,iBACE,aAvCF,WAyCE,uBAGF,sBACE,qBACA,eACA,iBA/CF,SAmDA,wBACE,qBApDF,iBAuDE",
-  "names": []
-}
