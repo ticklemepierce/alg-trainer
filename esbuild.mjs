@@ -31,7 +31,7 @@ const options = {
   bundle: true,
   plugins: [
     copy({
-      source: ["./static", "./icons", "manifest.json"],
+      source: ["./static", "./icons", "manifest.json", "index.html"],
       target: "./dist",
       copyWithFolder: true,
     }),
