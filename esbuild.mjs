@@ -4,25 +4,6 @@ import { injectManifest } from "workbox-build";
 
 const method = process.argv.slice(2)[0];
 
-const _injectManifest = () => ({
-  name: "_injectManifest",
-  setup(build) {
-    build.onEnd(() => {
-      injectManifest({
-        globDirectory: "dist/",
-        globPatterns: [
-          "**/*.{css,eot,html,ico,jpg,js,json,png,svg,ttf,txt,webmanifest,woff,woff2,webm,xml}",
-        ],
-        globFollow: true,
-        globStrict: true,
-        maximumFileSizeToCacheInBytes: 5000000,
-        swSrc: "src-sw.js",
-        swDest: "dist/service-worker.js",
-      });
-    });
-  },
-});
-
 const options = {
   entryPoints: ["src/index.tsx"],
   outdir: "dist",
@@ -35,7 +16,6 @@ const options = {
       target: "./dist",
       copyWithFolder: true,
     }),
-    _injectManifest(),
   ],
 };
 
@@ -60,3 +40,24 @@ if (method === "build") {
     splitting: true,
   });
 }
+
+await build({
+  entryPoints: ["./sw.ts"],
+  bundle: true,
+  format: "cjs", // 😕 Can't use module worker in Firefox yet.
+  outfile: "dist/service-worker.js",
+});
+
+await new Promise((resolve) => setTimeout(resolve, 1000));
+
+await injectManifest({
+  globDirectory: "dist/",
+  globPatterns: [
+    "**/*.{css,eot,html,ico,jpg,js,json,png,svg,ttf,txt,webmanifest,woff,woff2,webm,xml}",
+  ],
+  globFollow: true,
+  globStrict: true,
+  maximumFileSizeToCacheInBytes: 5000000,
+  swSrc: "dist/service-worker.js",
+  swDest: "dist/service-worker.js",
+});
