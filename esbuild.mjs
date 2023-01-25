@@ -22,7 +22,6 @@ const _injectManifest = () => ({
           "3rdpartylicenses.txt",
           "assets/images/icons/icon-*.png",
         ],
-        dontCacheBustURLsMatching: new RegExp(".+.[a-f0-9]{20}..+"),
         maximumFileSizeToCacheInBytes: 5000000,
         swSrc: "src-sw.js",
         swDest: "dist/service-worker.js",
