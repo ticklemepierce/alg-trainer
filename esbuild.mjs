@@ -1,7 +1,5 @@
 import { context, build } from "esbuild";
 import copy from "esbuild-copy-files-plugin";
-import htmlPlugin from "@chialab/esbuild-plugin-html";
-import { clean } from "esbuild-plugin-clean";
 import { injectManifest } from "workbox-build";
 
 const method = process.argv.slice(2)[0];
@@ -17,11 +15,6 @@ const _injectManifest = () => ({
         ],
         globFollow: true,
         globStrict: true,
-        globIgnores: [
-          "**/*-es5.*.js",
-          "3rdpartylicenses.txt",
-          "assets/images/icons/icon-*.png",
-        ],
         maximumFileSizeToCacheInBytes: 5000000,
         swSrc: "src-sw.js",
         swDest: "dist/service-worker.js",
@@ -31,18 +24,12 @@ const _injectManifest = () => ({
 });
 
 const options = {
-  entryPoints: ["index.html"],
+  entryPoints: ["src/index.tsx"],
   outdir: "dist",
   format: "esm",
   jsx: "automatic",
   bundle: true,
-  assetNames: "assets/[name]-[hash]",
-  chunkNames: "[ext]/[name]-[hash]",
   plugins: [
-    clean({
-      patterns: ["./dist/*"],
-    }),
-    htmlPlugin(),
     copy({
       source: ["./static", "./icons", "manifest.json"],
       target: "./dist",
