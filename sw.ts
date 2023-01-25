@@ -1,27 +1,14 @@
-// import { precacheAndRoute } from "workbox-precaching";
-// import { createHandlerBoundToURL } from "workbox-precaching";
-// import { NavigationRoute, registerRoute } from "workbox-routing";
+import { precacheAndRoute } from "workbox-precaching";
+import { createHandlerBoundToURL } from "workbox-precaching";
+import { NavigationRoute, registerRoute } from "workbox-routing";
+import { NetworkFirst } from "workbox-strategies";
 
-// precacheAndRoute((self as any).__WB_MANIFEST);
+precacheAndRoute(
+  (self as any).__WB_MANIFEST.filter((file) => !file.url.includes("index.js"))
+);
 
-// const handler = createHandlerBoundToURL("index.html");
-// const navigationRoute = new NavigationRoute(handler);
-// registerRoute(navigationRoute);
-
-import {
-  pageCache,
-  imageCache,
-  staticResourceCache,
-  googleFontsCache,
-  offlineFallback,
-} from "workbox-recipes";
-
-pageCache();
-
-googleFontsCache();
-
-staticResourceCache();
-
-imageCache();
-
-offlineFallback();
+registerRoute(new NavigationRoute(createHandlerBoundToURL("index.html")));
+registerRoute(
+  ({ url }) => url.pathname.includes("index.js"),
+  new NetworkFirst()
+);
