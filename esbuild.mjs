@@ -25,9 +25,6 @@ const _injectManifest = () => ({
         maximumFileSizeToCacheInBytes: 5000000,
         swSrc: "src-sw.js",
         swDest: "dist/service-worker.js",
-        templatedURLs: {
-          "/": ["index.html"],
-        },
       });
     });
   },
