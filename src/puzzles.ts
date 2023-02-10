@@ -1,19 +1,8 @@
-import {
-  PuzzleID,
-  VisualizationFormat,
-  ExperimentalStickering,
-} from "cubing/dist/types/twisty";
-
-export interface TwistyImage {
-  puzzle: PuzzleID;
-  visualization: VisualizationFormat;
-  alg?: string;
-  experimentalStickering?: ExperimentalStickering;
-}
+import { PuzzleID, TwistyPlayerConfig } from "cubing/dist/types/twisty";
 
 export interface IStep {
   displayName: string;
-  image: TwistyImage;
+  image: TwistyPlayerConfig;
   slug: string;
   quantumMoveOrder: number;
 }
@@ -41,7 +30,7 @@ export type IAlg = {
   filters: {
     [key: string]: boolean;
   };
-  image: Partial<TwistyImage>;
+  image: TwistyPlayerConfig;
   solutions: string[];
 };
 
@@ -248,14 +237,26 @@ export const Puzzles: IPuzzle[] = [
     twisty: "4x4x4",
     steps: [
       {
-        displayName: "Hoya cross edges",
+        displayName: "Hoya",
         image: {
           puzzle: "4x4x4",
           visualization: "3D",
-          experimentalStickering: "Cross",
         },
-        slug: "cross_edges",
-        cases: "hoya-edges",
+        slug: "hoya",
+        steps: [
+          {
+            displayName: "Cross edges",
+            image: {
+              puzzle: "4x4x4",
+              visualization: "3D",
+              experimentalStickering: "Cross",
+            },
+            slug: "cross_edges",
+            cases: "hoya-edges",
+            filters: {},
+            quantumMoveOrder: 4,
+          },
+        ],
         filters: {},
         quantumMoveOrder: 4,
       },
@@ -348,6 +349,32 @@ export const Puzzles: IPuzzle[] = [
             filters: {},
           },
         ],
+      },
+    ],
+  },
+  {
+    displayName: "Pyraminx",
+    slug: "/pyraminx",
+    image: {
+      puzzle: "pyraminx",
+      visualization: "3D",
+    },
+    twisty: "pyraminx",
+    quantumMoveOrder: 3,
+    steps: [
+      {
+        displayName: "L4E",
+        image: {
+          puzzle: "pyraminx",
+          visualization: "3D",
+          alg: "R U R'",
+          cameraLatitude: 90,
+          cameraLatitudeLimit: 90,
+        },
+        slug: "l4e",
+        quantumMoveOrder: 3,
+        cases: "l4e",
+        filters: {},
       },
     ],
   },

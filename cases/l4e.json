@@ -1,0 +1,150 @@
+{
+  "tws": "pyraminx.tws",
+  "moves": "R,U,L,B",
+  "quantumMoveOrder": 3,
+  "cases": [
+    {
+      "name": "1",
+      "display": "R U' R' U' R U' R'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "R U' R' U' R U' R'"
+        }
+      },
+      "solutions": ["R U' R' U' R U' R'"]
+    },
+    {
+      "name": "2",
+      "display": "L' U L U L' U L",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "L' U L U L' U L"
+        }
+      },
+      "solutions": ["R U R' U R U R'", "L' U L U L' U L"]
+    },
+    {
+      "name": "3",
+      "display": "R' L R L' U L' U' L",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "R' L R L' U L' U' L"
+        }
+      },
+      "solutions": ["R' L R L' U L' U' L"]
+    },
+    {
+      "name": "4",
+      "display": "L U R U' R' L'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "L U R U' R' L'"
+        }
+      },
+      "solutions": ["L U R U' R' L'"]
+    },
+    {
+      "name": "5",
+      "display": "R' U' L' U L R",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "R' U' L' U L R"
+        }
+      },
+      "solutions": ["R' U' L' U L R"]
+    },
+    {
+      "name": "6",
+      "display": "U L' U' L",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "U L' U' L"
+        }
+      },
+      "solutions": ["U L' U' L"]
+    },
+    {
+      "name": "7",
+      "display": "U' R U R'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "U' R U R'"
+        }
+      },
+      "solutions": ["U' R U R'"]
+    },
+    {
+      "name": "8",
+      "display": "L R' L' R",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "L R' L' R"
+        }
+      },
+      "solutions": ["L R' L' R"]
+    },
+    {
+      "name": "9",
+      "display": "R' L R L'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "R' L R L'"
+        }
+      },
+      "solutions": ["R' L R L'"]
+    },
+    {
+      "name": "10",
+      "display": "R' L R L2' U L",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "R' L R L2' U L"
+        }
+      },
+      "solutions": ["R' L R L2' U L"]
+    },
+    {
+      "name": "11",
+      "display": "L R' L' R2 U' R'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "L R' L' R2 U' R'"
+        }
+      },
+      "solutions": ["L R' L' R2 U' R'"]
+    },
+    {
+      "name": "12",
+      "display": "R U' R'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "R U' R'"
+        }
+      },
+      "solutions": ["R U' R'"]
+    },
+    {
+      "name": "13",
+      "display": "R U' R'",
+      "filters": {},
+      "image": {
+        "puzzle": {
+          "case": "R U' R'"
+        }
+      },
+      "solutions": ["R U' R'"]
+    }
+  ]
+}

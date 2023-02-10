@@ -11,19 +11,30 @@ const inputData = readFileSync(`cases/${fileName}`, {
   flag: "r",
 });
 
-const { setup, cases, tws, moves, doubleMovesNotEqual, randomizeAuf } =
+const { setup, cases, tws, moves, randomizeAuf, quantumMoveOrder } =
   JSON.parse(inputData);
 
 const isAlg = (input) => /^[RUFBLD' 2]+$/.test(input);
 
 const output = [];
 
+const simplify = (alg) => {
+  return alg.experimentalSimplify({
+    cancel: true,
+    puzzleLoader: {
+      puzzleSpecificSimplifyOptions: {
+        quantumMoveOrder: () => quantumMoveOrder,
+      },
+    },
+  });
+};
+
 const normalize = (alg) => {
   alg = alg.toString();
   if (alg.startsWith("U")) {
     alg = alg.substring(alg.indexOf(" ") + 1);
   }
-  return invertAlg(alg);
+  return simplify(new Alg(invertAlg(alg)));
 };
 
 let setupAlg;
@@ -43,16 +54,20 @@ cases.forEach((_case, idx) => {
 
   const inverse = new Alg(alg).invert();
 
-  let scrambleAlg = setupAlg
-    ? setupAlg.concat(inverse).toString()
-    : inverse.toString();
+  let scrambleAlg = setupAlg ? setupAlg.concat(inverse) : inverse;
 
-  // TODO replace with quantum moves
-  if (!doubleMovesNotEqual) {
-    scrambleAlg = scrambleAlg.replaceAll("2'", "2");
+  if (quantumMoveOrder) {
+    scrambleAlg = scrambleAlg.experimentalSimplify({
+      cancel: true,
+      puzzleLoader: {
+        puzzleSpecificSimplifyOptions: {
+          quantumMoveOrder: () => quantumMoveOrder,
+        },
+      },
+    });
   }
 
-  algs.push(scrambleAlg);
+  algs.push(scrambleAlg.toString());
 
   if (randomizeAuf) {
     algs.push(new Alg("U").concat(scrambleAlg));
@@ -83,11 +98,18 @@ let currLinesIdx = lines.findIndex((line) => line === "Solving") + 1;
 let currOutputIdx = 0;
 
 const invertAlg = (alg) => {
-  let invertedAlg = new Alg(alg).invert().toString();
-  if (!doubleMovesNotEqual) {
-    invertedAlg = invertedAlg.replaceAll("2'", "2");
+  let invertedAlg = new Alg(alg).invert();
+  if (quantumMoveOrder) {
+    invertedAlg = invertedAlg.experimentalSimplify({
+      cancel: true,
+      puzzleLoader: {
+        puzzleSpecificSimplifyOptions: {
+          quantumMoveOrder: () => quantumMoveOrder,
+        },
+      },
+    });
   }
-  return invertedAlg;
+  return invertedAlg.toString();
 };
 
 while (currLinesIdx < lines.length) {
@@ -102,8 +124,8 @@ while (currLinesIdx < lines.length) {
   if (line !== "Solving") {
     if (!line.endsWith(invertAlg(currAlg)) && !line.startsWith(currAlg)) {
       const invertedSolution = invertAlg(line);
-      const currOutput = output.find(
-        (alg) => alg.display === normalize(currAlg)
+      const currOutput = output.find((alg) =>
+        simplify(new Alg(alg.display)).isIdentical(normalize(currAlg))
       );
       currOutput.setups.push(invertedSolution);
     }

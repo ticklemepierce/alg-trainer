@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -6,13 +6,14 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { Link } from "react-router-dom";
+import { Puzzles } from "../../puzzles";
+import NavItem from "./nav-item";
 
 const pages = [
   {
@@ -31,10 +32,14 @@ const pages = [
     display: "Megaminx",
     link: "megaminx",
   },
+  {
+    display: "Pyraminx",
+    link: "pyraminx",
+  },
 ];
 
 export const NavBar = () => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -144,20 +149,8 @@ export const NavBar = () => {
             AlgTrainer
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map(({ display, link }) => (
-              <Button
-                component={Link}
-                to={link}
-                key={display}
-                sx={{
-                  my: 2,
-                  color: "white",
-                  display: "block",
-                  textTransform: "none",
-                }}
-              >
-                {display}
-              </Button>
+            {Puzzles.map((puzzle, index) => (
+              <NavItem puzzle={puzzle} key={index} />
             ))}
           </Box>
         </Toolbar>
