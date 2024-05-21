@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import { grey, yellow, green } from "@mui/material/colors";
-import * as classes from "./styles.module.css";
+import classes from "./styles.module.css";
 
 const colorMap = {
   learning: yellow[600],

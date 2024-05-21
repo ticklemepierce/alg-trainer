@@ -37,10 +37,7 @@ const normalize = (alg) => {
   return simplify(new Alg(invertAlg(alg)));
 };
 
-let setupAlg;
-if (setup) {
-  setupAlg = new Alg(setup);
-}
+const setupAlg = new Alg(setup || '');
 
 const algs = [];
 
@@ -54,7 +51,7 @@ cases.forEach((_case, idx) => {
 
   const inverse = new Alg(alg).invert();
 
-  let scrambleAlg = setupAlg ? setupAlg.concat(inverse) : inverse;
+  let scrambleAlg = setupAlg.concat(inverse);
 
   if (quantumMoveOrder) {
     scrambleAlg = scrambleAlg.experimentalSimplify({
@@ -124,8 +121,8 @@ while (currLinesIdx < lines.length) {
   if (line !== "Solving") {
     if (!line.endsWith(invertAlg(currAlg)) && !line.startsWith(currAlg)) {
       const invertedSolution = invertAlg(line);
-      const currOutput = output.find((alg) =>
-        simplify(new Alg(alg.display)).isIdentical(normalize(currAlg))
+      const currOutput = output.find((alg) => 
+        simplify(new Alg(alg.display).concat(setupAlg.invert())).isIdentical(normalize(currAlg))
       );
       currOutput.setups.push(invertedSolution);
     }

@@ -1,5 +1,6 @@
 import { context, build } from "esbuild";
 import copy from "esbuild-copy-files-plugin";
+import cssModulesPlugin from "esbuild-css-modules-plugin";
 import { injectManifest } from "workbox-build";
 
 const method = process.argv.slice(2)[0];
@@ -16,6 +17,7 @@ const options = {
       target: "./dist",
       copyWithFolder: true,
     }),
+    cssModulesPlugin(),
   ],
 };
 

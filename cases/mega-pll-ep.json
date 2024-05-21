@@ -1,8 +1,9 @@
 {
-  "setup": "R' BR' R BR R' F' R BR' R' BR F R",
   "tws": "megaminx.tws",
-  "doubleMovesNotEqual": true,
-  "moves": "R,U,F,BR,BL,L,D",
+  "moves": "R,U,F,L",
+  "quantumMoveOrder": 5,
+  "randomizeAuf": true,
+  "setup": "R' BR' R BR R' F' R BR' R' BR F R",
   "cases": [
     {
       "name": "EP 1",
@@ -12,6 +13,9 @@
         "edgeOrientation": false,
         "cornerPermutation": false,
         "cornerOrientation": false
+      },
+      "image": {
+        "alg": "R U2 R' U R' U' R2 U' R' U R' U R U2' R U' R'"
       },
       "solutions": ["R2 U2' R2' U' R2 U2' R2'"]
     },
@@ -24,6 +28,9 @@
         "cornerPermutation": false,
         "cornerOrientation": false
       },
+      "image": {
+        "alg": "R' U2' R U' R U R2' U R U' R U' R' U2 R' U R"
+      },
       "solutions": ["R2 U2 R2' U R2 U2 R2'"]
     },
     {
@@ -34,6 +41,9 @@
         "edgeOrientation": false,
         "cornerPermutation": false,
         "cornerOrientation": false
+      },
+      "image": {
+        "alg": "R U R' U R' U' R2 U' R' U R' U R U2'"
       },
       "solutions": ["R U R' F' R U R' U' R' F R2 U' R'"]
     },
@@ -46,6 +56,9 @@
         "cornerPermutation": false,
         "cornerOrientation": false
       },
+      "image": {
+        "alg": "R U R' U R' U' R2 U' R' U R' U R U2'"
+      },
       "solutions": ["R U R' U R' U' R2 U' R' U R' U R U2'"]
     },
     {
@@ -56,6 +69,9 @@
         "edgeOrientation": false,
         "cornerPermutation": false,
         "cornerOrientation": false
+      },
+      "image": {
+        "alg": "R U2 R2' F R F' R U2' BR U' BR' U' BR U BR' R' U2"
       },
       "solutions": ["L R U2 L' U R' L U' R U2 L' U2 R'"]
     }
